@@ -3,6 +3,9 @@ import { RecipeCard } from '@/components/RecipeCard';
 import { SearchBar } from '@/components/SearchBar';
 import { useRecipeSearch } from '@/hooks/useRecipeSearch';
 import { MadeWithDyad } from '@/components/made-with-dyad';
+import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const {
@@ -20,12 +23,23 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Nos Recettes</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Découvrez notre collection de recettes québécoises traditionnelles et modernes. 
-            Recherchez par nom, ingrédient ou catégorie pour trouver votre prochaine création culinaire.
-          </p>
+        <header className="mb-12">
+          <div className="flex justify-end mb-6">
+            <Link to="/admin">
+              <Button variant="outline">
+                <Plus className="w-4 h-4 mr-2" />
+                Ajouter une recette
+              </Button>
+            </Link>
+          </div>
+          
+          <div className="text-center">
+            <h1 className="text-4xl font-bold mb-4">Nos Recettes</h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Découvrez notre collection de recettes québécoises traditionnelles et modernes. 
+              Recherchez par nom, ingrédient ou catégorie pour trouver votre prochaine création culinaire.
+            </p>
+          </div>
         </header>
 
         <div className="mb-8">
