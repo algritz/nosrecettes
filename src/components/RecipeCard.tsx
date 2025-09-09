@@ -1,7 +1,7 @@
 import { Recipe } from '@/types/recipe';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Clock, Users, ChefHat } from 'lucide-react';
+import { Clock, Users, ChefHat, ImageIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface RecipeCardProps {
@@ -11,7 +11,30 @@ interface RecipeCardProps {
 export const RecipeCard = ({ recipe }: RecipeCardProps) => {
   return (
     <Link to={`/recipe/${recipe.slug}`}>
-      <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
+      <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer overflow-hidden">
+        {recipe.image ? (
+          <div className="aspect-video w-full overflow-hidden">
+            <img 
+              src={recipe.image} 
+              alt={recipe.title}
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const placeholder = target.nextElementSibling as HTMLElement;
+                if (placeholder) placeholder.style.display = 'flex';
+              }}
+            />
+            <div className="hidden w-full h-full bg-muted items-center justify-center">
+              <ImageIcon className="w-12 h-12 text-muted-foreground" />
+            </div>
+          </div>
+        ) : (
+          <div className="aspect-video w-full bg-muted flex items-center justify-center">
+            <ImageIcon className="w-12 h-12 text-muted-foreground" />
+          </div>
+        )}
+        
         <CardHeader>
           <div className="flex justify-between items-start mb-2">
             <Badge variant="secondary">{recipe.category}</Badge>

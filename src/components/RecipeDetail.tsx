@@ -2,7 +2,7 @@ import { Recipe } from '@/types/recipe';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Clock, Users, ChefHat, ArrowLeft } from 'lucide-react';
+import { Clock, Users, ChefHat, ArrowLeft, ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -20,6 +20,25 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             Retour aux recettes
           </Button>
         </Link>
+        
+        {recipe.image && (
+          <div className="aspect-video w-full mb-6 rounded-lg overflow-hidden">
+            <img 
+              src={recipe.image} 
+              alt={recipe.title}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const placeholder = target.nextElementSibling as HTMLElement;
+                if (placeholder) placeholder.style.display = 'flex';
+              }}
+            />
+            <div className="hidden w-full h-full bg-muted items-center justify-center rounded-lg">
+              <ImageIcon className="w-16 h-16 text-muted-foreground" />
+            </div>
+          </div>
+        )}
         
         <div className="flex flex-wrap gap-2 mb-4">
           <Badge variant="secondary">{recipe.category}</Badge>

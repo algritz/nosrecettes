@@ -27,6 +27,7 @@ export const recipes: Recipe[] = [
       'Servir immédiatement.'
     ],
     tags: ['québécois', 'comfort food', 'frites', 'fromage'],
+    image: '/images/poutine-classique.jpg',
     slug: 'poutine-classique'
   },
   {
@@ -58,6 +59,7 @@ export const recipes: Recipe[] = [
       'Cuire au four à 375°F pendant 45 minutes.'
     ],
     tags: ['québécois', 'traditionnel', 'viande', 'fêtes'],
+    image: '/images/tourtiere-lac-saint-jean.jpg',
     slug: 'tourtiere-lac-saint-jean'
   },
   {
@@ -87,6 +89,7 @@ export const recipes: Recipe[] = [
       'Laisser refroidir avant de servir.'
     ],
     tags: ['dessert', 'érable', 'québécois', 'sucré'],
+    image: '/images/tarte-au-sucre.jpg',
     slug: 'tarte-au-sucre'
   }
 ];
