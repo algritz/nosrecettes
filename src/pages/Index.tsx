@@ -1,16 +1,70 @@
-// Update this page (the content is just a fallback if you fail to update the page)
-
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { recipes } from '@/data/recipes';
+import { RecipeCard } from '@/components/RecipeCard';
+import { SearchBar } from '@/components/SearchBar';
+import { useRecipeSearch } from '@/hooks/useRecipeSearch';
+import { MadeWithDyad } from '@/components/made-with-dyad';
 
 const Index = () => {
+  const {
+    searchTerm,
+    setSearchTerm,
+    selectedCategory,
+    setSelectedCategory,
+    selectedDifficulty,
+    setSelectedDifficulty,
+    categories,
+    filteredRecipes,
+    clearFilters
+  } = useRecipeSearch(recipes);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">
-          Start building your amazing project here!
-        </p>
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-8">
+        <header className="text-center mb-12">
+          <h1 className="text-4xl font-bold mb-4">Nos Recettes</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Découvrez notre collection de recettes québécoises traditionnelles et modernes. 
+            Recherchez par nom, ingrédient ou catégorie pour trouver votre prochaine création culinaire.
+          </p>
+        </header>
+
+        <div className="mb-8">
+          <SearchBar
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            selectedDifficulty={selectedDifficulty}
+            onDifficultyChange={setSelectedDifficulty}
+            categories={categories}
+            onClearFilters={clearFilters}
+          />
+        </div>
+
+        <div className="mb-6">
+          <p className="text-sm text-muted-foreground">
+            {filteredRecipes.length} recette{filteredRecipes.length !== 1 ? 's' : ''} trouvée{filteredRecipes.length !== 1 ? 's' : ''}
+          </p>
+        </div>
+
+        {filteredRecipes.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-lg text-muted-foreground mb-4">
+              Aucune recette ne correspond à vos critères de recherche.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Essayez de modifier vos filtres ou votre terme de recherche.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {filteredRecipes.map((recipe) => (
+              <RecipeCard key={recipe.id} recipe={recipe} />
+            ))}
+          </div>
+        )}
       </div>
+      
       <MadeWithDyad />
     </div>
   );
