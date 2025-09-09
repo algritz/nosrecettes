@@ -13,7 +13,7 @@ A modern, responsive recipe website built with React, TypeScript, and Tailwind C
 
 ## 🚀 Live Demo
 
-Visit the live site: [Your GitHub Pages URL]
+Visit the live site: [https://algritz.github.io/nosrecettes](https://algritz.github.io/nosrecettes)
 
 ## 🛠️ Tech Stack
 
@@ -36,8 +36,8 @@ Visit the live site: [Your GitHub Pages URL]
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/nos-recettes.git
-   cd nos-recettes
+   git clone https://github.com/algritz/nosrecettes.git
+   cd nosrecettes
    ```
 
 2. **Install dependencies**
@@ -93,7 +93,7 @@ Then edit the generated file and add it to `src/recipes/index.ts`.
 
 2. **Update base path**
    - Edit `vite.config.ts`
-   - Change `/nos-recettes/` to match your repository name
+   - Change `/nosrecettes/` to match your repository name
 
 3. **Push to main branch**
    - GitHub Actions will automatically build and deploy
@@ -157,7 +157,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you encounter any issues or have questions:
 
-1. Check existing [GitHub Issues](../../issues)
+1. Check existing [GitHub Issues](https://github.com/algritz/nosrecettes/issues)
 2. Create a new issue with detailed information
 3. Include steps to reproduce any bugs
 
