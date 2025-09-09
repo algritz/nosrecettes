@@ -1,80 +1,166 @@
 # Nos Recettes - Recipe Website
 
-A modern recipe website built with React, TypeScript, and Tailwind CSS, designed for easy management through Git.
+A modern, responsive recipe website built with React, TypeScript, and Tailwind CSS. Features a beautiful interface for browsing recipes and an admin panel for adding new recipes via GitHub pull requests.
 
-## Adding New Recipes
+## 🌟 Features
 
-### Method 1: Using the Helper Script (Recommended)
+- **Beautiful Recipe Display**: Clean, card-based layout with search and filtering
+- **Smart Search**: Search by recipe name, ingredients, or tags
+- **Category Filtering**: Filter by recipe categories and difficulty levels
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **GitHub Integration**: Add new recipes through a web form that creates pull requests
+- **Static Hosting**: Deployable to GitHub Pages with automatic CI/CD
 
-1. Run the recipe creation script:
+## 🚀 Live Demo
+
+Visit the live site: [Your GitHub Pages URL]
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 18 + TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **Routing**: React Router
+- **Icons**: Lucide React
+- **Build Tool**: Vite
+- **Deployment**: GitHub Pages with GitHub Actions
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+- Git
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/nos-recettes.git
+   cd nos-recettes
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:8080`
+
+## 📝 Adding New Recipes
+
+### Method 1: Web Interface (Recommended)
+
+1. Visit `/admin` on your deployed site
+2. Configure GitHub integration (one-time setup)
+3. Fill out the recipe form
+4. Submit to automatically create a pull request
+
+### Method 2: Using the Helper Script
+
 ```bash
-node scripts/create-recipe.js "Nom de la Recette"
+node scripts/create-recipe.js "Recipe Name"
 ```
 
-2. Edit the generated file in `src/recipes/[recipe-slug].ts`
+Then edit the generated file and add it to `src/recipes/index.ts`.
 
-3. Add the import and recipe to `src/recipes/index.ts`:
-```typescript
-import { newRecipe } from './recipe-slug';
+### Method 3: Manual Creation
 
-export const recipes: Recipe[] = [
-  // ... existing recipes
-  newRecipe,
-];
-```
+1. Create a new file in `src/recipes/` following the pattern: `recipe-name.ts`
+2. Use the recipe template (see existing recipes for examples)
+3. Add the import and recipe to `src/recipes/index.ts`
 
-### Method 2: Manual Creation
+## 🖼️ Adding Recipe Images
 
-1. Create a new file in `src/recipes/` following the naming pattern: `recipe-name.ts`
-
-2. Use this template:
-```typescript
-import { Recipe } from '@/types/recipe';
-
-export const recipeName: Recipe = {
-  id: 'unique-id',
-  title: 'Recipe Title',
-  description: 'Recipe description...',
-  category: 'Plats principaux',
-  prepTime: 15,
-  cookTime: 30,
-  servings: 4,
-  difficulty: 'Facile',
-  ingredients: [
-    'Ingredient 1',
-    'Ingredient 2'
-  ],
-  instructions: [
-    'Step 1...',
-    'Step 2...'
-  ],
-  tags: ['tag1', 'tag2'],
-  image: '/images/recipe-slug.jpg',
-  slug: 'recipe-slug'
-};
-```
-
-3. Add to `src/recipes/index.ts`
-
-## Adding Images
-
-1. Add your recipe image to `public/images/`
-2. Use the recipe slug as the filename: `recipe-slug.jpg`
+1. Add images to `public/images/`
+2. Use the recipe slug as filename: `recipe-slug.jpg`
 3. Recommended size: 800x600px or larger
 4. Keep file size under 500KB for best performance
 
-## Deployment
+## 🚀 Deployment
 
-This site is designed for GitHub Pages:
+### GitHub Pages (Automatic)
 
-1. Push your changes to GitHub
-2. Enable GitHub Pages in repository settings
-3. Your site will be available at `https://yourusername.github.io/repository-name`
+1. **Enable GitHub Pages**
+   - Go to repository Settings → Pages
+   - Set Source to "GitHub Actions"
 
-## Recipe Structure
+2. **Update base path**
+   - Edit `vite.config.ts`
+   - Change `/nos-recettes/` to match your repository name
 
-Each recipe file contains:
-- **Basic info**: title, description, category, difficulty
-- **Timing**: prep time, cook time, servings
-- **Content**: ingredients list, step-by-step instructions
-- **Metadata**: tags for search, image URL, URL slug
+3. **Push to main branch**
+   - GitHub Actions will automatically build and deploy
+
+### Manual Build
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist/` directory.
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+├── pages/              # Page components
+├── recipes/            # Recipe data files
+├── types/              # TypeScript type definitions
+├── hooks/              # Custom React hooks
+├── utils/              # Utility functions
+├── services/           # External service integrations
+└── lib/                # Shared libraries
+```
+
+## 🤝 Contributing
+
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/new-recipe
+   ```
+3. **Add your recipe** using one of the methods above
+4. **Commit your changes**
+   ```bash
+   git commit -m "Add: Pouding Chômeur recipe"
+   ```
+5. **Push and create a pull request**
+
+### Recipe Guidelines
+
+- Use clear, descriptive titles
+- Include accurate prep/cook times
+- List ingredients in order of use
+- Write step-by-step instructions
+- Add relevant tags for searchability
+- Ensure you have rights to share the recipe
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [shadcn/ui](https://ui.shadcn.com/) components
+- Icons by [Lucide](https://lucide.dev/)
+- Powered by [Vite](https://vitejs.dev/) and [React](https://reactjs.org/)
+
+## 📞 Support
+
+If you encounter any issues or have questions:
+
+1. Check existing [GitHub Issues](../../issues)
+2. Create a new issue with detailed information
+3. Include steps to reproduce any bugs
+
+---
+
+**Made with ❤️ for sharing delicious recipes**
