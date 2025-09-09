@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { recipes } from '@/data/recipes';
 import { RecipeCard } from '@/components/RecipeCard';
 import { SearchBar } from '@/components/SearchBar';
@@ -19,6 +20,10 @@ const Index = () => {
     filteredRecipes,
     clearFilters
   } = useRecipeSearch(recipes);
+
+  useEffect(() => {
+    document.title = 'Nos Recettes';
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
