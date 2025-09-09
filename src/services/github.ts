@@ -1,0 +1,242 @@
+interface GitHubConfig {
+  owner: string;
+  repo: string;
+  token: string;
+}
+
+interface RecipeData {
+  title: string;
+  description: string;
+  category: string;
+  prepTime: string;
+  cookTime: string;
+  servings: string;
+  difficulty: string;
+  ingredients: string[];
+  instructions: string[];
+  tags: string[];
+  image: string;
+}
+
+export class GitHubService {
+  private config: GitHubConfig;
+
+  constructor(config: GitHubConfig) {
+    this.config = config;
+  }
+
+  private createSlug(title: string): string {
+    return title
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .trim('-');
+  }
+
+  private generateRecipeFile(data: RecipeData): string {
+    const slug = this.createSlug(data.title);
+    const id = Date.now().toString();
+    const variableName = slug.replace(/-/g, '');
+
+    const cleanIngredients = data.ingredients.filter(ing => ing.trim() !== '');
+    const cleanInstructions = data.instructions.filter(inst => inst.trim() !== '');
+    const cleanTags = data.tags.filter(tag => tag.trim() !== '');
+
+    return `import { Recipe } from '@/types/recipe';
+
+export const ${variableName}Recipe: Recipe = {
+  id: '${id}',
+  title: '${data.title}',
+  description: '${data.description}',
+  category: '${data.category}',
+  prepTime: ${data.prepTime || 0},
+  cookTime: ${data.cookTime || 0},
+  servings: ${data.servings || 1},
+  difficulty: '${data.difficulty}',
+  ingredients: [
+${cleanIngredients.map(ing => `    '${ing.replace(/'/g, "\\'")}'`).join(',\n')}
+  ],
+  instructions: [
+${cleanInstructions.map(inst => `    '${inst.replace(/'/g, "\\'")}'`).join(',\n')}
+  ],
+  tags: [${cleanTags.map(tag => `'${tag.replace(/'/g, "\\'")}'`).join(', ')}],
+  image: '${data.image || `/images/${slug}.jpg`}',
+  slug: '${slug}'
+};
+`;
+  }
+
+  private updateIndexFile(currentContent: string, newRecipeSlug: string): string {
+    const variableName = newRecipeSlug.replace(/-/g, '');
+    const importLine = `import { ${variableName}Recipe } from './${newRecipeSlug}';`;
+    
+    // Add import after existing imports
+    const importRegex = /(import.*from.*;\n)/g;
+    const imports = currentContent.match(importRegex) || [];
+    const lastImportIndex = currentContent.lastIndexOf(imports[imports.length - 1]) + imports[imports.length - 1].length;
+    
+    const beforeImports = currentContent.substring(0, lastImportIndex);
+    const afterImports = currentContent.substring(lastImportIndex);
+    
+    // Add recipe to array
+    const arrayRegex = /export const recipes: Recipe\[] = \[([\s\S]*?)\];/;
+    const match = afterImports.match(arrayRegex);
+    
+    if (match) {
+      const recipeList = match[1].trim();
+      const newRecipeList = recipeList ? `${recipeList},\n  ${variableName}Recipe` : `\n  ${variableName}Recipe\n`;
+      const updatedAfterImports = afterImports.replace(arrayRegex, `export const recipes: Recipe[] = [${newRecipeList}];`);
+      
+      return beforeImports + importLine + '\n' + updatedAfterImports;
+    }
+    
+    return currentContent;
+  }
+
+  async createRecipePR(recipeData: RecipeData): Promise<string> {
+    const slug = this.createSlug(recipeData.title);
+    const branchName = `recipe/${slug}`;
+    const recipeFileName = `${slug}.ts`;
+    
+    try {
+      // Get the default branch SHA
+      const mainBranchResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/ref/heads/main`,
+        {
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+          },
+        }
+      );
+      
+      if (!mainBranchResponse.ok) {
+        throw new Error('Failed to get main branch');
+      }
+      
+      const mainBranch = await mainBranchResponse.json();
+      const baseSha = mainBranch.object.sha;
+
+      // Create new branch
+      await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/refs`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ref: `refs/heads/${branchName}`,
+            sha: baseSha,
+          }),
+        }
+      );
+
+      // Get current index.ts content
+      const indexResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts?ref=main`,
+        {
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+          },
+        }
+      );
+      
+      const indexFile = await indexResponse.json();
+      const currentIndexContent = atob(indexFile.content);
+
+      // Generate new recipe file content
+      const recipeFileContent = this.generateRecipeFile(recipeData);
+      
+      // Update index.ts content
+      const updatedIndexContent = this.updateIndexFile(currentIndexContent, slug);
+
+      // Create recipe file
+      await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${recipeFileName}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: `Add recipe: ${recipeData.title}`,
+            content: btoa(recipeFileContent),
+            branch: branchName,
+          }),
+        }
+      );
+
+      // Update index.ts file
+      await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: `Update index for recipe: ${recipeData.title}`,
+            content: btoa(updatedIndexContent),
+            branch: branchName,
+            sha: indexFile.sha,
+          }),
+        }
+      );
+
+      // Create pull request
+      const prResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            title: `Nouvelle recette: ${recipeData.title}`,
+            head: branchName,
+            base: 'main',
+            body: `## Nouvelle recette ajoutée
+
+**Titre:** ${recipeData.title}
+**Catégorie:** ${recipeData.category}
+**Difficulté:** ${recipeData.difficulty}
+**Temps total:** ${(parseInt(recipeData.prepTime) || 0) + (parseInt(recipeData.cookTime) || 0)} minutes
+**Portions:** ${recipeData.servings}
+
+**Description:**
+${recipeData.description}
+
+**Tags:** ${recipeData.tags.filter(t => t.trim()).join(', ')}
+
+---
+*Cette recette a été ajoutée via le formulaire web.*`,
+          }),
+        }
+      );
+
+      if (!prResponse.ok) {
+        throw new Error('Failed to create pull request');
+      }
+
+      const pr = await prResponse.json();
+      return pr.html_url;
+
+    } catch (error) {
+      console.error('Error creating recipe PR:', error);
+      throw error;
+    }
+  }
+}
