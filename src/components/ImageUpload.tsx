@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Upload, X, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { Upload, X, Image as ImageIcon, Loader2, Edit } from 'lucide-react';
 import { processImageFile, ProcessedImage } from '@/utils/imageUtils';
 import { CloudinaryConfig } from '@/utils/cloudinaryUtils';
 import { showError } from '@/utils/toast';
+import { ImageEditor } from './ImageEditor';
 
 interface ImageUploadProps {
   images: ProcessedImage[];
@@ -22,6 +23,8 @@ export const ImageUpload = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const [cloudinaryConfig, setCloudinaryConfig] = useState<CloudinaryConfig | null>(null);
+  const [editingFile, setEditingFile] = useState<File | null>(null);
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -31,6 +34,18 @@ export const ImageUpload = ({
       setCloudinaryConfig(JSON.parse(savedConfig));
     }
   }, []);
+
+  const processAndAddImage = async (file: File) => {
+    setIsProcessing(true);
+    try {
+      const processedImage = await processImageFile(file, cloudinaryConfig || undefined);
+      onImagesChange([...images, processedImage]);
+    } catch (error) {
+      showError(error instanceof Error ? error.message : 'Erreur lors du traitement de l\'image');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
 
   const handleFileSelect = async (files: FileList | null) => {
     if (!files) return;
@@ -43,19 +58,34 @@ export const ImageUpload = ({
       return;
     }
 
-    setIsProcessing(true);
-
-    try {
-      const processedImages = await Promise.all(
-        fileArray.map(file => processImageFile(file, cloudinaryConfig || undefined))
-      );
-      
-      onImagesChange([...images, ...processedImages]);
-    } catch (error) {
-      showError(error instanceof Error ? error.message : 'Erreur lors du traitement de l\'image');
-    } finally {
-      setIsProcessing(false);
+    // For single file, open editor
+    if (fileArray.length === 1) {
+      setEditingFile(fileArray[0]);
+      setIsEditorOpen(true);
+    } else {
+      // For multiple files, process directly
+      setIsProcessing(true);
+      try {
+        const processedImages = await Promise.all(
+          fileArray.map(file => processImageFile(file, cloudinaryConfig || undefined))
+        );
+        onImagesChange([...images, ...processedImages]);
+      } catch (error) {
+        showError(error instanceof Error ? error.message : 'Erreur lors du traitement des images');
+      } finally {
+        setIsProcessing(false);
+      }
     }
+  };
+
+  const handleEditorSave = (editedFile: File) => {
+    processAndAddImage(editedFile);
+    setEditingFile(null);
+  };
+
+  const handleEditorClose = () => {
+    setIsEditorOpen(false);
+    setEditingFile(null);
   };
 
   const handleDrop = (e: React.DragEvent) => {
@@ -84,6 +114,15 @@ export const ImageUpload = ({
     const [movedImage] = newImages.splice(fromIndex, 1);
     newImages.splice(toIndex, 0, movedImage);
     onImagesChange(newImages);
+  };
+
+  const editImage = (index: number) => {
+    const imageToEdit = images[index];
+    setEditingFile(imageToEdit.file);
+    setIsEditorOpen(true);
+    
+    // Remove the current image so it can be replaced
+    removeImage(index);
   };
 
   return (
@@ -148,6 +187,9 @@ export const ImageUpload = ({
                   <p className="text-xs text-muted-foreground">
                     PNG, JPG, WEBP jusqu'à 10MB • {images.length}/{maxImages} images
                   </p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    💡 Sélectionnez une seule image pour l'éditer avant upload
+                  </p>
                 </div>
               </div>
             )}
@@ -169,15 +211,27 @@ export const ImageUpload = ({
                   />
                   
                   {/* Image Controls */}
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1">
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => editImage(index)}
+                      className="h-8 w-8 p-0"
+                      title="Éditer"
+                    >
+                      <Edit className="w-3 h-3" />
+                    </Button>
+                    
                     <Button
                       type="button"
                       size="sm"
                       variant="secondary"
                       onClick={() => removeImage(index)}
                       className="h-8 w-8 p-0"
+                      title="Supprimer"
                     >
-                      <X className="w-4 h-4" />
+                      <X className="w-3 h-3" />
                     </Button>
                     
                     {index > 0 && (
@@ -187,6 +241,7 @@ export const ImageUpload = ({
                         variant="secondary"
                         onClick={() => moveImage(index, index - 1)}
                         className="h-8 w-8 p-0"
+                        title="Déplacer vers la gauche"
                       >
                         ←
                       </Button>
@@ -199,6 +254,7 @@ export const ImageUpload = ({
                         variant="secondary"
                         onClick={() => moveImage(index, index + 1)}
                         className="h-8 w-8 p-0"
+                        title="Déplacer vers la droite"
                       >
                         →
                       </Button>
@@ -227,6 +283,16 @@ export const ImageUpload = ({
             </Card>
           ))}
         </div>
+      )}
+
+      {/* Image Editor Modal */}
+      {editingFile && (
+        <ImageEditor
+          file={editingFile}
+          isOpen={isEditorOpen}
+          onClose={handleEditorClose}
+          onSave={handleEditorSave}
+        />
       )}
     </div>
   );
