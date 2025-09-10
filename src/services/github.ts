@@ -63,6 +63,15 @@ export class GitHubService {
     return await response.json();
   }
 
+  private escapeString(str: string): string {
+    return str
+      .replace(/\\/g, '\\\\')  // Escape backslashes first
+      .replace(/'/g, "\\'")    // Escape single quotes
+      .replace(/\n/g, '\\n')   // Escape newlines
+      .replace(/\r/g, '\\r')   // Escape carriage returns
+      .replace(/\t/g, '\\t');  // Escape tabs
+  }
+
   private async generateRecipeFile(data: RecipeData, existingId?: string): Promise<string> {
     const slug = this.createSlug(data.title);
     const id = existingId || Date.now().toString();
@@ -88,39 +97,68 @@ export class GitHubService {
     }
 
     const accompanimentField = data.accompaniment?.trim() 
-      ? `  accompaniment: '${data.accompaniment.replace(/'/g, "\\'")}',\n` 
+      ? `  accompaniment: '${this.escapeString(data.accompaniment)}',\n` 
       : '';
 
     const wineField = data.wine?.trim() 
-      ? `  wine: '${data.wine.replace(/'/g, "\\'")}',\n` 
+      ? `  wine: '${this.escapeString(data.wine)}',\n` 
       : '';
 
     const sourceField = source 
-      ? `  source: '${source.replace(/'/g, "\\'")}',\n` 
+      ? `  source: '${this.escapeString(source)}',\n` 
       : '';
 
     return `import { Recipe } from '@/types/recipe';
 
 export const ${variableName}: Recipe = {
   id: '${id}',
-  title: '${data.title}',
-  description: '${data.description}',
-  category: '${data.category}',
+  title: '${this.escapeString(data.title)}',
+  description: '${this.escapeString(data.description)}',
+  category: '${this.escapeString(data.category)}',
   prepTime: ${data.prepTime || 0},
   cookTime: ${data.cookTime || 0},
 ${marinatingTimeField}  servings: ${data.servings || 1},
   difficulty: '${data.difficulty}',
   ingredients: [
-${cleanIngredients.map(ing => `    '${ing.replace(/'/g, "\\'")}'`).join(',\n')}
+${cleanIngredients.map(ing => `    '${this.escapeString(ing)}'`).join(',\n')}
   ],
   instructions: [
-${cleanInstructions.map(inst => `    '${inst.replace(/'/g, "\\'")}'`).join(',\n')}
+${cleanInstructions.map(inst => `    '${this.escapeString(inst)}'`).join(',\n')}
   ],
-  tags: [${cleanTags.map(tag => `'${tag.replace(/'/g, "\\'")}'`).join(', ')}],
+  tags: [${cleanTags.map(tag => `'${this.escapeString(tag)}'`).join(', ')}],
   image: '${data.image || `/images/${slug}.jpg`}',
 ${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
 };
 `;
+  }
+
+  private base64Encode(str: string): string {
+    // Use TextEncoder to properly handle UTF-8 encoding
+    const encoder = new TextEncoder();
+    const data = encoder.encode(str);
+    
+    // Convert to base64
+    let binary = '';
+    const len = data.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(data[i]);
+    }
+    return btoa(binary);
+  }
+
+  private base64Decode(str: string): string {
+    // Decode base64 to binary string
+    const binary = atob(str);
+    
+    // Convert binary string to Uint8Array
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+    
+    // Use TextDecoder to properly handle UTF-8 decoding
+    const decoder = new TextDecoder('utf-8');
+    return decoder.decode(bytes);
   }
 
   private updateIndexFile(currentContent: string, newRecipeSlug: string): string {
@@ -224,7 +262,7 @@ ${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
       );
       
       const indexFile = await indexResponse.json();
-      const currentIndexContent = atob(indexFile.content);
+      const currentIndexContent = this.base64Decode(indexFile.content);
 
       // Generate new recipe file content
       const recipeFileContent = await this.generateRecipeFile(recipeData);
@@ -244,7 +282,7 @@ ${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
           },
           body: JSON.stringify({
             message: `Add recipe: ${recipeData.title}`,
-            content: btoa(recipeFileContent),
+            content: this.base64Encode(recipeFileContent),
             branch: branchName,
           }),
         }
@@ -262,7 +300,7 @@ ${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
           },
           body: JSON.stringify({
             message: `Update index for recipe: ${recipeData.title}`,
-            content: btoa(updatedIndexContent),
+            content: this.base64Encode(updatedIndexContent),
             branch: branchName,
             sha: indexFile.sha,
           }),
@@ -387,7 +425,7 @@ ${recipeData.description}
       );
       
       const indexFile = await indexResponse.json();
-      const currentIndexContent = atob(indexFile.content);
+      const currentIndexContent = this.base64Decode(indexFile.content);
 
       // Generate updated recipe file content (preserve existing ID)
       const recipeFileContent = await this.generateRecipeFile(recipeData, existingRecipe.id);
@@ -442,7 +480,7 @@ ${recipeData.description}
             },
             body: JSON.stringify({
               message: `Update recipe: ${recipeData.title}`,
-              content: btoa(recipeFileContent),
+              content: this.base64Encode(recipeFileContent),
               branch: branchName,
             }),
           }
@@ -460,7 +498,7 @@ ${recipeData.description}
             },
             body: JSON.stringify({
               message: `Update index for recipe: ${recipeData.title}`,
-              content: btoa(updatedIndexContent),
+              content: this.base64Encode(updatedIndexContent),
               branch: branchName,
               sha: indexFile.sha,
             }),
@@ -491,7 +529,7 @@ ${recipeData.description}
             },
             body: JSON.stringify({
               message: `Update recipe: ${recipeData.title}`,
-              content: btoa(recipeFileContent),
+              content: this.base64Encode(recipeFileContent),
               branch: branchName,
               sha: existingFile.sha,
             }),
