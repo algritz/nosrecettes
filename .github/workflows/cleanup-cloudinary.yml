@@ -1,0 +1,110 @@
+name: Cleanup Cloudinary Images
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  cleanup-images:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Cloudinary CLI
+        run: npm install -g cloudinary-cli
+
+      - name: Extract cleanup instructions from PR
+        id: extract-cleanup
+        run: |
+          # Extract public IDs from PR body
+          PR_BODY="${{ github.event.pull_request.body }}"
+          
+          # Look for cleanup section and extract public IDs
+          if echo "$PR_BODY" | grep -q "🧹 Cloudinary Cleanup"; then
+            # Extract public IDs using regex
+            PUBLIC_IDS=$(echo "$PR_BODY" | grep -oP '(?<=`)[^`]*(?=`)' | grep -E '^recipes/' || true)
+            
+            if [ -n "$PUBLIC_IDS" ]; then
+              echo "Found images to cleanup:"
+              echo "$PUBLIC_IDS"
+              echo "cleanup_needed=true" >> $GITHUB_OUTPUT
+              
+              # Save to file for next step
+              echo "$PUBLIC_IDS" > cleanup_list.txt
+            else
+              echo "No Cloudinary images found for cleanup"
+              echo "cleanup_needed=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "No cleanup section found in PR"
+            echo "cleanup_needed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Cleanup Cloudinary images
+        if: steps.extract-cleanup.outputs.cleanup_needed == 'true'
+        env:
+          CLOUDINARY_URL: ${{ secrets.CLOUDINARY_URL }}
+        run: |
+          echo "Starting Cloudinary cleanup..."
+          
+          # Read the cleanup list
+          if [ -f cleanup_list.txt ]; then
+            while IFS= read -r public_id; do
+              if [ -n "$public_id" ]; then
+                echo "Deleting: $public_id"
+                
+                # Try to delete the image
+                if cld destroy "$public_id" 2>/dev/null; then
+                  echo "✅ Successfully deleted: $public_id"
+                else
+                  echo "⚠️  Failed to delete or image not found: $public_id"
+                fi
+              fi
+            done < cleanup_list.txt
+          fi
+          
+          echo "Cloudinary cleanup completed"
+
+      - name: Comment on PR with cleanup results
+        if: steps.extract-cleanup.outputs.cleanup_needed == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            let comment = '## 🧹 Cloudinary Cleanup Results\n\n';
+            
+            if (fs.existsSync('cleanup_list.txt')) {
+              const publicIds = fs.readFileSync('cleanup_list.txt', 'utf8').trim().split('\n');
+              const validIds = publicIds.filter(id => id.trim());
+              
+              if (validIds.length > 0) {
+                comment += `✅ Attempted to clean up ${validIds.length} image(s) from Cloudinary:\n\n`;
+                validIds.forEach(id => {
+                  comment += `- \`${id.trim()}\`\n`;
+                });
+                comment += '\n*Note: Some images may have already been deleted or may not exist.*';
+              } else {
+                comment += '⚠️ No valid image IDs found for cleanup.';
+              }
+            } else {
+              comment += '❌ No cleanup list generated.';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

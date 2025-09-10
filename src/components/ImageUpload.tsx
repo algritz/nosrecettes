@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Upload, X, Image as ImageIcon, Loader2, Edit } from 'lucide-react';
-import { processImageFile, ProcessedImage } from '@/utils/imageUtils';
-import { CloudinaryConfig } from '@/utils/cloudinaryUtils';
+import { Upload, X, Image as ImageIcon, Loader2, Edit, Clock, Zap } from 'lucide-react';
+import { processImageFile, ProcessedImage, scheduleOldImageCleanup } from '@/utils/imageUtils';
+import { CloudinaryConfig, getScheduledCleanups } from '@/utils/cloudinaryUtils';
 import { showError } from '@/utils/toast';
 import { ImageEditor } from './ImageEditor';
 
@@ -12,19 +12,23 @@ interface ImageUploadProps {
   onImagesChange: (images: ProcessedImage[]) => void;
   maxImages?: number;
   className?: string;
+  recipeSlug?: string; // For tracking cleanup
 }
 
 export const ImageUpload = ({ 
   images, 
   onImagesChange, 
   maxImages = 5,
-  className 
+  className,
+  recipeSlug = 'unknown'
 }: ImageUploadProps) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const [cloudinaryConfig, setCloudinaryConfig] = useState<CloudinaryConfig | null>(null);
   const [editingFile, setEditingFile] = useState<File | null>(null);
+  const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [scheduledCleanups, setScheduledCleanups] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -33,6 +37,10 @@ export const ImageUpload = ({
     if (savedConfig) {
       setCloudinaryConfig(JSON.parse(savedConfig));
     }
+
+    // Load scheduled cleanups count
+    const cleanups = getScheduledCleanups();
+    setScheduledCleanups(cleanups.length);
   }, []);
 
   const processAndAddImage = async (file: File) => {
@@ -40,6 +48,33 @@ export const ImageUpload = ({
     try {
       const processedImage = await processImageFile(file, cloudinaryConfig || undefined);
       onImagesChange([...images, processedImage]);
+    } catch (error) {
+      showError(error instanceof Error ? error.message : 'Erreur lors du traitement de l\'image');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const processAndReplaceImage = async (file: File, index: number) => {
+    setIsProcessing(true);
+    try {
+      // Get the old image for cleanup scheduling
+      const oldImage = images[index];
+      
+      // Process the new image
+      const processedImage = await processImageFile(file, cloudinaryConfig || undefined);
+      
+      // Replace the image in the array
+      const newImages = [...images];
+      newImages[index] = processedImage;
+      onImagesChange(newImages);
+      
+      // Schedule cleanup of old image (will happen via GitHub Action after PR merge)
+      if (oldImage.publicId && cloudinaryConfig) {
+        scheduleOldImageCleanup([oldImage.sizes], recipeSlug, 'replaced');
+        setScheduledCleanups(prev => prev + 1);
+      }
+      
     } catch (error) {
       showError(error instanceof Error ? error.message : 'Erreur lors du traitement de l\'image');
     } finally {
@@ -61,6 +96,7 @@ export const ImageUpload = ({
     // For single file, open editor
     if (fileArray.length === 1) {
       setEditingFile(fileArray[0]);
+      setEditingIndex(null); // New image, not replacing
       setIsEditorOpen(true);
     } else {
       // For multiple files, process directly
@@ -79,13 +115,21 @@ export const ImageUpload = ({
   };
 
   const handleEditorSave = (editedFile: File) => {
-    processAndAddImage(editedFile);
+    if (editingIndex !== null) {
+      // Replacing existing image
+      processAndReplaceImage(editedFile, editingIndex);
+    } else {
+      // Adding new image
+      processAndAddImage(editedFile);
+    }
     setEditingFile(null);
+    setEditingIndex(null);
   };
 
   const handleEditorClose = () => {
     setIsEditorOpen(false);
     setEditingFile(null);
+    setEditingIndex(null);
   };
 
   const handleDrop = (e: React.DragEvent) => {
@@ -104,9 +148,18 @@ export const ImageUpload = ({
     setDragOver(false);
   };
 
-  const removeImage = (index: number) => {
+  const removeImage = async (index: number) => {
+    const imageToRemove = images[index];
+    
+    // Remove from array first
     const newImages = images.filter((_, i) => i !== index);
     onImagesChange(newImages);
+    
+    // Schedule cleanup from Cloudinary (will happen via GitHub Action after PR merge)
+    if (imageToRemove.publicId && cloudinaryConfig) {
+      scheduleOldImageCleanup([imageToRemove.sizes], recipeSlug, 'removed');
+      setScheduledCleanups(prev => prev + 1);
+    }
   };
 
   const moveImage = (fromIndex: number, toIndex: number) => {
@@ -119,10 +172,8 @@ export const ImageUpload = ({
   const editImage = (index: number) => {
     const imageToEdit = images[index];
     setEditingFile(imageToEdit.file);
+    setEditingIndex(index);
     setIsEditorOpen(true);
-    
-    // Remove the current image so it can be replaced
-    removeImage(index);
   };
 
   return (
@@ -133,6 +184,16 @@ export const ImageUpload = ({
           <p className="text-sm text-green-700">
             ✅ Images hébergées sur Cloudinary ({cloudinaryConfig.cloudName})
           </p>
+          <div className="flex items-center gap-2 mt-2 text-xs text-green-600">
+            <Zap className="w-3 h-3" />
+            Les anciennes images seront supprimées automatiquement par GitHub Action
+          </div>
+          {scheduledCleanups > 0 && (
+            <div className="flex items-center gap-1 mt-1 text-xs text-orange-600">
+              <Clock className="w-3 h-3" />
+              {scheduledCleanups} image(s) programmée(s) pour suppression automatique
+            </div>
+          )}
         </div>
       ) : (
         <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
