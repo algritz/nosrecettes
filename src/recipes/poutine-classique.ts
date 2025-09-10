@@ -1,9 +1,9 @@
 import { Recipe } from '@/types/recipe';
 
-export const poutineClassique: Recipe = {
+export const poutineclassiqueRecipe: Recipe = {
   id: '1',
   title: 'Poutine Classique',
-  description: 'La poutine traditionnelle quÃ©bÃ©coise avec frites, fromage en grains et sauce brune.',
+  description: 'La poutine traditionnelle du Québec avec frites, fromage en grains et sauce brune.',
   category: 'Plats principaux',
   prepTime: 15,
   cookTime: 30,
@@ -14,18 +14,19 @@ export const poutineClassique: Recipe = {
     '200g de fromage en grains frais',
     '2 tasses de sauce brune',
     'Huile pour friture',
-    'Sel au goÃ»t'
+    'Sel au goût'
   ],
   instructions: [
-    'Ã‰plucher et couper les pommes de terre en frites.',
-    'Faire chauffer l\'huile Ã  350Â°F (175Â°C).',
-    'Faire frire les pommes de terre jusqu\'Ã  ce qu\'elles soient dorÃ©es.',
-    'Ã‰goutter les frites et les saler.',
+    'Éplucher et couper les pommes de terre en frites.',
+    'Faire chauffer l\'huile à 350°F (175°C).',
+    'Faire frire les pommes de terre jusqu\'à ce qu\'elles soient dorées.',
+    'Égoutter les frites et les saler.',
     'Disposer les frites dans un plat, ajouter le fromage en grains.',
     'Verser la sauce brune chaude par-dessus.',
-    'Servir immÃ©diatement.'
+    'Servir immédiatement.'
   ],
-  tags: ['quÃ©bÃ©cois', 'comfort food', 'frites', 'fromage'],
+  tags: ['Légumes'],
   image: '/images/poutine-classique.jpg',
+  source: 'David Cloutier',
   slug: 'poutine-classique'
 };
