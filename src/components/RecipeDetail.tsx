@@ -27,6 +27,12 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
   const hasMultipleImages = allImages.length > 1;
   const hasAnyImage = allImages.length > 0;
 
+  // Debug logging
+  console.log('Recipe images:', recipe.images);
+  console.log('Recipe image (old format):', recipe.image);
+  console.log('All images:', allImages);
+  console.log('Has any image:', hasAnyImage);
+
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
   };
@@ -122,6 +128,15 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
                 ))}
               </div>
             )}
+          </div>
+        )}
+        
+        {/* Debug info - remove this after fixing */}
+        {!hasAnyImage && (
+          <div className="mb-6 p-4 bg-yellow-100 border border-yellow-300 rounded-lg">
+            <p className="text-sm">Debug: No images found</p>
+            <p className="text-xs">Recipe images: {JSON.stringify(recipe.images)}</p>
+            <p className="text-xs">Recipe image: {JSON.stringify(recipe.image)}</p>
           </div>
         )}
         
