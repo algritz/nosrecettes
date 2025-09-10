@@ -24,7 +24,7 @@ const Admin = () => {
     cookTime: '',
     marinatingTime: '',
     servings: '',
-    difficulty: '',
+    difficulty: 'Facile', // Keep for backend compatibility but don't show in form
     ingredients: [''],
     instructions: [''],
     tags: [''],
@@ -169,7 +169,7 @@ const Admin = () => {
         cookTime: '',
         marinatingTime: '',
         servings: '',
-        difficulty: '',
+        difficulty: 'Facile',
         ingredients: [''],
         instructions: [''],
         tags: [''],
@@ -265,32 +265,16 @@ const Admin = () => {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">Catégorie *</label>
-                <CategoryCombobox
-                  value={recipe.category}
-                  onValueChange={(value) => setRecipe(prev => ({ ...prev, category: value }))}
-                  categories={availableCategories}
-                  onAddCategory={addCategory}
-                  placeholder="Choisir ou créer une catégorie"
-                  className="w-full"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Difficulté</label>
-                <Select value={recipe.difficulty} onValueChange={(value) => setRecipe(prev => ({ ...prev, difficulty: value }))}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Choisir la difficulté" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Facile">Facile</SelectItem>
-                    <SelectItem value="Moyen">Moyen</SelectItem>
-                    <SelectItem value="Difficile">Difficile</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">Catégorie *</label>
+              <CategoryCombobox
+                value={recipe.category}
+                onValueChange={(value) => setRecipe(prev => ({ ...prev, category: value }))}
+                categories={availableCategories}
+                onAddCategory={addCategory}
+                placeholder="Choisir ou créer une catégorie"
+                className="w-full"
+              />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
