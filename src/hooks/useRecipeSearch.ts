@@ -3,7 +3,7 @@ import { Recipe } from '@/types/recipe';
 
 export const useRecipeSearch = (recipes: Recipe[]) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState('all');
 
   const categories = useMemo(() => {
@@ -22,24 +22,24 @@ export const useRecipeSearch = (recipes: Recipe[]) => {
           tag.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
-      const matchesCategory = selectedCategory === 'all' || recipe.category === selectedCategory;
+      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(recipe.category);
       const matchesDifficulty = selectedDifficulty === 'all' || recipe.difficulty === selectedDifficulty;
 
       return matchesSearch && matchesCategory && matchesDifficulty;
     });
-  }, [recipes, searchTerm, selectedCategory, selectedDifficulty]);
+  }, [recipes, searchTerm, selectedCategories, selectedDifficulty]);
 
   const clearFilters = () => {
     setSearchTerm('');
-    setSelectedCategory('all');
+    setSelectedCategories([]);
     setSelectedDifficulty('all');
   };
 
   return {
     searchTerm,
     setSearchTerm,
-    selectedCategory,
-    setSelectedCategory,
+    selectedCategories,
+    setSelectedCategories,
     selectedDifficulty,
     setSelectedDifficulty,
     categories,

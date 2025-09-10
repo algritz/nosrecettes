@@ -1,14 +1,18 @@
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
+import { Check } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface SearchBarProps {
   searchTerm: string;
   onSearchChange: (value: string) => void;
-  selectedCategory: string;
-  onCategoryChange: (value: string) => void;
+  selectedCategories: string[];
+  onCategoriesChange: (categories: string[]) => void;
   selectedDifficulty: string;
   onDifficultyChange: (value: string) => void;
   categories: string[];
@@ -18,14 +22,26 @@ interface SearchBarProps {
 export const SearchBar = ({
   searchTerm,
   onSearchChange,
-  selectedCategory,
-  onCategoryChange,
+  selectedCategories,
+  onCategoriesChange,
   selectedDifficulty,
   onDifficultyChange,
   categories,
   onClearFilters
 }: SearchBarProps) => {
-  const hasFilters = selectedCategory !== 'all' || selectedDifficulty !== 'all' || searchTerm !== '';
+  const hasFilters = selectedCategories.length > 0 || selectedDifficulty !== 'all' || searchTerm !== '';
+
+  const toggleCategory = (category: string) => {
+    if (selectedCategories.includes(category)) {
+      onCategoriesChange(selectedCategories.filter(c => c !== category));
+    } else {
+      onCategoriesChange([...selectedCategories, category]);
+    }
+  };
+
+  const removeCategory = (category: string) => {
+    onCategoriesChange(selectedCategories.filter(c => c !== category));
+  };
 
   return (
     <div className="space-y-4">
@@ -39,20 +55,43 @@ export const SearchBar = ({
         />
       </div>
       
-      <div className="flex flex-wrap gap-3">
-        <Select value={selectedCategory} onValueChange={onCategoryChange}>
-          <SelectTrigger className="w-48">
-            <SelectValue placeholder="Toutes les catégories" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Toutes les catégories</SelectItem>
-            {categories.map((category) => (
-              <SelectItem key={category} value={category}>
-                {category}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+      <div className="flex flex-wrap gap-3 items-center">
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outline" className="justify-start">
+              Catégories
+              {selectedCategories.length > 0 && (
+                <Badge variant="secondary" className="ml-2">
+                  {selectedCategories.length}
+                </Badge>
+              )}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-64 p-0" align="start">
+            <Command>
+              <CommandInput placeholder="Rechercher une catégorie..." />
+              <CommandList>
+                <CommandEmpty>Aucune catégorie trouvée.</CommandEmpty>
+                <CommandGroup>
+                  {categories.map((category) => (
+                    <CommandItem
+                      key={category}
+                      onSelect={() => toggleCategory(category)}
+                    >
+                      <Check
+                        className={cn(
+                          "mr-2 h-4 w-4",
+                          selectedCategories.includes(category) ? "opacity-100" : "opacity-0"
+                        )}
+                      />
+                      {category}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
 
         <Select value={selectedDifficulty} onValueChange={onDifficultyChange}>
           <SelectTrigger className="w-40">
@@ -73,6 +112,21 @@ export const SearchBar = ({
           </Button>
         )}
       </div>
+
+      {/* Selected categories display */}
+      {selectedCategories.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {selectedCategories.map((category) => (
+            <Badge key={category} variant="default" className="flex items-center gap-1">
+              {category}
+              <X 
+                className="w-3 h-3 cursor-pointer hover:text-destructive" 
+                onClick={() => removeCategory(category)}
+              />
+            </Badge>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

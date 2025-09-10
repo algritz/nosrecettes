@@ -12,8 +12,8 @@ const Index = () => {
   const {
     searchTerm,
     setSearchTerm,
-    selectedCategory,
-    setSelectedCategory,
+    selectedCategories,
+    setSelectedCategories,
     selectedDifficulty,
     setSelectedDifficulty,
     categories,
@@ -51,8 +51,8 @@ const Index = () => {
           <SearchBar
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
-            selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
+            selectedCategories={selectedCategories}
+            onCategoriesChange={setSelectedCategories}
             selectedDifficulty={selectedDifficulty}
             onDifficultyChange={setSelectedDifficulty}
             categories={categories}
