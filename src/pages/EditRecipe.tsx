@@ -5,14 +5,17 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Plus, Minus, Save, ArrowLeft, Settings } from 'lucide-react';
+import { Plus, Minus, Save, ArrowLeft, Settings, List, Layers } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { GitHubSetup } from '@/components/GitHubSetup';
 import { CategoryCombobox } from '@/components/CategoryCombobox';
 import { TimeInput } from '@/components/TimeInput';
 import { ImageUpload } from '@/components/ImageUpload';
+import { SectionedIngredients } from '@/components/SectionedIngredients';
+import { SectionedInstructions } from '@/components/SectionedInstructions';
 import { ProcessedImage } from '@/utils/imageUtils';
+import { IngredientSection, InstructionSection } from '@/types/recipe';
 import { recipes } from '@/data/recipes';
 import { NotFound } from '@/components/NotFound';
 
@@ -42,6 +45,16 @@ const EditRecipe = () => {
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [showSetup, setShowSetup] = useState(false);
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
+  
+  // New state for sectioned ingredients and instructions
+  const [useSectionedIngredients, setUseSectionedIngredients] = useState(false);
+  const [useSectionedInstructions, setUseSectionedInstructions] = useState(false);
+  const [sectionedIngredients, setSectionedIngredients] = useState<IngredientSection[]>([
+    { title: '', items: [''] }
+  ]);
+  const [sectionedInstructions, setSectionedInstructions] = useState<InstructionSection[]>([
+    { title: '', steps: [''] }
+  ]);
 
   const defaultCategories = [
     'Plats principaux',
@@ -68,6 +81,26 @@ const EditRecipe = () => {
 
     // Pre-fill form with existing recipe data
     if (existingRecipe) {
+      // Check if existing recipe uses sectioned format
+      const hasSectionedIngredients = Array.isArray(existingRecipe.ingredients) && 
+        existingRecipe.ingredients.length > 0 && 
+        typeof existingRecipe.ingredients[0] === 'object';
+      
+      const hasSectionedInstructions = Array.isArray(existingRecipe.instructions) && 
+        existingRecipe.instructions.length > 0 && 
+        typeof existingRecipe.instructions[0] === 'object';
+
+      setUseSectionedIngredients(hasSectionedIngredients);
+      setUseSectionedInstructions(hasSectionedInstructions);
+
+      if (hasSectionedIngredients) {
+        setSectionedIngredients(existingRecipe.ingredients as IngredientSection[]);
+      }
+
+      if (hasSectionedInstructions) {
+        setSectionedInstructions(existingRecipe.instructions as InstructionSection[]);
+      }
+
       setRecipe({
         title: existingRecipe.title,
         description: existingRecipe.description,
@@ -77,8 +110,8 @@ const EditRecipe = () => {
         marinatingTime: existingRecipe.marinatingTime?.toString() || '',
         servings: existingRecipe.servings.toString(),
         difficulty: existingRecipe.difficulty,
-        ingredients: existingRecipe.ingredients.length > 0 ? existingRecipe.ingredients : [''],
-        instructions: existingRecipe.instructions.length > 0 ? existingRecipe.instructions : [''],
+        ingredients: hasSectionedIngredients ? [''] : (existingRecipe.ingredients as string[]).length > 0 ? (existingRecipe.ingredients as string[]) : [''],
+        instructions: hasSectionedInstructions ? [''] : (existingRecipe.instructions as string[]).length > 0 ? (existingRecipe.instructions as string[]) : [''],
         tags: existingRecipe.tags.length > 0 ? existingRecipe.tags : [''],
         accompaniment: existingRecipe.accompaniment || '',
         wine: existingRecipe.wine || '',
@@ -177,8 +210,15 @@ const EditRecipe = () => {
         return;
       }
 
+      // Prepare recipe data with sectioned ingredients/instructions if enabled
+      const recipeData = {
+        ...recipe,
+        ingredients: useSectionedIngredients ? sectionedIngredients : recipe.ingredients,
+        instructions: useSectionedInstructions ? sectionedInstructions : recipe.instructions
+      };
+
       const githubService = new GitHubService(githubConfig);
-      const prUrl = await githubService.updateRecipePR(recipe, existingRecipe, recipeImages);
+      const prUrl = await githubService.updateRecipePR(recipeData, existingRecipe, recipeImages);
 
       showSuccess('Modifications soumises! Pull request créée avec succès.');
       
@@ -410,35 +450,60 @@ const EditRecipe = () => {
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               Ingrédients
-              <Button type="button" onClick={addIngredient} size="sm">
-                <Plus className="w-4 h-4 mr-1" />
-                Ajouter
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  type="button"
+                  variant={useSectionedIngredients ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setUseSectionedIngredients(!useSectionedIngredients)}
+                >
+                  <Layers className="w-4 h-4 mr-1" />
+                  Sections
+                </Button>
+                {!useSectionedIngredients && (
+                  <Button type="button" onClick={addIngredient} size="sm">
+                    <Plus className="w-4 h-4 mr-1" />
+                    Ajouter
+                  </Button>
+                )}
+              </div>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-2">
-              {recipe.ingredients.map((ingredient, index) => (
-                <div key={index} className="flex gap-2">
-                  <Input
-                    value={ingredient}
-                    onChange={(e) => updateIngredient(index, e.target.value)}
-                    placeholder="Ex: 2 tasses de farine"
-                    className="flex-1"
-                  />
-                  {recipe.ingredients.length > 1 && (
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      onClick={() => removeIngredient(index)}
-                    >
-                      <Minus className="w-4 h-4" />
-                    </Button>
-                  )}
-                </div>
-              ))}
-            </div>
+            {useSectionedIngredients ? (
+              <div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Organisez vos ingrédients en sections (ex: "Pour les keftas", "Pour la sauce")
+                </p>
+                <SectionedIngredients
+                  sections={sectionedIngredients}
+                  onChange={setSectionedIngredients}
+                />
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {recipe.ingredients.map((ingredient, index) => (
+                  <div key={index} className="flex gap-2">
+                    <Input
+                      value={ingredient}
+                      onChange={(e) => updateIngredient(index, e.target.value)}
+                      placeholder="Ex: 2 tasses de farine"
+                      className="flex-1"
+                    />
+                    {recipe.ingredients.length > 1 && (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => removeIngredient(index)}
+                      >
+                        <Minus className="w-4 h-4" />
+                      </Button>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </CardContent>
         </Card>
 
@@ -447,40 +512,65 @@ const EditRecipe = () => {
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               Instructions
-              <Button type="button" onClick={addInstruction} size="sm">
-                <Plus className="w-4 h-4 mr-1" />
-                Ajouter
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  type="button"
+                  variant={useSectionedInstructions ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setUseSectionedInstructions(!useSectionedInstructions)}
+                >
+                  <Layers className="w-4 h-4 mr-1" />
+                  Sections
+                </Button>
+                {!useSectionedInstructions && (
+                  <Button type="button" onClick={addInstruction} size="sm">
+                    <Plus className="w-4 h-4 mr-1" />
+                    Ajouter
+                  </Button>
+                )}
+              </div>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-2">
-              {recipe.instructions.map((instruction, index) => (
-                <div key={index} className="flex gap-2">
-                  <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium mt-2">
-                    {index + 1}
-                  </span>
-                  <Textarea
-                    value={instruction}
-                    onChange={(e) => updateInstruction(index, e.target.value)}
-                    placeholder="Décrivez cette étape..."
-                    rows={2}
-                    className="flex-1"
-                  />
-                  {recipe.instructions.length > 1 && (
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      onClick={() => removeInstruction(index)}
-                      className="mt-2"
-                    >
-                      <Minus className="w-4 h-4" />
-                    </Button>
-                  )}
-                </div>
-              ))}
-            </div>
+            {useSectionedInstructions ? (
+              <div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Organisez vos instructions en sections (ex: "Préparation des keftas", "Préparation de la sauce")
+                </p>
+                <SectionedInstructions
+                  sections={sectionedInstructions}
+                  onChange={setSectionedInstructions}
+                />
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {recipe.instructions.map((instruction, index) => (
+                  <div key={index} className="flex gap-2">
+                    <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium mt-2">
+                      {index + 1}
+                    </span>
+                    <Textarea
+                      value={instruction}
+                      onChange={(e) => updateInstruction(index, e.target.value)}
+                      placeholder="Décrivez cette étape..."
+                      rows={2}
+                      className="flex-1"
+                    />
+                    {recipe.instructions.length > 1 && (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => removeInstruction(index)}
+                        className="mt-2"
+                      >
+                        <Minus className="w-4 h-4" />
+                      </Button>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </CardContent>
         </Card>
 
