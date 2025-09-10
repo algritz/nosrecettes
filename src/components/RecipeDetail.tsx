@@ -153,8 +153,8 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
           </div>
         </div>
 
-        {/* Additional Information */}
-        {(recipe.accompaniment || recipe.wine || recipe.source || recipe.notes) && (
+        {/* Additional Information - Only accompaniment and wine */}
+        {(recipe.accompaniment || recipe.wine) && (
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             {recipe.accompaniment && (
               <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
@@ -172,26 +172,6 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
                 <div>
                   <p className="font-medium text-sm">Accord vin</p>
                   <p className="text-sm text-muted-foreground">{recipe.wine}</p>
-                </div>
-              </div>
-            )}
-            
-            {recipe.source && (
-              <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
-                <BookOpen className="w-5 h-5 mt-0.5 text-muted-foreground" />
-                <div>
-                  <p className="font-medium text-sm">Source</p>
-                  <p className="text-sm text-muted-foreground">{recipe.source}</p>
-                </div>
-              </div>
-            )}
-
-            {recipe.notes && (
-              <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg md:col-span-2">
-                <StickyNote className="w-5 h-5 mt-0.5 text-muted-foreground" />
-                <div>
-                  <p className="font-medium text-sm">Notes</p>
-                  <p className="text-sm text-muted-foreground whitespace-pre-wrap">{recipe.notes}</p>
                 </div>
               </div>
             )}
@@ -234,6 +214,39 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
           </CardContent>
         </Card>
       </div>
+
+      {/* Source and Notes - After instructions */}
+      {(recipe.source || recipe.notes) && (
+        <div className="grid md:grid-cols-2 gap-4 mt-8">
+          {recipe.source && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <BookOpen className="w-5 h-5" />
+                  Source
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{recipe.source}</p>
+              </CardContent>
+            </Card>
+          )}
+
+          {recipe.notes && (
+            <Card className={recipe.source ? '' : 'md:col-span-2'}>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <StickyNote className="w-5 h-5" />
+                  Notes
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground whitespace-pre-wrap">{recipe.notes}</p>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      )}
 
       <Card className="mt-8">
         <CardHeader>
