@@ -335,16 +335,16 @@ const Admin = () => {
         {/* Images */}
         <Card>
           <CardHeader>
-            <CardTitle>Images de la recette</CardTitle>
+            <CardTitle>Image de la recette</CardTitle>
           </CardHeader>
           <CardContent>
             <ImageUpload
               images={recipeImages}
               onImagesChange={setRecipeImages}
-              maxImages={5}
+              maxImages={1}
             />
             <p className="text-xs text-muted-foreground mt-2">
-              La première image sera utilisée comme image principale. Les images seront automatiquement redimensionnées.
+              L'image sera automatiquement redimensionnée en plusieurs tailles pour optimiser l'affichage.
             </p>
           </CardContent>
         </Card>
