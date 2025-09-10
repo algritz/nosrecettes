@@ -25,12 +25,12 @@ export const poutineClassique: Recipe = {
     'Verser la sauce brune chaude par-dessus.',
     'Servir immédiatement.'
   ],
-  tags: ['québécois', 'traditionnel', 'frites', 'fromage'],
+  tags: ['traditionnel', 'frites', 'fromage'],
   images: [
     {
-      small: '/images/poutine-classique-small.jpg',
-      medium: '/images/poutine-classique-medium.jpg',
-      large: '/images/poutine-classique-large.jpg'
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/a92835_b99ad3ccc64c4bd6aeb4a3aac2720dae_mv2',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/a92835_b99ad3ccc64c4bd6aeb4a3aac2720dae_mv2',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/a92835_b99ad3ccc64c4bd6aeb4a3aac2720dae_mv2'
     }
   ],
   source: 'David Cloutier',
