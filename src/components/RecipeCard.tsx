@@ -3,12 +3,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Clock, Users, ChefHat, ImageIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { formatTimeShort } from '@/utils/timeFormat';
 
 interface RecipeCardProps {
   recipe: Recipe;
 }
 
 export const RecipeCard = ({ recipe }: RecipeCardProps) => {
+  const totalTime = recipe.prepTime + recipe.cookTime;
+  
   return (
     <Link to={`/recipe/${recipe.slug}`}>
       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer overflow-hidden">
@@ -54,7 +57,7 @@ export const RecipeCard = ({ recipe }: RecipeCardProps) => {
           <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
             <div className="flex items-center gap-1">
               <Clock className="w-4 h-4" />
-              {recipe.prepTime + recipe.cookTime} min
+              {formatTimeShort(totalTime)}
             </div>
             <div className="flex items-center gap-1">
               <Users className="w-4 h-4" />

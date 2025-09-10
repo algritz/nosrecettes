@@ -11,6 +11,7 @@ import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { GitHubSetup } from '@/components/GitHubSetup';
 import { CategoryCombobox } from '@/components/CategoryCombobox';
+import { TimeInput } from '@/components/TimeInput';
 import { recipes } from '@/data/recipes';
 
 const Admin = () => {
@@ -286,22 +287,18 @@ const Admin = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Temps de préparation (min)</label>
-                <Input
-                  type="number"
+                <label className="block text-sm font-medium mb-2">Temps de préparation</label>
+                <TimeInput
                   value={recipe.prepTime}
-                  onChange={(e) => setRecipe(prev => ({ ...prev, prepTime: e.target.value }))}
-                  placeholder="15"
+                  onChange={(value) => setRecipe(prev => ({ ...prev, prepTime: value }))}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Temps de cuisson (min)</label>
-                <Input
-                  type="number"
+                <label className="block text-sm font-medium mb-2">Temps de cuisson</label>
+                <TimeInput
                   value={recipe.cookTime}
-                  onChange={(e) => setRecipe(prev => ({ ...prev, cookTime: e.target.value }))}
-                  placeholder="30"
+                  onChange={(value) => setRecipe(prev => ({ ...prev, cookTime: value }))}
                 />
               </div>
 
