@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Plus, Minus, Save, ArrowLeft, Settings, List, Layers } from 'lucide-react';
+import { Plus, Minus, Save, ArrowLeft, List, Layers } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { GitHubSetup } from '@/components/GitHubSetup';
@@ -205,8 +205,7 @@ const EditRecipe = () => {
       }
 
       if (!githubConfig) {
-        showError('Configuration GitHub manquante');
-        setShowSetup(true);
+        showError('Configuration GitHub manquante. Veuillez aller à la page Admin pour configurer GitHub.');
         return;
       }
 
@@ -252,7 +251,17 @@ const EditRecipe = () => {
             </Button>
           </Link>
         </div>
-        <GitHubSetup onConfigSaved={handleConfigSaved} />
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Configuration GitHub requise</h1>
+          <p className="text-muted-foreground mb-6">
+            Pour modifier une recette, vous devez d'abord configurer l'accès à GitHub.
+          </p>
+          <Link to="/admin">
+            <Button>
+              Aller à la page Admin
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }
@@ -267,10 +276,6 @@ const EditRecipe = () => {
               Retour à la recette
             </Button>
           </Link>
-          <Button variant="outline" onClick={() => setShowSetup(true)}>
-            <Settings className="w-4 h-4 mr-2" />
-            Configuration GitHub
-          </Button>
         </div>
         
         <h1 className="text-3xl font-bold">Modifier la recette</h1>
