@@ -11,11 +11,18 @@ export interface Recipe {
   ingredients: string[];
   instructions: string[];
   tags: string[];
-  image?: string;
+  images?: ImageSizes[]; // New: multiple images with different sizes
+  image?: string; // Deprecated: keep for backward compatibility
   slug: string;
   accompaniment?: string; // Optional accompaniment suggestion
   wine?: string; // Optional wine pairing
   source?: string; // Recipe source/author
+}
+
+export interface ImageSizes {
+  small: string;
+  medium: string;
+  large: string;
 }
 
 export interface RecipeCategory {

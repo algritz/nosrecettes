@@ -1,12 +1,12 @@
 import { Recipe } from '@/types/recipe';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { Clock, Users, ChefHat, ArrowLeft, ImageIcon, Timer, Utensils, Wine, BookOpen, Edit } from 'lucide-react';
+import { Clock, Users, ChefHat, ArrowLeft, Timer, Utensils, Wine, BookOpen, Edit, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { formatTime } from '@/utils/timeFormat';
 import { useState, useEffect } from 'react';
+import { ResponsiveImage } from './ResponsiveImage';
 
 interface RecipeDetailProps {
   recipe: Recipe;
@@ -14,12 +14,25 @@ interface RecipeDetailProps {
 
 export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     // Check if GitHub configuration exists
     const savedConfig = localStorage.getItem('github-config');
     setHasGitHubConfig(!!savedConfig);
   }, []);
+
+  // Get all available images (new format + backward compatibility)
+  const allImages = recipe.images || (recipe.image ? [recipe.image] : []);
+  const hasMultipleImages = allImages.length > 1;
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+  };
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -42,22 +55,70 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
           )}
         </div>
         
-        {recipe.image && (
-          <div className="aspect-video w-full mb-6 rounded-lg overflow-hidden">
-            <img 
-              src={recipe.image} 
-              alt={recipe.title}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-                const placeholder = target.nextElementSibling as HTMLElement;
-                if (placeholder) placeholder.style.display = 'flex';
-              }}
-            />
-            <div className="hidden w-full h-full bg-muted items-center justify-center rounded-lg">
-              <ImageIcon className="w-16 h-16 text-muted-foreground" />
+        {/* Image Gallery */}
+        {allImages.length > 0 && (
+          <div className="mb-6">
+            <div className="relative">
+              <ResponsiveImage
+                src={allImages[currentImageIndex]}
+                alt={`${recipe.title} - Image ${currentImageIndex + 1}`}
+                size="large"
+                aspectRatio="video"
+                className="w-full rounded-lg"
+              />
+              
+              {/* Navigation arrows for multiple images */}
+              {hasMultipleImages && (
+                <>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80 hover:opacity-100"
+                    onClick={prevImage}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 opacity-80 hover:opacity-100"
+                    onClick={nextImage}
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                </>
+              )}
+              
+              {/* Image counter */}
+              {hasMultipleImages && (
+                <div className="absolute bottom-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                  {currentImageIndex + 1} / {allImages.length}
+                </div>
+              )}
             </div>
+            
+            {/* Thumbnail navigation */}
+            {hasMultipleImages && (
+              <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
+                {allImages.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`flex-shrink-0 w-20 h-16 rounded-md overflow-hidden border-2 transition-colors ${
+                      index === currentImageIndex ? 'border-primary' : 'border-transparent'
+                    }`}
+                  >
+                    <ResponsiveImage
+                      src={image}
+                      alt={`${recipe.title} - Miniature ${index + 1}`}
+                      size="small"
+                      aspectRatio="auto"
+                      className="w-full h-full"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         )}
         
