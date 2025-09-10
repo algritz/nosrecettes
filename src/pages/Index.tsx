@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { recipes } from '@/data/recipes';
 import { RecipeCard } from '@/components/RecipeCard';
 import { SearchBar } from '@/components/SearchBar';
@@ -9,6 +9,8 @@ import { Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
+  const [hasGitHubConfig, setHasGitHubConfig] = useState(false);
+  
   const {
     searchTerm,
     setSearchTerm,
@@ -23,20 +25,26 @@ const Index = () => {
 
   useEffect(() => {
     document.title = 'Nos Recettes';
+    
+    // Check if GitHub configuration exists
+    const savedConfig = localStorage.getItem('github-config');
+    setHasGitHubConfig(!!savedConfig);
   }, []);
 
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         <header className="mb-12">
-          <div className="flex justify-end mb-6">
-            <Link to="/admin">
-              <Button variant="outline">
-                <Plus className="w-4 h-4 mr-2" />
-                Ajouter une recette
-              </Button>
-            </Link>
-          </div>
+          {hasGitHubConfig && (
+            <div className="flex justify-end mb-6">
+              <Link to="/admin">
+                <Button variant="outline">
+                  <Plus className="w-4 h-4 mr-2" />
+                  Ajouter une recette
+                </Button>
+              </Link>
+            </div>
+          )}
           
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Nos Recettes</h1>
