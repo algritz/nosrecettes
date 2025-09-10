@@ -4,7 +4,7 @@ import { getResponsiveImageSrc, ImageSizes } from '@/utils/imageUtils';
 import { cn } from '@/lib/utils';
 
 interface ResponsiveImageProps {
-  src: ImageSizes | string;
+  src: ImageSizes | string | undefined;
   alt: string;
   className?: string;
   size?: 'small' | 'medium' | 'large';
@@ -54,7 +54,7 @@ export const ResponsiveImage = ({
       )}
       
       <picture>
-        {typeof src === 'object' && (
+        {typeof src === 'object' && src && (
           <>
             <source 
               media="(max-width: 640px)" 

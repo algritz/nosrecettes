@@ -97,11 +97,17 @@ export const processImageFile = async (file: File): Promise<ProcessedImage> => {
   };
 };
 
-export const getResponsiveImageSrc = (imageSizes: ImageSizes | string, size: 'small' | 'medium' | 'large' = 'medium'): string => {
+export const getResponsiveImageSrc = (imageSizes: ImageSizes | string | undefined, size: 'small' | 'medium' | 'large' = 'medium'): string => {
+  if (!imageSizes) {
+    return ''; // Return empty string for undefined/null
+  }
+  
   if (typeof imageSizes === 'string') {
     return imageSizes; // Fallback for old format
   }
-  return imageSizes[size];
+  
+  // New format with multiple sizes
+  return imageSizes[size] || imageSizes.medium || imageSizes.small || '';
 };
 
 export const generateImageFileName = (recipeSlug: string, index: number = 0): string => {

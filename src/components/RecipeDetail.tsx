@@ -25,6 +25,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
   // Get all available images (new format + backward compatibility)
   const allImages = recipe.images || (recipe.image ? [recipe.image] : []);
   const hasMultipleImages = allImages.length > 1;
+  const hasAnyImage = allImages.length > 0;
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
@@ -56,7 +57,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
         </div>
         
         {/* Image Gallery */}
-        {allImages.length > 0 && (
+        {hasAnyImage && (
           <div className="mb-6">
             <div className="relative">
               <ResponsiveImage
@@ -65,6 +66,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
                 size="large"
                 aspectRatio="video"
                 className="w-full rounded-lg"
+                showPlaceholder={true}
               />
               
               {/* Navigation arrows for multiple images */}
@@ -114,6 +116,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
                       size="small"
                       aspectRatio="auto"
                       className="w-full h-full"
+                      showPlaceholder={true}
                     />
                   </button>
                 ))}

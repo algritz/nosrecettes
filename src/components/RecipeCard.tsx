@@ -13,14 +13,14 @@ interface RecipeCardProps {
 export const RecipeCard = ({ recipe }: RecipeCardProps) => {
   const totalTime = recipe.prepTime + recipe.cookTime;
   
-  // Get the primary image (first image or fallback to old image field)
+  // Get the primary image (first image from new format or fallback to old image field)
   const primaryImage = recipe.images?.[0] || recipe.image;
   
   return (
     <Link to={`/recipe/${recipe.slug}`}>
       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer overflow-hidden">
         <ResponsiveImage
-          src={primaryImage || ''}
+          src={primaryImage}
           alt={recipe.title}
           size="small"
           aspectRatio="video"
