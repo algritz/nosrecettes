@@ -2,12 +2,12 @@ import { Recipe } from '@/types/recipe';
 import { poutineClassique } from './poutine-classique';
 import { tourtiereLacSaintJean } from './tourtiere-lac-saint-jean';
 import { tarteAuSucre } from './tarte-au-sucre';
+import { marteaudethorRecipe } from './marteau-de-thor';
 
-export const recipes: Recipe[] = [
-  poutineClassique,
+export const recipes: Recipe[] = [poutineClassique,
   tourtiereLacSaintJean,
-  tarteAuSucre
-];
+  tarteAuSucre,
+  marteaudethorRecipe];
 
 // Helper function to get a recipe by slug
 export const getRecipeBySlug = (slug: string): Recipe | undefined => {
