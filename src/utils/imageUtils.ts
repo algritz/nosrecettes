@@ -16,6 +16,30 @@ export const IMAGE_SIZES = {
   large: { width: 1200, height: 900, quality: 0.9 }
 } as const;
 
+// Get the base path for the current environment
+export const getBasePath = (): string => {
+  return import.meta.env.PROD ? "/nosrecettes" : "";
+};
+
+// Add base path to image URL if it's a relative path
+export const getImageUrl = (imagePath: string): string => {
+  if (!imagePath) return '';
+  
+  // If it's already an absolute URL or data URL, return as is
+  if (imagePath.startsWith('http') || imagePath.startsWith('data:') || imagePath.startsWith('blob:')) {
+    return imagePath;
+  }
+  
+  // If it already includes the base path, return as is
+  const basePath = getBasePath();
+  if (basePath && imagePath.startsWith(basePath)) {
+    return imagePath;
+  }
+  
+  // Add base path to relative URLs
+  return `${basePath}${imagePath}`;
+};
+
 export const resizeImage = (
   file: File,
   maxWidth: number,
@@ -103,11 +127,12 @@ export const getResponsiveImageSrc = (imageSizes: ImageSizes | string | undefine
   }
   
   if (typeof imageSizes === 'string') {
-    return imageSizes; // Fallback for old format
+    return getImageUrl(imageSizes); // Apply base path to old format
   }
   
-  // New format with multiple sizes
-  return imageSizes[size] || imageSizes.medium || imageSizes.small || '';
+  // New format with multiple sizes - apply base path to the selected size
+  const selectedImage = imageSizes[size] || imageSizes.medium || imageSizes.small || '';
+  return getImageUrl(selectedImage);
 };
 
 export const generateImageFileName = (recipeSlug: string, index: number = 0): string => {

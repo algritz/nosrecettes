@@ -29,6 +29,6 @@ export const tourtiereLacSaintJean: Recipe = {
     'Cuire au four à 375°F pendant 45 minutes.'
   ],
   tags: ['québécois', 'traditionnel', 'viande', 'fêtes'],
-  image: '/nosrecettes/images/tourtiere-lac-saint-jean.jpg',
+  image: '/images/tourtiere-lac-saint-jean.jpg',
   slug: 'tourtiere-lac-saint-jean'
 };
