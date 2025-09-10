@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { GitHubSetup } from '@/components/GitHubSetup';
+import { CategoryCombobox } from '@/components/CategoryCombobox';
+import { recipes } from '@/data/recipes';
 
 const Admin = () => {
   const [recipe, setRecipe] = useState({
@@ -29,8 +31,9 @@ const Admin = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [showSetup, setShowSetup] = useState(false);
+  const [availableCategories, setAvailableCategories] = useState<string[]>([]);
 
-  const categories = [
+  const defaultCategories = [
     'Plats principaux',
     'Desserts',
     'Entrées',
@@ -47,7 +50,18 @@ const Admin = () => {
     if (savedConfig) {
       setGithubConfig(JSON.parse(savedConfig));
     }
+
+    // Get categories from existing recipes and merge with defaults
+    const existingCategories = Array.from(new Set(recipes.map(recipe => recipe.category)));
+    const allCategories = Array.from(new Set([...defaultCategories, ...existingCategories]));
+    setAvailableCategories(allCategories);
   }, []);
+
+  const addCategory = (newCategory: string) => {
+    if (!availableCategories.includes(newCategory)) {
+      setAvailableCategories(prev => [...prev, newCategory].sort());
+    }
+  };
 
   const addIngredient = () => {
     setRecipe(prev => ({
@@ -245,16 +259,14 @@ const Admin = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium mb-2">Catégorie *</label>
-                <Select value={recipe.category} onValueChange={(value) => setRecipe(prev => ({ ...prev, category: value }))}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Choisir une catégorie" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {categories.map(cat => (
-                      <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <CategoryCombobox
+                  value={recipe.category}
+                  onValueChange={(value) => setRecipe(prev => ({ ...prev, category: value }))}
+                  categories={availableCategories}
+                  onAddCategory={addCategory}
+                  placeholder="Choisir ou créer une catégorie"
+                  className="w-full"
+                />
               </div>
 
               <div>
