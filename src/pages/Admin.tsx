@@ -27,7 +27,10 @@ const Admin = () => {
     ingredients: [''],
     instructions: [''],
     tags: [''],
-    image: ''
+    image: '',
+    accompaniment: '',
+    wine: '',
+    source: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -169,7 +172,10 @@ const Admin = () => {
         ingredients: [''],
         instructions: [''],
         tags: [''],
-        image: ''
+        image: '',
+        accompaniment: '',
+        wine: '',
+        source: ''
       });
 
     } catch (error) {
@@ -333,6 +339,50 @@ const Admin = () => {
               />
               <p className="text-xs text-muted-foreground mt-1">
                 Laissez vide pour utiliser le nom automatique basé sur le titre
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Additional Information */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Informations complémentaires</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">Accompagnement</label>
+              <Input
+                value={recipe.accompaniment}
+                onChange={(e) => setRecipe(prev => ({ ...prev, accompaniment: e.target.value }))}
+                placeholder="Ex: Salade verte, pain grillé..."
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Suggestions d'accompagnements pour cette recette
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Accord vin</label>
+              <Input
+                value={recipe.wine}
+                onChange={(e) => setRecipe(prev => ({ ...prev, wine: e.target.value }))}
+                placeholder="Ex: Vin rouge corsé, Chardonnay..."
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Suggestions d'accords vins pour cette recette
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Source</label>
+              <Input
+                value={recipe.source}
+                onChange={(e) => setRecipe(prev => ({ ...prev, source: e.target.value }))}
+                placeholder="Ex: Grand-mère Marie, Livre de cuisine..."
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Source de la recette (laissez vide pour utiliser votre nom d'utilisateur GitHub)
               </p>
             </div>
           </CardContent>

@@ -17,6 +17,9 @@ interface RecipeData {
   instructions: string[];
   tags: string[];
   image: string;
+  accompaniment?: string;
+  wine?: string;
+  source?: string;
 }
 
 export class GitHubService {
@@ -37,7 +40,22 @@ export class GitHubService {
       .trim('-');
   }
 
-  private generateRecipeFile(data: RecipeData): string {
+  private async getUserInfo(): Promise<{ login: string; name?: string }> {
+    const response = await fetch('https://api.github.com/user', {
+      headers: {
+        'Authorization': `token ${this.config.token}`,
+        'Accept': 'application/vnd.github.v3+json',
+      },
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to get user info');
+    }
+    
+    return await response.json();
+  }
+
+  private async generateRecipeFile(data: RecipeData): Promise<string> {
     const slug = this.createSlug(data.title);
     const id = Date.now().toString();
     const variableName = slug.replace(/-/g, '');
@@ -48,6 +66,29 @@ export class GitHubService {
 
     const marinatingTimeField = data.marinatingTime && parseInt(data.marinatingTime) > 0 
       ? `  marinatingTime: ${data.marinatingTime},\n` 
+      : '';
+
+    // Get default source if not provided
+    let source = data.source?.trim();
+    if (!source) {
+      try {
+        const userInfo = await this.getUserInfo();
+        source = userInfo.name || userInfo.login;
+      } catch (error) {
+        source = this.config.owner; // Fallback to repo owner
+      }
+    }
+
+    const accompanimentField = data.accompaniment?.trim() 
+      ? `  accompaniment: '${data.accompaniment.replace(/'/g, "\\'")}',\n` 
+      : '';
+
+    const wineField = data.wine?.trim() 
+      ? `  wine: '${data.wine.replace(/'/g, "\\'")}',\n` 
+      : '';
+
+    const sourceField = source 
+      ? `  source: '${source.replace(/'/g, "\\'")}',\n` 
       : '';
 
     return `import { Recipe } from '@/types/recipe';
@@ -69,7 +110,7 @@ ${cleanInstructions.map(inst => `    '${inst.replace(/'/g, "\\'")}'`).join(',\n'
   ],
   tags: [${cleanTags.map(tag => `'${tag.replace(/'/g, "\\'")}'`).join(', ')}],
   image: '${data.image || `/images/${slug}.jpg`}',
-  slug: '${slug}'
+${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
 };
 `;
   }
@@ -157,7 +198,7 @@ ${cleanInstructions.map(inst => `    '${inst.replace(/'/g, "\\'")}'`).join(',\n'
       const currentIndexContent = atob(indexFile.content);
 
       // Generate new recipe file content
-      const recipeFileContent = this.generateRecipeFile(recipeData);
+      const recipeFileContent = await this.generateRecipeFile(recipeData);
       
       // Update index.ts content
       const updatedIndexContent = this.updateIndexFile(currentIndexContent, slug);
@@ -205,6 +246,18 @@ ${cleanInstructions.map(inst => `    '${inst.replace(/'/g, "\\'")}'`).join(',\n'
         ? `\n**Temps de marinage:** ${recipeData.marinatingTime} minutes` 
         : '';
 
+      const accompanimentInfo = recipeData.accompaniment?.trim() 
+        ? `\n**Accompagnement:** ${recipeData.accompaniment}` 
+        : '';
+
+      const wineInfo = recipeData.wine?.trim() 
+        ? `\n**Accord vin:** ${recipeData.wine}` 
+        : '';
+
+      const sourceInfo = recipeData.source?.trim() 
+        ? `\n**Source:** ${recipeData.source}` 
+        : '';
+
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
@@ -224,7 +277,7 @@ ${cleanInstructions.map(inst => `    '${inst.replace(/'/g, "\\'")}'`).join(',\n'
 **Catégorie:** ${recipeData.category}
 **Difficulté:** ${recipeData.difficulty}
 **Temps total:** ${totalTime} minutes${marinatingInfo}
-**Portions:** ${recipeData.servings}
+**Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}
 
 **Description:**
 ${recipeData.description}

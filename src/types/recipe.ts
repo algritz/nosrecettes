@@ -13,6 +13,9 @@ export interface Recipe {
   tags: string[];
   image?: string;
   slug: string;
+  accompaniment?: string; // Optional accompaniment suggestion
+  wine?: string; // Optional wine pairing
+  source?: string; // Recipe source/author
 }
 
 export interface RecipeCategory {

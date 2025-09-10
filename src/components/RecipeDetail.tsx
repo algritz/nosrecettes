@@ -2,7 +2,7 @@ import { Recipe } from '@/types/recipe';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Clock, Users, ChefHat, ArrowLeft, ImageIcon, Timer } from 'lucide-react';
+import { Clock, Users, ChefHat, ArrowLeft, ImageIcon, Timer, Utensils, Wine, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { formatTime } from '@/utils/timeFormat';
@@ -53,7 +53,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
         <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
         <p className="text-lg text-muted-foreground mb-6">{recipe.description}</p>
         
-        <div className="flex flex-wrap items-center gap-6 text-sm">
+        <div className="flex flex-wrap items-center gap-6 text-sm mb-6">
           <div className="flex items-center gap-2">
             <Clock className="w-5 h-5" />
             <span>Préparation: {formatTime(recipe.prepTime)}</span>
@@ -73,6 +73,41 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             <span>{recipe.servings} portions</span>
           </div>
         </div>
+
+        {/* Additional Information */}
+        {(recipe.accompaniment || recipe.wine || recipe.source) && (
+          <div className="grid md:grid-cols-3 gap-4 mb-6">
+            {recipe.accompaniment && (
+              <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
+                <Utensils className="w-5 h-5 mt-0.5 text-muted-foreground" />
+                <div>
+                  <p className="font-medium text-sm">Accompagnement</p>
+                  <p className="text-sm text-muted-foreground">{recipe.accompaniment}</p>
+                </div>
+              </div>
+            )}
+            
+            {recipe.wine && (
+              <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
+                <Wine className="w-5 h-5 mt-0.5 text-muted-foreground" />
+                <div>
+                  <p className="font-medium text-sm">Accord vin</p>
+                  <p className="text-sm text-muted-foreground">{recipe.wine}</p>
+                </div>
+              </div>
+            )}
+            
+            {recipe.source && (
+              <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
+                <BookOpen className="w-5 h-5 mt-0.5 text-muted-foreground" />
+                <div>
+                  <p className="font-medium text-sm">Source</p>
+                  <p className="text-sm text-muted-foreground">{recipe.source}</p>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
