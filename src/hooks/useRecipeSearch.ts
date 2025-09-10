@@ -4,7 +4,6 @@ import { Recipe } from '@/types/recipe';
 export const useRecipeSearch = (recipes: Recipe[]) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedDifficulty, setSelectedDifficulty] = useState('all');
 
   const categories = useMemo(() => {
     return Array.from(new Set(recipes.map(recipe => recipe.category)));
@@ -23,16 +22,14 @@ export const useRecipeSearch = (recipes: Recipe[]) => {
         );
 
       const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(recipe.category);
-      const matchesDifficulty = selectedDifficulty === 'all' || recipe.difficulty === selectedDifficulty;
 
-      return matchesSearch && matchesCategory && matchesDifficulty;
+      return matchesSearch && matchesCategory;
     });
-  }, [recipes, searchTerm, selectedCategories, selectedDifficulty]);
+  }, [recipes, searchTerm, selectedCategories]);
 
   const clearFilters = () => {
     setSearchTerm('');
     setSelectedCategories([]);
-    setSelectedDifficulty('all');
   };
 
   return {
@@ -40,8 +37,6 @@ export const useRecipeSearch = (recipes: Recipe[]) => {
     setSearchTerm,
     selectedCategories,
     setSelectedCategories,
-    selectedDifficulty,
-    setSelectedDifficulty,
     categories,
     filteredRecipes,
     clearFilters

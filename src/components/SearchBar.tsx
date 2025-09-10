@@ -6,15 +6,12 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface SearchBarProps {
   searchTerm: string;
   onSearchChange: (value: string) => void;
   selectedCategories: string[];
   onCategoriesChange: (categories: string[]) => void;
-  selectedDifficulty: string;
-  onDifficultyChange: (value: string) => void;
   categories: string[];
   onClearFilters: () => void;
 }
@@ -24,12 +21,10 @@ export const SearchBar = ({
   onSearchChange,
   selectedCategories,
   onCategoriesChange,
-  selectedDifficulty,
-  onDifficultyChange,
   categories,
   onClearFilters
 }: SearchBarProps) => {
-  const hasFilters = selectedCategories.length > 0 || selectedDifficulty !== 'all' || searchTerm !== '';
+  const hasFilters = selectedCategories.length > 0 || searchTerm !== '';
 
   const toggleCategory = (category: string) => {
     if (selectedCategories.includes(category)) {
@@ -92,18 +87,6 @@ export const SearchBar = ({
             </Command>
           </PopoverContent>
         </Popover>
-
-        <Select value={selectedDifficulty} onValueChange={onDifficultyChange}>
-          <SelectTrigger className="w-40">
-            <SelectValue placeholder="Difficulté" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Toutes</SelectItem>
-            <SelectItem value="Facile">Facile</SelectItem>
-            <SelectItem value="Moyen">Moyen</SelectItem>
-            <SelectItem value="Difficile">Difficile</SelectItem>
-          </SelectContent>
-        </Select>
 
         {hasFilters && (
           <Button variant="outline" onClick={onClearFilters} className="flex items-center gap-2">

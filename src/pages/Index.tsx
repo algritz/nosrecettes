@@ -16,8 +16,6 @@ const Index = () => {
     setSearchTerm,
     selectedCategories,
     setSelectedCategories,
-    selectedDifficulty,
-    setSelectedDifficulty,
     categories,
     filteredRecipes,
     clearFilters
@@ -61,8 +59,6 @@ const Index = () => {
             onSearchChange={setSearchTerm}
             selectedCategories={selectedCategories}
             onCategoriesChange={setSelectedCategories}
-            selectedDifficulty={selectedDifficulty}
-            onDifficultyChange={setSelectedDifficulty}
             categories={categories}
             onClearFilters={clearFilters}
           />
