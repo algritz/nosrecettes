@@ -21,6 +21,7 @@ interface RecipeData {
   accompaniment?: string;
   wine?: string;
   source?: string;
+  notes?: string;
 }
 
 export class GitHubService {
@@ -189,6 +190,10 @@ export class GitHubService {
       ? `  source: '${this.escapeString(source)}',\n` 
       : '';
 
+    const notesField = data.notes?.trim() 
+      ? `  notes: '${this.escapeString(data.notes)}',\n` 
+      : '';
+
     // Generate images field
     let imagesField = '';
     if (images.length > 0) {
@@ -222,7 +227,7 @@ ${cleanIngredients.map(ing => `    '${this.escapeString(ing)}'`).join(',\n')}
 ${cleanInstructions.map(inst => `    '${this.escapeString(inst)}'`).join(',\n')}
   ],
   tags: [${cleanTags.map(tag => `'${this.escapeString(tag)}'`).join(', ')}],
-${imagesField}${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
+${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug: '${slug}'
 };
 `;
   }
@@ -396,6 +401,10 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
         ? `\n**Source:** ${recipeData.source}` 
         : '';
 
+      const notesInfo = recipeData.notes?.trim() 
+        ? `\n**Notes:** ${recipeData.notes}` 
+        : '';
+
       const imageInfo = images.length > 0 
         ? `\n**Images:** ${images.length} image(s) ajoutée(s)` 
         : '';
@@ -419,7 +428,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
 **Catégorie:** ${recipeData.category}
 **Difficulté:** ${recipeData.difficulty}
 **Temps total:** ${totalTime} minutes${marinatingInfo}
-**Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}${imageInfo}
+**Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}${notesInfo}${imageInfo}
 
 **Description:**
 ${recipeData.description}
@@ -635,6 +644,10 @@ ${recipeData.description}
         ? `\n**Source:** ${recipeData.source}` 
         : '';
 
+      const notesInfo = recipeData.notes?.trim() 
+        ? `\n**Notes:** ${recipeData.notes}` 
+        : '';
+
       const imageInfo = images.length > 0 
         ? `\n**Images:** ${images.length} image(s) modifiée(s)` 
         : '';
@@ -658,7 +671,7 @@ ${recipeData.description}
 **Catégorie:** ${recipeData.category}
 **Difficulté:** ${recipeData.difficulty}
 **Temps total:** ${totalTime} minutes${marinatingInfo}
-**Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}${imageInfo}
+**Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}${notesInfo}${imageInfo}
 
 **Description:**
 ${recipeData.description}

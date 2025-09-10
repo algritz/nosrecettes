@@ -1,7 +1,7 @@
 import { Recipe } from '@/types/recipe';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Clock, Users, ChefHat, ArrowLeft, Timer, Utensils, Wine, BookOpen, Edit, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Clock, Users, ChefHat, ArrowLeft, Timer, Utensils, Wine, BookOpen, Edit, ChevronLeft, ChevronRight, StickyNote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { formatTime } from '@/utils/timeFormat';
@@ -154,8 +154,8 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
         </div>
 
         {/* Additional Information */}
-        {(recipe.accompaniment || recipe.wine || recipe.source) && (
-          <div className="grid md:grid-cols-3 gap-4 mb-6">
+        {(recipe.accompaniment || recipe.wine || recipe.source || recipe.notes) && (
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
             {recipe.accompaniment && (
               <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
                 <Utensils className="w-5 h-5 mt-0.5 text-muted-foreground" />
@@ -182,6 +182,16 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
                 <div>
                   <p className="font-medium text-sm">Source</p>
                   <p className="text-sm text-muted-foreground">{recipe.source}</p>
+                </div>
+              </div>
+            )}
+
+            {recipe.notes && (
+              <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg md:col-span-2">
+                <StickyNote className="w-5 h-5 mt-0.5 text-muted-foreground" />
+                <div>
+                  <p className="font-medium text-sm">Notes</p>
+                  <p className="text-sm text-muted-foreground whitespace-pre-wrap">{recipe.notes}</p>
                 </div>
               </div>
             )}

@@ -36,7 +36,8 @@ const EditRecipe = () => {
     tags: [''],
     accompaniment: '',
     wine: '',
-    source: ''
+    source: '',
+    notes: ''
   });
 
   const [recipeImages, setRecipeImages] = useState<ProcessedImage[]>([]);
@@ -117,7 +118,8 @@ const EditRecipe = () => {
         tags: existingRecipe.tags.length > 0 ? existingRecipe.tags : [''],
         accompaniment: existingRecipe.accompaniment || '',
         wine: existingRecipe.wine || '',
-        source: existingRecipe.source || ''
+        source: existingRecipe.source || '',
+        notes: existingRecipe.notes || ''
       });
     }
   }, [existingRecipe, slug, navigate]);
@@ -421,6 +423,19 @@ const EditRecipe = () => {
               />
               <p className="text-xs text-muted-foreground mt-1">
                 Source de la recette (laissez vide pour utiliser votre nom d'utilisateur GitHub)
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Notes</label>
+              <Textarea
+                value={recipe.notes}
+                onChange={(e) => setRecipe(prev => ({ ...prev, notes: e.target.value }))}
+                placeholder="Ex: Cette recette se conserve 3 jours au frigo, peut être doublée facilement..."
+                rows={3}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Notes personnelles, conseils de conservation, variations possibles, etc.
               </p>
             </div>
           </CardContent>

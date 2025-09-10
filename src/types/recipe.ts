@@ -17,6 +17,7 @@ export interface Recipe {
   accompaniment?: string; // Optional accompaniment suggestion
   wine?: string; // Optional wine pairing
   source?: string; // Recipe source/author
+  notes?: string; // Optional additional notes
 }
 
 export interface ImageSizes {
