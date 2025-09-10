@@ -25,7 +25,14 @@ export const poutineClassique: Recipe = {
     'Verser la sauce brune chaude par-dessus.',
     'Servir immédiatement.'
   ],
-  tags: ['Légumes'],
+  tags: ['québécois', 'traditionnel', 'frites', 'fromage'],
+  images: [
+    {
+      small: '/images/poutine-classique-small.jpg',
+      medium: '/images/poutine-classique-medium.jpg',
+      large: '/images/poutine-classique-large.jpg'
+    }
+  ],
   source: 'David Cloutier',
   notes: 'Vous pouvez faire cuire les frites au four à 425°F si vous préférez',
   slug: 'poutine-classique'
