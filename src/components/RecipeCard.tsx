@@ -31,11 +31,6 @@ export const RecipeCard = ({ recipe }: RecipeCardProps) => {
         <CardHeader>
           <div className="flex justify-between items-start mb-2">
             <Badge variant="secondary">{recipe.category}</Badge>
-            <Badge 
-              variant={recipe.difficulty === 'Facile' ? 'default' : recipe.difficulty === 'Moyen' ? 'secondary' : 'destructive'}
-            >
-              {recipe.difficulty}
-            </Badge>
           </div>
           <CardTitle className="text-lg">{recipe.title}</CardTitle>
         </CardHeader>

@@ -127,11 +127,6 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
         
         <div className="flex flex-wrap gap-2 mb-4">
           <Badge variant="secondary">{recipe.category}</Badge>
-          <Badge 
-            variant={recipe.difficulty === 'Facile' ? 'default' : recipe.difficulty === 'Moyen' ? 'secondary' : 'destructive'}
-          >
-            {recipe.difficulty}
-          </Badge>
         </div>
         
         <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
