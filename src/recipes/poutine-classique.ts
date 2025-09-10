@@ -3,7 +3,7 @@ import { Recipe } from '@/types/recipe';
 export const poutineClassique: Recipe = {
   id: '1',
   title: 'Poutine Classique',
-  description: 'La poutine traditionnelle québécoise avec frites, fromage en grains et sauce brune.',
+  description: 'La poutine traditionnelle du Québec avec frites, fromage en grains et sauce brune.',
   category: 'Plats principaux',
   prepTime: 15,
   cookTime: 30,
@@ -25,7 +25,8 @@ export const poutineClassique: Recipe = {
     'Verser la sauce brune chaude par-dessus.',
     'Servir immédiatement.'
   ],
-  tags: ['québécois', 'comfort food', 'frites', 'fromage'],
+  tags: ['Légumes'],
   image: '/images/poutine-classique.jpg',
+  source: 'David Cloutier',
   slug: 'poutine-classique'
 };
