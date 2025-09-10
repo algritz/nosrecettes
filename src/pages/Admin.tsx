@@ -21,6 +21,7 @@ const Admin = () => {
     category: '',
     prepTime: '',
     cookTime: '',
+    marinatingTime: '',
     servings: '',
     difficulty: '',
     ingredients: [''],
@@ -162,6 +163,7 @@ const Admin = () => {
         category: '',
         prepTime: '',
         cookTime: '',
+        marinatingTime: '',
         servings: '',
         difficulty: '',
         ingredients: [''],
@@ -285,7 +287,7 @@ const Admin = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
                 <label className="block text-sm font-medium mb-2">Temps de préparation</label>
                 <TimeInput
@@ -300,6 +302,15 @@ const Admin = () => {
                   value={recipe.cookTime}
                   onChange={(value) => setRecipe(prev => ({ ...prev, cookTime: value }))}
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">Temps de marinage</label>
+                <TimeInput
+                  value={recipe.marinatingTime}
+                  onChange={(value) => setRecipe(prev => ({ ...prev, marinatingTime: value }))}
+                />
+                <p className="text-xs text-muted-foreground mt-1">Optionnel</p>
               </div>
 
               <div>

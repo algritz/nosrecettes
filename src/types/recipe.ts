@@ -5,6 +5,7 @@ export interface Recipe {
   category: string;
   prepTime: number;
   cookTime: number;
+  marinatingTime?: number; // Optional marinating time in minutes
   servings: number;
   difficulty: 'Facile' | 'Moyen' | 'Difficile';
   ingredients: string[];

@@ -2,7 +2,7 @@ import { Recipe } from '@/types/recipe';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Clock, Users, ChefHat, ArrowLeft, ImageIcon } from 'lucide-react';
+import { Clock, Users, ChefHat, ArrowLeft, ImageIcon, Timer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { formatTime } from '@/utils/timeFormat';
@@ -53,7 +53,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
         <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
         <p className="text-lg text-muted-foreground mb-6">{recipe.description}</p>
         
-        <div className="flex items-center gap-6 text-sm">
+        <div className="flex flex-wrap items-center gap-6 text-sm">
           <div className="flex items-center gap-2">
             <Clock className="w-5 h-5" />
             <span>Préparation: {formatTime(recipe.prepTime)}</span>
@@ -62,6 +62,12 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             <ChefHat className="w-5 h-5" />
             <span>Cuisson: {formatTime(recipe.cookTime)}</span>
           </div>
+          {recipe.marinatingTime && recipe.marinatingTime > 0 && (
+            <div className="flex items-center gap-2">
+              <Timer className="w-5 h-5" />
+              <span>Marinage: {formatTime(recipe.marinatingTime)}</span>
+            </div>
+          )}
           <div className="flex items-center gap-2">
             <Users className="w-5 h-5" />
             <span>{recipe.servings} portions</span>

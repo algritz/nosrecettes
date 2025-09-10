@@ -10,6 +10,7 @@ interface RecipeData {
   category: string;
   prepTime: string;
   cookTime: string;
+  marinatingTime?: string;
   servings: string;
   difficulty: string;
   ingredients: string[];
@@ -45,6 +46,10 @@ export class GitHubService {
     const cleanInstructions = data.instructions.filter(inst => inst.trim() !== '');
     const cleanTags = data.tags.filter(tag => tag.trim() !== '');
 
+    const marinatingTimeField = data.marinatingTime && parseInt(data.marinatingTime) > 0 
+      ? `  marinatingTime: ${data.marinatingTime},\n` 
+      : '';
+
     return `import { Recipe } from '@/types/recipe';
 
 export const ${variableName}Recipe: Recipe = {
@@ -54,7 +59,7 @@ export const ${variableName}Recipe: Recipe = {
   category: '${data.category}',
   prepTime: ${data.prepTime || 0},
   cookTime: ${data.cookTime || 0},
-  servings: ${data.servings || 1},
+${marinatingTimeField}  servings: ${data.servings || 1},
   difficulty: '${data.difficulty}',
   ingredients: [
 ${cleanIngredients.map(ing => `    '${ing.replace(/'/g, "\\'")}'`).join(',\n')}
@@ -195,6 +200,11 @@ ${cleanInstructions.map(inst => `    '${inst.replace(/'/g, "\\'")}'`).join(',\n'
       );
 
       // Create pull request
+      const totalTime = (parseInt(recipeData.prepTime) || 0) + (parseInt(recipeData.cookTime) || 0);
+      const marinatingInfo = recipeData.marinatingTime && parseInt(recipeData.marinatingTime) > 0 
+        ? `\n**Temps de marinage:** ${recipeData.marinatingTime} minutes` 
+        : '';
+
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
@@ -213,7 +223,7 @@ ${cleanInstructions.map(inst => `    '${inst.replace(/'/g, "\\'")}'`).join(',\n'
 **Titre:** ${recipeData.title}
 **Catégorie:** ${recipeData.category}
 **Difficulté:** ${recipeData.difficulty}
-**Temps total:** ${(parseInt(recipeData.prepTime) || 0) + (parseInt(recipeData.cookTime) || 0)} minutes
+**Temps total:** ${totalTime} minutes${marinatingInfo}
 **Portions:** ${recipeData.servings}
 
 **Description:**
