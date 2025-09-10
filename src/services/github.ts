@@ -40,6 +40,14 @@ export class GitHubService {
       .trim('-');
   }
 
+  private createVariableName(slug: string): string {
+    // Convert slug to camelCase for variable name
+    return slug.split('-').map((word, index) => {
+      if (index === 0) return word;
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join('');
+  }
+
   private async getUserInfo(): Promise<{ login: string; name?: string }> {
     const response = await fetch('https://api.github.com/user', {
       headers: {
@@ -55,10 +63,10 @@ export class GitHubService {
     return await response.json();
   }
 
-  private async generateRecipeFile(data: RecipeData): Promise<string> {
+  private async generateRecipeFile(data: RecipeData, existingId?: string): Promise<string> {
     const slug = this.createSlug(data.title);
-    const id = Date.now().toString();
-    const variableName = slug.replace(/-/g, '');
+    const id = existingId || Date.now().toString();
+    const variableName = this.createVariableName(slug);
 
     const cleanIngredients = data.ingredients.filter(ing => ing.trim() !== '');
     const cleanInstructions = data.instructions.filter(inst => inst.trim() !== '');
@@ -93,7 +101,7 @@ export class GitHubService {
 
     return `import { Recipe } from '@/types/recipe';
 
-export const ${variableName}Recipe: Recipe = {
+export const ${variableName}: Recipe = {
   id: '${id}',
   title: '${data.title}',
   description: '${data.description}',
@@ -116,8 +124,8 @@ ${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
   }
 
   private updateIndexFile(currentContent: string, newRecipeSlug: string): string {
-    const variableName = newRecipeSlug.replace(/-/g, '');
-    const importLine = `import { ${variableName}Recipe } from './${newRecipeSlug}';`;
+    const variableName = this.createVariableName(newRecipeSlug);
+    const importLine = `import { ${variableName} } from './${newRecipeSlug}';`;
     
     // Add import after existing imports
     const importRegex = /(import.*from.*;\n)/g;
@@ -133,10 +141,31 @@ ${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
     
     if (match) {
       const recipeList = match[1].trim();
-      const newRecipeList = recipeList ? `${recipeList},\n  ${variableName}Recipe` : `\n  ${variableName}Recipe\n`;
+      const newRecipeList = recipeList ? `${recipeList},\n  ${variableName}` : `\n  ${variableName}\n`;
       const updatedAfterImports = afterImports.replace(arrayRegex, `export const recipes: Recipe[] = [${newRecipeList}];`);
       
       return beforeImports + importLine + '\n' + updatedAfterImports;
+    }
+    
+    return currentContent;
+  }
+
+  private updateIndexFileForEdit(currentContent: string, oldSlug: string, newSlug: string): string {
+    const oldVariableName = this.createVariableName(oldSlug);
+    const newVariableName = this.createVariableName(newSlug);
+    
+    // If slug changed, update import and variable names
+    if (oldSlug !== newSlug) {
+      // Update import
+      const oldImportRegex = new RegExp(`import { ${oldVariableName} } from './${oldSlug}';`);
+      const newImportLine = `import { ${newVariableName} } from './${newSlug}';`;
+      
+      // Update array reference
+      const oldArrayRegex = new RegExp(`\\b${oldVariableName}\\b`, 'g');
+      
+      return currentContent
+        .replace(oldImportRegex, newImportLine)
+        .replace(oldArrayRegex, newVariableName);
     }
     
     return currentContent;
@@ -299,6 +328,236 @@ ${recipeData.description}
 
     } catch (error) {
       console.error('Error creating recipe PR:', error);
+      throw error;
+    }
+  }
+
+  async updateRecipePR(recipeData: RecipeData, existingRecipe: any): Promise<string> {
+    const newSlug = this.createSlug(recipeData.title);
+    const oldSlug = existingRecipe.slug;
+    const branchName = `update-recipe/${newSlug}-${Date.now()}`;
+    const newRecipeFileName = `${newSlug}.ts`;
+    const oldRecipeFileName = `${oldSlug}.ts`;
+    
+    try {
+      // Get the default branch SHA
+      const mainBranchResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/ref/heads/main`,
+        {
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+          },
+        }
+      );
+      
+      if (!mainBranchResponse.ok) {
+        throw new Error('Failed to get main branch');
+      }
+      
+      const mainBranch = await mainBranchResponse.json();
+      const baseSha = mainBranch.object.sha;
+
+      // Create new branch
+      await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/refs`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ref: `refs/heads/${branchName}`,
+            sha: baseSha,
+          }),
+        }
+      );
+
+      // Get current index.ts content
+      const indexResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts?ref=main`,
+        {
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+          },
+        }
+      );
+      
+      const indexFile = await indexResponse.json();
+      const currentIndexContent = atob(indexFile.content);
+
+      // Generate updated recipe file content (preserve existing ID)
+      const recipeFileContent = await this.generateRecipeFile(recipeData, existingRecipe.id);
+      
+      // Update index.ts content if slug changed
+      const updatedIndexContent = this.updateIndexFileForEdit(currentIndexContent, oldSlug, newSlug);
+
+      // If slug changed, delete old file and create new one
+      if (oldSlug !== newSlug) {
+        // Get old file SHA for deletion
+        const oldFileResponse = await fetch(
+          `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${oldRecipeFileName}?ref=main`,
+          {
+            headers: {
+              'Authorization': `token ${this.config.token}`,
+              'Accept': 'application/vnd.github.v3+json',
+            },
+          }
+        );
+        
+        if (oldFileResponse.ok) {
+          const oldFile = await oldFileResponse.json();
+          
+          // Delete old file
+          await fetch(
+            `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${oldRecipeFileName}`,
+            {
+              method: 'DELETE',
+              headers: {
+                'Authorization': `token ${this.config.token}`,
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                message: `Remove old recipe file: ${oldRecipeFileName}`,
+                sha: oldFile.sha,
+                branch: branchName,
+              }),
+            }
+          );
+        }
+
+        // Create new file
+        await fetch(
+          `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${newRecipeFileName}`,
+          {
+            method: 'PUT',
+            headers: {
+              'Authorization': `token ${this.config.token}`,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: `Update recipe: ${recipeData.title}`,
+              content: btoa(recipeFileContent),
+              branch: branchName,
+            }),
+          }
+        );
+
+        // Update index.ts file
+        await fetch(
+          `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts`,
+          {
+            method: 'PUT',
+            headers: {
+              'Authorization': `token ${this.config.token}`,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: `Update index for recipe: ${recipeData.title}`,
+              content: btoa(updatedIndexContent),
+              branch: branchName,
+              sha: indexFile.sha,
+            }),
+          }
+        );
+      } else {
+        // Update existing file
+        const existingFileResponse = await fetch(
+          `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${oldRecipeFileName}?ref=main`,
+          {
+            headers: {
+              'Authorization': `token ${this.config.token}`,
+              'Accept': 'application/vnd.github.v3+json',
+            },
+          }
+        );
+        
+        const existingFile = await existingFileResponse.json();
+        
+        await fetch(
+          `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${newRecipeFileName}`,
+          {
+            method: 'PUT',
+            headers: {
+              'Authorization': `token ${this.config.token}`,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: `Update recipe: ${recipeData.title}`,
+              content: btoa(recipeFileContent),
+              branch: branchName,
+              sha: existingFile.sha,
+            }),
+          }
+        );
+      }
+
+      // Create pull request
+      const totalTime = (parseInt(recipeData.prepTime) || 0) + (parseInt(recipeData.cookTime) || 0);
+      const marinatingInfo = recipeData.marinatingTime && parseInt(recipeData.marinatingTime) > 0 
+        ? `\n**Temps de marinage:** ${recipeData.marinatingTime} minutes` 
+        : '';
+
+      const accompanimentInfo = recipeData.accompaniment?.trim() 
+        ? `\n**Accompagnement:** ${recipeData.accompaniment}` 
+        : '';
+
+      const wineInfo = recipeData.wine?.trim() 
+        ? `\n**Accord vin:** ${recipeData.wine}` 
+        : '';
+
+      const sourceInfo = recipeData.source?.trim() 
+        ? `\n**Source:** ${recipeData.source}` 
+        : '';
+
+      const prResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            title: `Modification recette: ${recipeData.title}`,
+            head: branchName,
+            base: 'main',
+            body: `## Recette modifiée
+
+**Titre:** ${recipeData.title}
+**Catégorie:** ${recipeData.category}
+**Difficulté:** ${recipeData.difficulty}
+**Temps total:** ${totalTime} minutes${marinatingInfo}
+**Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}
+
+**Description:**
+${recipeData.description}
+
+**Tags:** ${recipeData.tags.filter(t => t.trim()).join(', ')}
+
+---
+*Cette recette a été modifiée via le formulaire web.*`,
+          }),
+        }
+      );
+
+      if (!prResponse.ok) {
+        throw new Error('Failed to create pull request');
+      }
+
+      const pr = await prResponse.json();
+      return pr.html_url;
+
+    } catch (error) {
+      console.error('Error updating recipe PR:', error);
       throw error;
     }
   }

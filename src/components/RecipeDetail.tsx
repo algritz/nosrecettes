@@ -2,25 +2,45 @@ import { Recipe } from '@/types/recipe';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Clock, Users, ChefHat, ArrowLeft, ImageIcon, Timer, Utensils, Wine, BookOpen } from 'lucide-react';
+import { Clock, Users, ChefHat, ArrowLeft, ImageIcon, Timer, Utensils, Wine, BookOpen, Edit } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { formatTime } from '@/utils/timeFormat';
+import { useState, useEffect } from 'react';
 
 interface RecipeDetailProps {
   recipe: Recipe;
 }
 
 export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
+  const [hasGitHubConfig, setHasGitHubConfig] = useState(false);
+
+  useEffect(() => {
+    // Check if GitHub configuration exists
+    const savedConfig = localStorage.getItem('github-config');
+    setHasGitHubConfig(!!savedConfig);
+  }, []);
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-6">
-        <Link to="/">
-          <Button variant="outline" className="mb-4">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Retour aux recettes
-          </Button>
-        </Link>
+        <div className="flex justify-between items-center mb-4">
+          <Link to="/">
+            <Button variant="outline">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Retour aux recettes
+            </Button>
+          </Link>
+          
+          {hasGitHubConfig && (
+            <Link to={`/edit-recipe/${recipe.slug}`}>
+              <Button variant="outline">
+                <Edit className="w-4 h-4 mr-2" />
+                Modifier cette recette
+              </Button>
+            </Link>
+          )}
+        </div>
         
         {recipe.image && (
           <div className="aspect-video w-full mb-6 rounded-lg overflow-hidden">
