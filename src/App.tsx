@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import RecipePage from "./pages/RecipePage";
 import Admin from "./pages/Admin";
+import NewRecipe from "./pages/NewRecipe";
 import EditRecipe from "./pages/EditRecipe";
 import NotFound from "./pages/NotFound";
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/recipe/:slug" element={<RecipePage />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/new-recipe" element={<NewRecipe />} />
           <Route path="/edit-recipe/:slug" element={<EditRecipe />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,13 +15,9 @@ import { SectionedInstructions } from '@/components/SectionedInstructions';
 import { ProcessedImage } from '@/utils/imageUtils';
 import { IngredientSection, InstructionSection } from '@/types/recipe';
 import { recipes } from '@/data/recipes';
-import { NotFound } from '@/components/NotFound';
 
-const EditRecipe = () => {
-  const { slug } = useParams<{ slug: string }>();
+const NewRecipe = () => {
   const navigate = useNavigate();
-  const existingRecipe = recipes.find(r => r.slug === slug);
-
   const [recipe, setRecipe] = useState({
     title: '',
     description: '',
@@ -69,8 +65,8 @@ const EditRecipe = () => {
     // Check GitHub config - redirect if not present
     const savedConfig = localStorage.getItem('github-config');
     if (!savedConfig) {
-      showError('Configuration GitHub requise pour modifier une recette.');
-      setTimeout(() => navigate(`/recipe/${slug}`), 2000);
+      showError('Configuration GitHub requise. Redirection vers la page d\'administration...');
+      setTimeout(() => navigate('/admin'), 2000);
       return;
     }
     
@@ -80,51 +76,7 @@ const EditRecipe = () => {
     const existingCategories = Array.from(new Set(recipes.map(recipe => recipe.category)));
     const allCategories = Array.from(new Set([...defaultCategories, ...existingCategories]));
     setAvailableCategories(allCategories);
-
-    // Pre-fill form with existing recipe data
-    if (existingRecipe) {
-      // Check if existing recipe uses sectioned format
-      const hasSectionedIngredients = Array.isArray(existingRecipe.ingredients) && 
-        existingRecipe.ingredients.length > 0 && 
-        typeof existingRecipe.ingredients[0] === 'object';
-      
-      const hasSectionedInstructions = Array.isArray(existingRecipe.instructions) && 
-        existingRecipe.instructions.length > 0 && 
-        typeof existingRecipe.instructions[0] === 'object';
-
-      setUseSectionedIngredients(hasSectionedIngredients);
-      setUseSectionedInstructions(hasSectionedInstructions);
-
-      if (hasSectionedIngredients) {
-        setSectionedIngredients(existingRecipe.ingredients as IngredientSection[]);
-      }
-
-      if (hasSectionedInstructions) {
-        setSectionedInstructions(existingRecipe.instructions as InstructionSection[]);
-      }
-
-      setRecipe({
-        title: existingRecipe.title,
-        description: existingRecipe.description,
-        category: existingRecipe.category,
-        prepTime: existingRecipe.prepTime.toString(),
-        cookTime: existingRecipe.cookTime.toString(),
-        marinatingTime: existingRecipe.marinatingTime?.toString() || '',
-        servings: existingRecipe.servings.toString(),
-        difficulty: existingRecipe.difficulty,
-        ingredients: hasSectionedIngredients ? [''] : (existingRecipe.ingredients as string[]).length > 0 ? (existingRecipe.ingredients as string[]) : [''],
-        instructions: hasSectionedInstructions ? [''] : (existingRecipe.instructions as string[]).length > 0 ? (existingRecipe.instructions as string[]) : [''],
-        tags: existingRecipe.tags.length > 0 ? existingRecipe.tags : [''],
-        accompaniment: existingRecipe.accompaniment || '',
-        wine: existingRecipe.wine || '',
-        source: existingRecipe.source || ''
-      });
-    }
-  }, [existingRecipe, slug, navigate]);
-
-  if (!existingRecipe) {
-    return <NotFound />;
-  }
+  }, [navigate]);
 
   // Don't render if no GitHub config
   if (!githubConfig) {
@@ -133,7 +85,7 @@ const EditRecipe = () => {
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Configuration requise</h1>
           <p className="text-muted-foreground">
-            Redirection vers la recette...
+            Redirection vers la page d'administration...
           </p>
         </div>
       </div>
@@ -188,7 +140,7 @@ const EditRecipe = () => {
     }));
   };
 
-  const addTag = () =>  {
+  const addTag = () => {
     setRecipe(prev => ({
       ...prev,
       tags: [...prev.tags, '']
@@ -228,18 +180,41 @@ const EditRecipe = () => {
       };
 
       const githubService = new GitHubService(githubConfig);
-      const prUrl = await githubService.updateRecipePR(recipeData, existingRecipe, recipeImages);
+      const prUrl = await githubService.createRecipePR(recipeData, recipeImages);
 
-      showSuccess('Modifications soumises! Pull request créée avec succès.');
+      showSuccess('Recette soumise! Pull request créée avec succès.');
       
       // Show success message with PR link
-      const openPR = confirm(`Modifications soumises avec succès!\n\nVoulez-vous voir la pull request sur GitHub?`);
+      const openPR = confirm(`Recette soumise avec succès!\n\nVoulez-vous voir la pull request sur GitHub?`);
       if (openPR) {
         window.open(prUrl, '_blank');
       }
+      
+      // Reset form
+      setRecipe({
+        title: '',
+        description: '',
+        category: '',
+        prepTime: '',
+        cookTime: '',
+        marinatingTime: '',
+        servings: '',
+        difficulty: 'Facile',
+        ingredients: [''],
+        instructions: [''],
+        tags: [''],
+        accompaniment: '',
+        wine: '',
+        source: ''
+      });
+      setRecipeImages([]);
+      setUseSectionedIngredients(false);
+      setUseSectionedInstructions(false);
+      setSectionedIngredients([{ title: '', items: [''] }]);
+      setSectionedInstructions([{ title: '', steps: [''] }]);
 
     } catch (error) {
-      showError('Erreur lors de la modification de la recette');
+      showError('Erreur lors de la création de la recette');
       console.error(error);
     } finally {
       setIsSubmitting(false);
@@ -249,16 +224,16 @@ const EditRecipe = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="mb-6">
-        <Link to={`/recipe/${slug}`}>
+        <Link to="/">
           <Button variant="outline" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Retour à la recette
+            Retour aux recettes
           </Button>
         </Link>
         
-        <h1 className="text-3xl font-bold">Modifier la recette</h1>
+        <h1 className="text-3xl font-bold">Ajouter une nouvelle recette</h1>
         <p className="text-muted-foreground mt-2">
-          Modifiez les informations ci-dessous. Une pull request sera créée automatiquement sur GitHub.
+          Remplissez le formulaire ci-dessous. Une pull request sera créée automatiquement sur GitHub.
         </p>
         
         <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
@@ -358,27 +333,8 @@ const EditRecipe = () => {
               maxImages={1}
             />
             <p className="text-xs text-muted-foreground mt-2">
-              Ajoutez une nouvelle image pour remplacer l'image actuelle. L'image sera automatiquement redimensionnée.
+              L'image sera automatiquement redimensionnée en plusieurs tailles pour optimiser l'affichage.
             </p>
-            
-            {/* Show current image if no new image uploaded */}
-            {recipeImages.length === 0 && (existingRecipe.images?.[0] || existingRecipe.image) && (
-              <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-                <p className="text-sm font-medium mb-2">Image actuelle:</p>
-                <div className="w-32 h-24 rounded-md overflow-hidden">
-                  <img
-                    src={typeof (existingRecipe.images?.[0] || existingRecipe.image) === 'string' 
-                      ? (existingRecipe.images?.[0] || existingRecipe.image) 
-                      : (existingRecipe.images?.[0] as any)?.small || (existingRecipe.images?.[0] as any)?.medium}
-                    alt={existingRecipe.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Cette image sera conservée si vous n'en ajoutez pas de nouvelle.
-                </p>
-              </div>
-            )}
           </CardContent>
         </Card>
 
@@ -596,7 +552,7 @@ const EditRecipe = () => {
         <div className="flex justify-end">
           <Button type="submit" disabled={isSubmitting} size="lg">
             <Save className="w-4 h-4 mr-2" />
-            {isSubmitting ? 'Création de la pull request...' : 'Sauvegarder les modifications'}
+            {isSubmitting ? 'Création de la pull request...' : 'Soumettre la recette'}
           </Button>
         </div>
       </form>
@@ -604,4 +560,4 @@ const EditRecipe = () => {
   );
 };
 
-export default EditRecipe;
+export default NewRecipe;

@@ -37,7 +37,7 @@ const Index = () => {
         <header className="mb-12">
           {hasGitHubConfig && (
             <div className="flex justify-end mb-6">
-              <Link to="/admin">
+              <Link to="/new-recipe">
                 <Button variant="outline">
                   <Plus className="w-4 h-4 mr-2" />
                   Ajouter une recette
