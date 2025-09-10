@@ -8,8 +8,8 @@ export interface Recipe {
   marinatingTime?: number; // Optional marinating time in minutes
   servings: number;
   difficulty: 'Facile' | 'Moyen' | 'Difficile';
-  ingredients: string[];
-  instructions: string[];
+  ingredients: string[] | IngredientSection[];
+  instructions: string[] | InstructionSection[];
   tags: string[];
   images?: ImageSizes[]; // New: multiple images with different sizes
   image?: string; // Deprecated: keep for backward compatibility
@@ -29,4 +29,14 @@ export interface RecipeCategory {
   id: string;
   name: string;
   count: number;
+}
+
+export interface IngredientSection {
+  title: string;
+  items: string[];
+}
+
+export interface InstructionSection {
+  title: string;
+  steps: string[];
 }
