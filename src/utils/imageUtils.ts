@@ -18,26 +18,37 @@ export const IMAGE_SIZES = {
 
 // Get the base path for the current environment
 export const getBasePath = (): string => {
-  return import.meta.env.PROD ? "/nosrecettes" : "";
+  const basePath = import.meta.env.PROD ? "/nosrecettes" : "";
+  console.log('getBasePath - PROD:', import.meta.env.PROD, 'basePath:', basePath);
+  return basePath;
 };
 
 // Add base path to image URL if it's a relative path
 export const getImageUrl = (imagePath: string): string => {
-  if (!imagePath) return '';
+  console.log('getImageUrl - input:', imagePath);
+  
+  if (!imagePath) {
+    console.log('getImageUrl - empty path, returning empty string');
+    return '';
+  }
   
   // If it's already an absolute URL or data URL, return as is
   if (imagePath.startsWith('http') || imagePath.startsWith('data:') || imagePath.startsWith('blob:')) {
+    console.log('getImageUrl - absolute URL, returning as is:', imagePath);
     return imagePath;
   }
   
   // If it already includes the base path, return as is
   const basePath = getBasePath();
   if (basePath && imagePath.startsWith(basePath)) {
+    console.log('getImageUrl - already has base path, returning as is:', imagePath);
     return imagePath;
   }
   
   // Add base path to relative URLs
-  return `${basePath}${imagePath}`;
+  const result = `${basePath}${imagePath}`;
+  console.log('getImageUrl - adding base path, result:', result);
+  return result;
 };
 
 export const resizeImage = (
@@ -122,17 +133,24 @@ export const processImageFile = async (file: File): Promise<ProcessedImage> => {
 };
 
 export const getResponsiveImageSrc = (imageSizes: ImageSizes | string | undefined, size: 'small' | 'medium' | 'large' = 'medium'): string => {
+  console.log('getResponsiveImageSrc - input:', imageSizes, 'size:', size);
+  
   if (!imageSizes) {
+    console.log('getResponsiveImageSrc - no imageSizes, returning empty string');
     return ''; // Return empty string for undefined/null
   }
   
   if (typeof imageSizes === 'string') {
-    return getImageUrl(imageSizes); // Apply base path to old format
+    const result = getImageUrl(imageSizes);
+    console.log('getResponsiveImageSrc - string input, result:', result);
+    return result; // Apply base path to old format
   }
   
   // New format with multiple sizes - apply base path to the selected size
   const selectedImage = imageSizes[size] || imageSizes.medium || imageSizes.small || '';
-  return getImageUrl(selectedImage);
+  const result = getImageUrl(selectedImage);
+  console.log('getResponsiveImageSrc - object input, selectedImage:', selectedImage, 'result:', result);
+  return result;
 };
 
 export const generateImageFileName = (recipeSlug: string, index: number = 0): string => {

@@ -16,6 +16,11 @@ export const RecipeCard = ({ recipe }: RecipeCardProps) => {
   // Get the primary image (first image from new format or fallback to old image field)
   const primaryImage = recipe.images?.[0] || recipe.image;
   
+  // Debug logging
+  console.log(`RecipeCard ${recipe.title} - images:`, recipe.images);
+  console.log(`RecipeCard ${recipe.title} - image:`, recipe.image);
+  console.log(`RecipeCard ${recipe.title} - primaryImage:`, primaryImage);
+  
   return (
     <Link to={`/recipe/${recipe.slug}`}>
       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer overflow-hidden">

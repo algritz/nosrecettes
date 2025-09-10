@@ -31,6 +31,10 @@ export const ResponsiveImage = ({
     auto: ''
   };
 
+  // Debug logging
+  console.log('ResponsiveImage - Original src:', src);
+  console.log('ResponsiveImage - Processed imageSrc:', imageSrc);
+
   if (imageError || !imageSrc) {
     if (!showPlaceholder) return null;
     
@@ -58,15 +62,15 @@ export const ResponsiveImage = ({
           <>
             <source 
               media="(max-width: 640px)" 
-              srcSet={src.small}
+              srcSet={getResponsiveImageSrc(src, 'small')}
             />
             <source 
               media="(max-width: 1024px)" 
-              srcSet={src.medium}
+              srcSet={getResponsiveImageSrc(src, 'medium')}
             />
             <source 
               media="(min-width: 1025px)" 
-              srcSet={src.large}
+              srcSet={getResponsiveImageSrc(src, 'large')}
             />
           </>
         )}
