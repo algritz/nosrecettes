@@ -27,6 +27,6 @@ export const tarteAuSucre: Recipe = {
     'Laisser refroidir avant de servir.'
   ],
   tags: ['dessert', 'érable', 'québécois', 'sucré'],
-  image: '/images/tarte-au-sucre.jpg',
+  image: '/nosrecettes/images/tarte-au-sucre.jpg',
   slug: 'tarte-au-sucre'
 };

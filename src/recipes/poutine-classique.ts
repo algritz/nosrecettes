@@ -28,9 +28,9 @@ export const poutineClassique: Recipe = {
   tags: ['québécois', 'traditionnel', 'frites', 'fromage'],
   images: [
     {
-      small: '/images/poutine-classique-small.jpg',
-      medium: '/images/poutine-classique-medium.jpg',
-      large: '/images/poutine-classique-large.jpg'
+      small: '/nosrecettes/images/poutine-classique-small.jpg',
+      medium: '/nosrecettes/images/poutine-classique-medium.jpg',
+      large: '/nosrecettes/images/poutine-classique-large.jpg'
     }
   ],
   source: 'David Cloutier',
