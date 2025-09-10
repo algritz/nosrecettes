@@ -11,6 +11,8 @@ import { GitHubService } from '@/services/github';
 import { GitHubSetup } from '@/components/GitHubSetup';
 import { CategoryCombobox } from '@/components/CategoryCombobox';
 import { TimeInput } from '@/components/TimeInput';
+import { ImageUpload } from '@/components/ImageUpload';
+import { ProcessedImage } from '@/utils/imageUtils';
 import { recipes } from '@/data/recipes';
 import { NotFound } from '@/components/NotFound';
 
@@ -30,12 +32,12 @@ const EditRecipe = () => {
     ingredients: [''],
     instructions: [''],
     tags: [''],
-    image: '',
     accompaniment: '',
     wine: '',
     source: ''
   });
 
+  const [recipeImages, setRecipeImages] = useState<ProcessedImage[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [showSetup, setShowSetup] = useState(false);
@@ -78,7 +80,6 @@ const EditRecipe = () => {
         ingredients: existingRecipe.ingredients.length > 0 ? existingRecipe.ingredients : [''],
         instructions: existingRecipe.instructions.length > 0 ? existingRecipe.instructions : [''],
         tags: existingRecipe.tags.length > 0 ? existingRecipe.tags : [''],
-        image: existingRecipe.image || '',
         accompaniment: existingRecipe.accompaniment || '',
         wine: existingRecipe.wine || '',
         source: existingRecipe.source || ''
@@ -177,7 +178,7 @@ const EditRecipe = () => {
       }
 
       const githubService = new GitHubService(githubConfig);
-      const prUrl = await githubService.updateRecipePR(recipe, existingRecipe);
+      const prUrl = await githubService.updateRecipePR(recipe, existingRecipe, recipeImages);
 
       showSuccess('Modifications soumises! Pull request créée avec succès.');
       
@@ -337,18 +338,42 @@ const EditRecipe = () => {
                 />
               </div>
             </div>
+          </CardContent>
+        </Card>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">Image (optionnel)</label>
-              <Input
-                value={recipe.image}
-                onChange={(e) => setRecipe(prev => ({ ...prev, image: e.target.value }))}
-                placeholder="Ex: /images/ma-recette.jpg"
-              />
-              <p className="text-xs text-muted-foreground mt-1">
-                Laissez vide pour utiliser le nom automatique basé sur le titre
-              </p>
-            </div>
+        {/* Images */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Image de la recette</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ImageUpload
+              images={recipeImages}
+              onImagesChange={setRecipeImages}
+              maxImages={1}
+            />
+            <p className="text-xs text-muted-foreground mt-2">
+              Ajoutez une nouvelle image pour remplacer l'image actuelle. L'image sera automatiquement redimensionnée.
+            </p>
+            
+            {/* Show current image if no new image uploaded */}
+            {recipeImages.length === 0 && (existingRecipe.images?.[0] || existingRecipe.image) && (
+              <div className="mt-4 p-4 bg-muted/50 rounded-lg">
+                <p className="text-sm font-medium mb-2">Image actuelle:</p>
+                <div className="w-32 h-24 rounded-md overflow-hidden">
+                  <img
+                    src={typeof (existingRecipe.images?.[0] || existingRecipe.image) === 'string' 
+                      ? (existingRecipe.images?.[0] || existingRecipe.image) 
+                      : (existingRecipe.images?.[0] as any)?.small || (existingRecipe.images?.[0] as any)?.medium}
+                    alt={existingRecipe.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Cette image sera conservée si vous n'en ajoutez pas de nouvelle.
+                </p>
+              </div>
+            )}
           </CardContent>
         </Card>
 

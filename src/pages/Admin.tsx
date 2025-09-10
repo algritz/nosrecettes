@@ -4,14 +4,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Badge } from '@/components/ui/badge';
-import { Plus, Minus, Save, ArrowLeft, Settings, ExternalLink } from 'lucide-react';
+import { Plus, Minus, Save, ArrowLeft, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { GitHubSetup } from '@/components/GitHubSetup';
 import { CategoryCombobox } from '@/components/CategoryCombobox';
 import { TimeInput } from '@/components/TimeInput';
+import { ImageUpload } from '@/components/ImageUpload';
+import { ProcessedImage } from '@/utils/imageUtils';
 import { recipes } from '@/data/recipes';
 
 const Admin = () => {
@@ -27,12 +28,12 @@ const Admin = () => {
     ingredients: [''],
     instructions: [''],
     tags: [''],
-    image: '',
     accompaniment: '',
     wine: '',
     source: ''
   });
 
+  const [recipeImages, setRecipeImages] = useState<ProcessedImage[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [showSetup, setShowSetup] = useState(false);
@@ -149,7 +150,7 @@ const Admin = () => {
       }
 
       const githubService = new GitHubService(githubConfig);
-      const prUrl = await githubService.createRecipePR(recipe);
+      const prUrl = await githubService.createRecipePR(recipe, recipeImages);
 
       showSuccess('Recette soumise! Pull request créée avec succès.');
       
@@ -172,11 +173,11 @@ const Admin = () => {
         ingredients: [''],
         instructions: [''],
         tags: [''],
-        image: '',
         accompaniment: '',
         wine: '',
         source: ''
       });
+      setRecipeImages([]);
 
     } catch (error) {
       showError('Erreur lors de la création de la recette');
@@ -328,18 +329,23 @@ const Admin = () => {
                 />
               </div>
             </div>
+          </CardContent>
+        </Card>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">Image (optionnel)</label>
-              <Input
-                value={recipe.image}
-                onChange={(e) => setRecipe(prev => ({ ...prev, image: e.target.value }))}
-                placeholder="Ex: /images/ma-recette.jpg"
-              />
-              <p className="text-xs text-muted-foreground mt-1">
-                Laissez vide pour utiliser le nom automatique basé sur le titre
-              </p>
-            </div>
+        {/* Images */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Image de la recette</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ImageUpload
+              images={recipeImages}
+              onImagesChange={setRecipeImages}
+              maxImages={1}
+            />
+            <p className="text-xs text-muted-foreground mt-2">
+              L'image sera automatiquement redimensionnée en plusieurs tailles pour optimiser l'affichage.
+            </p>
           </CardContent>
         </Card>
 
