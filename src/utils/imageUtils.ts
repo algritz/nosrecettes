@@ -1,4 +1,4 @@
-import { uploadToCloudinary, generateResponsiveImageUrls, CloudinaryConfig } from './cloudinaryUtils';
+import { uploadToCloudinary, generateResponsiveImageUrls, CloudinaryConfig, scheduleImageCleanup, extractPublicIdFromUrl } from './cloudinaryUtils';
 
 export interface ImageSizes {
   small: string;
@@ -75,6 +75,38 @@ export const processImageFile = async (file: File, cloudinaryConfig?: Cloudinary
     sizes: { small: preview, medium: preview, large: preview },
     preview
   };
+};
+
+export const scheduleOldImageCleanup = (
+  oldImages: (ImageSizes | string)[], 
+  recipeSlug: string,
+  reason: 'replaced' | 'removed' = 'replaced'
+): void => {
+  if (!oldImages.length) return;
+
+  const publicIdsToCleanup: string[] = [];
+
+  for (const oldImage of oldImages) {
+    let publicId: string | null = null;
+
+    if (typeof oldImage === 'string') {
+      // Old format - single URL
+      publicId = extractPublicIdFromUrl(oldImage);
+    } else if (oldImage && typeof oldImage === 'object') {
+      // New format - extract from any of the URLs
+      publicId = extractPublicIdFromUrl(oldImage.small) || 
+                extractPublicIdFromUrl(oldImage.medium) || 
+                extractPublicIdFromUrl(oldImage.large);
+    }
+
+    if (publicId) {
+      publicIdsToCleanup.push(publicId);
+    }
+  }
+
+  if (publicIdsToCleanup.length > 0) {
+    scheduleImageCleanup(publicIdsToCleanup, recipeSlug, reason);
+  }
 };
 
 const createImagePreview = (file: File): Promise<string> => {
