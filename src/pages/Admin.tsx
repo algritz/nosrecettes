@@ -64,7 +64,7 @@ const Admin = () => {
   }, []);
 
   const addCategory = (newCategory: string) => {
-    if (!avail ableCategories.includes(newCategory)) {
+    if (!availableCategories.includes(newCategory)) {
       setAvailableCategories(prev => [...prev, newCategory].sort());
     }
   };
