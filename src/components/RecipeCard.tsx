@@ -1,10 +1,9 @@
 import { Recipe } from '@/types/recipe';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Clock, Users, ChefHat } from 'lucide-react';
+import { Clock, Users, ChefHat, ImageIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { formatTimeShort } from '@/utils/timeFormat';
-import { ResponsiveImage } from './ResponsiveImage';
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -13,20 +12,31 @@ interface RecipeCardProps {
 export const RecipeCard = ({ recipe }: RecipeCardProps) => {
   const totalTime = recipe.prepTime + recipe.cookTime;
   
-  // Get the primary image (first image or fallback to old image field)
-  const primaryImage = recipe.images?.[0] || recipe.image;
-  
   return (
     <Link to={`/recipe/${recipe.slug}`}>
       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer overflow-hidden">
-        <ResponsiveImage
-          src={primaryImage || ''}
-          alt={recipe.title}
-          size="small"
-          aspectRatio="video"
-          className="w-full"
-          showPlaceholder={true}
-        />
+        {recipe.image ? (
+          <div className="aspect-video w-full overflow-hidden">
+            <img 
+              src={recipe.image} 
+              alt={recipe.title}
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const placeholder = target.nextElementSibling as HTMLElement;
+                if (placeholder) placeholder.style.display = 'flex';
+              }}
+            />
+            <div className="hidden w-full h-full bg-muted items-center justify-center">
+              <ImageIcon className="w-12 h-12 text-muted-foreground" />
+            </div>
+          </div>
+        ) : (
+          <div className="aspect-video w-full bg-muted flex items-center justify-center">
+            <ImageIcon className="w-12 h-12 text-muted-foreground" />
+          </div>
+        )}
         
         <CardHeader>
           <div className="flex justify-between items-start mb-2">

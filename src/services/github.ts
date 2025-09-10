@@ -1,5 +1,3 @@
-import { ProcessedImage, generateImageFileName } from '@/utils/imageUtils';
-
 interface GitHubConfig {
   owner: string;
   repo: string;
@@ -18,6 +16,7 @@ interface RecipeData {
   ingredients: string[];
   instructions: string[];
   tags: string[];
+  image: string;
   accompaniment?: string;
   wine?: string;
   source?: string;
@@ -73,87 +72,7 @@ export class GitHubService {
       .replace(/\t/g, '\\t');  // Escape tabs
   }
 
-  private base64Encode(str: string): string {
-    // Use TextEncoder to properly handle UTF-8 encoding
-    const encoder = new TextEncoder();
-    const data = encoder.encode(str);
-    
-    // Convert to base64
-    let binary = '';
-    const len = data.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(data[i]);
-    }
-    return btoa(binary);
-  }
-
-  private base64Decode(str: string): string {
-    // Decode base64 to binary string
-    const binary = atob(str);
-    
-    // Convert binary string to Uint8Array
-    const bytes = new Uint8Array(binary.length);
-    for (let i = 0; i < binary.length; i++) {
-      bytes[i] = binary.charCodeAt(i);
-    }
-    
-    // Use TextDecoder to properly handle UTF-8 decoding
-    const decoder = new TextDecoder('utf-8');
-    return decoder.decode(bytes);
-  }
-
-  private dataURLToBase64(dataURL: string): string {
-    return dataURL.split(',')[1];
-  }
-
-  private async uploadImages(images: ProcessedImage[], slug: string, branchName: string): Promise<string[]> {
-    const uploadedImages: string[] = [];
-
-    for (let i = 0; i < images.length; i++) {
-      const image = images[i];
-      const baseFileName = generateImageFileName(slug, i);
-      
-      // Upload all three sizes
-      const sizes = ['small', 'medium', 'large'] as const;
-      const imageSizes: Record<string, string> = {};
-
-      for (const size of sizes) {
-        const fileName = baseFileName.replace('.jpg', `-${size}.jpg`);
-        const filePath = `public/images/${fileName}`;
-        const base64Content = this.dataURLToBase64(image.sizes[size]);
-
-        try {
-          await fetch(
-            `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/${filePath}`,
-            {
-              method: 'PUT',
-              headers: {
-                'Authorization': `token ${this.config.token}`,
-                'Accept': 'application/vnd.github.v3+json',
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                message: `Add ${size} image for recipe: ${slug}`,
-                content: base64Content,
-                branch: branchName,
-              }),
-            }
-          );
-
-          imageSizes[size] = `/images/${fileName}`;
-        } catch (error) {
-          console.error(`Failed to upload ${size} image:`, error);
-          throw new Error(`Failed to upload ${size} image`);
-        }
-      }
-
-      uploadedImages.push(JSON.stringify(imageSizes));
-    }
-
-    return uploadedImages;
-  }
-
-  private async generateRecipeFile(data: RecipeData, images: ProcessedImage[], existingId?: string): Promise<string> {
+  private async generateRecipeFile(data: RecipeData, existingId?: string): Promise<string> {
     const slug = this.createSlug(data.title);
     const id = existingId || Date.now().toString();
     const variableName = this.createVariableName(slug);
@@ -189,21 +108,6 @@ export class GitHubService {
       ? `  source: '${this.escapeString(source)}',\n` 
       : '';
 
-    // Generate images field
-    let imagesField = '';
-    if (images.length > 0) {
-      const imageObjects = images.map((_, index) => {
-        const baseFileName = generateImageFileName(slug, index);
-        return `    {
-      small: '/images/${baseFileName.replace('.jpg', '-small.jpg')}',
-      medium: '/images/${baseFileName.replace('.jpg', '-medium.jpg')}',
-      large: '/images/${baseFileName.replace('.jpg', '-large.jpg')}'
-    }`;
-      });
-      
-      imagesField = `  images: [\n${imageObjects.join(',\n')}\n  ],\n`;
-    }
-
     return `import { Recipe } from '@/types/recipe';
 
 export const ${variableName}: Recipe = {
@@ -222,9 +126,39 @@ ${cleanIngredients.map(ing => `    '${this.escapeString(ing)}'`).join(',\n')}
 ${cleanInstructions.map(inst => `    '${this.escapeString(inst)}'`).join(',\n')}
   ],
   tags: [${cleanTags.map(tag => `'${this.escapeString(tag)}'`).join(', ')}],
-${imagesField}${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
+  image: '${data.image || `/images/${slug}.jpg`}',
+${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
 };
 `;
+  }
+
+  private base64Encode(str: string): string {
+    // Use TextEncoder to properly handle UTF-8 encoding
+    const encoder = new TextEncoder();
+    const data = encoder.encode(str);
+    
+    // Convert to base64
+    let binary = '';
+    const len = data.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(data[i]);
+    }
+    return btoa(binary);
+  }
+
+  private base64Decode(str: string): string {
+    // Decode base64 to binary string
+    const binary = atob(str);
+    
+    // Convert binary string to Uint8Array
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+    
+    // Use TextDecoder to properly handle UTF-8 decoding
+    const decoder = new TextDecoder('utf-8');
+    return decoder.decode(bytes);
   }
 
   private updateIndexFile(currentContent: string, newRecipeSlug: string): string {
@@ -275,7 +209,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
     return currentContent;
   }
 
-  async createRecipePR(recipeData: RecipeData, images: ProcessedImage[] = []): Promise<string> {
+  async createRecipePR(recipeData: RecipeData): Promise<string> {
     const slug = this.createSlug(recipeData.title);
     const branchName = `recipe/${slug}`;
     const recipeFileName = `${slug}.ts`;
@@ -316,11 +250,6 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
         }
       );
 
-      // Upload images first
-      if (images.length > 0) {
-        await this.uploadImages(images, slug, branchName);
-      }
-
       // Get current index.ts content
       const indexResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts?ref=main`,
@@ -336,7 +265,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
       const currentIndexContent = this.base64Decode(indexFile.content);
 
       // Generate new recipe file content
-      const recipeFileContent = await this.generateRecipeFile(recipeData, images);
+      const recipeFileContent = await this.generateRecipeFile(recipeData);
       
       // Update index.ts content
       const updatedIndexContent = this.updateIndexFile(currentIndexContent, slug);
@@ -396,10 +325,6 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
         ? `\n**Source:** ${recipeData.source}` 
         : '';
 
-      const imageInfo = images.length > 0 
-        ? `\n**Images:** ${images.length} image(s) ajoutée(s)` 
-        : '';
-
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
@@ -419,7 +344,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}  slug: '${slug}'
 **Catégorie:** ${recipeData.category}
 **Difficulté:** ${recipeData.difficulty}
 **Temps total:** ${totalTime} minutes${marinatingInfo}
-**Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}${imageInfo}
+**Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}
 
 **Description:**
 ${recipeData.description}
@@ -445,7 +370,7 @@ ${recipeData.description}
     }
   }
 
-  async updateRecipePR(recipeData: RecipeData, existingRecipe: any, images: ProcessedImage[] = []): Promise<string> {
+  async updateRecipePR(recipeData: RecipeData, existingRecipe: any): Promise<string> {
     const newSlug = this.createSlug(recipeData.title);
     const oldSlug = existingRecipe.slug;
     const branchName = `update-recipe/${newSlug}-${Date.now()}`;
@@ -488,11 +413,6 @@ ${recipeData.description}
         }
       );
 
-      // Upload new images
-      if (images.length > 0) {
-        await this.uploadImages(images, newSlug, branchName);
-      }
-
       // Get current index.ts content
       const indexResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts?ref=main`,
@@ -508,7 +428,7 @@ ${recipeData.description}
       const currentIndexContent = this.base64Decode(indexFile.content);
 
       // Generate updated recipe file content (preserve existing ID)
-      const recipeFileContent = await this.generateRecipeFile(recipeData, images, existingRecipe.id);
+      const recipeFileContent = await this.generateRecipeFile(recipeData, existingRecipe.id);
       
       // Update index.ts content if slug changed
       const updatedIndexContent = this.updateIndexFileForEdit(currentIndexContent, oldSlug, newSlug);
@@ -635,10 +555,6 @@ ${recipeData.description}
         ? `\n**Source:** ${recipeData.source}` 
         : '';
 
-      const imageInfo = images.length > 0 
-        ? `\n**Images:** ${images.length} image(s) modifiée(s)` 
-        : '';
-
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
@@ -658,7 +574,7 @@ ${recipeData.description}
 **Catégorie:** ${recipeData.category}
 **Difficulté:** ${recipeData.difficulty}
 **Temps total:** ${totalTime} minutes${marinatingInfo}
-**Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}${imageInfo}
+**Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}
 
 **Description:**
 ${recipeData.description}
