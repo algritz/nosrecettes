@@ -137,8 +137,8 @@ const Admin = () => {
 
     try {
       // Validate required fields
-      if (!recipe.title || !recipe.description || !recipe.category) {
-        showError('Veuillez remplir tous les champs obligatoires');
+      if (!recipe.title || !recipe.category) {
+        showError('Veuillez remplir tous les champs obligatoires (titre et catégorie)');
         return;
       }
 
@@ -255,13 +255,12 @@ const Admin = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Description *</label>
+              <label className="block text-sm font-medium mb-2">Description</label>
               <Textarea
                 value={recipe.description}
                 onChange={(e) => setRecipe(prev => ({ ...prev, description: e.target.value }))}
                 placeholder="Décrivez brièvement la recette..."
                 rows={3}
-                required
               />
             </div>
 
