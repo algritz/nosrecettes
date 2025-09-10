@@ -1,3 +1,5 @@
+import { uploadToCloudinary, generateResponsiveImageUrls, CloudinaryConfig } from './cloudinaryUtils';
+
 export interface ImageSizes {
   small: string;
   medium: string;
@@ -6,111 +8,39 @@ export interface ImageSizes {
 
 export interface ProcessedImage {
   file: File;
+  publicId?: string; // Cloudinary public ID
   sizes: ImageSizes;
   preview: string;
 }
 
-export const IMAGE_SIZES = {
-  small: { width: 400, height: 300, quality: 0.8 },
-  medium: { width: 800, height: 600, quality: 0.85 },
-  large: { width: 1200, height: 900, quality: 0.9 }
-} as const;
-
-// Get the base path for the current environment
+// Get the base path for the current environment (for backward compatibility with local images)
 export const getBasePath = (): string => {
   const basePath = import.meta.env.PROD ? "/nosrecettes" : "";
-  console.log('getBasePath - PROD:', import.meta.env.PROD, 'basePath:', basePath);
   return basePath;
 };
 
-// Add base path to image URL if it's a relative path
+// Add base path to image URL if it's a relative path (for backward compatibility)
 export const getImageUrl = (imagePath: string): string => {
-  console.log('getImageUrl - input:', imagePath);
-  
   if (!imagePath) {
-    console.log('getImageUrl - empty path, returning empty string');
     return '';
   }
   
   // If it's already an absolute URL or data URL, return as is
   if (imagePath.startsWith('http') || imagePath.startsWith('data:') || imagePath.startsWith('blob:')) {
-    console.log('getImageUrl - absolute URL, returning as is:', imagePath);
     return imagePath;
   }
   
   // If it already includes the base path, return as is
   const basePath = getBasePath();
   if (basePath && imagePath.startsWith(basePath)) {
-    console.log('getImageUrl - already has base path, returning as is:', imagePath);
     return imagePath;
   }
   
   // Add base path to relative URLs
-  const result = `${basePath}${imagePath}`;
-  console.log('getImageUrl - adding base path, result:', result);
-  return result;
+  return `${basePath}${imagePath}`;
 };
 
-export const resizeImage = (
-  file: File,
-  maxWidth: number,
-  maxHeight: number,
-  quality: number = 0.8
-): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    const img = new Image();
-
-    img.onload = () => {
-      // Calculate new dimensions while maintaining aspect ratio
-      let { width, height } = img;
-      
-      if (width > height) {
-        if (width > maxWidth) {
-          height = (height * maxWidth) / width;
-          width = maxWidth;
-        }
-      } else {
-        if (height > maxHeight) {
-          width = (width * maxHeight) / height;
-          height = maxHeight;
-        }
-      }
-
-      canvas.width = width;
-      canvas.height = height;
-
-      if (!ctx) {
-        reject(new Error('Could not get canvas context'));
-        return;
-      }
-
-      // Draw and compress
-      ctx.drawImage(img, 0, 0, width, height);
-      
-      canvas.toBlob(
-        (blob) => {
-          if (blob) {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result as string);
-            reader.onerror = reject;
-            reader.readAsDataURL(blob);
-          } else {
-            reject(new Error('Failed to create blob'));
-          }
-        },
-        'image/jpeg',
-        quality
-      );
-    };
-
-    img.onerror = reject;
-    img.src = URL.createObjectURL(file);
-  });
-};
-
-export const processImageFile = async (file: File): Promise<ProcessedImage> => {
+export const processImageFile = async (file: File, cloudinaryConfig?: CloudinaryConfig): Promise<ProcessedImage> => {
   if (!file.type.startsWith('image/')) {
     throw new Error('Le fichier doit être une image');
   }
@@ -119,40 +49,64 @@ export const processImageFile = async (file: File): Promise<ProcessedImage> => {
     throw new Error('L\'image ne peut pas dépasser 10MB');
   }
 
-  const [small, medium, large] = await Promise.all([
-    resizeImage(file, IMAGE_SIZES.small.width, IMAGE_SIZES.small.height, IMAGE_SIZES.small.quality),
-    resizeImage(file, IMAGE_SIZES.medium.width, IMAGE_SIZES.medium.height, IMAGE_SIZES.medium.quality),
-    resizeImage(file, IMAGE_SIZES.large.width, IMAGE_SIZES.large.height, IMAGE_SIZES.large.quality)
-  ]);
+  // If Cloudinary is configured, upload to Cloudinary
+  if (cloudinaryConfig) {
+    try {
+      const uploadResult = await uploadToCloudinary(file, cloudinaryConfig, 'recipes');
+      const responsiveUrls = generateResponsiveImageUrls(uploadResult.public_id, cloudinaryConfig.cloudName);
+      
+      return {
+        file,
+        publicId: uploadResult.public_id,
+        sizes: responsiveUrls,
+        preview: responsiveUrls.medium
+      };
+    } catch (error) {
+      console.error('Cloudinary upload failed:', error);
+      throw new Error('Échec de l\'upload vers Cloudinary');
+    }
+  }
 
+  // Fallback: create local preview (for development or if Cloudinary fails)
+  const preview = await createImagePreview(file);
+  
   return {
     file,
-    sizes: { small, medium, large },
-    preview: medium // Use medium for preview
+    sizes: { small: preview, medium: preview, large: preview },
+    preview
   };
 };
 
+const createImagePreview = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
+
 export const getResponsiveImageSrc = (imageSizes: ImageSizes | string | undefined, size: 'small' | 'medium' | 'large' = 'medium'): string => {
-  console.log('getResponsiveImageSrc - input:', imageSizes, 'size:', size);
-  
   if (!imageSizes) {
-    console.log('getResponsiveImageSrc - no imageSizes, returning empty string');
-    return ''; // Return empty string for undefined/null
+    return '';
   }
   
   if (typeof imageSizes === 'string') {
-    const result = getImageUrl(imageSizes);
-    console.log('getResponsiveImageSrc - string input, result:', result);
-    return result; // Apply base path to old format
+    return getImageUrl(imageSizes); // Apply base path to old format
   }
   
-  // New format with multiple sizes - apply base path to the selected size
+  // New format with multiple sizes - these should already be full Cloudinary URLs
   const selectedImage = imageSizes[size] || imageSizes.medium || imageSizes.small || '';
-  const result = getImageUrl(selectedImage);
-  console.log('getResponsiveImageSrc - object input, selectedImage:', selectedImage, 'result:', result);
-  return result;
+  
+  // If it's already a full URL (Cloudinary), return as is
+  if (selectedImage.startsWith('http')) {
+    return selectedImage;
+  }
+  
+  // Otherwise, apply base path (for backward compatibility)
+  return getImageUrl(selectedImage);
 };
 
 export const generateImageFileName = (recipeSlug: string, index: number = 0): string => {
-  return index === 0 ? `${recipeSlug}.jpg` : `${recipeSlug}-${index + 1}.jpg`;
+  return index === 0 ? `${recipeSlug}` : `${recipeSlug}-${index + 1}`;
 };

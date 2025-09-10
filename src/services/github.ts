@@ -1,4 +1,4 @@
-import { ProcessedImage, generateImageFileName } from '@/utils/imageUtils';
+import { ProcessedImage } from '@/utils/imageUtils';
 
 interface GitHubConfig {
   owner: string;
@@ -103,57 +103,6 @@ export class GitHubService {
     return decoder.decode(bytes);
   }
 
-  private dataURLToBase64(dataURL: string): string {
-    return dataURL.split(',')[1];
-  }
-
-  private async uploadImages(images: ProcessedImage[], slug: string, branchName: string): Promise<string[]> {
-    const uploadedImages: string[] = [];
-
-    for (let i = 0; i < images.length; i++) {
-      const image = images[i];
-      const baseFileName = generateImageFileName(slug, i);
-      
-      // Upload all three sizes
-      const sizes = ['small', 'medium', 'large'] as const;
-      const imageSizes: Record<string, string> = {};
-
-      for (const size of sizes) {
-        const fileName = baseFileName.replace('.jpg', `-${size}.jpg`);
-        const filePath = `public/images/${fileName}`;
-        const base64Content = this.dataURLToBase64(image.sizes[size]);
-
-        try {
-          await fetch(
-            `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/${filePath}`,
-            {
-              method: 'PUT',
-              headers: {
-                'Authorization': `token ${this.config.token}`,
-                'Accept': 'application/vnd.github.v3+json',
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                message: `Add ${size} image for recipe: ${slug}`,
-                content: base64Content,
-                branch: branchName,
-              }),
-            }
-          );
-
-          imageSizes[size] = `/images/${fileName}`;
-        } catch (error) {
-          console.error(`Failed to upload ${size} image:`, error);
-          throw new Error(`Failed to upload ${size} image`);
-        }
-      }
-
-      uploadedImages.push(JSON.stringify(imageSizes));
-    }
-
-    return uploadedImages;
-  }
-
   private async generateRecipeFile(data: RecipeData, images: ProcessedImage[], existingId?: string): Promise<string> {
     const slug = this.createSlug(data.title);
     const id = existingId || Date.now().toString();
@@ -194,15 +143,14 @@ export class GitHubService {
       ? `  notes: '${this.escapeString(data.notes)}',\n` 
       : '';
 
-    // Generate images field
+    // Generate images field using Cloudinary URLs
     let imagesField = '';
     if (images.length > 0) {
-      const imageObjects = images.map((_, index) => {
-        const baseFileName = generateImageFileName(slug, index);
+      const imageObjects = images.map((image) => {
         return `    {
-      small: '/images/${baseFileName.replace('.jpg', '-small.jpg')}',
-      medium: '/images/${baseFileName.replace('.jpg', '-medium.jpg')}',
-      large: '/images/${baseFileName.replace('.jpg', '-large.jpg')}'
+      small: '${image.sizes.small}',
+      medium: '${image.sizes.medium}',
+      large: '${image.sizes.large}'
     }`;
       });
       
@@ -321,11 +269,6 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
         }
       );
 
-      // Upload images first
-      if (images.length > 0) {
-        await this.uploadImages(images, slug, branchName);
-      }
-
       // Get current index.ts content
       const indexResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts?ref=main`,
@@ -340,7 +283,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
       const indexFile = await indexResponse.json();
       const currentIndexContent = this.base64Decode(indexFile.content);
 
-      // Generate new recipe file content
+      // Generate new recipe file content (images are already uploaded to Cloudinary)
       const recipeFileContent = await this.generateRecipeFile(recipeData, images);
       
       // Update index.ts content
@@ -406,7 +349,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
         : '';
 
       const imageInfo = images.length > 0 
-        ? `\n**Images:** ${images.length} image(s) ajoutée(s)` 
+        ? `\n**Images:** ${images.length} image(s) hébergée(s) sur Cloudinary` 
         : '';
 
       const prResponse = await fetch(
@@ -436,7 +379,7 @@ ${recipeData.description}
 **Tags:** ${recipeData.tags.filter(t => t.trim()).join(', ')}
 
 ---
-*Cette recette a été ajoutée via le formulaire web.*`,
+*Cette recette a été ajoutée via le formulaire web avec images hébergées sur Cloudinary.*`,
           }),
         }
       );
@@ -497,11 +440,6 @@ ${recipeData.description}
         }
       );
 
-      // Upload new images
-      if (images.length > 0) {
-        await this.uploadImages(images, newSlug, branchName);
-      }
-
       // Get current index.ts content
       const indexResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts?ref=main`,
@@ -516,7 +454,7 @@ ${recipeData.description}
       const indexFile = await indexResponse.json();
       const currentIndexContent = this.base64Decode(indexFile.content);
 
-      // Generate updated recipe file content (preserve existing ID)
+      // Generate updated recipe file content (preserve existing ID, images are already on Cloudinary)
       const recipeFileContent = await this.generateRecipeFile(recipeData, images, existingRecipe.id);
       
       // Update index.ts content if slug changed
@@ -649,7 +587,7 @@ ${recipeData.description}
         : '';
 
       const imageInfo = images.length > 0 
-        ? `\n**Images:** ${images.length} image(s) modifiée(s)` 
+        ? `\n**Images:** ${images.length} image(s) modifiée(s) sur Cloudinary` 
         : '';
 
       const prResponse = await fetch(
@@ -679,7 +617,7 @@ ${recipeData.description}
 **Tags:** ${recipeData.tags.filter(t => t.trim()).join(', ')}
 
 ---
-*Cette recette a été modifiée via le formulaire web.*`,
+*Cette recette a été modifiée via le formulaire web avec images hébergées sur Cloudinary.*`,
           }),
         }
       );

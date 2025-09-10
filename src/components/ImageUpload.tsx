@@ -1,8 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Upload, X, Image as ImageIcon, Loader2 } from 'lucide-react';
 import { processImageFile, ProcessedImage } from '@/utils/imageUtils';
+import { CloudinaryConfig } from '@/utils/cloudinaryUtils';
 import { showError } from '@/utils/toast';
 
 interface ImageUploadProps {
@@ -20,7 +21,16 @@ export const ImageUpload = ({
 }: ImageUploadProps) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [cloudinaryConfig, setCloudinaryConfig] = useState<CloudinaryConfig | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    // Load Cloudinary config
+    const savedConfig = localStorage.getItem('cloudinary-config');
+    if (savedConfig) {
+      setCloudinaryConfig(JSON.parse(savedConfig));
+    }
+  }, []);
 
   const handleFileSelect = async (files: FileList | null) => {
     if (!files) return;
@@ -37,7 +47,7 @@ export const ImageUpload = ({
 
     try {
       const processedImages = await Promise.all(
-        fileArray.map(file => processImageFile(file))
+        fileArray.map(file => processImageFile(file, cloudinaryConfig || undefined))
       );
       
       onImagesChange([...images, ...processedImages]);
@@ -78,6 +88,21 @@ export const ImageUpload = ({
 
   return (
     <div className={className}>
+      {/* Cloudinary Status */}
+      {cloudinaryConfig ? (
+        <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+          <p className="text-sm text-green-700">
+            ✅ Images hébergées sur Cloudinary ({cloudinaryConfig.cloudName})
+          </p>
+        </div>
+      ) : (
+        <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <p className="text-sm text-yellow-700">
+            ⚠️ Cloudinary non configuré - les images seront stockées localement
+          </p>
+        </div>
+      )}
+
       {/* Upload Area */}
       {images.length < maxImages && (
         <Card 
@@ -101,7 +126,9 @@ export const ImageUpload = ({
             {isProcessing ? (
               <div className="flex flex-col items-center gap-4">
                 <Loader2 className="w-8 h-8 animate-spin text-primary" />
-                <p className="text-sm text-muted-foreground">Traitement des images...</p>
+                <p className="text-sm text-muted-foreground">
+                  {cloudinaryConfig ? 'Upload vers Cloudinary...' : 'Traitement des images...'}
+                </p>
               </div>
             ) : (
               <div className="flex flex-col items-center gap-4">
@@ -182,6 +209,13 @@ export const ImageUpload = ({
                   {index === 0 && (
                     <div className="absolute top-2 left-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded">
                       Principal
+                    </div>
+                  )}
+
+                  {/* Cloudinary Badge */}
+                  {processedImage.publicId && (
+                    <div className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded">
+                      Cloud
                     </div>
                   )}
                 </div>
