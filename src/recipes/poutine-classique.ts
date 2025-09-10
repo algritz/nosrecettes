@@ -26,13 +26,7 @@ export const poutineClassique: Recipe = {
     'Servir immédiatement.'
   ],
   tags: ['Légumes'],
-  images: [
-    {
-      small: '/images/poutine-classique-small.jpg',
-      medium: '/images/poutine-classique-medium.jpg',
-      large: '/images/poutine-classique-large.jpg'
-    }
-  ],
   source: 'David Cloutier',
+  notes: 'Vous pouvez faire cuire les frites au four à 425°F si vous préférez',
   slug: 'poutine-classique'
 };
