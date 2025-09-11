@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const tourtiereLacSaintJean: Recipe = {
+export const tourtiereDuLacSaintJean: Recipe = {
   id: '2',
   title: 'Tourtière du Lac-Saint-Jean',
   description: 'Tourtière traditionnelle avec un mélange de viandes et pommes de terre.',
@@ -29,6 +29,6 @@ export const tourtiereLacSaintJean: Recipe = {
     'Cuire au four à 375°F pendant 45 minutes.'
   ],
   tags: ['québécois', 'traditionnel', 'viande', 'fêtes'],
-  image: '/images/tourtiere-lac-saint-jean.jpg',
-  slug: 'tourtiere-lac-saint-jean'
+  source: 'David Cloutier',
+  slug: 'tourtiere-du-lac-saint-jean'
 };
