@@ -1,11 +1,11 @@
 import { Recipe } from '@/types/recipe';
 import { poutineClassique } from './poutine-classique';
-import { tourtiereLacSaintJean } from './tourtiere-lac-saint-jean';
+import { tourtiereDuLacSaintJean } from './tourtiere-du-lac-saint-jean';
 import { tarteAuSucre } from './tarte-au-sucre';
 
 export const recipes: Recipe[] = [
   poutineClassique,
-  tourtiereLacSaintJean,
+  tourtiereDuLacSaintJean,
   tarteAuSucre
 ];
 
