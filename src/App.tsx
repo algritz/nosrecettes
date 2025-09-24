@@ -8,6 +8,7 @@ import RecipePage from "./pages/RecipePage";
 import Admin from "./pages/Admin";
 import NewRecipe from "./pages/NewRecipe";
 import EditRecipe from "./pages/EditRecipe";
+import ManageCategories from "./pages/ManageCategories";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/admin" element={<Admin />} />
           <Route path="/new-recipe" element={<NewRecipe />} />
           <Route path="/edit-recipe/:slug" element={<EditRecipe />} />
+          <Route path="/manage-categories" element={<ManageCategories />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
