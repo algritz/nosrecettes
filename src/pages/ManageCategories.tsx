@@ -1,0 +1,260 @@
+import { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Plus, Trash2, ArrowLeft, Save, AlertTriangle } from 'lucide-react';
+import { showSuccess, showError } from '@/utils/toast';
+import { GitHubService } from '@/services/github';
+import { useCategoryManager } from '@/hooks/useCategoryManager';
+import { recipes } from '@/data/recipes';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+
+const ManageCategories = () => {
+  const navigate = useNavigate();
+  const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
+  const [newCategoryName, setNewCategoryName] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Get existing categories from recipes
+  const existingCategories = Array.from(new Set(recipes.map(recipe => recipe.category)));
+  const { categories, addCategory, removeCategory, getNewCategoriesForPR, clearNewCategories } = useCategoryManager(existingCategories);
+
+  // Get category usage counts
+  const getCategoryUsage = (category: string): number => {
+    return recipes.filter(recipe => recipe.category === category).length;
+  };
+
+  // Check if category can be deleted (not used by any recipe)
+  const canDeleteCategory = (category: string): boolean => {
+    return getCategoryUsage(category) === 0;
+  };
+
+  useEffect(() => {
+    // Check GitHub config - redirect if not present
+    const savedConfig = localStorage.getItem('github-config');
+    if (!savedConfig) {
+      showError('Configuration GitHub requise. Redirection vers la page d\'accueil...');
+      setTimeout(() => navigate('/'), 2000);
+      return;
+    }
+    
+    setGithubConfig(JSON.parse(savedConfig));
+  }, [navigate]);
+
+  // Don't render if no GitHub config
+  if (!githubConfig) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Authentification requise</h1>
+          <p className="text-muted-foreground">
+            Redirection vers la page d'accueil...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const handleAddCategory = () => {
+    const trimmedName = newCategoryName.trim();
+    
+    if (!trimmedName) {
+      showError('Veuillez entrer un nom de catégorie');
+      return;
+    }
+
+    if (categories.includes(trimmedName)) {
+      showError('Cette catégorie existe déjà');
+      return;
+    }
+
+    addCategory(trimmedName);
+    setNewCategoryName('');
+    showSuccess(`Catégorie "${trimmedName}" ajoutée`);
+  };
+
+  const handleDeleteCategory = (category: string) => {
+    if (!canDeleteCategory(category)) {
+      showError('Impossible de supprimer une catégorie utilisée par des recettes');
+      return;
+    }
+
+    removeCategory(category);
+    showSuccess(`Catégorie "${category}" supprimée`);
+  };
+
+  const handleSubmitChanges = async () => {
+    const newCategories = getNewCategoriesForPR();
+    
+    if (newCategories.length === 0) {
+      showError('Aucune modification à soumettre');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // For now, just show success - the actual GitHub integration would go here
+      showSuccess('Fonctionnalité en développement - Les catégories ont été ajoutées localement');
+      clearNewCategories();
+    } catch (error) {
+      showError('Erreur lors de la soumission des modifications');
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const newCategories = getNewCategoriesForPR();
+
+  return (
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="mb-6">
+        <Link to="/">
+          <Button variant="outline" className="mb-4">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Retour aux recettes
+          </Button>
+        </Link>
+        
+        <h1 className="text-3xl font-bold">Gestion des catégories</h1>
+        <p className="text-muted-foreground mt-2">
+          Ajoutez ou supprimez des catégories de recettes. Les modifications seront soumises via une pull request.
+        </p>
+        
+        <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+          <p className="text-sm text-green-700">
+            ✅ Connecté à <strong>{githubConfig.owner}/{githubConfig.repo}</strong>
+          </p>
+        </div>
+      </div>
+
+      {/* Add New Category */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle>Ajouter une nouvelle catégorie</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex gap-2">
+            <Input
+              value={newCategoryName}
+              onChange={(e) => setNewCategoryName(e.target.value)}
+              placeholder="Nom de la nouvelle catégorie"
+              onKeyPress={(e) => e.key === 'Enter' && handleAddCategory()}
+              className="flex-1"
+            />
+            <Button onClick={handleAddCategory} disabled={!newCategoryName.trim()}>
+              <Plus className="w-4 h-4 mr-2" />
+              Ajouter
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Pending Changes */}
+      {newCategories.length > 0 && (
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center justify-between">
+              Modifications en attente
+              <Button onClick={handleSubmitChanges} disabled={isSubmitting}>
+                <Save className="w-4 h-4 mr-2" />
+                {isSubmitting ? 'Soumission...' : 'Soumettre les modifications'}
+              </Button>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Alert>
+              <AlertTriangle className="h-4 w-4" />
+              <AlertDescription>
+                Vous avez {newCategories.length} nouvelle(s) catégorie(s) à soumettre: {newCategories.join(', ')}
+              </AlertDescription>
+            </Alert>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Categories List */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Catégories existantes ({categories.length})</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-3">
+            {categories.map((category) => {
+              const usageCount = getCategoryUsage(category);
+              const canDelete = canDeleteCategory(category);
+              const isNewCategory = newCategories.includes(category);
+
+              return (
+                <div key={category} className="flex items-center justify-between p-3 border rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <span className="font-medium">{category}</span>
+                    {isNewCategory && (
+                      <Badge variant="secondary">Nouveau</Badge>
+                    )}
+                    <Badge variant="outline">
+                      {usageCount} recette{usageCount !== 1 ? 's' : ''}
+                    </Badge>
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    {canDelete ? (
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button variant="outline" size="sm">
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Supprimer la catégorie</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              Êtes-vous sûr de vouloir supprimer la catégorie "{category}" ?
+                              Cette action ne peut pas être annulée.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Annuler</AlertDialogCancel>
+                            <AlertDialogAction onClick={() => handleDeleteCategory(category)}>
+                              Supprimer
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    ) : (
+                      <Button variant="outline" size="sm" disabled title="Impossible de supprimer une catégorie utilisée">
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {categories.length === 0 && (
+            <div className="text-center py-8 text-muted-foreground">
+              Aucune catégorie trouvée
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+export default ManageCategories;
