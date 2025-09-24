@@ -5,7 +5,7 @@ import { SearchBar } from '@/components/SearchBar';
 import { useRecipeSearch } from '@/hooks/useRecipeSearch';
 import { MadeWithDyad } from '@/components/made-with-dyad';
 import { Button } from '@/components/ui/button';
-import { Plus } from 'lucide-react';
+import { Plus, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
@@ -34,7 +34,13 @@ const Index = () => {
       <div className="container mx-auto px-4 py-8">
         <header className="mb-12">
           {hasGitHubConfig && (
-            <div className="flex justify-end mb-6">
+            <div className="flex justify-end mb-6 gap-2">
+              <Link to="/manage-categories">
+                <Button variant="outline">
+                  <Settings className="w-4 h-4 mr-2" />
+                  Gérer les catégories
+                </Button>
+              </Link>
               <Link to="/new-recipe">
                 <Button variant="outline">
                   <Plus className="w-4 h-4 mr-2" />
