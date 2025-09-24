@@ -4,7 +4,7 @@ export const tarteAuSucre: Recipe = {
   id: '3',
   title: 'Tarte au Sucre',
   description: 'Dessert québécois classique à base de sirop d\'érable et de crème.',
-  categories: ['Desserts'], // Updated to use categories array
+  categories: ['Desserts'],
   prepTime: 20,
   cookTime: 35,
   servings: 8,

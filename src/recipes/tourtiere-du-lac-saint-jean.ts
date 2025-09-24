@@ -4,7 +4,7 @@ export const tourtiereDuLacSaintJean: Recipe = {
   id: '2',
   title: 'Tourtière du Lac-Saint-Jean',
   description: 'Tourtière traditionnelle avec un mélange de viandes et pommes de terre.',
-  categories: ['Plats principaux'], // Updated to use categories array
+  categories: ['Plats principaux'],
   prepTime: 45,
   cookTime: 180,
   servings: 8,

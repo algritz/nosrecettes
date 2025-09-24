@@ -2,7 +2,7 @@ export interface Recipe {
   id: string;
   title: string;
   description: string;
-  categories: string[]; // Changed from category to categories array
+  categories: string[]; // Primary field for categories
   prepTime: number;
   cookTime: number;
   marinatingTime?: number; // Optional marinating time in minutes
