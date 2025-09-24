@@ -34,15 +34,15 @@ const Index = () => {
       <div className="container mx-auto px-4 py-8">
         <header className="mb-12">
           {hasGitHubConfig && (
-            <div className="flex justify-end mb-6 gap-2">
+            <div className="flex flex-col sm:flex-row justify-end mb-6 gap-2">
               <Link to="/manage-categories">
-                <Button variant="outline">
+                <Button variant="outline" className="w-full sm:w-auto">
                   <Settings className="w-4 h-4 mr-2" />
                   Gérer les catégories
                 </Button>
               </Link>
               <Link to="/new-recipe">
-                <Button variant="outline">
+                <Button variant="outline" className="w-full sm:w-auto">
                   <Plus className="w-4 h-4 mr-2" />
                   Ajouter une recette
                 </Button>
