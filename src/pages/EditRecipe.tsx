@@ -15,6 +15,7 @@ import { SectionedInstructions } from '@/components/SectionedInstructions';
 import { ProcessedImage } from '@/utils/imageUtils';
 import { IngredientSection, InstructionSection } from '@/types/recipe';
 import { recipes } from '@/data/recipes';
+import { recipeCategories } from '@/data/categories';
 import { NotFound } from '@/components/NotFound';
 
 const EditRecipe = () => {
@@ -56,17 +57,6 @@ const EditRecipe = () => {
     { title: '', steps: [''] }
   ]);
 
-  const defaultCategories = [
-    'Plats principaux',
-    'Desserts',
-    'Entrées',
-    'Accompagnements',
-    'Soupes',
-    'Salades',
-    'Boissons',
-    'Collations'
-  ];
-
   useEffect(() => {
     // Check GitHub config
     const savedConfig = localStorage.getItem('github-config');
@@ -77,7 +67,7 @@ const EditRecipe = () => {
 
     // Get categories from existing recipes and merge with defaults
     const existingCategories = Array.from(new Set(recipes.map(recipe => recipe.category)));
-    const allCategories = Array.from(new Set([...defaultCategories, ...existingCategories]));
+    const allCategories = Array.from(new Set([...recipeCategories, ...existingCategories])).sort();
     setAvailableCategories(allCategories);
 
     // Pre-fill form with existing recipe data
@@ -141,12 +131,6 @@ const EditRecipe = () => {
       </div>
     );
   }
-
-  const addCategory = (newCategory: string) => {
-    if (!availableCategories.includes(newCategory)) {
-      setAvailableCategories(prev => [...prev, newCategory].sort());
-    }
-  };
 
   const addIngredient = () => {
     setRecipe(prev => ({
@@ -303,10 +287,12 @@ const EditRecipe = () => {
                 value={recipe.category}
                 onValueChange={(value) => setRecipe(prev => ({ ...prev, category: value }))}
                 categories={availableCategories}
-                onAddCategory={addCategory}
-                placeholder="Choisir ou créer une catégorie"
+                placeholder="Choisir une catégorie"
                 className="w-full"
               />
+              <p className="text-xs text-muted-foreground mt-1">
+                Pour ajouter de nouvelles catégories, utilisez la page de gestion des catégories.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
