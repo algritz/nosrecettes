@@ -1,13 +1,13 @@
 // Default recipe categories
 export const recipeCategories = [
-  'Plats principaux',
+  'Accompagnements',
+  'Boissons',
+  'Collations',
   'Desserts',
   'Entrées',
-  'Accompagnements',
-  'Soupes',
+  'Plats principaux',
   'Salades',
-  'Boissons',
-  'Collations'
+  'Soupes'
 ];
 
 // Helper function to get all categories (from recipes + defaults)
