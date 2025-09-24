@@ -9,7 +9,7 @@ interface GitHubConfig {
 interface RecipeData {
   title: string;
   description: string;
-  category: string;
+  categories: string[]; // Updated to handle multiple categories
   prepTime: string;
   cookTime: string;
   marinatingTime?: string;
@@ -157,14 +157,16 @@ export class GitHubService {
       imagesField = `  images: [\n${imageObjects.join(',\n')}\n  ],\n`;
     }
 
+    // Generate categories field
+    const categoriesField = `  categories: [${data.categories.map(cat => `'${this.escapeString(cat)}'`).join(', ')}],\n`;
+
     return `import { Recipe } from '@/types/recipe';
 
 export const ${variableName}: Recipe = {
   id: '${id}',
   title: '${this.escapeString(data.title)}',
   description: '${this.escapeString(data.description)}',
-  category: '${this.escapeString(data.category)}',
-  prepTime: ${data.prepTime || 0},
+${categoriesField}  prepTime: ${data.prepTime || 0},
   cookTime: ${data.cookTime || 0},
 ${marinatingTimeField}  servings: ${data.servings || 1},
   difficulty: '${data.difficulty}',
@@ -263,7 +265,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
         {
           headers: {
             'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            'Accept': 'application/v nd.github.v3+json',
           },
         }
       );
@@ -511,7 +513,7 @@ Ces catégories seront disponibles lors de la création de nouvelles recettes.
             body: `## Nouvelle recette ajoutée
 
 **Titre:** ${recipeData.title}
-**Catégorie:** ${recipeData.category}
+**Catégories:** ${recipeData.categories.join(', ')}
 **Difficulté:** ${recipeData.difficulty}
 **Temps total:** ${totalTime} minutes${marinatingInfo}
 **Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}${notesInfo}${imageInfo}
@@ -749,7 +751,7 @@ ${recipeData.description}
             body: `## Recette modifiée
 
 **Titre:** ${recipeData.title}
-**Catégorie:** ${recipeData.category}
+**Catégories:** ${recipeData.categories.join(', ')}
 **Difficulté:** ${recipeData.difficulty}
 **Temps total:** ${totalTime} minutes${marinatingInfo}
 **Portions:** ${recipeData.servings}${accompanimentInfo}${wineInfo}${sourceInfo}${notesInfo}${imageInfo}

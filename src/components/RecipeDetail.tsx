@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { formatTime } from '@/utils/timeFormat';
 import { useState, useEffect } from 'react';
 import { ResponsiveImage } from './ResponsiveImage';
+import { getRecipeCategories } from '@/utils/recipeUtils';
 
 interface RecipeDetailProps {
   recipe: Recipe;
@@ -16,6 +17,8 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  const categories = getRecipeCategories(recipe);
 
   useEffect(() => {
     // Check if GitHub configuration exists
@@ -36,12 +39,6 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
   const allImages = recipe.images || (recipe.image ? [recipe.image] : []);
   const hasMultipleImages = allImages.length > 1;
   const hasAnyImage = allImages.length > 0;
-
-  // Debug logging
-  console.log('Recipe images:', recipe.images);
-  console.log('Recipe image (old format):', recipe.image);
-  console.log('All images:', allImages);
-  console.log('Has any image:', hasAnyImage);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
@@ -148,17 +145,10 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
           </div>
         )}
         
-        {/* Debug info - remove this after fixing */}
-        {!hasAnyImage && (
-          <div className="mb-6 p-4 bg-yellow-100 border border-yellow-300 rounded-lg">
-            <p className="text-sm">Debug: No images found</p>
-            <p className="text-xs">Recipe images: {JSON.stringify(recipe.images)}</p>
-            <p className="text-xs">Recipe image: {JSON.stringify(recipe.image)}</p>
-          </div>
-        )}
-        
         <div className="flex flex-wrap gap-2 mb-4">
-          <Badge variant="secondary">{recipe.category}</Badge>
+          {categories.map((category) => (
+            <Badge key={category} variant="secondary">{category}</Badge>
+          ))}
         </div>
         
         <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>

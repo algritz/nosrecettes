@@ -5,6 +5,7 @@ import { Clock, Users, ChefHat } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { formatTimeShort } from '@/utils/timeFormat';
 import { ResponsiveImage } from './ResponsiveImage';
+import { getRecipeCategories, getPrimaryCategory } from '@/utils/recipeUtils';
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -12,14 +13,11 @@ interface RecipeCardProps {
 
 export const RecipeCard = ({ recipe }: RecipeCardProps) => {
   const totalTime = recipe.prepTime + recipe.cookTime;
+  const categories = getRecipeCategories(recipe);
+  const primaryCategory = getPrimaryCategory(recipe);
   
   // Get the primary image (first image from new format or fallback to old image field)
   const primaryImage = recipe.images?.[0] || recipe.image;
-  
-  // Debug logging
-  console.log(`RecipeCard ${recipe.title} - images:`, recipe.images);
-  console.log(`RecipeCard ${recipe.title} - image:`, recipe.image);
-  console.log(`RecipeCard ${recipe.title} - primaryImage:`, primaryImage);
   
   return (
     <Link to={`/recipe/${recipe.slug}`}>
@@ -34,8 +32,22 @@ export const RecipeCard = ({ recipe }: RecipeCardProps) => {
         />
         
         <CardHeader>
-          <div className="flex justify-between items-start mb-2">
-            <Badge variant="secondary">{recipe.category}</Badge>
+          <div className="flex flex-wrap gap-1 mb-2">
+            {categories.length > 0 ? (
+              categories.map((category, index) => (
+                <Badge 
+                  key={category} 
+                  variant={index === 0 ? "default" : "secondary"}
+                  className="text-xs"
+                >
+                  {category}
+                </Badge>
+              ))
+            ) : (
+              <Badge variant="secondary" className="text-xs">
+                {primaryCategory}
+              </Badge>
+            )}
           </div>
           <CardTitle className="text-lg">{recipe.title}</CardTitle>
         </CardHeader>

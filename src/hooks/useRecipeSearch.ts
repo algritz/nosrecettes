@@ -1,12 +1,13 @@
 import { useState, useMemo } from 'react';
 import { Recipe } from '@/types/recipe';
+import { getAllCategoriesFromRecipes, recipeMatchesCategories } from '@/utils/recipeUtils';
 
 export const useRecipeSearch = (recipes: Recipe[]) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const categories = useMemo(() => {
-    return Array.from(new Set(recipes.map(recipe => recipe.category)));
+    return getAllCategoriesFromRecipes(recipes);
   }, [recipes]);
 
   const filteredRecipes = useMemo(() => {
@@ -21,7 +22,7 @@ export const useRecipeSearch = (recipes: Recipe[]) => {
           tag.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
-      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(recipe.category);
+      const matchesCategory = recipeMatchesCategories(recipe, selectedCategories);
 
       return matchesSearch && matchesCategory;
     });

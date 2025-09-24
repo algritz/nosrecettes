@@ -4,7 +4,7 @@ export const poutineClassique: Recipe = {
   id: '1',
   title: 'Poutine Classique',
   description: 'La poutine traditionnelle du Québec avec frites, fromage en grains et sauce brune.',
-  category: 'Plats principaux',
+  categories: ['Plats principaux', 'Collations'], // Updated to use categories array
   prepTime: 15,
   cookTime: 30,
   servings: 4,

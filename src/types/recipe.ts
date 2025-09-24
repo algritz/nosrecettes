@@ -2,7 +2,7 @@ export interface Recipe {
   id: string;
   title: string;
   description: string;
-  category: string;
+  categories: string[]; // Changed from category to categories array
   prepTime: number;
   cookTime: number;
   marinatingTime?: number; // Optional marinating time in minutes
@@ -18,6 +18,9 @@ export interface Recipe {
   wine?: string; // Optional wine pairing
   source?: string; // Recipe source/author
   notes?: string; // Optional additional notes
+  
+  // Backward compatibility - keep category field for migration
+  category?: string;
 }
 
 export interface ImageSizes {
