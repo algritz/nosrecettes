@@ -247,25 +247,25 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
         </Card>
       </div>
 
-      {/* Source and Notes - After instructions in discrete format */}
-      {(recipe.source || recipe.notes) && (
+      {/* Notes and Source - After instructions in discrete format, Notes first */}
+      {(recipe.notes || recipe.source) && (
         <div className="grid md:grid-cols-2 gap-4 mt-8">
-          {recipe.source && (
-            <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
-              <BookOpen className="w-5 h-5 mt-0.5 text-muted-foreground" />
-              <div>
-                <p className="font-medium text-sm">Source</p>
-                <p className="text-sm text-muted-foreground">{recipe.source}</p>
-              </div>
-            </div>
-          )}
-
           {recipe.notes && (
             <div className={`flex items-start gap-2 p-3 bg-muted/50 rounded-lg ${recipe.source ? '' : 'md:col-span-2'}`}>
               <StickyNote className="w-5 h-5 mt-0.5 text-muted-foreground" />
               <div>
                 <p className="font-medium text-sm">Notes</p>
                 <p className="text-sm text-muted-foreground whitespace-pre-wrap">{recipe.notes}</p>
+              </div>
+            </div>
+          )}
+
+          {recipe.source && (
+            <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
+              <BookOpen className="w-5 h-5 mt-0.5 text-muted-foreground" />
+              <div>
+                <p className="font-medium text-sm">Source</p>
+                <p className="text-sm text-muted-foreground">{recipe.source}</p>
               </div>
             </div>
           )}
