@@ -27,15 +27,15 @@ export const CategoryCombobox = ({
   const [searchValue, setSearchValue] = useState('');
 
   const filteredCategories = categories.filter(category =>
-    category.toLowerCase().includes(searchValue.toLowerCase())
+    category && searchValue ? category.toLowerCase().includes(searchValue.toLowerCase()) : true
   );
 
   const exactMatch = categories.find(category => 
-    category.toLowerCase() === searchValue.toLowerCase()
+    category && searchValue ? category.toLowerCase() === searchValue.toLowerCase() : false
   );
 
   const handleAddCategory = () => {
-    if (searchValue.trim() && !exactMatch && onAddCategory) {
+    if (searchValue && searchValue.trim() && !exactMatch && onAddCategory) {
       const newCategory = searchValue.trim();
       onAddCategory(newCategory);
       onValueChange(newCategory);
@@ -61,8 +61,8 @@ export const CategoryCombobox = ({
         <Command>
           <CommandInput 
             placeholder="Rechercher ou créer une catégorie..." 
-            value={searchValue}
-            onValueChange={setSearchValue}
+            value={searchValue || ''}
+            onValueChange={(value) => setSearchValue(value || '')}
           />
           <CommandList>
             {filteredCategories.length === 0 && !searchValue && (
