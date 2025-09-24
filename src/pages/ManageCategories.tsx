@@ -10,6 +10,7 @@ import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { useCategoryManager } from '@/hooks/useCategoryManager';
 import { recipes } from '@/data/recipes';
+import { recipeCategories } from '@/data/categories';
 import { NotFound } from '@/components/NotFound';
 import {
   AlertDialog,
@@ -30,9 +31,11 @@ const ManageCategories = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [configChecked, setConfigChecked] = useState(false);
 
-  // Get existing categories from recipes
-  const existingCategories = Array.from(new Set(recipes.map(recipe => recipe.category)));
-  const { categories, addCategory, removeCategory, getNewCategoriesForPR, clearNewCategories } = useCategoryManager(existingCategories);
+  // Get all categories from existing recipes and merge with defaults (same as recipe forms)
+  const existingRecipeCategories = Array.from(new Set(recipes.map(recipe => recipe.category)));
+  const allCategories = Array.from(new Set([...recipeCategories, ...existingRecipeCategories])).sort();
+  
+  const { categories, addCategory, removeCategory, getNewCategoriesForPR, clearNewCategories } = useCategoryManager(allCategories);
 
   // Get category usage counts
   const getCategoryUsage = (category: string): number => {
