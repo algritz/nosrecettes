@@ -1,7 +1,7 @@
 import { Recipe } from '@/types/recipe';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Clock, Users, ChefHat, ArrowLeft, Timer, Utensils, Wine, BookOpen, Edit, ChevronLeft, ChevronRight, StickyNote } from 'lucide-react';
+import { Clock, Users, ChefHat, ArrowLeft, Timer, Utensils, Wine, BookOpen, Edit, ChevronLeft, ChevronRight, StickyNote, ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { formatTime } from '@/utils/timeFormat';
@@ -15,11 +15,21 @@ interface RecipeDetailProps {
 export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     // Check if GitHub configuration exists
     const savedConfig = localStorage.getItem('github-config');
     setHasGitHubConfig(!!savedConfig);
+
+    // Handle scroll to show/hide scroll-to-top button
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setShowScrollTop(scrollTop > 300); // Show after scrolling 300px
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Get all available images (new format + backward compatibility)
@@ -41,12 +51,19 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
     setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-6">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
           <Link to="/">
-            <Button variant="outline">
+            <Button variant="outline" className="w-full sm:w-auto">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Retour aux recettes
             </Button>
@@ -54,7 +71,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
           
           {hasGitHubConfig && (
             <Link to={`/edit-recipe/${recipe.slug}`}>
-              <Button variant="outline">
+              <Button variant="outline" className="w-full sm:w-auto">
                 <Edit className="w-4 h-4 mr-2" />
                 Modifier cette recette
               </Button>
@@ -269,6 +286,21 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <div className="mt-8 flex justify-center">
+          <Button
+            onClick={scrollToTop}
+            variant="outline"
+            size="sm"
+            className="flex items-center gap-2"
+          >
+            <ArrowUp className="w-4 h-4" />
+            Retour en haut
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
