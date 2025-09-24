@@ -11,7 +11,7 @@ import { CategorySelector } from '@/components/CategorySelector';
 import { TimeInput } from '@/components/TimeInput';
 import { ImageUpload } from '@/components/ImageUpload';
 import { SectionedIngredients } from '@/components/SectionedIngredients';
-import { SectionedInstructions } from '@/components/SectionedIn structions';
+import { SectionedInstructions } from '@/components/SectionedInstructions';
 import { ProcessedImage } from '@/utils/imageUtils';
 import { IngredientSection, InstructionSection } from '@/types/recipe';
 import { recipes } from '@/data/recipes';
