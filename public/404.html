@@ -23,6 +23,20 @@
       var pathSegmentsToKeep = 1;
 
       var l = window.location;
+      
+      // Check if this is an admin route that should show 404 for unauthorized users
+      var adminRoutes = ['/new-recipe', '/edit-recipe', '/manage-categories'];
+      var currentPath = l.pathname.replace('/nosrecettes', ''); // Remove base path
+      var isAdminRoute = adminRoutes.some(function(route) {
+        return currentPath.startsWith(route);
+      });
+      
+      if (isAdminRoute) {
+        // For admin routes, check if user has GitHub config
+        // If not, we'll let the React app handle showing the 404
+        // This allows the SPA to properly show the styled 404 page
+      }
+      
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
         l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
