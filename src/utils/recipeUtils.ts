@@ -4,11 +4,11 @@ import { Recipe } from '@/types/recipe';
 export const getRecipeCategories = (recipe: Recipe): string[] => {
   // If the recipe has the new categories field, use it
   if (recipe.categories && recipe.categories.length > 0) {
-    return recipe.categories;
+    return recipe.categories.filter(cat => cat && cat.trim() !== '');
   }
   
   // Fall back to the old category field for backward compatibility
-  if (recipe.category) {
+  if (recipe.category && recipe.category.trim() !== '') {
     return [recipe.category];
   }
   
@@ -36,7 +36,11 @@ export const getAllCategoriesFromRecipes = (recipes: Recipe[]): string[] => {
   
   recipes.forEach(recipe => {
     const categories = getRecipeCategories(recipe);
-    categories.forEach(category => allCategories.add(category));
+    categories.forEach(category => {
+      if (category && category.trim() !== '') {
+        allCategories.add(category.trim());
+      }
+    });
   });
   
   return Array.from(allCategories).sort();
