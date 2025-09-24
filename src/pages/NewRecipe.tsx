@@ -15,6 +15,7 @@ import { SectionedInstructions } from '@/components/SectionedInstructions';
 import { ProcessedImage } from '@/utils/imageUtils';
 import { IngredientSection, InstructionSection } from '@/types/recipe';
 import { recipes } from '@/data/recipes';
+import { NotFound } from '@/components/NotFound';
 
 const NewRecipe = () => {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const NewRecipe = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
+  const [configChecked, setConfigChecked] = useState(false);
   
   // New state for sectioned ingredients and instructions
   const [useSectionedIngredients, setUseSectionedIngredients] = useState(false);
@@ -63,31 +65,30 @@ const NewRecipe = () => {
   ];
 
   useEffect(() => {
-    // Check GitHub config - redirect if not present
+    // Check GitHub config
     const savedConfig = localStorage.getItem('github-config');
-    if (!savedConfig) {
-      showError('Configuration GitHub requise. Redirection vers la page d\'administration...');
-      setTimeout(() => navigate('/admin'), 2000);
-      return;
+    if (savedConfig) {
+      setGithubConfig(JSON.parse(savedConfig));
     }
-    
-    setGithubConfig(JSON.parse(savedConfig));
+    setConfigChecked(true);
 
     // Get categories from existing recipes and merge with defaults
     const existingCategories = Array.from(new Set(recipes.map(recipe => recipe.category)));
     const allCategories = Array.from(new Set([...defaultCategories, ...existingCategories]));
     setAvailableCategories(allCategories);
-  }, [navigate]);
+  }, []);
 
-  // Don't render if no GitHub config
-  if (!githubConfig) {
+  // Show 404 if no GitHub config
+  if (configChecked && !githubConfig) {
+    return <NotFound />;
+  }
+
+  // Don't render until config is checked
+  if (!configChecked) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Configuration requise</h1>
-          <p className="text-muted-foreground">
-            Redirection vers la page d'administration...
-          </p>
+          <p className="text-muted-foreground">Chargement...</p>
         </div>
       </div>
     );

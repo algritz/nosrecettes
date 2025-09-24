@@ -10,6 +10,7 @@ import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { useCategoryManager } from '@/hooks/useCategoryManager';
 import { recipes } from '@/data/recipes';
+import { NotFound } from '@/components/NotFound';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -27,6 +28,7 @@ const ManageCategories = () => {
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [newCategoryName, setNewCategoryName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [configChecked, setConfigChecked] = useState(false);
 
   // Get existing categories from recipes
   const existingCategories = Array.from(new Set(recipes.map(recipe => recipe.category)));
@@ -43,26 +45,25 @@ const ManageCategories = () => {
   };
 
   useEffect(() => {
-    // Check GitHub config - redirect if not present
+    // Check GitHub config
     const savedConfig = localStorage.getItem('github-config');
-    if (!savedConfig) {
-      showError('Configuration GitHub requise. Redirection vers la page d\'accueil...');
-      setTimeout(() => navigate('/'), 2000);
-      return;
+    if (savedConfig) {
+      setGithubConfig(JSON.parse(savedConfig));
     }
-    
-    setGithubConfig(JSON.parse(savedConfig));
-  }, [navigate]);
+    setConfigChecked(true);
+  }, []);
 
-  // Don't render if no GitHub config
-  if (!githubConfig) {
+  // Show 404 if no GitHub config
+  if (configChecked && !githubConfig) {
+    return <NotFound />;
+  }
+
+  // Don't render until config is checked
+  if (!configChecked) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Authentification requise</h1>
-          <p className="text-muted-foreground">
-            Redirection vers la page d'accueil...
-          </p>
+          <p className="text-muted-foreground">Chargement...</p>
         </div>
       </div>
     );
