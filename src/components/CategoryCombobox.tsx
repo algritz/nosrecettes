@@ -26,19 +26,28 @@ export const CategoryCombobox = ({
   const [open, setOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
-  const filteredCategories = categories.filter(category =>
-    category && searchValue ? category.toLowerCase().includes(searchValue.toLowerCase()) : true
-  );
+  // Ensure categories is an array and filter out any undefined/null values
+  const safeCategories = Array.isArray(categories) ? categories.filter(cat => cat && typeof cat === 'string') : [];
+  
+  // Safe search value - ensure it's always a string
+  const safeSearchValue = searchValue || '';
 
-  const exactMatch = categories.find(category => 
-    category && searchValue ? category.toLowerCase() === searchValue.toLowerCase() : false
-  );
+  const filteredCategories = safeCategories.filter(category => {
+    if (!category || typeof category !== 'string') return false;
+    if (!safeSearchValue) return true;
+    return category.toLowerCase().includes(safeSearchValue.toLowerCase());
+  });
+
+  const exactMatch = safeCategories.find(category => {
+    if (!category || typeof category !== 'string' || !safeSearchValue) return false;
+    return category.toLowerCase() === safeSearchValue.toLowerCase();
+  });
 
   const handleAddCategory = () => {
-    if (searchValue && searchValue.trim() && !exactMatch && onAddCategory) {
-      const newCategory = searchValue.trim();
-      onAddCategory(newCategory);
-      onValueChange(newCategory);
+    const trimmedSearch = safeSearchValue.trim();
+    if (trimmedSearch && !exactMatch && onAddCategory) {
+      onAddCategory(trimmedSearch);
+      onValueChange(trimmedSearch);
       setSearchValue('');
       setOpen(false);
     }
@@ -61,19 +70,19 @@ export const CategoryCombobox = ({
         <Command>
           <CommandInput 
             placeholder="Rechercher ou créer une catégorie..." 
-            value={searchValue || ''}
+            value={safeSearchValue}
             onValueChange={(value) => setSearchValue(value || '')}
           />
           <CommandList>
-            {filteredCategories.length === 0 && !searchValue && (
+            {filteredCategories.length === 0 && !safeSearchValue && (
               <CommandEmpty>Aucune catégorie trouvée.</CommandEmpty>
             )}
             
-            {filteredCategories.length === 0 && searchValue && !exactMatch && onAddCategory && (
+            {filteredCategories.length === 0 && safeSearchValue && !exactMatch && onAddCategory && (
               <CommandGroup>
                 <CommandItem onSelect={handleAddCategory} className="text-primary">
                   <Plus className="mr-2 h-4 w-4" />
-                  Créer "{searchValue}"
+                  Créer "{safeSearchValue}"
                 </CommandItem>
               </CommandGroup>
             )}
@@ -101,11 +110,11 @@ export const CategoryCombobox = ({
               </CommandGroup>
             )}
             
-            {searchValue && !exactMatch && onAddCategory && filteredCategories.length > 0 && (
+            {safeSearchValue && !exactMatch && onAddCategory && filteredCategories.length > 0 && (
               <CommandGroup>
                 <CommandItem onSelect={handleAddCategory} className="text-primary border-t">
                   <Plus className="mr-2 h-4 w-4" />
-                  Créer "{searchValue}"
+                  Créer "{safeSearchValue}"
                 </CommandItem>
               </CommandGroup>
             )}
