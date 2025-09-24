@@ -228,6 +228,149 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
     return currentContent;
   }
 
+  private updateCategoriesFile(currentContent: string, newCategories: string[]): string {
+    // Find the recipeCategories array
+    const arrayRegex = /export const recipeCategories = \[([\s\S]*?)\];/;
+    const match = currentContent.match(arrayRegex);
+    
+    if (match) {
+      // Parse existing categories
+      const existingCategoriesStr = match[1];
+      const existingCategories = existingCategoriesStr
+        .split(',')
+        .map(cat => cat.trim().replace(/['"]/g, ''))
+        .filter(cat => cat.length > 0);
+      
+      // Add new categories and sort
+      const allCategories = [...new Set([...existingCategories, ...newCategories])].sort();
+      
+      // Generate new array content
+      const newArrayContent = allCategories.map(cat => `  '${this.escapeString(cat)}'`).join(',\n');
+      
+      return currentContent.replace(arrayRegex, `export const recipeCategories = [\n${newArrayContent}\n];`);
+    }
+    
+    return currentContent;
+  }
+
+  async createCategoryPR(newCategories: string[]): Promise<string> {
+    const branchName = `categories/add-${newCategories.join('-').toLowerCase().replace(/[^a-z0-9-]/g, '-')}-${Date.now()}`;
+    
+    try {
+      // Get the default branch SHA
+      const mainBranchResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/ref/heads/main`,
+        {
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+          },
+        }
+      );
+      
+      if (!mainBranchResponse.ok) {
+        throw new Error('Failed to get main branch');
+      }
+      
+      const mainBranch = await mainBranchResponse.json();
+      const baseSha = mainBranch.object.sha;
+
+      // Create new branch
+      await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/refs`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ref: `refs/heads/${branchName}`,
+            sha: baseSha,
+          }),
+        }
+      );
+
+      // Get current categories.ts content
+      const categoriesResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/data/categories.ts?ref=main`,
+        {
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+          },
+        }
+      );
+      
+      const categoriesFile = await categoriesResponse.json();
+      const currentCategoriesContent = this.base64Decode(categoriesFile.content);
+
+      // Update categories.ts content
+      const updatedCategoriesContent = this.updateCategoriesFile(currentCategoriesContent, newCategories);
+
+      // Update categories.ts file
+      await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/data/categories.ts`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: `Add categories: ${newCategories.join(', ')}`,
+            content: this.base64Encode(updatedCategoriesContent),
+            branch: branchName,
+            sha: categoriesFile.sha,
+          }),
+        }
+      );
+
+      // Create pull request
+      const prResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            title: `Ajouter ${newCategories.length > 1 ? 'les catégories' : 'la catégorie'}: ${newCategories.join(', ')}`,
+            head: branchName,
+            base: 'main',
+            body: `## Nouvelles catégories ajoutées
+
+${newCategories.map(cat => `- **${cat}**`).join('\n')}
+
+### Détails
+- **Nombre de catégories:** ${newCategories.length}
+- **Ajoutées via:** Interface web de gestion des catégories
+
+Ces catégories seront disponibles lors de la création de nouvelles recettes.
+
+---
+*Catégories ajoutées automatiquement via l'interface de gestion.*`,
+          }),
+        }
+      );
+
+      if (!prResponse.ok) {
+        throw new Error('Failed to create pull request');
+      }
+
+      const pr = await prResponse.json();
+      return pr.html_url;
+
+    } catch (error) {
+      console.error('Error creating category PR:', error);
+      throw error;
+    }
+  }
+
   async createRecipePR(recipeData: RecipeData, images: ProcessedImage[] = []): Promise<string> {
     const slug = this.createSlug(recipeData.title);
     const branchName = `recipe/${slug}`;

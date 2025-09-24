@@ -107,9 +107,20 @@ const ManageCategories = () => {
     setIsSubmitting(true);
 
     try {
-      // For now, just show success - the actual GitHub integration would go here
-      showSuccess('Fonctionnalité en développement - Les catégories ont été ajoutées localement');
+      const githubService = new GitHubService(githubConfig);
+      const prUrl = await githubService.createCategoryPR(newCategories);
+
+      showSuccess('Modifications soumises! Pull request créée avec succès.');
+      
+      // Show success message with PR link
+      const openPR = confirm(`Catégories soumises avec succès!\n\nVoulez-vous voir la pull request sur GitHub?`);
+      if (openPR) {
+        window.open(prUrl, '_blank');
+      }
+      
+      // Clear new categories after successful submission
       clearNewCategories();
+
     } catch (error) {
       showError('Erreur lors de la soumission des modifications');
       console.error(error);
@@ -172,7 +183,7 @@ const ManageCategories = () => {
               Modifications en attente
               <Button onClick={handleSubmitChanges} disabled={isSubmitting}>
                 <Save className="w-4 h-4 mr-2" />
-                {isSubmitting ? 'Soumission...' : 'Soumettre les modifications'}
+                {isSubmitting ? 'Création de la pull request...' : 'Soumettre les modifications'}
               </Button>
             </CardTitle>
           </CardHeader>
