@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Plus, Minus, Save, ArrowLeft, Layers, FileSpreadsheet, X } from 'lucide-react';
+import { Plus, Minus, Save, ArrowLeft, Layers, FileSpreadsheet, FileText, X } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { CategorySelector } from '@/components/CategorySelector';
@@ -13,6 +13,7 @@ import { ImageUpload } from '@/components/ImageUpload';
 import { SectionedIngredients } from '@/components/SectionedIngredients';
 import { SectionedInstructions } from '@/components/SectionedInstructions';
 import { CSVImporter } from '@/components/CSVImporter';
+import { JSONImporter } from '@/components/JSONImporter';
 import { ProcessedImage } from '@/utils/imageUtils';
 import { IngredientSection, InstructionSection } from '@/types/recipe';
 import { ParsedCSVRecipe } from '@/utils/csvParser';
@@ -46,7 +47,8 @@ const NewRecipe = () => {
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
   const [configChecked, setConfigChecked] = useState(false);
-  const [showImporter, setShowImporter] = useState(false);
+  const [showCSVImporter, setShowCSVImporter] = useState(false);
+  const [showJSONImporter, setShowJSONImporter] = useState(false);
   
   // New state for sectioned ingredients and instructions
   const [useSectionedIngredients, setUseSectionedIngredients] = useState(false);
@@ -96,6 +98,55 @@ const NewRecipe = () => {
     setCsvRecipes(importedRecipes);
     setSelectedCsvRecipe(0); // Select first recipe by default
     showSuccess(`${importedRecipes.length} recette(s) importée(s) depuis le CSV`);
+  };
+
+  const handleJSONImportSuccess = (jsonRecipe: any) => {
+    // Apply JSON recipe to form
+    setRecipe({
+      title: jsonRecipe.title || '',
+      description: jsonRecipe.description || '',
+      categories: jsonRecipe.categories || [],
+      prepTime: jsonRecipe.prepTime?.toString() || '',
+      cookTime: jsonRecipe.cookTime?.toString() || '',
+      marinatingTime: jsonRecipe.marinatingTime?.toString() || '',
+      servings: jsonRecipe.servings?.toString() || '',
+      difficulty: jsonRecipe.difficulty || 'Facile',
+      ingredients: Array.isArray(jsonRecipe.ingredients) && typeof jsonRecipe.ingredients[0] === 'string' 
+        ? jsonRecipe.ingredients 
+        : [''], // Will be handled by sectioned logic below
+      instructions: Array.isArray(jsonRecipe.instructions) && typeof jsonRecipe.instructions[0] === 'string' 
+        ? jsonRecipe.instructions 
+        : [''], // Will be handled by sectioned logic below
+      tags: jsonRecipe.tags || [''],
+      accompaniment: jsonRecipe.accompaniment || '',
+      wine: jsonRecipe.wine || '',
+      source: jsonRecipe.source || '',
+      notes: jsonRecipe.notes || ''
+    });
+
+    // Handle sectioned ingredients
+    if (Array.isArray(jsonRecipe.ingredients) && 
+        jsonRecipe.ingredients.length > 0 && 
+        typeof jsonRecipe.ingredients[0] === 'object' && 
+        'items' in jsonRecipe.ingredients[0]) {
+      setUseSectionedIngredients(true);
+      setSectionedIngredients(jsonRecipe.ingredients as IngredientSection[]);
+    } else {
+      setUseSectionedIngredients(false);
+    }
+
+    // Handle sectioned instructions
+    if (Array.isArray(jsonRecipe.instructions) && 
+        jsonRecipe.instructions.length > 0 && 
+        typeof jsonRecipe.instructions[0] === 'object' && 
+        'steps' in jsonRecipe.instructions[0]) {
+      setUseSectionedInstructions(true);
+      setSectionedInstructions(jsonRecipe.instructions as InstructionSection[]);
+    } else {
+      setUseSectionedInstructions(false);
+    }
+
+    showSuccess(`Recette "${jsonRecipe.title}" importée depuis JSON`);
   };
 
   const applyCsvRecipe = (csvRecipe: ParsedCSVRecipe) => {
@@ -244,7 +295,7 @@ const NewRecipe = () => {
       };
 
       const githubService = new GitHubService(githubConfig);
-      const prUrl = await githubService.createRecipePR(recipeData, recipeImages);
+      const prUrl = await githubService.createRecipePR(recipeData,  recipeImages);
 
       showSuccess('Recette soumise! Pull request créée avec succès.');
       
@@ -302,22 +353,37 @@ const NewRecipe = () => {
           <div>
             <h1 className="text-3xl font-bold">Ajouter une nouvelle recette</h1>
             <p className="text-muted-foreground mt-2">
-              Remplissez le formulaire ci-dessous ou importez depuis un fichier CSV. Une pull request sera créée automatiquement sur GitHub.
+              Remplissez le formulaire ci-dessous ou importez depuis un fichier CSV/JSON. Une pull request sera créée automatiquement sur GitHub.
             </p>
           </div>
           
-          <Button 
-            variant="outline" 
-            onClick={() => setShowImporter(!showImporter)}
-            className="w-full sm:w-auto"
-          >
-            {showImporter ? (
-              <X className="w-4 h-4 mr-2" />
-            ) : (
-              <FileSpreadsheet className="w-4 h-4 mr-2" />
-            )}
-            {showImporter ? 'Fermer l\'import CSV' : 'Importer depuis CSV'}
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+            <Button 
+              variant="outline" 
+              onClick={() => setShowJSONImporter(!showJSONImporter)}
+              className="w-full sm:w-auto"
+            >
+              {showJSONImporter ? (
+                <X className="w-4 h-4 mr-2" />
+              ) : (
+                <FileText className="w-4 h-4 mr-2" />
+              )}
+              {showJSONImporter ? 'Fermer JSON' : 'Importer JSON'}
+            </Button>
+            
+            <Button 
+              variant="outline" 
+              onClick={() => setShowCSVImporter(!showCSVImporter)}
+              className="w-full sm:w-auto"
+            >
+              {showCSVImporter ? (
+                <X className="w-4 h-4 mr-2" />
+              ) : (
+                <FileSpreadsheet className="w-4 h-4 mr-2" />
+              )}
+              {showCSVImporter ? 'Fermer CSV' : 'Importer CSV'}
+            </Button>
+          </div>
         </div>
         
         <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
@@ -327,8 +393,25 @@ const NewRecipe = () => {
         </div>
       </div>
 
+      {/* JSON Importer */}
+      {showJSONImporter && (
+        <div className="mb-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Importer une recette depuis JSON</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <JSONImporter
+                onImportSuccess={handleJSONImportSuccess}
+                onClose={() => setShowJSONImporter(false)}
+              />
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
       {/* CSV Importer */}
-      {showImporter && (
+      {showCSVImporter && (
         <div className="mb-6">
           <Card>
             <CardHeader>
@@ -337,7 +420,7 @@ const NewRecipe = () => {
             <CardContent>
               <CSVImporter
                 onImportSuccess={handleCSVImportSuccess}
-                onClose={() => setShowImporter(false)}
+                onClose={() => setShowCSVImporter(false)}
               />
             </CardContent>
           </Card>
