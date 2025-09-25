@@ -11,6 +11,10 @@
     "build:seo": "node scripts/build-seo.js",
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "generate:robots": "node scripts/generate-robots.js",
+    "generate:manifest": "node scripts/generate-manifest.js",
+    "generate:index": "node scripts/generate-index-html.js",
+    "generate:browserconfig": "node scripts/generate-browserconfig.js",
+    "generate:security": "node scripts/generate-security.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
