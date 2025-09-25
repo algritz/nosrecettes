@@ -54,45 +54,35 @@ const extractIngredients = (text: string): string[] => {
         .map(ing => ing.trim())
         .filter(ing => ing.length > 0);
     } else {
-      // For single-line ingredients, use a more careful splitting approach
-      // Split only at the beginning of clear ingredient patterns
-      // Look for patterns like: "number + unit" or "number + space + word" at start of ingredient
-      const ingredientPattern = /(?=\d+(?:\s*\/\s*\d+)?\s+(?:tasse|cup|c\.\s*à\s*(?:soupe|thé|table)|cuillère|cuillere|ml|l|g|kg|lb|oz|boîte|boite|paquet|livre|once)(?:s)?\s+)|(?=\d+(?:\s*\/\s*\d+)?\s+[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)*(?:\s+(?:de|d'|du|des|en|à|au|aux)\s+))/g;
+      // For single-line ingredients, use a more robust approach
+      // Look for ingredient patterns that start with numbers followed by units or words
       
-      // Split the text at ingredient boundaries
-      const parts = ingredientsText.split(ingredientPattern);
+      // More comprehensive pattern that includes all common units and measurements
+      const ingredientStartPattern = /(?=\d+(?:\s*\/\s*\d+)?\s*(?:g|kg|ml|l|lb|oz|tasse|tasses|cup|cups|c\.\s*à\s*(?:soupe|thé|table)|cuillère|cuilleres?|boîte|boites?|paquet|paquets|livre|livres|once|onces|pincée|pincees?)\s+)|(?=\d+(?:\s*\/\s*\d+)?\s+[A-Za-zÀ-ÿ])/g;
       
-      // Reconstruct ingredients by combining parts that belong together
-      ingredients = [];
-      let currentIngredient = '';
+      // Split at ingredient boundaries
+      const potentialIngredients = ingredientsText.split(ingredientStartPattern).filter(part => part.trim());
       
-      for (let i = 0; i < parts.length; i++) {
-        const part = parts[i].trim();
-        if (!part) continue;
+      // If we got reasonable results, use them
+      if (potentialIngredients.length > 1 && potentialIngredients.every(ing => ing.trim().length > 2)) {
+        ingredients = potentialIngredients.map(ing => ing.trim());
+      } else {
+        // Fallback: try a different approach using common separators
+        // Look for patterns where ingredients typically start
+        const separatorPattern = /\s+(?=\d+(?:\s*\/\s*\d+)?\s*(?:g|kg|ml|l|lb|oz|tasse|cup|c\.\s*à|cuillère|boîte|paquet|livre|once|pincée))/g;
         
-        // Check if this part starts with a number (likely start of new ingredient)
-        if (/^\d/.test(part) && currentIngredient) {
-          // Save previous ingredient and start new one
-          ingredients.push(currentIngredient.trim());
-          currentIngredient = part;
-        } else {
-          // Continue building current ingredient
-          currentIngredient += (currentIngredient ? ' ' : '') + part;
-        }
-      }
-      
-      // Don't forget the last ingredient
-      if (currentIngredient.trim()) {
-        ingredients.push(currentIngredient.trim());
-      }
-      
-      // If the above approach didn't work well, fall back to a simpler method
-      if (ingredients.length === 0 || ingredients.some(ing => ing.length < 3)) {
-        // Try splitting by common separators while preserving fractions
         ingredients = ingredientsText
-          .split(/(?<=\w)\s+(?=\d+(?:\s*\/\s*\d+)?\s+(?:tasse|cup|c\.\s*à|cuillère|ml|l|g|kg|lb|oz|boîte|paquet|livre))/g)
+          .split(separatorPattern)
           .map(ing => ing.trim())
           .filter(ing => ing.length > 0);
+        
+        // If still not good, try one more approach: split on number at start of word boundary
+        if (ingredients.length <= 1) {
+          ingredients = ingredientsText
+            .split(/\s+(?=\d)/)
+            .map(ing => ing.trim())
+            .filter(ing => ing.length > 2);
+        }
       }
     }
     
@@ -102,7 +92,12 @@ const extractIngredients = (text: string): string[] => {
         .replace(/[,;]$/, '') // Remove trailing comma or semicolon
         .replace(/\s+/g, ' ') // Normalize whitespace
         .trim();
-    }).filter(ing => ing.length > 2 && !ing.match(/^(?:Instructions|Préparation|Cuisson|Portions)/i));
+    }).filter(ing => {
+      // Filter out very short ingredients and section headers
+      return ing.length > 2 && 
+             !ing.match(/^(?:Instructions|Préparation|Cuisson|Portions)/i) &&
+             !ing.match(/^[,;.\s]*$/); // Remove punctuation-only strings
+    });
   }
   
   return [];
