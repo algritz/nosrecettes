@@ -89,6 +89,28 @@ const extractInstructions = (text: string): string[] => {
   return [];
 };
 
+const extractDescription = (text: string, title: string): string => {
+  // Try to find a description section
+  const descriptionMatch = text.match(/(?:Description|Résumé):\s*(.*?)(?=Ingrédients:|Instructions:|Préparation:|$)/is);
+  if (descriptionMatch && descriptionMatch[1].trim().length > 10) {
+    return descriptionMatch[1].trim();
+  }
+  
+  // Try to extract the first meaningful sentence from the content
+  const sentences = text.split(/[.!?]+/).map(s => s.trim()).filter(s => s.length > 20);
+  for (const sentence of sentences) {
+    // Skip sentences that are likely section headers or ingredient lists
+    if (!sentence.match(/^(?:Ingrédients|Instructions|Préparation|Cuisson|Portions|Temps)/i) &&
+        !sentence.match(/^\d+\s*(?:g|kg|ml|l|c\.\s*à\s*(?:soupe|thé)|tasse|cuillère)/i) &&
+        sentence.length < 200) {
+      return sentence + '.';
+    }
+  }
+  
+  // If no good description found, return empty string instead of generic template
+  return '';
+};
+
 const generateTags = (title: string, ingredients: string[]): string[] => {
   const tags: string[] = [];
   
@@ -209,15 +231,8 @@ export const parseCSVRecipes = (csvContent: string): CSVParseResult => {
         // Generate tags and category
         const tags = generateTags(title, ingredients);
         
-        // Create description from first part of content or first instruction
-        let description = '';
-        if (instructions.length > 0) {
-          description = instructions[0].length > 100 ? 
-            instructions[0].substring(0, 100) + '...' : 
-            instructions[0];
-        } else {
-          description = `Délicieuse recette de ${title.toLowerCase()}`;
-        }
+        // Extract or generate description
+        const description = extractDescription(plainContent, title);
         
         const recipe: ParsedCSVRecipe = {
           title,
