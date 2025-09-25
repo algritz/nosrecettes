@@ -186,7 +186,7 @@ const NewRecipe = () => {
       // Prepare recipe data with sectioned ingredients/instructions if enabled
       const recipeData = {
         ...recipe,
-        ingredients: useSectionedIngredients ? sectione dIngredients : recipe.ingredients,
+        ingredients: useSectionedIngredients ? sectionedIngredients : recipe.ingredients,
         instructions: useSectionedInstructions ? sectionedInstructions : recipe.instructions
       };
 
