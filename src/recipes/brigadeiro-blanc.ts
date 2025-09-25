@@ -11,9 +11,7 @@ export const brigadeiroBlanc: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '2 tasse de noix de coco râpée non sucrée séchée',
-    '1 boîte de lait',
-    'Eagle',
-    'Brand',
+    '1 boîte de lait Eagle Brand',
     '1 cuillère à soupe de beurre salé',
     'Sucre blanc granulé pour rouler'
   ],
@@ -31,7 +29,7 @@ export const brigadeiroBlanc: Recipe = {
     'Placer dans des mini moule a muffin ou à dessert.',
     'Bon appétit!'
   ],
-  tags: ['végétarien', 'Brezil'],
+  tags: ['végétarien', 'Brézil'],
   images: [
     {
       small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/brigadeiro_blanc',
