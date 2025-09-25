@@ -24,6 +24,11 @@ interface RecipeData {
   notes?: string;
 }
 
+interface CategoryChange {
+  type: 'add' | 'remove';
+  category: string;
+}
+
 export class GitHubService {
   private config: GitHubConfig;
 
@@ -230,7 +235,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
     return currentContent;
   }
 
-  private updateCategoriesFile(currentContent: string, newCategories: string[]): string {
+  private updateCategoriesFile(currentContent: string, changes: CategoryChange[]): string {
     // Find the recipeCategories array
     const arrayRegex = /export const recipeCategories = \[([\s\S]*?)\];/;
     const match = currentContent.match(arrayRegex);
@@ -238,16 +243,27 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
     if (match) {
       // Parse existing categories
       const existingCategoriesStr = match[1];
-      const existingCategories = existingCategoriesStr
+      let existingCategories = existingCategoriesStr
         .split(',')
         .map(cat => cat.trim().replace(/['"]/g, ''))
         .filter(cat => cat.length > 0);
       
-      // Add new categories and sort
-      const allCategories = [...new Set([...existingCategories, ...newCategories])].sort();
+      // Apply changes
+      changes.forEach(change => {
+        if (change.type === 'add') {
+          if (!existingCategories.includes(change.category)) {
+            existingCategories.push(change.category);
+          }
+        } else if (change.type === 'remove') {
+          existingCategories = existingCategories.filter(cat => cat !== change.category);
+        }
+      });
+      
+      // Sort categories
+      existingCategories.sort();
       
       // Generate new array content
-      const newArrayContent = allCategories.map(cat => `  '${this.escapeString(cat)}'`).join(',\n');
+      const newArrayContent = existingCategories.map(cat => `  '${this.escapeString(cat)}'`).join(',\n');
       
       return currentContent.replace(arrayRegex, `export const recipeCategories = [\n${newArrayContent}\n];`);
     }
@@ -255,8 +271,11 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
     return currentContent;
   }
 
-  async createCategoryPR(newCategories: string[]): Promise<string> {
-    const branchName = `categories/add-${newCategories.join('-').toLowerCase().replace(/[^a-z0-9-]/g, '-')}-${Date.now()}`;
+  async createCategoryPR(changes: CategoryChange[]): Promise<string> {
+    const addedCategories = changes.filter(c => c.type === 'add').map(c => c.category);
+    const removedCategories = changes.filter(c => c.type === 'remove').map(c => c.category);
+    
+    const branchName = `categories/update-${Date.now()}`;
     
     try {
       // Get the default branch SHA
@@ -265,7 +284,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
         {
           headers: {
             'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/v nd.github.v3+json',
+            'Accept': 'application/vnd.github.v3+json',
           },
         }
       );
@@ -309,7 +328,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
       const currentCategoriesContent = this.base64Decode(categoriesFile.content);
 
       // Update categories.ts content
-      const updatedCategoriesContent = this.updateCategoriesFile(currentCategoriesContent, newCategories);
+      const updatedCategoriesContent = this.updateCategoriesFile(currentCategoriesContent, changes);
 
       // Update categories.ts file
       await fetch(
@@ -322,7 +341,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            message: `Add categories: ${newCategories.join(', ')}`,
+            message: `Update categories: +${addedCategories.length} -${removedCategories.length}`,
             content: this.base64Encode(updatedCategoriesContent),
             branch: branchName,
             sha: categoriesFile.sha,
@@ -331,6 +350,33 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
       );
 
       // Create pull request
+      let prTitle = 'Mise à jour des catégories';
+      if (addedCategories.length > 0 && removedCategories.length > 0) {
+        prTitle = `Mise à jour des catégories: +${addedCategories.length} -${removedCategories.length}`;
+      } else if (addedCategories.length > 0) {
+        prTitle = `Ajouter ${addedCategories.length > 1 ? 'les catégories' : 'la catégorie'}: ${addedCategories.join(', ')}`;
+      } else if (removedCategories.length > 0) {
+        prTitle = `Supprimer ${removedCategories.length > 1 ? 'les catégories' : 'la catégorie'}: ${removedCategories.join(', ')}`;
+      }
+
+      let prBody = '## Modifications des catégories\n\n';
+      
+      if (addedCategories.length > 0) {
+        prBody += '### ✅ Catégories ajoutées\n';
+        prBody += addedCategories.map(cat => `- **${cat}**`).join('\n') + '\n\n';
+      }
+      
+      if (removedCategories.length > 0) {
+        prBody += '### ❌ Catégories supprimées\n';
+        prBody += removedCategories.map(cat => `- **${cat}**`).join('\n') + '\n\n';
+      }
+      
+      prBody += '### Détails\n';
+      prBody += `- **Ajouts:** ${addedCategories.length}\n`;
+      prBody += `- **Suppressions:** ${removedCategories.length}\n`;
+      prBody += `- **Modifiées via:** Interface web de gestion des catégories\n\n`;
+      prBody += '---\n*Catégories modifiées automatiquement via l\'interface de gestion.*';
+
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
@@ -341,21 +387,10 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            title: `Ajouter ${newCategories.length > 1 ? 'les catégories' : 'la catégorie'}: ${newCategories.join(', ')}`,
+            title: prTitle,
             head: branchName,
             base: 'main',
-            body: `## Nouvelles catégories ajoutées
-
-${newCategories.map(cat => `- **${cat}**`).join('\n')}
-
-### Détails
-- **Nombre de catégories:** ${newCategories.length}
-- **Ajoutées via:** Interface web de gestion des catégories
-
-Ces catégories seront disponibles lors de la création de nouvelles recettes.
-
----
-*Catégories ajoutées automatiquement via l'interface de gestion.*`,
+            body: prBody,
           }),
         }
       );
@@ -697,7 +732,7 @@ ${recipeData.description}
             headers: {
               'Authorization': `token ${this.config.token}`,
               'Accept': 'application/vnd.github.v3+json',
-              'Content-Type': 'application/json',
+              'Content-Type':  'application/json',
             },
             body: JSON.stringify({
               message: `Update recipe: ${recipeData.title}`,

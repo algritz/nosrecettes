@@ -1,8 +1,13 @@
 import { useState, useCallback } from 'react';
 
+export interface CategoryChange {
+  type: 'add' | 'remove';
+  category: string;
+}
+
 export const useCategoryManager = (initialCategories: string[]) => {
   const [categories, setCategories] = useState<string[]>(initialCategories);
-  const [newCategories, setNewCategories] = useState<string[]>([]);
+  const [changes, setChanges] = useState<CategoryChange[]>([]);
 
   const addCategory = useCallback((categoryName: string) => {
     const trimmedName = categoryName.trim();
@@ -11,28 +16,38 @@ export const useCategoryManager = (initialCategories: string[]) => {
     }
     
     setCategories(prev => [...prev, trimmedName].sort());
-    setNewCategories(prev => [...prev, trimmedName]);
+    setChanges(prev => [...prev, { type: 'add', category: trimmedName }]);
     return true;
   }, [categories]);
 
   const removeCategory = useCallback((categoryName: string) => {
     setCategories(prev => prev.filter(cat => cat !== categoryName));
-    setNewCategories(prev => prev.filter(cat => cat !== categoryName));
+    setChanges(prev => [...prev, { type: 'remove', category: categoryName }]);
   }, []);
 
-  const getNewCategoriesForPR = useCallback(() => {
-    return newCategories;
-  }, [newCategories]);
+  const getChangesForPR = useCallback(() => {
+    return changes;
+  }, [changes]);
 
-  const clearNewCategories = useCallback(() => {
-    setNewCategories([]);
+  const getNewCategoriesForPR = useCallback(() => {
+    return changes.filter(change => change.type === 'add').map(change => change.category);
+  }, [changes]);
+
+  const hasChanges = useCallback(() => {
+    return changes.length > 0;
+  }, [changes]);
+
+  const clearChanges = useCallback(() => {
+    setChanges([]);
   }, []);
 
   return {
     categories,
     addCategory,
     removeCategory,
+    getChangesForPR,
     getNewCategoriesForPR,
-    clearNewCategories
+    hasChanges,
+    clearChanges
   };
 };

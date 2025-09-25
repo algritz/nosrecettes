@@ -36,7 +36,7 @@ const ManageCategories = () => {
   const existingRecipeCategories = recipes.flatMap(recipe => getRecipeCategories(recipe));
   const allCategories = Array.from(new Set([...recipeCategories, ...existingRecipeCategories])).sort();
   
-  const { categories, addCategory, removeCategory, getNewCategoriesForPR, clearNewCategories } = useCategoryManager(allCategories);
+  const { categories, addCategory, removeCategory, getChangesForPR, hasChanges, clearChanges } = useCategoryManager(allCategories);
 
   // Get category usage counts using the utility function
   const getCategoryUsage = (category: string): number => {
@@ -105,9 +105,9 @@ const ManageCategories = () => {
   };
 
   const handleSubmitChanges = async () => {
-    const newCategories = getNewCategoriesForPR();
+    const changes = getChangesForPR();
     
-    if (newCategories.length === 0) {
+    if (changes.length === 0) {
       showError('Aucune modification à soumettre');
       return;
     }
@@ -116,7 +116,7 @@ const ManageCategories = () => {
 
     try {
       const githubService = new GitHubService(githubConfig);
-      const prUrl = await githubService.createCategoryPR(newCategories);
+      const prUrl = await githubService.createCategoryPR(changes);
 
       showSuccess('Modifications soumises! Pull request créée avec succès.');
       
@@ -126,8 +126,8 @@ const ManageCategories = () => {
         window.open(prUrl, '_blank');
       }
       
-      // Clear new categories after successful submission
-      clearNewCategories();
+      // Clear changes after successful submission
+      clearChanges();
 
     } catch (error) {
       showError('Erreur lors de la soumission des modifications');
@@ -137,7 +137,9 @@ const ManageCategories = () => {
     }
   };
 
-  const newCategories = getNewCategoriesForPR();
+  const changes = getChangesForPR();
+  const addedCategories = changes.filter(c => c.type === 'add');
+  const removedCategories = changes.filter(c => c.type === 'remove');
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -184,7 +186,7 @@ const ManageCategories = () => {
       </Card>
 
       {/* Pending Changes */}
-      {newCategories.length > 0 && (
+      {hasChanges() && (
         <Card className="mb-6">
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
@@ -199,7 +201,18 @@ const ManageCategories = () => {
             <Alert>
               <AlertTriangle className="h-4 w-4" />
               <AlertDescription>
-                Vous avez {newCategories.length} nouvelle(s) catégorie(s) à soumettre: {newCategories.join(', ')}
+                <div className="space-y-2">
+                  {addedCategories.length > 0 && (
+                    <div>
+                      <strong>Ajouts ({addedCategories.length}):</strong> {addedCategories.map(c => c.category).join(', ')}
+                    </div>
+                  )}
+                  {removedCategories.length > 0 && (
+                    <div>
+                      <strong>Suppressions ({removedCategories.length}):</strong> {removedCategories.map(c => c.category).join(', ')}
+                    </div>
+                  )}
+                </div>
               </AlertDescription>
             </Alert>
           </CardContent>
@@ -216,14 +229,18 @@ const ManageCategories = () => {
             {categories.map((category) => {
               const usageCount = getCategoryUsage(category);
               const canDelete = canDeleteCategory(category);
-              const isNewCategory = newCategories.includes(category);
+              const isAdded = addedCategories.some(c => c.category === category);
+              const isRemoved = removedCategories.some(c => c.category === category);
 
               return (
-                <div key={category} className="flex items-center justify-between p-3 border rounded-lg">
+                <div key={category} className={`flex items-center justify-between p-3 border rounded-lg ${isRemoved ? 'opacity-50 bg-red-50' : isAdded ? 'bg-green-50' : ''}`}>
                   <div className="flex items-center gap-3">
                     <span className="font-medium">{category}</span>
-                    {isNewCategory && (
-                      <Badge variant="secondary">Nouveau</Badge>
+                    {isAdded && (
+                      <Badge variant="secondary" className="bg-green-100 text-green-800">Nouveau</Badge>
+                    )}
+                    {isRemoved && (
+                      <Badge variant="secondary" className="bg-red-100 text-red-800">À supprimer</Badge>
                     )}
                     <Badge variant="outline">
                       {usageCount} recette{usageCount !== 1 ? 's' : ''}
@@ -231,7 +248,7 @@ const ManageCategories = () => {
                   </div>
                   
                   <div className="flex items-center gap-2">
-                    {canDelete ? (
+                    {canDelete && !isRemoved ? (
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
                           <Button variant="outline" size="sm">
@@ -255,7 +272,7 @@ const ManageCategories = () => {
                         </AlertDialogContent>
                       </AlertDialog>
                     ) : (
-                      <Button variant="outline" size="sm" disabled title="Impossible de supprimer une catégorie utilisée">
+                      <Button variant="outline" size="sm" disabled title={isRemoved ? "Déjà marquée pour suppression" : "Impossible de supprimer une catégorie utilisée"}>
                         <Trash2 className="w-4 h-4" />
                       </Button>
                     )}
