@@ -2,14 +2,18 @@ import { useEffect, useState } from 'react';
 import { recipes } from '@/data/recipes';
 import { RecipeCard } from '@/components/RecipeCard';
 import { SearchBar } from '@/components/SearchBar';
-import { useRecipeSearch } from '@/hooks/useRecipeSearch';
+import { RecipeStats } from '@/components/RecipeStats';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { useInfiniteRecipes } from '@/hooks/useInfiniteRecipes';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { MadeWithDyad } from '@/components/made-with-dyad';
 import { Button } from '@/components/ui/button';
-import { Plus, Settings } from 'lucide-react';
+import { Plus, Settings, ArrowUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   
   const {
     searchTerm,
@@ -17,9 +21,22 @@ const Index = () => {
     selectedCategories,
     setSelectedCategories,
     categories,
-    filteredRecipes,
-    clearFilters
-  } = useRecipeSearch(recipes);
+    displayedRecipes,
+    hasMore,
+    isLoading,
+    loadMore,
+    clearFilters,
+    totalCount,
+    displayedCount
+  } = useInfiniteRecipes({ recipes, batchSize: 10 });
+
+  // Set up infinite scroll
+  useInfiniteScroll({
+    hasMore,
+    isLoading,
+    onLoadMore: loadMore,
+    threshold: 200
+  });
 
   useEffect(() => {
     document.title = 'Nos Recettes';
@@ -27,7 +44,23 @@ const Index = () => {
     // Check if GitHub configuration exists
     const savedConfig = localStorage.getItem('github-config');
     setHasGitHubConfig(!!savedConfig);
+
+    // Handle scroll to show/hide scroll-to-top button
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setShowScrollTop(scrollTop > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -70,13 +103,14 @@ const Index = () => {
           />
         </div>
 
-        <div className="mb-6">
-          <p className="text-sm text-muted-foreground">
-            {filteredRecipes.length} recette{filteredRecipes.length !== 1 ? 's' : ''} trouvée{filteredRecipes.length !== 1 ? 's' : ''}
-          </p>
-        </div>
+        <RecipeStats
+          displayedCount={displayedCount}
+          totalCount={totalCount}
+          isLoading={isLoading}
+          hasMore={hasMore}
+        />
 
-        {filteredRecipes.length === 0 ? (
+        {totalCount === 0 ? (
           <div className="text-center py-12">
             <p className="text-lg text-muted-foreground mb-4">
               Aucune recette ne correspond à vos critères de recherche.
@@ -86,13 +120,57 @@ const Index = () => {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {filteredRecipes.map((recipe) => (
-              <RecipeCard key={recipe.id} recipe={recipe} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              {displayedRecipes.map((recipe) => (
+                <RecipeCard key={recipe.id} recipe={recipe} />
+              ))}
+            </div>
+
+            {/* Loading indicator at bottom */}
+            {isLoading && (
+              <div className="py-8">
+                <LoadingSpinner text="Chargement de plus de recettes..." />
+              </div>
+            )}
+
+            {/* Load more button as fallback for users who prefer clicking */}
+            {hasMore && !isLoading && (
+              <div className="text-center py-8">
+                <Button onClick={loadMore} variant="outline">
+                  Charger plus de recettes
+                </Button>
+              </div>
+            )}
+
+            {/* End of results message */}
+            {!hasMore && displayedCount > 10 && (
+              <div className="text-center py-8">
+                <p className="text-muted-foreground mb-4">
+                  🎉 Vous avez vu toutes les recettes !
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {totalCount} recette{totalCount !== 1 ? 's' : ''} au total
+                </p>
+              </div>
+            )}
+          </>
         )}
       </div>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <div className="fixed bottom-6 right-6 z-50">
+          <Button
+            onClick={scrollToTop}
+            size="sm"
+            className="rounded-full shadow-lg"
+            title="Retour en haut"
+          >
+            <ArrowUp className="w-4 h-4" />
+          </Button>
+        </div>
+      )}
       
       <MadeWithDyad />
     </div>
