@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Helper function to get all recipe files
-function getRecipeFiles() {
+export function getRecipeFiles() {
   const recipesDir = path.join(__dirname, '..', 'src', 'recipes');
   const files = fs.readdirSync(recipesDir);
   
@@ -14,7 +18,7 @@ function getRecipeFiles() {
 }
 
 // Helper function to extract recipe data from file
-function getRecipeData(filename) {
+export function getRecipeData(filename) {
   try {
     const filePath = path.join(__dirname, '..', 'src', 'recipes', `${filename}.ts`);
     const content = fs.readFileSync(filePath, 'utf-8');
@@ -60,7 +64,7 @@ function getRecipeData(filename) {
 }
 
 // Generate sitemap XML
-function generateSitemap() {
+export function generateSitemap() {
   const baseUrl = 'https://algritz.github.io/nosrecettes';
   const currentDate = new Date().toISOString().split('T')[0];
   
@@ -133,8 +137,6 @@ function main() {
 }
 
 // Run if called directly
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   main();
 }
-
-module.exports = { generateSitemap, getRecipeFiles, getRecipeData };

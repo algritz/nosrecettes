@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-function generateSecurityTxt() {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export function generateSecurityTxt() {
   const currentYear = new Date().getFullYear();
   const expiryDate = new Date();
   expiryDate.setFullYear(currentYear + 1);
@@ -46,8 +50,6 @@ function main() {
 }
 
 // Run if called directly
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   main();
 }
-
-module.exports = { generateSecurityTxt };

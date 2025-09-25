@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { getRecipeFiles, getRecipeData } = require('./generate-sitemap');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { getRecipeFiles, getRecipeData } from './generate-sitemap.js';
 
-function generateIndexHTML() {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export function generateIndexHTML() {
   const recipeFiles = getRecipeFiles();
   const recipeCount = recipeFiles.length;
   const currentDate = new Date().toISOString();
@@ -217,8 +221,6 @@ function main() {
 }
 
 // Run if called directly
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   main();
 }
-
-module.exports = { generateIndexHTML };

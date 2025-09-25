@@ -1,11 +1,17 @@
 #!/usr/bin/env node
 
-const { generateSitemap } = require('./generate-sitemap');
-const { generateRobots } = require('./generate-robots');
-const { generateManifest } = require('./generate-manifest');
-const { generateIndexHTML } = require('./generate-index-html');
-const { generateBrowserConfig } = require('./generate-browserconfig');
-const { generateSecurityTxt } = require('./generate-security');
+import { generateSitemap } from './generate-sitemap.js';
+import { generateRobots } from './generate-robots.js';
+import { generateManifest } from './generate-manifest.js';
+import { generateIndexHTML } from './generate-index-html.js';
+import { generateBrowserConfig } from './generate-browserconfig.js';
+import { generateSecurityTxt } from './generate-security.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function buildSEO() {
   console.log('🔍 Building all SEO and PWA files...\n');
@@ -13,27 +19,49 @@ async function buildSEO() {
   try {
     // Generate sitemap
     console.log('1. Generating sitemap.xml...');
-    await require('./generate-sitemap').main?.() || generateSitemap();
+    const sitemapContent = generateSitemap();
+    const sitemapPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
+    fs.writeFileSync(sitemapPath, sitemapContent, 'utf-8');
+    console.log(`✅ Sitemap generated successfully`);
     
     // Generate robots.txt
     console.log('\n2. Generating robots.txt...');
-    await require('./generate-robots').main?.() || generateRobots();
+    const robotsContent = generateRobots();
+    const robotsPath = path.join(__dirname, '..', 'public', 'robots.txt');
+    fs.writeFileSync(robotsPath, robotsContent, 'utf-8');
+    console.log(`✅ Robots.txt generated successfully`);
     
     // Generate manifest.json
     console.log('\n3. Generating manifest.json...');
-    await require('./generate-manifest').main?.() || generateManifest();
+    const manifestContent = generateManifest();
+    const manifestPath = path.join(__dirname, '..', 'public', 'manifest.json');
+    fs.writeFileSync(manifestPath, manifestContent, 'utf-8');
+    console.log(`✅ Manifest generated successfully`);
     
     // Generate index.html
     console.log('\n4. Generating index.html...');
-    await require('./generate-index-html').main?.() || generateIndexHTML();
+    const indexContent = generateIndexHTML();
+    const indexPath = path.join(__dirname, '..', 'index.html');
+    fs.writeFileSync(indexPath, indexContent, 'utf-8');
+    console.log(`✅ Index.html generated successfully`);
     
     // Generate browserconfig.xml
     console.log('\n5. Generating browserconfig.xml...');
-    await require('./generate-browserconfig').main?.() || generateBrowserConfig();
+    const browserConfigContent = generateBrowserConfig();
+    const browserConfigPath = path.join(__dirname, '..', 'public', 'browserconfig.xml');
+    fs.writeFileSync(browserConfigPath, browserConfigContent, 'utf-8');
+    console.log(`✅ Browserconfig.xml generated successfully`);
     
     // Generate security.txt
     console.log('\n6. Generating security.txt...');
-    await require('./generate-security').main?.() || generateSecurityTxt();
+    const securityContent = generateSecurityTxt();
+    const wellKnownDir = path.join(__dirname, '..', 'public', '.well-known');
+    if (!fs.existsSync(wellKnownDir)) {
+      fs.mkdirSync(wellKnownDir, { recursive: true });
+    }
+    const securityPath = path.join(wellKnownDir, 'security.txt');
+    fs.writeFileSync(securityPath, securityContent, 'utf-8');
+    console.log(`✅ Security.txt generated successfully`);
     
     console.log('\n✅ All SEO and PWA files generated successfully!');
     console.log('📁 Files created:');
@@ -51,8 +79,8 @@ async function buildSEO() {
 }
 
 // Run if called directly
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   buildSEO();
 }
 
-module.exports = { buildSEO };
+export { buildSEO };
