@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Plus, Minus, Save, ArrowLeft, Layers, Download, X, FileSpreadsheet } from 'lucide-react';
+import { Plus, Minus, Save, ArrowLeft, Layers, FileSpreadsheet, X } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { CategorySelector } from '@/components/CategorySelector';
@@ -12,7 +12,6 @@ import { TimeInput } from '@/components/TimeInput';
 import { ImageUpload } from '@/components/ImageUpload';
 import { SectionedIngredients } from '@/components/SectionedIngredients';
 import { SectionedInstructions } from '@/components/SectionedInstructions';
-import { RecipeImporter } from '@/components/RecipeImporter';
 import { CSVImporter } from '@/components/CSVImporter';
 import { ProcessedImage } from '@/utils/imageUtils';
 import { IngredientSection, InstructionSection } from '@/types/recipe';
@@ -21,7 +20,6 @@ import { recipes } from '@/data/recipes';
 import { recipeCategories } from '@/data/categories';
 import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils';
 import { NotFound } from '@/components/NotFound';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const NewRecipe = () => {
   const navigate = useNavigate();
@@ -49,7 +47,6 @@ const NewRecipe = () => {
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
   const [configChecked, setConfigChecked] = useState(false);
   const [showImporter, setShowImporter] = useState(false);
-  const [importerType, setImporterType] = useState<'url' | 'csv'>('url');
   
   // New state for sectioned ingredients and instructions
   const [useSectionedIngredients, setUseSectionedIngredients] = useState(false);
@@ -94,28 +91,6 @@ const NewRecipe = () => {
       </div>
     );
   }
-
-  const handleImportSuccess = (importedData: any) => {
-    // Pre-fill form with imported data
-    setRecipe(prev => ({
-      ...prev,
-      title: importedData.title || prev.title,
-      description: importedData.description || prev.description,
-      prepTime: importedData.prepTime || prev.prepTime,
-      cookTime: importedData.cookTime || prev.cookTime,
-      servings: importedData.servings || prev.servings,
-      ingredients: importedData.ingredients?.length ? importedData.ingredients : prev.ingredients,
-      instructions: importedData.instructions?.length ? importedData.instructions : prev.instructions,
-      tags: importedData.tags?.length ? importedData.tags : prev.tags,
-      source: importedData.source || prev.source
-    }));
-
-    // If imported data has an image URL, we could potentially download and process it
-    // For now, we'll just show a message about the image
-    if (importedData.imageUrl) {
-      showSuccess(`Recette importée! Image trouvée: ${importedData.imageUrl} (vous devrez l'ajouter manuellement)`);
-    }
-  };
 
   const handleCSVImportSuccess = (importedRecipes: ParsedCSVRecipe[]) => {
     setCsvRecipes(importedRecipes);
@@ -327,7 +302,7 @@ const NewRecipe = () => {
           <div>
             <h1 className="text-3xl font-bold">Ajouter une nouvelle recette</h1>
             <p className="text-muted-foreground mt-2">
-              Remplissez le formulaire ci-dessous ou importez depuis une URL/CSV. Une pull request sera créée automatiquement sur GitHub.
+              Remplissez le formulaire ci-dessous ou importez depuis un fichier CSV. Une pull request sera créée automatiquement sur GitHub.
             </p>
           </div>
           
@@ -339,9 +314,9 @@ const NewRecipe = () => {
             {showImporter ? (
               <X className="w-4 h-4 mr-2" />
             ) : (
-              <Download className="w-4 h-4 mr-2" />
+              <FileSpreadsheet className="w-4 h-4 mr-2" />
             )}
-            {showImporter ? 'Fermer l\'import' : 'Importer des recettes'}
+            {showImporter ? 'Fermer l\'import CSV' : 'Importer depuis CSV'}
           </Button>
         </div>
         
@@ -352,40 +327,18 @@ const NewRecipe = () => {
         </div>
       </div>
 
-      {/* Recipe Importer */}
+      {/* CSV Importer */}
       {showImporter && (
         <div className="mb-6">
           <Card>
             <CardHeader>
-              <CardTitle>Importer des recettes</CardTitle>
+              <CardTitle>Importer des recettes depuis CSV</CardTitle>
             </CardHeader>
             <CardContent>
-              <Tabs value={importerType} onValueChange={(value) => setImporterType(value as 'url' | 'csv')}>
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="url" className="flex items-center gap-2">
-                    <Download className="w-4 h-4" />
-                    Depuis URL
-                  </TabsTrigger>
-                  <TabsTrigger value="csv" className="flex items-center gap-2">
-                    <FileSpreadsheet className="w-4 h-4" />
-                    Depuis CSV
-                  </TabsTrigger>
-                </TabsList>
-                
-                <TabsContent value="url" className="mt-4">
-                  <RecipeImporter
-                    onImportSuccess={handleImportSuccess}
-                    onClose={() => setShowImporter(false)}
-                  />
-                </TabsContent>
-                
-                <TabsContent value="csv" className="mt-4">
-                  <CSVImporter
-                    onImportSuccess={handleCSVImportSuccess}
-                    onClose={() => setShowImporter(false)}
-                  />
-                </TabsContent>
-              </Tabs>
+              <CSVImporter
+                onImportSuccess={handleCSVImportSuccess}
+                onClose={() => setShowImporter(false)}
+              />
             </CardContent>
           </Card>
         </div>
