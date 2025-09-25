@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Plus, Minus, Save, ArrowLeft, Layers } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
-import { CategoryCombobox } from '@/components/CategoryCombobox';
+import { CategorySelector } from '@/components/CategorySelector';
 import { TimeInput } from '@/components/TimeInput';
 import { ImageUpload } from '@/components/ImageUpload';
 import { SectionedIngredients } from '@/components/SectionedIngredients';
@@ -16,6 +16,7 @@ import { ProcessedImage } from '@/utils/imageUtils';
 import { IngredientSection, InstructionSection } from '@/types/recipe';
 import { recipes } from '@/data/recipes';
 import { recipeCategories } from '@/data/categories';
+import { getRecipeCategories, getAllCategoriesFromRecipes } from '@/utils/recipeUtils';
 import { NotFound } from '@/components/NotFound';
 
 const EditRecipe = () => {
@@ -26,7 +27,7 @@ const EditRecipe = () => {
   const [recipe, setRecipe] = useState({
     title: '',
     description: '',
-    category: '',
+    categories: [] as string[], // Changed from category to categories
     prepTime: '',
     cookTime: '',
     marinatingTime: '',
@@ -66,7 +67,7 @@ const EditRecipe = () => {
     setConfigChecked(true);
 
     // Get categories from existing recipes and merge with defaults
-    const existingCategories = Array.from(new Set(recipes.map(recipe => recipe.category)));
+    const existingCategories = getAllCategoriesFromRecipes(recipes);
     const allCategories = Array.from(new Set([...recipeCategories, ...existingCategories])).sort();
     setAvailableCategories(allCategories);
 
@@ -92,10 +93,13 @@ const EditRecipe = () => {
         setSectionedInstructions(existingRecipe.instructions as InstructionSection[]);
       }
 
+      // Get categories using the utility function for backward compatibility
+      const recipeCategories = getRecipeCategories(existingRecipe);
+
       setRecipe({
         title: existingRecipe.title,
         description: existingRecipe.description,
-        category: existingRecipe.category,
+        categories: recipeCategories, // Use the categories array
         prepTime: existingRecipe.prepTime.toString(),
         cookTime: existingRecipe.cookTime.toString(),
         marinatingTime: existingRecipe.marinatingTime?.toString() || '',
@@ -201,8 +205,8 @@ const EditRecipe = () => {
 
     try {
       // Validate required fields
-      if (!recipe.title || !recipe.category) {
-        showError('Veuillez remplir tous les champs obligatoires (titre et catégorie)');
+      if (!recipe.title || recipe.categories.length === 0) {
+        showError('Veuillez remplir tous les champs obligatoires (titre et au moins une catégorie)');
         return;
       }
 
@@ -282,16 +286,16 @@ const EditRecipe = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Catégorie *</label>
-              <CategoryCombobox
-                value={recipe.category}
-                onValueChange={(value) => setRecipe(prev => ({ ...prev, category: value }))}
-                categories={availableCategories}
-                placeholder="Choisir une catégorie"
+              <label className="block text-sm font-medium mb-2">Catégories *</label>
+              <CategorySelector
+                selectedCategories={recipe.categories}
+                onCategoriesChange={(categories) => setRecipe(prev => ({ ...prev, categories }))}
+                availableCategories={availableCategories}
+                placeholder="Sélectionner des catégories"
                 className="w-full"
               />
               <p className="text-xs text-muted-foreground mt-1">
-                Pour ajouter de nouvelles catégories, utilisez la page de gestion des catégories.
+                Sélectionnez une ou plusieurs catégories. Pour ajouter de nouvelles catégories, utilisez la page de gestion des catégories.
               </p>
             </div>
 
