@@ -1,14 +1,20 @@
 {
-  "name": "Nos Recettes - Recettes Québécoises",
+  "name": "Nos Recettes - 5 Recettes Québécoises",
   "short_name": "Nos Recettes",
-  "description": "Collection de recettes québécoises traditionnelles et modernes avec instructions détaillées",
+  "description": "Collection de 5 recettes québécoises traditionnelles et modernes avec instructions détaillées et images appétissantes.",
   "start_url": "/nosrecettes/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0f172a",
   "orientation": "portrait-primary",
-  "categories": ["food", "lifestyle", "cooking"],
+  "categories": [
+    "food",
+    "lifestyle",
+    "cooking",
+    "recipes"
+  ],
   "lang": "fr-CA",
+  "scope": "/nosrecettes/",
   "icons": [
     {
       "src": "/nosrecettes/favicon.ico",
@@ -33,13 +39,31 @@
       "src": "/nosrecettes/screenshot-wide.png",
       "sizes": "1280x720",
       "type": "image/png",
-      "form_factor": "wide"
+      "form_factor": "wide",
+      "label": "Accueil avec collection de recettes"
     },
     {
       "src": "/nosrecettes/screenshot-narrow.png",
       "sizes": "640x1136",
       "type": "image/png",
-      "form_factor": "narrow"
+      "form_factor": "narrow",
+      "label": "Navigation mobile des recettes"
     }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Rechercher des recettes",
+      "short_name": "Recherche",
+      "description": "Rechercher dans la collection de recettes",
+      "url": "/nosrecettes/?search=",
+      "icons": [
+        {
+          "src": "/nosrecettes/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }
