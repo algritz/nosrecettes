@@ -55,9 +55,9 @@ const extractIngredients = (text: string): string[] => {
     // For single-line ingredients, use a more inclusive approach
     // Split on patterns that clearly indicate a new ingredient starting
     
-    // Look for: number (including fractions and ranges) followed by space and then a word
-    // This captures: "2 à 4 steak", "1/4 tasse", "1 boîte", "le jus", etc.
-    const ingredients = ingredientsText.split(/(?=(?:\d+(?:\s*\/\s*\d+)?(?:\s*à\s*\d+)?\s+\w+|le\s+jus|la\s+\w+))/i);
+    // Look for: number (including fractions and ranges) followed by space OR unit, then a word
+    // This captures: "2 à 4 steak", "1/4 tasse", "1 boîte", "400g", "2tasses", "le jus", etc.
+    const ingredients = ingredientsText.split(/(?=(?:\d+(?:\s*\/\s*\d+)?(?:\s*à\s*\d+)?\s*(?:\w+\s+\w+|\w+)|le\s+jus|la\s+\w+))/i);
     
     // Clean up and filter
     const cleanedIngredients = ingredients
@@ -71,8 +71,8 @@ const extractIngredients = (text: string): string[] => {
     }
     
     // If that didn't work well, try a different approach
-    // Look for common ingredient starters more broadly
-    const alternativeIngredients = ingredientsText.split(/(?=\d+(?:\s*\/\s*\d+)?(?:\s*à\s*\d+)?\s|\ble\s|\bla\s|\bdu\s|\bde\s|\bdes\s|\bd')/i);
+    // Look for common ingredient starters more broadly, including units without spaces
+    const alternativeIngredients = ingredientsText.split(/(?=\d+(?:\s*\/\s*\d+)?(?:\s*à\s*\d+)?(?:\s*(?:g|kg|ml|l|tasse|tasses|boîte|boîtes|c\.\s*à|cuillère|livre|livres)|\s+\w+)|\ble\s|\bla\s|\bdu\s|\bde\s|\bdes\s|\bd')/i);
     
     const altCleaned = alternativeIngredients
       .map(ing => ing.trim())
