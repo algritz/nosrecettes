@@ -1,25 +1,59 @@
 import { Recipe } from '@/types/recipe';
-import { tourtiereDuLacSaintJean } from './tourtiere-du-lac-saint-jean';
-import { tarteAuSucre } from './tarte-au-sucre';
-import { tartareDeThonRadisEtPeches } from './tartare-de-thon-radis-et-peches';
-import { brigadeiroBlanc } from './brigadeiro-blanc';
 
-export const recipes: Recipe[] = [tourtiereDuLacSaintJean,
-  tarteAuSucre,
-  tartareDeThonRadisEtPeches,
-  brigadeiroBlanc];
+// This file is auto-generated during build
+// All recipe files are automatically imported and exported
+
+// Dynamic import of all recipe files
+const recipeModules = import.meta.glob('./*.ts', { eager: true });
+
+export const recipes: Recipe[] = [];
+
+// Process all imported modules
+Object.entries(recipeModules).forEach(([path, module]) => {
+  // Skip the index file itself
+  if (path === './index.ts') return;
+  
+  const moduleExports = module as Record<string, any>;
+  
+  // Find the recipe export (should be the only Recipe object)
+  Object.values(moduleExports).forEach((exportedValue) => {
+    if (exportedValue && typeof exportedValue === 'object' && exportedValue.id && exportedValue.title) {
+      recipes.push(exportedValue as Recipe);
+    }
+  });
+});
+
+// Sort recipes by title for consistent ordering
+recipes.sort((a, b) => a.title.localeCompare(b.title));
 
 // Helper function to get a recipe by slug
 export const getRecipeBySlug = (slug: string): Recipe | undefined => {
   return recipes.find(recipe => recipe.slug === slug);
 };
 
-// Helper function to get recipes by category
+// Helper function to get recipes by category (with backward compatibility)
 export const getRecipesByCategory = (category: string): Recipe[] => {
-  return recipes.filter(recipe => recipe.category === category);
+  return recipes.filter(recipe => {
+    // Handle both new categories array and old category field
+    if (recipe.categories && recipe.categories.length > 0) {
+      return recipe.categories.includes(category);
+    }
+    return recipe.category === category;
+  });
 };
 
 // Helper function to get all categories
 export const getCategories = (): string[] => {
-  return Array.from(new Set(recipes.map(recipe => recipe.category)));
+  const allCategories = new Set<string>();
+  
+  recipes.forEach(recipe => {
+    // Handle both new categories array and old category field
+    if (recipe.categories && recipe.categories.length > 0) {
+      recipe.categories.forEach(cat => allCategories.add(cat));
+    } else if (recipe.category) {
+      allCategories.add(recipe.category);
+    }
+  });
+  
+  return Array.from(allCategories).sort();
 };

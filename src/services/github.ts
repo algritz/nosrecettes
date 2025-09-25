@@ -209,80 +209,6 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
 `;
   }
 
-  private updateIndexFile(currentContent: string, newRecipeSlug: string): string {
-    const variableName = this.createVariableName(newRecipeSlug);
-    const importLine = `import { ${variableName} } from './${newRecipeSlug}';`;
-    
-    // Add import after existing imports
-    const importRegex = /(import.*from.*;\n)/g;
-    const imports = currentContent.match(importRegex) || [];
-    const lastImportIndex = currentContent.lastIndexOf(imports[imports.length - 1]) + imports[imports.length - 1].length;
-    
-    const beforeImports = currentContent.substring(0, lastImportIndex);
-    const afterImports = currentContent.substring(lastImportIndex);
-    
-    // Add recipe to array
-    const arrayRegex = /export const recipes: Recipe\[] = \[([\s\S]*?)\];/;
-    const match = afterImports.match(arrayRegex);
-    
-    if (match) {
-      const recipeList = match[1].trim();
-      const newRecipeList = recipeList ? `${recipeList},\n  ${variableName}` : `\n  ${variableName}\n`;
-      const updatedAfterImports = afterImports.replace(arrayRegex, `export const recipes: Recipe[] = [${newRecipeList}];`);
-      
-      return beforeImports + importLine + '\n' + updatedAfterImports;
-    }
-    
-    return currentContent;
-  }
-
-  private updateIndexFileForEdit(currentContent: string, oldSlug: string, newSlug: string): string {
-    const oldVariableName = this.createVariableName(oldSlug);
-    const newVariableName = this.createVariableName(newSlug);
-    
-    // If slug changed, update import and variable names
-    if (oldSlug !== newSlug) {
-      // Update import
-      const oldImportRegex = new RegExp(`import { ${oldVariableName} } from './${oldSlug}';`);
-      const newImportLine = `import { ${newVariableName} } from './${newSlug}';`;
-      
-      // Update array reference
-      const oldArrayRegex = new RegExp(`\\b${oldVariableName}\\b`, 'g');
-      
-      return currentContent
-        .replace(oldImportRegex, newImportLine)
-        .replace(oldArrayRegex, newVariableName);
-    }
-    
-    return currentContent;
-  }
-
-  private removeRecipeFromIndex(currentContent: string, recipeSlug: string): string {
-    const variableName = this.createVariableName(recipeSlug);
-    
-    // Remove import line
-    const importRegex = new RegExp(`import { ${variableName} } from './${recipeSlug}';\n`, 'g');
-    let updatedContent = currentContent.replace(importRegex, '');
-    
-    // Remove from recipes array
-    const arrayRegex = /export const recipes: Recipe\[] = \[([\s\S]*?)\];/;
-    const match = updatedContent.match(arrayRegex);
-    
-    if (match) {
-      const recipeList = match[1];
-      // Remove the variable from the array (handle various formatting)
-      const cleanedRecipeList = recipeList
-        .replace(new RegExp(`\\s*,?\\s*${variableName}\\s*,?`, 'g'), '')
-        .replace(/,\s*,/g, ',') // Clean up double commas
-        .replace(/^\s*,|,\s*$/g, '') // Clean up leading/trailing commas
-        .trim();
-      
-      updatedContent = updatedContent.replace(arrayRegex, `export const recipes: Recipe[] = [${cleanedRecipeList}];`);
-    }
-    
-    return updatedContent;
-  }
-
   private updateCategoriesFile(currentContent: string, changes: CategoryChange[]): string {
     // Find the recipeCategories array
     const arrayRegex = /export const recipeCategories = \[([\s\S]*?)\];/;
@@ -360,20 +286,6 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
         }
       );
 
-      // Get current index.ts content
-      const indexResponse = await fetch(
-        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts?ref=main`,
-        {
-          headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
-          },
-        }
-      );
-      
-      const indexFile = await indexResponse.json();
-      const currentIndexContent = this.base64Decode(indexFile.content);
-
       // Get recipe file SHA for deletion
       const recipeFileResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${recipeFileName}?ref=main`,
@@ -391,10 +303,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
       
       const recipeFile = await recipeFileResponse.json();
 
-      // Remove recipe from index.ts
-      const updatedIndexContent = this.removeRecipeFromIndex(currentIndexContent, slug);
-
-      // Delete recipe file
+      // Delete recipe file (index.ts will auto-update on next build)
       await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${recipeFileName}`,
         {
@@ -408,25 +317,6 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
             message: `Delete recipe: ${existingRecipe.title}`,
             sha: recipeFile.sha,
             branch: branchName,
-          }),
-        }
-      );
-
-      // Update index.ts file
-      await fetch(
-        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts`,
-        {
-          method: 'PUT',
-          headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            message: `Remove recipe from index: ${existingRecipe.title}`,
-            content: this.base64Encode(updatedIndexContent),
-            branch: branchName,
-            sha: indexFile.sha,
           }),
         }
       );
@@ -466,7 +356,8 @@ ${existingRecipe.description || 'Aucune description'}
 ${cleanupInstructions}
 
 ---
-*Cette recette a été supprimée via le formulaire web avec nettoyage automatique des images.*`,
+*Cette recette a été supprimée via le formulaire web avec nettoyage automatique des images.*
+*L'index des recettes sera mis à jour automatiquement lors du prochain déploiement.*`,
           }),
         }
       );
@@ -662,27 +553,10 @@ ${cleanupInstructions}
         }
       );
 
-      // Get current index.ts content
-      const indexResponse = await fetch(
-        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts?ref=main`,
-        {
-          headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
-          },
-        }
-      );
-      
-      const indexFile = await indexResponse.json();
-      const currentIndexContent = this.base64Decode(indexFile.content);
-
       // Generate new recipe file content (images are already uploaded to Cloudinary)
       const recipeFileContent = await this.generateRecipeFile(recipeData, images);
-      
-      // Update index.ts content
-      const updatedIndexContent = this.updateIndexFile(currentIndexContent, slug);
 
-      // Create recipe file
+      // Create recipe file (index.ts will auto-update on next build)
       await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${recipeFileName}`,
         {
@@ -696,25 +570,6 @@ ${cleanupInstructions}
             message: `Add recipe: ${recipeData.title}`,
             content: this.base64Encode(recipeFileContent),
             branch: branchName,
-          }),
-        }
-      );
-
-      // Update index.ts file
-      await fetch(
-        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts`,
-        {
-          method: 'PUT',
-          headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            message: `Update index for recipe: ${recipeData.title}`,
-            content: this.base64Encode(updatedIndexContent),
-            branch: branchName,
-            sha: indexFile.sha,
           }),
         }
       );
@@ -772,7 +627,8 @@ ${recipeData.description}
 **Tags:** ${recipeData.tags.filter(t => t.trim()).join(', ')}
 
 ---
-*Cette recette a été ajoutée via le formulaire web avec images hébergées sur Cloudinary.*`,
+*Cette recette a été ajoutée via le formulaire web avec images hébergées sur Cloudinary.*
+*L'index des recettes sera mis à jour automatiquement lors du prochain déploiement.*`,
           }),
         }
       );
@@ -838,20 +694,6 @@ ${recipeData.description}
         }
       );
 
-      // Get current index.ts content
-      const indexResponse = await fetch(
-        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts?ref=main`,
-        {
-          headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
-          },
-        }
-      );
-      
-      const indexFile = await indexResponse.json();
-      const currentIndexContent = this.base64Decode(indexFile.content);
-
       // Generate updated recipe file content (preserve existing ID, handle images properly)
       const recipeFileContent = await this.generateRecipeFile(
         recipeData, 
@@ -859,9 +701,6 @@ ${recipeData.description}
         existingRecipe.id, 
         existingImages
       );
-      
-      // Update index.ts content if slug changed
-      const updatedIndexContent = this.updateIndexFileForEdit(currentIndexContent, oldSlug, newSlug);
 
       // If slug changed, delete old file and create new one
       if (oldSlug !== newSlug) {
@@ -912,25 +751,6 @@ ${recipeData.description}
               message: `Update recipe: ${recipeData.title}`,
               content: this.base64Encode(recipeFileContent),
               branch: branchName,
-            }),
-          }
-        );
-
-        // Update index.ts file
-        await fetch(
-          `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts`,
-          {
-            method: 'PUT',
-            headers: {
-              'Authorization': `token ${this.config.token}`,
-              'Accept': 'application/vnd.github.v3+json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              message: `Update index for recipe: ${recipeData.title}`,
-              content: this.base64Encode(updatedIndexContent),
-              branch: branchName,
-              sha: indexFile.sha,
             }),
           }
         );
@@ -1023,7 +843,8 @@ ${recipeData.description}
 **Tags:** ${recipeData.tags.filter(t => t.trim()).join(', ')}
 
 ---
-*Cette recette a été modifiée via le formulaire web avec gestion intelligente des images.*`,
+*Cette recette a été modifiée via le formulaire web avec gestion intelligente des images.*
+*L'index des recettes sera mis à jour automatiquement lors du prochain déploiement.*`,
           }),
         }
       );
