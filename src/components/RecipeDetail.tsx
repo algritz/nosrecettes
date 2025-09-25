@@ -277,28 +277,16 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
           </div>
         </div>
 
-        {/* Additional Information - Only accompaniment and wine */}
-        {(recipe.accompaniment || recipe.wine) && (
-          <div className="grid md:grid-cols-2 gap-4 mb-6">
-            {recipe.accompaniment && (
-              <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
-                <Utensils className="w-5 h-5 mt-0.5 text-muted-foreground" />
-                <div>
-                  <p className="font-medium text-sm">Accompagnement</p>
-                  <p className="text-sm text-muted-foreground">{recipe.accompaniment}</p>
-                </div>
+        {/* Wine pairing - Only show wine here */}
+        {recipe.wine && (
+          <div className="mb-6">
+            <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
+              <Wine className="w-5 h-5 mt-0.5 text-muted-foreground" />
+              <div>
+                <p className="font-medium text-sm">Accord vin</p>
+                <p className="text-sm text-muted-foreground">{recipe.wine}</p>
               </div>
-            )}
-            
-            {recipe.wine && (
-              <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
-                <Wine className="w-5 h-5 mt-0.5 text-muted-foreground" />
-                <div>
-                  <p className="font-medium text-sm">Accord vin</p>
-                  <p className="text-sm text-muted-foreground">{recipe.wine}</p>
-                </div>
-              </div>
-            )}
+            </div>
           </div>
         )}
       </div>
@@ -323,11 +311,12 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
         </Card>
       </div>
 
-      {/* Notes and Source - After instructions in discrete format, Notes first */}
-      {(recipe.notes || recipe.source) && (
-        <div className="grid md:grid-cols-2 gap-4 mt-8">
+      {/* Notes, Accompaniment, and Source - After instructions */}
+      {(recipe.notes || recipe.accompaniment || recipe.source) && (
+        <div className="mt-8 space-y-4">
+          {/* Notes */}
           {recipe.notes && (
-            <div className={`flex items-start gap-2 p-3 bg-muted/50 rounded-lg ${recipe.source ? '' : 'md:col-span-2'}`}>
+            <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
               <StickyNote className="w-5 h-5 mt-0.5 text-muted-foreground" />
               <div>
                 <p className="font-medium text-sm">Notes</p>
@@ -336,6 +325,18 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             </div>
           )}
 
+          {/* Accompaniment - Right after notes */}
+          {recipe.accompaniment && (
+            <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
+              <Utensils className="w-5 h-5 mt-0.5 text-muted-foreground" />
+              <div>
+                <p className="font-medium text-sm">Accompagnement</p>
+                <p className="text-sm text-muted-foreground">{recipe.accompaniment}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Source */}
           {recipe.source && (
             <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
               <BookOpen className="w-5 h-5 mt-0.5 text-muted-foreground" />
