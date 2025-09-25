@@ -11,6 +11,7 @@ import { GitHubService } from '@/services/github';
 import { useCategoryManager } from '@/hooks/useCategoryManager';
 import { recipes } from '@/data/recipes';
 import { recipeCategories } from '@/data/categories';
+import { getRecipeCategories } from '@/utils/recipeUtils';
 import { NotFound } from '@/components/NotFound';
 import {
   AlertDialog,
@@ -32,14 +33,17 @@ const ManageCategories = () => {
   const [configChecked, setConfigChecked] = useState(false);
 
   // Get all categories from existing recipes and merge with defaults (same as recipe forms)
-  const existingRecipeCategories = Array.from(new Set(recipes.map(recipe => recipe.category)));
+  const existingRecipeCategories = recipes.flatMap(recipe => getRecipeCategories(recipe));
   const allCategories = Array.from(new Set([...recipeCategories, ...existingRecipeCategories])).sort();
   
   const { categories, addCategory, removeCategory, getNewCategoriesForPR, clearNewCategories } = useCategoryManager(allCategories);
 
-  // Get category usage counts
+  // Get category usage counts using the utility function
   const getCategoryUsage = (category: string): number => {
-    return recipes.filter(recipe => recipe.category === category).length;
+    return recipes.filter(recipe => {
+      const recipeCategories = getRecipeCategories(recipe);
+      return recipeCategories.includes(category);
+    }).length;
   };
 
   // Check if category can be deleted (not used by any recipe)
