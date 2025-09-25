@@ -376,7 +376,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             Retour en haut
           </Button>
         </div>
-      </div>
+      )}
     </div>
   );
 };
