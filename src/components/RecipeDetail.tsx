@@ -113,9 +113,8 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
     // Check if instructions are sectioned
     const firstInstruction = recipe.instructions[0];
     if (typeof firstInstruction === 'object' && 'title' in firstInstruction) {
-      // Sectioned instructions
+      // Sectioned instructions - each section starts numbering from 1
       const sections = recipe.instructions as InstructionSection[];
-      let stepCounter = 1;
 
       return (
         <div className="space-y-6">
@@ -127,10 +126,10 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
                 </h4>
               )}
               <ol className="space-y-4">
-                {section.steps.map((instruction, index) => (
-                  <li key={index} className="flex gap-3">
+                {section.steps.map((instruction, stepIndex) => (
+                  <li key={stepIndex} className="flex gap-3">
                     <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
-                      {stepCounter++}
+                      {stepIndex + 1}
                     </span>
                     <span>{instruction}</span>
                   </li>
@@ -377,7 +376,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             Retour en haut
           </Button>
         </div>
-      )}
+      </div>
     </div>
   );
 };
