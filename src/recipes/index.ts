@@ -3,11 +3,13 @@ import { poutineClassique } from './poutine-classique';
 import { tourtiereDuLacSaintJean } from './tourtiere-du-lac-saint-jean';
 import { tarteAuSucre } from './tarte-au-sucre';
 import { tartareDeThonRadisEtPeches } from './tartare-de-thon-radis-et-peches';
+import { brigadeiroBlanc } from './brigadeiro-blanc';
 
 export const recipes: Recipe[] = [poutineClassique,
   tourtiereDuLacSaintJean,
   tarteAuSucre,
-  tartareDeThonRadisEtPeches];
+  tartareDeThonRadisEtPeches,
+  brigadeiroBlanc];
 
 // Helper function to get a recipe by slug
 export const getRecipeBySlug = (slug: string): Recipe | undefined => {
