@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ImageIcon } from 'lucide-react';
+import { Utensils } from 'lucide-react';
 import { getResponsiveImageSrc, ImageSizes } from '@/utils/imageUtils';
 import { cn } from '@/lib/utils';
 
@@ -40,11 +40,14 @@ export const ResponsiveImage = ({
     
     return (
       <div className={cn(
-        'bg-muted flex items-center justify-center',
+        'bg-muted flex items-center justify-center border-2 border-dashed border-muted-foreground/25',
         aspectRatioClasses[aspectRatio],
         className
       )}>
-        <ImageIcon className="w-8 h-8 text-muted-foreground" />
+        <div className="flex flex-col items-center justify-center text-muted-foreground p-4">
+          <Utensils className="w-12 h-12 mb-2" />
+          <span className="text-sm font-medium">Pas d'image</span>
+        </div>
       </div>
     );
   }
@@ -53,7 +56,7 @@ export const ResponsiveImage = ({
     <div className={cn(aspectRatioClasses[aspectRatio], className, 'relative overflow-hidden')}>
       {!imageLoaded && showPlaceholder && (
         <div className="absolute inset-0 bg-muted flex items-center justify-center">
-          <ImageIcon className="w-8 h-8 text-muted-foreground animate-pulse" />
+          <Utensils className="w-8 h-8 text-muted-foreground animate-pulse" />
         </div>
       )}
       
