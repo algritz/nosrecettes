@@ -1,5 +1,6 @@
 import { ProcessedImage } from '@/utils/imageUtils';
 import { ImageSizes } from '@/types/recipe';
+import { generateCleanupInstructions } from '@/utils/cloudinaryUtils';
 
 interface GitHubConfig {
   owner: string;
@@ -256,6 +257,32 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
     return currentContent;
   }
 
+  private removeRecipeFromIndex(currentContent: string, recipeSlug: string): string {
+    const variableName = this.createVariableName(recipeSlug);
+    
+    // Remove import line
+    const importRegex = new RegExp(`import { ${variableName} } from './${recipeSlug}';\n`, 'g');
+    let updatedContent = currentContent.replace(importRegex, '');
+    
+    // Remove from recipes array
+    const arrayRegex = /export const recipes: Recipe\[] = \[([\s\S]*?)\];/;
+    const match = updatedContent.match(arrayRegex);
+    
+    if (match) {
+      const recipeList = match[1];
+      // Remove the variable from the array (handle various formatting)
+      const cleanedRecipeList = recipeList
+        .replace(new RegExp(`\\s*,?\\s*${variableName}\\s*,?`, 'g'), '')
+        .replace(/,\s*,/g, ',') // Clean up double commas
+        .replace(/^\s*,|,\s*$/g, '') // Clean up leading/trailing commas
+        .trim();
+      
+      updatedContent = updatedContent.replace(arrayRegex, `export const recipes: Recipe[] = [${cleanedRecipeList}];`);
+    }
+    
+    return updatedContent;
+  }
+
   private updateCategoriesFile(currentContent: string, changes: CategoryChange[]): string {
     // Find the recipeCategories array
     const arrayRegex = /export const recipeCategories = \[([\s\S]*?)\];/;
@@ -290,6 +317,171 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
     }
     
     return currentContent;
+  }
+
+  async deleteRecipePR(existingRecipe: any): Promise<string> {
+    const slug = existingRecipe.slug;
+    const branchName = `delete-recipe/${slug}-${Date.now()}`;
+    const recipeFileName = `${slug}.ts`;
+    
+    try {
+      // Get the default branch SHA
+      const mainBranchResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/ref/heads/main`,
+        {
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+          },
+        }
+      );
+      
+      if (!mainBranchResponse.ok) {
+        throw new Error('Failed to get main branch');
+      }
+      
+      const mainBranch = await mainBranchResponse.json();
+      const baseSha = mainBranch.object.sha;
+
+      // Create new branch
+      await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/refs`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ref: `refs/heads/${branchName}`,
+            sha: baseSha,
+          }),
+        }
+      );
+
+      // Get current index.ts content
+      const indexResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts?ref=main`,
+        {
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+          },
+        }
+      );
+      
+      const indexFile = await indexResponse.json();
+      const currentIndexContent = this.base64Decode(indexFile.content);
+
+      // Get recipe file SHA for deletion
+      const recipeFileResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${recipeFileName}?ref=main`,
+        {
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+          },
+        }
+      );
+      
+      if (!recipeFileResponse.ok) {
+        throw new Error('Recipe file not found');
+      }
+      
+      const recipeFile = await recipeFileResponse.json();
+
+      // Remove recipe from index.ts
+      const updatedIndexContent = this.removeRecipeFromIndex(currentIndexContent, slug);
+
+      // Delete recipe file
+      await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${recipeFileName}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: `Delete recipe: ${existingRecipe.title}`,
+            sha: recipeFile.sha,
+            branch: branchName,
+          }),
+        }
+      );
+
+      // Update index.ts file
+      await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/index.ts`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: `Remove recipe from index: ${existingRecipe.title}`,
+            content: this.base64Encode(updatedIndexContent),
+            branch: branchName,
+            sha: indexFile.sha,
+          }),
+        }
+      );
+
+      // Generate cleanup instructions for images
+      const cleanupInstructions = generateCleanupInstructions();
+
+      // Create pull request
+      const imageInfo = existingRecipe.images?.length > 0 || existingRecipe.image 
+        ? `\n**Images:** Toutes les images associées seront supprimées automatiquement` 
+        : '';
+
+      const prResponse = await fetch(
+        `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${this.config.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            title: `Supprimer la recette: ${existingRecipe.title}`,
+            head: branchName,
+            base: 'main',
+            body: `## Suppression de recette
+
+**Titre:** ${existingRecipe.title}
+**Catégories:** ${existingRecipe.categories?.join(', ') || existingRecipe.category || 'Non spécifiée'}
+**Slug:** ${existingRecipe.slug}${imageInfo}
+
+**Description:**
+${existingRecipe.description || 'Aucune description'}
+
+**⚠️ ATTENTION:** Cette action supprimera définitivement la recette et toutes ses données associées.
+
+${cleanupInstructions}
+
+---
+*Cette recette a été supprimée via le formulaire web avec nettoyage automatique des images.*`,
+          }),
+        }
+      );
+
+      if (!prResponse.ok) {
+        throw new Error('Failed to create pull request');
+      }
+
+      const pr = await prResponse.json();
+      return pr.html_url;
+
+    } catch (error) {
+      console.error('Error deleting recipe PR:', error);
+      throw error;
+    }
   }
 
   async createCategoryPR(changes: CategoryChange[]): Promise<string> {

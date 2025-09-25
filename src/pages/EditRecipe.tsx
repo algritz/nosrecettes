@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Plus, Minus, Save, ArrowLeft, Layers } from 'lucide-react';
+import { Plus, Minus, Save, ArrowLeft, Layers, Trash2 } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { CategorySelector } from '@/components/CategorySelector';
@@ -18,6 +18,17 @@ import { recipes } from '@/data/recipes';
 import { recipeCategories } from '@/data/categories';
 import { getRecipeCategories, getAllCategoriesFromRecipes } from '@/utils/recipeUtils';
 import { NotFound } from '@/components/NotFound';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 
 const EditRecipe = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -47,6 +58,7 @@ const EditRecipe = () => {
   const [originalExistingImages, setOriginalExistingImages] = useState<ImageSizes[]>([]); // Track original images
   const [deletedExistingImages, setDeletedExistingImages] = useState<ImageSizes[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
   const [configChecked, setConfigChecked] = useState(false);
@@ -161,6 +173,39 @@ const EditRecipe = () => {
     setExistingImages(prev => prev.filter((_, i) => i !== index));
     
     showSuccess('Image marquée pour suppression');
+  };
+
+  const handleDeleteRecipe = async () => {
+    if (!existingRecipe || !githubConfig) return;
+
+    setIsDeleting(true);
+
+    try {
+      // Schedule cleanup for all existing images
+      if (originalExistingImages.length > 0) {
+        scheduleOldImageCleanup(originalExistingImages, existingRecipe.slug, 'removed');
+      }
+
+      const githubService = new GitHubService(githubConfig);
+      const prUrl = await githubService.deleteRecipePR(existingRecipe);
+
+      showSuccess('Demande de suppression soumise! Pull request créée avec succès.');
+      
+      // Show success message with PR link
+      const openPR = confirm(`Demande de suppression soumise avec succès!\n\nVoulez-vous voir la pull request sur GitHub?`);
+      if (openPR) {
+        window.open(prUrl, '_blank');
+      }
+
+      // Navigate back to home after successful deletion request
+      navigate('/');
+
+    } catch (error) {
+      showError('Erreur lors de la suppression de la recette');
+      console.error(error);
+    } finally {
+      setIsDeleting(false);
+    }
   };
 
   const addIngredient = () => {
@@ -301,12 +346,47 @@ const EditRecipe = () => {
           </Button>
         </Link>
         
-        <h1 className="text-3xl font-bold">Modifier la recette</h1>
-        <p className="text-muted-foreground mt-2">
-          Modifiez les informations ci-dessous. Une pull request sera créée automatiquement sur GitHub.
-        </p>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+          <div>
+            <h1 className="text-3xl font-bold">Modifier la recette</h1>
+            <p className="text-muted-foreground mt-2">
+              Modifiez les informations ci-dessous. Une pull request sera créée automatiquement sur GitHub.
+            </p>
+          </div>
+          
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="destructive" className="w-full sm:w-auto">
+                <Trash2 className="w-4 h-4 mr-2" />
+                Supprimer la recette
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Supprimer la recette</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Êtes-vous sûr de vouloir supprimer la recette "{existingRecipe.title}" ?
+                  <br /><br />
+                  Cette action créera une pull request pour supprimer définitivement la recette et toutes ses images associées.
+                  <br /><br />
+                  <strong>Cette action ne peut pas être annulée une fois la pull request mergée.</strong>
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Annuler</AlertDialogCancel>
+                <AlertDialogAction 
+                  onClick={handleDeleteRecipe}
+                  disabled={isDeleting}
+                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                >
+                  {isDeleting ? 'Suppression en cours...' : 'Supprimer définitivement'}
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
         
-        <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+        <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
           <p className="text-sm text-green-700">
             ✅ Connecté à <strong>{githubConfig.owner}/{githubConfig.repo}</strong>
           </p>
