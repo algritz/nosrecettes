@@ -26,6 +26,13 @@ export const poutineClassique: Recipe = {
     'Servir immédiatement.'
   ],
   tags: ['traditionnel', 'frites', 'fromage'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poutine',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poutine',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poutine'
+    }
+  ],
   source: 'David Cloutier',
   notes: 'Vous pouvez faire cuire les frites au four à 425°F si vous préférez',
   slug: 'poutine-classique'
