@@ -58,21 +58,30 @@
       }
     </style>
     <script type="text/javascript">
-      // Check if this is an admin route that should show static 404
-      var adminRoutes = ['/new-recipe', '/edit-recipe', '/manage-categories', '/admin'];
+      // Check if this is a protected admin route that should show static 404
+      var protectedAdminRoutes = ['/new-recipe', '/edit-recipe', '/manage-categories'];
       var currentPath = window.location.pathname.replace('/nosrecettes', ''); // Remove base path
-      var isAdminRoute = adminRoutes.some(function(route) {
+      
+      // Check if user has GitHub config (authentication check)
+      var hasGitHubConfig = false;
+      try {
+        hasGitHubConfig = !!localStorage.getItem('github-config');
+      } catch (e) {
+        // localStorage might not be available
+        hasGitHubConfig = false;
+      }
+      
+      var isProtectedAdminRoute = protectedAdminRoutes.some(function(route) {
         return currentPath.startsWith(route);
       });
       
-      if (isAdminRoute) {
-        // For admin routes, show static 404 page instead of redirecting to SPA
-        // This prevents unauthorized users from discovering admin functionality
+      if (isProtectedAdminRoute && !hasGitHubConfig) {
+        // For protected admin routes without authentication, show static 404 page
         document.addEventListener('DOMContentLoaded', function() {
           // Page will show the static 404 content below
         });
       } else {
-        // For regular routes, redirect to SPA for proper handling
+        // For all other routes (including /admin), redirect to SPA for proper handling
         var pathSegmentsToKeep = 1;
         var l = window.location;
         
@@ -95,7 +104,7 @@
       </p>
       <a href="/nosrecettes/" class="home-button">
         <svg class="home-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
         </svg>
         Retour à l'accueil
       </a>
