@@ -8,6 +8,7 @@ import { formatTime } from '@/utils/timeFormat';
 import { useState, useEffect } from 'react';
 import { ResponsiveImage } from './ResponsiveImage';
 import { getRecipeCategories } from '@/utils/recipeUtils';
+import { IngredientSection, InstructionSection } from '@/types/recipe';
 
 interface RecipeDetailProps {
   recipe: Recipe;
@@ -53,6 +54,108 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
       top: 0,
       behavior: 'smooth'
     });
+  };
+
+  // Helper function to render ingredients
+  const renderIngredients = () => {
+    if (!recipe.ingredients || recipe.ingredients.length === 0) {
+      return <p className="text-muted-foreground">Aucun ingrédient spécifié</p>;
+    }
+
+    // Check if ingredients are sectioned
+    const firstIngredient = recipe.ingredients[0];
+    if (typeof firstIngredient === 'object' && 'title' in firstIngredient) {
+      // Sectioned ingredients
+      const sections = recipe.ingredients as IngredientSection[];
+      return (
+        <div className="space-y-6">
+          {sections.map((section, sectionIndex) => (
+            <div key={sectionIndex}>
+              {section.title && (
+                <h4 className="font-semibold text-primary mb-3 border-b border-border pb-1">
+                  {section.title}
+                </h4>
+              )}
+              <ul className="space-y-2">
+                {section.items.map((ingredient, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                    {ingredient}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      );
+    } else {
+      // Regular ingredients array
+      const ingredients = recipe.ingredients as string[];
+      return (
+        <ul className="space-y-2">
+          {ingredients.map((ingredient, index) => (
+            <li key={index} className="flex items-start gap-2">
+              <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+              {ingredient}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+  };
+
+  // Helper function to render instructions
+  const renderInstructions = () => {
+    if (!recipe.instructions || recipe.instructions.length === 0) {
+      return <p className="text-muted-foreground">Aucune instruction spécifiée</p>;
+    }
+
+    // Check if instructions are sectioned
+    const firstInstruction = recipe.instructions[0];
+    if (typeof firstInstruction === 'object' && 'title' in firstInstruction) {
+      // Sectioned instructions
+      const sections = recipe.instructions as InstructionSection[];
+      let stepCounter = 1;
+
+      return (
+        <div className="space-y-6">
+          {sections.map((section, sectionIndex) => (
+            <div key={sectionIndex}>
+              {section.title && (
+                <h4 className="font-semibold text-primary mb-3 border-b border-border pb-1">
+                  {section.title}
+                </h4>
+              )}
+              <ol className="space-y-4">
+                {section.steps.map((instruction, index) => (
+                  <li key={index} className="flex gap-3">
+                    <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
+                      {stepCounter++}
+                    </span>
+                    <span>{instruction}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))}
+        </div>
+      );
+    } else {
+      // Regular instructions array
+      const instructions = recipe.instructions as string[];
+      return (
+        <ol className="space-y-4">
+          {instructions.map((instruction, index) => (
+            <li key={index} className="flex gap-3">
+              <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
+                {index + 1}
+              </span>
+              <span>{instruction}</span>
+            </li>
+          ))}
+        </ol>
+      );
+    }
   };
 
   return (
@@ -207,14 +310,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             <CardTitle>Ingrédients</CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-2">
-              {recipe.ingredients.map((ingredient, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                  {ingredient}
-                </li>
-              ))}
-            </ul>
+            {renderIngredients()}
           </CardContent>
         </Card>
 
@@ -223,16 +319,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             <CardTitle>Instructions</CardTitle>
           </CardHeader>
           <CardContent>
-            <ol className="space-y-4">
-              {recipe.instructions.map((instruction, index) => (
-                <li key={index} className="flex gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
-                    {index + 1}
-                  </span>
-                  <span>{instruction}</span>
-                </li>
-              ))}
-            </ol>
+            {renderInstructions()}
           </CardContent>
         </Card>
       </div>

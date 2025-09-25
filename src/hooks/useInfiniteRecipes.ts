@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { Recipe } from '@/types/recipe';
+import { Recipe, IngredientSection, InstructionSection } from '@/types/recipe';
 import { getAllCategoriesFromRecipes, recipeMatchesCategories } from '@/utils/recipeUtils';
 
 interface UseInfiniteRecipesProps {
@@ -17,21 +17,40 @@ export const useInfiniteRecipes = ({ recipes, batchSize = 10 }: UseInfiniteRecip
     return getAllCategoriesFromRecipes(recipes);
   }, [recipes]);
 
+  // Helper function to extract text from ingredients (handles both formats)
+  const getIngredientsText = (ingredients: string[] | IngredientSection[]): string => {
+    if (!ingredients || ingredients.length === 0) return '';
+    
+    // Check if sectioned
+    if (typeof ingredients[0] === 'object' && 'items' in ingredients[0]) {
+      const sections = ingredients as IngredientSection[];
+      return sections.flatMap(section => section.items).join(' ');
+    } else {
+      return (ingredients as string[]).join(' ');
+    }
+  };
+
+  // Helper function to extract text from instructions (handles both formats)
+  const getInstructionsText = (instructions: string[] | InstructionSection[]): string => {
+    if (!instructions || instructions.length === 0) return '';
+    
+    // Check if sectioned
+    if (typeof instructions[0] === 'object' && 'steps' in instructions[0]) {
+      const sections = instructions as InstructionSection[];
+      return sections.flatMap(section => section.steps).join(' ');
+    } else {
+      return (instructions as string[]).join(' ');
+    }
+  };
+
   // Filter recipes based on search and categories
   const filteredRecipes = useMemo(() => {
     return recipes.filter(recipe => {
       const matchesSearch = searchTerm === '' || 
         recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         recipe.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        recipe.ingredients.some(ingredient => {
-          if (typeof ingredient === 'string') {
-            return ingredient.toLowerCase().includes(searchTerm.toLowerCase());
-          }
-          // Handle sectioned ingredients
-          return ingredient.items?.some(item => 
-            item.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-        }) ||
+        getIngredientsText(recipe.ingredients).toLowerCase().includes(searchTerm.toLowerCase()) ||
+        getInstructionsText(recipe.instructions).toLowerCase().includes(searchTerm.toLowerCase()) ||
         recipe.tags.some(tag => 
           tag.toLowerCase().includes(searchTerm.toLowerCase())
         );
