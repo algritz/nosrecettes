@@ -1,5 +1,5 @@
 import { ProcessedImage } from '@/utils/imageUtils';
-import { ImageSizes } from '@/types/recipe';
+import { ImageSizes, IngredientSection, InstructionSection } from '@/types/recipe';
 import { generateCleanupInstructions } from '@/utils/cloudinaryUtils';
 
 interface GitHubConfig {
@@ -17,8 +17,8 @@ interface RecipeData {
   marinatingTime?: string;
   servings: string;
   difficulty: string;
-  ingredients: string[];
-  instructions: string[];
+  ingredients: string[] | IngredientSection[];
+  instructions: string[] | InstructionSection[];
   tags: string[];
   accompaniment?: string;
   wine?: string;
@@ -110,6 +110,58 @@ export class GitHubService {
     return decoder.decode(bytes);
   }
 
+  private formatIngredientsForFile(ingredients: string[] | IngredientSection[]): string {
+    if (!ingredients || ingredients.length === 0) {
+      return "    ''";
+    }
+
+    // Check if it's sectioned ingredients
+    if (typeof ingredients[0] === 'object' && 'title' in ingredients[0]) {
+      const sections = ingredients as IngredientSection[];
+      const sectionObjects = sections.map(section => {
+        const items = section.items.filter(item => item.trim() !== '');
+        return `    {
+      title: '${this.escapeString(section.title)}',
+      items: [
+${items.map(item => `        '${this.escapeString(item)}'`).join(',\n')}
+      ]
+    }`;
+      });
+      
+      return `[\n${sectionObjects.join(',\n')}\n  ]`;
+    } else {
+      // Regular string array
+      const cleanIngredients = (ingredients as string[]).filter(ing => ing.trim() !== '');
+      return `[\n${cleanIngredients.map(ing => `    '${this.escapeString(ing)}'`).join(',\n')}\n  ]`;
+    }
+  }
+
+  private formatInstructionsForFile(instructions: string[] | InstructionSection[]): string {
+    if (!instructions || instructions.length === 0) {
+      return "    ''";
+    }
+
+    // Check if it's sectioned instructions
+    if (typeof instructions[0] === 'object' && 'title' in instructions[0]) {
+      const sections = instructions as InstructionSection[];
+      const sectionObjects = sections.map(section => {
+        const steps = section.steps.filter(step => step.trim() !== '');
+        return `    {
+      title: '${this.escapeString(section.title)}',
+      steps: [
+${steps.map(step => `        '${this.escapeString(step)}'`).join(',\n')}
+      ]
+    }`;
+      });
+      
+      return `[\n${sectionObjects.join(',\n')}\n  ]`;
+    } else {
+      // Regular string array
+      const cleanInstructions = (instructions as string[]).filter(inst => inst.trim() !== '');
+      return `[\n${cleanInstructions.map(inst => `    '${this.escapeString(inst)}'`).join(',\n')}\n  ]`;
+    }
+  }
+
   private async generateRecipeFile(
     data: RecipeData, 
     images: ProcessedImage[], 
@@ -119,10 +171,6 @@ export class GitHubService {
     const slug = this.createSlug(data.title);
     const id = existingId || Date.now().toString();
     const variableName = this.createVariableName(slug);
-
-    const cleanIngredients = data.ingredients.filter(ing => ing.trim() !== '');
-    const cleanInstructions = data.instructions.filter(inst => inst.trim() !== '');
-    const cleanTags = data.tags.filter(tag => tag.trim() !== '');
 
     const marinatingTimeField = data.marinatingTime && parseInt(data.marinatingTime) > 0 
       ? `  marinatingTime: ${data.marinatingTime},\n` 
@@ -187,6 +235,13 @@ export class GitHubService {
     // Generate categories field
     const categoriesField = `  categories: [${data.categories.map(cat => `'${this.escapeString(cat)}'`).join(', ')}],\n`;
 
+    // Format ingredients and instructions (handles both regular and sectioned)
+    const ingredientsField = this.formatIngredientsForFile(data.ingredients);
+    const instructionsField = this.formatInstructionsForFile(data.instructions);
+
+    // Clean tags
+    const cleanTags = data.tags.filter(tag => tag.trim() !== '');
+
     return `import { Recipe } from '@/types/recipe';
 
 export const ${variableName}: Recipe = {
@@ -197,12 +252,8 @@ ${categoriesField}  prepTime: ${data.prepTime || 0},
   cookTime: ${data.cookTime || 0},
 ${marinatingTimeField}  servings: ${data.servings || 1},
   difficulty: '${data.difficulty}',
-  ingredients: [
-${cleanIngredients.map(ing => `    '${this.escapeString(ing)}'`).join(',\n')}
-  ],
-  instructions: [
-${cleanInstructions.map(inst => `    '${this.escapeString(inst)}'`).join(',\n')}
-  ],
+  ingredients: ${ingredientsField},
+  instructions: ${instructionsField},
   tags: [${cleanTags.map(tag => `'${this.escapeString(tag)}'`).join(', ')}],
 ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug: '${slug}'
 };
@@ -600,6 +651,9 @@ ${cleanupInstructions}
         ? `\n**Images:** ${images.length} image(s) hébergée(s) sur Cloudinary` 
         : '';
 
+      // Get tags for display, filtering out empty ones
+      const displayTags = Array.isArray(recipeData.tags) ? recipeData.tags.filter(t => t.trim()) : [];
+
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
@@ -624,7 +678,7 @@ ${cleanupInstructions}
 **Description:**
 ${recipeData.description}
 
-**Tags:** ${recipeData.tags.filter(t => t.trim()).join(', ')}
+**Tags:** ${displayTags.join(', ')}
 
 ---
 *Cette recette a été ajoutée via le formulaire web avec images hébergées sur Cloudinary.*
@@ -816,6 +870,9 @@ ${recipeData.description}
         imageInfo = `\n**Images:** ${existingImages.length} image(s) existante(s) conservée(s)`;
       }
 
+      // Get tags for display, filtering out empty ones
+      const displayTags = Array.isArray(recipeData.tags) ? recipeData.tags.filter(t => t.trim()) : [];
+
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
@@ -840,7 +897,7 @@ ${recipeData.description}
 **Description:**
 ${recipeData.description}
 
-**Tags:** ${recipeData.tags.filter(t => t.trim()).join(', ')}
+**Tags:** ${displayTags.join(', ')}
 
 ---
 *Cette recette a été modifiée via le formulaire web avec gestion intelligente des images.*
