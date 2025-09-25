@@ -90,24 +90,18 @@ const extractInstructions = (text: string): string[] => {
 };
 
 const extractDescription = (text: string, title: string): string => {
-  // Try to find a description section
+  // Only look for explicit description sections, don't try to extract from content
   const descriptionMatch = text.match(/(?:Description|Résumé):\s*(.*?)(?=Ingrédients:|Instructions:|Préparation:|$)/is);
   if (descriptionMatch && descriptionMatch[1].trim().length > 10) {
-    return descriptionMatch[1].trim();
-  }
-  
-  // Try to extract the first meaningful sentence from the content
-  const sentences = text.split(/[.!?]+/).map(s => s.trim()).filter(s => s.length > 20);
-  for (const sentence of sentences) {
-    // Skip sentences that are likely section headers or ingredient lists
-    if (!sentence.match(/^(?:Ingrédients|Instructions|Préparation|Cuisson|Portions|Temps)/i) &&
-        !sentence.match(/^\d+\s*(?:g|kg|ml|l|c\.\s*à\s*(?:soupe|thé)|tasse|cuillère)/i) &&
-        sentence.length < 200) {
-      return sentence + '.';
+    const desc = descriptionMatch[1].trim();
+    // Make sure it's not just ingredients or instructions that got mismatched
+    if (!desc.match(/^\d+\s*(?:g|kg|ml|l|c\.\s*à\s*(?:soupe|thé)|tasse|cuillère)/i) &&
+        !desc.match(/^(?:Ingrédients|Instructions|Préparation|Cuisson)/i)) {
+      return desc;
     }
   }
   
-  // If no good description found, return empty string instead of generic template
+  // If no explicit description found, return empty string
   return '';
 };
 
@@ -231,7 +225,7 @@ export const parseCSVRecipes = (csvContent: string): CSVParseResult => {
         // Generate tags and category
         const tags = generateTags(title, ingredients);
         
-        // Extract or generate description
+        // Extract description (only if explicitly marked, otherwise empty)
         const description = extractDescription(plainContent, title);
         
         const recipe: ParsedCSVRecipe = {
