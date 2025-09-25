@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Plus, Minus, Save, ArrowLeft, Layers } from 'lucide-react';
+import { Plus, Minus, Save, ArrowLeft, Layers, Download, X } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { CategorySelector } from '@/components/CategorySelector';
@@ -12,6 +12,7 @@ import { TimeInput } from '@/components/TimeInput';
 import { ImageUpload } from '@/components/ImageUpload';
 import { SectionedIngredients } from '@/components/SectionedIngredients';
 import { SectionedInstructions } from '@/components/SectionedInstructions';
+import { RecipeImporter } from '@/components/RecipeImporter';
 import { ProcessedImage } from '@/utils/imageUtils';
 import { IngredientSection, InstructionSection } from '@/types/recipe';
 import { recipes } from '@/data/recipes';
@@ -44,6 +45,7 @@ const NewRecipe = () => {
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
   const [configChecked, setConfigChecked] = useState(false);
+  const [showImporter, setShowImporter] = useState(false);
   
   // New state for sectioned ingredients and instructions
   const [useSectionedIngredients, setUseSectionedIngredients] = useState(false);
@@ -84,6 +86,28 @@ const NewRecipe = () => {
       </div>
     );
   }
+
+  const handleImportSuccess = (importedData: any) => {
+    // Pre-fill form with imported data
+    setRecipe(prev => ({
+      ...prev,
+      title: importedData.title || prev.title,
+      description: importedData.description || prev.description,
+      prepTime: importedData.prepTime || prev.prepTime,
+      cookTime: importedData.cookTime || prev.cookTime,
+      servings: importedData.servings || prev.servings,
+      ingredients: importedData.ingredients?.length ? importedData.ingredients : prev.ingredients,
+      instructions: importedData.instructions?.length ? importedData.instructions : prev.instructions,
+      tags: importedData.tags?.length ? importedData.tags : prev.tags,
+      source: importedData.source || prev.source
+    }));
+
+    // If imported data has an image URL, we could potentially download and process it
+    // For now, we'll just show a message about the image
+    if (importedData.imageUrl) {
+      showSuccess(`Recette importée! Image trouvée: ${importedData.imageUrl} (vous devrez l'ajouter manuellement)`);
+    }
+  };
 
   const addIngredient = () => {
     setRecipe(prev => ({
@@ -162,7 +186,7 @@ const NewRecipe = () => {
       // Prepare recipe data with sectioned ingredients/instructions if enabled
       const recipeData = {
         ...recipe,
-        ingredients: useSectionedIngredients ? sectionedIngredients : recipe.ingredients,
+        ingredients: useSectionedIngredients ? sectione dIngredients : recipe.ingredients,
         instructions: useSectionedInstructions ? sectionedInstructions : recipe.instructions
       };
 
@@ -219,17 +243,44 @@ const NewRecipe = () => {
           </Button>
         </Link>
         
-        <h1 className="text-3xl font-bold">Ajouter une nouvelle recette</h1>
-        <p className="text-muted-foreground mt-2">
-          Remplissez le formulaire ci-dessous. Une pull request sera créée automatiquement sur GitHub.
-        </p>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+          <div>
+            <h1 className="text-3xl font-bold">Ajouter une nouvelle recette</h1>
+            <p className="text-muted-foreground mt-2">
+              Remplissez le formulaire ci-dessous ou importez depuis une URL. Une pull request sera créée automatiquement sur GitHub.
+            </p>
+          </div>
+          
+          <Button 
+            variant="outline" 
+            onClick={() => setShowImporter(!showImporter)}
+            className="w-full sm:w-auto"
+          >
+            {showImporter ? (
+              <X className="w-4 h-4 mr-2" />
+            ) : (
+              <Download className="w-4 h-4 mr-2" />
+            )}
+            {showImporter ? 'Fermer l\'import' : 'Importer depuis URL'}
+          </Button>
+        </div>
         
-        <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+        <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
           <p className="text-sm text-green-700">
             ✅ Connecté à <strong>{githubConfig.owner}/{githubConfig.repo}</strong>
           </p>
         </div>
       </div>
+
+      {/* Recipe Importer */}
+      {showImporter && (
+        <div className="mb-6">
+          <RecipeImporter
+            onImportSuccess={handleImportSuccess}
+            onClose={() => setShowImporter(false)}
+          />
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Basic Information */}
