@@ -157,6 +157,9 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
     }
   };
 
+  // Check if recipe has any tags to display
+  const hasValidTags = recipe.tags && recipe.tags.length > 0 && recipe.tags.some(tag => tag.trim() !== '');
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-6">
@@ -349,20 +352,23 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
         </div>
       )}
 
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle>Tags</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-2">
-            {recipe.tags.map((tag) => (
-              <Badge key={tag} variant="outline">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+      {/* Tags section - only show if recipe has valid tags */}
+      {hasValidTags && (
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle>Tags</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {recipe.tags.filter(tag => tag.trim() !== '').map((tag) => (
+                <Badge key={tag} variant="outline">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Scroll to Top Button */}
       {showScrollTop && (
