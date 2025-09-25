@@ -44,6 +44,7 @@ const EditRecipe = () => {
 
   const [recipeImages, setRecipeImages] = useState<ProcessedImage[]>([]);
   const [existingImages, setExistingImages] = useState<ImageSizes[]>([]);
+  const [originalExistingImages, setOriginalExistingImages] = useState<ImageSizes[]>([]); // Track original images
   const [deletedExistingImages, setDeletedExistingImages] = useState<ImageSizes[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
@@ -106,7 +107,9 @@ const EditRecipe = () => {
         }
         return img;
       }) as ImageSizes[];
+      
       setExistingImages(imagesSizes);
+      setOriginalExistingImages([...imagesSizes]); // Keep track of original images
 
       setRecipe({
         title: existingRecipe.title,
@@ -239,13 +242,21 @@ const EditRecipe = () => {
         scheduleOldImageCleanup(deletedExistingImages, existingRecipe.slug, 'removed');
       }
 
-      // If new images are added, schedule cleanup of remaining existing images
-      if (recipeImages.length > 0 && existingImages.length > 0) {
-        scheduleOldImageCleanup(existingImages, existingRecipe.slug, 'replaced');
-      }
+      // Determine final images based on user actions
+      let finalImages: ProcessedImage[] = [];
+      let imagesToKeep: ImageSizes[] = [];
 
-      // Determine final images: new images take precedence, otherwise keep existing
-      const finalImages = recipeImages.length > 0 ? recipeImages : [];
+      if (recipeImages.length > 0) {
+        // New images were added - use new images and schedule cleanup of ALL original existing images
+        finalImages = recipeImages;
+        if (originalExistingImages.length > 0) {
+          scheduleOldImageCleanup(originalExistingImages, existingRecipe.slug, 'replaced');
+        }
+      } else {
+        // No new images - keep remaining existing images (those not deleted)
+        imagesToKeep = existingImages;
+        finalImages = []; // No new ProcessedImages to pass to GitHub service
+      }
 
       // Prepare recipe data with sectioned ingredients/instructions if enabled
       const recipeData = {
@@ -255,7 +266,14 @@ const EditRecipe = () => {
       };
 
       const githubService = new GitHubService(githubConfig);
-      const prUrl = await githubService.updateRecipePR(recipeData, existingRecipe, finalImages);
+      
+      // Pass the final images and existing images to keep
+      const prUrl = await githubService.updateRecipePR(
+        recipeData, 
+        existingRecipe, 
+        finalImages, 
+        imagesToKeep // Pass existing images to keep
+      );
 
       showSuccess('Modifications soumises! Pull request créée avec succès.');
       
@@ -392,10 +410,18 @@ const EditRecipe = () => {
             />
             
             {/* Status Messages */}
-            {recipeImages.length > 0 && existingImages.length > 0 && (
+            {recipeImages.length > 0 && originalExistingImages.length > 0 && (
               <div className="mt-4 p-3 bg-orange-50 border border-orange-200 rounded-lg">
                 <p className="text-sm text-orange-700">
-                  ⚠️ Les nouvelles images remplaceront les images existantes
+                  ⚠️ Les nouvelles images remplaceront toutes les images existantes
+                </p>
+              </div>
+            )}
+            
+            {recipeImages.length === 0 && existingImages.length > 0 && (
+              <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                <p className="text-sm text-blue-700">
+                  ✅ Les images existantes seront conservées
                 </p>
               </div>
             )}
@@ -408,7 +434,7 @@ const EditRecipe = () => {
               </div>
             )}
             
-            {recipeImages.length === 0 && existingImages.length === 0 && deletedExistingImages.length === 0 && (
+            {recipeImages.length === 0 && existingImages.length === 0 && (
               <div className="mt-4 p-3 bg-gray-50 border border-gray-200 rounded-lg">
                 <p className="text-sm text-gray-700">
                   ℹ️ Cette recette n'aura pas d'image

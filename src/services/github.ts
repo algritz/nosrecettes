@@ -1,4 +1,5 @@
 import { ProcessedImage } from '@/utils/imageUtils';
+import { ImageSizes } from '@/types/recipe';
 
 interface GitHubConfig {
   owner: string;
@@ -108,7 +109,12 @@ export class GitHubService {
     return decoder.decode(bytes);
   }
 
-  private async generateRecipeFile(data: RecipeData, images: ProcessedImage[], existingId?: string): Promise<string> {
+  private async generateRecipeFile(
+    data: RecipeData, 
+    images: ProcessedImage[], 
+    existingId?: string, 
+    existingImages?: ImageSizes[]
+  ): Promise<string> {
     const slug = this.createSlug(data.title);
     const id = existingId || Date.now().toString();
     const variableName = this.createVariableName(slug);
@@ -148,14 +154,29 @@ export class GitHubService {
       ? `  notes: '${this.escapeString(data.notes)}',\n` 
       : '';
 
-    // Generate images field using Cloudinary URLs
+    // Generate images field - prioritize new images, then existing images
     let imagesField = '';
-    if (images.length > 0) {
-      const imageObjects = images.map((image) => {
+    const finalImages = images.length > 0 ? images : [];
+    const imagesToUse = existingImages && existingImages.length > 0 && images.length === 0 ? existingImages : [];
+
+    if (finalImages.length > 0) {
+      // Use new ProcessedImages (Cloudinary URLs)
+      const imageObjects = finalImages.map((image) => {
         return `    {
       small: '${image.sizes.small}',
       medium: '${image.sizes.medium}',
       large: '${image.sizes.large}'
+    }`;
+      });
+      
+      imagesField = `  images: [\n${imageObjects.join(',\n')}\n  ],\n`;
+    } else if (imagesToUse.length > 0) {
+      // Use existing images
+      const imageObjects = imagesToUse.map((image) => {
+        return `    {
+      small: '${image.small}',
+      medium: '${image.medium}',
+      large: '${image.large}'
     }`;
       });
       
@@ -577,7 +598,12 @@ ${recipeData.description}
     }
   }
 
-  async updateRecipePR(recipeData: RecipeData, existingRecipe: any, images: ProcessedImage[] = []): Promise<string> {
+  async updateRecipePR(
+    recipeData: RecipeData, 
+    existingRecipe: any, 
+    images: ProcessedImage[] = [], 
+    existingImages: ImageSizes[] = []
+  ): Promise<string> {
     const newSlug = this.createSlug(recipeData.title);
     const oldSlug = existingRecipe.slug;
     const branchName = `update-recipe/${newSlug}-${Date.now()}`;
@@ -634,8 +660,13 @@ ${recipeData.description}
       const indexFile = await indexResponse.json();
       const currentIndexContent = this.base64Decode(indexFile.content);
 
-      // Generate updated recipe file content (preserve existing ID, images are already on Cloudinary)
-      const recipeFileContent = await this.generateRecipeFile(recipeData, images, existingRecipe.id);
+      // Generate updated recipe file content (preserve existing ID, handle images properly)
+      const recipeFileContent = await this.generateRecipeFile(
+        recipeData, 
+        images, 
+        existingRecipe.id, 
+        existingImages
+      );
       
       // Update index.ts content if slug changed
       const updatedIndexContent = this.updateIndexFileForEdit(currentIndexContent, oldSlug, newSlug);
@@ -766,9 +797,12 @@ ${recipeData.description}
         ? `\n**Notes:** ${recipeData.notes}` 
         : '';
 
-      const imageInfo = images.length > 0 
-        ? `\n**Images:** ${images.length} image(s) modifiée(s) sur Cloudinary` 
-        : '';
+      let imageInfo = '';
+      if (images.length > 0) {
+        imageInfo = `\n**Images:** ${images.length} nouvelle(s) image(s) sur Cloudinary`;
+      } else if (existingImages.length > 0) {
+        imageInfo = `\n**Images:** ${existingImages.length} image(s) existante(s) conservée(s)`;
+      }
 
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
@@ -797,7 +831,7 @@ ${recipeData.description}
 **Tags:** ${recipeData.tags.filter(t => t.trim()).join(', ')}
 
 ---
-*Cette recette a été modifiée via le formulaire web avec images hébergées sur Cloudinary.*`,
+*Cette recette a été modifiée via le formulaire web avec gestion intelligente des images.*`,
           }),
         }
       );
