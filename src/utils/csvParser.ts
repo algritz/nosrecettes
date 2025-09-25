@@ -52,68 +52,64 @@ const extractIngredients = (text: string): string[] => {
         .filter(ing => ing.length > 2);
     }
     
-    // For single-line ingredients, use a tokenization approach
-    // Split the text into tokens and then group them into ingredients
-    const tokens = ingredientsText.split(/\s+/);
-    const ingredients: string[] = [];
-    let currentIngredient: string[] = [];
+    // For single-line ingredients, use a simple but effective approach
+    // Look for patterns that typically start ingredients:
+    // - Number at start of word boundary
+    // - "le/la/les/du/de/des/d'" at start of word boundary
+    // But be more conservative about splitting
     
-    for (let i = 0; i < tokens.length; i++) {
-      const token = tokens[i];
-      const nextToken = tokens[i + 1];
-      const nextNextToken = tokens[i + 2];
+    const ingredientBoundaries = [];
+    
+    // Find all potential ingredient start positions
+    const patterns = [
+      /\b(\d+(?:\s*\/\s*\d+)?(?:\s*à\s*\d+)?)\s+/g,  // Numbers (including fractions and ranges like "2 à 4")
+      /\b(le|la|les)\s+(?!jus|zeste)/g,               // Articles (but not "le jus" or "le zeste")
+      /\b(du|de|des|d')\s+/g,                         // Prepositions
+      /\b(un|une|demi|quart)\s+/g                     // Fraction words
+    ];
+    
+    patterns.forEach(pattern => {
+      let match;
+      while ((match = pattern.exec(ingredientsText)) !== null) {
+        ingredientBoundaries.push(match.index);
+      }
+    });
+    
+    // Sort boundaries and remove duplicates
+    const uniqueBoundaries = [...new Set(ingredientBoundaries)].sort((a, b) => a - b);
+    
+    // If we found boundaries, split the text at those points
+    if (uniqueBoundaries.length > 1) {
+      const ingredients = [];
       
-      // Start a new ingredient if we find a quantity pattern
-      const isQuantityStart = (
-        // Numbers (including fractions)
-        /^\d+$/.test(token) ||
-        /^\d+\/\d+$/.test(token) ||
-        /^\d+\.\d+$/.test(token) ||
-        // Fraction words
-        /^(?:un|une|demi|quart|trois|quatre|cinq|six|sept|huit|neuf|dix)$/i.test(token) ||
-        // Articles that often start ingredients
-        /^(?:le|la|les|du|de|des|d')$/i.test(token)
-      );
-      
-      // Check if this looks like the start of a new ingredient
-      const isNewIngredient = isQuantityStart && currentIngredient.length > 0 && (
-        // Number followed by unit
-        (nextToken && /^(?:g|kg|ml|l|lb|oz|tasse|tasses|cup|cups|c\.|cuillère|cuilleres|boîte|boites|paquet|paquets|livre|livres|once|onces|pincée|pincees|steak|steaks)$/i.test(nextToken)) ||
-        // Number followed by "à" (like "2 à 4")
-        (nextToken && nextToken.toLowerCase() === 'à') ||
-        // "le jus" pattern
-        (token.toLowerCase() === 'le' && nextToken && nextToken.toLowerCase() === 'jus') ||
-        // "la" followed by ingredient name
-        (token.toLowerCase() === 'la' && nextToken) ||
-        // Fraction followed by "de"
-        (/^\d+\/\d+$/.test(token) && nextToken && nextToken.toLowerCase() === 'de')
-      );
-      
-      // If this is the start of a new ingredient and we have a current one, save it
-      if (isNewIngredient) {
-        if (currentIngredient.length > 0) {
-          ingredients.push(currentIngredient.join(' ').trim());
-          currentIngredient = [];
+      for (let i = 0; i < uniqueBoundaries.length; i++) {
+        const start = uniqueBoundaries[i];
+        const end = uniqueBoundaries[i + 1] || ingredientsText.length;
+        const ingredient = ingredientsText.substring(start, end).trim();
+        
+        if (ingredient.length > 2) {
+          ingredients.push(ingredient);
         }
       }
       
-      // Add token to current ingredient
-      currentIngredient.push(token);
+      // Clean up ingredients
+      return ingredients
+        .map(ing => ing.replace(/[,;]$/, '').trim())
+        .filter(ing => ing.length > 2);
     }
     
-    // Don't forget the last ingredient
-    if (currentIngredient.length > 0) {
-      ingredients.push(currentIngredient.join(' ').trim());
+    // Fallback: if no clear boundaries found, try splitting on obvious patterns
+    const fallbackIngredients = ingredientsText
+      .split(/\s+(?=\d+(?:\s*\/\s*\d+)?\s+\w+|\ble\s+jus|\bla\s+\w+|\bdu\s+\w+|\bde\s+\w+|\bdes\s+\w+|\bd'\w+)/g)
+      .map(ing => ing.trim())
+      .filter(ing => ing.length > 2);
+    
+    if (fallbackIngredients.length > 1) {
+      return fallbackIngredients;
     }
     
-    // Clean up and filter ingredients
-    return ingredients
-      .map(ing => ing.replace(/[,;]$/, '').trim())
-      .filter(ing => {
-        return ing.length > 2 && 
-               !ing.match(/^(?:Instructions|Préparation|Cuisson|Portions)/i) &&
-               !ing.match(/^[,;.\s]*$/);
-      });
+    // Last resort: return as single ingredient
+    return [ingredientsText.trim()];
   }
   
   return [];
