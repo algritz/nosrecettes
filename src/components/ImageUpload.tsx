@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Upload, X, Image as ImageIcon, Loader2, Edit, Clock, Zap } from 'lucide-react';
+import { Upload, X, Image as ImageIcon, Loader2, Edit, Clock, Zap, Trash2 } from 'lucide-react';
 import { processImageFile, ProcessedImage, scheduleOldImageCleanup } from '@/utils/imageUtils';
 import { CloudinaryConfig, getScheduledCleanups } from '@/utils/cloudinaryUtils';
 import { showError } from '@/utils/toast';
 import { ImageEditor } from './ImageEditor';
+import { ResponsiveImage } from './ResponsiveImage';
+import { ImageSizes } from '@/types/recipe';
 
 interface ImageUploadProps {
   images: ProcessedImage[];
@@ -13,6 +15,9 @@ interface ImageUploadProps {
   maxImages?: number;
   className?: string;
   recipeSlug?: string; // For tracking cleanup
+  existingImages?: ImageSizes[]; // Existing images from recipe
+  onExistingImageDelete?: (index: number) => void; // Callback for deleting existing images
+  showExistingImages?: boolean; // Whether to show existing images section
 }
 
 export const ImageUpload = ({ 
@@ -20,7 +25,10 @@ export const ImageUpload = ({
   onImagesChange, 
   maxImages = 5,
   className,
-  recipeSlug = 'unknown'
+  recipeSlug = 'unknown',
+  existingImages = [],
+  onExistingImageDelete,
+  showExistingImages = false
 }: ImageUploadProps) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [dragOver, setDragOver] = useState(false);
@@ -176,6 +184,12 @@ export const ImageUpload = ({
     setIsEditorOpen(true);
   };
 
+  const handleDeleteExistingImage = (index: number) => {
+    if (onExistingImageDelete) {
+      onExistingImageDelete(index);
+    }
+  };
+
   return (
     <div className={className}>
       {/* Cloudinary Status */}
@@ -201,6 +215,58 @@ export const ImageUpload = ({
             ⚠️ Cloudinary non configuré - les images seront stockées localement
           </p>
         </div>
+      )}
+
+      {/* Existing Images Section (for edit mode) */}
+      {showExistingImages && existingImages.length > 0 && (
+        <Card className="mb-4">
+          <CardContent className="p-4">
+            <h4 className="text-sm font-medium mb-3">Images actuelles</h4>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {existingImages.map((imageSize, index) => (
+                <Card key={index} className="relative group">
+                  <CardContent className="p-2">
+                    <div className="aspect-square relative overflow-hidden rounded-md">
+                      <ResponsiveImage
+                        src={imageSize}
+                        alt={`Image existante ${index + 1}`}
+                        size="small"
+                        aspectRatio="square"
+                        className="w-full h-full"
+                        showPlaceholder={true}
+                      />
+                      
+                      {/* Delete Button */}
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="destructive"
+                          onClick={() => handleDeleteExistingImage(index)}
+                          className="h-8 w-8 p-0"
+                          title="Supprimer cette image"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </Button>
+                      </div>
+                      
+                      {/* Primary Image Badge */}
+                      {index === 0 && (
+                        <div className="absolute top-2 left-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded">
+                          Principal
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              Ces images seront conservées si vous n'ajoutez pas de nouvelles images. 
+              Cliquez sur une image pour la supprimer.
+            </p>
+          </CardContent>
+        </Card>
       )}
 
       {/* Upload Area */}
@@ -251,6 +317,11 @@ export const ImageUpload = ({
                   <p className="text-xs text-muted-foreground mt-1">
                     💡 Sélectionnez une seule image pour l'éditer avant upload
                   </p>
+                  {showExistingImages && existingImages.length > 0 && (
+                    <p className="text-xs text-muted-foreground mt-1">
+                      ⚠️ Ajouter de nouvelles images remplacera les images existantes
+                    </p>
+                  )}
                 </div>
               </div>
             )}
@@ -258,7 +329,7 @@ export const ImageUpload = ({
         </Card>
       )}
 
-      {/* Image Preview Grid */}
+      {/* New Image Preview Grid */}
       {images.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
           {images.map((processedImage, index) => (
@@ -267,7 +338,7 @@ export const ImageUpload = ({
                 <div className="aspect-square relative overflow-hidden rounded-md">
                   <img
                     src={processedImage.sizes.small}
-                    alt={`Image ${index + 1}`}
+                    alt={`Nouvelle image ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
                   
@@ -335,6 +406,11 @@ export const ImageUpload = ({
                       Cloud
                     </div>
                   )}
+
+                  {/* New Badge */}
+                  <div className="absolute bottom-2 left-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">
+                    Nouveau
+                  </div>
                 </div>
                 
                 <p className="text-xs text-muted-foreground mt-2 truncate">

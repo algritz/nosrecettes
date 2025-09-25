@@ -12,8 +12,8 @@ import { TimeInput } from '@/components/TimeInput';
 import { ImageUpload } from '@/components/ImageUpload';
 import { SectionedIngredients } from '@/components/SectionedIngredients';
 import { SectionedInstructions } from '@/components/SectionedInstructions';
-import { ProcessedImage } from '@/utils/imageUtils';
-import { IngredientSection, InstructionSection } from '@/types/recipe';
+import { ProcessedImage, scheduleOldImageCleanup } from '@/utils/imageUtils';
+import { IngredientSection, InstructionSection, ImageSizes } from '@/types/recipe';
 import { recipes } from '@/data/recipes';
 import { recipeCategories } from '@/data/categories';
 import { getRecipeCategories, getAllCategoriesFromRecipes } from '@/utils/recipeUtils';
@@ -43,6 +43,8 @@ const EditRecipe = () => {
   });
 
   const [recipeImages, setRecipeImages] = useState<ProcessedImage[]>([]);
+  const [existingImages, setExistingImages] = useState<ImageSizes[]>([]);
+  const [deletedExistingImages, setDeletedExistingImages] = useState<ImageSizes[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
@@ -96,6 +98,16 @@ const EditRecipe = () => {
       // Get categories using the utility function for backward compatibility
       const recipeCategories = getRecipeCategories(existingRecipe);
 
+      // Set existing images
+      const currentImages = existingRecipe.images || (existingRecipe.image ? [existingRecipe.image] : []);
+      const imagesSizes = currentImages.map(img => {
+        if (typeof img === 'string') {
+          return { small: img, medium: img, large: img };
+        }
+        return img;
+      }) as ImageSizes[];
+      setExistingImages(imagesSizes);
+
       setRecipe({
         title: existingRecipe.title,
         description: existingRecipe.description,
@@ -135,6 +147,18 @@ const EditRecipe = () => {
       </div>
     );
   }
+
+  const handleDeleteExistingImage = (index: number) => {
+    const imageToDelete = existingImages[index];
+    
+    // Move to deleted list for cleanup scheduling
+    setDeletedExistingImages(prev => [...prev, imageToDelete]);
+    
+    // Remove from existing images
+    setExistingImages(prev => prev.filter((_, i) => i !== index));
+    
+    showSuccess('Image marquée pour suppression');
+  };
 
   const addIngredient = () => {
     setRecipe(prev => ({
@@ -210,6 +234,19 @@ const EditRecipe = () => {
         return;
       }
 
+      // Schedule cleanup for deleted existing images
+      if (deletedExistingImages.length > 0) {
+        scheduleOldImageCleanup(deletedExistingImages, existingRecipe.slug, 'removed');
+      }
+
+      // If new images are added, schedule cleanup of remaining existing images
+      if (recipeImages.length > 0 && existingImages.length > 0) {
+        scheduleOldImageCleanup(existingImages, existingRecipe.slug, 'replaced');
+      }
+
+      // Determine final images: new images take precedence, otherwise keep existing
+      const finalImages = recipeImages.length > 0 ? recipeImages : [];
+
       // Prepare recipe data with sectioned ingredients/instructions if enabled
       const recipeData = {
         ...recipe,
@@ -218,7 +255,7 @@ const EditRecipe = () => {
       };
 
       const githubService = new GitHubService(githubConfig);
-      const prUrl = await githubService.updateRecipePR(recipeData, existingRecipe, recipeImages);
+      const prUrl = await githubService.updateRecipePR(recipeData, existingRecipe, finalImages);
 
       showSuccess('Modifications soumises! Pull request créée avec succès.');
       
@@ -341,33 +378,40 @@ const EditRecipe = () => {
         {/* Images */}
         <Card>
           <CardHeader>
-            <CardTitle>Image de la recette</CardTitle>
+            <CardTitle>Images de la recette</CardTitle>
           </CardHeader>
           <CardContent>
             <ImageUpload
               images={recipeImages}
               onImagesChange={setRecipeImages}
               maxImages={1}
+              recipeSlug={existingRecipe.slug}
+              existingImages={existingImages}
+              onExistingImageDelete={handleDeleteExistingImage}
+              showExistingImages={true}
             />
-            <p className="text-xs text-muted-foreground mt-2">
-              Ajoutez une nouvelle image pour remplacer l'image actuelle. L'image sera automatiquement redimensionnée.
-            </p>
             
-            {/* Show current image if no new image uploaded */}
-            {recipeImages.length === 0 && (existingRecipe.images?.[0] || existingRecipe.image) && (
-              <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-                <p className="text-sm font-medium mb-2">Image actuelle:</p>
-                <div className="w-32 h-24 rounded-md overflow-hidden">
-                  <img
-                    src={typeof (existingRecipe.images?.[0] || existingRecipe.image) === 'string' 
-                      ? (existingRecipe.images?.[0] || existingRecipe.image) 
-                      : (existingRecipe.images?.[0] as any)?.small || (existingRecipe.images?.[0] as any)?.medium}
-                    alt={existingRecipe.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Cette image sera conservée si vous n'en ajoutez pas de nouvelle.
+            {/* Status Messages */}
+            {recipeImages.length > 0 && existingImages.length > 0 && (
+              <div className="mt-4 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                <p className="text-sm text-orange-700">
+                  ⚠️ Les nouvelles images remplaceront les images existantes
+                </p>
+              </div>
+            )}
+            
+            {deletedExistingImages.length > 0 && (
+              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-sm text-red-700">
+                  🗑️ {deletedExistingImages.length} image(s) marquée(s) pour suppression
+                </p>
+              </div>
+            )}
+            
+            {recipeImages.length === 0 && existingImages.length === 0 && deletedExistingImages.length === 0 && (
+              <div className="mt-4 p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                <p className="text-sm text-gray-700">
+                  ℹ️ Cette recette n'aura pas d'image
                 </p>
               </div>
             )}
