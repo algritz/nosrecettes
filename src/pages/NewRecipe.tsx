@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Plus, Minus, Save, ArrowLeft, Layers, Download, X } from 'lucide-react';
+import { Plus, Minus, Save, ArrowLeft, Layers, Download, X, FileSpreadsheet } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
 import { CategorySelector } from '@/components/CategorySelector';
@@ -13,12 +13,15 @@ import { ImageUpload } from '@/components/ImageUpload';
 import { SectionedIngredients } from '@/components/SectionedIngredients';
 import { SectionedInstructions } from '@/components/SectionedInstructions';
 import { RecipeImporter } from '@/components/RecipeImporter';
+import { CSVImporter } from '@/components/CSVImporter';
 import { ProcessedImage } from '@/utils/imageUtils';
 import { IngredientSection, InstructionSection } from '@/types/recipe';
+import { ParsedCSVRecipe } from '@/utils/csvParser';
 import { recipes } from '@/data/recipes';
 import { recipeCategories } from '@/data/categories';
 import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils';
 import { NotFound } from '@/components/NotFound';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const NewRecipe = () => {
   const navigate = useNavigate();
@@ -46,6 +49,7 @@ const NewRecipe = () => {
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
   const [configChecked, setConfigChecked] = useState(false);
   const [showImporter, setShowImporter] = useState(false);
+  const [importerType, setImporterType] = useState<'url' | 'csv'>('url');
   
   // New state for sectioned ingredients and instructions
   const [useSectionedIngredients, setUseSectionedIngredients] = useState(false);
@@ -56,6 +60,10 @@ const NewRecipe = () => {
   const [sectionedInstructions, setSectionedInstructions] = useState<InstructionSection[]>([
     { title: '', steps: [''] }
   ]);
+
+  // CSV import state
+  const [csvRecipes, setCsvRecipes] = useState<ParsedCSVRecipe[]>([]);
+  const [selectedCsvRecipe, setSelectedCsvRecipe] = useState<number | null>(null);
 
   useEffect(() => {
     // Check GitHub config
@@ -107,6 +115,76 @@ const NewRecipe = () => {
     if (importedData.imageUrl) {
       showSuccess(`Recette importée! Image trouvée: ${importedData.imageUrl} (vous devrez l'ajouter manuellement)`);
     }
+  };
+
+  const handleCSVImportSuccess = (importedRecipes: ParsedCSVRecipe[]) => {
+    setCsvRecipes(importedRecipes);
+    setSelectedCsvRecipe(0); // Select first recipe by default
+    showSuccess(`${importedRecipes.length} recette(s) importée(s) depuis le CSV`);
+  };
+
+  const applyCsvRecipe = (csvRecipe: ParsedCSVRecipe) => {
+    // Determine category based on recipe content
+    const category = determineRecipeCategory(csvRecipe);
+    
+    setRecipe({
+      title: csvRecipe.title,
+      description: csvRecipe.description,
+      categories: [category],
+      prepTime: csvRecipe.prepTime?.toString() || '',
+      cookTime: csvRecipe.cookTime?.toString() || '',
+      marinatingTime: '',
+      servings: csvRecipe.servings?.toString() || '',
+      difficulty: 'Facile',
+      ingredients: csvRecipe.ingredients.length > 0 ? csvRecipe.ingredients : [''],
+      instructions: csvRecipe.instructions.length > 0 ? csvRecipe.instructions : [''],
+      tags: csvRecipe.tags.length > 0 ? csvRecipe.tags : [''],
+      accompaniment: '',
+      wine: '',
+      source: '',
+      notes: ''
+    });
+    
+    showSuccess(`Recette "${csvRecipe.title}" appliquée au formulaire`);
+  };
+
+  const determineRecipeCategory = (csvRecipe: ParsedCSVRecipe): string => {
+    const titleLower = csvRecipe.title.toLowerCase();
+    const ingredientsText = csvRecipe.ingredients.join(' ').toLowerCase();
+    
+    // Entrées/Appetizers
+    if (titleLower.includes('tartare') || titleLower.includes('amuse') || 
+        titleLower.includes('entrée')) {
+      return 'Entrées';
+    }
+    
+    // Desserts
+    if (titleLower.includes('tarte') || titleLower.includes('gâteau') || 
+        titleLower.includes('mousse') || titleLower.includes('crème') ||
+        titleLower.includes('dessert')) {
+      return 'Desserts';
+    }
+    
+    // Salads
+    if (titleLower.includes('salade')) {
+      return 'Salades';
+    }
+    
+    // Soups
+    if (titleLower.includes('soupe') || titleLower.includes('potage') || 
+        titleLower.includes('velouté')) {
+      return 'Soupes';
+    }
+    
+    // Main dishes with meat/fish
+    if (ingredientsText.includes('poulet') || ingredientsText.includes('bœuf') || 
+        ingredientsText.includes('porc') || ingredientsText.includes('thon') ||
+        ingredientsText.includes('saumon') || ingredientsText.includes('viande')) {
+      return 'Plats principaux';
+    }
+    
+    // Default to main dishes
+    return 'Plats principaux';
   };
 
   const addIngredient = () => {
@@ -224,6 +302,8 @@ const NewRecipe = () => {
       setUseSectionedInstructions(false);
       setSectionedIngredients([{ title: '', items: [''] }]);
       setSectionedInstructions([{ title: '', steps: [''] }]);
+      setCsvRecipes([]);
+      setSelectedCsvRecipe(null);
 
     } catch (error) {
       showError('Erreur lors de la création de la recette');
@@ -247,7 +327,7 @@ const NewRecipe = () => {
           <div>
             <h1 className="text-3xl font-bold">Ajouter une nouvelle recette</h1>
             <p className="text-muted-foreground mt-2">
-              Remplissez le formulaire ci-dessous ou importez depuis une URL. Une pull request sera créée automatiquement sur GitHub.
+              Remplissez le formulaire ci-dessous ou importez depuis une URL/CSV. Une pull request sera créée automatiquement sur GitHub.
             </p>
           </div>
           
@@ -261,7 +341,7 @@ const NewRecipe = () => {
             ) : (
               <Download className="w-4 h-4 mr-2" />
             )}
-            {showImporter ? 'Fermer l\'import' : 'Importer depuis URL'}
+            {showImporter ? 'Fermer l\'import' : 'Importer des recettes'}
           </Button>
         </div>
         
@@ -275,11 +355,85 @@ const NewRecipe = () => {
       {/* Recipe Importer */}
       {showImporter && (
         <div className="mb-6">
-          <RecipeImporter
-            onImportSuccess={handleImportSuccess}
-            onClose={() => setShowImporter(false)}
-          />
+          <Card>
+            <CardHeader>
+              <CardTitle>Importer des recettes</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Tabs value={importerType} onValueChange={(value) => setImporterType(value as 'url' | 'csv')}>
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="url" className="flex items-center gap-2">
+                    <Download className="w-4 h-4" />
+                    Depuis URL
+                  </TabsTrigger>
+                  <TabsTrigger value="csv" className="flex items-center gap-2">
+                    <FileSpreadsheet className="w-4 h-4" />
+                    Depuis CSV
+                  </TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="url" className="mt-4">
+                  <RecipeImporter
+                    onImportSuccess={handleImportSuccess}
+                    onClose={() => setShowImporter(false)}
+                  />
+                </TabsContent>
+                
+                <TabsContent value="csv" className="mt-4">
+                  <CSVImporter
+                    onImportSuccess={handleCSVImportSuccess}
+                    onClose={() => setShowImporter(false)}
+                  />
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
         </div>
+      )}
+
+      {/* CSV Recipe Selection */}
+      {csvRecipes.length > 0 && (
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle>Recettes importées du CSV ({csvRecipes.length})</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="grid gap-2">
+                {csvRecipes.map((csvRecipe, index) => (
+                  <div 
+                    key={index} 
+                    className={`p-3 border rounded-lg cursor-pointer transition-colors ${
+                      selectedCsvRecipe === index ? 'border-primary bg-primary/5' : 'hover:bg-muted/50'
+                    }`}
+                    onClick={() => setSelectedCsvRecipe(index)}
+                  >
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h4 className="font-medium">{csvRecipe.title}</h4>
+                        <p className="text-sm text-muted-foreground">{csvRecipe.description}</p>
+                        <div className="flex gap-4 mt-2 text-xs text-muted-foreground">
+                          <span>📝 {csvRecipe.ingredients.length} ingrédients</span>
+                          <span>📋 {csvRecipe.instructions.length} étapes</span>
+                          {csvRecipe.prepTime && <span>⏱️ {csvRecipe.prepTime}min</span>}
+                        </div>
+                      </div>
+                      <Button
+                        size="sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          applyCsvRecipe(csvRecipe);
+                        }}
+                      >
+                        Utiliser
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
