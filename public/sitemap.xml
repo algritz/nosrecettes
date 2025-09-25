@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://algritz.github.io/nosrecettes/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Recipe Pages -->
+  <url>
+    <loc>https://algritz.github.io/nosrecettes/recipe/brigadeiro-blanc</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brigadeiro_blanc</image:loc>
+      <image:title>Brigadeiro blanc</image:title>
+      <image:caption>Délicieux brigadeiro blanc à la noix de coco</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://algritz.github.io/nosrecettes/recipe/tartare-de-thon-radis-et-peches</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/thon_radis_peche</image:loc>
+      <image:title>Tartare de thon, radis et pêches</image:title>
+      <image:caption>Tartare de thon frais avec radis et pêches</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://algritz.github.io/nosrecettes/recipe/lasagne-cremeuse-au-fromage-a-la-creme</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/lasagne</image:loc>
+      <image:title>Lasagne crémeuse au fromage à la crème</image:title>
+      <image:caption>Lasagne crémeuse avec fromage à la crème</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://algritz.github.io/nosrecettes/recipe/steak-de-thon-mediterraneen</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://algritz.github.io/nosrecettes/recipe/cupcakes-gateaux-pina-colada</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
+</sitemap.xml>
