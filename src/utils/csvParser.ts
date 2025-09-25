@@ -52,60 +52,41 @@ const extractIngredients = (text: string): string[] => {
         .filter(ing => ing.length > 2);
     }
     
-    // For single-line ingredients, use a simple but effective approach
-    // Look for patterns that typically start ingredients:
-    // - Number at start of word boundary
-    // - "le/la/les/du/de/des/d'" at start of word boundary
-    // But be more conservative about splitting
+    // For single-line ingredients, use a much simpler approach
+    // Look for complete ingredient patterns using a single comprehensive regex
     
-    const ingredientBoundaries = [];
+    // This regex looks for:
+    // - A number (with optional fraction or range)
+    // - Followed by a unit or measurement word
+    // - Followed by the ingredient description
+    // - Until we hit the next number+unit pattern or end of string
     
-    // Find all potential ingredient start positions
-    const patterns = [
-      /\b(\d+(?:\s*\/\s*\d+)?(?:\s*à\s*\d+)?)\s+/g,  // Numbers (including fractions and ranges like "2 à 4")
-      /\b(le|la|les)\s+(?!jus|zeste)/g,               // Articles (but not "le jus" or "le zeste")
-      /\b(du|de|des|d')\s+/g,                         // Prepositions
-      /\b(un|une|demi|quart)\s+/g                     // Fraction words
-    ];
+    const ingredientPattern = /(\d+(?:\s*\/\s*\d+)?(?:\s*à\s*\d+)?\s+(?:g|kg|ml|l|lb|oz|tasse|tasses|cup|cups|c\.\s*à\s*(?:soupe|thé)|cuillère|cuilleres?|boîte|boites?|paquet|paquets|livre|livres|once|onces|pincée|pincees?|steak|steaks?)\s+[^0-9]*?)(?=\d+(?:\s*\/\s*\d+)?(?:\s*à\s*\d+)?\s+(?:g|kg|ml|l|lb|oz|tasse|tasses|cup|cups|c\.\s*à|cuillère|boîte|paquet|livre|once|pincée|steak)|$)/gi;
     
-    patterns.forEach(pattern => {
-      let match;
-      while ((match = pattern.exec(ingredientsText)) !== null) {
-        ingredientBoundaries.push(match.index);
-      }
-    });
+    const matches = [];
+    let match;
     
-    // Sort boundaries and remove duplicates
-    const uniqueBoundaries = [...new Set(ingredientBoundaries)].sort((a, b) => a - b);
+    while ((match = ingredientPattern.exec(ingredientsText)) !== null) {
+      matches.push(match[1].trim());
+    }
     
-    // If we found boundaries, split the text at those points
-    if (uniqueBoundaries.length > 1) {
-      const ingredients = [];
-      
-      for (let i = 0; i < uniqueBoundaries.length; i++) {
-        const start = uniqueBoundaries[i];
-        const end = uniqueBoundaries[i + 1] || ingredientsText.length;
-        const ingredient = ingredientsText.substring(start, end).trim();
-        
-        if (ingredient.length > 2) {
-          ingredients.push(ingredient);
-        }
-      }
-      
-      // Clean up ingredients
-      return ingredients
+    if (matches.length > 0) {
+      return matches
         .map(ing => ing.replace(/[,;]$/, '').trim())
         .filter(ing => ing.length > 2);
     }
     
-    // Fallback: if no clear boundaries found, try splitting on obvious patterns
-    const fallbackIngredients = ingredientsText
-      .split(/\s+(?=\d+(?:\s*\/\s*\d+)?\s+\w+|\ble\s+jus|\bla\s+\w+|\bdu\s+\w+|\bde\s+\w+|\bdes\s+\w+|\bd'\w+)/g)
-      .map(ing => ing.trim())
-      .filter(ing => ing.length > 2);
+    // If the pattern-based approach didn't work, try a different strategy
+    // Look for ingredients that start with common patterns but be more conservative
     
-    if (fallbackIngredients.length > 1) {
-      return fallbackIngredients;
+    // Split on patterns that are very likely to be ingredient starts
+    const conservativeSplit = ingredientsText.split(/(?=\d+(?:\s*\/\s*\d+)?\s+(?:g|kg|ml|l|tasse|boîte|paquet|livre|c\.\s*à|cuillère|pincée|steak)\s)/i);
+    
+    if (conservativeSplit.length > 1) {
+      return conservativeSplit
+        .map(ing => ing.trim())
+        .filter(ing => ing.length > 2)
+        .map(ing => ing.replace(/[,;]$/, '').trim());
     }
     
     // Last resort: return as single ingredient
