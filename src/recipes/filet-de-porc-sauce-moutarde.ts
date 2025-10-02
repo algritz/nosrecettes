@@ -7,7 +7,7 @@ export const filetDePorcSauceMoutarde: Recipe = {
   categories: ['Porc'],
   prepTime: 5,
   cookTime: 15,
-  servings: 1,
+  servings: 4,
   difficulty: 'Facile',
   ingredients: [
     '15 ml (1 c. à soupe) beurre',
