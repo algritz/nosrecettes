@@ -11,11 +11,11 @@ export const filetDePorcSauceMoutarde: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     'beurre 15 ml (1 c. à soupe)',
-    'Huile-15 ml (1 c. à soupe)',
+    'Huile 15 ml (1 c. à soupe)',
     'Filet de porc, coupé en tranches',
     'Vin blanc sec -200 ml (⅘ tasse)',
-    'Crème 15 %-150 ml (⅔ tasse)',
-    'Moutarde à l\'ancienne-30 ml (2 c. à soupe)',
+    'Crème 35 % 150 ml (⅔ tasse)',
+    'Moutarde à l\'ancienne 30 ml (2 c. à soupe)',
     'Poivre-Au goût'
   ],
   instructions: [
