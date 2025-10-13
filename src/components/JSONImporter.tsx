@@ -276,7 +276,6 @@ export const JSONImporter = ({ onImportSuccess, onClose }: JSONImporterProps) =>
                       <div>⏰ Marinage: {parsedRecipe.marinatingTime} min</div>
                     )}
                     <div>👥 Portions: {parsedRecipe.servings}</div>
-                    <div>📊 Difficulté: {parsedRecipe.difficulty}</div>
                   </div>
                 </div>
 
@@ -333,7 +332,7 @@ export const JSONImporter = ({ onImportSuccess, onClose }: JSONImporterProps) =>
                           <li key={index}>• {ingredient}</li>
                         ))}
                         {parsedRecipe.ingredients.length > 5 && (
-                          <li className="text-muted-foreground">
+                          <li className="text-muted-foregroun">
                             ... et {parsedRecipe.ingredients.length - 5} autres
                           </li>
                         )}

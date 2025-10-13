@@ -32,7 +32,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
       setShowScrollTop(scrollTop > 300); // Show after scrolling 300px
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -279,19 +279,6 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             <span>{recipe.servings} portions</span>
           </div>
         </div>
-
-        {/* Wine pairing - Only show wine here */}
-        {recipe.wine && (
-          <div className="mb-6">
-            <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
-              <Wine className="w-5 h-5 mt-0.5 text-muted-foreground" />
-              <div>
-                <p className="font-medium text-sm">Accord vin</p>
-                <p className="text-sm text-muted-foreground">{recipe.wine}</p>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -314,8 +301,8 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
         </Card>
       </div>
 
-      {/* Notes, Accompaniment, and Source - After instructions */}
-      {(recipe.notes || recipe.accompaniment || recipe.source) && (
+      {/* Notes, Accompaniment, Wine, and Source - After instructions in logical order */}
+      {(recipe.notes || recipe.accompaniment || recipe.wine || recipe.source) && (
         <div className="mt-8 space-y-4">
           {/* Notes */}
           {recipe.notes && (
@@ -328,13 +315,24 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             </div>
           )}
 
-          {/* Accompaniment - Right after notes */}
+          {/* Accompaniment */}
           {recipe.accompaniment && (
             <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
               <Utensils className="w-5 h-5 mt-0.5 text-muted-foreground" />
               <div>
                 <p className="font-medium text-sm">Accompagnement</p>
                 <p className="text-sm text-muted-foreground">{recipe.accompaniment}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Wine pairing - Moved to logical position after accompaniment */}
+          {recipe.wine && (
+            <div className="flex items-start gap-2 p-3 bg-muted/50 rounded-lg">
+              <Wine className="w-5 h-5 mt-0.5 text-muted-foreground" />
+              <div>
+                <p className="font-medium text-sm">Accord vin</p>
+                <p className="text-sm text-muted-foreground">{recipe.wine}</p>
               </div>
             </div>
           )}
@@ -370,17 +368,16 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
         </Card>
       )}
 
-      {/* Scroll to Top Button */}
+      {/* Scroll to Top Button - Fixed position */}
       {showScrollTop && (
-        <div className="mt-8 flex justify-center">
+        <div className="fixed bottom-6 right-6 z-50">
           <Button
             onClick={scrollToTop}
-            variant="outline"
             size="sm"
-            className="flex items-center gap-2"
+            className="rounded-full shadow-lg"
+            title="Retour en haut"
           >
             <ArrowUp className="w-4 h-4" />
-            Retour en haut
           </Button>
         </div>
       )}
