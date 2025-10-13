@@ -1,7 +1,7 @@
 import { Recipe } from '@/types/recipe';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Clock, Users, ChefHat, ArrowLeft, Timer, Utensils, Wine, BookOpen, Edit, ChevronLeft, ChevronRight, StickyNote, ArrowUp } from 'lucide-react';
+import { Clock, Users, ChefHat, ArrowLeft, Timer, Utensils, Wine, BookOpen, Edit, ChevronLeft, ChevronRight, StickyNote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { formatTime } from '@/utils/timeFormat';
@@ -17,7 +17,6 @@ interface RecipeDetailProps {
 export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const categories = getRecipeCategories(recipe);
 
@@ -25,15 +24,6 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
     // Check if GitHub configuration exists
     const savedConfig = localStorage.getItem('github-config');
     setHasGitHubConfig(!!savedConfig);
-
-    // Handle scroll to show/hide scroll-to-top button
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setShowScrollTop(scrollTop > 300); // Show after scrolling 300px
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Get all available images (new format + backward compatibility)
@@ -47,13 +37,6 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
   };
 
   // Helper function to render ingredients
@@ -366,20 +349,6 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             </div>
           </CardContent>
         </Card>
-      )}
-
-      {/* Scroll to Top Button - Fixed position */}
-      {showScrollTop && (
-        <div className="fixed bottom-6 right-6 z-50">
-          <Button
-            onClick={scrollToTop}
-            size="sm"
-            className="rounded-full shadow-lg"
-            title="Retour en haut"
-          >
-            <ArrowUp className="w-4 h-4" />
-          </Button>
-        </div>
       )}
     </div>
   );

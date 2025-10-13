@@ -19,6 +19,9 @@ const RecipePage = () => {
   const recipe = recipes.find(r => r.slug === slug);
 
   useEffect(() => {
+    // Always scroll to top when recipe page loads
+    window.scrollTo(0, 0);
+    
     if (recipe) {
       // Set page title for browser tab
       document.title = `${recipe.title} - Nos Recettes`;
@@ -30,7 +33,7 @@ const RecipePage = () => {
     return () => {
       document.title = 'Nos Recettes';
     };
-  }, [recipe]);
+  }, [recipe, slug]); // Include slug in dependencies to ensure scroll on route change
 
   if (!recipe) {
     return (
