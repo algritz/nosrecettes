@@ -7,7 +7,7 @@ export const tourtiereDuLacStyleFamilial: Recipe = {
   categories: ['Pâtés', 'Plats principaux'],
   prepTime: 120,
   cookTime: 480,
-  marinatingTime: 1380,
+  marinatingTime: 2880,
   servings: 15,
   difficulty: 'Facile',
   ingredients: [
