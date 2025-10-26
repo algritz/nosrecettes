@@ -513,7 +513,7 @@ const NewRecipe = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium mb-2">Temps de préparation</label>
                 <TimeInput
@@ -535,10 +535,13 @@ const NewRecipe = () => {
                 <TimeInput
                   value={recipe.marinatingTime}
                   onChange={(value) => setRecipe(prev => ({ ...prev, marinatingTime: value }))}
+                  allowDays={true}
                 />
-                <p className="text-xs text-muted-foreground mt-1">Optionnel</p>
+                <p className="text-xs text-muted-foreground mt-1">Optionnel - Peut inclure des jours</p>
               </div>
+            </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium mb-2">Portions</label>
                 <Input
@@ -653,7 +656,7 @@ const NewRecipe = () => {
           <CardContent>
             {useSectionedIngredients ? (
               <div>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-muted-fore ground mb-4">
                   Organisez vos ingrédients en sections (ex: "Pour les keftas", "Pour la sauce")
                 </p>
                 <SectionedIngredients
