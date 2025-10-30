@@ -26,6 +26,13 @@ export const filetDePorcSauceMoutarde: Recipe = {
     'Versez la sauce sur le porc et servez accompagné de légumes de saison.'
   ],
   tags: ['rapide', 'simple'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/1000014459',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/1000014459',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/1000014459'
+    }
+  ],
   source: 'https://ici.radio-canada.ca/mordu/recettes/1706/filet-porc-sauce-moutarde',
   slug: 'filet-de-porc-sauce-moutarde'
 };
