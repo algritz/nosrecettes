@@ -1,0 +1,36 @@
+import { Recipe } from '@/types/recipe';
+
+export const muffinsAuxBananesEtAuNutella: Recipe = {
+  id: 'muffins-aux-bananes-et-au-nutella',
+  title: 'Muffins aux bananes et au Nutella',
+  description: '',
+  categories: ['Pâtisseries et desserts'],
+  prepTime: 20,
+  cookTime: 25,
+  servings: 12,
+  difficulty: 'Facile',
+  ingredients: [
+    '2 tasses de farine tout-usage',
+    '1 c. à thé de poudre à pâte',
+    '1 c. à thé de bicarbonate de soude',
+    '1/2 c. à thé de sel',
+    '4 moyennes bananes mûres, en purée',
+    '1/3 tasse de sucre',
+    '1/3 tasse de cassonade',
+    '1 œuf',
+    '1/4 tasse d\'huile',
+    '2 c. à thé d\'extrait de vanille',
+    '12 c. à thé de Nutella'
+  ],
+  instructions: [
+    'Préchauffer le four à 350 °F. Tapisser le moule à muffins de papier.',
+    'Dans un bol moyen, fouetter la farine, le bicarbonate de soude, la poudre à pâte et le sel jusqu\'à ce que le tout soit bien mélangé. Mettre de côté.',
+    'Dans un grand bol, fouetter ensemble les bananes, le sucre et la cassonade. Incorporer l\'œuf, l\'huile végétale et l\'extrait de vanille.',
+    'Incorporer lentement le mélange de farine jusqu\'à ce qu\'il n\'y ait plus de grumeaux.',
+    'Incorporer les pacanes.',
+    'Remplir les moules à muffins aux 3/4. Garnir chaque muffin d\'environ 1 c. à thé de Nutella et utiliser une brochette de bois pour marbrer légèrement la pâte.',
+    'Cuire les muffins pendant 25 minutes ou jusqu\'à ce qu\'un cure-dent inséré au centre en ressorte propre.'
+  ],
+  tags: ['banane', 'Nutella', 'muffins'],
+  slug: 'muffins-aux-bananes-et-au-nutella'
+};
