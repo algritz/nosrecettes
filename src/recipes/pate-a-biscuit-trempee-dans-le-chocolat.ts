@@ -1,0 +1,33 @@
+import { Recipe } from '@/types/recipe';
+
+export const pateABiscuitTrempeeDansLeChocolat: Recipe = {
+  id: 'pate-a-biscuit-trempee-dans-le-chocolat',
+  title: 'Pâte à biscuit trempée dans le chocolat',
+  description: 'Pâte à biscuit trempée dans le chocolat',
+  categories: ['Végétarien'],
+  prepTime: 20,
+  cookTime: 0,
+  servings: 40,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 tasse de beurre mou',
+    '2 pincées de sel',
+    '½ tasse de cassonade',
+    '¼ tasse de sucre',
+    '1 ½ tasse de farine',
+    '1 cuilère à soupe d’essence de vanille',
+    '1/4 tasse de pastilles de chocolat ou M&M\'s',
+    '1 canne de fondue Dulce de Leche 425 g ou autre fondue de votre choix'
+  ],
+  instructions: [
+    'Mélanger les 6 premiers ingrédients pour la pâte biscuit',
+    'Ajouter les morceaux de pastilles de chocolat ou M&M\'s',
+    'Former des boules de pâte et les disposer sur une plaque de cuisson tapissée de papier parchemin',
+    'Réfrigérer 30 minutes',
+    'Tremper dans la fondue Dulce de Leche puis déposer sur la plaque',
+    'Décorer immédiatement puis réfrigérer 30 minutes'
+  ],
+  tags: ['chocolat', 'pâte à biscuit', 'dipping'],
+  marinatingTime: 30,
+  slug: 'pate-a-biscuit-trempee-dans-le-chocolat'
+};
