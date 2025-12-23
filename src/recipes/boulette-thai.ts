@@ -1,0 +1,52 @@
+import { Recipe } from '@/types/recipe';
+
+export const bouletteThai: Recipe = {
+  id: 'boulette-thai',
+  title: 'Boulette thai',
+  description: 'Une recette de boulettes de boeuf thaïlandaises accompagnées d\'une sauce coco épicée, servies avec du riz parfumé.',
+  categories: ['Plats principaux', 'Végétarien'],
+  prepTime: 30,
+  cookTime: 90,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 kg de boeuf haché',
+    '1/2 tasse de chapelure ou gruau',
+    '1 oeuf',
+    '1 piment rouge épicé',
+    '2 gousses d\'ail émincées',
+    '1 demi-verre de sauce soja',
+    '1 cuillère à café de sauce poisson',
+    '1 cuillère à café de sauce piquante type Tabasco',
+    '1 poignée de feuilles de basilic, coupées en petits morceaux',
+    'Le jus d\'un citron vert',
+    'Sel',
+    '1 boîte de lait de coco',
+    '1 cuillère à thé de curry',
+    '1 cuillère à thé de curcuma',
+    '1/2 cuillère à thé de graines de coriandre moulues',
+    '2 gousses d\'ail hachées',
+    '25 ml de jus de citron',
+    '1 cuillère à soupe de sauce à poisson',
+    '1 cuillère à thé de cassonade',
+    '1/2 piment rouge ou orange coupée en dés',
+    '1 oignon vert coupé en petits morceaux',
+    '2 cuillères à soupe de feuilles de coriandre hachées',
+    'Pincée de sel'
+  ],
+  instructions: [
+    'Dans un grand saladier, combiner tous les ingrédients (ajouter le boeuf en dernier). Bien s\'assurer que le mélange soit bien homogène.',
+    'Faire de petites boulettes et réfrigérer 1 heure.',
+    'Versez le lait de coco dans une casserole et le porter à ébullition.',
+    'Réduire le feu et laisser mijoter 20 minutes à feu doux.',
+    'Versez la poudre de curry, curcuma, les graines de coriandre moulues, le piment, l\'oignon vert et l\'ail haché.',
+    'Cuire à couvert 2 minutes.',
+    'Incorporez le jus de citron, la sauce poisson, la cassonade, et la pincée de sel.',
+    'Ajoutez les boulettes de boeuf dans la casserole et portez à ébullition sans cesser de remuer.',
+    'Laissez mijoter 45 minutes à feu doux. Mouillez au besoin.',
+    'Ajoutez la coriandre et servez avec un riz parfumé.'
+  ],
+  tags: ['épicé', 'coco', 'boulettes'],
+  accompaniment: 'Servez avec un riz parfumé',
+  slug: 'boulette-thai'
+};
