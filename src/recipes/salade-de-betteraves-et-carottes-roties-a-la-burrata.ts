@@ -1,0 +1,43 @@
+import { Recipe } from '@/types/recipe';
+
+export const saladeDeBetteravesEtCarottesRotiesALaBurrata: Recipe = {
+  id: 'salade-de-betteraves-et-carottes-roties-a-la-burrata',
+  title: 'Salade de betteraves et carottes rôties à la Burrata',
+  description: 'Une autre façon de manger de la burrata. Salade de betteraves et carottes rôties à la Burrata',
+  categories: ['Salades'],
+  prepTime: 20,
+  cookTime: 35,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '3 betteraves rouges, pelées et coupées en quartiers',
+    '3 carottes, pelées et coupées en bâtonnets',
+    '2 cuillères à soupe d\'huile d\'olive',
+    '1 cuillère à café de miel',
+    '1 cuillère à café de vinaigre balsamique',
+    'Sel et poivre au goût',
+    '1 boule de burrata',
+    'Une poignée de roquette',
+    '1 poignée de noix grillées',
+    '2 cuillères à soupe de vinaigre balsamique',
+    '2 cuillères à soupe d\'huile d\'olive',
+    'Feuilles de basilic frais'
+  ],
+  instructions: [
+    'Préchauffez le four à 390°F.',
+    'Disposez les quartiers de betteraves et les bâtonnets de carottes sur une plaque de cuisson.',
+    'Dans un petit bol, mélangez 2 cuillères à soupe d\'huile d\'olive, 1 cuillère à café de miel, 1 cuillère à café de vinaigre balsamique, du sel et du poivre.',
+    'Versez ce mélange sur les légumes et mélangez bien pour les enrober.',
+    'Faites rôtir les betteraves et les carottes au four pendant 30-35 minutes, ou jusqu\'à ce qu\'elles soient tendres et légèrement caramélisées.',
+    'Laissez-les refroidir.',
+    'Disposez la roquette sur un plat de service.',
+    'Ajoutez les betteraves et les carottes rôties par-dessus.',
+    'Déposez la boule de burrata au centre de la salade.',
+    'Ajoutez les noix grillées par-dessus.',
+    'Arrosez la salade de 2 cuillères à soupe de vinaigre balsamique et d\'huile d\'olive pour la finition.',
+    'Garnissez de feuilles de basilic frais.',
+    'Servez la salade immédiatement, en coupant la burrata pour laisser couler la crème.'
+  ],
+  tags: ['roast', 'burrata', 'salad'],
+  slug: 'salade-de-betteraves-et-carottes-roties-a-la-burrata'
+};
