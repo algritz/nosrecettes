@@ -1,0 +1,35 @@
+import { Recipe } from '@/types/recipe';
+
+export const saladeCrabeEtMangue: Recipe = {
+  id: 'salade-crabe-et-mangue',
+  title: 'Salade crabe et mangue',
+  description: '',
+  categories: ['Salades'],
+  prepTime: 20,
+  cookTime: 0,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '500 ml de chair de crabe',
+    '125 ml de fèves noires cuites',
+    '3 mangues coupées en dés',
+    '1 poivron rouge en dés',
+    '1 poivron vert en dés',
+    '1 paquet de coriandre fraîche hachée',
+    '4 grandes et belles feuilles de salade pour le service',
+    '2 limes (jus) ou plus au besoin',
+    '90 ml d\'huile d\'olive',
+    '15 ml de miel',
+    '1 piment oiseau',
+    '4 oignons verts émincés',
+    'Sel et poivre'
+  ],
+  instructions: [
+    'Vinaigrette: Mélanger tous les ingrédients, assaisonner et laisser reposer (5 minutes).',
+    'Mettre tous les ingrédients dans un grand bol, ajouter la vinaigrette au goût.',
+    'Vérifier l\'assaisonnement.',
+    'Servir sur une grande feuille de salade.'
+  ],
+  tags: ['crabe', 'mangue', 'vinaigrette'],
+  slug: 'salade-crabe-et-mangue'
+};
