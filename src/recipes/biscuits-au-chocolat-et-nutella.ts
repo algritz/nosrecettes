@@ -1,0 +1,42 @@
+import { Recipe } from '@/types/recipe';
+
+export const biscuitsAuChocolatEtNutella: Recipe = {
+  id: 'biscuits-au-chocolat-et-nutella',
+  title: 'Biscuits au chocolat et Nutella',
+  description: 'Une recette de biscuits fondants au Nutella, avec une pâte croustillante et un cœur fondant de Nutella congelé, saupoudrés de sel de mer.',
+  categories: ['Pâtisseries et desserts'],
+  prepTime: 20,
+  cookTime: 15,
+  servings: 24,
+  difficulty: 'Facile',
+  ingredients: [
+    '450g de Nutella',
+    '220 g de beurre ramolli',
+    '220 g de cassonade',
+    '100 g de sucre',
+    '2 gros œufs',
+    '2 cuillères à soupe de Lait',
+    '2 cuillères à café extrait de vanille',
+    '250 g de farine tout usage',
+    '120 g de poudre de cacao noir non sucré',
+    '1 cuillère à café bicarbonate de soude',
+    '1 cuillère à café sel',
+    'Sel de mer'
+  ],
+  instructions: [
+    'Tapisser une plaque à pâtisserie de papier sulfurisé.',
+    'Versez 1 cuillère à soupe de boules de Nutella sur la plaque à pâtisserie préparée (24 boules au total). Mettre au congélateur une heure minimum.',
+    'Dans un grand bol à l\'aide d\'un batteur à main, battre le beurre, le sucre et la cassonade jusqu\'à ce qu\'ils soient légers et mousseux.',
+    'Ajouter les œufs, le lait et la vanille et battre jusqu\'à homogénéité, puis ajouter la farine, le cacao en poudre, le bicarbonate de soude et le sel.',
+    'Réfrigérez la pâte pendant que le Nutella est au congélateur.',
+    'Préchauffer le four à 350°F et tapisser une plaque à pâtisserie de papier sulfurisé.',
+    'Prenez une cuillère à soupe de pâte à biscuits et aplatissez-la en un cercle en forme de crêpe.',
+    'Garnir d\'une boule de Nutella congelée et couvrir de pâte, en pinçant pour sceller et en ajoutant plus de pâte si nécessaire pour couvrir complètement.',
+    'Déposer sur la plaque à pâtisserie préparée et répéter l\'opération avec le reste de la pâte et le Nutella congelé.',
+    'Saupoudrer les biscuits de sel de mer et cuire au four jusqu\'à ce qu\'ils soient gonflés, environ 15 minutes.',
+    'Laisser refroidir sur la poêle 5 minutes avant de servir.'
+  ],
+  tags: ['Nutella', 'cookies', 'four'],
+  marinatingTime: 60,
+  slug: 'biscuits-au-chocolat-et-nutella'
+};
