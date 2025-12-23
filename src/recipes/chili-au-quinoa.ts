@@ -1,0 +1,42 @@
+import { Recipe } from '@/types/recipe';
+
+export const chiliAuQuinoa: Recipe = {
+  id: 'chili-au-quinoa',
+  title: 'Chili au quinoa',
+  description: 'Un chili riche en saveurs avec quinoa, haricots et épices, prêt en environ une heure.',
+  categories: ['Plats principaux'],
+  prepTime: 15,
+  cookTime: 45,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    'huile d\'olives',
+    '454g de bœuf haché',
+    '1 tasse d\'oignons hachés',
+    '1 poivron coupé en dés',
+    '1 gousse d\'ail haché',
+    '1 boîte de tomates en dés',
+    '1 boîte de haricots noirs, égouttés et rincés',
+    '1 boîte de haricots rouges réduits en purée (avec le liquide)',
+    '3/4 tasse de quinoa (non-cuit)',
+    '1 boîte de pâte de tomates',
+    '1 tasse d\'eau',
+    '2 c. à soupe de poudre de chili',
+    '1 c. à thé de cacao',
+    '1/2 c. à thé d\'origan séché',
+    '1/2 c. à thé de cumin moulu',
+    'sel & poivre au goût',
+    '2 c. à soupe de vinaigre blanc'
+  ],
+  instructions: [
+    'Dans un Wok, chauffer l’huile, dorer les oignons et l’ail.',
+    'Ajouter le bœuf.',
+    'Incorporer le poivron.',
+    'Ajouter les tomates en dés, les haricots noirs, la purée de haricots rouges, le quinoa, la pâte de tomates et l’eau.',
+    'Incorporer la poudre de chili, le cacao, l’origan, le cumin, le sel et le poivre.',
+    'Porter à ébullition, réduire à feu doux et cuire 20 minutes.',
+    'Éteindre le feu et ajouter le vinaigre.'
+  ],
+  tags: ['épicé', 'quinoa', 'chili'],
+  slug: 'chili-au-quinoa'
+};
