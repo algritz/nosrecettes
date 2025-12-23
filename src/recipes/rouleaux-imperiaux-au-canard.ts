@@ -1,0 +1,49 @@
+import { Recipe } from '@/types/recipe';
+
+export const rouleauxImperiauxAuCanard: Recipe = {
+  id: 'rouleaux-imperiaux-au-canard',
+  title: 'Rouleaux impériaux au canard',
+  description: 'Recette de rouleaux impériaux farcis au canard, accompagnés d\'une sauce aux abricots et prunes pour tremper.',
+  categories: ['Entrées'],
+  prepTime: 45,
+  cookTime: 30,
+  servings: 8,
+  difficulty: 'Facile',
+  ingredients: [
+    '300 g de poitrine de canard',
+    '15 ml de sauce hoisin',
+    '1 échalote, émincée',
+    'Fécule de maïs',
+    '1 emballage de pâte de rouleaux impériaux de 8 x 14.5 cm (3 x 6 po)',
+    'Huile d\'arachide pour frire',
+    '30 ml de sauce aux huîtres',
+    '15 ml d\'huile d\'arachide',
+    '15 ml de 5 épices chinois',
+    '30 ml de sauce soya légère',
+    '30 ml de vin de riz de Shaoshing ou de xérès'
+  ],
+  instructions: [
+    'Mélanger tous les ingrédients pour la marinade dans un grand bol. Ajouter le canard et tourner pour bien l’enrober. Laisser mariner 20 min.',
+    'Préchauffer le four à 350 °F (180 °C). Placer le canard sur une plaque à rôtir, en conservant la marinade, et cuire au four 20 min.',
+    'Sortir du four et laisser reposer 10 min. Enlever la peau, puis émincer et effilocher le canard avec les doigts.',
+    'Mettre le canard cuit dans un bol, ajouter la sauce hoisin et l’échalote et bien mélanger.',
+    'Diviser le mélange en 8 portions égales.',
+    'Mélanger la fécule de maïs avec le double de sa quantité en eau pour faire une pâte.',
+    'Prendre une feuille de rouleaux impériaux et la placer devant soi en forme de losange.',
+    'Placer la farce de canard horizontalement dans le milieu de la feuille, puis badigeonner chaque coin avec le mélange de fécule de maïs.',
+    'Amener les deux coins des côtés par-dessus la farce, au milieu de celle-ci.',
+    'Prendre le coin du bas, l’amener par-dessus la farce, vers le haut, et rouler la feuille jusqu’au coin du haut.',
+    'Tamponner le coin du haut une fois de plus avec la fécule de maïs et presser légèrement pour bien sceller le rouleau impérial.',
+    'Mettre un wok sur un feu élevé, puis le remplir au tiers de sa profondeur d’huile d’arachide. Chauffer l’huile jusqu’à 350 °F (180 °C) ou jusqu’à ce qu’un cube trempé dedans devienne brun en 15 secondes et flotte à la surface.',
+    'À l’aide d’une cuillère trouée, tremper lentement les rouleaux dans l’huile et laisser cuire jusqu’à ce que l’extérieur soit doré et croustillant.',
+    'Égoutter les rouleaux sur du papier absorbant.',
+    'Mettre la marinade réservée dans un petit wok ou une poêle et porter à ébullition.',
+    'Mélanger 1 c. à café de fécule de maïs avec 1 c. à soupe d’eau froide, ajouter ce mélange au wok et mélanger jusqu’à ce que la sauce épaississe.',
+    'Servir les rouleaux impériaux avec la sauce aux abricots et prunes pour tremper.'
+  ],
+  tags: ['canard', 'friture', 'rouleaux'],
+  accompaniment: 'Sauce aux abricots et aux prunes pour tremper',
+  marinatingTime: 20,
+  notes: 'On peut faire cuire le canard jusqu\'à 400°F.',
+  slug: 'rouleaux-imperiaux-au-canard'
+};
