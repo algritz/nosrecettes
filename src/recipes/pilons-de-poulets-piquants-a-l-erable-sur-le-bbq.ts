@@ -1,0 +1,30 @@
+import { Recipe } from '@/types/recipe';
+
+export const pilonsDePouletsPiquantsALErableSurLeBbq: Recipe = {
+  id: 'pilons-de-poulets-piquants-a-l-erable-sur-le-bbq',
+  title: 'Pilons de poulets piquants à l’érable sur le BBQ',
+  description: 'Un délicieux plat de pilons de poulet épicés à l’érable, grillés à la perfection avec une sauce piquante et sucrée.',
+  categories: ['Vollaille', 'Barbecue'],
+  prepTime: 25,
+  cookTime: 50,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '12 pilons de poulet',
+    '[object Object]',
+    '[object Object]'
+  ],
+  instructions: [
+    'Dans un bol, mélanger les épices de la marinade sèche. Incorporer l\'huile d\'olive et bien brasser.',
+    'Enrober les pilons de poulet d\'épices.',
+    'Faire fondre le beurre dans une petite casserole sur un feu moyen. Incorporer le sirop d\'érable, les sauces piquantes, la ciboulette et le whisky, puis cuire jusqu\'à ce que la mixture produise des bulles, environ 10 minutes. Réserver et garder chaud.',
+    'Préparer le grill pour une cuisson indirecte et le préchauffer à feu moyen-vif (400°F).',
+    'Disposer les pilons de poulet au centre de la grille sans qu\'ils se superposent.',
+    'Pendant la cuisson, badigeonner les pilons avec la sauce plusieurs fois de tous les côtés.',
+    'Faire griller jusqu\'à ce que la peau soit croustillante et dorée, et que le poulet soit complètement cuit, soit 45 à 60 minutes.',
+    'Vérifier la cuisson en entaillant la partie la plus épaisse du pilon : la chair ne doit plus être rosée près de l\'os.'
+  ],
+  tags: ['grill', 'épicé', 'érable'],
+  notes: 'Excellent aussi avec des hauts de cuisse.',
+  slug: 'pilons-de-poulets-piquants-a-l-erable-sur-le-bbq'
+};
