@@ -1,0 +1,35 @@
+import { Recipe } from '@/types/recipe';
+
+export const steaksDeThonMarineALOrange: Recipe = {
+  id: 'steaks-de-thon-marine-a-l-orange',
+  title: 'Steaks de thon mariné à l\'orange',
+  description: '',
+  categories: ['Poisson', 'Barbecue'],
+  prepTime: 15,
+  cookTime: 15,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '1/4 tasse de jus d’orange',
+    '1/4 tasse de sauce soya',
+    '2 c. à soupe d’huile d’olive',
+    '1 c. à soupe de jus de citron',
+    '2 c. à soupe de persil frais haché',
+    '1 gousse d’ail émincée',
+    '1/2 c. à thé d’origan séché',
+    '1/2 c. à thé de poivre noir moulu',
+    '4 steaks de thon'
+  ],
+  instructions: [
+    'Dans un grand plat en verre ou en métal, combiner le jus d’orange, la sauce soya, l’huile d’olive, le persil, l’ail, l’origan et le poivre; mélanger.',
+    'Ajouter les steaks de thon et les couvrir de marinade.',
+    'Couvrir et laisser mariner au frigo pendant au moins 30 minutes.',
+    'Préchauffer le barbecue à feu vif.',
+    'Huiler légèrement la grille.',
+    'Cuire les steaks de thon 5-6 minutes, les retourner, badigeonner avec la marinade et cuire de l’autre côté encore 5 minutes.',
+    'Jeter tout reste de marinade.'
+  ],
+  tags: ['barbecue', 'thon', 'marinade'],
+  marinatingTime: 30,
+  slug: 'steaks-de-thon-marine-a-l-orange'
+};
