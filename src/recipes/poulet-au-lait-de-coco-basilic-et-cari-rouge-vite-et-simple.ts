@@ -1,0 +1,41 @@
+import { Recipe } from '@/types/recipe';
+
+export const pouletAuLaitDeCocoBasilicEtCariRougeViteEtSimple: Recipe = {
+  id: 'poulet-au-lait-de-coco-basilic-et-cari-rouge-vite-et-simple',
+  title: 'Poulet au lait de coco, basilic et cari rouge vite et simple',
+  description: 'Une recette rapide et savoureuse de poulet au lait de coco, basilic et cari rouge, idéale pour un repas express.',
+  categories: ['Plats principaux'],
+  prepTime: 15,
+  cookTime: 25,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '3 poitrines de poulet',
+    'Huile d’arachides ou de sésame',
+    '1 poivron rouge en fines lamelles',
+    '1 poivron vert en fines lamelles',
+    '½ choux-fleur coupé en bouquets',
+    '3 oignons verts émincés',
+    '20 grains de coriandre entières',
+    '2 c. à table de pâte de cari rouge',
+    '1 boîte de lait de coco',
+    '3 c. à thé de cassonade',
+    '1 c. à soupe de sauce poisson',
+    'Sambal Oelek au goût (si vous souhaitez plus épicé)',
+    '30 feuilles de basilic frais',
+    '1 lime'
+  ],
+  instructions: [
+    'En frappant du poing sur le côté d’un couteau de chef, aplatissez les poitrines pour les attendrir.',
+    'Coupez-les ensuite en fines lanières.',
+    'Faites revenir dans l’huile, à feu vif, jusqu’à ce qu’elles soient bien dorées; réservez au chaud.',
+    'Faites bouillir le choux-fleur 5 minutes.',
+    'Faites sauter les poivrons et le choux-fleur pendant 5 minutes, jusqu’à ce qu’ils commencent à dorer.',
+    'Ajoutez l’oignon vert, la coriandre et le cari rouge et continuez de faire sauter 2 minutes.',
+    'Versez le lait de coco, la cassonade, la sauce poisson et le Sambal Oelek si désiré, et laissez mijoter le tout à découvert pendant 6-8 minutes (la sauce doit épaissir).',
+    '2 minutes avant de servir, ajoutez les feuilles de basilic entières, un peu de jus de lime et remettez les lanières de poulet dorées.',
+    'Servez avec un riz basmati, en décorant de quelques brins de ciboulette laissés entiers.'
+  ],
+  tags: ['cari rouge', 'lait de coco', 'rapide'],
+  slug: 'poulet-au-lait-de-coco-basilic-et-cari-rouge-vite-et-simple'
+};
