@@ -1,0 +1,44 @@
+import { Recipe } from '@/types/recipe';
+
+export const painDoreALaCannelleEtPommesCaramelisees: Recipe = {
+  id: 'pain-dore-a-la-cannelle-et-pommes-caramelisees',
+  title: 'Pain doré à la cannelle et pommes caramélisées',
+  description: '',
+  categories: ['Végétarien', 'Déjeuners'],
+  prepTime: 15,
+  cookTime: 20,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    'Un pain',
+    '4 pommes',
+    '2 c. à soupe de sucre',
+    'Quelques noisettes de beurre',
+    '2-3 c. à soupe d\'eau',
+    '3 œufs',
+    '3 c. à soupe de lait',
+    '1 c. à café de cannelle',
+    'huile',
+    'beurre',
+    'Sucre en poudre',
+    'Sucre glace'
+  ],
+  instructions: [
+    'Prendre un gros morceau de pain de ménage vieux de quatre ou cinq jours et découper plusieurs tranches selon la quantité voulue.',
+    'Découper quelques pommes en dés.',
+    'Faire chauffer une poêle à feu vif et y verser deux cuillères à soupe de sucre. Caraméliser légèrement le sucre.',
+    'Verser les pommes découpées en dés dans le sucre légèrement caramélisé et laisser cuire quelques minutes.',
+    'Ajouter deux noisettes de beurre dans les pommes pour les rendre un peu plus brillantes.',
+    'Une fois les pommes bien vernies, ajouter l\'équivalent de deux ou trois cuillères à soupe d\'eau dans la poêle. Porter à ébullition.',
+    'Battre trois œufs entiers. Dans les œufs, ajouter trois cuillères à soupe de lait et continuer à battre. Le mélange doit être épais.',
+    'Saupoudrer doucement les œufs au lait de deux cuillères à soupe de sucre.',
+    'Ajouter une cuillère à café de cannelle en poudre dans les œufs.',
+    'Mettre une autre poêle sur le feu et y verser une cuillère à café d\'huile, puis une noisette de beurre.',
+    'Tremper rapidement une à une les tranches de pain dans les œufs battus, puis les faire dorer dans la poêle pendant une minute et demie de chaque côté.',
+    'Une fois les tranches de pain dorées, en mettre le nombre souhaité dans une assiette, puis verser dessus les pommes cuites.',
+    'Verser le reste du jus des pommes cuites sur le tout.',
+    'Saupoudrer d\'un peu de sucre glace.'
+  ],
+  tags: ['cannelle', 'caramel', 'grill'],
+  slug: 'pain-dore-a-la-cannelle-et-pommes-caramelisees'
+};
