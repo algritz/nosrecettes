@@ -1,0 +1,45 @@
+import { Recipe } from '@/types/recipe';
+
+export const tilapiaAuxLegumesSauceDijonnaise: Recipe = {
+  id: 'tilapia-aux-legumes-sauce-dijonnaise',
+  title: 'Tilapia aux légumes, sauce dijonnaise',
+  description: '',
+  categories: ['Poisson', 'Légumes', 'Sauces'],
+  prepTime: 15,
+  cookTime: 16,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '2 courgettes',
+    '4 tomate italienne',
+    '2 oignons rouges',
+    '2 c. à soupe d\'huile d\'olive',
+    '1/2 tasse jus de tomate',
+    '4 filets de 180 g de tilapia (environ 1/3 de lb chacun)',
+    '16 olives noires (facultative)',
+    '1 c. à soupe moutarde de Dijon',
+    '4 c. à soupe d\'huile d\'olive',
+    '1 c. à soupe de jus de citron',
+    '1 gousse d\'ail finement haché',
+    '2 c. à soupe de persil frais haché',
+    'Sel et poivre au goût'
+  ],
+  instructions: [
+    'Couper les courgettes et les tomates en dés.',
+    'Émincer les oignons.',
+    'Dans une poêle, chauffer 2 c. à soupe d\'huile à feu moyen.',
+    'Faire dorer les oignons 2 minutes.',
+    'Ajouter les courgettes et les tomates.',
+    'Cuire 1 minute.',
+    'Verser le jus de tomate et laisser mijoter à feu doux 5 minutes.',
+    'Ajouter les filets de tilapia et, si désiré, les olives.',
+    'Saler et poivrer.',
+    'Couvrir et laisser mijoter de 8 à 10 minutes à feu doux, jusqu\'à ce que le poisson soit tendre.',
+    'Pendant ce temps, préparer la sauce en mélangeant dans un bol la moutarde avec le jus de citron ainsi que l\'ail et le persil.',
+    'Saler et poivrer.',
+    'Incorporer progressivement le 4 c. à soupe d\'huile et fouetter jusqu\'à l\'obtention d\'une consistance homogène.',
+    'Napper le poisson de sauce.'
+  ],
+  tags: ['poisson', 'sauce dijonnaise', 'légumes'],
+  slug: 'tilapia-aux-legumes-sauce-dijonnaise'
+};
