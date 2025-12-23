@@ -1,0 +1,36 @@
+import { Recipe } from '@/types/recipe';
+
+export const lobsterRoll: Recipe = {
+  id: 'lobster-roll',
+  title: 'Lobster roll',
+  description: '',
+  categories: ['Plats principaux'],
+  prepTime: 60,
+  cookTime: 11,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    'La chair de deux homards de 1 1/2 lbs chaque',
+    'un oignon vert finement tranché',
+    '2 c. à soupe de ciboulette',
+    '1 à soupe de sauce sriracha (plus au goût)',
+    '1 branche de céleri en petits dés',
+    'le jus de 1 citron frais',
+    'mayonnaise',
+    'sel',
+    'poivre',
+    '4 petits pains (à hot dog ou autre)'
+  ],
+  instructions: [
+    'Faire bouillir de l\'eau saturée de sel. Quand elle boue, y mettre les homards.',
+    'Attendre que l\'eau boue à nouveau à gros bouillon et calculer 11 minutes, puis les homards seront prêts.',
+    'Sortir les homards de l\'eau bouillante et les mettre dans un grand bol d\'eau glacée.',
+    'Évidez-les et mettez la chair des homards au froid en attendant de faire la sauce.',
+    'Mélanger l\'oignon vert, la ciboulette, le céleri, la sauce sriracha et le jus de citron.',
+    'Ajouter la chair de homards et la mayonnaise jusqu\'à la consistance désirée.',
+    'Saler et poivrer.',
+    'Servir dans des petits pains.'
+  ],
+  tags: ['homard', 'barbecue', 'sandwich'],
+  slug: 'lobster-roll'
+};
