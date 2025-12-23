@@ -1,0 +1,39 @@
+import { Recipe } from '@/types/recipe';
+
+export const filetDePorcAuCaramelDeBeurreSale: Recipe = {
+  id: 'filet-de-porc-au-caramel-de-beurre-sale',
+  title: 'Filet de porc au caramel de beurre salé',
+  description: 'Un délicieux filet de porc accompagné d\'une sauce caramel au beurre salé, parfait pour une cuisson rapide et savoureuse.',
+  categories: ['Vollaille', 'Plats principaux'],
+  prepTime: 25,
+  cookTime: 25,
+  servings: 2,
+  difficulty: 'Facile',
+  ingredients: [
+    '2 filets de porc',
+    '1 noisette de beurre',
+    '80 g de sucre',
+    'Un peu d’eau',
+    '40 g de beurre demi-sel',
+    '100 ml de crème 35%',
+    '3 pincées de fleur de sel',
+    '200 ml de fond de veau'
+  ],
+  instructions: [
+    'Préchauffer le four à 350 °F (175 °C).',
+    'Retirer le surplus de gras des filets de porc et les couper en deux.',
+    'Assaisonner de tous les côtés.',
+    'Enrouler les filets bien serré dans du papier d’aluminium badigeonné de beurre.',
+    'Dans une poêle à feu vif, faire rissoler les papillotes de porc dans le beurre de tous les côtés pendant 1 à 2 minutes.',
+    'Enfourner pour 8-10 minutes.',
+    'Dans une casserole, chauffer un peu d’eau avec le sucre, laisser cuire quelques minutes jusqu’à l’obtention d’un caramel doré.',
+    'Arrêter la cuisson à l’aide d’un peu d’eau et de la crème en remuant constamment.',
+    'Incorporer le beurre en vannant le mélange et ajouter une pincée de fleur de sel.',
+    'Dans une poêle, verser le fond de veau et réduire légèrement.',
+    'Ajouter le caramel et mélanger.',
+    'Rectifier l’assaisonnement au besoin.',
+    'Dans chaque assiette, déposer les médaillons et napper de sauce.'
+  ],
+  tags: ['caramel', 'beurre salé', 'porc'],
+  slug: 'filet-de-porc-au-caramel-de-beurre-sale'
+};
