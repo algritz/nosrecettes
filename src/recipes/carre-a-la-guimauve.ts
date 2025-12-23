@@ -1,0 +1,41 @@
+import { Recipe } from '@/types/recipe';
+
+export const carreALaGuimauve: Recipe = {
+  id: 'carre-a-la-guimauve',
+  title: 'Carré à la guimauve',
+  description: '',
+  categories: ['Pâtisseries et desserts'],
+  prepTime: 0,
+  cookTime: 15,
+  servings: 0,
+  difficulty: 'Facile',
+  ingredients: [
+    'Biscuits',
+    '¼ tasse de beurre ou margarine',
+    '1 tasse de cassonade',
+    '1 tasse de farine',
+    '¾ tasse de noix hachée',
+    '1/8 c. à thé de sel',
+    '1 c. à thé de poudre à pâte',
+    '1 c. à thé de vanille',
+    'Guimauve',
+    '2 enveloppes de gélatine',
+    '½ tasse d\'eau froide',
+    '2 tasses de sucre',
+    '½ tasse d\'eau',
+    '1 c. à thé de vanille',
+    'Pincée de sel',
+    'Sucre à la crème',
+    '½ tasse de beurre fondu',
+    '1 t. de cassonade',
+    '½ tasse de lait',
+    '2 tasses de sucre en poudre'
+  ],
+  instructions: [
+    'Biscuits: Tout mélanger les ingrédients ensemble. Étaler dans un moule de 13 x 9 graissé. Cuire au four à 325°F de 10 à 15 minutes.',
+    'Guimauve: Dissoudre 2 enveloppes de gélatine dans ½ tasse d\'eau froide. Chauffer 2 tasses de sucre dans ½ tasse d\'eau. Ajouter la gélatine au sirop et laisser venir au point d\'ébullition. Ajouter 1 c. à thé de vanille et une pincée de sel. Retirer du feu et dégourdir avec la mixette. Battre assez longtemps pour obtenir une guimauve ferme. Étendre la guimauve sur la première préparation (le biscuit refroidi). Laisser prendre au frigo.',
+    'Sucre à la crème: Mélanger le beurre et la cassonade dans un petit chaudron. Ajouter ½ tasse de lait et faire bouillir 3 minutes en brassant. Faire tiédir, puis ajouter 2 tasses de sucre en poudre. Étendre sur la guimauve et laisser refroidir.'
+  ],
+  tags: ['guimauve', 'pâtisserie', 'recette classique'],
+  slug: 'carre-a-la-guimauve'
+};
