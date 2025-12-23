@@ -1,0 +1,53 @@
+import { Recipe } from '@/types/recipe';
+
+export const crepesEpicee: Recipe = {
+  id: 'crepes-epicee',
+  title: 'Crêpes épicée',
+  description: 'Crêpes épicée avec farce de pommes de terre, accompagnée d\'une sauce au yogourt à la coriandre.',
+  categories: ['Végétarien', 'Plats principaux', 'Tartares'],
+  prepTime: 20,
+  cookTime: 20,
+  servings: 6,
+  difficulty: 'Facile',
+  ingredients: [
+    'Crêpes',
+    '10 ml de graines de cumin',
+    'Huile d\'olive',
+    '1 piment chili vert, épépiné et haché finement (facultatif)',
+    '2 gousses d\'ail, pelées et hachées finement',
+    '1 morceau de 3 cm de gingembre frais, pelé et haché finement',
+    '125 g de farine blanche',
+    '1 gros œuf',
+    '275 ml de lait',
+    'Sauces',
+    '90 ml de yogourt nature',
+    '30 ml de coriandre fraîche, hachée',
+    'Sel de mer (au goût)',
+    'Poivre du moulin (au goût)',
+    'Huile d\'olive',
+    '5 ml de graines de moutarde',
+    '1/2 oignon, pelé et émincé finement',
+    '5 ml de curcuma moulu',
+    '6 pommes de terre cuites, refroidies, tranchées grossièrement'
+  ],
+  instructions: [
+    'Dans une poêle, rôtir les graines de cumin avec une pincée de sel à moyen-élevé pour environ 1 minute.',
+    'Ajouter un soupçon d’huile et faire revenir le chili, l’ail et le gingembre pour 2 minutes, jusqu’à ce que tout soit tendre. Retirer du feu.',
+    'Mettre le mélange épices/ail dans un bol. Dans le même bol, tamiser la farine, assaisonner et faire un puits.',
+    'Ajouter l’œuf et la moitié du lait. Mélanger la farine avec l’œuf et le lait et ajouter graduellement le reste du lait. Continuer à mélanger jusqu’à ce que le mélange soit lisse.',
+    'Ajouter une cuillère à thé d’huile, mélanger et ajuster l’assaisonnement au besoin. Réserver 10 minutes.',
+    'Pendant ce temps, faire la farce de pommes de terre. Dans une grande poêle, chauffer un peu d’huile à feu moyen-élevé.',
+    'Ajouter les graines de moutarde et cuire 1-2 minutes, jusqu’à ce que les graines commencent à éclater.',
+    'Ajouter l’oignon et cuire 5 minutes, ou jusqu’à ce qu’il soit tendre et doré.',
+    'Ajouter le curcuma et les pommes de terre cuites, assaisonner, et ajouter un soupçon d’huile d’olive au besoin (pour aider à frire).',
+    'Faire revenir 3-4 minutes, jusqu’à ce que tout soit tendre et assez cuit. Réserver.',
+    'Chauffer une grande poêle. Ajouter un peu d’huile.',
+    'Si le mélange à crêpes est trop épais, ajouter 1 ou 2 cuillères à soupe de lait.',
+    'Plonger une louche dans le mélange à pancakes et déposer dans la poêle chaude. Incliner la poêle afin de bien étendre le mélange.',
+    'Cuire 1 minute de chaque côté, jusqu’à ce que la crêpe soit dorée. Répéter pour chaque pancake.',
+    'Mélanger le yogourt et la coriandre et assaisonner au goût.',
+    'Pour servir, placer une bonne portion de la farce de pommes de terre au milieu de chaque crêpe, déposer une noisette de yogourt si désiré et rouler en forme de saucisse.'
+  ],
+  tags: ['épicé', 'crêpes', 'farce'],
+  slug: 'crepes-epicee'
+};
