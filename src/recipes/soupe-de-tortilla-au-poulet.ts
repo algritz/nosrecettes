@@ -1,0 +1,52 @@
+import { Recipe } from '@/types/recipe';
+
+export const soupeDeTortillaAuPoulet: Recipe = {
+  id: 'soupe-de-tortilla-au-poulet',
+  title: 'Soupe de tortilla au poulet',
+  description: 'Soupe mexicaine savoureuse',
+  categories: ['Soupes', 'Plats principaux'],
+  prepTime: 30,
+  cookTime: 540,
+  servings: 6,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 poulet entier',
+    '3 oignons blancs coupés en deux',
+    '1 bouquet de coriandre bien rincée',
+    '2 feuilles de laurier',
+    '1/2 cuillère à café de grains de poivre noir entiers',
+    '1 cuillère à café d\'origan mexicain',
+    '2 gousses de piment séchées et épépinées',
+    '3 litres d\'eau',
+    '12 tortillas de maïs',
+    '60 ml d\'huile végétale',
+    '1/2 cuillère à café de sel casher',
+    '3 grosses tomates',
+    '1 poivron rouge doux coupé en deux et épépiné',
+    '1 gros piment jalapeño coupé en deux et épépiné',
+    '6 gousses d\'ail pelées',
+    '1 piment chipotle entier en conserve, en sauce adobo (facultatif)',
+    '1 cuillère à café de cumin moulu',
+    '1 lime pressée',
+    'Crème fraîche',
+    'Avocat tranché',
+    'Coriandre hachée',
+    'Fromage mexicain râpé ou émietté',
+    'Quartiers de lime',
+    'Piment de Cayenne (optionnel)'
+  ],
+  instructions: [
+    'Dans une grande marmite, mélanger le poulet, 1 oignon, les tiges de coriandre, les feuilles de laurier, l\'origan, les grains de poivre, les piments séchés et 3 litres d\'eau. Porter à frémissement, puis baisser le feu à moyen-doux et laisser mijoter 1 heure.',
+    'Pendant ce temps, préparer les tortillas : Préchauffer le four à 180 °C (350 °F). Recouvrir une plaque de cuisson d\'un tapis en silicone ou de papier sulfurisé. Couper les tortillas en deux, puis en lanières de 0,6 cm (1/4 po). Transférer sur la plaque, arroser d\'huile, saler, bien mélanger et étaler uniformément.',
+    'Cuire au four jusqu\'à ce qu\'elles soient dorées et croustillantes, environ 30 minutes, en les retournant une ou deux fois.',
+    'Transférer délicatement le poulet dans un bol. Réduire le feu du bouillon à doux. Laisser refroidir le poulet, puis l\'effilocher et réserver au réfrigérateur.',
+    'Ajouter les os, la peau et les restes de viande dans la casserole et laisser mijoter à feu doux pendant environ 4 heures. Ajouter de l\'eau si nécessaire.',
+    'Après 2 heures, préparer la salsa : préchauffer le four à feu vif, placer légumes sur une plaque huilée et griller 7-10 minutes.',
+    'Mixer les légumes grillés avec l\'ail, le piment chipotle et 250 ml d\'eau jusqu\'à obtenir une purée lisse.',
+    'Verser la salsa dans la casserole, augmenter à feu moyen-doux et laisser mijoter 2 heures supplémentaires en remuant.',
+    'Passer la soupe à travers une passoire fine, presser le poulet pour en extraire le jus, jeter os et peau. Saler, ajouter le cumin, le poulet effiloché et le jus de lime. Laisser mijoter 15-30 minutes.',
+    'Rectifier l\'assaisonnement, servir avec des tortillas croustillantes, garnir de crème, avocat, coriandre, fromage, lime et piment de Cayenne si désiré.'
+  ],
+  tags: ['mexicaine', 'soupe', 'poulet'],
+  slug: 'soupe-de-tortilla-au-poulet'
+};
