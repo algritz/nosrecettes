@@ -1,0 +1,38 @@
+import { Recipe } from '@/types/recipe';
+
+export const carresMagiquesAuxFramboises: Recipe = {
+  id: 'carres-magiques-aux-framboises',
+  title: 'Carrés magiques aux framboises',
+  description: '',
+  categories: ['Pâtisseries et desserts'],
+  prepTime: 20,
+  cookTime: 40,
+  servings: 12,
+  difficulty: 'Facile',
+  ingredients: [
+    '3/4 tasse (180 ml) de beurre non salé, fondu',
+    '2 1/4 tasses (560 ml) de chapelure de biscuits Graham',
+    '1 1/4 tasse (310 ml) de pacanes, hachées',
+    '1 1/2 tasse (375 ml) de framboises fraîches ou congelées, écrasées grossièrement à la fourchette',
+    '1 1/2 tasse (375 ml) de noix de coco sucrée, râpée',
+    '1 tasse (250 ml) de pépites de chocolat blanc',
+    '1 boîte (300 ml) de lait condensé sucré régulier'
+  ],
+  instructions: [
+    'Placer la grille au centre du four préchauffé à 350 °F (180 °C).',
+    'Beurrer un moule de 8 x 8 po (20 x 20 cm).',
+    'Tapisser le fond de papier parchemin en le laissant dépasser de chaque côté.',
+    'Dans un bol, mélanger le beurre et la chapelure.',
+    'Presser la préparation dans le fond du moule.',
+    'Couvrir cette base avec les pacanes.',
+    'Répartir les framboises fraîches sur les pacanes.',
+    'Parsemer de noix de coco et de pépites de chocolat blanc.',
+    'Verser le lait condensé uniformément sur la noix de coco et les pépites de chocolat.',
+    'Cuire 40 minutes ou jusqu’à ce que le dessus des carrés soit légèrement doré.',
+    'Laisser refroidir complètement.',
+    'Réfrigérer 1 h avant de démouler.',
+    'Couper en 12 carrés.'
+  ],
+  tags: ['framboise', 'pâtisserie', 'four'],
+  slug: 'carres-magiques-aux-framboises'
+};
