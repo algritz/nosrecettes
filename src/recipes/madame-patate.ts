@@ -1,0 +1,30 @@
+import { Recipe } from '@/types/recipe';
+
+export const madamePatate: Recipe = {
+  id: 'madame-patate',
+  title: 'Madame Patate',
+  description: 'Une explosion de saveur Madame Patate',
+  categories: ['Végétarien', 'Entrées'],
+  prepTime: 15,
+  cookTime: 60,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '4 patates douces',
+    '1 tasse de fromage feta',
+    '1 c. à soupe ou plus au goût de yogourt nature',
+    '½ oignon rouge ou 2 oignons verts',
+    'Le jus et le zeste d’un citron',
+    '½ tasse de coriandre fraîche ou persil',
+    'Huile d’olive'
+  ],
+  instructions: [
+    'Faire cuire chaque patate douce en papillote à 350°C au four ou sur le BBQ pendant 1 heure ou jusqu’à ce qu’elle soit cuite.',
+    'Une fois cuite, couper chaque patate en deux sur le sens de la longueur mais pas jusqu’au fond.',
+    'Dans un bol, mélanger le feta émietté, le yogourt, les oignons, le zeste et le jus du citron, la coriandre et/ou persil, et un filet d’huile d’olive.',
+    'Bien brasser et farcir chaque patate avec ce mélange.',
+    'Refaire cuire 5 minutes et servir.'
+  ],
+  tags: ['feta', 'citron', 'papillote'],
+  slug: 'madame-patate'
+};
