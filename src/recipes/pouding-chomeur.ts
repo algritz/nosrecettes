@@ -51,6 +51,6 @@ export const poudingChomeur: Recipe = {
       ]
     }
   ],
-  tags: ['gâteau', 'sirop d'érable', 'québécois'],
+  tags: ['gâteau', 'sirop d\'érable', 'québécois'],
   slug: 'pouding-chomeur'
 };
