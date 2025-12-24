@@ -1,0 +1,39 @@
+import { Recipe } from '@/types/recipe';
+
+export const pizzaAuxFruitsSurLeBbq: Recipe = {
+  id: 'pizza-aux-fruits-sur-le-bbq',
+  title: 'Pizza aux fruits sur le BBQ',
+  description: 'Une pizza fruitée cuite sur le barbecue, garnie de chocolat, guimauves, et zestes d\'orange, parfaite pour une dégustation estivale.',
+  categories: ['Végétarien', 'Plats principaux', 'Barbecue'],
+  prepTime: 20,
+  cookTime: 5,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 boule de pâte à pizza maison ou du commerce',
+    'Farine (pour éviter que la pâte ne colle)',
+    '1 c. à table de sucre',
+    '¼ c. à thé de cannelle',
+    '2 tasses de fruits coupés au choix (bananes, fraises, framboises, mûres, bleuets, pêches, prunes, kiwis…)',
+    '2 onces de chocolat mi-sucré pour la cuisson, séparés',
+    '¼ de tasse de mini guimauves',
+    'Zestes d’orange (facultatif)',
+    'Fleur de sel (facultatif)'
+  ],
+  instructions: [
+    'Préchauffer le BBQ et la plaque à pizza.',
+    'Dans un bol, mélanger le sucre et la cannelle. Réserver.',
+    'Hacher 1 once de chocolat grossièrement. Réserver.',
+    'Rouler la pâte à pizza afin de faire un disque d’environ 20 cm.',
+    'Fariner légèrement le dessous de la pâte, afin qu’elle n’adhère pas.',
+    'Déposer la pâte directement sur la spatule à pizza farinée et perforer la pâte afin d’éviter qu’elle ne gonfle trop.',
+    'Faire fondre 1 once de chocolat au micro-ondes, en remuant à chaque 30 secondes.',
+    'Étendre le chocolat fondu sur la pâte à pizza, à partir du centre.',
+    'Saupoudrer le mélange de sucre et de cannelle.',
+    'Répartir les fruits coupés, les guimauves et le chocolat haché sur la pâte.',
+    'Cuire la pizza au BBQ, environ 4-5 minutes ou jusqu’à ce que la croûte et les guimauves soient dorées.',
+    'Pour servir, ajouter une pincée de fleur de sel et des zestes d’orange.'
+  ],
+  tags: ['barbecue', 'fruité', 'chocolat'],
+  slug: 'pizza-aux-fruits-sur-le-bbq'
+};
