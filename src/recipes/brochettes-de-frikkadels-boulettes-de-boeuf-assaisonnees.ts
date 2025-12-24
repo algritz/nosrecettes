@@ -1,0 +1,44 @@
+import { Recipe } from '@/types/recipe';
+
+export const brochettesDeFrikkadelsBoulettesDeBoeufAssaisonnees: Recipe = {
+  id: 'brochettes-de-frikkadels-boulettes-de-boeuf-assaisonnees',
+  title: 'Brochettes de frikkadels (boulettes de boeuf assaisonnées)',
+  description: 'Des boulettes qui ne laissent pas indifférente Brochettes de frikkadels',
+  categories: ['Plats principaux'],
+  prepTime: 25,
+  cookTime: 15,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '225 g (1/2 lb) de bœuf haché',
+    '225 g (1/2 lb) de veau haché',
+    '2 gousses d’ail, finement hachées',
+    '180 ml (3/4 tasse) d’oignon rouge, finement haché',
+    '2 ml (1/2 c. à thé) de muscade, moulue',
+    '1 œuf, battu',
+    '60 ml (1/4 tasse) de persil frais, haché',
+    '1 pomme de terre, cuite et pelée',
+    'Sel et poivre moulu',
+    '12 petites brochettes de bambou',
+    '15 ml (1 c. à soupe) de beurre',
+    '15 ml (1 c. à soupe) d’huile végétale',
+    '125 ml (1/2 tasse) de sauce chili',
+    '125 ml (1/2 tasse) de ketchup',
+    '10 ml (2 c. à thé) de sauce Worcestershire',
+    '15 ml (1 c. à soupe) d’origan frais, haché',
+    '10 ml (2 c. à thé) de fleur d’ail'
+  ],
+  instructions: [
+    'Dans un grand bol, mélanger les 7 premiers ingrédients.',
+    'Dans une assiette, réduire la pomme de terre en purée à l’aide d’une fourchette et l’ajouter au premier mélange. Saler et poivrer.',
+    'Confectionner des boulettes de viande d’environ 2,5 cm (1 po) de diamètre et en enfiler 2 ou 3 par brochette. Réfrigérer 10 minutes.',
+    'Entre-temps, mélanger tous les ingrédients de la sauce d’accompagnement et réserver.',
+    'Préchauffer le four à 180 °C (350 °F).',
+    'Dans un grand poêlon chaud, faire fondre le beurre dans l’huile.',
+    'Faire dorer toutes les facettes de la viande et déposer les brochettes sur une plaque de cuisson.',
+    'Placer au four jusqu’à cuisson complète, soit environ 5 minutes.',
+    'Servir les brochettes chaudes avec la sauce d’accompagnement.'
+  ],
+  tags: ['boulettes', 'barbecue', 'sauce'],
+  slug: 'brochettes-de-frikkadels-boulettes-de-boeuf-assaisonnees'
+};
