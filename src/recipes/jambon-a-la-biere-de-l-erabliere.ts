@@ -35,6 +35,6 @@ export const jambonALaBiereDeLErabliere: Recipe = {
     'Badigeonner la viande avec le bouillon réduit et mettre au four 15 à 20 minutes en badigeonnant souvent.',
     'Trancher le jambon et servir avec la sauce.'
   ],
-  tags: ['bière', 'sirop d'érable', 'jambon'],
+  tags: ['bière', 'sirop d\'érable', 'jambon'],
   slug: 'jambon-a-la-biere-de-l-erabliere'
 };
