@@ -1,0 +1,43 @@
+import { Recipe } from '@/types/recipe';
+
+export const tartareDeBUfDInspirationIndienne: Recipe = {
+  id: 'tartare-de-b-uf-d-inspiration-indienne',
+  title: 'Tartare de bœuf d\'inspiration indienne',
+  description: 'Un tartare de bœuf aux saveurs indiennes, avec des tomates séchées, du cari, de la coriandre, et des épices, servi en portions pour deux personnes.',
+  categories: ['Plats principaux', 'Végétarien'],
+  prepTime: 15,
+  cookTime: 0,
+  servings: 2,
+  difficulty: 'Facile',
+  ingredients: [
+    '360 gr de bœuf à tartare',
+    '6 tomates séchées',
+    '2 c. à thé de cari',
+    '6 brins de coriandre (tiges et feuilles)',
+    '1 petite échalote française',
+    '3 cornichons',
+    '1 tomate',
+    'Des câpres',
+    '2 feuilles de laitue iceberg hachée très finement',
+    'Une racine de gingembre',
+    'Huile d\'olive',
+    'Sambal oelek (facultatif)',
+    'Pistache ou arachide (facultatif)'
+  ],
+  instructions: [
+    'Coupez la tomate en quatre et enlevez la partie des graines puis hachez-la en petits morceaux.',
+    'Coupez les tomates séchées en petits morceaux.',
+    'Ciselez l’échalote et la coriandre.',
+    'Hachez finement les câpres et le cornichon.',
+    'Hachez finement les feuilles de laitue.',
+    'Dans un saladier, mélangez l\'huile d\'olive et le cari pour que celui-ci se dissolve, puis ajoutez le reste de la préparation.',
+    'Ajoutez la viande.',
+    'Râpez le gingembre au goût.',
+    'Brassez le tout.',
+    'Ajoutez du Sambal oelek si pas assez piquant à votre goût.',
+    'Si vous souhaitez plus de texture, ajoutez des arachides ou des pistaches grossièrement hachées.'
+  ],
+  tags: ['épicé', 'indien', 'tartare'],
+  marinatingTime: 15,
+  slug: 'tartare-de-b-uf-d-inspiration-indienne'
+};
