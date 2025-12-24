@@ -26,6 +26,6 @@ export const truffesChocolatEtBeurreDArachideAuFromageALaCreme: Recipe = {
     'Tremper les boules de fromage à la crème, une à la fois, dans le chocolat fondu, en les retournant pour bien les enrober.',
     'Réfrigérer 1 h ou jusqu\'à fermeté.'
   ],
-  tags: ['chocolat', 'beurre d'arachide', 'gourmandise'],
+  tags: ['chocolat', 'beurre d\'arachide', 'gourmandise'],
   slug: 'truffes-chocolat-et-beurre-d-arachide-au-fromage-a-la-creme'
 };
