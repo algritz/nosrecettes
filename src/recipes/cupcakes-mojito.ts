@@ -1,0 +1,50 @@
+import { Recipe } from '@/types/recipe';
+
+export const cupcakesMojito: Recipe = {
+  id: 'cupcakes-mojito',
+  title: 'Cupcakes Mojito',
+  description: 'Recette de cupcakes aromatisés au mojito, avec sirop à la lime et glaçage au fromage à la crème, décorés de lime et menthe.',
+  categories: ['Pâtisseries et desserts'],
+  prepTime: 30,
+  cookTime: 20,
+  servings: 18,
+  difficulty: 'Facile',
+  ingredients: [
+    'Gâteau',
+    '120 ml de faux babeurre (lait + 1 cuillère à soupe de jus de citron) à température ambiante',
+    '1/2 cuillère à soupe de rhum ambré',
+    '1/2 cuillère à café d\'extrait de vanille',
+    '210 g de farine',
+    '1 cuillère à café de levure chimique (poudre à pâte)',
+    '1/2 cuillère à café de sel',
+    '110 g de beurre à température ambiante',
+    '150 g de sucre en poudre',
+    '2 œufs à température ambiante',
+    'Sirop',
+    '95 g de sucre en poudre',
+    '2 cuillères à soupe d\'eau',
+    '2 cuillères à soupe de rhum ambré',
+    'Zeste d\'une lime',
+    'Quelques feuilles de menthe',
+    'Glaçage',
+    '400 g de fromage à la crème',
+    '50 g de beurre à température ambiante',
+    'Sucre glace selon votre goût',
+    '2 cuillères à soupe de rhum ambré',
+    'Zestes de 3 limes'
+  ],
+  instructions: [
+    'Préchauffez votre four à 350°F et préparez vos moules à cupcakes.',
+    'Dans un bol, mélangez le faux babeurre, le rhum et l\'extrait de vanille. Réservez.',
+    'Dans un autre bol, mélangez la farine, la levure chimique et le sel. Réservez.',
+    'Fouettez rapidement le beurre et le sucre jusqu\'à ce que le mélange blanchisse. Ajoutez les œufs un à un en raclant les bords.',
+    'Incorporez en fouettant 1/3 des ingrédients secs, la moitié du babeurre au rhum, 1/3 des ingrédients secs, le reste du babeurre, puis le dernier 1/3 des ingrédients secs.',
+    'Versez la pâte dans les moules à moitié remplis. Enfournez 20 minutes.',
+    'Laissez refroidir 5 minutes. Pendant ce temps, préparez le sirop en portant l\'eau et le sucre à ébullition, puis retirez du feu et ajoutez le rhum, le zeste de lime et la menthe. Laissez infuser 5 minutes.',
+    'Creusez des chapeaux dans les cupcakes, versez le sirop dessus, remettez les chapeaux et laissez refroidir.',
+    'Fouettez le fromage à la crème et le beurre jusqu\'à obtenir une texture crémeuse. Ajoutez le sucre glace, puis le rhum et le zeste de lime. Fouettez à nouveau.',
+    'Glaçez les cupcakes refroidis avec le mélange, décorez de tranches de lime et de feuilles de menthe.'
+  ],
+  tags: ['mojito', 'sirop lime', 'glaçage crémeux'],
+  slug: 'cupcakes-mojito'
+};
