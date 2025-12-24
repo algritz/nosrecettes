@@ -1,0 +1,48 @@
+import { Recipe } from '@/types/recipe';
+
+export const chiliConCarne: Recipe = {
+  id: 'chili-con-carne',
+  title: 'Chili con carne',
+  description: 'Un chili réconfortant avec viande hachée, haricots rouges, et épices, à cuire doucement pour développer les saveurs.',
+  categories: ['Plats principaux'],
+  prepTime: 25,
+  cookTime: 100,
+  servings: 0,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 1/2 oignons hachés finement',
+    '2 gousses ail émincées',
+    '1 piment rouge séché émincé',
+    '1 poivron vert coupé en petits dés',
+    '3 c.à soupe huile de canola',
+    '1 kg boeuf haché',
+    '2 tasses tomates en conserve en dés',
+    '3 c.à soupe pâte de tomates',
+    'poivre au goût',
+    '1/2 c.à soupe cumin en poudre',
+    '3 1/2 c.à soupe cassonade',
+    '1/2 tasse bouillon de boeuf',
+    '2 c.à soupe eau (si nécessaire)',
+    '4 tasses haricots rouges en conserve, égouttés et rincés',
+    'Sambal Oelek au goût',
+    '1 1/2 c.à soupe coriandre fraîche hachée'
+  ],
+  instructions: [
+    'Préparer les légumes. Hacher finement l\'oignon, émincer l\'ail et le piment rouge, trancher le poivron en petits dés.',
+    'Chauffer la moitié de l\'huile à feu moyen dans un poêlon ou une casserole. Y faire revenir l\'oignon et l\'ail environ 3 min jusqu\'à ce qu\'ils deviennent translucides, en remuant de temps à autre afin de ne pas les brûler.',
+    'Les retirer du poêlon et réserver.',
+    'Ajouter l\'autre moitié de l\'huile dans le même poêlon, chauffer toujours à feu moyen et y ajouter la viande hachée.',
+    'Cuire environ 5 min, en brassant de temps à autre à l\'aide d\'une cuillère en bois jusqu\'à ce que la viande perde sa couleur rosée.',
+    'Remettre l\'oignon et l\'ail cuits dans le poêlon.',
+    'Ajouter les tomates en dés, la pâte de tomates, le poivron, le piment rouge, le cumin et la cassonade.',
+    'Y verser le bouillon chaud et le sambal oelek.',
+    'Couvrir et cuire à feu très doux pendant 1h, en vérifiant de temps à autre que le mélange reste assez humide. Ajouter de l\'eau si nécessaire.',
+    'Bien égoutter les haricots, les rincer, les égoutter de nouveau et les ajouter dans le poêlon.',
+    'Mélanger et cuire le tout encore 40 min.',
+    'Saler et poivrer au goût.',
+    'Saupoudrer de coriandre fraîche hachée et servir.'
+  ],
+  tags: ['épicé', 'viande hachée', 'cuisine mijotée'],
+  notes: 'Pour une saveur intéressante, cuire au fumoir.',
+  slug: 'chili-con-carne'
+};
