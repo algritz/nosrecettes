@@ -33,6 +33,6 @@ export const biscuitsAuBeurreDArachideKraftALAncienne: Recipe = {
     'Laisser refroidir 5 min.',
     'Retirer des plaques et déposer sur des grilles ; laisser refroidir complètement.'
   ],
-  tags: ['pâtisserie', 'beurre d'arachide', 'doré'],
+  tags: ['pâtisserie', 'beurre d\'arachide', 'doré'],
   slug: 'biscuits-au-beurre-d-arachide-kraft-a-l-ancienne'
 };
