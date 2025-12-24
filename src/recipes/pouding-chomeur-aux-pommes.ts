@@ -38,7 +38,7 @@ export const poudingChomeurAuxPommes: Recipe = {
     'Sirop aux pommes: Dans une casserole hors du feu, mélanger la fécule, le jus, le sirop d’érable et la crème à l’aide d’un fouet. Ajouter les pommes et porter à ébullition. Verser dans un moule carré de 8 po (20cm) ou d’une contenance de 8 tasses (2 litres). Réserver.',
     'Gâteau: Placer la grille au centre du four. Préchauffer le four à 350°F (180°C). Dans un bol, mélanger la farine, la poudre à pâte et le bicarbonate de soude. Réserver. Dans un autre bol, crémer le beurre avec le sucre au batteur électrique. Ajouter l’œuf et la vanille, battre jusqu’à homogénéité. À basse vitesse, incorporer les ingrédients secs en alternant avec le jus de pomme. À l’aide d’une cuillère à crème glacée ou d’une grosse cuillère, répartir la pâte sur le sirop chaud. Déposer le moule sur une plaque à cuisson. Cuire au four de 30 à 35 minutes ou jusqu’à ce qu’un cure-dent inséré au centre en ressorte propre. Servir tiède ou froid.'
   ],
-  tags: ['pomme', 'sirop d'érable', 'gâteau'],
+  tags: ['pomme', 'sirop d\'érable', 'gâteau'],
   notes: 'Si le sirop est trop liquide, mettre 4 c à thé de fécule de maïs au lieu de 2.',
   slug: 'pouding-chomeur-aux-pommes'
 };
