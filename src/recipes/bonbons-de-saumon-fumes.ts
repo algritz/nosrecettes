@@ -26,7 +26,7 @@ export const bonbonsDeSaumonFumes: Recipe = {
     'Avec un pinceau de cuisine, badigeonner une couche de sirop d’érable sur le saumon toutes les 30 minutes.',
     'Cuire de 2 à 4 heures au goût, en augmentant la température de 10°F chaque heure jusqu\'à un maximum de 180°F.'
   ],
-  tags: ['fumage', 'sirop d'érable', 'saumon'],
+  tags: ['fumage', 'sirop d\'érable', 'saumon'],
   marinatingTime: 720,
   notes: 'Temps de marinade de 8 à 12 heures, cuisson de 2 à 4 heures, portions pour 6 à 8 personnes.',
   slug: 'bonbons-de-saumon-fumes'
