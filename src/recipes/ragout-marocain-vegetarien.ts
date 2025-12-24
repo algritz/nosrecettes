@@ -1,0 +1,49 @@
+import { Recipe } from '@/types/recipe';
+
+export const ragoutMarocainVegetarien: Recipe = {
+  id: 'ragout-marocain-vegetarien',
+  title: 'Ragoût marocain végétarien',
+  description: 'Un ragoût végétarien parfumé aux épices marocaines, riche en légumes et légumineuses, idéal pour un repas réconfortant.',
+  categories: ['Soupes', 'Plats principaux'],
+  prepTime: 30,
+  cookTime: 40,
+  servings: 6,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 c. à thé de cannelle moulue',
+    '1 c. à thé de cumin moulu',
+    '1/2 c. à thé de gingembre moulu',
+    '1/4 c. à thé de clou de girofle moulu',
+    '1/4 c. à thé de muscade moulue',
+    '1/4 c. à thé de curcuma moulu',
+    '1/8 c. à thé de poudre de cari',
+    '1 c. à thé de sel kasher',
+    '1 c. à soupe de beurre',
+    '1 oignon doux, haché',
+    '2 tasses de chou kale haché finement (sans les tiges dures)',
+    '1,6 L de bouillon de légumes',
+    '1 boîte (398 ml) de tomates en dés, avec leur jus',
+    '1 c. à soupe de miel',
+    '4 grosses carottes, hachées',
+    '2 patates douces, pelées et en dés',
+    '3 grosses pommes de terre, pelées et en dés',
+    '1 boîte (540 ml) de pois chiches, égouttés',
+    '1/2 tasse d’abricots séchés, hachés',
+    '1 tasse de lentilles sèches, rincées',
+    '1 c. à thé de poivre noir moulu',
+    '1 c. à soupe de fécule de maïs (optionnel)',
+    '1 c. à soupe d’eau (optionnel)'
+  ],
+  instructions: [
+    'Dans un petit bol, combiner la cannelle, le cumin, le gingembre, le clou de girofle, la muscade, le curcuma, la poudre de cari et le sel; réserver.',
+    'Fondre le beurre dans une grande casserole à feu moyen; y faire revenir l’oignon 5-10 minutes.',
+    'Ajouter le chou kale haché et le mélange d’épices; cuire 2 minutes.',
+    'Ajouter le bouillon de légumes, les tomates, le miel, les carottes, les patates douces, les pommes de terre, les pois chiches, les abricots et les lentilles; porter à ébullition et réduire à feu doux.',
+    'Laisser mijoter 30 minutes, ou jusqu’à ce que les légumes et les lentilles soient tendres.',
+    'Assaisonner de sel et poivre.',
+    'Si désiré, combiner la fécule de maïs et l’eau et ajouter à la casserole, pour épaissir le ragoût.'
+  ],
+  tags: ['épices marocaines', 'légumes', 'végétarien'],
+  notes: 'Ce ragoût se conserve bien dans des pots massons.',
+  slug: 'ragout-marocain-vegetarien'
+};
