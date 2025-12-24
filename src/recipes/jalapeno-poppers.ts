@@ -1,29 +1,33 @@
 import { Recipe } from '@/types/recipe';
 
 export const jalapenoPoppers: Recipe = {
-  id: '1764532625845',
+  id: 'jalapeno-poppers',
   title: 'Jalapeno Poppers',
-  description: 'Jalapeños farcis au fromage à la crème, enveloppés de bacon et laqués de sauce BBQ, cuits au gril.',
-  categories: ['Amuse-geules', 'Barbecue'],
+  description: '',
+  categories: ['Amuse-geules'],
   prepTime: 20,
-  cookTime: 15,
-  servings: 0,
+  cookTime: 25,
+  servings: 6,
   difficulty: 'Facile',
   ingredients: [
-    'Piments jalapeño',
-    'Bacon',
-    'Fromage Philadelphia en brique',
-    'Sauce BBQ sucrée, au choix'
+    '12 jalapenos',
+    '8 oz de fromage à la crème, température ambiante',
+    '1 gousse d\'ail, hachée',
+    '¼ cuillère à café de sel',
+    '¼ cuillère à café de poivre noir moulu',
+    '3 cuillères à soupe d\'oignon vert, haché',
+    '2 tasse de fromage cheddar orange doux râpé',
+    '8 tranche de bacon, cuit et haché'
   ],
   instructions: [
-    'Ouvrir les jalapeños sur le dessus et les épiner, en conservant le petit chapeau.',
-    'Couper le Philadelphia en bâtonnets.',
-    'Insérer un bâtonnet de fromage dans chaque piment et remettre le dessus.',
-    'Enrober chaque piment de bacon.',
-    'Badigeonner de sauce BBQ sucrée et cuire sur le BBQ jusqu\'à ce que le bacon soit cuit.',
-    'Rebadigeonner de sauce en cours de cuisson, au besoin.'
+    'Préchauffer le four à 400˚F.',
+    'Couper les jalapeños en deux dans le sens de la longueur.',
+    'Retirer et jeter les graines et les membranes des jalapenos.',
+    'Dans un grand bol, mélanger le fromage à la crème, l\'ail, le sel, le poivre, l\'oignon vert, la moitié du fromage râpé et le bacon cuit.',
+    'Remplir les moitiés de jalapeno avec le mélange.',
+    'Garnir de fromage.',
+    'Placer les jalapenos farcis sur une plaque à pâtisserie et cuire au four à 400˚F pendant 18-20 minutes, ou jusqu\'à ce que le fromage fonde de couleur dorée.'
   ],
-  tags: ['jalapeño', 'bacon', 'fromage à la crème'],
-  source: 'David Cloutier',
+  tags: ['fromage à la crème', 'bacon', 'grill'],
   slug: 'jalapeno-poppers'
 };
