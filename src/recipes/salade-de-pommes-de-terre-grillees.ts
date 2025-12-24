@@ -10,12 +10,29 @@ export const saladeDePommesDeTerreGrillees: Recipe = {
   servings: 6,
   difficulty: 'Facile',
   ingredients: [
-    '6 œufs à la coq hachés grossièrement',
-    '2 livres de petites pommes de terre rouges',
-    '1 livre de bacon cuit haché grossièrement',
-    '1 cuillère à soupe de sel',
-    '1 cuillère à soupe d\'huile d\'olive',
-    '[object Object]'
+    {
+      title: 'Vinaigrette',
+      items: [
+        '1 tasse de mayonnaise',
+        '½ tasse de crème sure',
+        '¼ tasse de moutarde à grains entiers',
+        '2 cuillères à soupe de persil italien plat haché',
+        '2 cuillères à soupe d\'aneth frais haché',
+        '1 botte d\'oignons verts hachés',
+        'le zeste et le jus de 1 citron',
+        'Sel et poivre au goût'
+      ]
+    },
+    {
+      title: 'Salade',
+      items: [
+        '6 œufs à la coq hachés grossièrement',
+        '2 livres de petites pommes de terre rouges',
+        '1 livre de bacon cuit haché grossièrement',
+        '1 cuillère à soupe de sel',
+        '1 cuillère à soupe d\'huile d\'olive'
+      ]
+    }
   ],
   instructions: [
     'Porter une grande casserole d\'eau à ébullition. Ajouter 1 cuillère à soupe de sel et les petites pommes de terre rouges entières.',
@@ -33,5 +50,6 @@ export const saladeDePommesDeTerreGrillees: Recipe = {
     'Servir frais.'
   ],
   tags: ['grill', 'pomme de terre', 'salade'],
+  source: 'David Cloutier',
   slug: 'salade-de-pommes-de-terre-grillees'
 };
