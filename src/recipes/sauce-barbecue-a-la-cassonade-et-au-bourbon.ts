@@ -1,10 +1,10 @@
 import { Recipe } from '@/types/recipe';
 
 export const sauceBarbecueALaCassonadeEtAuBourbon: Recipe = {
-  id: '1760296183999',
+  id: 'sauce-barbecue-a-la-cassonade-et-au-bourbon',
   title: 'Sauce barbecue à la cassonade et au bourbon',
-  description: 'Probablement la meilleure sauce BBQ maison qui soit',
-  categories: ['Sauces', 'Barbecue'],
+  description: 'Une sauce barbecue épaisse, relevée et parfumée au bourbon, idéale pour accompagner des côtes levées ou du pulled pork.',
+  categories: ['Sauces'],
   prepTime: 15,
   cookTime: 30,
   servings: 2,
@@ -25,20 +25,14 @@ export const sauceBarbecueALaCassonadeEtAuBourbon: Recipe = {
   ],
   instructions: [
     'Dans une casserole, mélanger tous les ingrédients en fouettant.',
-    'Porter à ébullition à feu moyen puis laisser mijoter 30 min, jusqu\'à consistance épaisse et savoureuse. Si nécessaire, ajouter du vinaigre de cidre. La sauce doit être très relevée',
-    'Transférer la sauce dans un bol et laisser refroidir à température ambiante. Couvrir et réfrigérer jusqu\'à utilisation.'
+    'Porter à ébullition à feu moyen puis laisser mijoter 30 min, jusqu\'à consistance épaisse et savoureuse. Si nécessaire, ajouter du vinaigre de cidre.',
+    'La sauce doit être très relevée.',
+    'Transférer la sauce dans un bol et laisser refroidir à température ambiante.',
+    'Couvrir et réfrigérer jusqu\'à utilisation.',
+    'La sauce peut être réfrigérée pendant plusieurs semaines.',
+    'Temprer la sauce avant de la servir.'
   ],
-  tags: ['Sauce BBQ', 'Côtes Levées', 'Pulled Pork'],
-  images: [
-    {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sauce_bbq',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sauce_bbq',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sauce_bbq'
-    }
-  ],
-  accompaniment: 'Idéal avec les Côtes levée de Kansas City ou du Pulled Porc',
-  wine: '7 Deadly Zin, ou tout Zinfandel ou Primitovo',
-  source: 'Planète Barbecue de Steven Raichlen',
-  notes: 'La sauce peut être réfrigérée pendant plusieurs semaines. Tempérer la sauce avant de la servir.',
+  tags: ['barbecue', 'bourbon', 'épicé'],
+  wine: '7 Deadly Zin',
   slug: 'sauce-barbecue-a-la-cassonade-et-au-bourbon'
 };
