@@ -25,6 +25,6 @@ export const saladeDeFetaEtMelonDEau: Recipe = {
     'Verser la vinaigrette et bien mélanger.',
     'Servir.'
   ],
-  tags: ['feta', 'melon d'eau', 'salade'],
+  tags: ['feta', 'melon d\'eau', 'salade'],
   slug: 'salade-de-feta-et-melon-d-eau'
 };
