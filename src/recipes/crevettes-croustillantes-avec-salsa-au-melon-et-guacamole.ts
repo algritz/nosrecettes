@@ -10,10 +10,36 @@ export const crevettesCroustillantesAvecSalsaAuMelonEtGuacamole: Recipe = {
   servings: 14,
   difficulty: 'Facile',
   ingredients: [
-    'Ingrédient pour montage 14 crevettes en papillon panées non cuites (nos compliments IGA)',
-    '7 tranches de Saumon fumé frais, coupées en deux',
-    '[object Object]',
-    '[object Object]'
+    {
+      title: 'Protéines',
+      items: [
+        'Ingrédient pour montage 14 crevettes en papillon panées non cuites (nos compliments IGA)',
+        '7 tranches de Saumon fumé frais, coupées en deux'
+      ]
+    },
+    {
+      title: 'Salsa au melon',
+      items: [
+        '1 tasse de melon miel pelé et épépiné puis coupé en petits dés',
+        '1 tomate italienne, épépinée et coupée en petits dés',
+        '1 oignons verts, finement hachés',
+        '1 lime, zestée et 1/2 jus',
+        '1 c. à soupe (15 ml) d’huile d’olive',
+        '1/4 c. à thé (1 ml) de sel',
+        '1/4 c. à thé (1 ml) de poivre fraichement moulu'
+      ]
+    },
+    {
+      title: 'Guacamole',
+      items: [
+        '1 avocat en purée',
+        'sauce piquante au goût',
+        '1 lime, zestée et 1/2 jus',
+        '1 oignons verts, finement hachés',
+        '1 c. à soupe (15 ml) d’huile d’olive',
+        'sel au goût'
+      ]
+    }
   ],
   instructions: [
     'Préchauffer le four à 425°F',
@@ -24,5 +50,6 @@ export const crevettesCroustillantesAvecSalsaAuMelonEtGuacamole: Recipe = {
     'Servir immédiatement.'
   ],
   tags: ['salsa melon', 'guacamole', 'friture'],
+  source: 'David Cloutier',
   slug: 'crevettes-croustillantes-avec-salsa-au-melon-et-guacamole'
 };
