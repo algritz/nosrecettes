@@ -1,0 +1,51 @@
+import { Recipe } from '@/types/recipe';
+
+export const ragoutDeBoeufAuxLegumes: Recipe = {
+  id: 'ragout-de-boeuf-aux-legumes',
+  title: 'Ragoût de boeuf aux légumes',
+  description: 'Un ragoût de boeuf mijoté avec légumes variés, parfumé aux herbes et au vin rouge, idéal pour un plat réconfortant.',
+  categories: ['Plats principaux'],
+  prepTime: 20,
+  cookTime: 180,
+  servings: 6,
+  difficulty: 'Facile',
+  ingredients: [
+    '4 grosses carottes',
+    '2 branches de céleri',
+    '1/2 petit rutabaga, pelé',
+    '1/2 courge musquée pelée',
+    '1 1/2 lb (750 g) de bifteck de côtes croisées ou de palettes de 1 1/2 po (4 cm) d\'épaisseur, le gras enlevé',
+    '1 c. à tab (15 ml) d\'huile végétale',
+    '3 oignons coupés en quatre',
+    '2 grosses gousses d\'ail, hachées finement',
+    '1/2 c. à thé (2 ml) de thym séché',
+    '1/2 c. à thé (2 ml) de marjolaine séchée',
+    '1/4 t (60 ml) de farine',
+    '1 t (250 ml) de bouillon de boeuf',
+    '1 t (250 ml) de vin rouge sec ou de bouillon de boeuf',
+    '1 boîte de tomates entières (19 oz/540 ml)',
+    '2 grosses pommes de terre, pelées et coupées en morceaux',
+    '1 patate sucrée, pelée et coupée en morceaux',
+    '2 c. à tab (30 ml) de persil frais, haché',
+    'Sel et poivre'
+  ],
+  instructions: [
+    'Couper les carottes, le céleri et le rutabaga en morceaux de 1 po (2,5 cm) de longueur.',
+    'Parer la courge et en retirer toutes les graines. La couper en morceaux de 1 po (2,5 cm) de longueur.',
+    'À l\'aide d\'un couteau bien aiguisé, couper le bifteck en cubes de 1 po (2,5 cm) de côté.',
+    'Dans une grosse cocotte en métal, chauffer l\'huile à feu moyen.',
+    'Ajouter les oignons et cuire, en brassant de temps à autre, pendant environ 5 minutes ou jusqu\'à ce qu\'ils soient légèrement dorés.',
+    'Ajouter l\'ail, le thym et la marjolaine et cuire, en brassant, pendant 1 minute.',
+    'Ajouter le boeuf, les carottes, le céleri, le rutabaga et la courge.',
+    'Parsemer de la farine et cuire, en brassant, pendant environ 1 minute ou jusqu\'à ce que la farine soit bien humide.',
+    'Ajouter le bouillon de boeuf, le vin rouge et les tomates, en les défaisant à l\'aide d\'une cuillère de bois. Bien mélanger.',
+    'Porter à ébullition. Couvrir et cuire au four préchauffé à 325°F (160°C) pendant 1 1/2 heure.',
+    'Vous pouvez préparer le ragoût jusqu\'à cette étape, le laisser refroidir et le mettre dans des contenants hermétiques. Il se conservera jusqu\'à 2 semaines au congélateur. Décongeler au réfrigérateur et poursuivre la cuisson. Prolonger le temps de cuisson d\'environ 15 minutes.',
+    'Ajouter les pommes de terre et la patate sucrée, mélanger.',
+    'Couvrir et cuire, en brassant une fois en cours de cuisson, pendant 1 1/4 heure ou jusqu\'à ce que le boeuf et les légumes soient tendres.',
+    'Saler, poivrer et parsemer du persil.'
+  ],
+  tags: ['ragoût', 'vin rouge', 'herbes'],
+  notes: 'Mettre la courge en même temps que les pommes de terre, sinon elle se transformera en bouette.',
+  slug: 'ragout-de-boeuf-aux-legumes'
+};
