@@ -1,0 +1,45 @@
+import { Recipe } from '@/types/recipe';
+
+export const sauceASpaghettiALine: Recipe = {
+  id: 'sauce-a-spaghetti-a-line',
+  title: 'Sauce à spaghetti à Line',
+  description: '',
+  categories: ['Plats principaux'],
+  prepTime: 90,
+  cookTime: 210,
+  servings: 10,
+  difficulty: 'Facile',
+  ingredients: [
+    '2 lbs de bœuf haché',
+    '2 lbs de veau haché',
+    '1 lbs de porc haché',
+    '1 céleri',
+    '2 piments vert hachés au robot culinaire',
+    '2 carottes',
+    '4 oignons',
+    '2 boîtes de sauce tomates',
+    '2 boîtes de pâtes tomates',
+    '2 boîtes de tomates italiennes aux fines herbes (28 oz)',
+    '1 jus de légume (1 L)',
+    '2 bouteilles de sauce Chili (500 ml)',
+    '2 crèmes de tomate',
+    'Thym',
+    'Basilic',
+    'Épices italiennes',
+    'Piments broyés (pas beaucoup)',
+    'Poivre de cayenne',
+    'Sel et poivre',
+    'Sucre (environ 1 c. à thé)',
+    '2 c. à soupe de Tabasco',
+    '2 c. à soupe de sauce Worcestershire'
+  ],
+  instructions: [
+    'Faire revenir la viande, enlevez le surplus de gras, ajoutez les légumes et tout le reste.',
+    'Cuire ½ heure à 350 F.',
+    'Cuire 1 heure à 300 F.',
+    'Cuire 2 heures à 250 F.'
+  ],
+  tags: ['sauce tomate', 'longue cuisson', 'italien'],
+  notes: 'Préparation totale: 1h30, Cuisson totale: 3h30. Source: Line St-Pierre.',
+  slug: 'sauce-a-spaghetti-a-line'
+};
