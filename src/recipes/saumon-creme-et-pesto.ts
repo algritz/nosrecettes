@@ -24,7 +24,7 @@ export const saumonCremeEtPesto: Recipe = {
     'Cuire au four à 375 °F 10 à 15 minutes, ou jusqu\'à ce que la chair soit opaque.',
     'Saler, poivrer et servir.'
   ],
-  tags: ['pesto', 'sirop d'érable', 'cuisson au four'],
+  tags: ['pesto', 'sirop d\'érable', 'cuisson au four'],
   notes: 'Source: https://www.recettes.qc.ca/recettes/recette/filet-de-saumon-creme-et-pesto-101739',
   slug: 'saumon-creme-et-pesto'
 };
