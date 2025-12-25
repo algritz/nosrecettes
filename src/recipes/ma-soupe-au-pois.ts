@@ -1,0 +1,43 @@
+import { Recipe } from '@/types/recipe';
+
+export const maSoupeAuPois: Recipe = {
+  id: 'ma-soupe-au-pois',
+  title: 'Ma soupe au pois',
+  description: 'Une soupe réconfortante de pois jaunes, de légumes et de viande salée, mijotée lentement pour un goût riche et profond.',
+  categories: ['Soupes'],
+  prepTime: 20,
+  cookTime: 180,
+  servings: 0,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 1/2 tasse de pois jaunes secs',
+    '6 tasses d\'eau, pour le trempage',
+    '100 g de lard salé coupé en 2',
+    '1 1/2 tasse d\'oignons hachés',
+    '1 tasse de blancs de poireaux',
+    '2 c. à soupe de beurre',
+    '1 tasse de carottes coupées en dés',
+    '1 tasse de céleri coupé en dés',
+    '6 tasses de bouillon de poulet',
+    '3 feuilles de laurier',
+    '1 branche de thym',
+    '2 c. à thé de sarriette',
+    'Sel et poivres'
+  ],
+  instructions: [
+    'Faire tremper les pois dans l\'eau environ 4 heures, ou toute une nuit.',
+    'Égoutter et réserver.',
+    'Dans un bol d\'eau froide, faire tremper le flanc de porc salé pendant 15 minutes.',
+    'Égoutter et réserver.',
+    'Dans une grande casserole, dorer les oignons et le poireaux dans le beurre.',
+    'Ajouter les carottes et le céleri. Poursuivre la cuisson 5 minutes en remuant.',
+    'Ajouter le bouillon de poulet, les pois égouttés, le lard salé, la branche de thym et les feuilles de laurier.',
+    'Porter à ébullition. Couvrir et laisser mijoter à feu doux de 2 h 30 à 3 heures ou jusqu\'à ce que les pois soient tendres.',
+    'Retirer les feuilles de laurier et le thym et les jeter.',
+    'Retirer les morceaux de porc de la soupe, dégraisser et ne conserver que la viande.',
+    'Hacher en petits dés et remettre dans la casserole.',
+    'Ajouter la sarriette. Rectifier l\'assaisonnement et servir.'
+  ],
+  tags: ['soupe', 'lentilles', 'viande salée'],
+  slug: 'ma-soupe-au-pois'
+};
