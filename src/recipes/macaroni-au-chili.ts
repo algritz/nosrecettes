@@ -1,0 +1,47 @@
+import { Recipe } from '@/types/recipe';
+
+export const macaroniAuChili: Recipe = {
+  id: 'macaroni-au-chili',
+  title: 'Macaroni au chili',
+  description: 'Un plat de pâtes épicé et réconfortant avec du bœuf, des haricots et du fromage, gratiné au four.',
+  categories: ['Plats principaux'],
+  prepTime: 35,
+  cookTime: 30,
+  servings: 9,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 oignon haché finement',
+    '2 gousses d’ail hachées finement',
+    'Huile d’olive',
+    '1 lb de boeuf haché',
+    '1 poivron rouge, coupé en dés',
+    '1 c. à thé de poudre de chili',
+    '1 c. à thé de paprika doux fumé',
+    '1 c. à soupe de cumin',
+    '1/2 c. à thé d’épices italiennes',
+    '1 tasse de maïs surgelé',
+    '1 tasse d’haricots noirs, rincés et bien égouttés',
+    '1 tasse d’haricots rouges, rincés et bien égouttés',
+    '796 ml de tomates en dés aux épices italiennes',
+    '500 g de macaronis cuits très al dente',
+    '2 tasses de fromage Gouda râpé',
+    '2 tasses de fromage cheddar râpé',
+    '1 poignée de persil frais, haché finement',
+    'Sel et poivre du moulin'
+  ],
+  instructions: [
+    'Faire cuire les macaroni al dente tel qu\'indiqué sur l\'emballage.',
+    'Dans une grande casserole qui va au four, chauffée à feu moyen, faire chauffer de l\'huile et ajouter l’oignon et l’ail. Saler, poivrer et mélanger.',
+    'Cuire en remuant pendant 3 à 4 minutes pour attendrir.',
+    'Ajouter le bœuf haché et cuire pendant 7 à 8 minutes, ou jusqu’à ce que la viande ne soit plus rosée. Égoutter le gras.',
+    'Ajouter le poivron, la poudre de chili, le paprika, le cumin et les épices italiennes puis mélanger.',
+    'Cuire pendant 1 minute en remuant.',
+    'Ajouter le maïs, les haricots, les tomates et les macaronis puis saler et poivrer. Mélanger et poursuivre la cuisson pendant environ 5 à 6 minutes, jusqu’à ce que les pâtes soient cuites et que le liquide soit quasiment tout évaporé.',
+    'Retirer du feu. Ajouter le fromage Gouda, le persil frais et mélanger. Laisser reposer pendant 5 minutes.',
+    'Préchauffer le four à Broil. Garnir avec le fromage cheddar et mettre au four.',
+    'Cuire pendant 2 à 3 minutes, ou jusqu’à ce que le fromage soit bien doré sur le dessus.',
+    'Laisser reposer 5-10 minutes avant de servir.'
+  ],
+  tags: ['épicé', 'gratiner', 'pâtes'],
+  slug: 'macaroni-au-chili'
+};
