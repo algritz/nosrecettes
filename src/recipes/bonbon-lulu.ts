@@ -34,6 +34,6 @@ export const bonbonLulu: Recipe = {
     'Faire fondre la deuxième partie et verser sur la première partie.',
     'Faire refroidir et couper.'
   ],
-  tags: ['chocolat', 'caramel', 'noix de beurre d'arachide'],
+  tags: ['chocolat', 'caramel', 'noix de beurre d\'arachide'],
   slug: 'bonbon-lulu'
 };
