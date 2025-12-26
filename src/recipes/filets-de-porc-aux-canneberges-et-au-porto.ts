@@ -1,0 +1,35 @@
+import { Recipe } from '@/types/recipe';
+
+export const filetsDePorcAuxCannebergesEtAuPorto: Recipe = {
+  id: 'filets-de-porc-aux-canneberges-et-au-porto',
+  title: 'Filets de porc aux canneberges et au porto',
+  description: '',
+  categories: ['Plats principaux'],
+  prepTime: 20,
+  cookTime: 25,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 c.à soupe (15 ml) beurre',
+    '2 filets de porc',
+    '1/2 oignon, tranchés finement',
+    '1 tasse (250 ml) canneberges',
+    '3/4 tasse (190 ml) porto',
+    '1/4 tasse (65 ml) sirop d\'érable',
+    '2 c.à soupe (30 ml) romarin, frais',
+    'Sel, au goût',
+    'Poivre, au goût'
+  ],
+  instructions: [
+    'Faire fondre le beurre dans un grand poêlon.',
+    'Saisir la viande dans le beurre 1 ou 2 minutes de chaque côté.',
+    'Retirer la viande et la garder au chaud.',
+    'Dans le même poêlon, ajouter tous les autres ingrédients et faire cuire 5 minutes.',
+    'Remettre le porc dans le poêlon et cuire à couvert 5 minutes de plus.',
+    'Puisque le filet de porc est meilleur rosé, ne pas trop cuire.',
+    'Servir avec des légumes au choix.',
+    'Les asperges et les courges se marient bien avec cette recette.'
+  ],
+  tags: ['porc', 'canneberges', 'porto'],
+  slug: 'filets-de-porc-aux-canneberges-et-au-porto'
+};

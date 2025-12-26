@@ -1,0 +1,36 @@
+import { Recipe } from '@/types/recipe';
+
+export const gateauBeurreEtCoriandre: Recipe = {
+  id: 'gateau-beurre-et-coriandre',
+  title: 'Gâteau beurre et coriandre',
+  description: '',
+  categories: ['Pâtisseries et desserts'],
+  prepTime: 20,
+  cookTime: 30,
+  servings: 2,
+  difficulty: 'Facile',
+  ingredients: [
+    '1½ tasse de farine',
+    '1 tasse de sucre',
+    '¾ tasse de lait',
+    '½ tasse de beurre fondu',
+    '50g de coriandre',
+    '3 œufs',
+    '1½ cuillère à café d\'essence de vanille',
+    '¼ cuillère à café de sel',
+    '1½ cuillère à café de poudre à pâte'
+  ],
+  instructions: [
+    'Préchauffez le four à 350F.',
+    'Broyer la coriandre à grande vitesse jusqu\'à ce qu\'elle devienne une pulpe.',
+    'Dans un autre bol, tamisez la farine.',
+    'Mélanger la farine, le sucre, le lait, le beurre fondu et la pulpe de coriandre jusqu\'à ce que le mélange soit homogène.',
+    'Dans un autre bol, fouetter les œufs, l\'essence de vanille, le sel et la poudre à pâte à l\'aide d\'un batteur à main à vitesse moyenne.',
+    'Ajouter le mélange d\'œufs dans le mélange de coriandre et brasser doucement jusqu\'à homogénéité.',
+    'Graisser deux moules à pain et verser la pâte.',
+    'Cuire au four 30 minutes.',
+    'Utilisez un cure-dent pour vérifier la cuisson et servez.'
+  ],
+  tags: ['coriandre', 'gâteau', 'four'],
+  slug: 'gateau-beurre-et-coriandre'
+};

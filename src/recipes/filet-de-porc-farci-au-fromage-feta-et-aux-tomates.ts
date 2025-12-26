@@ -1,0 +1,38 @@
+import { Recipe } from '@/types/recipe';
+
+export const filetDePorcFarciAuFromageFetaEtAuxTomates: Recipe = {
+  id: 'filet-de-porc-farci-au-fromage-feta-et-aux-tomates',
+  title: 'Filet de porc farci au fromage féta et aux tomates',
+  description: '',
+  categories: ['Vollaille', 'Plats principaux'],
+  prepTime: 30,
+  cookTime: 45,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 1/2 lb (675 g) filet de porc',
+    '200 g fromages feta, égouttés, hachés grossièrement',
+    '1 tomate italienne, en petits dés',
+    '1 gousse ail, hachée finement',
+    '1/2 oignon, haché finement',
+    '2 c.à soupe (30 ml) basilic, frais, haché',
+    '4 olives noires, en tranches',
+    '2/3 tasse (170 ml) vinaigrette aux tomates séchées et origan',
+    'Sel, au goût',
+    'Poivre, au goût'
+  ],
+  instructions: [
+    'Dans un bol, mélanger le fromage féta, la tomate italienne, l\'ail, l\'oignon, le basilic, les olives et la vinaigrette aux tomates séchées et origan. Réserver au froid.',
+    'À l\'aide d\'un couteau bien aiguisé, couper le filet sur le sens de la longueur en laissant 1 cm (1/2 po) intact. Ouvrir le filet comme un livre.',
+    'Placer le filet entre 2 feuilles de pellicule plastique et à l\'aide d\'un maillet, l\'aplatir à 1 cm (1/2 po) d\'épaisseur.',
+    'Saler et poivrer au goût le filet de porc.',
+    'Étendre la farce réservée sur toute la longueur du filet en laissant une bordure de 1 cm (1/2 po). Fermer le filet et le ficeler en prenant soin de replier vers l\'intérieur l\'extrémité la plus étroite.',
+    'Dans un plat peu profond, placer le filet de porc et le reste de la vinaigrette. Bien enrober, couvrir et réfrigérer pendant au moins 30 min.',
+    'Chauffer le four à 350°F (180°C). Cuire dans le plat peu profond 45 min ou jusqu\'à ce que le porc soit légèrement rosé à l\'intérieur. Badigeonner les filets 2 fois durant la cuisson.',
+    'Retirer du four et couvrir d\'un papier d\'aluminium. Laisser reposer 15 min avant de couper le filet en tranches.',
+    'Servir avec des pommes de terre au four et petits légumes verts tels que de petites fèves vertes.'
+  ],
+  tags: ['fromage féta', 'marinade sèche', 'grill'],
+  marinatingTime: 30,
+  slug: 'filet-de-porc-farci-au-fromage-feta-et-aux-tomates'
+};

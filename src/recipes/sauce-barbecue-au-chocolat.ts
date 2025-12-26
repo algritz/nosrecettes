@@ -1,0 +1,43 @@
+import { Recipe } from '@/types/recipe';
+
+export const sauceBarbecueAuChocolat: Recipe = {
+  id: 'sauce-barbecue-au-chocolat',
+  title: 'Sauce barbecue au chocolat',
+  description: '',
+  categories: ['Sauces'],
+  prepTime: 5,
+  cookTime: 15,
+  servings: 0,
+  difficulty: 'Facile',
+  ingredients: [
+    '15 ml (1 c. à soupe) d’huile d’olive',
+    '1 petit oignon, haché finement',
+    '5 ml (1 c. à thé) de poudre de chili',
+    '2,5 ml (1/2 c. à thé) de paprika fumé',
+    '1,25 ml (1/4 c. à thé) de poivre de Cayenne',
+    '1,25 ml (1/4 c. à thé) de cumin moulu',
+    '1,25 ml (1/4 c. à thé) de coriandre moulue',
+    '1,25 ml (1/4 c. à thé) de moutarde sèche',
+    '2,5 ml (1/2 c. à thé) de poivre noir fraîchement moulu',
+    '5 ml (1 c. à thé) de sel',
+    '2 gousses d’ail, finement hachées',
+    '125 ml (1/2 tasse) de ketchup',
+    '80 ml (1/3 tasse) de miel',
+    '60 ml (1/4 tasse) de jus de lime',
+    '15 ml (1 c. à soupe) de sauce Worcestershire',
+    '2 morceaux (20 g) de chocolat noir Lindt 90 % cacao, haché'
+  ],
+  instructions: [
+    'Dans une casserole, chauffer l’huile d’olive à feu moyen.',
+    'Faire revenir les oignons jusqu’à ce qu’ils soient tendres (environ 5 minutes) en remuant souvent.',
+    'Ajouter les épices, le poivre, le sel et l’ail.',
+    'Cuire pendant 1 ou 2 minutes, jusqu’à ce que les épices exhalent leur parfum.',
+    'Incorporer le ketchup, le miel, le jus de lime et la sauce Worcestershire.',
+    'Porter à ébullition et laisser mijoter pendant 10 minutes pour épaissir la sauce.',
+    'Retirer la casserole du feu.',
+    'Incorporer le chocolat haché et remuer jusqu’à ce qu’il soit fondu.',
+    'Rectifier l’assaisonnement en ajoutant du sel et du poivre au goût.'
+  ],
+  tags: ['chocolat', 'barbecue', 'sauce'],
+  slug: 'sauce-barbecue-au-chocolat'
+};

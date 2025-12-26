@@ -1,0 +1,36 @@
+import { Recipe } from '@/types/recipe';
+
+export const pouletALaCremeEtVinBlanc: Recipe = {
+  id: 'poulet-a-la-creme-et-vin-blanc',
+  title: 'Poulet à la crème et vin blanc',
+  description: '',
+  categories: ['Vollaille', 'Plats principaux'],
+  prepTime: 15,
+  cookTime: 35,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '15 ml huile d\'olive',
+    '4 poitrine de poulet',
+    '1/2 oignon, tranché finement',
+    '1 gousse d\'ail, tranchée finement',
+    '300 g champignons, tranchés en deux',
+    '250 ml vin blanc',
+    '1/2 tasse de crème 35%',
+    'Bouillon de poulet style maison Knorr® faible en sodium',
+    '2 c. à soupe de feuilles de basilic frais tranchées finement'
+  ],
+  instructions: [
+    'Dans un poêlon antiadhésif faire chauffer l’huile d’olive à feu moyen-vif et faire dorer le poulet.',
+    'Retirer le poulet et réserver le jus de cuisson.',
+    'Faire cuire l’oignon et l’ail dans le jus de cuisson réservé, en remuant de temps à autre, jusqu’à ce que l’oignon soit tendre, environ 2 minutes.',
+    'Ajouter les champignons et faire cuire, en remuant de temps à autre, jusqu’à ce que les légumes soient tendres, environ 2 minutes.',
+    'Incorporer le vin et la crème et porter à ébullition.',
+    'Baisser à feu doux et laisser mijoter, en remuant de temps à autre, jusqu’à ce que le mélange soit légèrement réduit, environ 3 minutes.',
+    'Incorporer le bouillon de poulet style maison Knorr® à faible en sodium jusqu’à ce que le bouillon ait fondu.',
+    'Remettre le poulet dans le poêlon et laisser mijoter à couvert jusqu’à ce que le poulet soit bien cuit, environ 20 minutes.',
+    'Ajouter le basilic et servir.'
+  ],
+  tags: ['crème', 'vin blanc', 'volaille'],
+  slug: 'poulet-a-la-creme-et-vin-blanc'
+};

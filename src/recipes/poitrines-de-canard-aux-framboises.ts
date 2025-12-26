@@ -1,0 +1,41 @@
+import { Recipe } from '@/types/recipe';
+
+export const poitrinesDeCanardAuxFramboises: Recipe = {
+  id: 'poitrines-de-canard-aux-framboises',
+  title: 'Poitrines de canard aux framboises',
+  description: '',
+  categories: ['Vollaille', 'Plats principaux'],
+  prepTime: 20,
+  cookTime: 20,
+  servings: 2,
+  difficulty: 'Facile',
+  ingredients: [
+    '2 poitrines de canard sans peau',
+    '1 blanc de poireau',
+    '1 oz (30 g) de beurre',
+    '2 c. à soupe (30 ml) d\'huile de pépins de raisins',
+    '1/2 c. à thé de sucre (miel ou sirop d\'érable)',
+    '2 c. à soupe (30 ml) de vinaigre de framboises',
+    '3/4 tasse (175 ml) de vin rouge',
+    '1 oz (30 g) de beurre froid',
+    '12 framboises bien mûres',
+    'Noix de muscade',
+    'Sel, poivre vert du moulin'
+  ],
+  instructions: [
+    'Couper le poireau en fines rondelles.',
+    'Chauffer le beurre dans une casserole et faire étuver le poireau.',
+    'Assaisonner en sel, poivre et muscade.',
+    'Retirer du feu et réserver.',
+    'Dans une poêle, faire dorer sur feu vif dans l\'huile chaude les poitrines de canard 3 minutes de chaque côté.',
+    'Retirer les poitrines et les mettre au four à 350°F 15 à 20 minutes.',
+    'Dégraisser la poêle, saupoudrer de sucre, arroser de vinaigre et laisser réduire 1 minute.',
+    'Mouiller avec le vin rouge et laisser réduire de moitié.',
+    'Lier (monter) la sauce en y ajoutant le beurre froid coupé en petits dés.',
+    'Répartir la fondue de poireau en couronne sur les assiettes.',
+    'Couper la poitrine en tranches fines et disposer par-dessus en forme d\'étoile.',
+    'Napper le tout de la sauce et décorer de framboises.'
+  ],
+  tags: ['canard', 'framboises', 'sauce'],
+  slug: 'poitrines-de-canard-aux-framboises'
+};

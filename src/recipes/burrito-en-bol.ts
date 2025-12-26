@@ -1,0 +1,43 @@
+import { Recipe } from '@/types/recipe';
+
+export const burritoEnBol: Recipe = {
+  id: 'burrito-en-bol',
+  title: 'Burrito en bol',
+  description: 'Un bol de burrito avec riz, poulet, légumes, et garnitures fraîches, parfait pour un repas complet et savoureux.',
+  categories: ['Plats principaux'],
+  prepTime: 20,
+  cookTime: 15,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 c. à soupe d’huile de canola',
+    '1 poivron orange, coupé en lanières',
+    '1 gousse d’ail, hachée',
+    '1 lb de poulet haché hachée',
+    '1 tasse de salsa du commerce',
+    '1/2 tasse de crème sure',
+    'Le jus d’une demi-lime',
+    '3 tasses de riz cuit',
+    '1 tasse de haricots noirs, égouttés',
+    '1 tasse de tomates cerises, coupées en quartiers',
+    '½ oignon rouge, coupé en fines lanières',
+    'Un avocat, coupé en cubes',
+    '1 tasse de fromage style tex mex',
+    '1 jalapeño pour garnir',
+    'Coriandre fraîche, pour garnir'
+  ],
+  instructions: [
+    'Faire cuire le riz.',
+    'Dans une poêle à feu moyen-élevé, sauter le poivron dans l’huile pendant 3 à 4 minutes.',
+    'Retirer le poivron de la poêle et réserver.',
+    'Dans la même poêle, faire revenir le poulet en remuant pendant 5 minutes et ajouter la salsa.',
+    'Réduire à feu doux et cuire encore 5 minutes.',
+    'Dans un petit bol, mélanger la crème sure et le jus de lime.',
+    'Répartir le riz dans quatre bols.',
+    'Garnir de poulet, de haricots, de tomates, d’oignon, de cubes d’avocat, de fromage, de jalapeño, et de coriandre.',
+    'Ajouter la crème sure au mélange de lime sur le dessus.'
+  ],
+  tags: ['riz', 'poulet', 'garnitures fraîches'],
+  notes: 'On peut remplacer le poulet haché par de la dinde hachée.',
+  slug: 'burrito-en-bol'
+};

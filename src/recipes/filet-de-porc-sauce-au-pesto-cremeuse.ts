@@ -1,12 +1,12 @@
 import { Recipe } from '@/types/recipe';
 
 export const filetDePorcSauceAuPestoCremeuse: Recipe = {
-  id: '1760365675900',
+  id: 'filet-de-porc-sauce-au-pesto-cremeuse',
   title: 'Filet de porc sauce au pesto crémeuse',
   description: 'Une sauce savoureuse avec le porc',
-  categories: ['Porc'],
+  categories: ['Vollaille', 'Plats principaux'],
   prepTime: 5,
-  cookTime: 20,
+  cookTime: 22,
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -22,15 +22,18 @@ export const filetDePorcSauceAuPestoCremeuse: Recipe = {
     'Préchauffer le four à 375 °F.',
     'Parer les filets de porc.',
     'Dans une grande poêle allant au four, chauffer un peu d’huile d’olive à feu moyen.',
-    'Saisir les filets de porc de 4 à 5 minutes sur toutes les faces. Saler et poivrer.',
+    'Saisir les filets de porc de 4 à 5 minutes sur toutes les faces.',
+    'Saler et poivrer.',
     'Poursuivre la cuisson au four de 18 à 22 minutes.',
-    'Retirer le filet de porc de la poêle et déposer dans une assiette. Couvrir d’une feuille de papier d’aluminium, sans serrer.',
+    'Retirer le filet de porc de la poêle et déposer dans une assiette.',
+    'Couvrir d’une feuille de papier d’aluminium, sans serrer.',
     'Dans la même poêle, cuire les échalotes à feu moyen 1 minute.',
-    'Ajouter la crème, le fromage à la crème et le pesto. Porter à ébullition, puis cuire à feu moyen de 3 à 4 minutes.',
-    'Trancher le filet de porc. Répartir les tranches de porc dans les assiettes.',
+    'Ajouter la crème, le fromage à la crème et le pesto.',
+    'Porter à ébullition, puis cuire à feu moyen de 3 à 4 minutes.',
+    'Trancher le filet de porc.',
+    'Répartir les tranches de porc dans les assiettes.',
     'Napper de sauce et garnir de basilic.'
   ],
-  tags: ['pesto', 'crémeuse', 'porc', 'sauce'],
-  source: 'David Cloutier',
+  tags: ['pesto', 'crème', 'porc'],
   slug: 'filet-de-porc-sauce-au-pesto-cremeuse'
 };

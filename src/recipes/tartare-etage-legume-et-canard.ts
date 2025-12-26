@@ -1,0 +1,47 @@
+import { Recipe } from '@/types/recipe';
+
+export const tartareEtageLegumeEtCanard: Recipe = {
+  id: 'tartare-etage-legume-et-canard',
+  title: 'Tartare étagé légume et canard',
+  description: 'Un tartare coloré et savoureux combinant légumes croquants et magret de canard, présenté en étages élégants.',
+  categories: ['Entrées'],
+  prepTime: 25,
+  cookTime: 0,
+  servings: 2,
+  difficulty: 'Facile',
+  ingredients: [
+    '1 magret de canard',
+    'mayonnaise',
+    'moutarde',
+    '1 oignon rouge',
+    'sauce Worcestershire',
+    '1 courgette',
+    '3 carottes',
+    '1 petit morceau de gingembre',
+    '4 pommes de terre de taille moyenne',
+    'sel et poivre du moulin',
+    'Persil (optionnel)'
+  ],
+  instructions: [
+    'Épluchez les carottes et l\'oignon rouge.',
+    'À l\'aide d\'une mandoline, coupez la courgette et les carottes en tranches d\'environ 2 mm d\'épaisseur.',
+    'Armez-vous de patience et taillez chaque tranche en bâtonnets puis en dés de 2 mm de section.',
+    'Plongez les dés de carottes dans de l\'eau bouillante salée pendant quelques minutes.',
+    'Rincez à l\'eau froide et égouttez.',
+    'Ciselez l\'oignon.',
+    'Pressez le gingembre.',
+    'Dans un saladier, mélangez 2 cuillères à soupe de mayonnaise, le gingembre, la moitié de l\'oignon et les dés de légumes. Rectifiez l\'assaisonnement. Réservez.',
+    'Enlevez la peau et dénervez le magret.',
+    'Faites fondre doucement la peau pour récupérer la graisse et faire rissoler les pommes de terre.',
+    'Coupez la chair en petits dés.',
+    'Dans un saladier, mélangez le demi-oignon, 1 cuillère à soupe de mayonnaise, 1/2 cuillère à café de moutarde et 1 cuillère à soupe de sauce Worcestershire. Salez et poivrez généreusement. Réservez.',
+    'Épluchez et lavez les pommes de terre.',
+    'Coupez-les en tranches de 2 mm d\'épaisseur à l\'aide de la mandoline.',
+    'Faites-les rissoler dans la graisse de canard par petites quantités.',
+    'Sur chaque assiette, déposez les tranches de pommes de terre en rosace.',
+    'Placez en emporte-pièce au centre et remplissez à moitié de légumes, puis de canard.',
+    'Décorez éventuellement de persil.'
+  ],
+  tags: ['magret de canard', 'légumes croquants', 'présentation en étages'],
+  slug: 'tartare-etage-legume-et-canard'
+};

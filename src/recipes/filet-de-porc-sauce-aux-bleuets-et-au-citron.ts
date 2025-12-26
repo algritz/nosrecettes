@@ -1,0 +1,41 @@
+import { Recipe } from '@/types/recipe';
+
+export const filetDePorcSauceAuxBleuetsEtAuCitron: Recipe = {
+  id: 'filet-de-porc-sauce-aux-bleuets-et-au-citron',
+  title: 'Filet de porc, sauce aux bleuets et au citron',
+  description: 'Un plat de filet de porc accompagné d\'une sauce aux bleuets et au citron, avec une réduction de caramel et demi-glace pour une saveur riche et acidulée.',
+  categories: ['Plats principaux'],
+  prepTime: 20,
+  cookTime: 25,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    'filets de porc d\'environ 340 g (12 oz) chacun',
+    '30 ml (2 c. à table) d\'huile d\'olive',
+    '30 ml (2 c. à table) de sucre blanc',
+    '10 ml (2 c. à thé) d\'eau',
+    '60 ml (¼ tasse) de bleuets surgelés, décongelés',
+    '30 ml (2 c. à table) de jus de citron frais',
+    '60 ml (¼ tasse) de vin blanc sec',
+    '2 tasses de demi-glace',
+    'sel et poivre',
+    'citron cannelé (pour la décoration)'
+  ],
+  instructions: [
+    'Parer les filets de porc en retirant à la main le gras qui couvre le filet. Retirer ensuite, à l\'aide d\'un couteau, la fine peau argentée (tissu conjonctif des muscles).',
+    'Chauffer l\'huile dans une sauteuse et y faire colorer les filets sur toutes les surfaces.',
+    'Cuire au four à 180°C (350°F) de 8 à 10 minutes.',
+    'Retirer du four et réserver les filets au chaud sur une assiette en les couvrant d\'un papier aluminium.',
+    'Dans la même sauteuse, combiner le sucre et l\'eau, en laissant le sucre cuire à feu vif jusqu\'à l\'obtention d\'un caramel bien foncé.',
+    'Déglacer avec le vin blanc et ajouter le jus de citron.',
+    'Ajouter les bleuets avec leur jus (en réserver quelques-uns pour la décoration).',
+    'À l\'aide d\'un fouet, bien dissoudre le caramel.',
+    'Laisser ensuite réduire ce liquide du tiers, puis mouiller avec la demi-glace.',
+    'Laisser réduire jusqu\'à consistance désirée, puis rectifier l\'assaisonnement.',
+    'Pour servir les filets de porc, les couper d\'abord en deux, puis couper chaque moitié de filet en trois ou quatre tranches.',
+    'Verser un peu de sauce sur les assiettes, puis y déposer les filets.',
+    'Décorer d\'un morceau de citron cannelé et de quelques bleuets réservés.'
+  ],
+  tags: ['caramel', 'sauce aux fruits', 'cuisine française'],
+  slug: 'filet-de-porc-sauce-aux-bleuets-et-au-citron'
+};

@@ -1,0 +1,37 @@
+import { Recipe } from '@/types/recipe';
+
+export const cremeDeLegumeGrilles: Recipe = {
+  id: 'creme-de-legume-grilles',
+  title: 'Crème de légume grillés',
+  description: 'Une soupe crémeuse à base de légumes grillés, parfumée aux épices, et enrichie de bouillon de poulet ou légumes.',
+  categories: ['Soupes'],
+  prepTime: 15,
+  cookTime: 50,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    'une patate douce',
+    'un oignon',
+    '3 carottes',
+    'huile d’olive',
+    '1/8 de c. à thé de muscade',
+    '1/4 de c. à thé de cannelle',
+    '1/4 de c. à thé de cumin',
+    '1/4 de c. à thé de curcuma',
+    '1 litre de bouillon de poulet ou légume',
+    'Sel et poivre au goût'
+  ],
+  instructions: [
+    'Préchauffer un four à 350°F.',
+    'Couper grossièrement les légumes et les déposer dans un grand bol.',
+    'Ajouter l’huile d’olive, la muscade, la cannelle, le cumin, le curcuma, le sel, le poivre et bien mélanger.',
+    'Étaler les légumes sur une plaque à pâtisserie ou dans un plat allant au four.',
+    'Faire griller 30 minutes.',
+    'Retirer les légumes du four, débarrasser l\'huile en trop et les mettre dans une marmite.',
+    'Ajouter le bouillon de légumes et porter à ébullition.',
+    'Couvrir et laisser mijoter 15 minutes ou jusqu’à ce que les légumes soient tendres.',
+    'Passer au pied mélangeur ou au blender.'
+  ],
+  tags: ['épicé', 'grillé', 'soupe'],
+  slug: 'creme-de-legume-grilles'
+};

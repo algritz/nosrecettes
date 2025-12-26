@@ -1,0 +1,45 @@
+import { Recipe } from '@/types/recipe';
+
+export const keftaALaSauceTahini: Recipe = {
+  id: 'kefta-a-la-sauce-tahini',
+  title: 'Kefta à la sauce Tahini',
+  description: 'Tout simplement délicieux',
+  categories: ['Boeuf', 'Plats principaux'],
+  prepTime: 30,
+  cookTime: 70,
+  servings: 4,
+  difficulty: 'Facile',
+  ingredients: [
+    '800g de boeuf haché',
+    '1/2 oignon râpé avec son jus',
+    '3/4 c. à thé Cardamone',
+    '1/2 c. à thé Cannelle',
+    '1 c. à thé Paprika fumée',
+    'Persil frais',
+    'Sel',
+    'Poivre',
+    '6 tomates en quartiers',
+    '3 oignons en lamelles',
+    'huile d\'olive',
+    '4 c. à soupe de yogourt grec épais',
+    '4 c. à soupe de Tahini',
+    'jus de 1/2 citron',
+    '4-5 c. à soupe du jus de cuisson'
+  ],
+  instructions: [
+    'Préchauffer le four à 350F.',
+    'Couper les oignons en lamelles, les tomates en quartiers et disposer dans un grand plat rond allant au four.',
+    'Assaisonner de sel, de poivre et d\'huile d\'olive et bien mélanger.',
+    'Faire cuire au four 60 minutes.',
+    'Préparer les boulettes en mélangeant la viande avec 1/2 oignon râpé avec son jus, du persil, du sel, du poivre, de la cardamone, de la cannelle, du paprika fumée et un filet d\'huile d\'olive.',
+    'Bien mélanger et former des boudins que vous devez disposer sur le mélange de tomates et oignons déjà cuit.',
+    'Remettre au four un autre 15 à 20 minutes ou jusqu\'à ce que la viande soit cuite.',
+    'À la sortie du four, retirer le jus du plat et verser dans un bol.',
+    'Dans un autre bol, verser le jus de cuisson, le jus de citron, le yogourt grec et la sauce tahini, puis bien mélanger.',
+    'Verser le mélange sur les keftas et faire gratiner à 450F quelques minutes sur la grille du haut.',
+    'Décorer de persil et servir avec un pain pita.'
+  ],
+  tags: ['grill', 'tahini', 'bœuf'],
+  accompaniment: 'Pain pita',
+  slug: 'kefta-a-la-sauce-tahini'
+};

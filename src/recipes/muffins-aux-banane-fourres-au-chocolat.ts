@@ -1,0 +1,48 @@
+import { Recipe } from '@/types/recipe';
+
+export const muffinsAuxBananeFourresAuChocolat: Recipe = {
+  id: 'muffins-aux-banane-fourres-au-chocolat',
+  title: 'Muffins aux banane fourrés au chocolat',
+  description: 'Muffins aux banane fourrés au chocolat',
+  categories: ['Pâtisseries et desserts', 'Plats principaux'],
+  prepTime: 20,
+  cookTime: 45,
+  servings: 12,
+  difficulty: 'Facile',
+  ingredients: [
+    '2 bananes',
+    '1 gros oeuf',
+    '⅓ tasse huile végétale (80 ml)',
+    '½ tasse sucre (100 g)',
+    '¼ tasse lait entier (60 ml)',
+    '1 cuillère à café extrait de vanille',
+    '1 ½ tasse farine tout usage (185 g)',
+    '1 cuillère à café de poudre à pâte',
+    '½ cuillère à café bicarbonate de soude',
+    '¼ de cuillère à café sel casher',
+    '¼ tasse pépites de chocolat (50 g)',
+    '½ tasse pépites de chocolat mi-sucré (90 g)',
+    '½ tasse crème fouettée épaisse, chaude (120 ml)'
+  ],
+  instructions: [
+    'Préchauffez le four à 300 °F. Placez-les sur une plaque à pâtisserie recouverte de papier parchemin. Cuire au four pendant 15-20 minutes, jusqu\'à ce qu\'ils soient presque noirs. Veillez à ne pas trop cuire.',
+    'Laissez les bananes refroidir à la température ambiante.',
+    'Augmentez la température du four à 350 °F.',
+    'Épluchez les bananes, puis placez-les dans un grand bol. Écraser les bananes à l\'aide d\'un batteur à main ou d\'une fourchette.',
+    'Ajoutez l\'oeuf, l\'huile végétale, le sucre, le lait et la vanille. Battez jusqu\'à ce que rien ne soit mélangé.',
+    'Tamiser la farine, la poudre à pâte, le bicarbonate de soude et le sel dans le mélange de bananes.',
+    'Batters jusqu\'à ce que tout soit bien mélangé, en prenant soin de ne pas trop mélanger.',
+    'Utilisez une spatule en caoutchouc pour incorporer délicatement les pépites de chocolat dans la pâte.',
+    'Préparer vos moules à muffins.',
+    'Cuire au four pendant 20-25 minutes, jusqu\'à ce que les muffins soient légèrement dorés et qu\'un cure-dent inséré au centre en ressorte propre.',
+    'Sortir et laisser refroidir quelques minutes.',
+    'Placez les pépites de chocolat dans une tasse à mesurer pour liquide résistant à la chaleur. Verser la crème chaude dessus.',
+    'Laisser reposer pendant 1 minute, puis remuer jusqu\'à ce que le chocolat soit fondu et lisse.',
+    'Pendant que les muffins sont encore chauds, enfoncer un trou au centre de chaque muffin avec le dos d\'une cuillère en bois.',
+    'Laisser refroidir à température ambiante.',
+    'Remplir les muffins avec la ganache au chocolat.',
+    'Refroidir les muffins au réfrigérateur pendant au moins 1 heure, jusqu\'à ce que le centre soit ferme.'
+  ],
+  tags: ['chocolat', 'banane', 'ganache'],
+  slug: 'muffins-aux-banane-fourres-au-chocolat'
+};
