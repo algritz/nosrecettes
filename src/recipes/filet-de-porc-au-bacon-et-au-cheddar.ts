@@ -38,5 +38,13 @@ export const filetDePorcAuBaconEtAuCheddar: Recipe = {
     'Napper sur les filets.'
   ],
   tags: ['bacon', 'cheddar', 'four'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/filet-de-porc-au-bacon-et-au-cheddar',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/filet-de-porc-au-bacon-et-au-cheddar',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/filet-de-porc-au-bacon-et-au-cheddar'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'filet-de-porc-au-bacon-et-au-cheddar'
 };
