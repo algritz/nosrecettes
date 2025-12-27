@@ -35,5 +35,13 @@ export const tartareDeBoeufAuxFraises: Recipe = {
     'Garnir chaque portion de fromage de chèvre et de micro-pousses.'
   ],
   tags: ['fraîcheur', 'bœuf cru', 'micro-pousses'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-aux-fraises',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-aux-fraises',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-aux-fraises'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'tartare-de-boeuf-aux-fraises'
 };
