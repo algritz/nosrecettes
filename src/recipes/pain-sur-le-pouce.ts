@@ -28,5 +28,13 @@ export const painSurLePouce: Recipe = {
     'Déguster chaud, c\'est meilleur.'
   ],
   tags: ['pain maison', 'levure', 'simple'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pain-sur-le-pouce',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pain-sur-le-pouce',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pain-sur-le-pouce'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'pain-sur-le-pouce'
 };
