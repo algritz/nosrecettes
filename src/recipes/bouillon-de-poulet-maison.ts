@@ -20,6 +20,14 @@ export const bouillonDePouletMaison: Recipe = {
     'Filtrer au tamis et congeler.'
   ],
   tags: ['bouillon', 'poulet', 'soupe'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/bouillon-de-poulet-maison',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/bouillon-de-poulet-maison',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/bouillon-de-poulet-maison'
+    }
+  ],
+  source: 'David Cloutier',
   notes: 'Excellente base de soupe.',
   slug: 'bouillon-de-poulet-maison'
 };
