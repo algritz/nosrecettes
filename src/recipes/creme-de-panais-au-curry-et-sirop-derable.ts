@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const cremeDePanaisAuCurryEtSiropDErable: Recipe = {
+export const cremeDePanaisAuCurryEtSiropDerable: Recipe = {
   id: 'creme-de-panais-au-curry-et-sirop-d-erable',
   title: 'Crème de panais au curry et sirop d\'érable',
   description: 'Une soupe crémeuse de panais parfumée au curry, agrémentée de sirop d\'érable et garnie de popcorn pour une touche croquante.',
@@ -29,5 +29,13 @@ export const cremeDePanaisAuCurryEtSiropDErable: Recipe = {
     'Servir et décorer de popcorn.'
   ],
   tags: ['soupe', 'curry', 'érable'],
-  slug: 'creme-de-panais-au-curry-et-sirop-d-erable'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/creme-de-panais-au-curry-et-sirop-d-erable',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/creme-de-panais-au-curry-et-sirop-d-erable',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/creme-de-panais-au-curry-et-sirop-d-erable'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'creme-de-panais-au-curry-et-sirop-derable'
 };
