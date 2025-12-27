@@ -30,5 +30,13 @@ export const cremeDeCourgeMusqueeEtPomme: Recipe = {
     'Assaisonner avec du sel et du poivre.'
   ],
   tags: ['soupe', 'crème', 'épicé'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/creme-de-courge-musquee-et-pomme',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/creme-de-courge-musquee-et-pomme',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/creme-de-courge-musquee-et-pomme'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'creme-de-courge-musquee-et-pomme'
 };
