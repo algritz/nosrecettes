@@ -35,5 +35,13 @@ export const tartareDeSaumonPommeConcombreEtGingembre: Recipe = {
     'Servir le reste de la mayonnaise à part.'
   ],
   tags: ['frais', 'épicé', 'saumon'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-pomme-concombre-et-gingembre',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-pomme-concombre-et-gingembre',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-pomme-concombre-et-gingembre'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'tartare-de-saumon-pomme-concombre-et-gingembre'
 };
