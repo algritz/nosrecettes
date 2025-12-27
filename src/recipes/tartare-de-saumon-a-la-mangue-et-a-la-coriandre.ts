@@ -32,6 +32,14 @@ export const tartareDeSaumonALaMangueEtALaCoriandre: Recipe = {
     'Juste avant de servir, mélanger délicatement la sauce et le mélange de saumon.'
   ],
   tags: ['frais', 'citron', 'cru'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-a-la-mangue-et-a-la-coriandre',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-a-la-mangue-et-a-la-coriandre',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-a-la-mangue-et-a-la-coriandre'
+    }
+  ],
+  source: 'David Cloutier',
   notes: 'La prochaine fois je vais pousser l\'audace jusqu\'à mettre des fraises. De plus à mon goût, ça prend plus de piquant et moitié coriandre, moitié persil italien.',
   slug: 'tartare-de-saumon-a-la-mangue-et-a-la-coriandre'
 };
