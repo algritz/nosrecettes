@@ -6,37 +6,37 @@ export const tartareDeBoeufAuMascarponeEtAuxCanneberges: Recipe = {
   description: 'Un tartare de boeuf frais et savoureux, accompagné d\'une sauce au mascarpone et de canneberges, parfait pour une entrée élégante.',
   categories: ['Entrées'],
   prepTime: 25,
-  cookTime: 7,
+  cookTime: 10,
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
     {
       title: 'Ketchup aux canneberges',
       items: [
-      '1/2 tasse (125 ml) de canneberges fraîches ou surgelées',
-      '1/4 tasse (60 ml) de vinaigre blanc',
-      '1/4 tasse (60 ml) de pâte de tomates, non additionnée de sel',
-      '2 c. à soupe (30 ml) de sucre'
+        '1/2 tasse (125 ml) de canneberges fraîches ou surgelées',
+        '1/4 tasse (60 ml) de vinaigre blanc',
+        '1/4 tasse (60 ml) de pâte de tomates, non additionnée de sel',
+        '2 c. à soupe (30 ml) de sucre'
       ]
     },
     {
       title: 'Sauce au Mascarpone',
       items: [
-      '1/2 tasse (125 ml) de Mascarpone canadien',
-      '2 c. à soupe (30 ml) de lait',
-      'Sel et poivre du moulin'
+        '1/2 tasse (125 ml) de Mascarpone canadien',
+        '2 c. à soupe (30 ml) de lait',
+        'Sel et poivre du moulin'
       ]
     },
     {
       title: 'Tartare',
       items: [
-      '3 c. à soupe (45 ml) de canneberges séchées, hachées',
-      '1 échalote française, hachée finement',
-      '1 1/2 c. à soupe (25 ml) de moutarde Dijon',
-      '2 c. à thé (10 ml) d\'huile d\'olive',
-      '1/4 tasse (60 ml) de persil italien frais',
-      '2/3 lb (300 g) de boeuf à tartare',
-      '2 c. à thé (10 ml) de vinaigre de vin blanc ou rouge'
+        '3 c. à soupe (45 ml) de canneberges séchées, hachées',
+        '1 échalote française, hachée finement',
+        '1 1/2 c. à soupe (25 ml) de moutarde Dijon',
+        '2 c. à thé (10 ml) d\'huile d\'olive',
+        '1/4 tasse (60 ml) de persil italien frais',
+        '2/3 lb (300 g) de boeuf à tartare',
+        '2 c. à thé (10 ml) de vinaigre de vin blanc ou rouge'
       ]
     }
   ],
@@ -48,5 +48,13 @@ export const tartareDeBoeufAuMascarponeEtAuxCanneberges: Recipe = {
     'Répartir le tartare dans des ramequins et transférer dans des assiettes. Servir immédiatement avec le ketchup aux canneberges et la mayonnaise au Mascarpone. Garnir des pousses fraîches, si désiré.'
   ],
   tags: ['canneberges', 'tartare', 'entrée'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-au-mascarpone-et-aux-canneberges',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-au-mascarpone-et-aux-canneberges',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-au-mascarpone-et-aux-canneberges'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'tartare-de-boeuf-au-mascarpone-et-aux-canneberges'
 };
