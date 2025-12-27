@@ -27,5 +27,13 @@ export const patesAuxPoireauxEtJambonTresCremeuse: Recipe = {
     'Au moment de servir, parsemer les pâtes de fromage.'
   ],
   tags: ['crème', 'jambon', 'pâtes'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pates-aux-poireaux-et-jambon-tres-cremeuse',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pates-aux-poireaux-et-jambon-tres-cremeuse',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pates-aux-poireaux-et-jambon-tres-cremeuse'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'pates-aux-poireaux-et-jambon-tres-cremeuse'
 };
