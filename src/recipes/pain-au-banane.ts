@@ -28,5 +28,13 @@ export const painAuBanane: Recipe = {
     'Faire cuire 30 minutes.'
   ],
   tags: ['banane', 'pâtisserie', 'gâteau'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pain-au-banane',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pain-au-banane',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pain-au-banane'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'pain-au-banane'
 };
