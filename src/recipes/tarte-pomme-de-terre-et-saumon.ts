@@ -35,5 +35,13 @@ export const tartePommeDeTerreEtSaumon: Recipe = {
     'Couper en pointes de tarte et servir.'
   ],
   tags: ['pomme de terre', 'saumon fumé', 'tarte'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tarte-pomme-de-terre-et-saumon',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tarte-pomme-de-terre-et-saumon',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tarte-pomme-de-terre-et-saumon'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'tarte-pomme-de-terre-et-saumon'
 };
