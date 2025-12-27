@@ -31,5 +31,13 @@ export const saladeDePatateEtKale: Recipe = {
     'Verser la vinaigrette sur les pommes de terre dans le saladier et mélanger délicatement pour bien les enrober.'
   ],
   tags: ['salade', 'citron', 'kale'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-de-patate-et-kale',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-de-patate-et-kale',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-de-patate-et-kale'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'salade-de-patate-et-kale'
 };
