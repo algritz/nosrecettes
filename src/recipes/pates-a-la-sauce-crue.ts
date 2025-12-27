@@ -31,5 +31,13 @@ export const patesALaSauceCrue: Recipe = {
     'Rectifiez l\'assaisonnement et servez.'
   ],
   tags: ['tomates', 'cru', 'feta'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pates-a-la-sauce-crue',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pates-a-la-sauce-crue',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pates-a-la-sauce-crue'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'pates-a-la-sauce-crue'
 };
