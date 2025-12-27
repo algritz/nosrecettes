@@ -38,8 +38,15 @@ export const sexyPoutine: Recipe = {
     'Parsemer de perles de bocconcini et napper de sauce à poutine.'
   ],
   tags: ['poutine', 'confit de canard', 'vin blanc'],
-  source: 'Antoine Sicotte',
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sexy-poutine',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sexy-poutine',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sexy-poutine'
+    }
+  ],
   wine: 'Vin Blanc "Aromatique et rond"',
+  source: 'Antoine Sicotte',
   notes: 'Cette recette est extrêmement riche. Même si les portions semblent petites, votre foie ne pourra pas en supporter plus.',
   slug: 'sexy-poutine'
 };
