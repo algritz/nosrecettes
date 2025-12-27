@@ -31,5 +31,13 @@ export const linguinesCajunsEtCrevettes: Recipe = {
     'Ajoutez les crevettes et les pâtes. Mélangez-les pour les enrober de sauce.'
   ],
   tags: ['épices cajun', 'crémeux', 'pâtes'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/linguines-cajuns-et-crevettes',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/linguines-cajuns-et-crevettes',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/linguines-cajuns-et-crevettes'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'linguines-cajuns-et-crevettes'
 };
