@@ -41,5 +41,13 @@ export const champvallon: Recipe = {
     'Au service, accompagner de moutarde et de gros sel de mer.'
   ],
   tags: ['gibier', 'gratin', 'four'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/champvallon',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/champvallon',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/champvallon'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'champvallon'
 };
