@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const sloppyJoeALIndienne: Recipe = {
+export const sloppyJoeALindienne: Recipe = {
   id: 'sloppy-joe-a-l-indienne',
   title: 'Sloppy Joe à l\'indienne',
   description: 'Un plat épicé de viande de dindon hachée servi dans des mini-pains naans, accompagné d\'une sauce au yogourt et aux herbes.',
@@ -35,5 +35,13 @@ export const sloppyJoeALIndienne: Recipe = {
     'Servir accompagné de la sauce au yogourt.'
   ],
   tags: ['épicé', 'curry', 'naan'],
-  slug: 'sloppy-joe-a-l-indienne'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sloppy-joe-a-l-indienne',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sloppy-joe-a-l-indienne',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sloppy-joe-a-l-indienne'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'sloppy-joe-a-lindienne'
 };
