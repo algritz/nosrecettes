@@ -26,5 +26,13 @@ export const madamePatate: Recipe = {
     'Refaire cuire 5 minutes et servir.'
   ],
   tags: ['feta', 'citron', 'papillote'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/madame-patate',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/madame-patate',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/madame-patate'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'madame-patate'
 };
