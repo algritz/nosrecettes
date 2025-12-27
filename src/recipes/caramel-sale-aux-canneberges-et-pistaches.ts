@@ -29,5 +29,13 @@ export const caramelSaleAuxCannebergesEtPistaches: Recipe = {
     'Casser en morceaux et disposer dans des pots pour les offrir en cadeaux.'
   ],
   tags: ['caramel', 'salé', 'chocolat'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/caramel-sale-aux-canneberges-et-pistaches',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/caramel-sale-aux-canneberges-et-pistaches',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/caramel-sale-aux-canneberges-et-pistaches'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'caramel-sale-aux-canneberges-et-pistaches'
 };
