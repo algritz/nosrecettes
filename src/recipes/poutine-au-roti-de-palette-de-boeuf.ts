@@ -34,5 +34,13 @@ export const poutineAuRotiDePaletteDeBoeuf: Recipe = {
     'Déposer le bœuf sur les frites, garnir de fromage en grains, napper de sauce bien chaude et garnir d\'oignons verts.'
   ],
   tags: ['mijoteuse', 'bœuf', 'poutine'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poutine-au-roti-de-palette-de-boeuf',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poutine-au-roti-de-palette-de-boeuf',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poutine-au-roti-de-palette-de-boeuf'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'poutine-au-roti-de-palette-de-boeuf'
 };
