@@ -32,7 +32,15 @@ export const filetDePorcSauceDijonnaiseDeSemaine: Recipe = {
     'Couper les filets de porc en tranches et les napper de la sauce.'
   ],
   tags: ['sauce dijonnaise', 'porc', 'réduction'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/filet-de-porc-sauce-dijonnaise-de-semaine',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/filet-de-porc-sauce-dijonnaise-de-semaine',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/filet-de-porc-sauce-dijonnaise-de-semaine'
+    }
+  ],
   wine: 'teal lake (shiraz australien)',
+  source: 'David Cloutier',
   notes: 'Sortir le filet du four ou BBQ à 135°F (interne) et le couvrir de papier d\'aluminium pendant 5 à 10 minutes avant de couper.',
   slug: 'filet-de-porc-sauce-dijonnaise-de-semaine'
 };
