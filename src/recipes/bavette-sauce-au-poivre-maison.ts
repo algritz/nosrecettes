@@ -32,6 +32,14 @@ export const bavetteSauceAuPoivreMaison: Recipe = {
     'Une fois la viande reposée, tranchez le bifteck en morceaux de ½ pouce. Verser la sauce à la crème sur le dessus et servir.'
   ],
   tags: ['sauce crémeuse', 'poivre', 'bœuf'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/bavette-sauce-au-poivre-maison',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/bavette-sauce-au-poivre-maison',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/bavette-sauce-au-poivre-maison'
+    }
+  ],
   wine: 'Ventisquero Pinot Noir Grey Single Block',
+  source: 'David Cloutier',
   slug: 'bavette-sauce-au-poivre-maison'
 };
