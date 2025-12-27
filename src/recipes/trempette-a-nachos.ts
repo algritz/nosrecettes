@@ -38,5 +38,13 @@ export const trempetteANachos: Recipe = {
     'Ajouter les ingrédients de la garniture, s’il y a lieu, et servir.'
   ],
   tags: ['fromage', 'bœuf', 'four'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/trempette-a-nachos',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/trempette-a-nachos',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/trempette-a-nachos'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'trempette-a-nachos'
 };
