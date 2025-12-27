@@ -1,12 +1,13 @@
 import { Recipe } from '@/types/recipe';
 
-export const jerkyDeBUfMaison: Recipe = {
+export const jerkyDeBufMaison: Recipe = {
   id: 'jerky-de-b-uf-maison',
   title: 'Jerky de bœuf maison',
   description: 'Bien meilleur que ceux vendu au dépanneur Jerky de bœuf maison',
   categories: ['Végétarien'],
   prepTime: 20,
   cookTime: 240,
+  marinatingTime: 720,
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -28,6 +29,13 @@ export const jerkyDeBUfMaison: Recipe = {
     'Placez le jerky fini dans un sac à fermeture ziploc pendant qu\'il est encore chaud. Ne scellez pas complètement. Le jerky va légèrement cuire à la vapeur dans le sac, et cette étape gardera le jerky légèrement humide.'
   ],
   tags: ['fumoir', 'séchage', 'bœuf'],
-  marinatingTime: 12,
-  slug: 'jerky-de-b-uf-maison'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/jerky-de-b-uf-maison',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/jerky-de-b-uf-maison',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/jerky-de-b-uf-maison'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'jerky-de-buf-maison'
 };
