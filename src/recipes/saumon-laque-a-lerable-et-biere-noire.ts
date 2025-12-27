@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const saumonLaqueALErableEtBiereNoire: Recipe = {
+export const saumonLaqueALerableEtBiereNoire: Recipe = {
   id: 'saumon-laque-a-l-erable-et-biere-noire',
   title: 'Saumon laqué à l\'érable et bière noire',
   description: 'Une recette de saumon laqué avec une sauce à l\'érable et à la bière noire, parfait pour le barbecue.',
@@ -23,5 +23,13 @@ export const saumonLaqueALErableEtBiereNoire: Recipe = {
     'Faire cuire le saumon au BBQ en badigeonnant régulièrement avec la laque.'
   ],
   tags: ['érable', 'barbecue', 'sauce'],
-  slug: 'saumon-laque-a-l-erable-et-biere-noire'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/saumon-laque-a-l-erable-et-biere-noire',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/saumon-laque-a-l-erable-et-biere-noire',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/saumon-laque-a-l-erable-et-biere-noire'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'saumon-laque-a-lerable-et-biere-noire'
 };
