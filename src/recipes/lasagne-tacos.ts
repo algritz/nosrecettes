@@ -35,6 +35,14 @@ export const lasagneTacos: Recipe = {
     'Faire griller à feu vif pendant 2 à 3 minutes, jusqu\'à ce qu\'ils soient dorés.'
   ],
   tags: ['fusion', 'tacos', 'fromage'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/lasagne-tacos',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/lasagne-tacos',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/lasagne-tacos'
+    }
+  ],
+  source: 'David Cloutier',
   notes: 'Je l\'ai fait avec du bœuf et c\'est très bon.',
   slug: 'lasagne-tacos'
 };
