@@ -28,5 +28,13 @@ export const vinaigretteCesarMaison: Recipe = {
     'Terminer en ajoutant le parmesan, puis assaisonner et bien brasser.'
   ],
   tags: ['vinaigrette', 'césar', 'maison'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/vinaigrette-cesar-maison',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/vinaigrette-cesar-maison',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/vinaigrette-cesar-maison'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'vinaigrette-cesar-maison'
 };
