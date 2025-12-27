@@ -40,5 +40,13 @@ export const saladeCheeseburger: Recipe = {
     'Arroser la salade de vinaigrette au goût et la parsemer de graines de sésame.'
   ],
   tags: ['grill', 'salade', 'bœuf'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-cheeseburger',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-cheeseburger',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-cheeseburger'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'salade-cheeseburger'
 };
