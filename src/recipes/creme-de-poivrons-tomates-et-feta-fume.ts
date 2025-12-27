@@ -34,6 +34,14 @@ export const cremeDePoivronsTomatesEtFetaFume: Recipe = {
     'Mixer le tout, ajouter de la crème au goût.'
   ],
   tags: ['fumoir', 'soupe', 'feta'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/creme-de-poivrons-tomates-et-feta-fume',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/creme-de-poivrons-tomates-et-feta-fume',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/creme-de-poivrons-tomates-et-feta-fume'
+    }
+  ],
+  source: 'David Cloutier',
   notes: 'Ce plat peut aussi être réalisé au four.',
   slug: 'creme-de-poivrons-tomates-et-feta-fume'
 };
