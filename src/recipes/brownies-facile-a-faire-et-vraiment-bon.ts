@@ -33,5 +33,13 @@ export const browniesFacileAFaireEtVraimentBon: Recipe = {
     'Couper et servir.'
   ],
   tags: ['chocolat', 'gâteau', 'facile'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/brownies-facile-a-faire-et-vraiment-bon',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/brownies-facile-a-faire-et-vraiment-bon',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brownies-facile-a-faire-et-vraiment-bon'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'brownies-facile-a-faire-et-vraiment-bon'
 };
