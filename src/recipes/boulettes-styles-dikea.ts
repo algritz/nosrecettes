@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const boulettesStylesDIkea: Recipe = {
+export const boulettesStylesDikea: Recipe = {
   id: 'boulettes-styles-d-ikea',
   title: 'Boulettes styles d\'IKEA',
   description: 'Recette de boulettes de viande à la sauce à la crème, inspirée du style IKEA, pour 4 personnes.',
@@ -43,6 +43,14 @@ export const boulettesStylesDIkea: Recipe = {
     'Ajouter la crème, la sauce soja et la moutarde, puis laisser mijoter jusqu\'à épaississement.'
   ],
   tags: ['boulettes', 'crème', 'cuisson au four'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes-styles-d-ikea',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes-styles-d-ikea',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes-styles-d-ikea'
+    }
+  ],
+  source: 'David Cloutier',
   notes: 'Temps de préparation : 20 minutes. Temps de cuisson : 40 à 50 minutes. Accompagnement suggéré : pommes de terre, recette de votre choix.',
-  slug: 'boulettes-styles-d-ikea'
+  slug: 'boulettes-styles-dikea'
 };
