@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const tartareDeBUfAuCoureurDesBois: Recipe = {
+export const tartareDeBufAuCoureurDesBois: Recipe = {
   id: 'tartare-de-b-uf-au-coureur-des-bois',
   title: 'Tartare de bœuf au Coureur des bois',
   description: 'Tartare de bœuf au Coureur des bois',
@@ -30,5 +30,13 @@ export const tartareDeBUfAuCoureurDesBois: Recipe = {
     'Rectifier le goût épicé avec le sambal Olek au besoin.'
   ],
   tags: ['bœuf', 'tartare', 'piquant'],
-  slug: 'tartare-de-b-uf-au-coureur-des-bois'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-b-uf-au-coureur-des-bois',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-b-uf-au-coureur-des-bois',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-b-uf-au-coureur-des-bois'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'tartare-de-buf-au-coureur-des-bois'
 };
