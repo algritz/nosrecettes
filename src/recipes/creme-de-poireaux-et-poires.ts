@@ -32,5 +32,13 @@ export const cremeDePoireauxEtPoires: Recipe = {
     'Ajouter la crème, réchauffer et servir.'
   ],
   tags: ['soupe', 'poireaux', 'crème'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/creme-de-poireaux-et-poires',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/creme-de-poireaux-et-poires',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/creme-de-poireaux-et-poires'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'creme-de-poireaux-et-poires'
 };
