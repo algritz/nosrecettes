@@ -1,12 +1,13 @@
 import { Recipe } from '@/types/recipe';
 
-export const painNaamSurPlancha: Recipe = {
+export const painNaanSurPlancha: Recipe = {
   id: 'pain-naam-sur-plancha',
-  title: 'Pain Naam sur plancha',
+  title: 'Pain Naan sur plancha',
   description: 'Pain Naam facile à faire et excellent',
   categories: ['Pain'],
   prepTime: 20,
-  cookTime: 6,
+  cookTime: 5,
+  marinatingTime: 60,
   servings: 6,
   difficulty: 'Facile',
   ingredients: [
@@ -35,7 +36,14 @@ export const painNaamSurPlancha: Recipe = {
     'Servir sans attendre.'
   ],
   tags: ['plancha', 'pâte levée', 'cuisine facile'],
-  marinatingTime: 60,
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pain-naan-sur-plancha',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pain-naan-sur-plancha',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pain-naan-sur-plancha'
+    }
+  ],
+  source: 'David Cloutier',
   notes: 'Pour des Naam plus gros, diviser la pâte en 4 plutôt qu\'en 6',
-  slug: 'pain-naam-sur-plancha'
+  slug: 'pain-naan-sur-plancha'
 };
