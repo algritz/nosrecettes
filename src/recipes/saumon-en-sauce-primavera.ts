@@ -32,5 +32,13 @@ export const saumonEnSaucePrimavera: Recipe = {
     'Ajouter les filets de saumon dans la sauce et laisser mijoter environ 5 min ou jusqu\'à ce que les filets soient bien cuits à l\'intérieur et que la sauce soit à la consistance désirée.'
   ],
   tags: ['crémeux', 'moutarde', 'mijoter'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/saumon-en-sauce-primavera',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/saumon-en-sauce-primavera',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/saumon-en-sauce-primavera'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'saumon-en-sauce-primavera'
 };
