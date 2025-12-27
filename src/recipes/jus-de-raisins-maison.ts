@@ -24,6 +24,14 @@ export const jusDeRaisinsMaison: Recipe = {
     'Retirez la passoire, puis mettez votre jus dans le réfrigérateur pour le refroidir ou mettez directement des glaçons dans votre verre.'
   ],
   tags: ['jus de raisin', 'fait maison', 'rafraîchissant'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/jus-de-raisins-maison',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/jus-de-raisins-maison',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/jus-de-raisins-maison'
+    }
+  ],
   accompaniment: 'Absolument débile avec un peu de Vodka et une glace',
+  source: 'David Cloutier',
   slug: 'jus-de-raisins-maison'
 };
