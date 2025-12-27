@@ -31,5 +31,13 @@ export const muffinsBananeEtChocolat: Recipe = {
     'Cuire à 400°F (200°C) pendant 20 à 25 minutes.'
   ],
   tags: ['gâteau', 'muffins', 'banane'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/muffins-banane-et-chocolat',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/muffins-banane-et-chocolat',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/muffins-banane-et-chocolat'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'muffins-banane-et-chocolat'
 };
