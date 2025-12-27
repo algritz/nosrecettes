@@ -6,7 +6,7 @@ export const browniesAuBarresMars: Recipe = {
   description: 'Brownies au barres Mars',
   categories: ['Pâtisseries et desserts'],
   prepTime: 25,
-  cookTime: 14,
+  cookTime: 15,
   servings: 12,
   difficulty: 'Facile',
   ingredients: [
@@ -31,5 +31,13 @@ export const browniesAuBarresMars: Recipe = {
     'Laisser tempérer les brownies environ 2 heures avant de les manger.'
   ],
   tags: ['chocolat', 'mars', 'gâteaux'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/brownies-au-barres-mars',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/brownies-au-barres-mars',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brownies-au-barres-mars'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'brownies-au-barres-mars'
 };
