@@ -25,5 +25,13 @@ export const painDoreeAuSaumonFumeEtCremeSure: Recipe = {
     'Déposez dans de grandes assiettes, tartinez chaque demi-muffin anglais 1 1/2 c. à table de crème sure, déposez du saumon fumé et décorez d’aneth.'
   ],
   tags: ['fumé', 'crème sure', 'grill'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pain-doree-au-saumon-fume-et-creme-sure',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pain-doree-au-saumon-fume-et-creme-sure',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pain-doree-au-saumon-fume-et-creme-sure'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'pain-doree-au-saumon-fume-et-creme-sure'
 };
