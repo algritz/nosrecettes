@@ -6,7 +6,7 @@ export const biscuitsChocoCaramelPacaneEtBacon: Recipe = {
   description: 'Une recette de biscuits gourmands aux pacanes, chocolat, caramel et bacon, parfaits pour une touche sucrée-salée.',
   categories: ['Pâtisseries et desserts'],
   prepTime: 25,
-  cookTime: 14,
+  cookTime: 15,
   servings: 12,
   difficulty: 'Facile',
   ingredients: [
@@ -38,5 +38,13 @@ export const biscuitsChocoCaramelPacaneEtBacon: Recipe = {
     'Laisser les biscuits refroidir quelques minutes avant de déguster.'
   ],
   tags: ['gourmand', 'salé-sucré', 'bacon'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/biscuits-choco-caramel-pacane-et-bacon',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/biscuits-choco-caramel-pacane-et-bacon',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuits-choco-caramel-pacane-et-bacon'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'biscuits-choco-caramel-pacane-et-bacon'
 };
