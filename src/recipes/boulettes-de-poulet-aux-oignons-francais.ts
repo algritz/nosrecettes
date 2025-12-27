@@ -38,5 +38,13 @@ export const boulettesDePouletAuxOignonsFrancais: Recipe = {
     'Ajouter les boulettes de viande dans la poêle et saupoudrer de Gruyère. Couvrir et cuire jusqu\'à ce que les boulettes soient chaudes et que le fromage soit fondu, 5 minutes.'
   ],
   tags: ['fromage', 'sauce', 'poulet'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes-de-poulet-aux-oignons-francais',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes-de-poulet-aux-oignons-francais',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes-de-poulet-aux-oignons-francais'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'boulettes-de-poulet-aux-oignons-francais'
 };
