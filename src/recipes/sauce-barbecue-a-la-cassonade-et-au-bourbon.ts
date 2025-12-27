@@ -33,6 +33,14 @@ export const sauceBarbecueALaCassonadeEtAuBourbon: Recipe = {
     'Temprer la sauce avant de la servir.'
   ],
   tags: ['barbecue', 'bourbon', 'épicé'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sauce-barbecue-a-la-cassonade-et-au-bourbon',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sauce-barbecue-a-la-cassonade-et-au-bourbon',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sauce-barbecue-a-la-cassonade-et-au-bourbon'
+    }
+  ],
   wine: '7 Deadly Zin',
+  source: 'David Cloutier',
   slug: 'sauce-barbecue-a-la-cassonade-et-au-bourbon'
 };
