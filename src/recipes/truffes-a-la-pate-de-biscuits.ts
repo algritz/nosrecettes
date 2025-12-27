@@ -30,5 +30,13 @@ export const truffesALaPateDeBiscuits: Recipe = {
     'Trempez chacune des boules de pâte dans le chocolat et mettez-les sur le papier parchemin.'
   ],
   tags: ['chocolat', 'réfrigération', 'boules'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/truffes-a-la-pate-de-biscuits',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/truffes-a-la-pate-de-biscuits',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/truffes-a-la-pate-de-biscuits'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'truffes-a-la-pate-de-biscuits'
 };
