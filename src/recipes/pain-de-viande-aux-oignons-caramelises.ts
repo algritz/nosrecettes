@@ -32,5 +32,13 @@ export const painDeViandeAuxOignonsCaramelises: Recipe = {
     'Service: Coupez le pain de viande en tranches et servez-les nappées de sauce aux oignons chaud.'
   ],
   tags: ['caramélisation', 'bœuf', 'sauce'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pain-de-viande-aux-oignons-caramelises',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pain-de-viande-aux-oignons-caramelises',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pain-de-viande-aux-oignons-caramelises'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'pain-de-viande-aux-oignons-caramelises'
 };
