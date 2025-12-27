@@ -32,5 +32,13 @@ export const tartareAux2SaumonsDeLaMediterranee: Recipe = {
     'Servir.'
   ],
   tags: ['frais', 'herbes', 'saumon'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-aux-2-saumons-de-la-mediterranee',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-aux-2-saumons-de-la-mediterranee',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-aux-2-saumons-de-la-mediterranee'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'tartare-aux-2-saumons-de-la-mediterranee'
 };
