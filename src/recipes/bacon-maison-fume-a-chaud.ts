@@ -7,6 +7,7 @@ export const baconMaisonFumeAChaud: Recipe = {
   categories: ['Végétarien'],
   prepTime: 15,
   cookTime: 210,
+  marinatingTime: 2880,
   servings: 3,
   difficulty: 'Facile',
   ingredients: [
@@ -30,7 +31,14 @@ export const baconMaisonFumeAChaud: Recipe = {
     'Au moment de déguster, faire cuire les tranches dans une poêle pour les rendre croustillantes et servir.'
   ],
   tags: ['fumé', 'bacon', 'fumer'],
-  marinatingTime: 2880,
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/bacon-maison-fume-a-chaud',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/bacon-maison-fume-a-chaud',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/bacon-maison-fume-a-chaud'
+    }
+  ],
+  source: 'David Cloutier',
   notes: 'Temps de marinade de 48 heures, cuisson entre 3h30 et 4h, repos de 8 heures ou toute la nuit.',
   slug: 'bacon-maison-fume-a-chaud'
 };
