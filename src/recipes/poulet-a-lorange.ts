@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const pouletALOrange: Recipe = {
+export const pouletALorange: Recipe = {
   id: 'poulet-a-l-orange',
   title: 'Poulet à l\'orange',
   description: 'Poulet à l\'orange avec une sauce acidulée à base de jus d\'orange, citron, vinaigre de riz et sauce soja, servi sur du riz avec échalotes.',
@@ -39,5 +39,13 @@ export const pouletALOrange: Recipe = {
     'Mettre les morceaux de poulet cuits dans la sauce pour réchauffer.'
   ],
   tags: ['orange', 'friture', 'sauce'],
-  slug: 'poulet-a-l-orange'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poulet-a-l-orange',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poulet-a-l-orange',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poulet-a-l-orange'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'poulet-a-lorange'
 };
