@@ -33,5 +33,13 @@ export const risottoAuChampignonCrabe: Recipe = {
     'Ajouter les champignons, le reste du bouillon de poulet, la mozzarella, le paprika, le sel et le poivre. Bien remuer jusqu\'à ce que la mozzarella ait bien fondu.'
   ],
   tags: ['crabe', 'risotto', 'mozzarella'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/risotto-au-champignon-crabe',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/risotto-au-champignon-crabe',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/risotto-au-champignon-crabe'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'risotto-au-champignon-crabe'
 };
