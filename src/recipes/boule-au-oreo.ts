@@ -6,7 +6,8 @@ export const bouleAuOreo: Recipe = {
   description: 'Une recette de boules à base de biscuits Oreo, fromage à la crème et chocolat, enrobées de chocolat fondu et de miettes de biscuits.',
   categories: ['Desserts'],
   prepTime: 20,
-  cookTime: 2,
+  cookTime: 5,
+  marinatingTime: 45,
   servings: 24,
   difficulty: 'Facile',
   ingredients: [
@@ -28,6 +29,13 @@ export const bouleAuOreo: Recipe = {
     'Congeler jusqu\'à ce que le chocolat durcisse, environ 15 minutes.'
   ],
   tags: ['chocolat', 'biscuits', 'enrobage'],
-  marinatingTime: 45,
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boule-au-oreo',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boule-au-oreo',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boule-au-oreo'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'boule-au-oreo'
 };
