@@ -13,37 +13,37 @@ export const gateauAuFromageEtBleuets: Recipe = {
     {
       title: 'Purée de bleuets',
       items: [
-      '2 tasses de bleuets',
-      '2 c. à soupe de sucre',
-      '1 c. à thé de jus de citron'
+        '2 tasses de bleuets',
+        '2 c. à soupe de sucre',
+        '1 c. à thé de jus de citron'
       ]
     },
     {
       title: 'La croûte',
       items: [
-      '9 biscuits Graham, finement broyés (environ 1 1/4 tasse)',
-      '6 c. à soupe de beurre fondu',
-      '1/4 tasse de sucre en poudre'
+        '9 biscuits Graham, finement broyés (environ 1 1/4 tasse)',
+        '6 c. à soupe de beurre fondu',
+        '1/4 tasse de sucre en poudre'
       ]
     },
     {
       title: 'Le gâteau',
       items: [
-      '4 blocs (8 oz chacun) de fromage à la crème, ramollis',
-      '1 tasse de sucre',
-      '2 gros œufs',
-      '1 c. à thé d\'extrait de vanille pur',
-      '1/4 tasse de crème sûre',
-      '2 c. à soupe de farine tout usage',
-      '1/4 c. à thé de sel casher',
-      'Purée de bleuets (préparée ci-dessus)'
+        '4 blocs (8 oz chacun) de fromage à la crème, ramollis',
+        '1 tasse de sucre',
+        '2 gros œufs',
+        '1 c. à thé d\'extrait de vanille pur',
+        '1/4 tasse de crème sûre',
+        '2 c. à soupe de farine tout usage',
+        '1/4 c. à thé de sel casher',
+        'Purée de bleuets (préparée ci-dessus)'
       ]
     },
     {
       title: 'Garniture',
       items: [
-      'Crème fouettée (Cool whip)',
-      'Bleuets frais'
+        'Crème fouettée (Cool whip)',
+        'Bleuets frais'
       ]
     }
   ],
@@ -58,5 +58,6 @@ export const gateauAuFromageEtBleuets: Recipe = {
     'Au moment de servir, garnir le gâteau de crème fouettée et de bleuets frais.'
   ],
   tags: ['bleuets', 'gâteau au fromage', 'relevé'],
+  source: 'David Cloutier',
   slug: 'gateau-au-fromage-et-bleuets'
 };
