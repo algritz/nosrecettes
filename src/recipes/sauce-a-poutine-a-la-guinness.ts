@@ -30,5 +30,13 @@ export const sauceAPoutineALaGuinness: Recipe = {
     'Servir sur des frites maison et du fromage en crotte frais.'
   ],
   tags: ['irish', 'sauce', 'mijoter'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sauce-a-poutine-a-la-guinness',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sauce-a-poutine-a-la-guinness',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sauce-a-poutine-a-la-guinness'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'sauce-a-poutine-a-la-guinness'
 };
