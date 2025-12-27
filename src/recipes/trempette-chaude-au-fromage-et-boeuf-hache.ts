@@ -32,5 +32,13 @@ export const trempetteChaudeAuFromageEtBoeufHache: Recipe = {
     'Servir avec des tostitos.'
   ],
   tags: ['fromage', 'bœuf', 'four'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/trempette-chaude-au-fromage-et-boeuf-hache',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/trempette-chaude-au-fromage-et-boeuf-hache',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/trempette-chaude-au-fromage-et-boeuf-hache'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'trempette-chaude-au-fromage-et-boeuf-hache'
 };
