@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const saumonALAnanas: Recipe = {
+export const saumonALananas: Recipe = {
   id: 'saumon-a-l-ananas',
   title: 'Saumon à l\'ananas',
   description: 'Saumon à l\'ananas',
@@ -36,5 +36,13 @@ export const saumonALAnanas: Recipe = {
     'Servir avec des quartiers de lime.'
   ],
   tags: ['ananas', 'marinade', 'grill'],
-  slug: 'saumon-a-l-ananas'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/saumon-a-l-ananas',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/saumon-a-l-ananas',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/saumon-a-l-ananas'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'saumon-a-lananas'
 };
