@@ -41,6 +41,14 @@ export const pizzaIndienneAuPoisChiches: Recipe = {
     'Arroser les pizzas de cette sauce et parsemer de coriandre.'
   ],
   tags: ['épices', 'cari', 'grill'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pizza-indienne-au-pois-chiches',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pizza-indienne-au-pois-chiches',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pizza-indienne-au-pois-chiches'
+    }
+  ],
+  source: 'David Cloutier',
   notes: 'Temps total de préparation : 40 minutes. Vin conseillé : Barefoot Pinot Grigio.',
   slug: 'pizza-indienne-au-pois-chiches'
 };
