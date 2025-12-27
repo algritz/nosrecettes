@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const satayDePorcALAnanas: Recipe = {
+export const satayDePorcALananas: Recipe = {
   id: 'satay-de-porc-a-l-ananas',
   title: 'Satay de porc à l\'ananas',
   description: 'Satay de porc à l\'ananas. Brochettes de porc marinées avec ananas, servies avec une sauce aux arachides. Parfait pour un barbecue estival.',
@@ -13,29 +13,29 @@ export const satayDePorcALAnanas: Recipe = {
     {
       title: 'Porc et marinade',
       items: [
-      '2 filets de porc, coupés en cubes d\'environ 2 cm',
-      '1 gousse d\'ail',
-      '1 oignon',
-      '1/3 tasse sauce soya, faible en sodium',
-      '1 1/4 cuillère à thé cumin en poudre',
-      '1 1/4 cuillère à thé curcuma',
-      '2 1/2 cuillère à thé cassonade',
-      'Ananas frais en cube',
-      '1 pincée sel',
-      'Poivre au goût',
-      '10 brochettes en bois ou en bambou'
+        '2 filets de porc, coupés en cubes d\'environ 2 cm',
+        '1 gousse d\'ail',
+        '1 oignon',
+        '1/3 tasse sauce soya, faible en sodium',
+        '1 1/4 cuillère à thé cumin en poudre',
+        '1 1/4 cuillère à thé curcuma',
+        '2 1/2 cuillère à thé cassonade',
+        'Ananas frais en cube',
+        '1 pincée sel',
+        'Poivre au goût',
+        '10 brochettes en bois ou en bambou'
       ]
     },
     {
       title: 'Sauce',
       items: [
-      '1 gousse d\'ail',
-      '3/4 tasse lait de noix de coco non sucré',
-      '1/3 tasse beurre d\'arachide, naturel',
-      '3 cuillère à soupe sauce soya faible en sodium',
-      '2 cuillère à soupe cassonade',
-      '1 cuillère à soupe sauce poisson',
-      '1 cuillère à thé sambal Oelek (au goût)'
+        '1 gousse d\'ail',
+        '3/4 tasse lait de noix de coco non sucré',
+        '1/3 tasse beurre d\'arachide, naturel',
+        '3 cuillère à soupe sauce soya faible en sodium',
+        '2 cuillère à soupe cassonade',
+        '1 cuillère à soupe sauce poisson',
+        '1 cuillère à thé sambal Oelek (au goût)'
       ]
     }
   ],
@@ -59,5 +59,13 @@ export const satayDePorcALAnanas: Recipe = {
     'Servir les brochettes avec la sauce.'
   ],
   tags: ['barbecue', 'sauce aux arachides', 'ananas'],
-  slug: 'satay-de-porc-a-l-ananas'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/satay-de-porc-a-l-ananas',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/satay-de-porc-a-l-ananas',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/satay-de-porc-a-l-ananas'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'satay-de-porc-a-lananas'
 };
