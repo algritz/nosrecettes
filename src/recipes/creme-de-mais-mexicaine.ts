@@ -34,5 +34,13 @@ export const cremeDeMaisMexicaine: Recipe = {
     'Bien brasser et servir avec de la coriandre.'
   ],
   tags: ['maïs', 'bacon', 'soupe'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/creme-de-mais-mexicaine',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/creme-de-mais-mexicaine',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/creme-de-mais-mexicaine'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'creme-de-mais-mexicaine'
 };
