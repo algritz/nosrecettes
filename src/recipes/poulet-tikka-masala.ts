@@ -7,6 +7,7 @@ export const pouletTikkaMasala: Recipe = {
   categories: ['Plats principaux', 'Vollaille'],
   prepTime: 25,
   cookTime: 20,
+  marinatingTime: 60,
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -48,7 +49,14 @@ export const pouletTikkaMasala: Recipe = {
     'Ajouter le poulet dans la sauce et cuire encore 1-2 minutes.'
   ],
   tags: ['épicé', 'curry', 'barbecue'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poulet-tikka-masala',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poulet-tikka-masala',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poulet-tikka-masala'
+    }
+  ],
   accompaniment: 'Servez avec du riz et du pain naan',
-  marinatingTime: 60,
+  source: 'David Cloutier',
   slug: 'poulet-tikka-masala'
 };
