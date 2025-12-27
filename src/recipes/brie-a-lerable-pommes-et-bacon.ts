@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const brieALErablePommesEtBacon: Recipe = {
+export const brieALerablePommesEtBacon: Recipe = {
   id: 'brie-a-l-erable-pommes-et-bacon',
   title: 'Brie à l’érable, pommes et bacon',
   description: 'Un brie chaud et coulant en apéro c\'est toujours gagnant Brie à l’érable, pommes et bacon',
@@ -27,5 +27,13 @@ export const brieALErablePommesEtBacon: Recipe = {
     'Verser 1 c. à soupe de sirop d\'érable et cuire au four environ 20 à 25 minutes ou jusqu\'à ce que le fromage soit chaud et coulant au centre.'
   ],
   tags: ['fromage', 'érable', 'bacon'],
-  slug: 'brie-a-l-erable-pommes-et-bacon'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/brie-a-l-erable-pommes-et-bacon',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/brie-a-l-erable-pommes-et-bacon',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brie-a-l-erable-pommes-et-bacon'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'brie-a-lerable-pommes-et-bacon'
 };
