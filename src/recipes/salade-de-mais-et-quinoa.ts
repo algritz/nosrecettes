@@ -30,5 +30,13 @@ export const saladeDeMaisEtQuinoa: Recipe = {
     'Salade\nDans une poêle antiadhésive, faire chauffer l’huile. À feu élevé, faire revenir les grains de maïs jusqu’à ce qu’ils soient légèrement dorés. Attention, ça saute! On peut recouvrir d’une passoire pendant la cuisson. Baisser le feu, ajouter les oignons verts, le poivron, le cumin et le piment. Saler. Faire revenir environ 5 min. Verser dans un bol. Ajouter le quinoa, le zeste et le jus de lime ou de citron, puis bien mélanger. Rectifier l’assaisonnement si nécessaire.'
   ],
   tags: ['quinoa', 'maïs', 'salade'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-de-mais-et-quinoa',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-de-mais-et-quinoa',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-de-mais-et-quinoa'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'salade-de-mais-et-quinoa'
 };
