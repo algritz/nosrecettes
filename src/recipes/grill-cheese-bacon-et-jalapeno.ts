@@ -6,7 +6,7 @@ export const grillCheeseBaconEtJalapeno: Recipe = {
   description: 'Un sandwich grillé chaud et fondant avec fromage à la crème, jalapeño, cheddar et bacon, idéal pour un déjeuner ou un snack épicé.',
   categories: ['Sandwichs'],
   prepTime: 15,
-  cookTime: 8,
+  cookTime: 10,
   servings: 3,
   difficulty: 'Facile',
   ingredients: [
@@ -30,5 +30,13 @@ export const grillCheeseBaconEtJalapeno: Recipe = {
     'Répétez avec les deux autres sandwichs.'
   ],
   tags: ['fromage à la crème', 'jalapeño', 'sandwich'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/grill-cheese-bacon-et-jalapeno',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/grill-cheese-bacon-et-jalapeno',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/grill-cheese-bacon-et-jalapeno'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'grill-cheese-bacon-et-jalapeno'
 };
