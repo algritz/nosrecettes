@@ -13,33 +13,33 @@ export const gateauAuFromageUltraChocolate: Recipe = {
     {
       title: 'Croûte',
       items: [
-      '1 tasse de chapelure de Oréo',
-      '3 cuillères à soupe de sucre',
-      '3 cuillères à soupe de beurre fondu'
+        '1 tasse de chapelure de Oréo',
+        '3 cuillères à soupe de sucre',
+        '3 cuillères à soupe de beurre fondu'
       ]
     },
     {
       title: 'Gâteau',
       items: [
-      '2 tasses de pépites de chocolat mi-sucré',
-      '2 paquets de fromage à la crème, ramolli',
-      '3/4 tasse de sucre',
-      '2 cuillères à soupe de farine tout usage',
-      '2 gros œufs, légèrement battus',
-      '1 cuillère à café d\'extrait de vanille'
+        '2 tasses de pépites de chocolat mi-sucré',
+        '2 paquets de fromage à la crème, ramolli',
+        '3/4 tasse de sucre',
+        '2 cuillères à soupe de farine tout usage',
+        '2 gros œufs, légèrement battus',
+        '1 cuillère à café d\'extrait de vanille'
       ]
     },
     {
       title: 'Ganache au chocolat',
       items: [
-      '6 oz de chocolat mi-sucré haché',
-      '1/3 tasse de crème à 35%'
+        '6 oz de chocolat mi-sucré haché',
+        '1/3 tasse de crème à 35%'
       ]
     },
     {
       title: 'Garniture',
       items: [
-      'Un sac de chocolat Aéro Bubbles'
+        'Un sac de chocolat Aéro Bubbles'
       ]
     }
   ],
@@ -54,5 +54,13 @@ export const gateauAuFromageUltraChocolate: Recipe = {
     'Laisser refroidir 30 minutes. Passer soigneusement un couteau autour du bord du moule pour le desserrer. Réfrigérer jusqu\'au moment de servir.'
   ],
   tags: ['chocolat', 'ganache', 'gâteau au fromage'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/gateau-au-fromage-ultra-chocolate',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/gateau-au-fromage-ultra-chocolate',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/gateau-au-fromage-ultra-chocolate'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'gateau-au-fromage-ultra-chocolate'
 };
