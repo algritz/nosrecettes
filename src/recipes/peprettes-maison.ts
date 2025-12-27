@@ -25,5 +25,13 @@ export const peprettesMaison: Recipe = {
     'Laisser refroidir et emballer sous vide.'
   ],
   tags: ['fumoir', 'saucisse', 'marinade'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/peprettes-maison',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/peprettes-maison',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/peprettes-maison'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'peprettes-maison'
 };
