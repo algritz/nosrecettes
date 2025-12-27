@@ -36,5 +36,13 @@ export const soupeDePoireauxAuBoursin: Recipe = {
     'Servez la soupe et garnissez de ciboulette.'
   ],
   tags: ['onctueuse', 'ciboulette', 'boursin'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/soupe-de-poireaux-au-boursin',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/soupe-de-poireaux-au-boursin',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/soupe-de-poireaux-au-boursin'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'soupe-de-poireaux-au-boursin'
 };
