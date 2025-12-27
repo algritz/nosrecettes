@@ -7,6 +7,7 @@ export const pouletDelhiAuBeurre: Recipe = {
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: 20,
   cookTime: 25,
+  marinatingTime: 60,
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -54,6 +55,13 @@ export const pouletDelhiAuBeurre: Recipe = {
     'Décorer de coriandre fraîche hachée et servir avec un pain naan chaud.'
   ],
   tags: ['épicé', 'curry', 'grill'],
-  marinatingTime: 60,
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poulet-delhi-au-beurre',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poulet-delhi-au-beurre',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poulet-delhi-au-beurre'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'poulet-delhi-au-beurre'
 };
