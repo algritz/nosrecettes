@@ -37,5 +37,13 @@ export const saladeDeSaumonEtSalsaAuFruits: Recipe = {
     'Servir le sur un lit de salade avec de la salsa.'
   ],
   tags: ['salsa', 'saumon', 'frais'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-de-saumon-et-salsa-au-fruits',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-de-saumon-et-salsa-au-fruits',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-de-saumon-et-salsa-au-fruits'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'salade-de-saumon-et-salsa-au-fruits'
 };
