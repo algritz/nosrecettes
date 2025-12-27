@@ -7,6 +7,7 @@ export const saladeAuCanardEtFruits: Recipe = {
   categories: ['Salades'],
   prepTime: 20,
   cookTime: 20,
+  marinatingTime: 120,
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -41,6 +42,13 @@ export const saladeAuCanardEtFruits: Recipe = {
     'Verser la vinaigrette de vinaigre balsamique aux framboises et huile d\'olive.'
   ],
   tags: ['fruits', 'marinade', 'grill'],
-  marinatingTime: 120,
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-au-canard-et-fruits',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-au-canard-et-fruits',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-au-canard-et-fruits'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'salade-au-canard-et-fruits'
 };
