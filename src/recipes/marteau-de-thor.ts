@@ -7,6 +7,7 @@ export const marteauDeThor: Recipe = {
   categories: ['Vollaille'],
   prepTime: 20,
   cookTime: 720,
+  marinatingTime: 720,
   servings: 10,
   difficulty: 'Facile',
   ingredients: [
@@ -30,9 +31,16 @@ export const marteauDeThor: Recipe = {
     'Servir et déguster.'
   ],
   tags: ['fumoir', 'bœuf', 'injecter'],
-  wine: 'Baron de Ley, reserva',
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/marteau-de-thor',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/marteau-de-thor',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/marteau-de-thor'
+    }
+  ],
   accompaniment: 'Faites fumer des saucisses en accompagnement dans la dernière heure de cuisson',
-  marinatingTime: 720,
+  wine: 'Baron de Ley, reserva',
+  source: 'David Cloutier',
   notes: 'Le rendement total varie selon la proportion d\'os sur la pièce originale, prévoir environ 50% de réduction de poids pour la partie viande. Exemple : une pièce de 3.4 kg, avec un os de 800 g laissera 2.6 kg brut de viande et produira environ 1.3 kg de viande au final.',
   slug: 'marteau-de-thor'
 };
