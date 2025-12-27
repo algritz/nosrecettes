@@ -7,6 +7,7 @@ export const pateABiscuitTrempeeDansLeChocolat: Recipe = {
   categories: ['Végétarien'],
   prepTime: 20,
   cookTime: 0,
+  marinatingTime: 30,
   servings: 40,
   difficulty: 'Facile',
   ingredients: [
@@ -28,6 +29,13 @@ export const pateABiscuitTrempeeDansLeChocolat: Recipe = {
     'Décorer immédiatement puis réfrigérer 30 minutes'
   ],
   tags: ['chocolat', 'pâte à biscuit', 'dipping'],
-  marinatingTime: 30,
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pate-a-biscuit-trempee-dans-le-chocolat',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pate-a-biscuit-trempee-dans-le-chocolat',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pate-a-biscuit-trempee-dans-le-chocolat'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'pate-a-biscuit-trempee-dans-le-chocolat'
 };
