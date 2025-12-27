@@ -37,6 +37,13 @@ export const saladeDeChouxCremeuseAuxPacanes: Recipe = {
     'Ajouter du poivre au besoin.'
   ],
   tags: ['crémé', 'pécanes', 'vinaigrette'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-de-choux-cremeuse-aux-pacanes',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-de-choux-cremeuse-aux-pacanes',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-de-choux-cremeuse-aux-pacanes'
+    }
+  ],
   source: 'David Cloutier',
   slug: 'salade-de-choux-cremeuse-aux-pacanes'
 };
