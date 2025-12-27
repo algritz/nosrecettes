@@ -6,7 +6,7 @@ export const tartareDeBoeufAuBaconEtOignonsConfits: Recipe = {
   description: 'Un tartare de boeuf relevé avec des oignons confits, du bacon, et une sauce savoureuse, présenté avec du pain.',
   categories: ['Entrées'],
   prepTime: 20,
-  cookTime: 12,
+  cookTime: 15,
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -36,5 +36,13 @@ export const tartareDeBoeufAuBaconEtOignonsConfits: Recipe = {
     'Garnir les tartares du reste des oignons confits et garnir avec du pain.'
   ],
   tags: ['bacon', 'oignons confits', 'tartare'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-au-bacon-et-oignons-confits',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-au-bacon-et-oignons-confits',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-au-bacon-et-oignons-confits'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'tartare-de-boeuf-au-bacon-et-oignons-confits'
 };
