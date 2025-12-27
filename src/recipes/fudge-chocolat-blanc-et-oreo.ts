@@ -24,5 +24,13 @@ export const fudgeChocolatBlancEtOreo: Recipe = {
     'Réfrigérer 4h, démouler et couper en petits morceaux'
   ],
   tags: ['chocolat blanc', 'Oréo', 'fudge'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/fudge-chocolat-blanc-et-oreo',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/fudge-chocolat-blanc-et-oreo',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/fudge-chocolat-blanc-et-oreo'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'fudge-chocolat-blanc-et-oreo'
 };
