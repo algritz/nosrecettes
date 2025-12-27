@@ -32,5 +32,13 @@ export const tarteletteChocoCaramel: Recipe = {
     'Saupoudrer les tartelettes avec du sel de mer pour équilibrer la douceur si désiré. Savourez.'
   ],
   tags: ['caramel', 'chocolat', 'sans cuisson'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartelette-choco-caramel',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartelette-choco-caramel',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartelette-choco-caramel'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'tartelette-choco-caramel'
 };
