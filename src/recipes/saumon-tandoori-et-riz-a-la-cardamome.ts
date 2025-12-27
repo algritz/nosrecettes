@@ -33,5 +33,13 @@ export const saumonTandooriEtRizALaCardamome: Recipe = {
     'Au moment de servir, répartir le riz dans les assiettes et napper les pavés de saumon du reste du yogourt. Garnir de tranches de citron, si désiré.'
   ],
   tags: ['épicé', 'tandoori', 'riz parfumé'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/saumon-tandoori-et-riz-a-la-cardamome',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/saumon-tandoori-et-riz-a-la-cardamome',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/saumon-tandoori-et-riz-a-la-cardamome'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'saumon-tandoori-et-riz-a-la-cardamome'
 };
