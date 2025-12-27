@@ -6,7 +6,8 @@ export const petitsPainsMaison: Recipe = {
   description: 'Recette de petits pains maison moelleux et faciles à faire, avec une pâte levée, cuits au four et badigeonnés de beurre fondu.',
   categories: ['Pains'],
   prepTime: 20,
-  cookTime: 18,
+  cookTime: 20,
+  marinatingTime: 120,
   servings: 12,
   difficulty: 'Facile',
   ingredients: [
@@ -36,6 +37,13 @@ export const petitsPainsMaison: Recipe = {
     'Retirer les petits pains du four. Badigeonner de beurre fondu.'
   ],
   tags: ['pâte levée', 'moelleux', 'cuisson au four'],
-  marinatingTime: 120,
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/petits-pains-maison',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/petits-pains-maison',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/petits-pains-maison'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'petits-pains-maison'
 };
