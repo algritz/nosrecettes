@@ -59,6 +59,13 @@ export const poivronsTandoori: Recipe = {
     'En fin de cuisson, glisser les poivrons au-dessus de la flamme pour que la peau noircisse légèrement avant de servir.'
   ],
   tags: ['grill', 'épices', 'farcis'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poivrons-tandoori',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poivrons-tandoori',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poivrons-tandoori'
+    }
+  ],
   source: 'David Cloutier',
   slug: 'poivrons-tandoori'
 };
