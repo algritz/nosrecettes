@@ -35,7 +35,15 @@ export const saagAlooPommesDeTerreIndiennesAuxEpinards: Recipe = {
     'Verser le jus de citron, bien brasser et servir avec des pains naams.'
   ],
   tags: ['épinards', 'épices', 'cuisine indienne'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/saag-aloo-pommes-de-terre-indiennes-aux-epinards',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/saag-aloo-pommes-de-terre-indiennes-aux-epinards',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/saag-aloo-pommes-de-terre-indiennes-aux-epinards'
+    }
+  ],
   accompaniment: 'Pain naams',
+  source: 'David Cloutier',
   notes: 'En tout temps, s\'il en manque, n\'hésitez pas à rajouter de l\'huile d\'olive.',
   slug: 'saag-aloo-pommes-de-terre-indiennes-aux-epinards'
 };
