@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const cariDeBUfHache: Recipe = {
+export const cariDeBufHache: Recipe = {
   id: 'cari-de-b-uf-hache',
   title: 'Cari de bœuf haché',
   description: 'Un curry savoureux à base de bœuf haché, légumes et épices, servi avec du riz blanc.',
@@ -37,5 +37,13 @@ export const cariDeBUfHache: Recipe = {
     'Servez bien chaud avec du riz blanc.'
   ],
   tags: ['curry', 'épices', 'légumes'],
-  slug: 'cari-de-b-uf-hache'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/cari-de-b-uf-hache',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/cari-de-b-uf-hache',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/cari-de-b-uf-hache'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'cari-de-buf-hache'
 };
