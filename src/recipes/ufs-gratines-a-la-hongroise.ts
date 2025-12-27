@@ -31,5 +31,13 @@ export const ufsGratinesALaHongroise: Recipe = {
     'Faire cuire environ 10 minutes.'
   ],
   tags: ['fromage', 'mijoteuse', 'gratin'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/ufs-gratines-a-la-hongroise',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/ufs-gratines-a-la-hongroise',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/ufs-gratines-a-la-hongroise'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'ufs-gratines-a-la-hongroise'
 };
