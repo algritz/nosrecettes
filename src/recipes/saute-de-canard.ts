@@ -6,7 +6,7 @@ export const sauteDeCanard: Recipe = {
   description: 'Sauté de canard avec légumes sautés et sauce soja au miel, servi avec pâtes ou riz thaï.',
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: 15,
-  cookTime: 12,
+  cookTime: 15,
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -40,5 +40,13 @@ export const sauteDeCanard: Recipe = {
     'Servez sans attendre avec des pâtes chinoises aux œufs ou du riz thaï. Garnissez de coriandre ou persil plat.'
   ],
   tags: ['sauté', 'canard', 'asiatique'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/saute-de-canard',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/saute-de-canard',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/saute-de-canard'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'saute-de-canard'
 };
