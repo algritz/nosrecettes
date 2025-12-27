@@ -1,8 +1,8 @@
 import { Recipe } from '@/types/recipe';
 
-export const macEnCheeseBacon: Recipe = {
+export const macAndCheeseBacon: Recipe = {
   id: 'mac-en-cheese-bacon',
-  title: 'Mac en cheese bacon',
+  title: 'Mac and cheese bacon',
   description: '',
   categories: ['Plats principaux'],
   prepTime: 20,
@@ -29,5 +29,13 @@ export const macEnCheeseBacon: Recipe = {
     'Retirer du feu, ajouter les fromages et poivrer.'
   ],
   tags: ['bacon', 'fromage', 'pâtes'],
-  slug: 'mac-en-cheese-bacon'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/mac-en-cheese-bacon',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/mac-en-cheese-bacon',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/mac-en-cheese-bacon'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'mac-and-cheese-bacon'
 };
