@@ -30,5 +30,13 @@ export const sushiAuBacon: Recipe = {
     'Servez avec un extra de sauce B.B.Q.'
   ],
   tags: ['bacon', 'barbecue', 'roulé'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sushi-au-bacon',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sushi-au-bacon',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sushi-au-bacon'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'sushi-au-bacon'
 };
