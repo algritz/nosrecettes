@@ -35,5 +35,13 @@ export const boucheeDePommeDeTerre: Recipe = {
     'Servir.'
   ],
   tags: ['four', 'fromage', 'bacon'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/bouchee-de-pomme-de-terre',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/bouchee-de-pomme-de-terre',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/bouchee-de-pomme-de-terre'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'bouchee-de-pomme-de-terre'
 };
