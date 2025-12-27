@@ -45,5 +45,13 @@ export const manicottisDeBoeufEtEpinardsDeFanny: Recipe = {
     'Lorsque c\'est prêt, ajouter le fromage et gratiner à broil.'
   ],
   tags: ['bœuf', 'épinards', 'gratiner'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/manicottis-de-boeuf-et-epinards-de-fanny',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/manicottis-de-boeuf-et-epinards-de-fanny',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/manicottis-de-boeuf-et-epinards-de-fanny'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'manicottis-de-boeuf-et-epinards-de-fanny'
 };
