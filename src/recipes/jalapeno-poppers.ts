@@ -29,5 +29,6 @@ export const jalapenoPoppers: Recipe = {
     'Placer les jalapenos farcis sur une plaque à pâtisserie et cuire au four à 400˚F pendant 18-20 minutes, ou jusqu\'à ce que le fromage fonde de couleur dorée.'
   ],
   tags: ['fromage à la crème', 'bacon', 'grill'],
+  source: 'David Cloutier',
   slug: 'jalapeno-poppers'
 };
