@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const tartareDeBoeufALAsiatique: Recipe = {
+export const tartareDeBoeufALasiatique: Recipe = {
   id: 'tartare-de-boeuf-a-l-asiatique',
   title: 'Tartare de boeuf à l\'asiatique',
   description: 'Tartare de boeuf à l\'asiatique',
@@ -30,5 +30,13 @@ export const tartareDeBoeufALAsiatique: Recipe = {
     'Servir avec du pain ou des croûtons.'
   ],
   tags: ['asiatique', 'cru', 'marinade'],
-  slug: 'tartare-de-boeuf-a-l-asiatique'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-a-l-asiatique',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-a-l-asiatique',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-boeuf-a-l-asiatique'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'tartare-de-boeuf-a-lasiatique'
 };
