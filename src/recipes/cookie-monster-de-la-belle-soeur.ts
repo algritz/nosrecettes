@@ -6,7 +6,7 @@ export const cookieMonsterDeLaBelleSoeur: Recipe = {
   description: 'Une recette de cookies simple et gourmande avec beurre d\'arachides, gruau et chocolat, cuits à 325°F pendant 11 à 12 minutes.',
   categories: ['Pâtisseries et desserts'],
   prepTime: 15,
-  cookTime: 12,
+  cookTime: 15,
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -25,6 +25,14 @@ export const cookieMonsterDeLaBelleSoeur: Recipe = {
     'Cuire à 325°F de 11 à 12 minutes.'
   ],
   tags: ['cookies', 'pâtisserie', 'chocolat'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/cookie-monster-de-la-belle-soeur',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/cookie-monster-de-la-belle-soeur',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/cookie-monster-de-la-belle-soeur'
+    }
+  ],
+  source: 'David Cloutier',
   notes: 'Source: Edith Cloutier',
   slug: 'cookie-monster-de-la-belle-soeur'
 };
