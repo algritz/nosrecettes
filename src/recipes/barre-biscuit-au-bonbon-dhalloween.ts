@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const barreBiscuitAuBonbonDHalloween: Recipe = {
+export const barreBiscuitAuBonbonDhalloween: Recipe = {
   id: 'barre-biscuit-au-bonbon-d-halloween',
   title: 'Barre-biscuit au bonbon d\'Halloween',
   description: 'Une recette de biscuits aux bonbons d\'Halloween, croustillants et colorés, parfaits pour la fête.',
@@ -32,5 +32,13 @@ export const barreBiscuitAuBonbonDHalloween: Recipe = {
     'Laisser refroidir, puis couper en carrés.'
   ],
   tags: ['halloween', 'bonbons', 'gâteaux'],
-  slug: 'barre-biscuit-au-bonbon-d-halloween'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/barre-biscuit-au-bonbon-d-halloween',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/barre-biscuit-au-bonbon-d-halloween',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/barre-biscuit-au-bonbon-d-halloween'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'barre-biscuit-au-bonbon-dhalloween'
 };
