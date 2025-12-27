@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const magretDeCanardLaqueALErableEtAuxBleuets: Recipe = {
+export const magretDeCanardLaqueALerableEtAuxBleuets: Recipe = {
   id: 'magret-de-canard-laque-a-l-erable-et-aux-bleuets',
   title: 'Magret de canard laqué à l’érable et aux bleuets',
   description: 'Un magret de canard laqué à l’érable et aux bleuets, cuit au four pour une finition brillante et savoureuse.',
@@ -28,5 +28,13 @@ export const magretDeCanardLaqueALErableEtAuxBleuets: Recipe = {
     'Retirer la viande et laisser reposer sur une grille pendant 3 minutes avant de servir.'
   ],
   tags: ['canard', 'laqué', 'érable'],
-  slug: 'magret-de-canard-laque-a-l-erable-et-aux-bleuets'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/magret-de-canard-laque-a-l-erable-et-aux-bleuets',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/magret-de-canard-laque-a-l-erable-et-aux-bleuets',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/magret-de-canard-laque-a-l-erable-et-aux-bleuets'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'magret-de-canard-laque-a-lerable-et-aux-bleuets'
 };
