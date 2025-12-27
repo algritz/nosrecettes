@@ -26,5 +26,13 @@ export const poupounesAuCaramel: Recipe = {
     'Décongeler 10-15 minutes avant de servir.'
   ],
   tags: ['caramel', 'céréales', 'congélation'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poupounes-au-caramel',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poupounes-au-caramel',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poupounes-au-caramel'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'poupounes-au-caramel'
 };
