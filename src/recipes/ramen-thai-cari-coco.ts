@@ -40,5 +40,13 @@ export const ramenThaiCariCoco: Recipe = {
     'Répartir les nouilles et le bouillon dans des bols. Garnir de porc, d\'un œuf poché, de coriandre, d\'oignons verts et de graines de sésame.'
   ],
   tags: ['curry', 'lait de coco', 'ramen'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/ramen-thai-cari-coco',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/ramen-thai-cari-coco',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/ramen-thai-cari-coco'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'ramen-thai-cari-coco'
 };
