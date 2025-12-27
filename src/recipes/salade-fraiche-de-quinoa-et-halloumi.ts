@@ -35,5 +35,13 @@ export const saladeFraicheDeQuinoaEtHalloumi: Recipe = {
     'Coupez le fromage en dés et incorporez à la salade.'
   ],
   tags: ['quinoa', 'fromage grillé', 'salade'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-fraiche-de-quinoa-et-halloumi',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-fraiche-de-quinoa-et-halloumi',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-fraiche-de-quinoa-et-halloumi'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'salade-fraiche-de-quinoa-et-halloumi'
 };
