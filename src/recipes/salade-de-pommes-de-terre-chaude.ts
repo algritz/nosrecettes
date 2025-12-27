@@ -42,5 +42,13 @@ export const saladeDePommesDeTerreChaude: Recipe = {
     'Saler et poivrer au besoin.'
   ],
   tags: ['pomme de terre', 'four', 'sauce crémeuse'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-de-pommes-de-terre-chaude',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-de-pommes-de-terre-chaude',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-de-pommes-de-terre-chaude'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'salade-de-pommes-de-terre-chaude'
 };
