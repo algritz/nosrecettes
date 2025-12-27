@@ -1,6 +1,6 @@
 import { Recipe } from '@/types/recipe';
 
-export const bUfBourguignon: Recipe = {
+export const bufBourguignon: Recipe = {
   id: 'b-uf-bourguignon',
   title: 'Bœuf bourguignon',
   description: 'Un classique ragoût de bœuf mijoté avec légumes et épices, servi chaud.',
@@ -31,5 +31,13 @@ export const bUfBourguignon: Recipe = {
     'Une fois cuit, ajouter 1 c. à table de fécule de maïs dissoute dans 2 c. à table d\'eau pour épaissir.'
   ],
   tags: ['ragoût', 'mijoté', 'bœuf'],
-  slug: 'b-uf-bourguignon'
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/b-uf-bourguignon',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/b-uf-bourguignon',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/b-uf-bourguignon'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'buf-bourguignon'
 };
