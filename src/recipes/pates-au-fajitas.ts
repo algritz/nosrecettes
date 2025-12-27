@@ -36,5 +36,13 @@ export const patesAuFajitas: Recipe = {
     'Déguster.'
   ],
   tags: ['pâtes', 'fajitas', 'fromage'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pates-au-fajitas',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pates-au-fajitas',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pates-au-fajitas'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'pates-au-fajitas'
 };
