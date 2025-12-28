@@ -61,7 +61,7 @@
       // Check if this is a protected admin route that should show static 404
       var protectedAdminRoutes = ['/new-recipe', '/edit-recipe', '/manage-categories'];
       var currentPath = window.location.pathname;
-      
+
       // Check if user has GitHub config (authentication check)
       var hasGitHubConfig = false;
       try {
@@ -70,11 +70,11 @@
         // localStorage might not be available
         hasGitHubConfig = false;
       }
-      
+
       var isProtectedAdminRoute = protectedAdminRoutes.some(function(route) {
         return currentPath.startsWith(route);
       });
-      
+
       if (isProtectedAdminRoute && !hasGitHubConfig) {
         // For protected admin routes without authentication, show static 404 page
         document.addEventListener('DOMContentLoaded', function() {
@@ -82,7 +82,7 @@
         });
       } else {
         // For all other routes (including /admin), redirect to SPA for proper handling
-        var pathSegmentsToKeep = 1;
+        var pathSegmentsToKeep = 0;
         var l = window.location;
         
         l.replace(
