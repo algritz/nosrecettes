@@ -1,8 +1,8 @@
 {
-  "name": "Nos Recettes - 5 Recettes Québécoises",
+  "name": "Nos Recettes - 720 Recettes Québécoises",
   "short_name": "Nos Recettes",
-  "description": "Collection de 5 recettes québécoises traditionnelles et modernes avec instructions détaillées et images appétissantes.",
-  "start_url": "/nosrecettes/",
+  "description": "Collection de 720 recettes québécoises traditionnelles et modernes avec instructions détaillées et images appétissantes.",
+  "start_url": "https://nosrecettes.ca/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0f172a",
@@ -14,21 +14,21 @@
     "recipes"
   ],
   "lang": "fr-CA",
-  "scope": "/nosrecettes/",
+  "scope": "https://nosrecettes.ca/",
   "icons": [
     {
-      "src": "/nosrecettes/favicon.ico",
+      "src": "/favicon.ico",
       "sizes": "16x16 32x32",
       "type": "image/x-icon"
     },
     {
-      "src": "/nosrecettes/icon-192.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/nosrecettes/icon-512.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -36,14 +36,14 @@
   ],
   "screenshots": [
     {
-      "src": "/nosrecettes/screenshot-wide.png",
+      "src": "/screenshot-wide.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Accueil avec collection de recettes"
     },
     {
-      "src": "/nosrecettes/screenshot-narrow.png",
+      "src": "/screenshot-narrow.png",
       "sizes": "640x1136",
       "type": "image/png",
       "form_factor": "narrow",
@@ -55,10 +55,10 @@
       "name": "Rechercher des recettes",
       "short_name": "Recherche",
       "description": "Rechercher dans la collection de recettes",
-      "url": "/nosrecettes/?search=",
+      "url": "https://nosrecettes.ca/?search=",
       "icons": [
         {
-          "src": "/nosrecettes/icon-192.png",
+          "src": "/icon-192.png",
           "sizes": "192x192"
         }
       ]

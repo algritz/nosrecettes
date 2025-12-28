@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { siteConfig } from '@/config/site.config';
 
 interface SEOHeadProps {
   title: string;
@@ -20,7 +21,7 @@ export const SEOHead = ({
   structuredData
 }: SEOHeadProps) => {
   const siteName = 'Nos Recettes';
-  const baseUrl = import.meta.env.PROD ? 'https://algritz.github.io/nosrecettes' : 'http://localhost:8080';
+  const baseUrl = siteConfig.baseUrl;
   const fullUrl = url ? `${baseUrl}${url}` : baseUrl;
   const defaultImage = `${baseUrl}/images/og-default.jpg`;
   const ogImage = image || defaultImage;

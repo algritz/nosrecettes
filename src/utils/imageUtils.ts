@@ -1,4 +1,5 @@
 import { uploadToCloudinary, generateResponsiveImageUrls, CloudinaryConfig, scheduleImageCleanup, extractPublicIdFromUrl } from './cloudinaryUtils';
+import { siteConfig } from '@/config/site.config';
 
 export interface ImageSizes {
   small: string;
@@ -15,7 +16,7 @@ export interface ProcessedImage {
 
 // Get the base path for the current environment (for backward compatibility with local images)
 export const getBasePath = (): string => {
-  const basePath = import.meta.env.PROD ? "/nosrecettes" : "";
+  const basePath = siteConfig.basePath;
   return basePath;
 };
 

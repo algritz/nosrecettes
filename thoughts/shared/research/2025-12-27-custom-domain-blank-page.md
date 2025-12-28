@@ -5,10 +5,11 @@ git_commit: 2c86b46d64a93615ab4859caf335d24d86291062
 branch: main
 repository: nosrecettes
 topic: "Custom Domain Blank Page Issue - Asset Path Misconfiguration"
-tags: [research, codebase, vite, github-pages, deployment, custom-domain]
+tags: [research, codebase, vite, github-pages, deployment, custom-domain, seo]
 status: complete
 last_updated: 2025-12-27
 last_updated_by: Claude Code
+last_updated_note: "Added follow-up research for SEO script path generation"
 ---
 
 # Research: Custom Domain Blank Page Issue - Asset Path Misconfiguration
@@ -92,3 +93,64 @@ No previous research documents found for this issue.
 ## Open Questions
 - Is there a requirement to maintain support for both the default GitHub Pages URL and the custom domain simultaneously?
 - Should the build process detect the deployment target and adjust the base path accordingly?
+
+## Follow-up Research 2025-12-28T02:15:00+0000
+
+### Vite Config Fixed - Additional SEO Script Issue Found
+
+After fixing the Vite config base path to `/`, the user reported the page still loads blank with new console errors showing CORS issues and integrity mismatches.
+
+### SEO Build Script Path Hardcoding
+
+Investigation revealed that [scripts/generate-index-html.js](https://github.com/algritz/nosrecettes/blob/2c86b46d64a93615ab4859caf335d24d86291062/scripts/generate-index-html.js) contains hardcoded paths and URLs that still reference the old GitHub Pages structure:
+
+**Hardcoded URLs (lines 55, 58, 67, 70, 82, 115, 123, 130, 133, 152, 165):**
+```javascript
+"url": "https://algritz.github.io/nosrecettes/"
+```
+
+**Hardcoded icon paths (lines 85-94):**
+```javascript
+<link rel="icon" type="image/x-icon" href="/nosrecettes/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/nosrecettes/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/nosrecettes/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/nosrecettes/favicon-16x16.png" />
+<link rel="mask-icon" href="/nosrecettes/safari-pinned-tab.svg" color="#0f172a" />
+<link rel="manifest" href="/nosrecettes/manifest.json" />
+```
+
+### Build Process Sequence
+
+From [package.json:9](https://github.com/algritz/nosrecettes/blob/2c86b46d64a93615ab4859caf335d24d86291062/package.json#L9):
+```json
+"build": "npm run build:seo && vite build"
+```
+
+The build process:
+1. First runs `npm run build:seo` which calls [scripts/build-seo.js](https://github.com/algritz/nosrecettes/blob/2c86b46d64a93615ab4859caf335d24d86291062/scripts/build-seo.js)
+2. This generates [index.html](https://github.com/algritz/nosrecettes/blob/2c86b46d64a93615ab4859caf335d24d86291062/index.html) with hardcoded `/nosrecettes/` paths
+3. Then Vite builds the assets with the correct `/` base path
+4. Results in a mismatch where index.html references paths that don't match the Vite build output
+
+### Console Errors Observed
+
+From the user's screenshot, the errors include:
+- CORS policy errors from Cloudflare Insights beacon
+- Integrity mismatch errors for various assets
+- 404 errors for assets still using `/nosrecettes/` paths from the generated index.html
+
+### Additional Files to Check
+
+Other SEO-related scripts that may also contain hardcoded paths:
+- [scripts/generate-sitemap.js](scripts/generate-sitemap.js) - May contain URL hardcoding
+- [scripts/generate-manifest.js](scripts/generate-manifest.js) - May contain path hardcoding
+- [scripts/generate-browserconfig.js](scripts/generate-browserconfig.js) - May contain path hardcoding
+- [scripts/generate-robots.js](scripts/generate-robots.js) - May contain URL hardcoding
+
+### Root Cause Summary
+
+Two separate issues exist:
+1. **Vite base path** (FIXED by user) - Changed from `/nosrecettes/` to `/` in vite.config.ts
+2. **SEO script path generation** (STILL BROKEN) - The generate-index-html.js and potentially other SEO scripts hardcode the old paths, generating an index.html that references non-existent `/nosrecettes/` paths
+
+Both need to be updated to use the custom domain URL (`https://nosrecettes.ca`) and root paths (`/`) instead of the old GitHub Pages structure.

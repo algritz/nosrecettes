@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { getAssetUrl } from './site.config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,7 +13,7 @@ export function generateBrowserConfig() {
 <browserconfig>
     <msapplication>
         <tile>
-            <square150x150logo src="/nosrecettes/mstile-150x150.png"/>
+            <square150x150logo src="${getAssetUrl('mstile-150x150.png')}"/>
             <TileColor>#0f172a</TileColor>
         </tile>
     </msapplication>

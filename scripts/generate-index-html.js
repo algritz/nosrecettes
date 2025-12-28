@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { getRecipeFiles, getRecipeData } from './generate-sitemap.js';
+import { siteConfig, getFullUrl, getAssetUrl } from './site.config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -52,22 +53,22 @@ export function generateIndexHTML() {
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://algritz.github.io/nosrecettes/" />
+    <meta property="og:url" content="${siteConfig.baseUrl}/" />
     <meta property="og:title" content="Nos Recettes - ${recipeCount} Recettes Québécoises Authentiques" />
     <meta property="og:description" content="Découvrez notre collection de ${recipeCount} recettes québécoises traditionnelles et modernes. Instructions détaillées, temps de préparation, et images pour chaque recette." />
-    <meta property="og:image" content="https://algritz.github.io/nosrecettes/images/og-default.jpg" />
+    <meta property="og:image" content="${getFullUrl('/images/og-default.jpg')}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Nos Recettes" />
     <meta property="og:locale" content="fr_CA" />
     <meta property="og:updated_time" content="${currentDate}" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://algritz.github.io/nosrecettes/" />
+    <meta name="twitter:url" content="${siteConfig.baseUrl}/" />
     <meta name="twitter:title" content="Nos Recettes - ${recipeCount} Recettes Québécoises" />
     <meta name="twitter:description" content="Collection de ${recipeCount} recettes québécoises avec instructions détaillées et images." />
-    <meta name="twitter:image" content="https://algritz.github.io/nosrecettes/images/og-default.jpg" />
+    <meta name="twitter:image" content="${getFullUrl('/images/og-default.jpg')}" />
     <meta name="twitter:image:alt" content="Nos Recettes - Collection de recettes québécoises" />
     
     <!-- Additional SEO Meta Tags -->
@@ -79,19 +80,19 @@ export function generateIndexHTML() {
     <meta name="referrer" content="origin-when-cross-origin" />
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://algritz.github.io/nosrecettes/" />
-    
+    <link rel="canonical" href="${siteConfig.baseUrl}/" />
+
     <!-- Favicon and Icons -->
-    <link rel="icon" type="image/x-icon" href="/nosrecettes/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/nosrecettes/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/nosrecettes/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/nosrecettes/favicon-16x16.png" />
-    <link rel="mask-icon" href="/nosrecettes/safari-pinned-tab.svg" color="#0f172a" />
+    <link rel="icon" type="image/x-icon" href="${getAssetUrl('favicon.ico')}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="${getAssetUrl('apple-touch-icon.png')}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="${getAssetUrl('favicon-32x32.png')}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="${getAssetUrl('favicon-16x16.png')}" />
+    <link rel="mask-icon" href="${getAssetUrl('safari-pinned-tab.svg')}" color="#0f172a" />
     <meta name="msapplication-TileColor" content="#0f172a" />
-    <meta name="msapplication-config" content="/nosrecettes/browserconfig.xml" />
-    
+    <meta name="msapplication-config" content="${getAssetUrl('browserconfig.xml')}" />
+
     <!-- Web App Manifest -->
-    <link rel="manifest" href="/nosrecettes/manifest.json" />
+    <link rel="manifest" href="${getAssetUrl('manifest.json')}" />
     <meta name="theme-color" content="#0f172a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -112,7 +113,7 @@ export function generateIndexHTML() {
       "name": "Nos Recettes",
       "alternateName": "Collection de Recettes Québécoises",
       "description": "Collection de ${recipeCount} recettes québécoises traditionnelles et modernes. Découvrez des plats authentiques avec des instructions détaillées et des images appétissantes.",
-      "url": "https://algritz.github.io/nosrecettes/",
+      "url": "${siteConfig.baseUrl}/",
       "dateModified": "${currentDate}",
       "inLanguage": "fr-CA",
       "isAccessibleForFree": true,
@@ -120,17 +121,17 @@ export function generateIndexHTML() {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://algritz.github.io/nosrecettes/?search={search_term_string}"
+          "urlTemplate": "${siteConfig.baseUrl}/?search={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       },
       "publisher": {
         "@type": "Organization",
         "name": "Nos Recettes",
-        "url": "https://algritz.github.io/nosrecettes/",
+        "url": "${siteConfig.baseUrl}/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://algritz.github.io/nosrecettes/icon-512.png"
+          "url": "${getFullUrl('/icon-512.png')}"
         }
       },
       "mainEntity": {
@@ -141,7 +142,7 @@ export function generateIndexHTML() {
       }
     }
     </script>
-    
+
     <!-- Additional Structured Data for Recipe Collection -->
     <script type="application/ld+json">
     {
@@ -149,7 +150,7 @@ export function generateIndexHTML() {
       "@type": "CollectionPage",
       "name": "Collection de Recettes Québécoises",
       "description": "Découvrez ${recipeCount} recettes authentiques du Québec avec instructions détaillées",
-      "url": "https://algritz.github.io/nosrecettes/",
+      "url": "${siteConfig.baseUrl}/",
       "mainEntity": {
         "@type": "ItemList",
         "numberOfItems": ${recipeCount},
@@ -162,7 +163,7 @@ export function generateIndexHTML() {
             "@type": "ListItem",
             "position": 1,
             "name": "Accueil",
-            "item": "https://algritz.github.io/nosrecettes/"
+            "item": "${siteConfig.baseUrl}/"
           }
         ]
       }

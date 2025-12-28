@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { getRecipeFiles } from './generate-sitemap.js';
+import { getFullUrl, getAssetUrl } from './site.config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,28 +17,28 @@ export function generateManifest() {
     "name": `Nos Recettes - ${recipeCount} Recettes Québécoises`,
     "short_name": "Nos Recettes",
     "description": `Collection de ${recipeCount} recettes québécoises traditionnelles et modernes avec instructions détaillées et images appétissantes.`,
-    "start_url": "/nosrecettes/",
+    "start_url": getFullUrl('/'),
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0f172a",
     "orientation": "portrait-primary",
     "categories": ["food", "lifestyle", "cooking", "recipes"],
     "lang": "fr-CA",
-    "scope": "/nosrecettes/",
+    "scope": getFullUrl('/'),
     "icons": [
       {
-        "src": "/nosrecettes/favicon.ico",
+        "src": getAssetUrl('favicon.ico'),
         "sizes": "16x16 32x32",
         "type": "image/x-icon"
       },
       {
-        "src": "/nosrecettes/icon-192.png",
+        "src": getAssetUrl('icon-192.png'),
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any maskable"
       },
       {
-        "src": "/nosrecettes/icon-512.png",
+        "src": getAssetUrl('icon-512.png'),
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any maskable"
@@ -45,14 +46,14 @@ export function generateManifest() {
     ],
     "screenshots": [
       {
-        "src": "/nosrecettes/screenshot-wide.png",
+        "src": getAssetUrl('screenshot-wide.png'),
         "sizes": "1280x720",
         "type": "image/png",
         "form_factor": "wide",
         "label": "Accueil avec collection de recettes"
       },
       {
-        "src": "/nosrecettes/screenshot-narrow.png",
+        "src": getAssetUrl('screenshot-narrow.png'),
         "sizes": "640x1136",
         "type": "image/png",
         "form_factor": "narrow",
@@ -64,10 +65,10 @@ export function generateManifest() {
         "name": "Rechercher des recettes",
         "short_name": "Recherche",
         "description": "Rechercher dans la collection de recettes",
-        "url": "/nosrecettes/?search=",
+        "url": getFullUrl('/?search='),
         "icons": [
           {
-            "src": "/nosrecettes/icon-192.png",
+            "src": getAssetUrl('icon-192.png'),
             "sizes": "192x192"
           }
         ]

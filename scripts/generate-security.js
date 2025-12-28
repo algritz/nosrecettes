@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { siteConfig } from './site.config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,12 +12,12 @@ export function generateSecurityTxt() {
   const currentYear = new Date().getFullYear();
   const expiryDate = new Date();
   expiryDate.setFullYear(currentYear + 1);
-  
+
   const securityContent = `Contact: https://github.com/algritz/nosrecettes/security/advisories/new
 Expires: ${expiryDate.toISOString()}
 Acknowledgments: https://github.com/algritz/nosrecettes/security/advisories
 Preferred-Languages: fr, en
-Canonical: https://algritz.github.io/nosrecettes/.well-known/security.txt
+Canonical: ${siteConfig.baseUrl}/.well-known/security.txt
 Policy: https://github.com/algritz/nosrecettes/blob/main/SECURITY.md
 
 # This is a recipe sharing website built with React and TypeScript

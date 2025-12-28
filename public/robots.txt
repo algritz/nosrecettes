@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://algritz.github.io/nosrecettes/sitemap.xml
+Sitemap: https://nosrecettes.ca/sitemap.xml
 
 # Crawl-delay for politeness
 Crawl-delay: 1
@@ -21,4 +21,4 @@ Disallow: /cgi-bin/
 Disallow: /tmp/
 Disallow: /private/
 
-# Generated on: 2025-09-25T18:42:41.900Z
+# Generated on: 2025-12-28T02:32:11.913Z

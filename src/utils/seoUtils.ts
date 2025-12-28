@@ -1,9 +1,10 @@
 import { Recipe, IngredientSection, InstructionSection } from '@/types/recipe';
 import { getResponsiveImageSrc } from './imageUtils';
 import { formatTime } from './timeFormat';
+import { siteConfig } from '@/config/site.config';
 
 export const generateRecipeStructuredData = (recipe: Recipe) => {
-  const baseUrl = import.meta.env.PROD ? 'https://algritz.github.io/nosrecettes' : 'http://localhost:8080';
+  const baseUrl = siteConfig.baseUrl;
   
   // Get ingredients as flat array
   const getIngredientsArray = (): string[] => {
@@ -97,8 +98,8 @@ export const generateRecipeStructuredData = (recipe: Recipe) => {
 };
 
 export const generateWebsiteStructuredData = () => {
-  const baseUrl = import.meta.env.PROD ? 'https://algritz.github.io/nosrecettes' : 'http://localhost:8080';
-  
+  const baseUrl = siteConfig.baseUrl;
+
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -122,8 +123,8 @@ export const generateWebsiteStructuredData = () => {
 };
 
 export const generateBreadcrumbStructuredData = (items: Array<{ name: string; url?: string }>) => {
-  const baseUrl = import.meta.env.PROD ? 'https://algritz.github.io/nosrecettes' : 'http://localhost:8080';
-  
+  const baseUrl = siteConfig.baseUrl;
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

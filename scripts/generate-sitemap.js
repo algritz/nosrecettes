@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { siteConfig } from './site.config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -65,7 +66,7 @@ export function getRecipeData(filename) {
 
 // Generate sitemap XML
 export function generateSitemap() {
-  const baseUrl = 'https://algritz.github.io/nosrecettes';
+  const baseUrl = siteConfig.baseUrl;
   const currentDate = new Date().toISOString().split('T')[0];
   
   const recipeFiles = getRecipeFiles();
