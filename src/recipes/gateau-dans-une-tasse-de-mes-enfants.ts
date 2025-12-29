@@ -27,5 +27,13 @@ export const gateauDansUneTasseDeMesEnfants: Recipe = {
     'Laisse tiédir 5 minutes et déguster.'
   ],
   tags: ['micro-ondes', 'chocolat', 'rapide'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/gateau-dans-une-tasse-de-mes-enfants',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/gateau-dans-une-tasse-de-mes-enfants',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/gateau-dans-une-tasse-de-mes-enfants'
+    }
+  ],
+  source: 'David Cloutier',
   slug: 'gateau-dans-une-tasse-de-mes-enfants'
 };
