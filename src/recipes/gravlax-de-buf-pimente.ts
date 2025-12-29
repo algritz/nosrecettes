@@ -1,12 +1,13 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
-export const gravlaxDeBUfPimente: Recipe = {
+export const gravlaxDeBufPimente: Recipe = {
   id: 'gravlax-de-b-uf-pimente',
   title: 'Gravlax de bœuf pimenté',
   description: '',
-  categories: ['Végétarien'],
+  categories: ['Boeuf', 'Entrées'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 0, max: 0 },
+  marinatingTime: { min: 1440, max: 1440 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -16,7 +17,7 @@ export const gravlaxDeBUfPimente: Recipe = {
     '3 c. à soupe de basilic haché',
     '2 piments extra-forts frais jalapenos haché finement',
     'Le zeste de 1 citron',
-    'Huile d’olive',
+    'Huile d’olive'
   ],
   instructions: [
     'Mélanger le gros sel, le poivre, le basilic, le zeste et les jalapenos',
@@ -24,9 +25,9 @@ export const gravlaxDeBUfPimente: Recipe = {
     'Couvrir et y mettre un poids pour le presser et réfrigérer 24 heures.',
     'Le lendemain, gratter le surplus du mélange de sel avec une brosse puis rincer à l’eau froide et sécher la viande avec du papier absorbant.',
     'Trancher finement le filet.',
-    'Servir arrosé d’un trait d’huile d’olive.',
+    'Servir arrosé d’un trait d’huile d’olive.'
   ],
   tags: ['pimenté', 'marinade sèche', 'bœuf'],
-  marinatingTime: { min: 1440, max: 1440 },
-  slug: 'gravlax-de-b-uf-pimente',
-}
+  source: 'David Cloutier',
+  slug: 'gravlax-de-buf-pimente'
+};
