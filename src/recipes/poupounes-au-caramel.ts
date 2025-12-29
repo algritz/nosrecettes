@@ -4,7 +4,7 @@ export const poupounesAuCaramel: Recipe = {
   id: 'poupounes-au-caramel',
   title: 'Poupounes au Caramel',
   description: 'Une recette de friandises enrobées de caramel et céréales Rice Krispies, façonnées en boules et congelées.',
-  categories: ['Déjeuners'],
+  categories: ['Desserts'],
   prepTime: { min: 60, max: 60 },
   cookTime: { min: 15, max: 15 },
   servings: 55,
