@@ -1,11 +1,10 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
-export const boulettesDePouletEtLegumesAvecSauceALArachide: Recipe = {
+export const boulettesDePouletEtLegumesAvecSauceALarachide: Recipe = {
   id: 'boulettes-de-poulet-et-legumes-avec-sauce-a-l-arachide',
   title: 'Boulettes de poulet et légumes avec sauce à l’arachide',
-  description:
-    'Recette de boulettes de poulet et légumes servies avec une sauce à l’arachide crémeuse, mijotée avec des légumes et du lait de coco.',
-  categories: ['Plats principaux', 'Végétarien'],
+  description: 'Recette de boulettes de poulet et légumes servies avec une sauce à l’arachide crémeuse, mijotée avec des légumes et du lait de coco.',
+  categories: ['Plats principaux', 'Vollaille'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
   servings: 4,
@@ -28,7 +27,7 @@ export const boulettesDePouletEtLegumesAvecSauceALArachide: Recipe = {
     '2/3 de tasse de beurre d’arachide crémeux',
     '1/4 de tasse de bouillon de poulet',
     '2 c. à soupe de pâte de tomates',
-    '2 oignons verts émincés',
+    '2 oignons verts émincés'
   ],
   instructions: [
     'Dans un bol, mélanger les ingrédients des boulettes. Façonner 24 boulettes en utilisant 2 c. à soupe de préparation pour chacune d’elles.',
@@ -37,8 +36,9 @@ export const boulettesDePouletEtLegumesAvecSauceALArachide: Recipe = {
     'Ajouter les échalotes, le gingembre et l’ail. Poursuivre la cuisson 1 minute.',
     'Ajouter le poivron, les carottes, le lait de coco, le beurre d’arachide, le bouillon de poulet et la pâte de tomates. Remuer.',
     'Porter à ébullition et remettre les boulettes puis laisser mijoter de 10 à 12 minutes, jusqu’à ce que l’intérieur des boulettes ait perdu sa teinte rosée.',
-    'Au moment de servir, parsemer d’oignons verts.',
+    'Au moment de servir, parsemer d’oignons verts.'
   ],
   tags: ['arachide', 'mijoteuse', 'lait de coco'],
-  slug: 'boulettes-de-poulet-et-legumes-avec-sauce-a-l-arachide',
-}
+  source: 'David Cloutier',
+  slug: 'boulettes-de-poulet-et-legumes-avec-sauce-a-larachide'
+};
