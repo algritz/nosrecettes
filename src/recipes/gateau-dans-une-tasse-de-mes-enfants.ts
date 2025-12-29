@@ -4,7 +4,7 @@ export const gateauDansUneTasseDeMesEnfants: Recipe = {
   id: 'gateau-dans-une-tasse-de-mes-enfants',
   title: 'Gâteau dans une tasse de mes enfants',
   description: 'Un gâteau au chocolat rapide et facile à préparer dans une tasse, parfait pour une personne.',
-  categories: ['Déjeuners'],
+  categories: ['Desserts'],
   prepTime: { min: 5, max: 5 },
   cookTime: { min: 1, max: 1 },
   servings: 1,
