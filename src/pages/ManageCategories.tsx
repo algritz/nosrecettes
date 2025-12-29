@@ -24,8 +24,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { useOnlineStatus } from '@/hooks/useOnlineStatus';
+import { OfflineFallback } from '@/components/OfflineFallback';
 
 const ManageCategories = () => {
+  const isOnline = useOnlineStatus();
   const navigate = useNavigate();
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [newCategoryName, setNewCategoryName] = useState('');
@@ -35,7 +38,7 @@ const ManageCategories = () => {
   // Get all categories from existing recipes and merge with defaults (same as recipe forms)
   const existingRecipeCategories = recipes.flatMap(recipe => getRecipeCategories(recipe));
   const allCategories = Array.from(new Set([...recipeCategories, ...existingRecipeCategories])).sort();
-  
+
   const { categories, addCategory, removeCategory, getChangesForPR, hasChanges, clearChanges } = useCategoryManager(allCategories);
 
   // Get category usage counts using the utility function
@@ -59,6 +62,10 @@ const ManageCategories = () => {
     }
     setConfigChecked(true);
   }, []);
+
+  if (!isOnline) {
+    return <OfflineFallback />;
+  }
 
   // Show 404 if no GitHub config
   if (configChecked && !githubConfig) {

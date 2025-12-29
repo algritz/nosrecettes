@@ -5,8 +5,11 @@ import { ArrowLeft } from 'lucide-react';
 import { GitHubSetup } from '@/components/GitHubSetup';
 import { CloudinarySetup } from '@/components/CloudinarySetup';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useOnlineStatus } from '@/hooks/useOnlineStatus';
+import { OfflineFallback } from '@/components/OfflineFallback';
 
 const Admin = () => {
+  const isOnline = useOnlineStatus();
   const [githubConfig, setGithubConfig] = useState<{ owner: string; repo: string; token: string } | null>(null);
   const [cloudinaryConfig, setCloudinaryConfig] = useState<{ cloudName: string; uploadPreset: string } | null>(null);
 
@@ -31,6 +34,10 @@ const Admin = () => {
   const handleCloudinaryConfigSaved = (config: { cloudName: string; uploadPreset: string }) => {
     setCloudinaryConfig(config);
   };
+
+  if (!isOnline) {
+    return <OfflineFallback />;
+  }
 
   const isFullyConfigured = githubConfig && cloudinaryConfig;
 

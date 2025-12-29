@@ -19,8 +19,11 @@ import { recipes } from '@/data/recipes';
 import { recipeCategories } from '@/data/categories';
 import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils';
 import { NotFound } from '@/components/NotFound';
+import { useOnlineStatus } from '@/hooks/useOnlineStatus';
+import { OfflineFallback } from '@/components/OfflineFallback';
 
 const NewRecipe = () => {
+  const isOnline = useOnlineStatus();
   const navigate = useNavigate();
   const [recipe, setRecipe] = useState({
     title: '',
@@ -46,7 +49,7 @@ const NewRecipe = () => {
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
   const [configChecked, setConfigChecked] = useState(false);
   const [showJSONImporter, setShowJSONImporter] = useState(false);
-  
+
   // New state for sectioned ingredients and instructions
   const [useSectionedIngredients, setUseSectionedIngredients] = useState(false);
   const [useSectionedInstructions, setUseSectionedInstructions] = useState(false);
@@ -70,6 +73,10 @@ const NewRecipe = () => {
     const allCategories = Array.from(new Set([...recipeCategories, ...existingCategories])).sort();
     setAvailableCategories(allCategories);
   }, []);
+
+  if (!isOnline) {
+    return <OfflineFallback />;
+  }
 
   // Show 404 if no GitHub config
   if (configChecked && !githubConfig) {

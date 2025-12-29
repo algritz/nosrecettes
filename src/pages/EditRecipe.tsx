@@ -29,8 +29,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { useOnlineStatus } from '@/hooks/useOnlineStatus';
+import { OfflineFallback } from '@/components/OfflineFallback';
 
 const EditRecipe = () => {
+  const isOnline = useOnlineStatus();
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const existingRecipe = recipes.find(r => r.slug === slug);
@@ -142,6 +145,10 @@ const EditRecipe = () => {
       });
     }
   }, [existingRecipe, slug, navigate]);
+
+  if (!isOnline) {
+    return <OfflineFallback />;
+  }
 
   if (!existingRecipe) {
     return <NotFound />;
