@@ -4,7 +4,7 @@ export const painMaisonFacileAFaire: Recipe = {
   id: 'pain-maison-facile-a-faire',
   title: 'Pain maison facile à faire',
   description: 'Pain maison facile à faire',
-  categories: ['Pains'],
+  categories: ['Pain'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 35, max: 35 },
   servings: 2,
@@ -30,5 +30,6 @@ export const painMaisonFacileAFaire: Recipe = {
     'Préchauffer le four à 375 degrés F et cuire au four de 30 à 35 minutes.'
   ],
   tags: ['pain maison', 'levure', 'pâte'],
+  source: 'David Cloutier',
   slug: 'pain-maison-facile-a-faire'
 };
