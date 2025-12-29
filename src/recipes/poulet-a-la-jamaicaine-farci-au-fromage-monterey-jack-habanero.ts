@@ -4,7 +4,7 @@ export const pouletALaJamaicaineFarciAuFromageMontereyJackHabanero: Recipe = {
   id: 'poulet-a-la-jamaicaine-farci-au-fromage-monterey-jack-habanero',
   title: 'Poulet à la jamaïcaine farci au fromage Monterey Jack Habanero',
   description: 'Recette pleine de saveur.',
-  categories: ['Vollaille', 'Plats principaux', 'Accompagnements'],
+  categories: ['Vollaille', 'Plats principaux'],
   prepTime: 30,
   cookTime: 30,
   servings: 4,
@@ -58,5 +58,6 @@ export const pouletALaJamaicaineFarciAuFromageMontereyJackHabanero: Recipe = {
     'Servir le poulet sur un lit de riz et de haricots, puis garnir de quartiers de lime.'
   ],
   tags: ['jamaïque', 'marinade', 'grill'],
+  source: 'David Cloutier',
   slug: 'poulet-a-la-jamaicaine-farci-au-fromage-monterey-jack-habanero'
 };
