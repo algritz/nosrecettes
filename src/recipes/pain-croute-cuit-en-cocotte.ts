@@ -4,7 +4,7 @@ export const painCrouteCuitEnCocotte: Recipe = {
   id: 'pain-croute-cuit-en-cocotte',
   title: 'Pain crouté cuit en cocotte',
   description: 'Un pain maison à croûte dure, comme à l\'épicerie.',
-  categories: ['Pain', 'Cuisson sous-vide'],
+  categories: ['Pain'],
   prepTime: 20,
   cookTime: 40,
   servings: 1,
@@ -29,5 +29,6 @@ export const painCrouteCuitEnCocotte: Recipe = {
     'Laisser tiédir sur une grille.'
   ],
   tags: ['pain maison', 'cocotte', 'croûte dure'],
+  source: 'David Cloutier',
   slug: 'pain-croute-cuit-en-cocotte'
 };
