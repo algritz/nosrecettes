@@ -4,7 +4,7 @@ export const madamePatate: Recipe = {
   id: 'madame-patate',
   title: 'Madame Patate',
   description: 'Une explosion de saveur Madame Patate',
-  categories: ['Végétarien', 'Entrées'],
+  categories: ['Végétarien', 'Accompagnements'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 60, max: 60 },
   servings: 4,
