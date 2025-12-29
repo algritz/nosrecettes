@@ -1,10 +1,10 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const quicheDePommeDeTerreBaconEtPoireau: Recipe = {
   id: 'quiche-de-pomme-de-terre-bacon-et-poireau',
   title: 'Quiche de pomme de terre, bacon et poireau',
-  description: "Une quiche qui sort de l'ordinaire",
-  categories: ['Plats principaux', 'Végétarien'],
+  description: 'Une quiche qui sort de l\'ordinaire',
+  categories: ['Plats principaux', 'Porc'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 80, max: 80 },
   servings: 8,
@@ -20,10 +20,10 @@ export const quicheDePommeDeTerreBaconEtPoireau: Recipe = {
     'environ 1 gros poireau',
     '150 g de bacon haché en petit morceau',
     '1 demi oignon blanc',
-    'Un peu de fromage râpé',
+    'Un peu de fromage râpé'
   ],
   instructions: [
-    "Cuire les pommes de terre environ 30 minutes dans l'eau bouillante salée.",
+    'Cuire les pommes de terre environ 30 minutes dans l\'eau bouillante salée.',
     'Place les pommes de terre cuites dans un moule à tarte et écrase-les avec le fond d’un verre.',
     'Badigeonner avec les 50 ml d’huile d’olive avec un pinceau.',
     'Enfourner 40 min à 350F (en surveillant et en modifiant en fonction de l’épaisseur du fond de tarte en pomme de terre, et en fonction du four).',
@@ -33,8 +33,9 @@ export const quicheDePommeDeTerreBaconEtPoireau: Recipe = {
     'Mélanger dans un récipient le yogourt grec, les œufs, la moutarde, le parmesan et le lait.',
     'Ajouter ce mélange sur la quiche.',
     'Ajouter un peu de fromage râpé puis enfourner environ 30 à 40 minutes à 350F.',
-    'Laisser reposer quelques minutes et servir.',
+    'Laisser reposer quelques minutes et servir.'
   ],
   tags: ['quiche', 'pomme de terre', 'bacon'],
-  slug: 'quiche-de-pomme-de-terre-bacon-et-poireau',
-}
+  source: 'David Cloutier',
+  slug: 'quiche-de-pomme-de-terre-bacon-et-poireau'
+};
