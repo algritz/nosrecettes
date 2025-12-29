@@ -4,7 +4,7 @@ export const pitaDeJambonALaSalsa: Recipe = {
   id: 'pita-de-jambon-a-la-salsa',
   title: 'Pita de jambon à la salsa',
   description: 'Une recette simple et fraîche pour utiliser des restes de jambon, garnie de salsa et de sauce crémeuse dans des pita.',
-  categories: ['Sandwichs', 'Entrées'],
+  categories: ['Sandwichs', 'Plats principaux'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 0, max: 0 },
   servings: 4,
@@ -36,5 +36,6 @@ export const pitaDeJambonALaSalsa: Recipe = {
     'Napper de sauce.'
   ],
   tags: ['salsa', 'sauce crémeuse', 'passer des restes'],
+  source: 'David Cloutier',
   slug: 'pita-de-jambon-a-la-salsa'
 };
