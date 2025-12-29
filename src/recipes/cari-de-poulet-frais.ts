@@ -1,17 +1,16 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const cariDePouletFrais: Recipe = {
   id: 'cari-de-poulet-frais',
   title: 'Cari de poulet frais',
-  description:
-    "Un curry de poulet parfumé avec un mélange d'épices, lait de coco, tomates et aromates, servi avec du riz basmati.",
-  categories: ['Plats principaux', 'Végétarien'],
+  description: 'Un curry de poulet parfumé avec un mélange d\'épices, lait de coco, tomates et aromates, servi avec du riz basmati.',
+  categories: ['Plats principaux', 'Vollaille'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
-    "Mélange d'épice au cari",
+    'Mélange d\'épice au cari',
     '15 ml de gingembre frais, râpé',
     '2 gousses d’ail, hachées',
     '2,5 ml de cumin',
@@ -30,18 +29,19 @@ export const cariDePouletFrais: Recipe = {
     '1 pomme verte, en fines allumettes',
     'Basilic Thai ou basilic régulier ou coriandre, ciselé',
     '1 piment chili, émincé finement',
-    '1 lime, coupée en quartiers',
+    '1 lime, coupée en quartiers'
   ],
   instructions: [
-    "Dans un petit bol, bien mélanger tous les ingrédients du mélange d'épice au cari. Réserver.",
+    'Dans un petit bol, bien mélanger tous les ingrédients du mélange d\'épice au cari. Réserver.',
     'Dans une grande poêle, à feu moyen-élevé, saisir les cubes de poulet assaisonnés de sel et de poivre rapidement dans l’huile. Réserver dans une assiette.',
     'Ajouter les oignons et un peu d’huile au besoin, poursuivre la cuisson jusqu’à ce qu’ils soient tendres.',
-    "Ajouter la mélange d'épice de cari et poursuivre la cuisson 2 minutes en mélangeant bien.",
+    'Ajouter la mélange d\'épice de cari et poursuivre la cuisson 2 minutes en mélangeant bien.',
     'Ajouter le lait de coco, la pâte de tomate et bien mélanger.',
     'Ajouter le poulet réservé, les dés de tomates et poursuivre la cuisson encore 10 minutes à feu très doux.',
     'Rectifier l’assaisonnement.',
-    'Servir garni de pommes allumettes, de basilic et de piments chili.',
+    'Servir garni de pommes allumettes, de basilic et de piments chili.'
   ],
   tags: ['épicé', 'curry', 'poulet'],
-  slug: 'cari-de-poulet-frais',
-}
+  source: 'David Cloutier',
+  slug: 'cari-de-poulet-frais'
+};
