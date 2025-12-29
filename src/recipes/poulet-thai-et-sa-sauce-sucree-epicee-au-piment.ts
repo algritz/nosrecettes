@@ -1,10 +1,10 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const pouletThaiEtSaSauceSucreeEpiceeAuPiment: Recipe = {
   id: 'poulet-thai-et-sa-sauce-sucree-epicee-au-piment',
   title: 'Poulet thaï et sa sauce sucrée-épicée au piment',
   description: '',
-  categories: ['Vollaille', 'Sauces', 'Barbecue'],
+  categories: ['Vollaille', 'Barbecue'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 30, max: 30 },
   servings: 4,
@@ -23,7 +23,7 @@ export const pouletThaiEtSaSauceSucreeEpiceeAuPiment: Recipe = {
     '4 c. à soupe de sucre',
     '1 c. à thé d’ail émincé',
     '1/2 c. à thé de petit piment rouge, haché',
-    '1/4 c. à thé de sel',
+    '1/4 c. à thé de sel'
   ],
   instructions: [
     'Dans un plat peu profond, combiner le lait de coco, la sauce de poisson, 2 c. à soupe d’ail émincé, la coriandre, le curcuma, la poudre de cari et le poivre blanc. Ajouter le poulet et mélanger. Couvrir et réfrigérer 4 heures, ou toute une nuit.',
@@ -32,8 +32,9 @@ export const pouletThaiEtSaSauceSucreeEpiceeAuPiment: Recipe = {
     'Huiler légèrement la grille du barbecue.',
     'Jeter la marinade du poulet et placer celui-ci sur la grille chaude.',
     'Cuire 10 minutes de chaque côté, ou jusqu’à ce que le poulet ne soit plus rose en son centre.',
-    'Badigeonner de sauce avant de servir et servir avec le reste de sauce.',
+    'Badigeonner de sauce avant de servir et servir avec le reste de sauce.'
   ],
   tags: ['coco', 'marinade', 'barbecue'],
-  slug: 'poulet-thai-et-sa-sauce-sucree-epicee-au-piment',
-}
+  source: 'David Cloutier',
+  slug: 'poulet-thai-et-sa-sauce-sucree-epicee-au-piment'
+};
