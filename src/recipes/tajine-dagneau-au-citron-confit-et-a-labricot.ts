@@ -1,33 +1,32 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
-export const tajineDAgneauAuCitronConfitEtALAbricot: Recipe = {
+export const tajineDagneauAuCitronConfitEtALabricot: Recipe = {
   id: 'tajine-d-agneau-au-citron-confit-et-a-l-abricot',
-  title: "Tajine d'agneau au citron confit et à l'abricot",
-  description:
-    "Un tajine savoureux d'agneau avec citron confit et abricots, mijoté lentement pour une tendreté optimale.",
-  categories: ['Plats principaux', 'Vollaille'],
+  title: 'Tajine d\'agneau au citron confit et à l\'abricot',
+  description: 'Un tajine savoureux d\'agneau avec citron confit et abricots, mijoté lentement pour une tendreté optimale.',
+  categories: ['Plats principaux', 'Agneau'],
   prepTime: { min: 30, max: 30 },
   cookTime: { min: 150, max: 150 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
-    "1,2 kg d'épaule d'agneau désossée, coupée en gros dés",
+    '1,2 kg d\'épaule d\'agneau désossée, coupée en gros dés',
     '15 ml de ras-el-hanout',
     '5 ml de paprika',
     '5 ml de gingembre frais, râpé',
     '2 citrons confits, coupés en deux',
-    "315 ml d'abricots secs",
+    '315 ml d\'abricots secs',
     '1 gros oignon, haché',
-    "2 gousses d'ail, pelées et écrasées",
-    "15 ml d'huile d'olive",
+    '2 gousses d\'ail, pelées et écrasées',
+    '15 ml d\'huile d\'olive',
     '15 ml de coriandre fraîche, concassée',
     '500 ml de vin blanc',
     '8 ml de coriandre entière, séchée',
-    'Une pincée de sel et de poivre',
+    'Une pincée de sel et de poivre'
   ],
   instructions: [
-    "Dans une cocotte, chauffer l'huile d'olive puis faire revenir l'oignon et l'ail.",
-    "Ajouter les morceaux d'agneau et faire dorer de tous les côtés.",
+    'Dans une cocotte, chauffer l\'huile d\'olive puis faire revenir l\'oignon et l\'ail.',
+    'Ajouter les morceaux d\'agneau et faire dorer de tous les côtés.',
     'Incorporer le gingembre, le ras-el-hanout, le paprika puis déglacer avec le vin blanc.',
     'Préchauffer le four à 350 °F (175 °C).',
     'Transférer le tout dans un plat à tajine.',
@@ -35,8 +34,9 @@ export const tajineDAgneauAuCitronConfitEtALAbricot: Recipe = {
     'Couvrir et cuire au four 1 heure 30 minutes.',
     'Incorporer ensuite les abricots et remettre au four 1 heure.',
     'Sortir le tajine du four et garnir de coriandre fraîche.',
-    'Servir avec du couscous aux légumes.',
+    'Servir avec du couscous aux légumes.'
   ],
   tags: ['couscous', 'mijoteuse', 'citron confit'],
-  slug: 'tajine-d-agneau-au-citron-confit-et-a-l-abricot',
-}
+  source: 'David Cloutier',
+  slug: 'tajine-dagneau-au-citron-confit-et-a-labricot'
+};
