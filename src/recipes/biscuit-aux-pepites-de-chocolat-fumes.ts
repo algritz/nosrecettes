@@ -5,8 +5,8 @@ export const biscuitAuxPepitesDeChocolatFumes: Recipe = {
   title: 'Biscuit aux pépites de chocolat fumés',
   description: 'Ces biscuits aux pépites de chocolat fumés sont cuits dans un fumoir pour une saveur unique. Faciles à préparer, ils combinent le goût riche de la mélasse, la douceur du chocolat et le croquant des noix de pécan.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 13,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 13, max: 13 },
   servings: 36,
   difficulty: 'Facile',
   ingredients: [

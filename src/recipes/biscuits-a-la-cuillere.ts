@@ -5,8 +5,8 @@ export const biscuitsALaCuillere: Recipe = {
   title: 'Biscuits à la cuillère',
   description: 'Biscuits à la cuillère',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 45,
-  cookTime: 15,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 15, max: 15 },
   servings: 72,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const tartareDeBUfAuChorizoEtSaladeDeRoquetteMayonnaiseAuPaprikaFume: Rec
   title: 'Tartare de bœuf au chorizo et salade de roquette mayonnaise au paprika fumé',
   description: 'Tartare de bœuf au chorizo et salade de roquette mayonnaise au paprika fumé',
   categories: ['Entrées'],
-  prepTime: 25,
-  cookTime: 0,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

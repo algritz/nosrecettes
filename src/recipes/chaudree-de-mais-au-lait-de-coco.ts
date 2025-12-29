@@ -5,8 +5,8 @@ export const chaudreeDeMaisAuLaitDeCoco: Recipe = {
   title: 'Chaudrée de maïs au lait de coco',
   description: 'Une soupe crémeuse de maïs et chou kale au lait de coco, garnie de bacon croustillant.',
   categories: ['Soupes'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

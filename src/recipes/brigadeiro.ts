@@ -5,8 +5,8 @@ export const brigadeiro: Recipe = {
   title: 'Brigadeiro',
   description: 'Une recette de bonbons brésiliens au chocolat, facile à préparer et idéale pour les fêtes ou comme petite douceur.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 5,
-  cookTime: 20,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 20, max: 20 },
   servings: 20,
   difficulty: 'Facile',
   ingredients: [
@@ -26,6 +26,6 @@ export const brigadeiro: Recipe = {
     'Réfrigérez avant de servir.'
   ],
   tags: ['chocolat', 'bonbon', 'froid'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'brigadeiro'
 };

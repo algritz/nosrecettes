@@ -5,8 +5,8 @@ export const poudingChomeurAuxPommes: Recipe = {
   title: 'Pouding chômeur aux pommes',
   description: 'Un dessert classique québécois combinant un sirop aux pommes chaud avec un gâteau moelleux à la vanille, servi tiède ou froid.',
   categories: ['Desserts'],
-  prepTime: 25,
-  cookTime: 40,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 40, max: 40 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

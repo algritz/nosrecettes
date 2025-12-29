@@ -5,8 +5,8 @@ export const carottesCarameliseesAuFour: Recipe = {
   title: 'Carottes caramélisées au four',
   description: '',
   categories: ['Légumes', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 60,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

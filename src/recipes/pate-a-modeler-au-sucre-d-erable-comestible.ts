@@ -5,8 +5,8 @@ export const pateAModelerAuSucreDErableComestible: Recipe = {
   title: 'Pâte à modeler au sucre d’érable (comestible)',
   description: 'Une pâte à modeler comestible à base de sucre et de sirop d’érable, idéale pour décorer ou jouer.',
   categories: ['Végétarien'],
-  prepTime: 10,
-  cookTime: 0,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const sauteDePouletAigreDouxALaThai: Recipe = {
   title: 'Sauté de poulet aigre-doux à la thaï',
   description: 'Un sauté de poulet aigre-doux aux saveurs thaïlandaises, avec mangue, noix de cajou et sauce chili épicée.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

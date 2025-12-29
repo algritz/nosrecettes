@@ -5,9 +5,9 @@ export const steakDeThonMediterraneen: Recipe = {
   title: 'Steak de thon méditerranéen',
   description: '',
   categories: ['Plats principaux', 'Poisson', 'Barbecue'],
-  prepTime: 15,
-  cookTime: 10,
-  marinatingTime: 45,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
+  marinatingTime: { min: 45, max: 45 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

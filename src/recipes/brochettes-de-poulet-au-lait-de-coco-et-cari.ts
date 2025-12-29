@@ -5,8 +5,8 @@ export const brochettesDePouletAuLaitDeCocoEtCari: Recipe = {
   title: 'Brochettes de poulet au lait de coco et cari',
   description: 'Brochettes de poulet marinées dans une sauce au lait de coco et pâte de cari, grillées au barbecue avec légumes, garnies de coriandre et servies avec des quartiers de lime.',
   categories: ['Plats principaux', 'Vollaille'],
-  prepTime: 30,
-  cookTime: 20,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

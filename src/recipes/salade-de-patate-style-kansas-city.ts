@@ -5,8 +5,8 @@ export const saladeDePatateStyleKansasCity: Recipe = {
   title: 'Salade de patate style Kansas City',
   description: 'Une salade de pommes de terre savoureuse à la Kansas City, parfumée avec un rub épicé et une sauce barbecue, parfaite pour accompagner des côtes levées.',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -31,6 +31,6 @@ export const saladeDePatateStyleKansasCity: Recipe = {
   ],
   tags: ['barbecue', 'salade', 'épicé'],
   accompaniment: 'Idéal avec les côtes levées Kansas City',
-  marinatingTime: 180,
+  marinatingTime: { min: 180, max: 180 },
   slug: 'salade-de-patate-style-kansas-city'
 };

@@ -5,8 +5,8 @@ export const tartareDeBoeufAsiatique: Recipe = {
   title: 'Tartare de boeuf asiatique',
   description: 'Tartare de boeuf asiatique',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const rochesAuxBleuets: Recipe = {
   title: 'Roches aux bleuets',
   description: 'Une recette de roches aux bleuets enrobés de chocolat, à réfrigérer pour durcissement.',
   categories: ['Végétarien', 'Desserts'],
-  prepTime: 45,
-  cookTime: 15,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 15, max: 15 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

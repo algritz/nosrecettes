@@ -5,8 +5,8 @@ export const pouletPedroEnRobeDeChambre: Recipe = {
   title: 'Poulet Pédro en robe-de-chambre',
   description: '',
   categories: ['Vollaille'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

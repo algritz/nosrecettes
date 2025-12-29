@@ -5,8 +5,8 @@ export const moutardeMaison: Recipe = {
   title: 'Moutarde maison',
   description: '',
   categories: ['Condiments'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

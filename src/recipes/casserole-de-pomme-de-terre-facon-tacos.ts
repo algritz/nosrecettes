@@ -5,8 +5,8 @@ export const casseroleDePommeDeTerreFaconTacos: Recipe = {
   title: 'Casserole de pomme de terre façon tacos',
   description: '',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

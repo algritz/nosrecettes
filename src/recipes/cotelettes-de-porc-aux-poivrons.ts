@@ -5,8 +5,8 @@ export const cotelettesDePorcAuxPoivrons: Recipe = {
   title: 'Côtelettes de porc aux poivrons',
   description: 'Côtelettes de porc poêlées, arrosées au beurre, servies sur une sauce de poivrons rouges aux oignons, vinaigre de vin rouge et basilic.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

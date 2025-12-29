@@ -5,8 +5,8 @@ export const barreDeCraquelinSucree: Recipe = {
   title: 'Barre de craquelin sucrée',
   description: 'Une recette de barres croquantes et chocolatées avec pacanes, facile à préparer et à congeler.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

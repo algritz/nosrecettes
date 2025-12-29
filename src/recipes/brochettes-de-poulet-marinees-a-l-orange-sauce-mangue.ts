@@ -5,8 +5,8 @@ export const brochettesDePouletMarineesALOrangeSauceMangue: Recipe = {
   title: 'Brochettes de poulet marinées à l’orange, sauce mangue',
   description: 'Une recette de brochettes de poulet marinées à l’orange, accompagnées d’une sauce à la mangue et servies avec du riz basmati.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 12,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 12, max: 12 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

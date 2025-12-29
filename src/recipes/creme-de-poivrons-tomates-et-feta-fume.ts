@@ -5,8 +5,8 @@ export const cremeDePoivronsTomatesEtFetaFume: Recipe = {
   title: 'Crème de poivrons, tomates et feta fumé',
   description: 'Une soupe crémeuse aux poivrons, tomates et feta fumé, cuite au fumoir ou au four, servie en 20 minutes de préparation et 45 minutes de cuisson.',
   categories: ['Soupes'],
-  prepTime: 20,
-  cookTime: 45,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

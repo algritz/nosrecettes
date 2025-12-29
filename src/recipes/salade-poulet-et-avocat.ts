@@ -5,8 +5,8 @@ export const saladePouletEtAvocat: Recipe = {
   title: 'salade poulet et avocat',
   description: 'Une salade fraîche et savoureuse avec poulet mariné, avocat, tomates cerises, maïs, et une vinaigrette au citron vert.',
   categories: ['Salades'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

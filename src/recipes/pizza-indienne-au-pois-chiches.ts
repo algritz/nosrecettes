@@ -5,8 +5,8 @@ export const pizzaIndienneAuPoisChiches: Recipe = {
   title: 'Pizza indienne au pois chiches',
   description: 'Une pizza aux saveurs indiennes avec pois chiches, légumes et épices, garnie de mozzarella et accompagnée d\'une sauce raita à la lime.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

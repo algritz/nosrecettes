@@ -5,8 +5,8 @@ export const sushiSMores: Recipe = {
   title: 'Sushi S\'mores',
   description: 'Une recette de s\'mores sous forme de sushi, combinant guimauves, céréales, biscuits Graham et chocolat, pour une présentation originale et gourmande.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 15,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const bonbonsDeSaumonFumes: Recipe = {
   title: 'Bonbons de saumon fumés',
   description: 'Recette de bonbons de saumon fumés avec marinade, séchage et fumage, badigeonnés de sirop d\'érable pour une saveur sucrée-salée.',
   categories: ['Fruits de mer', 'Fumoir'],
-  prepTime: 25,
-  cookTime: 240,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 240, max: 240 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [
@@ -27,7 +27,7 @@ export const bonbonsDeSaumonFumes: Recipe = {
     'Cuire de 2 à 4 heures au goût, en augmentant la température de 10°F chaque heure jusqu\'à un maximum de 180°F.'
   ],
   tags: ['fumage', 'sirop d\'érable', 'saumon'],
-  marinatingTime: 720,
+  marinatingTime: { min: 720, max: 720 },
   notes: 'Temps de marinade de 8 à 12 heures, cuisson de 2 à 4 heures, portions pour 6 à 8 personnes.',
   slug: 'bonbons-de-saumon-fumes'
 };

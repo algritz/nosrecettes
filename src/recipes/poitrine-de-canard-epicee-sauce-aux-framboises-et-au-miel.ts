@@ -5,8 +5,8 @@ export const poitrineDeCanardEpiceeSauceAuxFramboisesEtAuMiel: Recipe = {
   title: 'Poitrine de canard épicée, sauce aux framboises et au miel',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 45,
-  cookTime: 15,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 15, max: 15 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

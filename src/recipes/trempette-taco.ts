@@ -5,8 +5,8 @@ export const trempetteTaco: Recipe = {
   title: 'Trempette Taco',
   description: 'Excellent trempette pour le Superbowl ou un pot-luck',
   categories: ['Trempettes'],
-  prepTime: 10,
-  cookTime: 0,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

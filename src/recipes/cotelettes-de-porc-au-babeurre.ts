@@ -5,8 +5,8 @@ export const cotelettesDePorcAuBabeurre: Recipe = {
   title: 'Côtelettes de porc au babeurre',
   description: 'Marinade de côtelettes de porc au babeurre avec épices, puis grillées à la perfection.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

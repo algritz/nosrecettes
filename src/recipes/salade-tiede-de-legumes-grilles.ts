@@ -5,8 +5,8 @@ export const saladeTiedeDeLegumesGrilles: Recipe = {
   title: 'Salade tiède de légumes grillés',
   description: 'Excellente salade l\'été avec du poulet',
   categories: ['Salades'],
-  prepTime: 5,
-  cookTime: 10,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

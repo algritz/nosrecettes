@@ -5,8 +5,8 @@ export const preparationAuRiz: Recipe = {
   title: 'Préparation au riz',
   description: 'Préparation au riz',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 60,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

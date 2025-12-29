@@ -5,8 +5,8 @@ export const ragoutDeBoulettesCariEtLaitDeCoco: Recipe = {
   title: 'Ragoût de boulettes cari et lait de coco',
   description: 'Un ragoût savoureux de boulettes épicées au cari mijotées dans un lait de coco crémeux, servi avec du riz et du naan.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 60,
-  cookTime: 60,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

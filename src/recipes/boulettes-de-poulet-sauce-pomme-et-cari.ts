@@ -5,8 +5,8 @@ export const boulettesDePouletSaucePommeEtCari: Recipe = {
   title: 'Boulettes de poulet sauce pomme et cari',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

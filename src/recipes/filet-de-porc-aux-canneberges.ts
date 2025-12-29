@@ -5,8 +5,8 @@ export const filetDePorcAuxCanneberges: Recipe = {
   title: 'Filet de porc aux canneberges',
   description: 'Un plat savoureux de filet de porc accompagné d\'une sauce aux canneberges, parfait pour une occasion spéciale ou un dîner convivial.',
   categories: ['Plats principaux'],
-  prepTime: 10,
-  cookTime: 35,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 35, max: 35 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

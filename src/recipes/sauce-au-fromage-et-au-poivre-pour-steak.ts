@@ -5,8 +5,8 @@ export const sauceAuFromageEtAuPoivrePourSteak: Recipe = {
   title: 'Sauce au fromage et au poivre pour steak',
   description: 'Sauce au fromage et au poivre pour steak',
   categories: ['Sauces'],
-  prepTime: 5,
-  cookTime: 5,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 5, max: 5 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

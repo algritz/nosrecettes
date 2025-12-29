@@ -5,8 +5,8 @@ export const burrataStyleRatatouille: Recipe = {
   title: 'Burrata style ratatouille',
   description: 'Une ratatouille classique enrichie de burrata, cuite au four pour une texture crémeuse et parfumée.',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 25,
-  cookTime: 35,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 35, max: 35 },
   servings: 5,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const boulettesDePouletAuCariDeCoco: Recipe = {
   title: 'Boulettes de poulet au cari de coco',
   description: 'Boulettes de poulet mijotées dans une sauce au cari rouge et lait de coco, relevées de lime fraîche.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

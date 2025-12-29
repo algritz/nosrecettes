@@ -5,8 +5,8 @@ export const gravlaxDeSaumonALErable: Recipe = {
   title: 'Gravlax de saumon à l\'érable',
   description: 'Une recette de gravlax de saumon aromatisé à l\'érable, servi en fines tranches avec des croûtons de bagels et du fromage à la crème.',
   categories: ['Végétarien'],
-  prepTime: 10,
-  cookTime: 0,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -29,6 +29,6 @@ export const gravlaxDeSaumonALErable: Recipe = {
     'Accompagner de croûtons de bagels et d’un peu de fromage à la crème.'
   ],
   tags: ['érable', 'marinade sèche', 'froid'],
-  marinatingTime: 1440,
+  marinatingTime: { min: 1440, max: 1440 },
   slug: 'gravlax-de-saumon-a-l-erable'
 };

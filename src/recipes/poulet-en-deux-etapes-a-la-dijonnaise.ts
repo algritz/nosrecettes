@@ -5,8 +5,8 @@ export const pouletEnDeuxEtapesALaDijonnaise: Recipe = {
   title: 'Poulet en deux étapes à la dijonnaise',
   description: 'Une recette simple de poulet mijoté avec une sauce à la moutarde de Dijon et miel, mijotée jusqu\'à cuisson parfaite.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 5,
-  cookTime: 25,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

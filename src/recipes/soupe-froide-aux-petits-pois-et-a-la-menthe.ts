@@ -5,8 +5,8 @@ export const soupeFroideAuxPetitsPoisEtALaMenthe: Recipe = {
   title: 'Soupe froide aux petits pois et à la menthe',
   description: 'Une soupe rafraîchissante aux petits pois et à la menthe, idéale pour l\'été, servie froide après refroidissement.',
   categories: ['Soupes'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -33,6 +33,6 @@ export const soupeFroideAuxPetitsPoisEtALaMenthe: Recipe = {
     'Assaisonner, ajouter un peu de jus de citron et de parmesan et servir.'
   ],
   tags: ['soupe froide', 'menthe', 'été'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'soupe-froide-aux-petits-pois-et-a-la-menthe'
 };

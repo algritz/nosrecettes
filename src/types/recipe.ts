@@ -1,11 +1,17 @@
+// Add TimeRange interface
+export interface TimeRange {
+  min: number;  // minimum time in minutes
+  max: number;  // maximum time in minutes
+}
+
 export interface Recipe {
   id: string;
   title: string;
   description: string;
   categories: string[]; // Primary field for categories
-  prepTime: number;
-  cookTime: number;
-  marinatingTime?: number; // Optional marinating time in minutes
+  prepTime: TimeRange;
+  cookTime: TimeRange;
+  marinatingTime?: TimeRange; // Optional marinating time in minutes
   servings: number;
   difficulty: 'Facile' | 'Moyen' | 'Difficile';
   ingredients: string[] | IngredientSection[];

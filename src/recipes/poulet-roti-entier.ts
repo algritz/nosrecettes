@@ -5,8 +5,8 @@ export const pouletRotiEntier: Recipe = {
   title: 'Poulet roti entier',
   description: 'Recette de poulet entier rôti au four avec assaisonnement à base de moutarde, paprika et autres épices, cuit à 350 °F pendant 1h40.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 100,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 100, max: 100 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

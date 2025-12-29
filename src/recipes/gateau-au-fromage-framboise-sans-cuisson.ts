@@ -5,8 +5,8 @@ export const gateauAuFromageFramboiseSansCuisson: Recipe = {
   title: 'Gâteau au fromage framboise sans cuisson',
   description: 'Un dessert frais et léger combinant fromage à la crème, framboises et biscuits Graham, sans cuisson.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 5,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 5, max: 5 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

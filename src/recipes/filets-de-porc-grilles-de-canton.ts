@@ -5,8 +5,8 @@ export const filetsDePorcGrillesDeCanton: Recipe = {
   title: 'Filets de porc grillés de canton',
   description: '',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

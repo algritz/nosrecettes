@@ -5,8 +5,8 @@ export const cotelettesDePorcSavoureusesALaMijoteuse: Recipe = {
   title: 'Côtelettes de porc savoureuses, à la mijoteuse',
   description: 'Côtelettes de porc savoureuses, à la mijoteuse',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 240,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 240, max: 240 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

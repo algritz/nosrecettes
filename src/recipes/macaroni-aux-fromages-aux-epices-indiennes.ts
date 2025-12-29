@@ -5,8 +5,8 @@ export const macaroniAuxFromagesAuxEpicesIndiennes: Recipe = {
   title: 'Macaroni aux fromages aux épices indiennes',
   description: 'Une version épicée et crémeuse de macaroni au fromage, infusée avec des épices indiennes pour une saveur riche et aromatique.',
   categories: ['Pâtes', 'Plats principaux'],
-  prepTime: 80,
-  cookTime: 25,
+  prepTime: { min: 80, max: 80 },
+  cookTime: { min: 25, max: 25 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

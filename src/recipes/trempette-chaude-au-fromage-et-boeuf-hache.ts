@@ -5,8 +5,8 @@ export const trempetteChaudeAuFromageEtBoeufHache: Recipe = {
   title: 'Trempette chaude au fromage et boeuf haché',
   description: 'Une trempette chaude et fromagée avec du boeuf haché, idéale pour accompagner des tostitos.',
   categories: ['Entrées'],
-  prepTime: 25,
-  cookTime: 35,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 35, max: 35 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

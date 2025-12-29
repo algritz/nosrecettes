@@ -5,8 +5,8 @@ export const muffinsAuxBananesEtAuNutella: Recipe = {
   title: 'Muffins aux bananes et au Nutella',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

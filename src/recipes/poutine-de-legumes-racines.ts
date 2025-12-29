@@ -5,8 +5,8 @@ export const poutineDeLegumesRacines: Recipe = {
   title: 'Poutine de légumes racines',
   description: 'Une version végétarienne de la poutine, utilisant des légumes racines croustillants et une sauce savoureuse au bouillon de poulet maison.',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

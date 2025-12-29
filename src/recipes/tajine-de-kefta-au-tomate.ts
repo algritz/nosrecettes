@@ -5,8 +5,8 @@ export const tajineDeKeftaAuTomate: Recipe = {
   title: 'Tajine de kefta au tomate',
   description: 'Une savoureuse recette de kefta en tajine avec une sauce tomate parfumée, servie avec du riz blanc.',
   categories: ['Plats principaux', 'Vollaille'],
-  prepTime: 30,
-  cookTime: 150,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 150, max: 150 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

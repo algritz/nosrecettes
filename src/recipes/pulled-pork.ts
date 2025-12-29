@@ -5,8 +5,8 @@ export const pulledPork: Recipe = {
   title: 'Pulled Pork',
   description: 'Une recette de pulled pork simple et savoureuse, cuite doucement au four avec un mélange d\'épices et servie avec une sauce barbecue.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 540,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 540, max: 540 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

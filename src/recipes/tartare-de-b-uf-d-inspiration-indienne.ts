@@ -5,8 +5,8 @@ export const tartareDeBUfDInspirationIndienne: Recipe = {
   title: 'Tartare de bœuf d\'inspiration indienne',
   description: 'Un tartare de bœuf aux saveurs indiennes, avec des tomates séchées, du cari, de la coriandre, et des épices, servi en portions pour deux personnes.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -38,6 +38,6 @@ export const tartareDeBUfDInspirationIndienne: Recipe = {
     'Si vous souhaitez plus de texture, ajoutez des arachides ou des pistaches grossièrement hachées.'
   ],
   tags: ['épicé', 'indien', 'tartare'],
-  marinatingTime: 15,
+  marinatingTime: { min: 15, max: 15 },
   slug: 'tartare-de-b-uf-d-inspiration-indienne'
 };

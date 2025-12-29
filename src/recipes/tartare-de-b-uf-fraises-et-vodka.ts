@@ -5,8 +5,8 @@ export const tartareDeBUfFraisesEtVodka: Recipe = {
   title: 'Tartare de bœuf fraises et vodka',
   description: '',
   categories: ['Entrées'],
-  prepTime: 30,
-  cookTime: 15,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 15, max: 15 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

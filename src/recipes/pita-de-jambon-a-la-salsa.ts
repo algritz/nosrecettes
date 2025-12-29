@@ -5,8 +5,8 @@ export const pitaDeJambonALaSalsa: Recipe = {
   title: 'Pita de jambon à la salsa',
   description: 'Une recette simple et fraîche pour utiliser des restes de jambon, garnie de salsa et de sauce crémeuse dans des pita.',
   categories: ['Sandwichs', 'Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

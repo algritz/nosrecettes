@@ -5,8 +5,8 @@ export const patatesVolcan: Recipe = {
   title: 'Patates volcan',
   description: '',
   categories: ['Végétarien'],
-  prepTime: 25,
-  cookTime: 90,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 90, max: 90 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const tartareDeBavetteChipsAuBaconEtHerbesDeProvence: Recipe = {
   title: 'Tartare de bavette, chips au bacon et herbes de Provence',
   description: 'Une recette de tartare de bavette de bœuf finement hachée, mélangée avec des ingrédients savoureux comme la tapenade, la sauce piquante, la moutarde, et garnie de chips au bacon et d\'herbes de Provence.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

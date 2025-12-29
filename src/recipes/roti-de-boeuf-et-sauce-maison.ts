@@ -5,8 +5,8 @@ export const rotiDeBoeufEtSauceMaison: Recipe = {
   title: 'Rôti de boeuf et sauce maison',
   description: '',
   categories: ['Boeuf', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

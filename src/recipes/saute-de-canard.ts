@@ -5,8 +5,8 @@ export const sauteDeCanard: Recipe = {
   title: 'Sauté de canard',
   description: 'Sauté de canard avec légumes sautés et sauce soja au miel, servi avec pâtes ou riz thaï.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

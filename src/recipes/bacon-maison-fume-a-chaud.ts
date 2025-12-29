@@ -5,9 +5,9 @@ export const baconMaisonFumeAChaud: Recipe = {
   title: 'Bacon maison fumé à chaud',
   description: 'Le bacon d\'épicerie peut aller se ré-habiller! Bacon maison fumé à chaud',
   categories: ['Végétarien'],
-  prepTime: 15,
-  cookTime: 210,
-  marinatingTime: 2880,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 210, max: 210 },
+  marinatingTime: { min: 2880, max: 2880 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

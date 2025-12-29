@@ -5,8 +5,8 @@ export const magretsDeCanardAu2Moutardes: Recipe = {
   title: 'Magrets de canard au 2 moutardes',
   description: 'Magrets saisis puis rôtis, nappés d’une sauce au vin blanc, crème et double moutarde.',
   categories: ['Gibier à plumes', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

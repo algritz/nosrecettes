@@ -5,8 +5,8 @@ export const browniesAuNutella: Recipe = {
   title: 'Brownies au Nutella',
   description: 'Délicieux brownies au Nutella avec un glaçage crémeux au Nutella et fromage à la crème.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 30,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 30, max: 30 },
   servings: 15,
   difficulty: 'Facile',
   ingredients: [

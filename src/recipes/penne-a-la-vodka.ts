@@ -5,8 +5,8 @@ export const penneALaVodka: Recipe = {
   title: 'Penne à la vodka',
   description: 'Pâtes au bœuf haché dans une sauce tomate–vodka crémée, relevée de piment rouge.',
   categories: ['Pâtes', 'Plats principaux', 'Boeuf'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

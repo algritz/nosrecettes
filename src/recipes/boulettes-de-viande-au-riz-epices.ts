@@ -5,8 +5,8 @@ export const boulettesDeViandeAuRizEpices: Recipe = {
   title: 'Boulettes de viande au riz épicés',
   description: 'Une recette de boulettes de viande épicées avec riz, mijotées dans une sauce tomate, servies avec du pain chaud et croustillant.',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 30,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const trempetteALAvocat: Recipe = {
   title: 'Trempette à l\'avocat',
   description: 'Pour rehausser le goût de vos crudités.',
   categories: ['Végétarien', 'Trempettes'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

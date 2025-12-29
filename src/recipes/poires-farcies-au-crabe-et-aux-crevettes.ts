@@ -5,8 +5,8 @@ export const poiresFarciesAuCrabeEtAuxCrevettes: Recipe = {
   title: 'Poires farçies au crabe et aux crevettes',
   description: 'Une recette de poires farcies au crabe et aux crevettes, servies sur une salade composée avec décoration de fleurs comestibles.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [
@@ -30,7 +30,7 @@ export const poiresFarciesAuCrabeEtAuxCrevettes: Recipe = {
     'Décorer de fleurs comestibles'
   ],
   tags: ['crabe', 'crevettes', 'salade'],
-  marinatingTime: 60,
+  marinatingTime: { min: 60, max: 60 },
   notes: 'Attendre que le fromage soit à la température de la pièce avant de le battre en crème.',
   slug: 'poires-farcies-au-crabe-et-aux-crevettes'
 };

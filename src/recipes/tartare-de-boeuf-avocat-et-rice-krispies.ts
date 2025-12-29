@@ -5,8 +5,8 @@ export const tartareDeBoeufAvocatEtRiceKrispies: Recipe = {
   title: 'Tartare de boeuf, avocat et Rice krispies',
   description: 'Un tartare de boeuf frais et croquant, agrémenté d\'avocat, de coriandre et de Rice Krispies pour une texture originale.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

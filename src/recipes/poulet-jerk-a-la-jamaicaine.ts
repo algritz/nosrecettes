@@ -5,8 +5,8 @@ export const pouletJerkALaJamaicaine: Recipe = {
   title: 'Poulet jerk à la jamaïcaine',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 30,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -22,6 +22,6 @@ export const pouletJerkALaJamaicaine: Recipe = {
     'Cuire sur le BBQ.'
   ],
   tags: ['jamaïcain', 'marinade sèche', 'grill'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'poulet-jerk-a-la-jamaicaine'
 };

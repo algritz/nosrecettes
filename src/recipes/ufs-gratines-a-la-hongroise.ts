@@ -5,8 +5,8 @@ export const ufsGratinesALaHongroise: Recipe = {
   title: 'Œufs gratinés à la hongroise',
   description: 'Parfait pour un bon petit diner Œufs gratinés à la hongroise.',
   categories: ['Entrées'],
-  prepTime: 10,
-  cookTime: 30,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

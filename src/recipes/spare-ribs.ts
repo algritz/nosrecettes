@@ -5,8 +5,8 @@ export const spareRibs: Recipe = {
   title: 'Spare-ribs',
   description: '',
   categories: ['Vollaille'],
-  prepTime: 5,
-  cookTime: 140,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 140, max: 140 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

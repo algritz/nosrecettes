@@ -5,8 +5,8 @@ export const cuissesDePouletGrilleesALaNoixDeCocoEpicees: Recipe = {
   title: 'Cuisses de poulet grillées à la noix de coco épicées',
   description: 'Une recette de cuisses de poulet épicées et parfumées à la noix de coco, grillées au barbecue et servies avec de la coriandre et du citron vert.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -34,6 +34,6 @@ export const cuissesDePouletGrilleesALaNoixDeCocoEpicees: Recipe = {
   ],
   tags: ['barbecue', 'épicé', 'coco'],
   accompaniment: 'Riz basmati',
-  marinatingTime: 480,
+  marinatingTime: { min: 480, max: 480 },
   slug: 'cuisses-de-poulet-grillees-a-la-noix-de-coco-epicees'
 };

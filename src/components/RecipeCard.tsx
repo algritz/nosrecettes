@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Clock, Users, ChefHat } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { formatTimeShort } from '@/utils/timeFormat';
+import { getMaxTime } from '@/utils/timeUtils';
 import { ResponsiveImage } from './ResponsiveImage';
 import { getRecipeCategories, getPrimaryCategory } from '@/utils/recipeUtils';
 
@@ -12,7 +13,10 @@ interface RecipeCardProps {
 }
 
 export const RecipeCard = ({ recipe }: RecipeCardProps) => {
-  const totalTime = recipe.prepTime + recipe.cookTime;
+  // Use max values for total time calculation (conservative estimate)
+  const totalTime = getMaxTime(recipe.prepTime) +
+                    getMaxTime(recipe.cookTime) +
+                    (recipe.marinatingTime ? getMaxTime(recipe.marinatingTime) : 0);
   const categories = getRecipeCategories(recipe);
   const primaryCategory = getPrimaryCategory(recipe);
   

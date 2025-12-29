@@ -5,8 +5,8 @@ export const saladeDePorcAuxBleuetsEtEpinette: Recipe = {
   title: 'Salade de porc aux bleuets et épinette',
   description: 'Une salade rafraîchissante avec porc mariné dans une vinaigrette aux bleuets et épinette, accompagnée de fruits frais et de salade.',
   categories: ['Salades'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -28,7 +28,7 @@ export const saladeDePorcAuxBleuetsEtEpinette: Recipe = {
     'Arroser le tout avec la vinaigrette bleuets & épinette noire.'
   ],
   tags: ['marinade sèche', 'grill', 'frais'],
-  marinatingTime: 360,
+  marinatingTime: { min: 360, max: 360 },
   notes: 'La vinaigrette bleuets & épinette noire n\'est pas disponible à l\'épicerie. Disponible au marché du Vieux-port de Québec au comptoir de Épicéa.',
   slug: 'salade-de-porc-aux-bleuets-et-epinette'
 };

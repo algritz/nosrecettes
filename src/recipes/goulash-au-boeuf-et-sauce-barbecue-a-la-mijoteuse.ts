@@ -5,8 +5,8 @@ export const goulashAuBoeufEtSauceBarbecueALaMijoteuse: Recipe = {
   title: 'Goulash au boeuf et sauce barbecue à la mijoteuse',
   description: '',
   categories: ['Plats principaux', 'Vollaille'],
-  prepTime: 10,
-  cookTime: 600,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 600, max: 600 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const carresAuCaramelDeLaVoisineDeChalet: Recipe = {
   title: 'Carrés au caramel de la voisine de chalet',
   description: 'Carrés au caramel de la voisine de chalet',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 25,
   difficulty: 'Facile',
   ingredients: [

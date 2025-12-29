@@ -5,8 +5,8 @@ export const boulesAuxMMs: Recipe = {
   title: 'Boules aux M & M\'s',
   description: 'Boules de beurre d\'arachide enrobées de chocolat, garnies d\'un M&M.',
   categories: ['Pâtisseries et desserts', 'Desserts'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

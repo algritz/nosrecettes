@@ -5,8 +5,8 @@ export const trempetteAuSaumon: Recipe = {
   title: 'Trempette au saumon',
   description: 'Une trempette savoureuse à base de saumon, fromage à la crème et sauces aromatiques, idéale pour accompagner légumes, craquelins ou baguette de pain.',
   categories: ['Trempettes'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

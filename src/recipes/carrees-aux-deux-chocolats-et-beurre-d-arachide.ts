@@ -5,8 +5,8 @@ export const carreesAuxDeuxChocolatsEtBeurreDArachide: Recipe = {
   title: 'Carrées aux deux chocolats et beurre d\'arachide',
   description: 'Carrées aux deux chocolats et beurre d\'arachide',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

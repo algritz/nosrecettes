@@ -5,8 +5,8 @@ export const biscuitsAuBeurreDArachideKraftALAncienne: Recipe = {
   title: 'Biscuits au beurre d\'arachide KRAFT à l\'ancienne',
   description: 'Recette de biscuits au beurre d\'arachide classique, croustillants et dorés, parfaits pour une collation ou un dessert.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 30,
   difficulty: 'Facile',
   ingredients: [

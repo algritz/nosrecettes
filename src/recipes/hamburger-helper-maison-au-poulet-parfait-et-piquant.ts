@@ -5,8 +5,8 @@ export const hamburgerHelperMaisonAuPouletParfaitEtPiquant: Recipe = {
   title: 'Hamburger helper maison au poulet parfait et piquant',
   description: 'One‑pot de pâtes au poulet style buffalo, crémeux et gratiné au cheddar.',
   categories: ['Pâtes', 'Plats principaux', 'Vollaille'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

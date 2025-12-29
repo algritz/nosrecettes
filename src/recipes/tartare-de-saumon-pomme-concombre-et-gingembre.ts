@@ -5,8 +5,8 @@ export const tartareDeSaumonPommeConcombreEtGingembre: Recipe = {
   title: 'Tartare de saumon, pomme, concombre et gingembre',
   description: 'Un tartare frais et épicé combinant saumon, pomme, concombre et gingembre, accompagné d\'une mayonnaise épicée maison.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

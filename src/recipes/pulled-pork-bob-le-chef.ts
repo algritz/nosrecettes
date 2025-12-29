@@ -5,8 +5,8 @@ export const pulledPorkBobLeChef: Recipe = {
   title: 'Pulled Pork (Bob Le Chef)',
   description: 'Une recette de pulled pork avec une marinade sèche épicée, cuite lentement au four et servie avec le jus de cuisson sur du pain.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 25,
-  cookTime: 480,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 480, max: 480 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [
@@ -32,6 +32,6 @@ export const pulledPorkBobLeChef: Recipe = {
     'Servir avec le jus de cuisson sur le pain de ton choix.'
   ],
   tags: ['épicé', 'marinade sèche', 'four'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'pulled-pork-bob-le-chef'
 };

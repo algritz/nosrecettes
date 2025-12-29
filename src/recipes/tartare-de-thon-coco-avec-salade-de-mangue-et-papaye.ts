@@ -5,8 +5,8 @@ export const tartareDeThonCocoAvecSaladeDeMangueEtPapaye: Recipe = {
   title: 'Tartare de thon coco avec salade de mangue et papaye',
   description: 'Un tartare de thon rouge accompagné d\'une salade fraîche de mangue et papaye, relevé de lait de coco, coriandre et piments chili.',
   categories: ['Entrées'],
-  prepTime: 30,
-  cookTime: 0,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

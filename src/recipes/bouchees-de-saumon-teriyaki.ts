@@ -5,9 +5,9 @@ export const boucheesDeSaumonTeriyaki: Recipe = {
   title: 'Bouchées de saumon teriyaki',
   description: 'Morceaux de saumon laqués à la sauce teriyaki miel-soja, poêlés et garnis de sésame et oignons verts.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 15,
-  marinatingTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
+  marinatingTime: { min: 30, max: 30 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

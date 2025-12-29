@@ -5,8 +5,8 @@ export const tartareSaumonFumeEtConcombre: Recipe = {
   title: 'Tartare saumon fumé et concombre',
   description: 'Une recette fraîche et simple de tartare de saumon fumé et concombre, idéale pour une entrée légère.',
   categories: ['Entrées'],
-  prepTime: 30,
-  cookTime: 0,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

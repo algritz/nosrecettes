@@ -5,8 +5,8 @@ export const gateauAuxLegumes: Recipe = {
   title: 'Gâteau aux légumes',
   description: 'Un gâteau moelleux aux légumes, notamment carottes et purée de patate douce, garni d\'un glaçage au fromage à la crème et chou-fleur.',
   categories: ['Végétarien', 'Pâtisseries et desserts'],
-  prepTime: 30,
-  cookTime: 60,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 60, max: 60 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

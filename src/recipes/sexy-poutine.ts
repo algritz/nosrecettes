@@ -5,8 +5,8 @@ export const sexyPoutine: Recipe = {
   title: 'Sexy poutine',
   description: 'Une recette de poutine raffinée avec pommes de terre croustillantes, confit de canard, et sauce onctueuse au vin blanc et crème.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 40,
-  cookTime: 80,
+  prepTime: { min: 40, max: 40 },
+  cookTime: { min: 80, max: 80 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

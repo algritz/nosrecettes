@@ -5,8 +5,8 @@ export const roastBeefMoutardesEtVinRouge: Recipe = {
   title: 'Roast beef moutardes et vin rouge',
   description: 'Un délicieux roast beef cuit au four avec une sauce à base de moutarde, vin rouge, champignons et oignons perlés, reposant avant de trancher pour une texture parfaite.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 40,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

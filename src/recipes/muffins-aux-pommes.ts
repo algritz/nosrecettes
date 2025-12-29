@@ -5,8 +5,8 @@ export const muffinsAuxPommes: Recipe = {
   title: 'muffins aux pommes',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 25,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 25, max: 25 },
   servings: 16,
   difficulty: 'Facile',
   ingredients: [

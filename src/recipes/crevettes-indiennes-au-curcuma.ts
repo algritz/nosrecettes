@@ -5,8 +5,8 @@ export const crevettesIndiennesAuCurcuma: Recipe = {
   title: 'Crevettes Indiennes au Curcuma',
   description: 'Une recette de crevettes épicées à la saveur de curcuma, servies avec du riz basmati. Facile à préparer avec des épices indiennes et une sauce crémeuse.',
   categories: ['Végétarien'],
-  prepTime: 25,
-  cookTime: 25,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 25, max: 25 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

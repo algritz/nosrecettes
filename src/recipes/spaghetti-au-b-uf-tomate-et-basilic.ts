@@ -5,8 +5,8 @@ export const spaghettiAuBUfTomateEtBasilic: Recipe = {
   title: 'Spaghetti au bœuf, tomate et basilic',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 5,
-  cookTime: 20,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 20, max: 20 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

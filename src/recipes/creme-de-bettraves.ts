@@ -5,8 +5,8 @@ export const cremeDeBettraves: Recipe = {
   title: 'Crème de bettraves',
   description: 'Une soupe de betteraves crémeuse et parfumée, idéale pour une entrée ou un repas léger.',
   categories: ['Soupes'],
-  prepTime: 15,
-  cookTime: 60,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

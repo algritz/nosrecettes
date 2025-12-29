@@ -5,8 +5,8 @@ export const croustadeAuPomme: Recipe = {
   title: 'Croustade au pomme',
   description: '',
   categories: ['Desserts'],
-  prepTime: 25,
-  cookTime: 25,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const gratinDePommesDeTerreOignonsEtBiere: Recipe = {
   title: 'Gratin de pommes de terre oignons et bière',
   description: '',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 25,
-  cookTime: 75,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 75, max: 75 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

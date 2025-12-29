@@ -5,8 +5,8 @@ export const carottesGlaceesAuSiropDErableEtALaMoutarde: Recipe = {
   title: 'Carottes glacées au sirop d’érable et à la moutarde',
   description: 'Des carottes qui sont presque un dessert ! Carottes glacées au sirop d’érable et à la moutarde',
   categories: ['Légumes'],
-  prepTime: 20,
-  cookTime: 60,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

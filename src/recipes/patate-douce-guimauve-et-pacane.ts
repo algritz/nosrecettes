@@ -5,8 +5,8 @@ export const patateDouceGuimauveEtPacane: Recipe = {
   title: 'Patate douce guimauve et pacane',
   description: 'Étonnamment bon !!!',
   categories: ['Végétarien', 'Accompagnements', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const biscuitsChocoCaramelPacaneEtBacon: Recipe = {
   title: 'Biscuits choco-caramel pacane et bacon',
   description: 'Une recette de biscuits gourmands aux pacanes, chocolat, caramel et bacon, parfaits pour une touche sucrée-salée.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 15,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 15, max: 15 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

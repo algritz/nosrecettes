@@ -5,8 +5,8 @@ export const filetDePorcAvecSauceErableEtOrange: Recipe = {
   title: 'Filet de porc avec sauce érable et orange',
   description: 'Un délicieux filet de porc mariné dans une sauce à l\'érable et à l\'orange, puis cuit au four et servi avec la sauce.',
   categories: ['Vollaille'],
-  prepTime: 15,
-  cookTime: 40,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

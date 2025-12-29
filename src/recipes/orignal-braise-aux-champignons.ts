@@ -5,8 +5,8 @@ export const orignalBraiseAuxChampignons: Recipe = {
   title: 'Orignal braisé aux champignons',
   description: 'Un plat de viande braisée tendre avec une sauce aux champignons, parfait pour un repas réconfortant.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 195,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 195, max: 195 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const tarteAuVinRougeEtChocolat: Recipe = {
   title: 'tarte au vin rouge et chocolat',
   description: 'Une tarte au vin rouge et chocolat avec une croûte croustillante et une garniture riche et lisse, décorée de cool whip et pépites de chocolat.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

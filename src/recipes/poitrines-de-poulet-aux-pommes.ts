@@ -5,8 +5,8 @@ export const poitrinesDePouletAuxPommes: Recipe = {
   title: 'Poitrines de poulet aux pommes',
   description: 'Une recette savoureuse de poulet aux pommes, parfait pour un repas réconfortant avec une sauce aux saveurs de cidre et de pommes.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

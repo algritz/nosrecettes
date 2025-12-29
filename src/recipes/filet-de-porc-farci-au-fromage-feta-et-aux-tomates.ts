@@ -5,8 +5,8 @@ export const filetDePorcFarciAuFromageFetaEtAuxTomates: Recipe = {
   title: 'Filet de porc farci au fromage féta et aux tomates',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 45,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -33,6 +33,6 @@ export const filetDePorcFarciAuFromageFetaEtAuxTomates: Recipe = {
     'Servir avec des pommes de terre au four et petits légumes verts tels que de petites fèves vertes.'
   ],
   tags: ['fromage féta', 'marinade sèche', 'grill'],
-  marinatingTime: 30,
+  marinatingTime: { min: 30, max: 30 },
   slug: 'filet-de-porc-farci-au-fromage-feta-et-aux-tomates'
 };

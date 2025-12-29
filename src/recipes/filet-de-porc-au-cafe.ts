@@ -5,8 +5,8 @@ export const filetDePorcAuCafe: Recipe = {
   title: 'Filet de porc au café',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const pouletALorange: Recipe = {
   title: 'Poulet à l\'orange',
   description: 'Poulet à l\'orange avec une sauce acidulée à base de jus d\'orange, citron, vinaigre de riz et sauce soja, servi sur du riz avec échalotes.',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 5,
   difficulty: 'Facile',
   ingredients: [

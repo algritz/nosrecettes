@@ -5,8 +5,8 @@ export const salsaMexicaine: Recipe = {
   title: 'Salsa mexicaine',
   description: 'Grande salsa maison aux tomates, poivrons, piments, herbes et épices, mijotée puis mise en pots.',
   categories: ['Condiments'],
-  prepTime: 60,
-  cookTime: 120,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 120, max: 120 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

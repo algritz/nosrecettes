@@ -5,8 +5,8 @@ export const filetDePorcALOriental: Recipe = {
   title: 'Filet de porc à l\'oriental',
   description: 'Un plat de filet de porc mariné et grillé, accompagné de légumes sautés, avec une touche orientale grâce à la sauce soja et au miel.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

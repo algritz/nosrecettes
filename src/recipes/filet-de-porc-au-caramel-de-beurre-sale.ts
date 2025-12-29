@@ -5,8 +5,8 @@ export const filetDePorcAuCaramelDeBeurreSale: Recipe = {
   title: 'Filet de porc au caramel de beurre salé',
   description: 'Un délicieux filet de porc accompagné d\'une sauce caramel au beurre salé, parfait pour une cuisson rapide et savoureuse.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 25,
-  cookTime: 25,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 25, max: 25 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

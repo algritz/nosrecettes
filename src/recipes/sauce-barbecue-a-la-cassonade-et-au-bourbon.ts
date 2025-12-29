@@ -5,8 +5,8 @@ export const sauceBarbecueALaCassonadeEtAuBourbon: Recipe = {
   title: 'Sauce barbecue à la cassonade et au bourbon',
   description: 'Une sauce barbecue épaisse, relevée et parfumée au bourbon, idéale pour accompagner des côtes levées ou du pulled pork.',
   categories: ['Sauces'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

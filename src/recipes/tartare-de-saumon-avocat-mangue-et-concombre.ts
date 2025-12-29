@@ -5,8 +5,8 @@ export const tartareDeSaumonAvocatMangueEtConcombre: Recipe = {
   title: 'Tartare de saumon, avocat, mangue et concombre',
   description: 'Un tartare frais et coloré combinant saumon, avocat, mangue et concombre, parfait pour une entrée légère.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

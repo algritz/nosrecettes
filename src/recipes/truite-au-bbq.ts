@@ -5,8 +5,8 @@ export const truiteAuBbq: Recipe = {
   title: 'Truite au BBQ',
   description: '',
   categories: ['Poisson', 'Barbecue'],
-  prepTime: 15,
-  cookTime: 18,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 18, max: 18 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

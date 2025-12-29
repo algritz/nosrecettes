@@ -5,8 +5,8 @@ export const filetDePorcFacileEnSauceSucree: Recipe = {
   title: 'Filet de porc facile en sauce sucrée',
   description: '',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 45,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -19,7 +19,7 @@ export const filetDePorcFacileEnSauceSucree: Recipe = {
     'Faire cuire au four à 350 F environ 35-45 minutes'
   ],
   tags: ['sauce sucrée', 'marinade', 'four'],
-  marinatingTime: 480,
+  marinatingTime: { min: 480, max: 480 },
   notes: 'Excellent dépanneur la semaine',
   slug: 'filet-de-porc-facile-en-sauce-sucree'
 };

@@ -5,8 +5,8 @@ export const satayDePorcALananas: Recipe = {
   title: 'Satay de porc à l\'ananas',
   description: 'Satay de porc à l\'ananas. Brochettes de porc marinées avec ananas, servies avec une sauce aux arachides. Parfait pour un barbecue estival.',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

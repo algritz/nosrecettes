@@ -5,8 +5,8 @@ export const trempetteBaconJalapenos: Recipe = {
   title: 'Trempette bacon-Jalapenos',
   description: 'Une trempette savoureuse à base de bacon, jalapenos, fromage à la crème, cheddar, crème sure, lait, et chapelure, cuite au four jusqu\'à dorure.',
   categories: ['Entrées'],
-  prepTime: 25,
-  cookTime: 30,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 30, max: 30 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const saumonALaSalsaSurLeBbq: Recipe = {
   title: 'Saumon à la salsa sur le BBQ',
   description: '',
   categories: ['Poisson', 'Barbecue'],
-  prepTime: 10,
-  cookTime: 15,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 15, max: 15 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

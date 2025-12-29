@@ -5,8 +5,8 @@ export const keftaALaSauceTahini: Recipe = {
   title: 'Kefta à la sauce Tahini',
   description: 'Tout simplement délicieux',
   categories: ['Boeuf', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 70,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 70, max: 70 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

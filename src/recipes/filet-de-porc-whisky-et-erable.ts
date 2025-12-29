@@ -5,8 +5,8 @@ export const filetDePorcWhiskyEtErable: Recipe = {
   title: 'Filet de porc whisky et érable',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const spaghettiAuTaco: Recipe = {
   title: 'Spaghetti au Taco',
   description: 'Un plat de spaghetti savoureux avec une touche de tacos, garni de fromages et de tomates fraîches.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 40,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const brochettesDeSteak: Recipe = {
   title: 'Brochettes de steak',
   description: 'Brochettes de steak marinées et grillées, servies avec une sauce satay aux arachides.',
   categories: ['Viande', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 5,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 5, max: 5 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

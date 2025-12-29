@@ -5,8 +5,8 @@ export const marinadeOrientale: Recipe = {
   title: 'Marinade orientale',
   description: 'Une marinade aromatique aux saveurs asiatiques à base de sauce hoisin, soja, miel, gingembre, ail, pâte de chili et huile de sésame.',
   categories: ['Marinade'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

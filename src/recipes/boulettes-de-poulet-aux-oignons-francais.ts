@@ -5,8 +5,8 @@ export const boulettesDePouletAuxOignonsFrancais: Recipe = {
   title: 'Boulettes de poulet aux oignons français',
   description: 'Une recette de boulettes de poulet parfumées aux oignons caramélisés, servies avec une sauce au bouillon et au thym, garnies de Gruyère fondu.',
   categories: ['Plats principaux', 'Vollaille'],
-  prepTime: 20,
-  cookTime: 75,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 75, max: 75 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

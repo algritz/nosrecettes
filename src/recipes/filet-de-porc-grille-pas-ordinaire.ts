@@ -5,8 +5,8 @@ export const filetDePorcGrillePasOrdinaire: Recipe = {
   title: 'Filet de porc grillé, pas ordinaire',
   description: 'Une recette de filet de porc mariné et grillé, relevée avec un mélange de piments habaneros, gingembre, et épices, pour une saveur intense et épicée.',
   categories: ['Végétarien'],
-  prepTime: 25,
-  cookTime: 25,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -38,6 +38,6 @@ export const filetDePorcGrillePasOrdinaire: Recipe = {
     'Retirer la viande du feu, trancher finement et servir.'
   ],
   tags: ['marinade sèche', 'grill', 'épicé'],
-  marinatingTime: 480,
+  marinatingTime: { min: 480, max: 480 },
   slug: 'filet-de-porc-grille-pas-ordinaire'
 };

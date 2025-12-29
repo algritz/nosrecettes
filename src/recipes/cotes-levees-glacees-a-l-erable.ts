@@ -5,8 +5,8 @@ export const cotesLeveesGlaceesALErable: Recipe = {
   title: 'Côtes levées glacées à l\'érable',
   description: 'Une recette de côtes levées glacées à l\'érable, grillées et caramélisées, parfaites pour une cuisson au barbecue.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 40,
-  cookTime: 105,
+  prepTime: { min: 40, max: 40 },
+  cookTime: { min: 105, max: 105 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

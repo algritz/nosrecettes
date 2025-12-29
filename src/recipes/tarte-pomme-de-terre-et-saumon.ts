@@ -5,8 +5,8 @@ export const tartePommeDeTerreEtSaumon: Recipe = {
   title: 'Tarte pomme de terre et saumon',
   description: 'Tarte ou Pizza, je vous laisse décider. Une tarte à base de pommes de terre, saumon fumé, et garnie d\'une sauce au yogourt, servie avec roquette.',
   categories: ['Entrées'],
-  prepTime: 25,
-  cookTime: 40,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 40, max: 40 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

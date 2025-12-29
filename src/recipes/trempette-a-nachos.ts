@@ -5,8 +5,8 @@ export const trempetteANachos: Recipe = {
   title: 'Trempette à Nachos',
   description: 'Une trempette savoureuse à base de bœuf, haricots rouges et fromage, parfaite pour accompagner des nachos ou comme apéritif chaud.',
   categories: ['Entrées', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

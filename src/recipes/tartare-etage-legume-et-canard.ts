@@ -5,8 +5,8 @@ export const tartareEtageLegumeEtCanard: Recipe = {
   title: 'Tartare étagé légume et canard',
   description: 'Un tartare coloré et savoureux combinant légumes croquants et magret de canard, présenté en étages élégants.',
   categories: ['Entrées'],
-  prepTime: 25,
-  cookTime: 0,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

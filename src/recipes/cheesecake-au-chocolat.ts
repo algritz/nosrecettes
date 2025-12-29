@@ -5,8 +5,8 @@ export const cheesecakeAuChocolat: Recipe = {
   title: 'Cheesecake au chocolat',
   description: 'Un cheesecake riche et chocolaté avec une croûte Oreo, une garniture au fromage crémeuse et une ganache au chocolat décorative.',
   categories: ['Desserts'],
-  prepTime: 25,
-  cookTime: 75,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 75, max: 75 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const barresCaramelAuSMore: Recipe = {
   title: 'Barres caramel au s\'more',
   description: 'Une recette de barres gourmandes avec caramel, chocolat, guimauves et biscuits Graham, à réfrigérer avant de servir.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const carresAuChocolatSurprise: Recipe = {
   title: 'Carrés au chocolat surprise',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

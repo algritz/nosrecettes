@@ -5,8 +5,8 @@ export const browniesDansUneTasse: Recipe = {
   title: 'Brownies dans une tasse',
   description: 'Brownies dans une tasse',
   categories: ['Desserts'],
-  prepTime: 5,
-  cookTime: 2,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 2, max: 2 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

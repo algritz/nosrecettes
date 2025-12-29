@@ -5,8 +5,8 @@ export const boulettesALAsiatique: Recipe = {
   title: 'Boulettes à l\'asiatique',
   description: 'Une recette de boulettes savoureuses à l\'influence asiatique, servies avec une sauce épicée et garnies de coriandre et graines de sésame grillées.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 25,
-  cookTime: 45,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -39,7 +39,7 @@ export const boulettesALAsiatique: Recipe = {
   ],
   tags: ['asiatique', 'sauce épicée', 'grillage'],
   wine: 'Baron de Ley',
-  marinatingTime: 30,
+  marinatingTime: { min: 30, max: 30 },
   notes: 'Peut aussi être servi en amuse-gueule.',
   slug: 'boulettes-a-l-asiatique'
 };

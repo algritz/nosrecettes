@@ -5,8 +5,8 @@ export const macaroniAuFromageQueLesEnfantsAiment: Recipe = {
   title: 'Macaroni au fromage que les enfants aiment',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 10,
-  cookTime: 30,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

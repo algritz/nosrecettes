@@ -5,8 +5,8 @@ export const cremeDeMaisMexicaine: Recipe = {
   title: 'Crème de maïs mexicaine',
   description: 'Une soupe crémeuse de maïs mexicaine avec bacon, poivron vert et piment, garnie de coriandre.',
   categories: ['Soupes'],
-  prepTime: 30,
-  cookTime: 20,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

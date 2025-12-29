@@ -5,8 +5,8 @@ export const fonduChocoCoco: Recipe = {
   title: 'Fondu choco-coco',
   description: 'Une fondue chocolat-coco simple à réaliser, idéale pour partager en famille ou entre amis.',
   categories: ['Desserts'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

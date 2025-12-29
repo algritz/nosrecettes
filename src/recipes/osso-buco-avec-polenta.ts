@@ -5,8 +5,8 @@ export const ossoBucoAvecPolenta: Recipe = {
   title: 'Osso buco avec polenta',
   description: 'Un plat mijoté d\'osso buco servi avec de la polenta crémeuse, parfait pour un repas réconfortant.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 120,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 120, max: 120 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

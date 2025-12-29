@@ -5,8 +5,8 @@ export const boulettesDeBufMassala: Recipe = {
   title: 'Boulettes de bœuf massala',
   description: 'Une recette de boulettes de bœuf parfumées au garam massala, servies avec une sauce crémeuse à la tomate et aux épices.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 55,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 55, max: 55 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

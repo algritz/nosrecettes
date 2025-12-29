@@ -5,8 +5,8 @@ export const pouletsMarinesALaRickardsRedEtAuPaprikaFume: Recipe = {
   title: 'Poulets marinés à la Rickard\'s Red et au paprika fumé',
   description: 'Poulets entiers marinés dans une marinade au Rickard\'s Red et paprika fumé, puis grillés et servis avec une mayonnaise épicée.',
   categories: ['Vollaille', 'Barbecue'],
-  prepTime: 35,
-  cookTime: 90,
+  prepTime: { min: 35, max: 35 },
+  cookTime: { min: 90, max: 90 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

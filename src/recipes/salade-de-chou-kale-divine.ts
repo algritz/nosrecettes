@@ -5,8 +5,8 @@ export const saladeDeChouKaleDivine: Recipe = {
   title: 'Salade de chou kale divine',
   description: 'La meilleure façon de manger du kale. Salade de chou kale divine',
   categories: ['Salades'],
-  prepTime: 25,
-  cookTime: 25,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

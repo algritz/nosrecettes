@@ -5,8 +5,8 @@ export const saumonGrilleEtSaSauceAuYogourtEtFinesHerbes: Recipe = {
   title: 'Saumon grillé et sa sauce au yogourt et fines herbes',
   description: 'Un délicieux saumon grillé servi avec une sauce au yogourt parfumée aux fines herbes, parfait pour une cuisson rapide et savoureuse.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const biscottisAmandesEtCanneberges: Recipe = {
   title: 'Biscottis amandes et canneberges',
   description: 'Recette de biscottis aux amandes, canneberges et chocolat, avec deux cuissons pour un croquant parfait.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 35,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 35, max: 35 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

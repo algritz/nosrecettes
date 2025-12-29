@@ -5,8 +5,8 @@ export const sauceAuxArachides: Recipe = {
   title: 'Sauce aux arachides',
   description: 'Une sauce crémeuse et épicée à base de beurre d\'arachide, lait de coco, paprika et sauce poisson, idéale pour accompagner des brochettes ou rouleaux de printemps.',
   categories: ['Sauces', 'Végétarien'],
-  prepTime: 5,
-  cookTime: 15,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

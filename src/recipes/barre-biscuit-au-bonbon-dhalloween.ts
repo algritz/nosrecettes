@@ -5,8 +5,8 @@ export const barreBiscuitAuBonbonDhalloween: Recipe = {
   title: 'Barre-biscuit au bonbon d\'Halloween',
   description: 'Une recette de biscuits aux bonbons d\'Halloween, croustillants et colorés, parfaits pour la fête.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 50,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 50, max: 50 },
   servings: 20,
   difficulty: 'Facile',
   ingredients: [

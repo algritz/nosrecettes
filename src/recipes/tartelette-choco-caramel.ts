@@ -5,8 +5,8 @@ export const tarteletteChocoCaramel: Recipe = {
   title: 'Tartelette choco-caramel',
   description: 'Une tartelette gourmande au chocolat et caramel, facile à préparer sans cuisson.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 30,
-  cookTime: 15,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 15, max: 15 },
   servings: 20,
   difficulty: 'Facile',
   ingredients: [

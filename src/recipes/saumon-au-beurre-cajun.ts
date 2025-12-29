@@ -5,8 +5,8 @@ export const saumonAuBeurreCajun: Recipe = {
   title: 'Saumon au beurre cajun',
   description: 'Une recette de saumon cuit au four avec une marinade au beurre cajun, servi avec des rondelles de citron et décoré d\'oignons verts.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

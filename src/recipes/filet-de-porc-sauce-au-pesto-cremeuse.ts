@@ -5,8 +5,8 @@ export const filetDePorcSauceAuPestoCremeuse: Recipe = {
   title: 'Filet de porc sauce au pesto crémeuse',
   description: 'Une sauce savoureuse avec le porc',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 5,
-  cookTime: 22,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 22, max: 22 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

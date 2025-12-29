@@ -5,9 +5,9 @@ export const jerkyDeBufMaison: Recipe = {
   title: 'Jerky de bœuf maison',
   description: 'Bien meilleur que ceux vendu au dépanneur Jerky de bœuf maison',
   categories: ['Végétarien'],
-  prepTime: 20,
-  cookTime: 240,
-  marinatingTime: 720,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 240, max: 240 },
+  marinatingTime: { min: 720, max: 720 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const araigneesAuChocolat: Recipe = {
   title: 'Araignées au chocolat',
   description: '',
   categories: ['Végétarien'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -21,6 +21,6 @@ export const araigneesAuChocolat: Recipe = {
     'Déposez à la cuillère sur une plaque à biscuit, garnissez à votre goût si désirez et réfrigérer 30 minutes.'
   ],
   tags: ['chocolat', 'fondre', 'salé-sucré'],
-  marinatingTime: 30,
+  marinatingTime: { min: 30, max: 30 },
   slug: 'araignees-au-chocolat'
 };

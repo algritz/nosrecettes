@@ -5,8 +5,8 @@ export const gravlaxDeSaumonAuTheFume: Recipe = {
   title: 'Gravlax de saumon au thé fumé',
   description: 'Ce gravlax goûte le saumon fumé.',
   categories: ['Vollaille', 'Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

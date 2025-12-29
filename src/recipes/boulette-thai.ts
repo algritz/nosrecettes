@@ -5,8 +5,8 @@ export const bouletteThai: Recipe = {
   title: 'Boulette thai',
   description: 'Une recette de boulettes de boeuf thaïlandaises accompagnées d\'une sauce coco épicée, servies avec du riz parfumé.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 30,
-  cookTime: 90,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 90, max: 90 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

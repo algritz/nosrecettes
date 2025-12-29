@@ -5,8 +5,8 @@ export const boulesAuxDattesEtAuxRiceKrispies: Recipe = {
   title: 'Boules aux dattes et aux Rice Krispies',
   description: 'Une recette de boules aux dattes et Rice Krispies, simple et rapide à préparer.',
   categories: ['Végétarien', 'Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 5,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 5, max: 5 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

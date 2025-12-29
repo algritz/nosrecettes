@@ -5,8 +5,8 @@ export const pilonsDePouletsPiquantsALerableSurLeBbq: Recipe = {
   title: 'Pilons de poulets piquants à l’érable sur le BBQ',
   description: 'Un délicieux plat de pilons de poulet épicés à l’érable, grillés à la perfection avec une sauce piquante et sucrée.',
   categories: ['Vollaille', 'Barbecue'],
-  prepTime: 25,
-  cookTime: 50,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 50, max: 50 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

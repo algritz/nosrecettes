@@ -5,8 +5,8 @@ export const gateauKetchupMoutarde: Recipe = {
   title: 'Gâteau ketchup-moutarde',
   description: 'Un gâteau sucré-salé combinant le ketchup et la moutarde, avec un glaçage à la moutarde et au beurre.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 30,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 30, max: 30 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

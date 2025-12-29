@@ -5,8 +5,8 @@ export const pouletALOrangeEtAuxArachides: Recipe = {
   title: 'Poulet à l\'orange et aux arachides',
   description: 'Un plat de poulet savoureux avec une sauce à l\'orange et aux arachides, parfait pour une cuisson au four et servi avec des quartiers d\'orange et des oignons verts.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

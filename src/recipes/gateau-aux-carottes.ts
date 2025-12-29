@@ -5,8 +5,8 @@ export const gateauAuxCarottes: Recipe = {
   title: 'Gateau aux carottes',
   description: 'Un gâteau aux carottes moelleux avec un crémage au fromage en crème.',
   categories: ['Gâteaux', 'Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 60,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 60, max: 60 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

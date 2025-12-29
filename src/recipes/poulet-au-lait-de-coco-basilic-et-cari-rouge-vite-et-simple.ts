@@ -5,8 +5,8 @@ export const pouletAuLaitDeCocoBasilicEtCariRougeViteEtSimple: Recipe = {
   title: 'Poulet au lait de coco, basilic et cari rouge vite et simple',
   description: 'Une recette rapide et savoureuse de poulet au lait de coco, basilic et cari rouge, idéale pour un repas express.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

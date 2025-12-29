@@ -5,8 +5,8 @@ export const sauteDePouletEtDeLegumes: Recipe = {
   title: 'Sauté de poulet et de légumes',
   description: 'Un sauté savoureux de poulet et légumes, parfumé de sauces asiatiques et agrémenté de coriandre fraîche.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

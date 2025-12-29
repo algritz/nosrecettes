@@ -5,8 +5,8 @@ export const hautsDeCuisseDePouletSauceAuxPechesEtAuCari: Recipe = {
   title: 'Hauts de cuisse de poulet, sauce aux pêches et au cari',
   description: 'Recette de hauts de cuisse de poulet accompagnés d\'une sauce aux pêches parfumée au cari, servie avec du riz blanc.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

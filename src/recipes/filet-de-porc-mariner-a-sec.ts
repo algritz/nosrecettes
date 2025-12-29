@@ -5,9 +5,9 @@ export const filetDePorcMarinerASec: Recipe = {
   title: 'Filet de porc mariner à sec',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 30,
-  marinatingTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
+  marinatingTime: { min: 30, max: 30 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

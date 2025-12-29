@@ -5,8 +5,8 @@ export const porcEffilochePulledPorkAuFour: Recipe = {
   title: 'Porc effiloché (pulled pork) au four',
   description: 'Épaule de porc dorée puis braisée longuement au four dans une sauce ketchup–vinaigre de cidre, épices et aromates, effilochée et mélangée à la sauce.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 360,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 360, max: 360 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

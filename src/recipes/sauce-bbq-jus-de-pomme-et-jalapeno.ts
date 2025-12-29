@@ -5,8 +5,8 @@ export const sauceBbqJusDePommeEtJalapeno: Recipe = {
   title: 'Sauce BBQ jus de pomme et Jalapeno',
   description: 'Une sauce BBQ savoureuse à base de jus de pomme et jalapeno, idéale pour accompagner vos grillades.',
   categories: ['Sauces'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

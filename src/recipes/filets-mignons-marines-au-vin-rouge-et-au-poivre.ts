@@ -5,8 +5,8 @@ export const filetsMignonsMarinesAuVinRougeEtAuPoivre: Recipe = {
   title: 'Filets mignons marinés au vin rouge et au poivre',
   description: 'Recette de filets mignons marinés dans un mélange de vin rouge, bouillon de boeuf, vinaigre balsamique, cassonade, ail et grains de poivre, puis grillés et servis avec une sauce réduite.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 9,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 9, max: 9 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const pouletQueso: Recipe = {
   title: 'Poulet queso',
   description: 'Un plat de poulet savoureux avec une sauce fromagère, parfait pour un repas convivial.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

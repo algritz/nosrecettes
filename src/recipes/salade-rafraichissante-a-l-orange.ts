@@ -5,8 +5,8 @@ export const saladeRafraichissanteALOrange: Recipe = {
   title: 'Salade rafraîchissante à l\'orange',
   description: 'Une salade fraîche avec des segments d\'orange, des légumes croquants et une vinaigrette légère à l\'huile d\'olive et miel.',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

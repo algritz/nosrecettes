@@ -1,6 +1,8 @@
 import { ProcessedImage } from '@/utils/imageUtils';
-import { ImageSizes, IngredientSection, InstructionSection } from '@/types/recipe';
+import { ImageSizes, IngredientSection, InstructionSection, TimeRange } from '@/types/recipe';
 import { generateCleanupInstructions } from '@/utils/cloudinaryUtils';
+import { getMaxTime } from '@/utils/timeUtils';
+import { formatTime } from '@/utils/timeFormat';
 
 interface GitHubConfig {
   owner: string;
@@ -12,9 +14,9 @@ interface RecipeData {
   title: string;
   description: string;
   categories: string[]; // Updated to handle multiple categories
-  prepTime: string;
-  cookTime: string;
-  marinatingTime?: string;
+  prepTime: TimeRange;
+  cookTime: TimeRange;
+  marinatingTime?: TimeRange;
   servings: string;
   difficulty: string;
   ingredients: string[] | IngredientSection[];
@@ -172,8 +174,8 @@ ${steps.map(step => `        '${this.escapeString(step)}'`).join(',\n')}
     const id = existingId || Date.now().toString();
     const variableName = this.createVariableName(slug);
 
-    const marinatingTimeField = data.marinatingTime && parseInt(data.marinatingTime) > 0 
-      ? `  marinatingTime: ${data.marinatingTime},\n` 
+    const marinatingTimeField = data.marinatingTime && (data.marinatingTime.min > 0 || data.marinatingTime.max > 0)
+      ? `  marinatingTime: { min: ${data.marinatingTime.min}, max: ${data.marinatingTime.max} },\n`
       : '';
 
     // Get default source if not provided
@@ -248,8 +250,8 @@ export const ${variableName}: Recipe = {
   id: '${id}',
   title: '${this.escapeString(data.title)}',
   description: '${this.escapeString(data.description)}',
-${categoriesField}  prepTime: ${data.prepTime || 0},
-  cookTime: ${data.cookTime || 0},
+${categoriesField}  prepTime: { min: ${data.prepTime.min}, max: ${data.prepTime.max} },
+  cookTime: { min: ${data.cookTime.min}, max: ${data.cookTime.max} },
 ${marinatingTimeField}  servings: ${data.servings || 1},
   difficulty: '${data.difficulty}',
   ingredients: ${ingredientsField},
@@ -625,10 +627,13 @@ ${cleanupInstructions}
         }
       );
 
-      // Create pull request
-      const totalTime = (parseInt(recipeData.prepTime) || 0) + (parseInt(recipeData.cookTime) || 0);
-      const marinatingInfo = recipeData.marinatingTime && parseInt(recipeData.marinatingTime) > 0 
-        ? `\n**Temps de marinage:** ${recipeData.marinatingTime} minutes` 
+      // Create pull request - use max values for time calculations
+      const totalTime = getMaxTime(recipeData.prepTime) +
+                        getMaxTime(recipeData.cookTime) +
+                        (recipeData.marinatingTime ? getMaxTime(recipeData.marinatingTime) : 0);
+
+      const marinatingInfo = recipeData.marinatingTime && (recipeData.marinatingTime.min > 0 || recipeData.marinatingTime.max > 0)
+        ? `\n**Temps de marinage:** ${formatTime(recipeData.marinatingTime)} (${recipeData.marinatingTime.min}-${recipeData.marinatingTime.max} minutes)`
         : '';
 
       const accompanimentInfo = recipeData.accompaniment?.trim() 
@@ -841,10 +846,13 @@ ${recipeData.description}
         );
       }
 
-      // Create pull request
-      const totalTime = (parseInt(recipeData.prepTime) || 0) + (parseInt(recipeData.cookTime) || 0);
-      const marinatingInfo = recipeData.marinatingTime && parseInt(recipeData.marinatingTime) > 0 
-        ? `\n**Temps de marinage:** ${recipeData.marinatingTime} minutes` 
+      // Create pull request - use max values for time calculations
+      const totalTime = getMaxTime(recipeData.prepTime) +
+                        getMaxTime(recipeData.cookTime) +
+                        (recipeData.marinatingTime ? getMaxTime(recipeData.marinatingTime) : 0);
+
+      const marinatingInfo = recipeData.marinatingTime && (recipeData.marinatingTime.min > 0 || recipeData.marinatingTime.max > 0)
+        ? `\n**Temps de marinage:** ${formatTime(recipeData.marinatingTime)} (${recipeData.marinatingTime.min}-${recipeData.marinatingTime.max} minutes)`
         : '';
 
       const accompanimentInfo = recipeData.accompaniment?.trim() 

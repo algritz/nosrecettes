@@ -5,8 +5,8 @@ export const muffinsAuGruauEtALaConfiture: Recipe = {
   title: 'Muffins au gruau et à la confiture',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

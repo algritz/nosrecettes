@@ -5,8 +5,8 @@ export const patatesToutesGarnies: Recipe = {
   title: 'Patates toutes garnies',
   description: 'Des patates surprises !',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 40,
-  cookTime: 60,
+  prepTime: { min: 40, max: 40 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

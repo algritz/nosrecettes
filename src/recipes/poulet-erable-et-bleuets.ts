@@ -5,8 +5,8 @@ export const pouletErableEtBleuets: Recipe = {
   title: 'Poulet érable et bleuets',
   description: '',
   categories: ['Vollaille'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const biscuitsAuChocolatSansCuisson: Recipe = {
   title: 'Biscuits au chocolat sans cuisson',
   description: 'Recette de biscuits au chocolat sans cuisson, avec une couche de chocolat fondu et des boules de pâte croustillantes.',
   categories: ['Végétarien'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -37,7 +37,7 @@ export const biscuitsAuChocolatSansCuisson: Recipe = {
     'Faites refroidir dans le réfrigérateur pendant au moins 30 minutes.'
   ],
   tags: ['chocolat', 'sans cuisson', 'moule à muffin'],
-  marinatingTime: 30,
+  marinatingTime: { min: 30, max: 30 },
   notes: 'Je prends des moules en silicone. Je remets les petites boules au froid avant de les tremper dans le chocolat.',
   slug: 'biscuits-au-chocolat-sans-cuisson'
 };

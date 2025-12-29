@@ -5,8 +5,8 @@ export const croissantAuChocolatEtFromageALaCremeDessert: Recipe = {
   title: 'Croissant au chocolat et fromage à la crème (déssert)',
   description: 'Une tarte aux croissants, chocolat et fromage à la crème, cuite au four et servie avec une boule de crème glacée.',
   categories: ['Desserts'],
-  prepTime: 25,
-  cookTime: 50,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 50, max: 50 },
   servings: 11,
   difficulty: 'Facile',
   ingredients: [
@@ -33,6 +33,6 @@ export const croissantAuChocolatEtFromageALaCremeDessert: Recipe = {
   ],
   tags: ['chocolat', 'fromage à la crème', 'cuisson au four'],
   accompaniment: 'Servir avec une boule de crème glacée',
-  marinatingTime: 20,
+  marinatingTime: { min: 20, max: 20 },
   slug: 'croissant-au-chocolat-et-fromage-a-la-creme-dessert'
 };

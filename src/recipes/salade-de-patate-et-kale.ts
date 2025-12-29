@@ -5,8 +5,8 @@ export const saladeDePatateEtKale: Recipe = {
   title: 'Salade de patate et kale',
   description: 'Une salade fraîche et savoureuse à base de pommes de terre, kale, câpres, et une vinaigrette citronnée.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

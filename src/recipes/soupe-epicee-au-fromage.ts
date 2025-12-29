@@ -5,8 +5,8 @@ export const soupeEpiceeAuFromage: Recipe = {
   title: 'Soupe épicée au fromage',
   description: 'Une petite soupe pas piquée des vers Soupe épicée au fromage',
   categories: ['Soupes'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

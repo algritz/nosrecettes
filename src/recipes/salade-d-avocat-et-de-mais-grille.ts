@@ -5,8 +5,8 @@ export const saladeDAvocatEtDeMaisGrille: Recipe = {
   title: 'Salade d\'avocat et de maïs grillé',
   description: 'Une salade fraîche et savoureuse combinant avocat crémeux et maïs grillé, parfumée à la coriandre et au piment jalapeño.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

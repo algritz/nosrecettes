@@ -5,8 +5,8 @@ export const gateauChocoCarotte: Recipe = {
   title: 'gâteau choco-carotte',
   description: 'Un gâteau moelleux à la carotte avec un glaçage au chocolat noir et beurre.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 35,
-  cookTime: 43,
+  prepTime: { min: 35, max: 35 },
+  cookTime: { min: 43, max: 43 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

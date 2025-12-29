@@ -5,8 +5,8 @@ export const cretonMaisonCremeux: Recipe = {
   title: 'Creton maison crémeux',
   description: 'Des creton maison, c\'est bien meilleur que ceux acheté à l\'épicerie',
   categories: ['Végétarien'],
-  prepTime: 10,
-  cookTime: 50,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 50, max: 50 },
   servings: 2.5,
   difficulty: 'Facile',
   ingredients: [

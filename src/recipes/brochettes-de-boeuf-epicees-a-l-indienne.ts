@@ -5,8 +5,8 @@ export const brochettesDeBoeufEpiceesALIndienne: Recipe = {
   title: 'Brochettes de boeuf épicées à l\'indienne',
   description: 'Une recette de brochettes de boeuf épicées à l\'indienne, parfaites pour un barbecue estival. Préparez des boulettes assaisonnées, enfilez-les sur des brochettes, puis faites-les griller jusqu\'à ce qu\'elles soient dorées.',
   categories: ['Plats principaux', 'Barbecue'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

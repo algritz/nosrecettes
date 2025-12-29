@@ -5,8 +5,8 @@ export const coquillesFarciesAuStyleTacos: Recipe = {
   title: 'Coquilles farcies au style tacos',
   description: 'Une recette de coquilles farcies inspirée des tacos, garnies de bœuf haché, sauce tomate et fromage, cuites au four.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

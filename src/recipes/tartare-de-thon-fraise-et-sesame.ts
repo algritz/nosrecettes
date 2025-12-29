@@ -5,8 +5,8 @@ export const tartareDeThonFraiseEtSesame: Recipe = {
   title: 'Tartare de thon fraise et sésame',
   description: 'Un tartare frais et parfumé associant le thon, la fraise et le sésame, idéal pour une entrée légère.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

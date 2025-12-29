@@ -5,8 +5,8 @@ export const saumonThai: Recipe = {
   title: 'Saumon thai',
   description: 'Un plat de saumon thaï épicé avec une sauce au curry, servi avec du riz basmati et décoré de menthe ou de coriandre.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -41,6 +41,6 @@ export const saumonThai: Recipe = {
   ],
   tags: ['curry', 'épicé', 'saumon'],
   accompaniment: 'Riz basmati',
-  marinatingTime: 10,
+  marinatingTime: { min: 10, max: 10 },
   slug: 'saumon-thai'
 };

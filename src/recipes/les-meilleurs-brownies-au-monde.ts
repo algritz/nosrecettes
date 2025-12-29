@@ -5,8 +5,8 @@ export const lesMeilleursBrowniesAuMonde: Recipe = {
   title: 'Les meilleurs Brownies au monde',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

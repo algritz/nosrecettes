@@ -5,8 +5,8 @@ export const magretDeCanardLaqueALerableEtAuxBleuets: Recipe = {
   title: 'Magret de canard laqué à l’érable et aux bleuets',
   description: 'Un magret de canard laqué à l’érable et aux bleuets, cuit au four pour une finition brillante et savoureuse.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

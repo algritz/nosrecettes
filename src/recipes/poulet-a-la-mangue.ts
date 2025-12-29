@@ -5,8 +5,8 @@ export const pouletALaMangue: Recipe = {
   title: 'Poulet à la mangue',
   description: 'Un plat savoureux de poulet et mangue, parfumé aux épices et lait de coco, servi avec du riz Basmati.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

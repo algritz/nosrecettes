@@ -5,8 +5,8 @@ export const saagAlooPommesDeTerreIndiennesAuxEpinards: Recipe = {
   title: 'Saag Aloo (Pommes de terre indiennes aux épinards)',
   description: 'J\'adore cette manière différente de manger des pommes de terre. Saag Aloo (Pommes de terre indiennes aux épinards)',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

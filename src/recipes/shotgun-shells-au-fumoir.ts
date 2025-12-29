@@ -5,8 +5,8 @@ export const shotgunShellsAuFumoir: Recipe = {
   title: 'Shotgun Shells au fumoir',
   description: 'Excellent et différent',
   categories: ['Vollaille'],
-  prepTime: 30,
-  cookTime: 180,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 180, max: 180 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

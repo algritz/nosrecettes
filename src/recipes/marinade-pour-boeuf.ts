@@ -5,8 +5,8 @@ export const marinadePourBoeuf: Recipe = {
   title: 'Marinade pour boeuf',
   description: '',
   categories: ['Marinade'],
-  prepTime: 10,
-  cookTime: 0,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -29,6 +29,6 @@ export const marinadePourBoeuf: Recipe = {
     'Réfrigérer pendant 6 à 8 heures ou encore mieux, toute la nuit.'
   ],
   tags: ['marinade', 'bœuf', 'réfrigération'],
-  marinatingTime: 360,
+  marinatingTime: { min: 360, max: 360 },
   slug: 'marinade-pour-boeuf'
 };

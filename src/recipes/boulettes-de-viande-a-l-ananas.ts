@@ -5,8 +5,8 @@ export const boulettesDeViandeALAnanas: Recipe = {
   title: 'Boulettes de viande à l\'ananas',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 30,
-  cookTime: 480,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 480, max: 480 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

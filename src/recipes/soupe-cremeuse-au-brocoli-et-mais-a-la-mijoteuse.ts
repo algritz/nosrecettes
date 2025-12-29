@@ -5,8 +5,8 @@ export const soupeCremeuseAuBrocoliEtMaisALaMijoteuse: Recipe = {
   title: 'Soupe crémeuse au brocoli et maïs à la mijoteuse',
   description: 'Une soupe crémeuse et réconfortante préparée à la mijoteuse, combinant le maïs, le brocoli et le fromage cheddar.',
   categories: ['Soupe', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 240,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 240, max: 240 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

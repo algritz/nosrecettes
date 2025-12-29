@@ -5,8 +5,8 @@ export const steaksDeThonMarineALOrange: Recipe = {
   title: 'Steaks de thon mariné à l\'orange',
   description: '',
   categories: ['Poisson', 'Barbecue'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -30,6 +30,6 @@ export const steaksDeThonMarineALOrange: Recipe = {
     'Jeter tout reste de marinade.'
   ],
   tags: ['barbecue', 'thon', 'marinade'],
-  marinatingTime: 30,
+  marinatingTime: { min: 30, max: 30 },
   slug: 'steaks-de-thon-marine-a-l-orange'
 };

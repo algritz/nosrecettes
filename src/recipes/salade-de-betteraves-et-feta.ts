@@ -5,8 +5,8 @@ export const saladeDeBetteravesEtFeta: Recipe = {
   title: 'Salade de betteraves et feta',
   description: 'Salade de betteraves rafraîchissante',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

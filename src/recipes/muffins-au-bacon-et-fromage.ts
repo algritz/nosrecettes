@@ -5,8 +5,8 @@ export const muffinsAuBaconEtFromage: Recipe = {
   title: 'Muffins au bacon et fromage',
   description: '',
   categories: ['Végétarien'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

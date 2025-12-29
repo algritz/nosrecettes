@@ -5,8 +5,8 @@ export const saladeDeTomatesConcombresEtAvocat: Recipe = {
   title: 'Salade de tomates, concombres et avocat',
   description: 'Une salade tout en fraîcheur. Salade de tomates, concombres et avocat',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

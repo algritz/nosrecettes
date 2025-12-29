@@ -5,8 +5,8 @@ export const cotesLeveesBatonRouge: Recipe = {
   title: 'Côtes levées - Bâton Rouge',
   description: 'Recette de côtes levées de porc à la façon Bâton Rouge, avec plusieurs méthodes de cuisson dont au four, fumoir ou barbecue, et une sauce maison.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 60,
-  cookTime: 240,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 240, max: 240 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

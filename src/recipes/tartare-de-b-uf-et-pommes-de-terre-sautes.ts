@@ -5,8 +5,8 @@ export const tartareDeBUfEtPommesDeTerreSautes: Recipe = {
   title: 'Tartare de bœuf et pommes de terre sautés',
   description: 'Un tartare de bœuf accompagné de pommes de terre sautées, relevé avec une mayonnaise maison et des aromates.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

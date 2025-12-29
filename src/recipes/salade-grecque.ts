@@ -5,8 +5,8 @@ export const saladeGrecque: Recipe = {
   title: 'Salade grecque',
   description: 'Une salade fraîche et savoureuse avec une vinaigrette à l\'huile d\'olive, citron, olives et feta, accompagnée de légumes croquants.',
   categories: ['Salades'],
-  prepTime: 30,
-  cookTime: 0,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

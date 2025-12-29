@@ -5,8 +5,8 @@ export const fudgeAuxCanneberges: Recipe = {
   title: 'Fudge aux canneberges',
   description: 'Un fudge aux canneberges séchées, chocolat mi-amer et lait concentré, à préparer au bain-marie et à réfrigérer pour obtenir une texture ferme et fondante.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 10,
-  cookTime: 10,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 10, max: 10 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [
@@ -25,7 +25,7 @@ export const fudgeAuxCanneberges: Recipe = {
     'Couper le fudge en carrés.'
   ],
   tags: ['chocolat', 'fudge', 'réfrigération'],
-  marinatingTime: 180,
+  marinatingTime: { min: 180, max: 180 },
   notes: 'Le temps de marinade est de 3 heures. La recette ne précise pas le nombre exact de portions, mais indique \'une gang\'.',
   slug: 'fudge-aux-canneberges'
 };

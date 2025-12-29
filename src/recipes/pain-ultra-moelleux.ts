@@ -5,8 +5,8 @@ export const painUltraMoelleux: Recipe = {
   title: 'Pain ultra-moelleux',
   description: 'Pain fait avec un œuf qui est ultra moelleux.',
   categories: ['Végétarien', 'Pain'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -35,6 +35,6 @@ export const painUltraMoelleux: Recipe = {
     'Faire cuire à 350°F (180°C) environ 30 minutes.'
   ],
   tags: ['moelleux', 'pain maison', 'levure'],
-  marinatingTime: 150,
+  marinatingTime: { min: 150, max: 150 },
   slug: 'pain-ultra-moelleux'
 };

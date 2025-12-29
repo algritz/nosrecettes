@@ -5,8 +5,8 @@ export const marinadeAuSiropDErableEtRaifortPourViandeSauvage: Recipe = {
   title: 'Marinade au sirop d\'érable et raifort pour viande sauvage',
   description: 'Une marinade savoureuse à base de sirop d\'érable et raifort, idéale pour la viande de gibier ou autres viandes sauvages, à préparer avant de griller.',
   categories: ['Marinade', 'Vollaille'],
-  prepTime: 10,
-  cookTime: 10,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

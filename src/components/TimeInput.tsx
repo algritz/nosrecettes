@@ -1,3 +1,33 @@
+/**
+ * @deprecated Use TimeRangeInput instead
+ *
+ * This component is kept for reference during migration to time range support.
+ * It will be removed in a future version once all forms are updated to use TimeRangeInput.
+ *
+ * Migration Guide:
+ * - Replace `TimeInput` imports with `TimeRangeInput`
+ * - Update value prop from `string` to `TimeRange` object
+ * - Update onChange callback to accept `TimeRange` instead of `string`
+ *
+ * Example:
+ * ```typescript
+ * // Before
+ * <TimeInput
+ *   value={prepTime}
+ *   onChange={(minutes) => setPrepTime(minutes)}
+ * />
+ *
+ * // After
+ * <TimeRangeInput
+ *   value={prepTime}
+ *   onChange={(range) => setPrepTime(range)}
+ * />
+ * ```
+ *
+ * @see TimeRangeInput for the replacement component
+ * @see /thoughts/shared/plans/2025-12-29-time-range-support.md for full migration plan
+ */
+
 import { Input } from '@/components/ui/input';
 
 interface TimeInputProps {

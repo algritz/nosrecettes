@@ -5,9 +5,9 @@ export const marteauDeThor: Recipe = {
   title: 'Marteau de Thor',
   description: 'Impressionnez vos invités avec cette spectaculaire recette de jarret de bœuf Marteau de Thor',
   categories: ['Vollaille'],
-  prepTime: 20,
-  cookTime: 720,
-  marinatingTime: 720,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 720, max: 720 },
+  marinatingTime: { min: 720, max: 720 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

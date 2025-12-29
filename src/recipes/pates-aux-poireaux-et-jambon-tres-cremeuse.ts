@@ -5,8 +5,8 @@ export const patesAuxPoireauxEtJambonTresCremeuse: Recipe = {
   title: 'Pâtes aux poireaux et jambon très crémeuse',
   description: 'Une recette de pâtes crémeuses aux poireaux et jambon, idéale pour utiliser des restes de jambon.',
   categories: ['Pâtes', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

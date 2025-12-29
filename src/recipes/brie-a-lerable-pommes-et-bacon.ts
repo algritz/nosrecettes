@@ -5,8 +5,8 @@ export const brieALerablePommesEtBacon: Recipe = {
   title: 'Brie à l’érable, pommes et bacon',
   description: 'Un brie chaud et coulant en apéro c\'est toujours gagnant Brie à l’érable, pommes et bacon',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

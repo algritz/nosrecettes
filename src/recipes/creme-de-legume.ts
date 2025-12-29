@@ -5,8 +5,8 @@ export const cremeDeLegume: Recipe = {
   title: 'Crème de légume',
   description: '',
   categories: ['Soupes'],
-  prepTime: 45,
-  cookTime: 40,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

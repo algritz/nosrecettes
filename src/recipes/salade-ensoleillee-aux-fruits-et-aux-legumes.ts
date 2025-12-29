@@ -5,8 +5,8 @@ export const saladeEnsoleilleeAuxFruitsEtAuxLegumes: Recipe = {
   title: 'Salade ensoleillée aux fruits et aux légumes',
   description: 'Une salade fraîche et colorée combinant fruits et légumes, idéale pour une dégustation estivale.',
   categories: ['Salades'],
-  prepTime: 30,
-  cookTime: 0,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

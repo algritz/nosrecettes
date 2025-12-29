@@ -5,8 +5,8 @@ export const cremeDeLegumeGrilles: Recipe = {
   title: 'Crème de légume grillés',
   description: 'Une soupe crémeuse à base de légumes grillés, parfumée aux épices, et enrichie de bouillon de poulet ou légumes.',
   categories: ['Soupes'],
-  prepTime: 15,
-  cookTime: 50,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 50, max: 50 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

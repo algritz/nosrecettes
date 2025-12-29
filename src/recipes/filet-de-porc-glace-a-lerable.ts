@@ -5,9 +5,9 @@ export const filetDePorcGlaceALerable: Recipe = {
   title: 'Filet de porc glacé à l\'érable',
   description: 'Filet de porc mariné aux épices et glacé à l\'érable (four ou grill).',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
-  marinatingTime: 480,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
+  marinatingTime: { min: 480, max: 480 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

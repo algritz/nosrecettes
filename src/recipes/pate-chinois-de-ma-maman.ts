@@ -5,8 +5,8 @@ export const pateChinoisDeMaMaman: Recipe = {
   title: 'Pâté chinois de ma maman',
   description: 'Un classique pâté chinois revisité avec une viande de boeuf, une couche de maïs crémeux, et une purée de pommes de terre onctueuse, gratiné au paprika.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

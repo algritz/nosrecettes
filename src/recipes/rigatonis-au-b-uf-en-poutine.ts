@@ -5,8 +5,8 @@ export const rigatonisAuBUfEnPoutine: Recipe = {
   title: 'Rigatonis au bœuf en poutine',
   description: 'Un plat réconfortant combinant pâtes, bœuf, sauce à poutine et fromage en grains, gratiné au four.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

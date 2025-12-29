@@ -5,9 +5,9 @@ export const petitsPainsMaison: Recipe = {
   title: 'Petits pains maison',
   description: 'Recette de petits pains maison moelleux et faciles à faire, avec une pâte levée, cuits au four et badigeonnés de beurre fondu.',
   categories: ['Pains'],
-  prepTime: 20,
-  cookTime: 20,
-  marinatingTime: 120,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
+  marinatingTime: { min: 120, max: 120 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const macaroniAuChili: Recipe = {
   title: 'Macaroni au chili',
   description: 'Un plat de pâtes épicé et réconfortant avec du bœuf, des haricots et du fromage, gratiné au four.',
   categories: ['Plats principaux'],
-  prepTime: 35,
-  cookTime: 30,
+  prepTime: { min: 35, max: 35 },
+  cookTime: { min: 30, max: 30 },
   servings: 9,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const pateChinoisAuBUfEffiloche: Recipe = {
   title: 'Pâté chinois au bœuf effiloché',
   description: '',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 510,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 510, max: 510 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

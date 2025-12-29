@@ -5,8 +5,8 @@ export const marinadePourPouletChiliCoriandreEtLime: Recipe = {
   title: 'Marinade pour poulet, chili, coriandre et lime',
   description: 'Goûteux et très rafraichissant Marinade pour poulet, chili, coriandre et lime',
   categories: ['Marinade'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const boeufALaHongroise: Recipe = {
   title: 'Boeuf à la hongroise',
   description: 'Un plat de boeuf mijoté aux saveurs hongroises, avec légumes, vin rouge et épices, préparé au four, à la mijoteuse ou à la poêle.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 420,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 420, max: 420 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const tartareDeThonALaPommeMayonnaiseEpiceeASaveurDEte: Recipe = {
   title: 'Tartare de thon à la pomme, mayonnaise épicée à saveur d\'été',
   description: 'Un tartare rafraîchissant de thon à la pomme avec une mayonnaise épicée, parfait pour l\'été.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

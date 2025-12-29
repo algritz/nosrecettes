@@ -5,8 +5,8 @@ export const filetDePorcAuBaconEtAuCheddar: Recipe = {
   title: 'Filet de porc au bacon et au cheddar',
   description: 'Un délicieux filet de porc farci au bacon et au cheddar, cuit au four avec des oignons et une sauce crémeuse au vin blanc.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

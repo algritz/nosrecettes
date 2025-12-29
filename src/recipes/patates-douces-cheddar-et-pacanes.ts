@@ -5,8 +5,8 @@ export const patatesDoucesCheddarEtPacanes: Recipe = {
   title: 'Patates douces cheddar et pacanes',
   description: 'Patates douces garnies d\'un mélange de fromage, ciboulette et pacanes, gratinées au four.',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 60,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

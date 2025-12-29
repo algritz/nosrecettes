@@ -5,8 +5,8 @@ export const pizzaAuxFruitsSurLeBbq: Recipe = {
   title: 'Pizza aux fruits sur le BBQ',
   description: 'Une pizza fruitée cuite sur le barbecue, garnie de chocolat, guimauves, et zestes d\'orange, parfaite pour une dégustation estivale.',
   categories: ['Végétarien', 'Plats principaux', 'Barbecue'],
-  prepTime: 20,
-  cookTime: 5,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 5, max: 5 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

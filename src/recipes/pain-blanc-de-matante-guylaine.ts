@@ -5,8 +5,8 @@ export const painBlancDeMatanteGuylaine: Recipe = {
   title: 'Pain blanc de matante Guylaine',
   description: 'Une recette de pain blanc maison, croustillant à l\'extérieur et moelleux à l\'intérieur, nécessitant environ 4 heures de préparation.',
   categories: ['Pain'],
-  prepTime: 240,
-  cookTime: 45,
+  prepTime: { min: 240, max: 240 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

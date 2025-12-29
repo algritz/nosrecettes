@@ -5,8 +5,8 @@ export const tartareDeBufAuCoureurDesBois: Recipe = {
   title: 'Tartare de bœuf au Coureur des bois',
   description: 'Tartare de bœuf au Coureur des bois',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

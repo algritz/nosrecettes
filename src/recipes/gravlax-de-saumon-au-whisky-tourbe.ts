@@ -5,8 +5,8 @@ export const gravlaxDeSaumonAuWhiskyTourbe: Recipe = {
   title: 'Gravlax de saumon au Whisky Tourbé',
   description: '',
   categories: ['Vollaille'],
-  prepTime: 15,
-  cookTime: 48,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 48, max: 48 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

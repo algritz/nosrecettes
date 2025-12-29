@@ -5,8 +5,8 @@ export const boucheesDeCrabcakes: Recipe = {
   title: 'Bouchées de crabcakes',
   description: 'Recette de bouchées de crabcakes avec garniture de tomate, basilic et mayonnaise, accompagnée de conseils pour congeler et réchauffer.',
   categories: ['Végétarien'],
-  prepTime: 25,
-  cookTime: 15,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 15, max: 15 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

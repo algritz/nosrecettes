@@ -5,8 +5,8 @@ export const chouxDeBruxellesEnSauceAlfredo: Recipe = {
   title: 'choux de bruxelles en sauce Alfredo',
   description: 'Recette de choux de Bruxelles en sauce Alfredo avec bacon, crème, citron et parmesan.',
   categories: ['Légumes', 'Sauces'],
-  prepTime: 10,
-  cookTime: 15,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 15, max: 15 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

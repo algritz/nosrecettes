@@ -5,8 +5,8 @@ export const jambonALaBiere: Recipe = {
   title: 'Jambon à la bière',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 240,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 240, max: 240 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

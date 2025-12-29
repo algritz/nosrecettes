@@ -5,8 +5,8 @@ export const doigtsDePouletMoutardeEtMiel: Recipe = {
   title: 'Doigts de poulet moutarde et miel',
   description: '',
   categories: ['Vollaille'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

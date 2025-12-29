@@ -5,8 +5,8 @@ export const filetsDePorcEpicesALaMexicaine: Recipe = {
   title: 'Filets de porc épicés à la mexicaine',
   description: 'Une recette de filets de porc épicés, marinés et grillés, accompagnés d\'une sauce à l\'orange et lime, parfaits pour un repas savoureux et piquant.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 25,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -40,6 +40,6 @@ export const filetsDePorcEpicesALaMexicaine: Recipe = {
     'Servir accompagnés du reste de la sauce réservée.'
   ],
   tags: ['grill', 'marinade sèche', 'épicé'],
-  marinatingTime: 120,
+  marinatingTime: { min: 120, max: 120 },
   slug: 'filets-de-porc-epices-a-la-mexicaine'
 };

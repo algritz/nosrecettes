@@ -5,8 +5,8 @@ export const coteletteDePorcPiquanteAuMielEtALail: Recipe = {
   title: 'Côtelette de porc piquante au miel et à l\'ail',
   description: 'Une recette de côtelettes de porc marinées dans une sauce savoureuse, puis grillées et servies avec une sauce BBQ piquante au miel et à l\'ail.',
   categories: ['Porc', 'Sauces', 'Barbecue'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

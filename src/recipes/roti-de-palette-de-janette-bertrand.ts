@@ -5,8 +5,8 @@ export const rotiDePaletteDeJanetteBertrand: Recipe = {
   title: 'Rôti de palette de Janette Bertrand',
   description: 'Un classique Québécois Rôti de palette de Janette Bertrand',
   categories: ['Plats principaux'],
-  prepTime: 5,
-  cookTime: 540,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 540, max: 540 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

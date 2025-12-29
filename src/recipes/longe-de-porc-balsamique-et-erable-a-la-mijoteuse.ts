@@ -5,8 +5,8 @@ export const longeDePorcBalsamiqueEtErableALaMijoteuse: Recipe = {
   title: 'Longe de porc balsamique et érable à la mijoteuse',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 360,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 360, max: 360 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

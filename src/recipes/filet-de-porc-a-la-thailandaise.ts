@@ -5,8 +5,8 @@ export const filetDePorcALaThailandaise: Recipe = {
   title: 'Filet de porc à la thaïlandaise',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 45,
-  cookTime: 20,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

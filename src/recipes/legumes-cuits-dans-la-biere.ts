@@ -5,8 +5,8 @@ export const legumesCuitsDansLaBiere: Recipe = {
   title: 'Légumes cuits dans la bière',
   description: 'Une recette simple de légumes d\'hiver cuits dans la bière noire avec des épices et du thym.',
   categories: ['Légumes'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

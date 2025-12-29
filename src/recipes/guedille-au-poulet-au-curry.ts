@@ -5,8 +5,8 @@ export const guedilleAuPouletAuCurry: Recipe = {
   title: 'Guédille au poulet au Curry',
   description: 'Une recette de sandwich au poulet parfumé au curry, servi dans des pains à hot-dogs avec laitue.',
   categories: ['Vollaille', 'Sandwichs'],
-  prepTime: 20,
-  cookTime: 5,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 5, max: 5 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

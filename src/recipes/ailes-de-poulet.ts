@@ -5,8 +5,8 @@ export const ailesDePoulet: Recipe = {
   title: 'Ailes de poulet',
   description: 'Recette de ailes de poulet marinées, cuites au four et nappées d\'une sauce onctueuse à base de marinade réduite et de beurre.',
   categories: ['Vollaille'],
-  prepTime: 15,
-  cookTime: 60,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

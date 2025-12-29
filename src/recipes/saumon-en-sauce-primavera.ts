@@ -5,8 +5,8 @@ export const saumonEnSaucePrimavera: Recipe = {
   title: 'Saumon en sauce primavera',
   description: 'Un plat de saumon en sauce crémeuse avec légumes, parfumé à la moutarde et au miel.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 35,
-  cookTime: 30,
+  prepTime: { min: 35, max: 35 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

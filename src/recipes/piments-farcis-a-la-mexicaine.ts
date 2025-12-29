@@ -5,8 +5,8 @@ export const pimentsFarcisALaMexicaine: Recipe = {
   title: 'Piments farcis à la mexicaine',
   description: 'Excellente recette pour passer des restants. Faire blanchir les piments, les farcir avec un mélange de boeuf, riz, maïs, puis cuire au four. Servir avec crème sure, guacamole et coriandre.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

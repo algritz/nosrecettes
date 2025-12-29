@@ -5,8 +5,8 @@ export const vinaigretteCesarMaison: Recipe = {
   title: 'Vinaigrette César maison',
   description: 'Une vinaigrette classique César faite maison, crémeuse et savoureuse, idéale pour accompagner vos salades.',
   categories: ['Sauces'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

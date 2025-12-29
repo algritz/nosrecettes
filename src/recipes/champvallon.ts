@@ -5,8 +5,8 @@ export const champvallon: Recipe = {
   title: 'Champvallon',
   description: 'Recette familiale qui remplace la tourtière.',
   categories: ['Plats principaux'],
-  prepTime: 45,
-  cookTime: 240,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 240, max: 240 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

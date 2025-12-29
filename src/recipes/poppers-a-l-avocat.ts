@@ -5,8 +5,8 @@ export const poppersALAvocat: Recipe = {
   title: 'Poppers à l\'avocat',
   description: 'Une recette de poppers à l\'avocat farcis de fromage, bacon et épices, puis cuits au four jusqu\'à ce qu\'ils soient croustillants et dorés.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

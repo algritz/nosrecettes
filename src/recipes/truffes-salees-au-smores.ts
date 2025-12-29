@@ -5,8 +5,8 @@ export const truffesSaleesAuSmores: Recipe = {
   title: 'Truffes salées au s\'mores',
   description: 'Boules façon s\'mores (graham, guimauve) enrobées de chocolat noir et finies au gros sel.',
   categories: ['Pâtisseries et desserts', 'Desserts'],
-  prepTime: 30,
-  cookTime: 5,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 5, max: 5 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

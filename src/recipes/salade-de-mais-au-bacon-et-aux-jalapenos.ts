@@ -5,8 +5,8 @@ export const saladeDeMaisAuBaconEtAuxJalapenos: Recipe = {
   title: 'Salade de maïs au bacon et aux jalapeños',
   description: 'Une salade fraîche et piquante combinant maïs, bacon croustillant, jalapeños et une vinaigrette citronnée à la coriandre.',
   categories: ['Salades'],
-  prepTime: 10,
-  cookTime: 0,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

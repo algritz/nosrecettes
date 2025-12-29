@@ -5,8 +5,8 @@ export const minibrochettesDananasEtDePoulet: Recipe = {
   title: 'Minibrochettes d’ananas et de poulet',
   description: 'Brochettes de poulet et d\'ananas marinés, servies avec une sauce au yogourt et garam masala.',
   categories: ['Entrées'],
-  prepTime: 10,
-  cookTime: 15,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

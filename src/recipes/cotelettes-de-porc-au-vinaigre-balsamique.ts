@@ -5,8 +5,8 @@ export const cotelettesDePorcAuVinaigreBalsamique: Recipe = {
   title: 'Côtelettes de porc au vinaigre balsamique',
   description: 'Une recette savoureuse de côtelettes de porc nappées d\'une sauce au vinaigre balsamique, simple à préparer et pleine de saveurs.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 5,
-  cookTime: 10,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const casseroleMexicaine: Recipe = {
   title: 'Casserole mexicaine',
   description: 'Une casserole savoureuse aux saveurs mexicaines, combinant riz, bœuf haché, légumes et épices, gratinée avec du fromage Monterey Jack.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 10,
-  cookTime: 30,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

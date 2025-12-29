@@ -5,8 +5,8 @@ export const batonnetsDeCourgetteCuitsAuFour: Recipe = {
   title: 'Bâtonnets de courgette cuits au four',
   description: 'Alternative intéressante aux frites Bâtonnets de courgette cuits au four',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

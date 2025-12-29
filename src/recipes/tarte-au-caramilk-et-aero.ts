@@ -5,8 +5,8 @@ export const tarteAuCaramilkEtAero: Recipe = {
   title: 'Tarte au Caramilk et Aéro',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

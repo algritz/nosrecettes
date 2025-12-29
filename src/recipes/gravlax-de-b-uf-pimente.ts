@@ -5,8 +5,8 @@ export const gravlaxDeBUfPimente: Recipe = {
   title: 'Gravlax de bœuf pimenté',
   description: '',
   categories: ['Végétarien'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -27,6 +27,6 @@ export const gravlaxDeBUfPimente: Recipe = {
     'Servir arrosé d’un trait d’huile d’olive.'
   ],
   tags: ['pimenté', 'marinade sèche', 'bœuf'],
-  marinatingTime: 1440,
+  marinatingTime: { min: 1440, max: 1440 },
   slug: 'gravlax-de-b-uf-pimente'
 };

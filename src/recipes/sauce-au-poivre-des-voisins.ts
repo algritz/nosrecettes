@@ -5,8 +5,8 @@ export const sauceAuPoivreDesVoisins: Recipe = {
   title: 'Sauce au poivre des voisins',
   description: 'Sauce au poivre de nos voisin de chalet, elle est excellente.',
   categories: ['Sauces'],
-  prepTime: 10,
-  cookTime: 0,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

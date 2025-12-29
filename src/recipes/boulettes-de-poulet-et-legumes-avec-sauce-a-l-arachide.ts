@@ -5,8 +5,8 @@ export const boulettesDePouletEtLegumesAvecSauceALArachide: Recipe = {
   title: 'Boulettes de poulet et légumes avec sauce à l’arachide',
   description: 'Recette de boulettes de poulet et légumes servies avec une sauce à l’arachide crémeuse, mijotée avec des légumes et du lait de coco.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

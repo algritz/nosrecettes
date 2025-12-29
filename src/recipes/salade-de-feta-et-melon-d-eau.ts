@@ -5,8 +5,8 @@ export const saladeDeFetaEtMelonDEau: Recipe = {
   title: 'Salade de feta et melon d\'eau',
   description: '',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const tartareDeSaumonAuxFraises: Recipe = {
   title: 'Tartare de saumon aux fraises',
   description: 'Un tartare frais et coloré combinant saumon, fraises et saveurs asiatiques, parfait pour une entrée élégante.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

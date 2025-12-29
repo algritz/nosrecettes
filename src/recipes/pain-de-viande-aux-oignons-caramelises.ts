@@ -5,8 +5,8 @@ export const painDeViandeAuxOignonsCaramelises: Recipe = {
   title: 'Pain de viande aux oignons caramélisés',
   description: 'Probablement le meilleur pain de viande que j\'ai mangé',
   categories: ['Plats principaux'],
-  prepTime: 40,
-  cookTime: 60,
+  prepTime: { min: 40, max: 40 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

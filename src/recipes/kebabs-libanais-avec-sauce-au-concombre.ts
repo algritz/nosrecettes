@@ -5,8 +5,8 @@ export const kebabsLibanaisAvecSauceAuConcombre: Recipe = {
   title: 'Kebabs libanais avec sauce au concombre',
   description: 'Recette de kebabs libanais servis avec une sauce au concombre crémeuse, accompagnés de pita, laitue et oignon rouge.',
   categories: ['Boeuf', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

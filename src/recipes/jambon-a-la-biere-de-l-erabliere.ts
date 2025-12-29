@@ -5,8 +5,8 @@ export const jambonALaBiereDeLErabliere: Recipe = {
   title: 'Jambon à la bière de l\'érablière',
   description: '',
   categories: ['Vollaille', 'Sauces'],
-  prepTime: 20,
-  cookTime: 120,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 120, max: 120 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

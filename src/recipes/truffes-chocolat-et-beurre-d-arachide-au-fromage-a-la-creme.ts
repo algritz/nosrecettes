@@ -5,8 +5,8 @@ export const truffesChocolatEtBeurreDArachideAuFromageALaCreme: Recipe = {
   title: 'Truffes chocolat et beurre d\'arachide au fromage à la crème',
   description: 'Une recette de truffes au chocolat et beurre d\'arachide, enrobées de chocolat fondu, parfaites pour une gourmandise rapide.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

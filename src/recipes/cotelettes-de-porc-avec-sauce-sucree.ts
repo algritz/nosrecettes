@@ -5,8 +5,8 @@ export const cotelettesDePorcAvecSauceSucree: Recipe = {
   title: 'Côtelettes de porc avec sauce sucrée',
   description: 'Une recette simple de côtelettes de porc avec une sauce sucrée, idéale pour un repas rapide en semaine.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

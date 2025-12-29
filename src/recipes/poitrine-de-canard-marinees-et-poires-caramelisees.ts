@@ -5,8 +5,8 @@ export const poitrineDeCanardMarineesEtPoiresCaramelisees: Recipe = {
   title: 'Poitrine de canard marinées et poires caramélisées',
   description: 'Une recette savoureuse de poitrine de canard marinée accompagnée de poires caramélisées, idéale pour un plat principal élégant.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

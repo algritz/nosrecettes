@@ -5,8 +5,8 @@ export const saumonAuVinaigreBalsamique: Recipe = {
   title: 'Saumon au Vinaigre balsamique',
   description: 'Une recette savoureuse de filets de saumon cuits avec une sauce au vinaigre balsamique, miel, ail et moutarde, garnie de graines de sésame.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

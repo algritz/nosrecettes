@@ -5,8 +5,8 @@ export const pouletBbqEntier: Recipe = {
   title: 'Poulet BBQ entier',
   description: '',
   categories: ['Vollaille', 'Barbecue'],
-  prepTime: 15,
-  cookTime: 90,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 90, max: 90 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

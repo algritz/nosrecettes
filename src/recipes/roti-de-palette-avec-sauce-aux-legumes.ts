@@ -5,8 +5,8 @@ export const rotiDePaletteAvecSauceAuxLegumes: Recipe = {
   title: 'Rôti de palette avec sauce aux légumes',
   description: 'Une recette de rôti de palette mijoté avec une sauce crémeuse aux légumes, servi avec des pâtes ou des pommes de terre pilées.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 180,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 180, max: 180 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

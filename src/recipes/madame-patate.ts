@@ -5,8 +5,8 @@ export const madamePatate: Recipe = {
   title: 'Madame Patate',
   description: 'Une explosion de saveur Madame Patate',
   categories: ['Végétarien', 'Entrées'],
-  prepTime: 15,
-  cookTime: 60,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const potagePanaisEtPommes: Recipe = {
   title: 'Potage panais et pommes',
   description: 'Une soupe douce et parfumée à base de panais, pommes, et pommes de terre, relevée de thym et de cari de Madras.',
   categories: ['Soupes'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

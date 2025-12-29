@@ -5,8 +5,8 @@ export const biscuitsAuxPepitesDeChocolatMoelleux: Recipe = {
   title: 'Biscuits aux pépites de chocolat moelleux',
   description: 'Une recette de biscuits moelleux aux pépites de chocolat, facile à préparer et parfaite pour une collation ou un dessert.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 12,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 12, max: 12 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

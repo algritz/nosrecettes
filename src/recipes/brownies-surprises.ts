@@ -5,8 +5,8 @@ export const browniesSurprises: Recipe = {
   title: 'Brownies surprises',
   description: 'Une recette de brownies surprenants avec des légumes, chocolat et noix, cuits au four.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 30,
-  cookTime: 45,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 45, max: 45 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

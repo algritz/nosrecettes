@@ -5,8 +5,8 @@ export const pouletAuxPommesEtAuxCanneberges: Recipe = {
   title: 'Poulet aux pommes et aux canneberges',
   description: 'Une recette savoureuse de poulet mariné avec des pommes et des canneberges, mijotée pour une texture tendre et une saveur équilibrée.',
   categories: ['Vollaille'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

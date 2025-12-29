@@ -5,8 +5,8 @@ export const porcAuCaramelBokChoyEtVermicelles: Recipe = {
   title: 'Porc au caramel, bok choy et vermicelles',
   description: 'Un plat savoureux de porc au caramel accompagné de bok choy, carottes, oignons verts et vermicelles de riz, avec une sauce soja et gingembre.',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 15,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

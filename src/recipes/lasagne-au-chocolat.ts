@@ -5,8 +5,8 @@ export const lasagneAuChocolat: Recipe = {
   title: 'Lasagne au chocolat',
   description: 'Une dessert glacé à base de biscuits Oreo, fromage à la crème, pudding au chocolat et Cool Whip, formé en couches pour une texture riche et crémeuse.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 60,
-  cookTime: 0,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -33,6 +33,6 @@ export const lasagneAuChocolat: Recipe = {
     'Congeler 1 heure ou réfrigérer 4 heures.'
   ],
   tags: ['dessert glacé', 'chocolat', 'cool whip'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'lasagne-au-chocolat'
 };

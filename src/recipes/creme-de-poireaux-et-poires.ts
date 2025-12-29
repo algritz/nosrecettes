@@ -5,8 +5,8 @@ export const cremeDePoireauxEtPoires: Recipe = {
   title: 'Crème de poireaux et poires',
   description: 'Une soupe douce et parfumée à base de poireaux, pommes de terre, céleri et poires, enrichie de crème.',
   categories: ['Soupes'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const linguinesCajunsEtCrevettes: Recipe = {
   title: 'Linguines cajuns et crevettes',
   description: 'Une recette de linguines aux crevettes épicées et sauce crémeuse, facile à préparer en environ 30 minutes.',
   categories: ['Pâtes', 'Fruits de mer'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

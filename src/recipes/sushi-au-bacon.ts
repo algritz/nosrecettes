@@ -5,8 +5,8 @@ export const sushiAuBacon: Recipe = {
   title: 'Sushi au bacon',
   description: 'Sushi au bacon',
   categories: ['Végétarien'],
-  prepTime: 30,
-  cookTime: 40,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

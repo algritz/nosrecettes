@@ -5,8 +5,8 @@ export const brochettesDePouletALaCoriandre: Recipe = {
   title: 'Brochettes de poulet à la coriandre',
   description: 'Brochettes de poulet marinées à la coriandre, servies avec une trempette à la coriandre et à la menthe.',
   categories: ['Vollaille', 'Barbecue'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

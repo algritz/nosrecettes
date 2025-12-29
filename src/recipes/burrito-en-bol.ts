@@ -5,8 +5,8 @@ export const burritoEnBol: Recipe = {
   title: 'Burrito en bol',
   description: 'Un bol de burrito avec riz, poulet, légumes, et garnitures fraîches, parfait pour un repas complet et savoureux.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

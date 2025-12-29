@@ -5,8 +5,8 @@ export const canardALaCantonaise: Recipe = {
   title: 'Canard à la cantonaise',
   description: 'Recette de canard à la cantonaise avec marinade aux saveurs asiatiques, servi avec du riz.',
   categories: ['Plats principaux'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

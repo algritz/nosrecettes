@@ -5,8 +5,8 @@ export const pommesDeTerreCollantes: Recipe = {
   title: 'Pommes de terre collantes',
   description: 'Une recette de pommes de terre grelots sautées et enrobées d\'une sauce sucrée-salée, garnie de graines de sésame torréfiées.',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 15,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

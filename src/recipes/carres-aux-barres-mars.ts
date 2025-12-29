@@ -5,8 +5,8 @@ export const carresAuxBarresMars: Recipe = {
   title: 'Carrés aux barres mars',
   description: 'Recette de carrés chocolatés avec barres Mars, Rice Krispies, chocolat noir et blanc, avec un effet marbré.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const filetDePorcALaMoutardeEtALAil: Recipe = {
   title: 'Filet de porc à la moutarde et à l\'ail',
   description: 'Une marinade savoureuse pour un filet de porc, à faire griller au barbecue après une marinade de plusieurs heures.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -25,6 +25,6 @@ export const filetDePorcALaMoutardeEtALAil: Recipe = {
     'Égoutter, faire cuire sur le BBQ.'
   ],
   tags: ['barbecue', 'marinade sèche', 'porc'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'filet-de-porc-a-la-moutarde-et-a-l-ail'
 };

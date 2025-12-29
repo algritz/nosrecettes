@@ -5,8 +5,8 @@ export const medaillonsDePorcSaucePortoEtBleuets: Recipe = {
   title: 'Médaillons de porc, sauce porto et bleuets',
   description: 'Une recette savoureuse de médaillons de porc accompagnés d\'une sauce au porto et aux bleuets, parfaits pour un repas élégant.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

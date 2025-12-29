@@ -5,8 +5,8 @@ export const saumonSurPlancheDeSel: Recipe = {
   title: 'Saumon sur planche de sel',
   description: 'Une recette de saumon grillé sur une planche de sel, parfumé aux herbes et servi avec une sauce tomate à l\'huile d\'olive et citron.',
   categories: ['Poisson', 'Barbecue'],
-  prepTime: 10,
-  cookTime: 15,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

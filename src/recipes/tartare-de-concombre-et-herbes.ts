@@ -5,8 +5,8 @@ export const tartareDeConcombreEtHerbes: Recipe = {
   title: 'Tartare de concombre et herbes',
   description: 'Une salade fraîche de concombre aux fines herbes, servie avec une sauce crémeuse au fromage de chèvre et à l\'aneth.',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

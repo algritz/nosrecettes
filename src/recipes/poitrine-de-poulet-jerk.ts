@@ -5,8 +5,8 @@ export const poitrineDePouletJerk: Recipe = {
   title: 'Poitrine de poulet jerk',
   description: 'Une recette de poulet jerk mariné aux épices, grillé à la perfection.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 25,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

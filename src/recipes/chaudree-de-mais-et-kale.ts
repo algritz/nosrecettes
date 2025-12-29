@@ -5,8 +5,8 @@ export const chaudreeDeMaisEtKale: Recipe = {
   title: 'Chaudrée de maïs et kale',
   description: 'Une chaudrée crémeuse de maïs et kale, parfumée au bacon et aux épices, parfaite pour un repas réconfortant.',
   categories: ['Soupes', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 35,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 35, max: 35 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

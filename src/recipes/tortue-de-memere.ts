@@ -5,8 +5,8 @@ export const tortueDeMemere: Recipe = {
   title: 'Tortue de mémère',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 5,
-  cookTime: 15,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 15, max: 15 },
   servings: 20,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const sloppyJoe: Recipe = {
   title: 'Sloppy Joe',
   description: 'A classic American sandwich with seasoned ground beef in a tangy sauce served in hamburger buns.',
   categories: ['Plats principaux'],
-  prepTime: 10,
-  cookTime: 40,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

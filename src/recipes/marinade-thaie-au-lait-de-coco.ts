@@ -5,9 +5,9 @@ export const marinadeThaieAuLaitDeCoco: Recipe = {
   title: 'Marinade thaïe au lait de coco',
   description: 'Marinade express au lait de coco, beurre d\'arachide, sauce soya, lime et sambal oelek.',
   categories: ['Marinade'],
-  prepTime: 5,
-  cookTime: 0,
-  marinatingTime: 240,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 0, max: 0 },
+  marinatingTime: { min: 240, max: 240 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

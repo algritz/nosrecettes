@@ -5,8 +5,8 @@ export const saladeAuxPommesEtAuxNoix: Recipe = {
   title: 'Salade aux pommes et aux noix',
   description: 'Une salade fraîche combinant pommes, noix, céleri et guimauves, assaisonnée de mayonnaise et décorée de quartiers de pommes.',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const ramenAuBUfMongol: Recipe = {
   title: 'Ramen au bœuf Mongol',
   description: 'Un ramen savoureux avec un bœuf mariné, une sauce soja sucrée et des légumes sautés, servi avec des nouilles ramen.',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 30,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,9 +5,9 @@ export const pouletDelhiAuBeurre: Recipe = {
   title: 'Poulet Delhi au beurre',
   description: 'Un plat indien savoureux avec du poulet mariné, grillé puis mijoté dans une sauce épicée au beurre et à la crème, garni de coriandre fraîche.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 25,
-  marinatingTime: 60,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
+  marinatingTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

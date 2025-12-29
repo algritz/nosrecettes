@@ -5,8 +5,8 @@ export const muffinsBleuetsBanane: Recipe = {
   title: 'Muffins bleuets banane',
   description: '',
   categories: ['Pâtisseries et desserts', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 15,
   difficulty: 'Facile',
   ingredients: [

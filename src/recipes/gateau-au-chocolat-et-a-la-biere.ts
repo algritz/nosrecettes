@@ -5,8 +5,8 @@ export const gateauAuChocolatEtALaBiere: Recipe = {
   title: 'Gâteau au Chocolat et à la Bière',
   description: 'Un gâteau moelleux au chocolat infusé à la bière noire, garni d\'un glaçage chocolaté à la bière et à la crème.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 50,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 50, max: 50 },
   servings: 9,
   difficulty: 'Facile',
   ingredients: [

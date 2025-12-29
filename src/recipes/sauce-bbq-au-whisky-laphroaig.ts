@@ -5,8 +5,8 @@ export const sauceBbqAuWhiskyLaphroaig: Recipe = {
   title: 'Sauce BBQ au Whisky Laphroaig',
   description: 'Une sauce BBQ riche et fumée au whisky Laphroaig, idéale pour accompagner porc ou côtes levées.',
   categories: ['Sauces', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

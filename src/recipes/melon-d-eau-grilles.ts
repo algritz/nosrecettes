@@ -5,8 +5,8 @@ export const melonDEauGrilles: Recipe = {
   title: 'Melon d\'eau grillés',
   description: 'Une recette de melon d\'eau grillé assaisonné de lime et de coriandre, parfait pour une entrée ou une salade rafraîchissante.',
   categories: ['Végétarien', 'Entrées'],
-  prepTime: 5,
-  cookTime: 8,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 8, max: 8 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const sauceAuYogourtALaCoriandreEtALaLime: Recipe = {
   title: 'Sauce au yogourt, à la coriandre et à la lime',
   description: '',
   categories: ['Sauces'],
-  prepTime: 5,
-  cookTime: 0,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

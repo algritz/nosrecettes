@@ -5,8 +5,8 @@ export const boulettesTikkaMassala: Recipe = {
   title: 'Boulettes Tikka Massala',
   description: 'Une recette de boulettes de viande épicées servies avec une sauce tomate crémeuse, parfumée aux épices tikka et garam massala, garnie de coriandre fraîche.',
   categories: ['Plats principaux'],
-  prepTime: 45,
-  cookTime: 50,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 50, max: 50 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

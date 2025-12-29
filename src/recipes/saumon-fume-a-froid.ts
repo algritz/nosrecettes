@@ -5,8 +5,8 @@ export const saumonFumeAFroid: Recipe = {
   title: 'Saumon fumé à froid',
   description: '',
   categories: ['Vollaille'],
-  prepTime: 20,
-  cookTime: 720,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 720, max: 720 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [
@@ -31,6 +31,6 @@ export const saumonFumeAFroid: Recipe = {
     'Trancher, emballer sous vide et congeler immédiatement.'
   ],
   tags: ['fumé', 'froid', 'saumon'],
-  marinatingTime: 1440,
+  marinatingTime: { min: 1440, max: 1440 },
   slug: 'saumon-fume-a-froid'
 };

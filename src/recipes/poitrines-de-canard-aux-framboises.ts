@@ -5,8 +5,8 @@ export const poitrinesDeCanardAuxFramboises: Recipe = {
   title: 'Poitrines de canard aux framboises',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

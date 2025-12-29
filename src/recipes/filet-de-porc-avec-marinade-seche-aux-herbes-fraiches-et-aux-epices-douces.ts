@@ -5,8 +5,8 @@ export const filetDePorcAvecMarinadeSecheAuxHerbesFraichesEtAuxEpicesDouces: Rec
   title: 'Filet de porc avec marinade sèche aux herbes fraîches et aux épices douces',
   description: 'Une recette de filet de porc en marinade sèche aux herbes fraîches et épices douces, idéal pour une cuisson au barbecue ou au four, servi en tranches avec une salade de pâtes et légumes frais.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

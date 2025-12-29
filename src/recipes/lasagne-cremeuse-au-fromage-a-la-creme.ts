@@ -5,8 +5,8 @@ export const lasagneCremeuseAuFromageALaCreme: Recipe = {
   title: 'Lasagne crémeuse au fromage à la crème',
   description: '',
   categories: ['Pâtes'],
-  prepTime: 30,
-  cookTime: 60,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 60, max: 60 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

@@ -5,9 +5,9 @@ export const epauleDePorcEffilocheePulledPorkVersionSurLeBarbecue: Recipe = {
   title: 'Épaule de porc effilochée (pulled pork) version sur le barbecue',
   description: 'Recette d\'épaule de porc effilochée cuite au barbecue, marinée dans une saumure et assaisonnée avec un mélange d\'épices, puis fumée avec des copeaux de bois d\'érable.',
   categories: ['Vollaille', 'Plats principaux', 'Barbecue'],
-  prepTime: 30,
-  cookTime: 330,
-  marinatingTime: 720,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 330, max: 330 },
+  marinatingTime: { min: 720, max: 720 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

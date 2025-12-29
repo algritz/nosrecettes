@@ -5,8 +5,8 @@ export const cremeDeNavetEtPoireauALErable: Recipe = {
   title: 'Crème de navet et poireau à l\'érable',
   description: 'Une soupe crémeuse et douce à base de navet, poireau, et sirop d’érable, parfaite pour une entrée réconfortante.',
   categories: ['Soupes'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

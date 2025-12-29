@@ -5,8 +5,8 @@ export const sauteDePorcAuCari: Recipe = {
   title: 'Sauté de porc au cari',
   description: '',
   categories: ['Végétarien'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -35,6 +35,6 @@ export const sauteDePorcAuCari: Recipe = {
   ],
   tags: ['cari', 'noix de cajou', 'riz basmati'],
   accompaniment: 'Servir sur un riz basmati',
-  marinatingTime: 15,
+  marinatingTime: { min: 15, max: 15 },
   slug: 'saute-de-porc-au-cari'
 };

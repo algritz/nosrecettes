@@ -5,9 +5,9 @@ export const poitrinesDePouletBalsamiques: Recipe = {
   title: 'Poitrines de poulet balsamiques',
   description: 'Poitrines de poulet marinées au balsamique, grillées au BBQ et servies avec sauce réduite.',
   categories: ['Vollaille', 'Barbecue', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
-  marinatingTime: 360,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
+  marinatingTime: { min: 360, max: 360 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

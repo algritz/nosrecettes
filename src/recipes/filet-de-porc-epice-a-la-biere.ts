@@ -5,8 +5,8 @@ export const filetDePorcEpiceALaBiere: Recipe = {
   title: 'Filet de porc épicé à la bière',
   description: 'Un filet de porc épicé mariné dans une bière rousse, grillé et servi avec une sauce brune relevée.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 35,
-  cookTime: 35,
+  prepTime: { min: 35, max: 35 },
+  cookTime: { min: 35, max: 35 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

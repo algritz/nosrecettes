@@ -5,8 +5,8 @@ export const pouletAuBeurreDArachides: Recipe = {
   title: 'Poulet au beurre d\'arachides',
   description: 'Une recette de poulet mariné et grillé, servi avec une sauce à trempette au beurre d\'arachides et moutarde au miel.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

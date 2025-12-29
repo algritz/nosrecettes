@@ -5,9 +5,9 @@ export const painNaanSurPlancha: Recipe = {
   title: 'Pain Naan sur plancha',
   description: 'Pain Naam facile à faire et excellent',
   categories: ['Pain'],
-  prepTime: 20,
-  cookTime: 5,
-  marinatingTime: 60,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 5, max: 5 },
+  marinatingTime: { min: 60, max: 60 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

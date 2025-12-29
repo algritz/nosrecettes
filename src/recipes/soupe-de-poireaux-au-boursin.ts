@@ -5,8 +5,8 @@ export const soupeDePoireauxAuBoursin: Recipe = {
   title: 'Soupe de poireaux au Boursin',
   description: 'Une soupe onctueuse de poireaux et pommes de terre, enrichie de Boursin ail et fines herbes, garnie de ciboulette.',
   categories: ['Soupes'],
-  prepTime: 15,
-  cookTime: 35,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 35, max: 35 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

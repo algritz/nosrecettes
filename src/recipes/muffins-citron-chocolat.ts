@@ -5,8 +5,8 @@ export const muffinsCitronChocolat: Recipe = {
   title: 'Muffins citron chocolat',
   description: 'Une recette de muffins au citron et chocolat, facile à préparer et parfaite pour une collation ou un dessert.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

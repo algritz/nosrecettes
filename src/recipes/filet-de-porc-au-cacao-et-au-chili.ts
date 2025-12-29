@@ -5,8 +5,8 @@ export const filetDePorcAuCacaoEtAuChili: Recipe = {
   title: 'Filet de porc au cacao et au chili',
   description: '',
   categories: ['Porc', 'Barbecue'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

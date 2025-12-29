@@ -5,8 +5,8 @@ export const tartareDeBoeufAuMascarponeEtAuxCanneberges: Recipe = {
   title: 'Tartare de boeuf au Mascarpone et aux canneberges',
   description: 'Un tartare de boeuf frais et savoureux, accompagné d\'une sauce au mascarpone et de canneberges, parfait pour une entrée élégante.',
   categories: ['Entrées'],
-  prepTime: 25,
-  cookTime: 10,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 10, max: 10 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const cariDePouletFrais: Recipe = {
   title: 'Cari de poulet frais',
   description: 'Un curry de poulet parfumé avec un mélange d\'épices, lait de coco, tomates et aromates, servi avec du riz basmati.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

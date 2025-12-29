@@ -5,8 +5,8 @@ export const biscuitsAuChocolatSansCuissonAuFour: Recipe = {
   title: 'Biscuits au chocolat sans cuisson au four',
   description: 'Une recette de biscuits au chocolat sans cuisson au four, facile à préparer et donnant environ 60 biscuits.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 60,
   difficulty: 'Facile',
   ingredients: [

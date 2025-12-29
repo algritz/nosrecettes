@@ -5,8 +5,8 @@ export const patateSelEtViniagreEnQuartier: Recipe = {
   title: 'Patate sel et viniagre en quartier',
   description: 'Une recette simple de pommes de terre grelots assaisonnées et rôties, finissant avec un filet de vinaigre de malt pour une touche acidulée.',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 45,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const cremeAsiatiqueCitrouilleEtLaitDeCoco: Recipe = {
   title: 'Crème asiatique citrouille et lait de coco',
   description: 'Une soupe onctueuse à la citrouille, parfumée à la citronnelle, au curry et garnie de basilic frais.',
   categories: ['Soupes'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

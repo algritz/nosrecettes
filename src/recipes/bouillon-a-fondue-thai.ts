@@ -5,8 +5,8 @@ export const bouillonAFondueThai: Recipe = {
   title: 'Bouillon à fondue Thaï',
   description: 'Un bouillon épicé et parfumé pour fondue, idéal pour accompagner fruits de mer, viande ou tofu.',
   categories: ['Soupes', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

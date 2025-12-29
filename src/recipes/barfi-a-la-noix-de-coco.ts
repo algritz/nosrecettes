@@ -5,8 +5,8 @@ export const barfiALaNoixDeCoco: Recipe = {
   title: 'Barfi à la noix de coco',
   description: 'Un délicieux dessert indien à base de noix de coco et de safran, garni de pistaches hachées.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 10,
-  cookTime: 14,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 14, max: 14 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

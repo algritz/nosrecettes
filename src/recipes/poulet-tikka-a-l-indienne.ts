@@ -5,8 +5,8 @@ export const pouletTikkaALIndienne: Recipe = {
   title: 'Poulet "tikka" à l\'indienne',
   description: 'Une recette de poulet mariné aux épices indiennes, grillé ou cuit au four, servi avec une sauce aux arachides et du riz.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 10,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -32,6 +32,6 @@ export const pouletTikkaALIndienne: Recipe = {
   ],
   tags: ['épices', 'grill', 'marinade'],
   accompaniment: 'Servir avec de la sauce aux arachides et un riz',
-  marinatingTime: 30,
+  marinatingTime: { min: 30, max: 30 },
   slug: 'poulet-tikka-a-l-indienne'
 };

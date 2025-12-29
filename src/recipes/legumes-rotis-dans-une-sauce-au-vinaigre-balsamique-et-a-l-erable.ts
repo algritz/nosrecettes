@@ -5,8 +5,8 @@ export const legumesRotisDansUneSauceAuVinaigreBalsamiqueEtALErable: Recipe = {
   title: 'Légumes rôtis dans une sauce au vinaigre balsamique et à l\'érable',
   description: '',
   categories: ['Légumes', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 50,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 50, max: 50 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

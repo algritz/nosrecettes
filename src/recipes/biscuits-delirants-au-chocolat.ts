@@ -5,8 +5,8 @@ export const biscuitsDelirantsAuChocolat: Recipe = {
   title: 'Biscuits délirants au chocolat',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 12,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 12, max: 12 },
   servings: 16,
   difficulty: 'Facile',
   ingredients: [

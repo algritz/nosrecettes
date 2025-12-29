@@ -5,8 +5,8 @@ export const lobsterRoll: Recipe = {
   title: 'Lobster roll',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 60,
-  cookTime: 11,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 11, max: 11 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const filetDeTruiteAuCoulisDePoivrons: Recipe = {
   title: 'Filet de truite au coulis de poivrons',
   description: 'Une recette délicieuse de truite cuite dans un vin blanc, servie avec une sauce aux poivrons, oignons et crème, garnie d\'aneth fraîche.',
   categories: ['Poisson'],
-  prepTime: 60,
-  cookTime: 45,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 45, max: 45 },
   servings: 5,
   difficulty: 'Facile',
   ingredients: [

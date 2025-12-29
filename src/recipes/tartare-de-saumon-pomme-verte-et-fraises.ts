@@ -5,8 +5,8 @@ export const tartareDeSaumonPommeVerteEtFraises: Recipe = {
   title: 'Tartare de saumon pomme verte et fraises',
   description: 'Un tartare frais et coloré combinant saumon, pomme verte et fraises, parfait pour une entrée légère.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

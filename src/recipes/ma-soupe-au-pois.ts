@@ -5,8 +5,8 @@ export const maSoupeAuPois: Recipe = {
   title: 'Ma soupe au pois',
   description: 'Une soupe réconfortante de pois jaunes, de légumes et de viande salée, mijotée lentement pour un goût riche et profond.',
   categories: ['Soupes'],
-  prepTime: 20,
-  cookTime: 180,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 180, max: 180 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

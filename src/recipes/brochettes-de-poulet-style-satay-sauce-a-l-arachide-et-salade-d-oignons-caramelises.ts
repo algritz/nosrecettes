@@ -5,8 +5,8 @@ export const brochettesDePouletStyleSataySauceALArachideEtSaladeDOignonsCarameli
   title: 'Brochettes de poulet style satay, sauce à l\'arachide et salade d\'oignons caramélisés',
   description: 'Une recette savoureuse de brochettes de poulet marinées dans une sauce satay, accompagnées d\'une salade d\'oignons caramélisés et de roquette.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 30,
-  cookTime: 50,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 50, max: 50 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const biscuitAuNutella3Ingredients: Recipe = {
   title: 'Biscuit au Nutella 3 ingrédients',
   description: 'Recette simple de biscuits au Nutella avec une garniture de noisettes, facile à préparer et idéale pour une collation rapide.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 20,
   difficulty: 'Facile',
   ingredients: [

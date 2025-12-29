@@ -5,8 +5,8 @@ export const tartareDeSaumonALaPommeGrannySmithCoriandreEtLime: Recipe = {
   title: 'Tartare de saumon à la pomme granny smith, coriandre et lime',
   description: 'Un tartare frais de saumon avec pomme, coriandre et lime, parfait pour une entrée légère et parfumée.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

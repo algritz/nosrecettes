@@ -5,8 +5,8 @@ export const painsFourresPouletEtSauceBbq: Recipe = {
   title: 'Pains fourrés poulet et sauce BBQ',
   description: 'Une recette de pains garnis de poulet effiloché, fromage mozzarella, herbes et sauce BBQ, cuits au four.',
   categories: ['Sandwichs', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

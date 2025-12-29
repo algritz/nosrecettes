@@ -5,8 +5,8 @@ export const boulettesStylesDikea: Recipe = {
   title: 'Boulettes styles d\'IKEA',
   description: 'Recette de boulettes de viande à la sauce à la crème, inspirée du style IKEA, pour 4 personnes.',
   categories: ['Plats principaux', 'Vollaille'],
-  prepTime: 20,
-  cookTime: 50,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 50, max: 50 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const patatesBravas: Recipe = {
   title: 'Patates bravas',
   description: 'Patates bravas',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

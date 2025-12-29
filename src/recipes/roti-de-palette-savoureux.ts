@@ -5,8 +5,8 @@ export const rotiDePaletteSavoureux: Recipe = {
   title: 'Rôti de palette savoureux',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 420,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 420, max: 420 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

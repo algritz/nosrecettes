@@ -5,8 +5,8 @@ export const sauceSatay: Recipe = {
   title: 'Sauce satay',
   description: '',
   categories: ['Sauces'],
-  prepTime: 15,
-  cookTime: 12,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 12, max: 12 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

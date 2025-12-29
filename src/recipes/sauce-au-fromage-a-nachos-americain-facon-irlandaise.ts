@@ -5,8 +5,8 @@ export const sauceAuFromageANachosAmericainFaconIrlandaise: Recipe = {
   title: 'Sauce au fromage à Nachos américain, façon irlandaise',
   description: 'Une sauce au fromage crémeuse et épicée, parfaite pour accompagner des nachos ou des croustilles de maïs.',
   categories: ['Sauces'],
-  prepTime: 10,
-  cookTime: 15,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const curryDePouletThailandais: Recipe = {
   title: 'Curry de poulet thaïlandais',
   description: 'Un curry de poulet thaïlandais parfumé, riche en saveurs de lait de coco, pâte de curry rouge, et herbes fraîches.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 25,
-  cookTime: 40,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 40, max: 40 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

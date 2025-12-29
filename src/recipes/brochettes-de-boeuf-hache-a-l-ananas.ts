@@ -5,8 +5,8 @@ export const brochettesDeBoeufHacheALAnanas: Recipe = {
   title: 'Brochettes de boeuf haché à l\'ananas',
   description: '',
   categories: ['Viande', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

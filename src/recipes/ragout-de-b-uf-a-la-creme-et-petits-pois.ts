@@ -5,8 +5,8 @@ export const ragoutDeBUfALaCremeEtPetitsPois: Recipe = {
   title: 'Ragoût de bœuf à la crème et petits pois',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 150,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 150, max: 150 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

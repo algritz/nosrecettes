@@ -5,8 +5,8 @@ export const rizAuChorizoEtALaTomate: Recipe = {
   title: 'Riz au chorizo et à la tomate',
   description: 'Ce fait aussi en rizotto, voir dans les notes plus bas.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 45,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

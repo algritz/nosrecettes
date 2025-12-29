@@ -5,8 +5,8 @@ export const trempetteAuSMores: Recipe = {
   title: 'Trempette au S\'mores',
   description: '',
   categories: ['Amuse-geules'],
-  prepTime: 10,
-  cookTime: 12,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 12, max: 12 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

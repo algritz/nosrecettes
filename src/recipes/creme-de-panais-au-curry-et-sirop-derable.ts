@@ -5,8 +5,8 @@ export const cremeDePanaisAuCurryEtSiropDerable: Recipe = {
   title: 'Crème de panais au curry et sirop d\'érable',
   description: 'Une soupe crémeuse de panais parfumée au curry, agrémentée de sirop d\'érable et garnie de popcorn pour une touche croquante.',
   categories: ['Soupes'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

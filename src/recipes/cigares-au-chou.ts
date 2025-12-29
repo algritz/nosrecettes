@@ -5,8 +5,8 @@ export const cigaresAuChou: Recipe = {
   title: 'Cigares au chou',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 45,
-  cookTime: 60,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

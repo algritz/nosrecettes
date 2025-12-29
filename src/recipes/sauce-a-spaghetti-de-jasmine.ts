@@ -5,8 +5,8 @@ export const sauceASpaghettiDeJasmine: Recipe = {
   title: 'Sauce à Spaghetti de "Jasmine"',
   description: 'Une sauce à spaghetti riche et savoureuse, mijotée lentement pour développer toutes ses saveurs, idéale pour accompagner vos pâtes ou autres plats italiens.',
   categories: ['Sauces', 'Plats principaux'],
-  prepTime: 60,
-  cookTime: 240,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 240, max: 240 },
   servings: 15,
   difficulty: 'Facile',
   ingredients: [

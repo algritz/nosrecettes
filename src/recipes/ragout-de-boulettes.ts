@@ -5,8 +5,8 @@ export const ragoutDeBoulettes: Recipe = {
   title: 'Ragoût de boulettes',
   description: 'Ragoût de boulettes bœuf-porc avec légumes, bouillon épaissi à la farine grillée, cuisson au four.',
   categories: ['Boeuf', 'Porc', 'Plats principaux'],
-  prepTime: 40,
-  cookTime: 90,
+  prepTime: { min: 40, max: 40 },
+  cookTime: { min: 90, max: 90 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

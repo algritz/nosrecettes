@@ -5,8 +5,8 @@ export const gateauBeurreEtCoriandre: Recipe = {
   title: 'Gâteau beurre et coriandre',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

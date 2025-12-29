@@ -5,8 +5,8 @@ export const saladeDeMacaroni: Recipe = {
   title: 'Salade de macaroni',
   description: 'Une salade de macaroni rafraîchissante avec légumes croquants et sauce crémeuse, idéale pour un repas léger ou un picnic.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [
@@ -30,7 +30,7 @@ export const saladeDeMacaroni: Recipe = {
     'Couvrir et mettre au réfrigérateur pendant 2 à 4 heures avant de servir.'
   ],
   tags: ['salade', 'mayonnaise', 'réfrigération'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   notes: 'Vous pouvez y ajouter du jambon en cube.',
   slug: 'salade-de-macaroni'
 };

@@ -5,8 +5,8 @@ export const sandwichAuCrabCakeSurPainBaguette: Recipe = {
   title: 'Sandwich au crab cake sur pain baguette',
   description: 'Un vrai délire je vous dis! Sandwich au crab cake sur pain baguette',
   categories: ['Sandwichs'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const crevettesCroustillantesAvecSalsaAuMelonEtGuacamole: Recipe = {
   title: 'Crevettes croustillantes avec salsa au melon et guacamole',
   description: '',
   categories: ['Végétarien', 'Entrées'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 14,
   difficulty: 'Facile',
   ingredients: [

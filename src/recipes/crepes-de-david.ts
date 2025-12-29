@@ -5,8 +5,8 @@ export const crepesDeDavid: Recipe = {
   title: 'Crêpes de David',
   description: 'Notre recette de crêpes passe partout',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 10,
-  cookTime: 8,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 8, max: 8 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

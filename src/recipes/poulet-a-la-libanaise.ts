@@ -5,8 +5,8 @@ export const pouletALaLibanaise: Recipe = {
   title: 'Poulet à la libanaise',
   description: 'Recette de poulet mariné et grillé à la libanaise, avec saumure et marinade aromatique.',
   categories: ['Vollaille', 'Barbecue'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

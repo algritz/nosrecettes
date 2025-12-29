@@ -5,8 +5,8 @@ export const cremeDeBrocoliChouFleurEtFromageCheddarOrange: Recipe = {
   title: 'Crème de brocoli, chou-fleur et fromage cheddar orange',
   description: 'Soupe crémeuse au brocoli, chou-fleur et cheddar orange.',
   categories: ['Soupes'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

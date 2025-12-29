@@ -5,8 +5,8 @@ export const tatareDeThonPommeVerteEtMousseAuxAvocats: Recipe = {
   title: 'Tatare de thon, pomme verte et mousse aux avocats',
   description: 'Un tartare de thon frais accompagné d\'une mousse onctueuse à l\'avocat et de la fraîcheur de la pomme verte, idéal pour une entrée élégante.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

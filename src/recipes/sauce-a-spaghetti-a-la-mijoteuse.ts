@@ -5,8 +5,8 @@ export const sauceASpaghettiALaMijoteuse: Recipe = {
   title: 'Sauce à spaghetti à la mijoteuse',
   description: 'Une sauce à spaghetti savoureuse et facile à préparer à la mijoteuse, utilisant des tomates, champignons, épices et boeuf haché.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 30,
-  cookTime: 480,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 480, max: 480 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

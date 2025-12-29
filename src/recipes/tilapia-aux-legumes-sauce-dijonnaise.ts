@@ -5,8 +5,8 @@ export const tilapiaAuxLegumesSauceDijonnaise: Recipe = {
   title: 'Tilapia aux légumes, sauce dijonnaise',
   description: '',
   categories: ['Poisson', 'Légumes', 'Sauces'],
-  prepTime: 15,
-  cookTime: 16,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 16, max: 16 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

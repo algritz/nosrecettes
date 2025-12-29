@@ -6,15 +6,17 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { FileText, AlertTriangle, CheckCircle, Copy, Check } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
-import { IngredientSection, InstructionSection } from '@/types/recipe';
+import { IngredientSection, InstructionSection, TimeRange } from '@/types/recipe';
+import { formatTime } from '@/utils/timeFormat';
+import { validateTimeRange } from '@/utils/timeUtils';
 
 interface JSONRecipe {
   title: string;
   description?: string;
   categories?: string[];
-  prepTime?: number;
-  cookTime?: number;
-  marinatingTime?: number;
+  prepTime?: TimeRange;
+  cookTime?: TimeRange;
+  marinatingTime?: TimeRange;
   servings?: number;
   difficulty?: 'Facile' | 'Moyen' | 'Difficile';
   ingredients: string[] | IngredientSection[];
@@ -30,6 +32,44 @@ interface JSONImporterProps {
   onImportSuccess: (recipe: JSONRecipe) => void;
   onClose: () => void;
 }
+
+/**
+ * Parse time field from JSON - supports both old (number) and new (TimeRange) formats
+ */
+const parseTimeField = (value: unknown, fieldName: string): TimeRange | undefined => {
+  if (!value) return undefined;
+
+  // Handle legacy format: number
+  if (typeof value === 'number') {
+    return { min: value, max: value };
+  }
+
+  // Handle new format: TimeRange object
+  if (typeof value === 'object' && value !== null) {
+    if (typeof value.min !== 'number' || typeof value.max !== 'number') {
+      throw new Error(
+        `Invalid ${fieldName} format: TimeRange must have numeric min and max properties. ` +
+        `Got: ${JSON.stringify(value)}`
+      );
+    }
+
+    const timeRange: TimeRange = { min: value.min, max: value.max };
+
+    // Validate range (min <= max, non-negative)
+    try {
+      validateTimeRange(timeRange);
+    } catch (error) {
+      throw new Error(`Invalid ${fieldName}: ${error instanceof Error ? error.message : 'Invalid range'}`);
+    }
+
+    return timeRange;
+  }
+
+  throw new Error(
+    `Invalid ${fieldName} format: expected number or TimeRange object. ` +
+    `Got: ${typeof value} (${JSON.stringify(value)})`
+  );
+};
 
 export const JSONImporter = ({ onImportSuccess, onClose }: JSONImporterProps) => {
   const [jsonContent, setJsonContent] = useState('');
@@ -59,14 +99,19 @@ export const JSONImporter = ({ onImportSuccess, onClose }: JSONImporterProps) =>
         throw new Error('Le champ "instructions" est requis et doit être un tableau non vide');
       }
 
+      // Parse time fields with support for both old and new formats
+      const prepTime = parseTimeField(parsed.prepTime, 'prepTime');
+      const cookTime = parseTimeField(parsed.cookTime, 'cookTime');
+      const marinatingTime = parseTimeField(parsed.marinatingTime, 'marinatingTime');
+
       // Set defaults for missing fields
       const recipe: JSONRecipe = {
         title: parsed.title,
         description: parsed.description || '',
         categories: Array.isArray(parsed.categories) ? parsed.categories : [],
-        prepTime: typeof parsed.prepTime === 'number' ? parsed.prepTime : 0,
-        cookTime: typeof parsed.cookTime === 'number' ? parsed.cookTime : 0,
-        marinatingTime: typeof parsed.marinatingTime === 'number' ? parsed.marinatingTime : 0,
+        prepTime: prepTime,
+        cookTime: cookTime,
+        marinatingTime: marinatingTime,
         servings: typeof parsed.servings === 'number' ? parsed.servings : 1,
         difficulty: ['Facile', 'Moyen', 'Difficile'].includes(parsed.difficulty) ? parsed.difficulty : 'Facile',
         ingredients: parsed.ingredients,
@@ -105,9 +150,9 @@ export const JSONImporter = ({ onImportSuccess, onClose }: JSONImporterProps) =>
   "title": "Filet de porc glacé à l'érable",
   "description": "Filet de porc mariné aux épices et glacé à l'érable (four ou grill).",
   "categories": ["Porc", "Plats principaux"],
-  "prepTime": 15,
-  "cookTime": 20,
-  "marinatingTime": 480,
+  "prepTime": { "min": 15, "max": 15 },
+  "cookTime": { "min": 20, "max": 25 },
+  "marinatingTime": { "min": 480, "max": 480 },
   "servings": 4,
   "difficulty": "Facile",
   "ingredients": [
@@ -231,7 +276,7 @@ export const JSONImporter = ({ onImportSuccess, onClose }: JSONImporterProps) =>
                   <li><strong>ingredients</strong> (requis): Tableau d'ingrédients ou sections</li>
                   <li><strong>instructions</strong> (requis): Tableau d'instructions ou sections</li>
                   <li><strong>categories</strong>: Tableau de catégories</li>
-                  <li><strong>prepTime, cookTime, marinatingTime</strong>: Temps en minutes</li>
+                  <li><strong>prepTime, cookTime, marinatingTime</strong>: Objet TimeRange {"{ min: X, max: Y }"} ou nombre (format ancien)</li>
                   <li><strong>servings</strong>: Nombre de portions</li>
                   <li><strong>difficulty</strong>: "Facile", "Moyen", ou "Difficile"</li>
                   <li><strong>tags</strong>: Tableau de tags</li>
@@ -270,10 +315,10 @@ export const JSONImporter = ({ onImportSuccess, onClose }: JSONImporterProps) =>
                 <div>
                   <h5 className="font-medium text-sm mb-2">Informations</h5>
                   <div className="space-y-1 text-sm">
-                    <div>⏱️ Préparation: {parsedRecipe.prepTime} min</div>
-                    <div>🔥 Cuisson: {parsedRecipe.cookTime} min</div>
-                    {parsedRecipe.marinatingTime > 0 && (
-                      <div>⏰ Marinage: {parsedRecipe.marinatingTime} min</div>
+                    {parsedRecipe.prepTime && <div>⏱️ Préparation: {formatTime(parsedRecipe.prepTime)}</div>}
+                    {parsedRecipe.cookTime && <div>🔥 Cuisson: {formatTime(parsedRecipe.cookTime)}</div>}
+                    {parsedRecipe.marinatingTime && parsedRecipe.marinatingTime.max > 0 && (
+                      <div>⏰ Marinage: {formatTime(parsedRecipe.marinatingTime)}</div>
                     )}
                     <div>👥 Portions: {parsedRecipe.servings}</div>
                   </div>

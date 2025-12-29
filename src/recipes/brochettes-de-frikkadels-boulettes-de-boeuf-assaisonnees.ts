@@ -5,8 +5,8 @@ export const brochettesDeFrikkadelsBoulettesDeBoeufAssaisonnees: Recipe = {
   title: 'Brochettes de frikkadels (boulettes de boeuf assaisonnées)',
   description: 'Des boulettes qui ne laissent pas indifférente Brochettes de frikkadels',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 15,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

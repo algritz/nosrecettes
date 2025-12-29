@@ -5,8 +5,8 @@ export const filetDePorcSauceMoutarde: Recipe = {
   title: 'Filet de porc sauce moutarde',
   description: '',
   categories: ['Porc'],
-  prepTime: 5,
-  cookTime: 15,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

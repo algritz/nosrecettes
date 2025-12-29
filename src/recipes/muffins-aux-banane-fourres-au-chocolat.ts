@@ -5,8 +5,8 @@ export const muffinsAuxBananeFourresAuChocolat: Recipe = {
   title: 'Muffins aux banane fourrés au chocolat',
   description: 'Muffins aux banane fourrés au chocolat',
   categories: ['Pâtisseries et desserts', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 45,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 45, max: 45 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

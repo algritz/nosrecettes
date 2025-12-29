@@ -5,8 +5,8 @@ export const saladeDeChouxCremeuseAuxPacanes: Recipe = {
   title: 'Salade de choux crémeuse aux pacanes',
   description: 'Excellente dans un sandwich de porc effiloché. Salade de choux crémeuse aux pacanes',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

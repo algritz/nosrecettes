@@ -5,9 +5,9 @@ export const citronsConfits: Recipe = {
   title: 'Citrons confits',
   description: 'Citrons conservés au sel en saumure, parfaits comme condiment.',
   categories: ['Condiments'],
-  prepTime: 15,
-  cookTime: 0,
-  marinatingTime: 43200,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
+  marinatingTime: { min: 43200, max: 43200 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const poutineSadoMaso: Recipe = {
   title: 'Poutine Sado-Maso',
   description: 'Une version riche et savoureuse de la poutine avec du canard confit et une sauce onctueuse parfumée aux épices jamaïcaines.',
   categories: ['Plats principaux'],
-  prepTime: 40,
-  cookTime: 80,
+  prepTime: { min: 40, max: 40 },
+  cookTime: { min: 80, max: 80 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

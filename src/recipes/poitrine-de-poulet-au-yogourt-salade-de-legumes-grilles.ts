@@ -5,8 +5,8 @@ export const poitrineDePouletAuYogourtSaladeDeLegumesGrilles: Recipe = {
   title: 'Poitrine de poulet au yogourt, salade de légumes grillés',
   description: 'Poitrine de poulet au yogourt accompagnée d\'une salade de légumes grillés, servie avec une vinaigrette aromatique.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 25,
-  cookTime: 45,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

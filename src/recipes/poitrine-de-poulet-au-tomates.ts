@@ -5,8 +5,8 @@ export const poitrineDePouletAuTomates: Recipe = {
   title: 'Poitrine de poulet au tomates',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

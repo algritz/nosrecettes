@@ -5,8 +5,8 @@ export const sauceASpaghettiDeMmeBouchard: Recipe = {
   title: 'Sauce à spaghetti de Mme Bouchard',
   description: '',
   categories: ['Plats principaux', 'Sauces'],
-  prepTime: 60,
-  cookTime: 210,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 210, max: 210 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

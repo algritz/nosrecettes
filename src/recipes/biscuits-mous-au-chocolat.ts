@@ -5,8 +5,8 @@ export const biscuitsMousAuChocolat: Recipe = {
   title: 'Biscuits mous au chocolat',
   description: 'Des biscuits moelleux au chocolat faciles à préparer, avec une texture fondante et riche en chocolat.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 12,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 12, max: 12 },
   servings: 11,
   difficulty: 'Facile',
   ingredients: [

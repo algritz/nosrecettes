@@ -5,8 +5,8 @@ export const regalEtageAuChocolat: Recipe = {
   title: 'Régal étagé au chocolat',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [
@@ -26,6 +26,6 @@ export const regalEtageAuChocolat: Recipe = {
     'Couvrir du reste de Cool Whip. Réfrigérer 4 heures.'
   ],
   tags: ['chocolat', 'fouettée', 'croustillant'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'regal-etage-au-chocolat'
 };

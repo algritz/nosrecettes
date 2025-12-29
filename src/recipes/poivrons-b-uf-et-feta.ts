@@ -5,8 +5,8 @@ export const poivronsBUfEtFeta: Recipe = {
   title: 'Poivrons bœuf et feta',
   description: 'Poivrons farcis au bœuf haché, feta, couscous, et épices, cuits au four ou au BBQ.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

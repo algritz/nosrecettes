@@ -5,8 +5,8 @@ export const soupeDeTortillaAuPoulet: Recipe = {
   title: 'Soupe de tortilla au poulet',
   description: 'Soupe mexicaine savoureuse',
   categories: ['Soupes', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 540,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 540, max: 540 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

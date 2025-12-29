@@ -5,8 +5,8 @@ export const painSurLePouce: Recipe = {
   title: 'Pain sur le pouce',
   description: 'Une recette simple pour faire du pain maison rapidement, idéal pour un snack ou un repas léger.',
   categories: ['Pain'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

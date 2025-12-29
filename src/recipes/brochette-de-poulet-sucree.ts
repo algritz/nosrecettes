@@ -5,8 +5,8 @@ export const brochetteDePouletSucree: Recipe = {
   title: 'Brochette de poulet sucrée',
   description: 'Une recette de brochettes de poulet marinées et grillées, accompagnées d\'une sauce sucrée à l\'ananas.',
   categories: ['Végétarien'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -39,6 +39,6 @@ export const brochetteDePouletSucree: Recipe = {
   ],
   tags: ['barbecue', 'sauce sucrée', 'poulet'],
   accompaniment: 'riz',
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'brochette-de-poulet-sucree'
 };

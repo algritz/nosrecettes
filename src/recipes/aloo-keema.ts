@@ -5,8 +5,8 @@ export const alooKeema: Recipe = {
   title: 'Aloo Keema',
   description: 'Un délicieux plat de keema de veau avec pommes de terre, épices et garniture de coriandre et fenugrec.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 35,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 35, max: 35 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

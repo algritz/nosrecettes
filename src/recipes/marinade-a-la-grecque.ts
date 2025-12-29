@@ -5,8 +5,8 @@ export const marinadeALaGrecque: Recipe = {
   title: 'Marinade à la grecque',
   description: 'Une marinade passe-partout Marinade à la grecque',
   categories: ['Marinade'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

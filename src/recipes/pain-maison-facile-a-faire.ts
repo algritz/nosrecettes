@@ -5,8 +5,8 @@ export const painMaisonFacileAFaire: Recipe = {
   title: 'Pain maison facile à faire',
   description: 'Pain maison facile à faire',
   categories: ['Pains'],
-  prepTime: 25,
-  cookTime: 35,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 35, max: 35 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

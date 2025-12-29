@@ -5,8 +5,8 @@ export const saladeCheeseburger: Recipe = {
   title: 'Salade cheeseburger',
   description: 'Une salade inspirée du cheeseburger, avec boulettes de bœuf, légumes frais et vinaigrette savoureuse.',
   categories: ['Salades', 'Boeuf'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const tartareDeBoeufAuxFraises: Recipe = {
   title: 'Tartare de boeuf aux fraises',
   description: 'Une recette fraîche et savoureuse de tartare de boeuf agrémenté de fraises, fromage de chèvre et micro-pousses.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

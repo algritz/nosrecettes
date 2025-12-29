@@ -5,8 +5,8 @@ export const tartareDeSaumonFraisesEtMayonnaiseEpicee: Recipe = {
   title: 'Tartare de saumon, fraises et mayonnaise épicée',
   description: 'Une recette de tartare de saumon frais avec des fraises, relevé d\'une mayonnaise épicée, à préparer en toute simplicité pour une entrée rafraîchissante.',
   categories: ['Poisson', 'Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const pouletGeneralTaoALErable: Recipe = {
   title: 'Poulet Général Tao à l\'érable',
   description: 'Recette de poulet Général Tao à l\'érable, croustillant et sucré-salé, prêt en 30 minutes avec un accompagnement de riz.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

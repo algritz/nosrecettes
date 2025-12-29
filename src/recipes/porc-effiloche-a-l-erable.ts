@@ -5,8 +5,8 @@ export const porcEffilocheALErable: Recipe = {
   title: 'Porc éffiloché à l\'érable',
   description: 'Un délicieux porc effiloché aromatisé à l\'érable et à la moutarde, accompagné d\'une sauce au whisky et à l\'érable, parfait pour garnir des pains à hamburgers.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 240,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 240, max: 240 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const filetDePorcSauceAuxBleuetsEtAuCitron: Recipe = {
   title: 'Filet de porc, sauce aux bleuets et au citron',
   description: 'Un plat de filet de porc accompagné d\'une sauce aux bleuets et au citron, avec une réduction de caramel et demi-glace pour une saveur riche et acidulée.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

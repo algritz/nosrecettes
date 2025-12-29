@@ -5,8 +5,8 @@ export const carreALaGuimauve: Recipe = {
   title: 'Carré à la guimauve',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 0,
-  cookTime: 15,
+  prepTime: { min: 0, max: 0 },
+  cookTime: { min: 15, max: 15 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

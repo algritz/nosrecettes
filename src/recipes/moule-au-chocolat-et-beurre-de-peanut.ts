@@ -5,8 +5,8 @@ export const mouleAuChocolatEtBeurreDePeanut: Recipe = {
   title: 'Moule au chocolat et beurre de peanut',
   description: 'Une recette de cups au chocolat et beurre de cacahuète, simple et rapide à préparer, avec seulement 5 ingrédients.',
   categories: ['Desserts'],
-  prepTime: 15,
-  cookTime: 2,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 2, max: 2 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

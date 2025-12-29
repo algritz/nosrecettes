@@ -5,8 +5,8 @@ export const tartareDeSaumonCocoCari: Recipe = {
   title: 'Tartare de saumon coco-cari',
   description: 'Un tartare frais et parfumé à base de saumon, noix de coco et épices de cari, servi avec des Rice Krispies pour une texture croquante.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const risottoAuChampignonCrabe: Recipe = {
   title: 'Risotto au champignon crabe',
   description: 'Une recette de risotto utilisant des champignons crabe, idéale pour utiliser ces ingrédients frais et savoureux.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 40,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 40, max: 40 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const couscousAfghan: Recipe = {
   title: 'Couscous Afghan',
   description: '',
   categories: ['Végétarien'],
-  prepTime: 15,
-  cookTime: 5,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 5, max: 5 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

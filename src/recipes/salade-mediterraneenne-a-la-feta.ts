@@ -5,8 +5,8 @@ export const saladeMediterraneenneALaFeta: Recipe = {
   title: 'Salade méditerranéenne à la feta',
   description: 'Belle salade d\'été',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

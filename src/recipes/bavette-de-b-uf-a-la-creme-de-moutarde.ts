@@ -5,8 +5,8 @@ export const bavetteDeBUfALaCremeDeMoutarde: Recipe = {
   title: 'Bavette de bœuf à la crème de moutarde',
   description: 'Une recette savoureuse de bavette de bœuf accompagnée d\'une sauce à la crème et à la moutarde, servie avec une purée de pommes de terre.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

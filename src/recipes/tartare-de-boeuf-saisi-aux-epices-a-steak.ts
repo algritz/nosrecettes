@@ -5,8 +5,8 @@ export const tartareDeBoeufSaisiAuxEpicesASteak: Recipe = {
   title: 'Tartare de boeuf saisi aux épices à steak',
   description: 'Un tartare de boeuf savoureux, saisi rapidement et relevé d\'épices à steak, accompagné d\'une mayonnaise maison.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 45,
-  cookTime: 1,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 1, max: 1 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -64,7 +64,7 @@ export const tartareDeBoeufSaisiAuxEpicesASteak: Recipe = {
     'Servir : À l\'aide d\'un emporte-pièce, répartir le tartare dans 4 assiettes et servir avec des croûtons.'
   ],
   tags: ['épicé', 'saisie rapide', 'bœuf'],
-  marinatingTime: 15,
+  marinatingTime: { min: 15, max: 15 },
   notes: 'Mal pris, vous pouvez sauter l\'étape de la mayonnaise maison et utiliser une mayonnaise du commerce. La mayonnaise faite maison peut servir à d\'autres recettes comme burgers ou sandwichs.',
   slug: 'tartare-de-boeuf-saisi-aux-epices-a-steak'
 };

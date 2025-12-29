@@ -5,8 +5,8 @@ export const biscuitsAuxBrisuresDeChocolatDeRicardo: Recipe = {
   title: 'Biscuits aux brisures de chocolat de Ricardo',
   description: 'Recette de biscuits aux brisures de chocolat, croustillants à l\'extérieur et moelleux à l\'intérieur, avec des morceaux de chocolat fondants.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 20,
   difficulty: 'Facile',
   ingredients: [

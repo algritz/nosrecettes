@@ -5,8 +5,8 @@ export const patesALaSauceCrue: Recipe = {
   title: 'Pâtes à la sauce crue',
   description: 'Une recette de pâtes fraîches avec une sauce crue à base de tomates, feta, mozzarella et herbes, idéale pour un dîner léger.',
   categories: ['Pâtes', 'Salades'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

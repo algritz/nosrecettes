@@ -5,8 +5,8 @@ export const chouDeBruxelleAuRiceKrispies: Recipe = {
   title: 'Chou de bruxelle au Rice Krispies',
   description: 'Un favori de longue date',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 30,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

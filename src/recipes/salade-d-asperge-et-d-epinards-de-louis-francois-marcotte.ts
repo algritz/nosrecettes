@@ -5,8 +5,8 @@ export const saladeDAspergeEtDEpinardsDeLouisFrancoisMarcotte: Recipe = {
   title: 'Salade d\'asperge et d\'épinards de Louis-François Marcotte',
   description: 'Salade d\'asperge et d\'épinards de Louis-François Marcotte',
   categories: ['Salades'],
-  prepTime: 25,
-  cookTime: 0,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

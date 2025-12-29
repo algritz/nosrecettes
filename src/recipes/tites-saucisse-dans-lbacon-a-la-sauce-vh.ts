@@ -5,8 +5,8 @@ export const titesSaucisseDansLbaconALaSauceVh: Recipe = {
   title: 'Tites saucisse dans l\'bacon à la sauce VH',
   description: 'Un classique de famille Tites saucisse dans l\'bacon à la sauce VH',
   categories: ['Végétarien'],
-  prepTime: 25,
-  cookTime: 60,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 60, max: 60 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

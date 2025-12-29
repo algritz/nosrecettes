@@ -5,8 +5,8 @@ export const sauceASpaghettiALine: Recipe = {
   title: 'Sauce à spaghetti à Line',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 90,
-  cookTime: 210,
+  prepTime: { min: 90, max: 90 },
+  cookTime: { min: 210, max: 210 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

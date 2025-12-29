@@ -5,8 +5,8 @@ export const cremeDeCarotteEtCari: Recipe = {
   title: 'Crème de carotte et cari',
   description: 'Une soupe crémeuse à base de carottes, parfumée au curry, parfaite pour une entrée réconfortante.',
   categories: ['Soupes', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

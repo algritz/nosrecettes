@@ -5,8 +5,8 @@ export const boucheesDeBrowniesPetitesBoulesAuxDattes: Recipe = {
   title: 'Bouchées de brownies (Petites boules aux dattes)',
   description: '',
   categories: ['Végétarien'],
-  prepTime: 10,
-  cookTime: 5,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 5, max: 5 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

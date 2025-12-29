@@ -5,8 +5,8 @@ export const cotelettesDePorcALOrangeEtAuGingembre: Recipe = {
   title: 'Côtelettes de porc à l\'orange et au gingembre',
   description: '',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 20,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

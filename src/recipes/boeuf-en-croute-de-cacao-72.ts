@@ -5,8 +5,8 @@ export const boeufEnCrouteDeCacao72: Recipe = {
   title: 'Boeuf en croûte de cacao 72%',
   description: 'Un plat sophistiqué de filet de bœuf en croûte de cacao, accompagné d\'une sauce à la liqueur de cassis et demi-glace.',
   categories: ['Boeuf'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const fudgeDivin: Recipe = {
   title: 'Fudge divin',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 10,
-  cookTime: 30,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 30, max: 30 },
   servings: 35,
   difficulty: 'Facile',
   ingredients: [

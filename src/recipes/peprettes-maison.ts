@@ -5,8 +5,8 @@ export const peprettesMaison: Recipe = {
   title: 'Péprettes maison',
   description: 'Tout mélanger les ingrédients et laisser mariner 24h. Faire les péprettes avec le pistolet à saucisse en les déposant directement sur les gilles du fumoirs. Faire fumer, jusqu\'à ce que le centre atteigne 152°C, environ 3h. Laisser refroidir et emballer sous vide.',
   categories: ['Fumoir'],
-  prepTime: 20,
-  cookTime: 180,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 180, max: 180 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const truiteEpicee: Recipe = {
   title: 'Truite épicée',
   description: 'Mélanger les épices et faire mariner la truite 20 minutes dans le mélange. Préparer la sauce à l\'aneth et citron. Cuire le poisson sur le BBQ. Servir avec du riz et la sauce.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -27,7 +27,7 @@ export const truiteEpicee: Recipe = {
   ],
   tags: ['barbecue', 'marinade sèche', 'poisson'],
   accompaniment: 'Riz',
-  marinatingTime: 20,
+  marinatingTime: { min: 20, max: 20 },
   notes: 'Peut se faire avec du saumon',
   slug: 'truite-epicee'
 };

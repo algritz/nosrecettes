@@ -5,8 +5,8 @@ export const patatesDouceGuacamoleEtFeta: Recipe = {
   title: 'Patates douce guacamole et feta',
   description: 'Une recette simple de patates douces rôties garnies de guacamole à l\'avocat, tomates cerise et feta.',
   categories: ['Végétarien', 'Entrées'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

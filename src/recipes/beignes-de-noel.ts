@@ -5,8 +5,8 @@ export const beignesDeNoel: Recipe = {
   title: 'Beignes de Noël',
   description: 'Des beignes de Noël moelleux et dorés, parfaits pour les fêtes, à saupoudrer de sucre en poudre.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 2,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 2, max: 2 },
   servings: 36,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const truffesChocolatEtNoisettesAuFromageALaCreme: Recipe = {
   title: 'Truffes chocolat et noisettes au fromage à la crème',
   description: 'Une recette de truffes chocolat et noisettes au fromage à la crème, facile à préparer et idéale pour une gourmandise raffinée.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

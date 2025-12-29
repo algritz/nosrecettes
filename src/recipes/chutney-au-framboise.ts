@@ -5,8 +5,8 @@ export const chutneyAuFramboise: Recipe = {
   title: 'Chutney au framboise',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 10,
-  cookTime: 40,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 40, max: 40 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

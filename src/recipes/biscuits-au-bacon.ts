@@ -5,8 +5,8 @@ export const biscuitsAuBacon: Recipe = {
   title: 'Biscuits au bacon',
   description: 'Recette de biscuits au bacon croustillant, chocolaté et parfumé à la vanille, parfaits pour une collation ou un apéritif original.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

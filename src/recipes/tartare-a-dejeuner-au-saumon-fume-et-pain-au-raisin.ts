@@ -5,8 +5,8 @@ export const tartareADejeunerAuSaumonFumeEtPainAuRaisin: Recipe = {
   title: 'Tartare à déjeuner au saumon fumé et pain au raisin',
   description: 'Un tartare savoureux à base de saumon fumé, servi sur du pain au raisin avec une touche de basilic.',
   categories: ['Déjeuners', 'Poisson'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

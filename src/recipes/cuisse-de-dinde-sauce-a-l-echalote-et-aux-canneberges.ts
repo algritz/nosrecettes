@@ -5,8 +5,8 @@ export const cuisseDeDindeSauceALEchaloteEtAuxCanneberges: Recipe = {
   title: 'Cuisse de dinde, sauce à l\'échalote et aux canneberges',
   description: 'Une recette de cuisse de dinde rôtie servie avec une sauce aux échalotes et canneberges séchées, idéale pour un repas savoureux et festif.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 45,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 45, max: 45 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

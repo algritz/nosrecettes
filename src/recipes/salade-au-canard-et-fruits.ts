@@ -5,9 +5,9 @@ export const saladeAuCanardEtFruits: Recipe = {
   title: 'Salade au canard et fruits',
   description: 'Une salade fraîche et élégante avec du canard mariné et des fruits, accompagnée d\'une vinaigrette balsamique aux framboises.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 20,
-  marinatingTime: 120,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
+  marinatingTime: { min: 120, max: 120 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

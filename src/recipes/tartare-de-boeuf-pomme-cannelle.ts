@@ -5,8 +5,8 @@ export const tartareDeBoeufPommeCannelle: Recipe = {
   title: 'Tartare de boeuf pomme & cannelle',
   description: 'Tartare de boeuf pomme & cannelle',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const magretDeCanardGrilleAuxFruitsDeSaisonEtAuPorto: Recipe = {
   title: 'Magret de canard grillé aux fruits de saison et au porto',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

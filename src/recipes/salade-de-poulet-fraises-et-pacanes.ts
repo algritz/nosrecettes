@@ -5,8 +5,8 @@ export const saladeDePouletFraisesEtPacanes: Recipe = {
   title: 'Salade de poulet, fraises et pacanes',
   description: 'Une salade fraîche et savoureuse combinant poulet, fraises, avocats, noix de pacanes et coriandre, relevée d\'une vinaigrette à l\'érable et lime.',
   categories: ['Salades'],
-  prepTime: 25,
-  cookTime: 0,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 0, max: 0 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

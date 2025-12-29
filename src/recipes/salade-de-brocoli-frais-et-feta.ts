@@ -5,8 +5,8 @@ export const saladeDeBrocoliFraisEtFeta: Recipe = {
   title: 'Salade de brocoli frais et feta',
   description: 'Salade fraiche d\'été',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

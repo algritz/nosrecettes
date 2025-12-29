@@ -5,8 +5,8 @@ export const saladePasDeSalade: Recipe = {
   title: 'Salade pas de salade',
   description: 'Cette salade est excellente en été avec des fines herbes de votre jardin.',
   categories: ['Salades'],
-  prepTime: 45,
-  cookTime: 0,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

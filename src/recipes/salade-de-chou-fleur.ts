@@ -5,8 +5,8 @@ export const saladeDeChouFleur: Recipe = {
   title: 'Salade de chou-fleur',
   description: 'Une salade fraîche et croustillante à base de chou-fleur rôti, accompagnée d\'une vinaigrette au yaourt et aux herbes.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

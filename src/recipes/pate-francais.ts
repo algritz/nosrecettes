@@ -5,8 +5,8 @@ export const pateFrancais: Recipe = {
   title: 'Pâté français',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 30,
-  cookTime: 105,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 105, max: 105 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

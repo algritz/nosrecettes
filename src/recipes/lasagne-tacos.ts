@@ -5,8 +5,8 @@ export const lasagneTacos: Recipe = {
   title: 'Lasagne tacos',
   description: 'Une version fusion entre lasagne et tacos, avec une couche de viande, haricots, maïs, tomates, fromage, et tortillas, cuite au four jusqu\'à ce que le fromage soit fondu et doré.',
   categories: ['Plats principaux'],
-  prepTime: 35,
-  cookTime: 50,
+  prepTime: { min: 35, max: 35 },
+  cookTime: { min: 50, max: 50 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

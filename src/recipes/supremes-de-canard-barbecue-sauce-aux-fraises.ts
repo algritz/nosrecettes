@@ -5,8 +5,8 @@ export const supremesDeCanardBarbecueSauceAuxFraises: Recipe = {
   title: 'Suprêmes de canard barbecue, sauce aux fraises',
   description: 'Suprêmes de canard désossés, assaisonnés et grillés, servis avec une sauce aux fraises parfumée, pour une saveur estivale et raffinée.',
   categories: ['Vollaille', 'Plats principaux', 'Barbecue'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -36,6 +36,6 @@ export const supremesDeCanardBarbecueSauceAuxFraises: Recipe = {
     'Servir les suprêmes de canard tranchés sur un lit de jeunes verdures craquantes. Napper de sauce aux fraises, saler et garnir de poivre noir concassé.'
   ],
   tags: ['barbecue', 'sauce aux fraises', 'volaille'],
-  marinatingTime: 120,
+  marinatingTime: { min: 120, max: 120 },
   slug: 'supremes-de-canard-barbecue-sauce-aux-fraises'
 };

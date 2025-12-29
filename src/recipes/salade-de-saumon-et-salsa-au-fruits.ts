@@ -5,8 +5,8 @@ export const saladeDeSaumonEtSalsaAuFruits: Recipe = {
   title: 'Salade de saumon et salsa au fruits',
   description: 'Une salade fraîche combinant du saumon mariné et une salsa aux fruits colorée.',
   categories: ['Salades', 'Poisson'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const ramenThaiCariCoco: Recipe = {
   title: 'Ramen thai cari-coco',
   description: 'Une soupe de ramen parfumée au curry rouge, lait de coco et porc haché, garnie d\'œufs pochés et de coriandre fraîche.',
   categories: ['Soupes', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

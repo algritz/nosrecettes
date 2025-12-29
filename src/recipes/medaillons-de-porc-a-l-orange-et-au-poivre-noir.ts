@@ -5,8 +5,8 @@ export const medaillonsDePorcALOrangeEtAuPoivreNoir: Recipe = {
   title: 'Médaillons de porc à l\'orange et au poivre noir',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

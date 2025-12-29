@@ -5,8 +5,8 @@ export const saladeDePommesDeTerreGrillees: Recipe = {
   title: 'Salade de pommes de terre grillées',
   description: 'Une salade de patates grillées.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

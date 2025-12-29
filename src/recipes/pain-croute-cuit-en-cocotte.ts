@@ -5,8 +5,8 @@ export const painCrouteCuitEnCocotte: Recipe = {
   title: 'Pain crouté cuit en cocotte',
   description: 'Un pain maison à croûte dure, comme à l\'épicerie.',
   categories: ['Pain'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

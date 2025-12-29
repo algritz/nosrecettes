@@ -5,8 +5,8 @@ export const rotinisStyleHamburgerHelper: Recipe = {
   title: 'Rotinis style Hamburger Helper',
   description: 'Un plat réconfortant de pâtes avec viande hachée, légumes et fromage, mijoté dans une sauce tomate savoureuse.',
   categories: ['Plats principaux'],
-  prepTime: 30,
-  cookTime: 30,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const pouletSauteAuPoivreEtAuxLegumes: Recipe = {
   title: 'Poulet sauté au poivre et aux légumes',
   description: 'Une recette de poulet sauté parfumé au poivre, accompagné de légumes blanchis et de Boursin Cuisine Trois Poivres, servi avec une touche de citron et de cerfeuil.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 17,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 17, max: 17 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

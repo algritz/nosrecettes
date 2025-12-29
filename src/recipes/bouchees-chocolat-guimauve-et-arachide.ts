@@ -5,8 +5,8 @@ export const boucheesChocolatGuimauveEtArachide: Recipe = {
   title: 'Bouchées chocolat, guimauve et arachide',
   description: 'Une recette de bouchées gourmandes associant chocolat, guimauves et beurre d\'arachide, à préparer rapidement et à congeler pour une texture ferme.',
   categories: ['Végétarien', 'Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

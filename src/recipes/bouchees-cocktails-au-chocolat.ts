@@ -5,8 +5,8 @@ export const boucheesCocktailsAuChocolat: Recipe = {
   title: 'Bouchées Cocktails au Chocolat',
   description: 'Carrés de cheesecake au chocolat trempés et enrobés de chapelure graham, taillés en bouchées.',
   categories: ['Pâtisseries et desserts', 'Desserts'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 21,
   difficulty: 'Facile',
   ingredients: [

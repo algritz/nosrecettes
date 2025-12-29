@@ -5,9 +5,9 @@ export const guacamole: Recipe = {
   title: 'Guacamole',
   description: '',
   categories: ['Condiments', 'Sauces', 'Trempettes'],
-  prepTime: 15,
-  cookTime: 0,
-  marinatingTime: 60,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
+  marinatingTime: { min: 60, max: 60 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

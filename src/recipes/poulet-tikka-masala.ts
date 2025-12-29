@@ -5,9 +5,9 @@ export const pouletTikkaMasala: Recipe = {
   title: 'Poulet tikka masala',
   description: 'Un classique indien de poulet mariné et épicé, cuit au four ou au barbecue, puis mijoté dans une sauce crémeuse aux épices et tomates.',
   categories: ['Plats principaux', 'Vollaille'],
-  prepTime: 25,
-  cookTime: 20,
-  marinatingTime: 60,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
+  marinatingTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

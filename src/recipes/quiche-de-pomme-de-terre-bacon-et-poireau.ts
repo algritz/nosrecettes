@@ -5,8 +5,8 @@ export const quicheDePommeDeTerreBaconEtPoireau: Recipe = {
   title: 'Quiche de pomme de terre, bacon et poireau',
   description: 'Une quiche qui sort de l\'ordinaire',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 25,
-  cookTime: 80,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 80, max: 80 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

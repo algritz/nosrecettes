@@ -5,8 +5,8 @@ export const cuissesDePouletFaconTeriyaki: Recipe = {
   title: 'Cuisses de poulet façon teriyaki',
   description: 'Une recette de cuisses de poulet marinées à la sauce teriyaki, cuites au four et servies avec une sauce au yogourt, coriandre et lime.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -38,6 +38,6 @@ export const cuissesDePouletFaconTeriyaki: Recipe = {
   ],
   tags: ['teriyaki', 'marinade sèche', 'cuisson au four'],
   accompaniment: 'Servir les cuisses de poulet avec la sauce au yogourt, à la coriandre et à la lime',
-  marinatingTime: 480,
+  marinatingTime: { min: 480, max: 480 },
   slug: 'cuisses-de-poulet-facon-teriyaki'
 };

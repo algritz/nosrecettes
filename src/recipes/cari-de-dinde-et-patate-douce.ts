@@ -5,8 +5,8 @@ export const cariDeDindeEtPatateDouce: Recipe = {
   title: 'Cari de dinde et patate douce',
   description: 'Un curry savoureux à base de dinde, patates douces, lait de coco et épices, mijoté lentement pour un plat réconfortant.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 360,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 360, max: 360 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

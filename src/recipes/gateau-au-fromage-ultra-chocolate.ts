@@ -5,8 +5,8 @@ export const gateauAuFromageUltraChocolate: Recipe = {
   title: 'Gâteau au fromage ultra chocolaté',
   description: 'Un gâteau au fromage riche en chocolat avec une croûte croquante, une garniture fondante et une ganache onctueuse, décoré de chocolat Aéro Bubbles.',
   categories: ['Desserts'],
-  prepTime: 20,
-  cookTime: 50,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 50, max: 50 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

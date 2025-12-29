@@ -5,8 +5,8 @@ export const muffinsBananeEtChocolat: Recipe = {
   title: 'Muffins banane et chocolat',
   description: 'Recette de muffins moelleux à la banane et aux pépites de chocolat, parfaits pour un goûter ou un petit-déjeuner.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

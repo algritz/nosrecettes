@@ -5,8 +5,8 @@ export const barresCrunchiesAuChocolatEtBeurreDarachides: Recipe = {
   title: 'Barres crunchies au chocolat et beurre d’arachides',
   description: 'Recette de barres crunchies au chocolat et beurre d’arachides avec ingrédients simples et préparation rapide.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 5,
-  cookTime: 10,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 10, max: 10 },
   servings: 25,
   difficulty: 'Facile',
   ingredients: [

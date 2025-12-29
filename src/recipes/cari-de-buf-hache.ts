@@ -5,8 +5,8 @@ export const cariDeBufHache: Recipe = {
   title: 'Cari de bœuf haché',
   description: 'Un curry savoureux à base de bœuf haché, légumes et épices, servi avec du riz blanc.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 40,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const leFameuxPainDuRoi: Recipe = {
   title: 'Le fameux pain du roi',
   description: 'Bon au déjeuner ou comme dessert',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 45,
-  cookTime: 35,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 35, max: 35 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const boulettesALaSteeveModifiees: Recipe = {
   title: 'Boulettes à la Steeve modifiées',
   description: 'Recette de boulettes de viande avec sauce sucrée et épicée, cuites au four, accompagnées de pommes de terre pilées.',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 60,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

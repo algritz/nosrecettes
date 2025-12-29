@@ -5,8 +5,8 @@ export const boucheesDeBiscuitAuGateauAuFromage: Recipe = {
   title: 'Bouchées de biscuit au gâteau au fromage',
   description: 'Une recette de bouchées de biscuit au gâteau au fromage, combinant une base de pâte chocolatée avec une garniture crémeuse au fromage, à cuire et réfrigérer avant de servir.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

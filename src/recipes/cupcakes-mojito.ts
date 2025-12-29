@@ -5,8 +5,8 @@ export const cupcakesMojito: Recipe = {
   title: 'Cupcakes Mojito',
   description: 'Recette de cupcakes aromatisés au mojito, avec sirop à la lime et glaçage au fromage à la crème, décorés de lime et menthe.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 30,
-  cookTime: 20,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 20, max: 20 },
   servings: 18,
   difficulty: 'Facile',
   ingredients: [

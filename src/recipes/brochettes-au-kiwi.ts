@@ -5,8 +5,8 @@ export const brochettesAuKiwi: Recipe = {
   title: 'Brochettes au kiwi',
   description: 'Une recette de brochettes marinées au kiwi, viande tendre et parfumée, idéale pour le grill.',
   categories: ['Végétarien'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

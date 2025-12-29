@@ -5,8 +5,8 @@ export const poitrineDePouletEn3Etapes: Recipe = {
   title: 'Poitrine de poulet en 3 étapes',
   description: 'Une recette de poulet mariné en trois étapes, avec une marinade sèche, une marinade liquide, et une sauce BBQ pour une cuisson au grill.',
   categories: ['Vollaille'],
-  prepTime: 60,
-  cookTime: 30,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -61,7 +61,7 @@ export const poitrineDePouletEn3Etapes: Recipe = {
     'Faire cuire sur le grill en badigeonnant avec la sauce BBQ.'
   ],
   tags: ['barbecue', 'marinade sèche', 'grill'],
-  marinatingTime: 1440,
+  marinatingTime: { min: 1440, max: 1440 },
   notes: 'Pour que ce soit moins salé, mettre de la sauce soya et du beurre non-salé.',
   slug: 'poitrine-de-poulet-en-3-etapes'
 };

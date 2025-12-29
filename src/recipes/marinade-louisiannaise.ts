@@ -5,8 +5,8 @@ export const marinadeLouisiannaise: Recipe = {
   title: 'Marinade Louisiannaise',
   description: 'Une marinade épicée et aromatique idéale pour viande ou poisson, à préparer en quelques minutes et à laisser mariner plusieurs heures.',
   categories: ['Marinade'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

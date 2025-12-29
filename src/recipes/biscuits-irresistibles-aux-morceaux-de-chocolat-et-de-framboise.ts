@@ -5,8 +5,8 @@ export const biscuitsIrresistiblesAuxMorceauxDeChocolatEtDeFramboise: Recipe = {
   title: 'Biscuits irrésistibles aux morceaux de chocolat et de framboise',
   description: 'Excellents biscuits que ma fille a vu passer dans un vidéo instagram.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 12,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 12, max: 12 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

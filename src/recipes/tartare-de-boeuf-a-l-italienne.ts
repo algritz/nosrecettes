@@ -5,8 +5,8 @@ export const tartareDeBoeufALItalienne: Recipe = {
   title: 'Tartare de boeuf à l’italienne',
   description: 'Un tartare de boeuf frais et aromatique, relevé avec du basilic, du parmesan, du Sambal Oelek et du pesto de tomates séchées, servi frais.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

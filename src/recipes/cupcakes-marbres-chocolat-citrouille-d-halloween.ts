@@ -5,8 +5,8 @@ export const cupcakesMarbresChocolatCitrouilleDHalloween: Recipe = {
   title: 'Cupcakes marbrés chocolat citrouille d\'halloween',
   description: 'Recette de cupcakes moelleux à la citrouille et chocolat, décorés de glaçages colorés pour Halloween.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 60,
-  cookTime: 25,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 25, max: 25 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

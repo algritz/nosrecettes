@@ -5,8 +5,8 @@ export const biscuitsMoelleuxAuxBananesEtPepitesDeChocolatDeGenevieve: Recipe = 
   title: 'Biscuits moelleux aux bananes et pépites de chocolat de Geneviève',
   description: 'Biscuits moelleux choco-bananes Galette super tendre, tout le monde en redemande',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const croissantSMores: Recipe = {
   title: 'Croissant s\'mores',
   description: 'Une recette de croissants farcis de chocolat, guimauves et biscuits Graham, puis cuits au four et arrosés de chocolat fondu.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 16,
   difficulty: 'Facile',
   ingredients: [

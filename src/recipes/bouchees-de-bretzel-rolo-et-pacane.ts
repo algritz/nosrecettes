@@ -5,8 +5,8 @@ export const boucheesDeBretzelRoloEtPacane: Recipe = {
   title: 'Bouchées de bretzel, rolo et pacane',
   description: '',
   categories: ['Amuse-geules'],
-  prepTime: 10,
-  cookTime: 4,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 4, max: 4 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

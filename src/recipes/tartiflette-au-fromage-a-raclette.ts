@@ -5,8 +5,8 @@ export const tartifletteAuFromageARaclette: Recipe = {
   title: 'Tartiflette au fromage à raclette',
   description: 'Gratin de pommes de terre, bacon et oignons, déglacé au vin blanc et nappé de fromage à raclette.',
   categories: ['Patates', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 40,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

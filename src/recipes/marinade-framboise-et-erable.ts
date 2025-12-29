@@ -5,8 +5,8 @@ export const marinadeFramboiseEtErable: Recipe = {
   title: 'Marinade framboise et érable',
   description: 'Une marinade fruitée et sucrée à base de framboises et de sirop d\'érable, idéale pour relever vos viandes ou salades.',
   categories: ['Marinade'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

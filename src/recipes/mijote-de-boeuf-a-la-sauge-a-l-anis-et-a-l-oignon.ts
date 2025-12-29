@@ -5,8 +5,8 @@ export const mijoteDeBoeufALaSaugeALAnisEtALOignon: Recipe = {
   title: 'Mijoté de boeuf à la sauge, à l\'anis et à l\'oignon',
   description: 'Un mijoté savoureux de boeuf avec des saveurs d\'anis, sauge et oignon, cuit lentement pour une tendreté optimale.',
   categories: ['Plats principaux'],
-  prepTime: 30,
-  cookTime: 180,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 180, max: 180 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

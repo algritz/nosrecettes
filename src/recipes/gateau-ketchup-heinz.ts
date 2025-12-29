@@ -5,8 +5,8 @@ export const gateauKetchupHeinz: Recipe = {
   title: 'Gâteau ketchup Heinz',
   description: 'Un gâteau sucré aromatisé au ketchup Heinz, avec un glaçage crémeux au fromage à la crème et beurre.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

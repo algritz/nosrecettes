@@ -5,8 +5,8 @@ export const pouletSauceCremeuseAuMaisStyleMexicain: Recipe = {
   title: 'Poulet sauce crémeuse au maïs style mexicain',
   description: 'Une recette de poulet avec une sauce crémeuse au maïs, parfumée aux épices mexicaines et garnie d’avocats, coriandre et basilic.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

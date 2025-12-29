@@ -5,8 +5,8 @@ export const tatareDeSaumonEpiceALasiatique: Recipe = {
   title: 'Tatare de saumon épicé à l\'asiatique',
   description: '',
   categories: ['Plats principaux', 'Tartares'],
-  prepTime: 25,
-  cookTime: 0,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

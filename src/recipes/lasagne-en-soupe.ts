@@ -5,8 +5,8 @@ export const lasagneEnSoupe: Recipe = {
   title: 'Lasagne en soupe',
   description: 'Une soupe réconfortante avec des pâtes de lasagne, de la viande hachée et des épices italiennes, servie avec du persil frais et du fromage râpé.',
   categories: ['Soupes'],
-  prepTime: 25,
-  cookTime: 45,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 45, max: 45 },
   servings: 7,
   difficulty: 'Facile',
   ingredients: [

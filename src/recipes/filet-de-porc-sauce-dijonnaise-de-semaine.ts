@@ -5,8 +5,8 @@ export const filetDePorcSauceDijonnaiseDeSemaine: Recipe = {
   title: 'Filet de porc sauce dijonnaise de semaine',
   description: 'Un délicieux filet de porc accompagné d\'une sauce dijonnaise crémeuse, parfait pour une semaine gourmande.',
   categories: ['Vollaille'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

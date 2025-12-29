@@ -5,8 +5,8 @@ export const sauceBlancheAKebab: Recipe = {
   title: 'Sauce blanche à kebab',
   description: 'Sauce blanche à kebab',
   categories: ['Sauces'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -26,7 +26,7 @@ export const sauceBlancheAKebab: Recipe = {
     'Mélanger le tout et laisser au frais avant utilisation'
   ],
   tags: ['sauce', 'frais', 'rapide'],
-  marinatingTime: 120,
+  marinatingTime: { min: 120, max: 120 },
   notes: 'Préparation de 15 minutes, marinade minimum 2 heures, maximum une nuit. Source: https://les-recettes-de-pates.blogspot.com/2008/01/sauce-blanche-kebab.html',
   slug: 'sauce-blanche-a-kebab'
 };

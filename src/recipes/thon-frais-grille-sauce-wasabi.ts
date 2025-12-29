@@ -5,8 +5,8 @@ export const thonFraisGrilleSauceWasabi: Recipe = {
   title: 'Thon frais grillé, sauce wasabi',
   description: 'Une recette de thon frais grillé accompagné d\'une sauce relevée au wasabi, parfait pour une cuisson rapide et savoureuse.',
   categories: ['Vollaille'],
-  prepTime: 15,
-  cookTime: 5,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 5, max: 5 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -27,7 +27,7 @@ export const thonFraisGrilleSauceWasabi: Recipe = {
     'Servez aussitôt, avec la sauce et des légumes sautés.'
   ],
   tags: ['wasabi', 'marinade sèche', 'grill'],
-  marinatingTime: 10,
+  marinatingTime: { min: 10, max: 10 },
   notes: 'Ce fait très bien sur le BBQ',
   slug: 'thon-frais-grille-sauce-wasabi'
 };

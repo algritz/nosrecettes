@@ -5,8 +5,8 @@ export const hautDeCuisseAuCarviEtPoivreNoir: Recipe = {
   title: 'Haut de cuisse au carvi et poivre noir',
   description: 'Une recette de hauts de cuisse de poulet marinés aux épices, grillés ou cuits au four, servis avec des quartiers de lime.',
   categories: ['Vollaille'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -33,6 +33,6 @@ export const hautDeCuisseAuCarviEtPoivreNoir: Recipe = {
   ],
   tags: ['marinade sèche', 'barbecue', 'poulet'],
   accompaniment: 'Servir avec des quartiers de lime.',
-  marinatingTime: 480,
+  marinatingTime: { min: 480, max: 480 },
   slug: 'haut-de-cuisse-au-carvi-et-poivre-noir'
 };

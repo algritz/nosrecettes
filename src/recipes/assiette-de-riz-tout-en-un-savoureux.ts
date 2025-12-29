@@ -5,8 +5,8 @@ export const assietteDeRizToutEnUnSavoureux: Recipe = {
   title: 'Assiette de riz tout en un savoureux',
   description: 'Un plat complet et savoureux de riz avec poulet et légumes, facile à préparer pour un repas de semaine.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

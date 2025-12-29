@@ -5,8 +5,8 @@ export const boulettesDeDindeEnSauceLaitDeCocoEtArachides: Recipe = {
   title: 'Boulettes de dinde en sauce lait de coco et arachides',
   description: 'Une recette savoureuse de boulettes de dinde accompagnées d\'une sauce crémeuse au lait de coco et arachides, garnies de fèves germées, micro pousses, basilic et piment chili.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 45,
-  cookTime: 30,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

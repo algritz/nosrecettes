@@ -5,8 +5,8 @@ export const pouletAuBeurre: Recipe = {
   title: 'Poulet au beurre',
   description: 'Un plat savoureux de poulet mijoté dans une sauce parfumée au beurre, épices et amandes, servi avec du riz ou du naan.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 45,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const saladeDeKaleClementineQuinoaEtNoixDeGrenoble: Recipe = {
   title: 'Salade de kale, clémentine, quinoa et noix de Grenoble',
   description: 'Une salade fraîche et nutritive combinant kale, clémentines, quinoa et noix de Grenoble, agrémentée d\'une vinaigrette onctueuse à l\'érable.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

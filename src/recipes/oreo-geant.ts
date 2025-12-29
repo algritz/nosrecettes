@@ -5,8 +5,8 @@ export const oreoGeant: Recipe = {
   title: 'Oréo géant',
   description: 'Un cheesecake sans cuisson aux biscuits Oréo, facile à préparer et délicieux.',
   categories: ['Desserts'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 9,
   difficulty: 'Facile',
   ingredients: [

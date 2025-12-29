@@ -5,8 +5,8 @@ export const saumonGlaceALErableSurPlancheDeCedre: Recipe = {
   title: 'Saumon glacé à l\'érable sur planche de cèdre',
   description: 'Saumon glacé à l\'érable cuit sur une planche de cèdre trempée, avec une marinade à la vinaigrette balsamique et sirop d\'érable, garni d\'oignons rouges.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

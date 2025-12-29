@@ -5,8 +5,8 @@ export const pouletToscanALitalienne: Recipe = {
   title: 'Poulet toscan à l\'italienne',
   description: 'Un plat savoureux de poulet à la sauce tomate, champignons, chorizo, olives et herbes aromatiques, mijoté avec du vin rouge et du bouillon de légumes.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 45,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

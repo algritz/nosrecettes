@@ -5,8 +5,8 @@ export const chiliConCarneSucculent: Recipe = {
   title: 'Chili con carne succulent',
   description: 'Un chili riche et savoureux avec une cuisson longue pour attendrir la viande et développer les saveurs.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 25,
-  cookTime: 720,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 720, max: 720 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

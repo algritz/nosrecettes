@@ -5,8 +5,8 @@ export const volailleAuPortoEtAuxFramboises: Recipe = {
   title: 'Volaille au porto et aux framboises',
   description: '',
   categories: ['Vollaille', 'Sauces'],
-  prepTime: 10,
-  cookTime: 0,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

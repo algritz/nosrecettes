@@ -5,8 +5,8 @@ export const coquilleAuTacosRecetteDeSemaine: Recipe = {
   title: 'Coquille au tacos recette de semaine',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 10,
-  cookTime: 30,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 30, max: 30 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

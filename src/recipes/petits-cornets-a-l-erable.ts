@@ -5,8 +5,8 @@ export const petitsCornetsALErable: Recipe = {
   title: 'Petits cornets à l\'érable',
   description: 'Petits cornets à l\'érable',
   categories: ['Végétarien'],
-  prepTime: 10,
-  cookTime: 10,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 10, max: 10 },
   servings: 60,
   difficulty: 'Facile',
   ingredients: [

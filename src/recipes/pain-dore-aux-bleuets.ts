@@ -5,8 +5,8 @@ export const painDoreAuxBleuets: Recipe = {
   title: 'Pain doré aux bleuets',
   description: 'Un pain doré aux bleuets, croustillant à l\'extérieur et moelleux à l\'intérieur, servi avec du sirop d\'érable.',
   categories: ['Déjeuners', 'Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 45,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

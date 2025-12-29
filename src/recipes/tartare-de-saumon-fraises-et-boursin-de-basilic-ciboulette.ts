@@ -5,8 +5,8 @@ export const tartareDeSaumonFraisesEtBoursinDeBasilicCiboulette: Recipe = {
   title: 'Tartare de saumon, fraises et Boursin de basilic & Ciboulette',
   description: 'Un tartare frais et aromatique combinant saumon, fraises, herbes et Boursin, servi en verrines avec des croutons grillés.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

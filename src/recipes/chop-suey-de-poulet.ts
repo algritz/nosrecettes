@@ -5,8 +5,8 @@ export const chopSueyDePoulet: Recipe = {
   title: 'Chop suey de poulet',
   description: 'Un plat chinois rapide et savoureux à base de poulet, légumes croquants et fèves germées, mijoté dans une sauce soja et bouillon.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

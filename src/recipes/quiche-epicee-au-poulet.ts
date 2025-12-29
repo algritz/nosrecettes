@@ -5,8 +5,8 @@ export const quicheEpiceeAuPoulet: Recipe = {
   title: 'Quiche épicée au poulet',
   description: 'Parfait pour un bon diner',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 25,
-  cookTime: 50,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 50, max: 50 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

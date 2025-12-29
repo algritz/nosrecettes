@@ -5,8 +5,8 @@ export const brigadeiroBlanc: Recipe = {
   title: 'Brigadeiro blanc',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 5,
-  cookTime: 15,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 15, max: 15 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

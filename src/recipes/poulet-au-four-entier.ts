@@ -5,8 +5,8 @@ export const pouletAuFourEntier: Recipe = {
   title: 'Poulet au four entier',
   description: 'Poulet entier cuit au four avec sauce au jus de cuisson, servi avec une sauce épaissie.',
   categories: ['Vollaille'],
-  prepTime: 5,
-  cookTime: 90,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 90, max: 90 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

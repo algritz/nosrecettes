@@ -5,8 +5,8 @@ export const pommesDeTerreALAil: Recipe = {
   title: 'Pommes de terre à l\'ail',
   description: '',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 35,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 35, max: 35 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

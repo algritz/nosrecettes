@@ -5,8 +5,8 @@ export const sauceMoutardeEtGingembre: Recipe = {
   title: 'Sauce moutarde et gingembre',
   description: 'Excellente avec un gravlax de saumon fumé',
   categories: ['Sauces'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

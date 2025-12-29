@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Upload, FileText, AlertTriangle, CheckCircle, Copy, Check } from 'lucide-react';
 import { parseCSVRecipes, ParsedCSVRecipe, CSVParseResult } from '@/utils/csvParser';
 import { showSuccess, showError } from '@/utils/toast';
+import { formatTime } from '@/utils/timeFormat';
 
 interface CSVImporterProps {
   onImportSuccess: (recipes: ParsedCSVRecipe[]) => void;
@@ -82,8 +83,8 @@ export const CSVImporter = ({ onImportSuccess, onClose }: CSVImporterProps) => {
   const copyRecipeData = async (recipe: ParsedCSVRecipe, index: number) => {
     const recipeText = `Titre: ${recipe.title}
 Description: ${recipe.description}
-Temps de préparation: ${recipe.prepTime || 0} minutes
-Temps de cuisson: ${recipe.cookTime || 0} minutes
+Temps de préparation: ${recipe.prepTime ? formatTime(recipe.prepTime) : '0min'}
+Temps de cuisson: ${recipe.cookTime ? formatTime(recipe.cookTime) : '0min'}
 Portions: ${recipe.servings || 1}
 
 Ingrédients:
@@ -275,8 +276,8 @@ Tartare de thon, radis et pêches Ingrédients: 500 g de thon...	Tartare de thon
                     <div>
                       <h4 className="font-medium text-sm mb-2">Informations</h4>
                       <div className="space-y-1 text-sm">
-                        {recipe.prepTime && <div>⏱️ Préparation: {recipe.prepTime} min</div>}
-                        {recipe.cookTime && <div>🔥 Cuisson: {recipe.cookTime} min</div>}
+                        {recipe.prepTime && <div>⏱️ Préparation: {formatTime(recipe.prepTime)}</div>}
+                        {recipe.cookTime && <div>🔥 Cuisson: {formatTime(recipe.cookTime)}</div>}
                         {recipe.servings && <div>👥 Portions: {recipe.servings}</div>}
                       </div>
                     </div>

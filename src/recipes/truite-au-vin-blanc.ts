@@ -5,8 +5,8 @@ export const truiteAuVinBlanc: Recipe = {
   title: 'Truite au vin blanc',
   description: 'Une recette simple de truite cuite au vin blanc, aromatisée aux herbes et servie avec une sauce à la crème.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,9 +5,9 @@ export const truitePiquante: Recipe = {
   title: 'Truite piquante',
   description: '',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
-  marinatingTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
+  marinatingTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

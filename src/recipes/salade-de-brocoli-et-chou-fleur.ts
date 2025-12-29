@@ -5,8 +5,8 @@ export const saladeDeBrocoliEtChouFleur: Recipe = {
   title: 'Salade de brocoli et chou-fleur',
   description: 'Ma salade préférée. Salade de brocoli et chou-fleur',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

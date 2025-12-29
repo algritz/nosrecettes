@@ -5,8 +5,8 @@ export const marinadePourSteakEtBavette: Recipe = {
   title: 'Marinade pour steak et bavette',
   description: '',
   categories: ['Marinade'],
-  prepTime: 5,
-  cookTime: 0,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

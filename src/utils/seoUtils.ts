@@ -1,6 +1,7 @@
 import { Recipe, IngredientSection, InstructionSection } from '@/types/recipe';
 import { getResponsiveImageSrc } from './imageUtils';
 import { formatTime } from './timeFormat';
+import { getMaxTime, getMinTime } from './timeUtils';
 import { siteConfig } from '@/config/site.config';
 
 export const generateRecipeStructuredData = (recipe: Recipe) => {
@@ -58,8 +59,11 @@ export const generateRecipeStructuredData = (recipe: Recipe) => {
   const primaryImage = recipe.images?.[0] || recipe.image;
   const imageUrl = primaryImage ? getResponsiveImageSrc(primaryImage, 'large') : null;
 
-  // Calculate total time
-  const totalTime = recipe.prepTime + recipe.cookTime + (recipe.marinatingTime || 0);
+  // Calculate total time using max values (conservative estimate for SEO)
+  const maxPrepTime = getMaxTime(recipe.prepTime);
+  const maxCookTime = getMaxTime(recipe.cookTime);
+  const maxMarinatingTime = recipe.marinatingTime ? getMaxTime(recipe.marinatingTime) : 0;
+  const maxTotalTime = maxPrepTime + maxCookTime + maxMarinatingTime;
 
   const structuredData = {
     "@context": "https://schema.org/",
@@ -72,9 +76,9 @@ export const generateRecipeStructuredData = (recipe: Recipe) => {
       "name": recipe.source || "Nos Recettes"
     },
     "datePublished": new Date().toISOString().split('T')[0], // Use current date as fallback
-    "prepTime": `PT${recipe.prepTime}M`,
-    "cookTime": `PT${recipe.cookTime}M`,
-    "totalTime": `PT${totalTime}M`,
+    "prepTime": `PT${maxPrepTime}M`,
+    "cookTime": `PT${maxCookTime}M`,
+    "totalTime": `PT${maxTotalTime}M`,
     "recipeCategory": recipe.categories?.[0] || recipe.category || "Plat principal",
     "recipeCuisine": "Québécoise",
     "recipeYield": recipe.servings.toString(),
@@ -152,12 +156,17 @@ export const generateRecipeKeywords = (recipe: Recipe): string[] => {
   
   // Add difficulty and time-based keywords
   keywords.push(`recette ${recipe.difficulty.toLowerCase()}`);
-  
-  if (recipe.prepTime <= 15) {
+
+  // Use minimum time for recipe classification to qualify more recipes
+  const minPrepTime = getMinTime(recipe.prepTime);
+  const minCookTime = getMinTime(recipe.cookTime);
+  const minTotalTime = minPrepTime + minCookTime;
+
+  if (minPrepTime <= 15) {
     keywords.push('recette rapide', 'recette express');
   }
-  
-  if (recipe.prepTime + recipe.cookTime <= 30) {
+
+  if (minTotalTime <= 30) {
     keywords.push('recette 30 minutes');
   }
   
@@ -175,24 +184,26 @@ export const generateRecipeDescription = (recipe: Recipe): string => {
   if (recipe.description && recipe.description.trim()) {
     return recipe.description;
   }
-  
+
   // Generate description from recipe data
-  const totalTime = recipe.prepTime + recipe.cookTime;
+  // Use max values for total time calculation (conservative estimate)
+  const maxTotalTime = getMaxTime(recipe.prepTime) + getMaxTime(recipe.cookTime);
   const category = recipe.categories?.[0] || recipe.category || 'plat';
-  
+
   let description = `Découvrez la recette de ${recipe.title}, un délicieux ${category.toLowerCase()} québécois. `;
-  
+
   if (recipe.difficulty === 'Facile') {
     description += 'Recette facile à réaliser, ';
   } else if (recipe.difficulty === 'Moyen') {
     description += 'Recette de difficulté moyenne, ';
   }
-  
-  description += `prête en ${formatTime(totalTime)} pour ${recipe.servings} personnes. `;
-  
+
+  // formatTime() will display range intelligently if min !== max
+  description += `prête en ${formatTime(maxTotalTime)} pour ${recipe.servings} personnes. `;
+
   if (recipe.tags.length > 0) {
     description += `Tags: ${recipe.tags.slice(0, 3).join(', ')}.`;
   }
-  
+
   return description;
 };

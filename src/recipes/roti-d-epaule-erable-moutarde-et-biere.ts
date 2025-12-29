@@ -5,8 +5,8 @@ export const rotiDEpauleErableMoutardeEtBiere: Recipe = {
   title: 'Roti d\'épaule érable, moutarde et bière',
   description: '',
   categories: ['Vollaille'],
-  prepTime: 15,
-  cookTime: 480,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 480, max: 480 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

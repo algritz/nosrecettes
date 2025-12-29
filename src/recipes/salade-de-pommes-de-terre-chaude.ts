@@ -5,8 +5,8 @@ export const saladeDePommesDeTerreChaude: Recipe = {
   title: 'Salade de pommes de terre chaude',
   description: 'Salade chaude et succulente',
   categories: ['Salades'],
-  prepTime: 25,
-  cookTime: 50,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 50, max: 50 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

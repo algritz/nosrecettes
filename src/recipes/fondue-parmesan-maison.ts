@@ -5,8 +5,8 @@ export const fondueParmesanMaison: Recipe = {
   title: 'Fondue parmesan maison',
   description: 'Je les adore surtout durant le temps des fêtes.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 30,
-  cookTime: 20,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 20, max: 20 },
   servings: 25,
   difficulty: 'Facile',
   ingredients: [
@@ -36,7 +36,7 @@ export const fondueParmesanMaison: Recipe = {
     'Note: On peut aussi faire cuire au four à 350 degrés pendant 20 min.'
   ],
   tags: ['fromage', 'friture', 'fête'],
-  marinatingTime: 360,
+  marinatingTime: { min: 360, max: 360 },
   notes: 'Source: Chantal Turcotte',
   slug: 'fondue-parmesan-maison'
 };

@@ -5,8 +5,8 @@ export const trempetteEtageeDeMonAmieNath: Recipe = {
   title: 'Trempette étagée de mon amie Nath',
   description: 'Excellente trempette pour une fête entre amis',
   categories: ['Végétarien'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -26,7 +26,7 @@ export const trempetteEtageeDeMonAmieNath: Recipe = {
   ],
   tags: ['trempette', 'salsa', 'tex mex'],
   accompaniment: 'Manger avec des Tostitos',
-  marinatingTime: 1440,
+  marinatingTime: { min: 1440, max: 1440 },
   notes: 'Faire la veille pour qu\'elle ait plus de goût.',
   slug: 'trempette-etagee-de-mon-amie-nath'
 };

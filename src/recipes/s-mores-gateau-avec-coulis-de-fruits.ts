@@ -5,8 +5,8 @@ export const sMoresGateauAvecCoulisDeFruits: Recipe = {
   title: 'S’mores-gâteau avec coulis de fruits',
   description: '',
   categories: ['Végétarien', 'Desserts'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

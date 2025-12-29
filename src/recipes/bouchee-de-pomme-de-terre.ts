@@ -5,8 +5,8 @@ export const boucheeDePommeDeTerre: Recipe = {
   title: 'Bouchée de pomme de terre',
   description: 'Surprenante recette de patate douce Bouchée de pomme de terre',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 40,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

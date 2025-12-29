@@ -5,8 +5,8 @@ export const pouletDiablo: Recipe = {
   title: 'Poulet diablo',
   description: 'Préparer un poulet mariné avec une marinade épicée, puis le cuire au barbecue.',
   categories: ['Vollaille', 'Barbecue'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

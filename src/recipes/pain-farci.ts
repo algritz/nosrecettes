@@ -5,8 +5,8 @@ export const painFarci: Recipe = {
   title: 'Pain farci',
   description: 'Une recette de petits pains farcis avec un mélange de bœuf, oignon, soupe au riz et poulet, puis cuits au four.',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 80,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 80, max: 80 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

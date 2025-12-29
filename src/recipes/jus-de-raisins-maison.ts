@@ -5,8 +5,8 @@ export const jusDeRaisinsMaison: Recipe = {
   title: 'Jus de raisins maison',
   description: 'Tellement une belle façon de passer des raisins frais',
   categories: ['Végétarien'],
-  prepTime: 5,
-  cookTime: 10,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 10, max: 10 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

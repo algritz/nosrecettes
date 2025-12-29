@@ -5,8 +5,8 @@ export const saladeDeRizALaMediteraneenne: Recipe = {
   title: 'Salade de riz à la méditéranéenne',
   description: 'Une salade de riz méditerranéenne fraîche et savoureuse, parfaite pour un déjeuner léger ou un accompagnement.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -34,6 +34,6 @@ export const saladeDeRizALaMediteraneenne: Recipe = {
     'Laisser reposer au réfrigérateur au moins 1 h avant de servir.'
   ],
   tags: ['méditerranéen', 'salade', 'frais'],
-  marinatingTime: 60,
+  marinatingTime: { min: 60, max: 60 },
   slug: 'salade-de-riz-a-la-mediteraneenne'
 };

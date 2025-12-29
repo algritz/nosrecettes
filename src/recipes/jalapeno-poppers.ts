@@ -5,8 +5,8 @@ export const jalapenoPoppers: Recipe = {
   title: 'Jalapeno Poppers',
   description: '',
   categories: ['Amuse-geules'],
-  prepTime: 20,
-  cookTime: 25,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 25, max: 25 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

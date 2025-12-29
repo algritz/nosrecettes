@@ -5,8 +5,8 @@ export const peluresDePommesDeTerreAux3Fromages: Recipe = {
   title: 'Pelures de pommes de terre aux 3 fromages',
   description: 'Une recette savoureuse de pelures de pommes de terre garnies de trois fromages, parfaites en accompagnement de steaks.',
   categories: ['Végétarien', 'Accompagnements'],
-  prepTime: 30,
-  cookTime: 20,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

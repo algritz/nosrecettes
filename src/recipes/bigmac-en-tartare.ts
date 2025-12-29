@@ -5,8 +5,8 @@ export const bigmacEnTartare: Recipe = {
   title: 'BigMac en tartare',
   description: 'Ça goûte vraiment le BigMac BigMac en tartare',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

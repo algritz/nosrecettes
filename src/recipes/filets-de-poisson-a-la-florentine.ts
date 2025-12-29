@@ -5,8 +5,8 @@ export const filetsDePoissonALaFlorentine: Recipe = {
   title: 'Filets de poisson à la florentine',
   description: 'Une recette de poisson blanc cuit avec des épinards, légumes sautés et fromage mozzarella, gratiné au four.',
   categories: ['Poisson', 'Plats principaux', 'Végétarien'],
-  prepTime: 30,
-  cookTime: 25,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

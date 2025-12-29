@@ -5,8 +5,8 @@ export const bombeDePouletGuacamoleEtBacon: Recipe = {
   title: 'Bombe de poulet guacamole et bacon',
   description: 'Poitrines de poulet farcies de guacamole, enveloppées de bacon, saisies puis finies au four.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

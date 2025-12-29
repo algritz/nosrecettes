@@ -5,8 +5,8 @@ export const biscuitsAuNutellaDeYorrick: Recipe = {
   title: 'Biscuits au Nutella de Yorrick',
   description: 'Recette de biscuits au Nutella avec une pâte sablée, garnis de Nutella, cuits au four jusqu\'à dorure.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

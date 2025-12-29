@@ -5,8 +5,8 @@ export const tartareDeBUfParmesanBalsamiqueEtPestoDeTomates: Recipe = {
   title: 'Tartare de bœuf, parmesan, balsamique et pesto de tomates',
   description: 'Un tartare de bœuf frais, agrémenté de parmesan, pesto de tomates, et servi avec une salade de roquette et croûtons maison.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

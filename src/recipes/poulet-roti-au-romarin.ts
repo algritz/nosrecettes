@@ -5,8 +5,8 @@ export const pouletRotiAuRomarin: Recipe = {
   title: 'Poulet rôti au romarin',
   description: 'Poulet rôti au romarin',
   categories: ['Vollaille'],
-  prepTime: 20,
-  cookTime: 45,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const saumonALananas: Recipe = {
   title: 'Saumon à l\'ananas',
   description: 'Saumon à l\'ananas',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 50,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 50, max: 50 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

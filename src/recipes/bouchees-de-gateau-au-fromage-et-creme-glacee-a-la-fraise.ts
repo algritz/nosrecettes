@@ -5,8 +5,8 @@ export const boucheesDeGateauAuFromageEtCremeGlaceeALaFraise: Recipe = {
   title: 'Bouchées de gâteau au fromage et crème glacée à la fraise',
   description: 'Une recette de bouchées glacées au fromage à la crème, fraises et chocolat, parfaites pour une collation ou un dessert rafraîchissant.',
   categories: ['Desserts'],
-  prepTime: 20,
-  cookTime: 5,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 5, max: 5 },
   servings: 60,
   difficulty: 'Facile',
   ingredients: [

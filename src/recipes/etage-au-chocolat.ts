@@ -5,8 +5,8 @@ export const etageAuChocolat: Recipe = {
   title: 'Étagé au chocolat',
   description: '',
   categories: ['Desserts'],
-  prepTime: 35,
-  cookTime: 15,
+  prepTime: { min: 35, max: 35 },
+  cookTime: { min: 15, max: 15 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -34,7 +34,7 @@ export const etageAuChocolat: Recipe = {
     'Couvrir et réfrigérer jusqu\'à consistance ferme soit 8 heures ou toute la nuit.'
   ],
   tags: ['chocolat', 'crème', 'réfrigération'],
-  marinatingTime: 480,
+  marinatingTime: { min: 480, max: 480 },
   notes: 'Temps de marinade de 8 heures minimum, préparation totale 50 minutes, y compris refroidissement.',
   slug: 'etage-au-chocolat'
 };

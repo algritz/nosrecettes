@@ -5,8 +5,8 @@ export const confitDOignonsDouxAuPorto: Recipe = {
   title: 'Confit d\'oignons doux au Porto',
   description: 'Une confiture d\'oignons doux, parfumée au Porto, idéale pour accompagner viandes, charcuterie, terrines ou foie gras.',
   categories: ['Végétarien', 'Condiments', 'Plats principaux'],
-  prepTime: 35,
-  cookTime: 60,
+  prepTime: { min: 35, max: 35 },
+  cookTime: { min: 60, max: 60 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

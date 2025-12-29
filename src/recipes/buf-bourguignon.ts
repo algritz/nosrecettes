@@ -5,8 +5,8 @@ export const bufBourguignon: Recipe = {
   title: 'Bœuf bourguignon',
   description: 'Un classique ragoût de bœuf mijoté avec légumes et épices, servi chaud.',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 180,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 180, max: 180 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const trempetteChaudeFromageBacon: Recipe = {
   title: 'Trempette chaude fromage bacon',
   description: 'Une trempette chaude et fromagée avec bacon, parfaite pour accompagner des tostitos ou autres snacks.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 35,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 35, max: 35 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

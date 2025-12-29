@@ -5,8 +5,8 @@ export const brochettesDeThonEtDAnanas: Recipe = {
   title: 'Brochettes de thon et d’ananas',
   description: 'Brochettes de thon et d’ananas',
   categories: ['Végétarien'],
-  prepTime: 25,
-  cookTime: 7,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 7, max: 7 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

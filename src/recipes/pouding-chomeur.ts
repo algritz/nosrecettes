@@ -5,8 +5,8 @@ export const poudingChomeur: Recipe = {
   title: 'Pouding Chômeur',
   description: 'Un gâteau moelleux servi avec un sirop d\'érable chaud, classique de la cuisine québécoise.',
   categories: ['Desserts'],
-  prepTime: 30,
-  cookTime: 35,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 35, max: 35 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

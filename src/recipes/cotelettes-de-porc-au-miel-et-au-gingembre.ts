@@ -5,8 +5,8 @@ export const cotelettesDePorcAuMielEtAuGingembre: Recipe = {
   title: 'Côtelettes de porc au miel et au gingembre',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

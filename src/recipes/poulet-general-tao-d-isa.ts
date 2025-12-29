@@ -5,8 +5,8 @@ export const pouletGeneralTaoDIsa: Recipe = {
   title: 'Poulet Général Tao d\'Isa',
   description: '',
   categories: ['Vollaille'],
-  prepTime: 30,
-  cookTime: 30,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 30, max: 30 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

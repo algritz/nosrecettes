@@ -5,8 +5,8 @@ export const boulettesDePorcEtSauceRoseeAuFromage: Recipe = {
   title: 'Boulettes de porc et sauce rosée au fromage',
   description: 'Une recette de boulettes de porc savoureuses accompagnées d\'une sauce rosée crémeuse et fromagée, cuites au four pour une texture parfaite.',
   categories: ['Plats principaux', 'Vollaille'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

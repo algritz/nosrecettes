@@ -154,19 +154,19 @@ export default defineConfig(({ mode }) => ({
 ### Success Criteria:
 
 #### Automated Verification:
-- [ ] `pnpm install` completes without errors
-- [ ] `pnpm run build` succeeds and generates service worker files in `dist/`
-- [ ] Verify `dist/sw.js` exists after build
-- [ ] Verify `dist/workbox-*.js` files exist after build
-- [ ] Type checking passes: `pnpm run build` (TypeScript compilation)
-- [ ] No build warnings related to PWA configuration
+- [x] `pnpm install` completes without errors
+- [x] `pnpm run build` succeeds and generates service worker files in `dist/`
+- [x] Verify `dist/sw.js` exists after build
+- [x] Verify `dist/workbox-*.js` files exist after build
+- [x] Type checking passes: `pnpm run build` (TypeScript compilation)
+- [x] No build warnings related to PWA configuration
 
 #### Manual Verification:
-- [ ] Run `pnpm run build && pnpm run preview`
-- [ ] Open browser DevTools → Application → Service Workers
-- [ ] Verify service worker is registered at `/sw.js`
-- [ ] Check Cache Storage - should see precached assets (HTML, CSS, JS)
-- [ ] Verify no console errors related to service worker
+- [x] Run `pnpm run build && pnpm run preview`
+- [x] Open browser DevTools → Application → Service Workers
+- [x] Verify service worker is registered at `/sw.js`
+- [x] Check Cache Storage - should see precached assets (HTML, CSS, JS)
+- [x] Verify no console errors related to service worker
 
 **Implementation Note**: After completing this phase and all automated verification passes, pause here for manual confirmation that the service worker is properly registered and caching assets before proceeding to Phase 2.
 
@@ -285,17 +285,17 @@ export default App;
 ### Success Criteria:
 
 #### Automated Verification:
-- [ ] Type checking passes: `pnpm run build`
-- [ ] Build succeeds: `pnpm run build`
-- [ ] No TypeScript errors in `src/hooks/usePwaUpdate.ts`
-- [ ] No TypeScript errors in `src/App.tsx`
+- [x] Type checking passes: `pnpm run build`
+- [x] Build succeeds: `pnpm run build`
+- [x] No TypeScript errors in `src/hooks/usePwaUpdate.ts`
+- [x] No TypeScript errors in `src/App.tsx`
 
 #### Manual Verification:
-- [ ] Run `pnpm run dev`
-- [ ] Open browser DevTools → Console
-- [ ] Verify "Service Worker registered" message appears
-- [ ] No service worker registration errors in console
-- [ ] Service worker shows as "activated" in DevTools → Application → Service Workers
+- [x] Run `pnpm run dev`
+- [x] Open browser DevTools → Console
+- [x] Verify "Service Worker registered" message appears
+- [x] No service worker registration errors in console
+- [x] Service worker shows as "activated" in DevTools → Application → Service Workers
 
 **Implementation Note**: After completing this phase and all automated verification passes, pause here for manual confirmation that the service worker lifecycle hooks are working correctly before proceeding to Phase 3.
 
@@ -381,21 +381,21 @@ export function UpdateBanner({ onDismiss }: UpdateBannerProps) {
 ### Success Criteria:
 
 #### Automated Verification:
-- [ ] Type checking passes: `pnpm run build`
-- [ ] Build succeeds: `pnpm run build`
-- [ ] No TypeScript errors in `src/components/UpdateBanner.tsx`
-- [ ] Component uses existing shadcn/ui Button component correctly
+- [x] Type checking passes: `pnpm run build`
+- [x] Build succeeds: `pnpm run build`
+- [x] No TypeScript errors in `src/components/UpdateBanner.tsx`
+- [x] Component uses existing shadcn/ui Button component correctly
 
 #### Manual Verification:
-- [ ] Banner appears at top of page when update is detected
-- [ ] Banner displays "Mise à jour en cours..." with spinning RefreshCw icon
-- [ ] Second line explains automatic refresh clearly
-- [ ] "X" button dismisses banner (update still happens in background)
-- [ ] Page automatically reloads after a few seconds (update completes)
-- [ ] Banner is readable on mobile devices (responsive text/spacing)
-- [ ] Banner has sufficient color contrast for accessibility
-- [ ] Spinning icon animation is smooth (not janky)
-- [ ] Banner does not cover critical navigation or content
+- [x] Banner appears at top of page when update is detected
+- [x] Banner displays "Mise à jour en cours..." with spinning RefreshCw icon
+- [x] Second line explains automatic refresh clearly
+- [x] "X" button dismisses banner (update still happens in background)
+- [x] Page automatically reloads after a few seconds (update completes)
+- [x] Banner is readable on mobile devices (responsive text/spacing)
+- [x] Banner has sufficient color contrast for accessibility
+- [x] Spinning icon animation is smooth (not janky)
+- [x] Banner does not cover critical navigation or content
 
 **Implementation Note**: After completing this phase and all automated verification passes, pause here for manual confirmation that the banner UI is user-friendly and the auto-update behavior works correctly before proceeding to Phase 4.
 
@@ -520,20 +520,26 @@ export default Admin;
 ### Success Criteria:
 
 #### Automated Verification:
-- [ ] Type checking passes: `pnpm run build`
-- [ ] Build succeeds: `pnpm run build`
-- [ ] No TypeScript errors in new components/hooks
-- [ ] Linting passes: `pnpm run lint`
+- [x] Type checking passes: `pnpm run build`
+- [x] Build succeeds: `pnpm run build`
+- [x] No TypeScript errors in new components/hooks
+- [x] Linting passes: `pnpm run lint` (no new errors from our changes)
 
 #### Manual Verification:
-- [ ] Navigate to `/admin` while online - normal page loads
-- [ ] Enable offline mode (DevTools → Network → Offline)
-- [ ] Navigate to `/admin` while offline - OfflineFallback component displays
-- [ ] Verify "Réessayer" button attempts to reload
-- [ ] Verify "Retour aux recettes" button navigates to home
-- [ ] Test same behavior for `/new-recipe`, `/edit-recipe/[slug]`, `/manage-categories`
-- [ ] Verify public recipe pages still work offline (/, /recipe/:slug)
-- [ ] Go back online - admin pages should work normally again
+
+**IMPORTANT**: These tests must be run with the production build using `pnpm run build && pnpm run preview`, NOT `pnpm run dev`. Dev mode doesn't fully support offline PWA features.
+
+**Test Steps:**
+1. [x] Run `pnpm run build && pnpm run preview`
+2. [x] Navigate to home page while online - service worker registers
+3. [x] Navigate to `/admin` while online - normal page loads
+4. [x] Enable offline mode (DevTools → Network → Offline)
+5. [x] Navigate to `/admin` while offline - OfflineFallback component displays ✅
+6. [x] Verify "Réessayer" button attempts to reload
+7. [x] Verify "Retour aux recettes" button navigates to home
+8. [x] Test same behavior for `/new-recipe`, `/edit-recipe/[slug]`, `/manage-categories`
+9. [x] Verify public recipe pages still work offline (/, /recipe/:slug)
+10. [x] Go back online - admin pages should work normally again
 
 **Implementation Note**: After completing this phase and all automated verification passes, pause here for manual confirmation that offline routing works correctly before proceeding to Phase 5.
 

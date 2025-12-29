@@ -5,8 +5,8 @@ export const browniesFacileAFaireEtVraimentBon: Recipe = {
   title: 'Brownies facile à faire et vraiment bon',
   description: 'Brownies facile à faire et vraiment bon',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 35,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 35, max: 35 },
   servings: 17,
   difficulty: 'Facile',
   ingredients: [

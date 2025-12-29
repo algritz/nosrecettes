@@ -5,8 +5,8 @@ export const saucePiquanteGenreTabasco: Recipe = {
   title: 'Sauce piquante (genre Tabasco)',
   description: 'Une sauce piquante maison à base de jalapenos, tomates séchées, ail, sirop d\'érable, et vinaigre, à conserver au frigo.',
   categories: ['Sauces'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const navarinDeCanardALErable: Recipe = {
   title: 'Navarin de canard à l’érable',
   description: 'Un plat savoureux de canard mijoté avec des légumes racines et une sauce à l’érable, parfait pour une cuisine réconfortante.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 45,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

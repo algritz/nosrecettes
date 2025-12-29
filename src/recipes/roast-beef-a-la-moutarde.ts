@@ -5,8 +5,8 @@ export const roastBeefALaMoutarde: Recipe = {
   title: 'Roast beef à la moutarde',
   description: '',
   categories: ['Boeuf', 'Plats principaux'],
-  prepTime: 25,
-  cookTime: 60,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

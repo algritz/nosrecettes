@@ -5,8 +5,8 @@ export const sauceBarbecuePommeEtJackAuMiel: Recipe = {
   title: 'Sauce barbecue pomme et Jack au miel',
   description: 'Une sauce barbecue sucrée-salée à base de pommes, Jack au miel et épices, mijotée pour obtenir une saveur riche et équilibrée.',
   categories: ['Sauces'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

@@ -5,9 +5,9 @@ export const filetDePorcALaSauceBalsamiqueEtErable: Recipe = {
   title: 'Filet de porc à la sauce balsamique et érable',
   description: 'Une recette savoureuse de filet de porc mariné dans une sauce balsamique et érable, grillé et servi avec une sauce sirupeuse.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
-  marinatingTime: 480,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
+  marinatingTime: { min: 480, max: 480 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

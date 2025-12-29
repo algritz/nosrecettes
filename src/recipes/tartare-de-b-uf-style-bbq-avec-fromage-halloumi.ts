@@ -5,8 +5,8 @@ export const tartareDeBUfStyleBbqAvecFromageHalloumi: Recipe = {
   title: 'Tartare de bœuf, style BBQ avec fromage halloumi',
   description: 'Un tartare de bœuf assaisonné avec des croustilles BBQ et servi avec du fromage halloumi grillé, présenté de manière élégante avec une rondelle de fromage grillé comme base.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

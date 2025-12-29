@@ -5,8 +5,8 @@ export const bavetteDeBoeufMarinadeALaBiereEtMoutardeDeDijon: Recipe = {
   title: 'Bavette de boeuf, marinade à la bière et moutarde de Dijon',
   description: 'Une bavette de boeuf marinée à la bière, moutarde de Dijon, échalotes, herbes et sauce soja, puis grillée à la perfection pour un plat savoureux.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

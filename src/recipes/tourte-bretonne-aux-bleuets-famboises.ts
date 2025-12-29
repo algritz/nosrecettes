@@ -5,8 +5,8 @@ export const tourteBretonneAuxBleuetsFamboises: Recipe = {
   title: 'Tourte bretonne aux bleuets / famboises',
   description: 'Une délicieuse tourte aux bleuets et framboises, garnie d\'un glaçage crémeux, parfaite pour un dessert fruité et gourmand.',
   categories: ['Desserts'],
-  prepTime: 25,
-  cookTime: 50,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 50, max: 50 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

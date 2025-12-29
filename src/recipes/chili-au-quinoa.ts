@@ -5,8 +5,8 @@ export const chiliAuQuinoa: Recipe = {
   title: 'Chili au quinoa',
   description: 'Un chili riche en saveurs avec quinoa, haricots et épices, prêt en environ une heure.',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 45,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

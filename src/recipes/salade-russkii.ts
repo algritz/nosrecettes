@@ -5,8 +5,8 @@ export const saladeRusskii: Recipe = {
   title: 'Salade Russkii',
   description: 'Une salade froide russe à base de pommes de terre, petits pois, œufs, poivron rouge et vinaigrette crémeuse.',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

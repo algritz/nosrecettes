@@ -5,9 +5,9 @@ export const bouleAuOreo: Recipe = {
   title: 'Boule au Oréo',
   description: 'Une recette de boules à base de biscuits Oreo, fromage à la crème et chocolat, enrobées de chocolat fondu et de miettes de biscuits.',
   categories: ['Desserts'],
-  prepTime: 20,
-  cookTime: 5,
-  marinatingTime: 45,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 5, max: 5 },
+  marinatingTime: { min: 45, max: 45 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [

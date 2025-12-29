@@ -5,8 +5,8 @@ export const cotesLeveesDePorcSauceBbqALaLouisianaise: Recipe = {
   title: 'Côtes levées de porc, sauce BBQ à la louisianaise',
   description: 'Une recette de côtes levées de porc marinées et grillées, nappées d\'une sauce BBQ savoureuse à la louisianaise.',
   categories: ['Porc', 'Plats principaux', 'Barbecue'],
-  prepTime: 40,
-  cookTime: 80,
+  prepTime: { min: 40, max: 40 },
+  cookTime: { min: 80, max: 80 },
   servings: 5,
   difficulty: 'Facile',
   ingredients: [

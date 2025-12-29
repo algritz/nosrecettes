@@ -5,8 +5,8 @@ export const magretDeCanardSauceCremeuse: Recipe = {
   title: 'Magret de canard sauce crémeuse',
   description: '',
   categories: ['Vollaille'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const thonGrilleEtSalsaAuxTomates: Recipe = {
   title: 'Thon grillé et salsa aux tomates',
   description: 'Un plat simple de thon grillé accompagné d\'une salsa fraîche aux tomates, citron, câpres et persil.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 5,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 5, max: 5 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

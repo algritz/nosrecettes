@@ -5,8 +5,8 @@ export const boeufAuSiropDErable: Recipe = {
   title: 'Boeuf au sirop d\'érable',
   description: '',
   categories: ['Boeuf', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 180,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 180, max: 180 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

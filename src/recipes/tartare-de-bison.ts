@@ -5,8 +5,8 @@ export const tartareDeBison: Recipe = {
   title: 'Tartare de bison',
   description: '',
   categories: ['Végétarien'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

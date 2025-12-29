@@ -5,8 +5,8 @@ export const tartareAux2SaumonsDeLaMediterranee: Recipe = {
   title: 'Tartare aux 2 saumons de la méditerranée',
   description: 'Un tartare frais combinant deux types de saumon, agrémenté d\'herbes et de feta, parfait pour une entrée élégante.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

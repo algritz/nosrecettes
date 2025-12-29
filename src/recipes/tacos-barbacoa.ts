@@ -5,8 +5,8 @@ export const tacosBarbacoa: Recipe = {
   title: 'Tacos barbacoa',
   description: 'Un délicieux tacos à la viande de bœuf effilochée mijotée avec des épices, servi avec une salade de chou fraîche et croquante.',
   categories: ['Plats principaux', 'Tacos'],
-  prepTime: 20,
-  cookTime: 540,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 540, max: 540 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const rouleauxImperiauxAuCanard: Recipe = {
   title: 'Rouleaux impériaux au canard',
   description: 'Recette de rouleaux impériaux farcis au canard, accompagnés d\'une sauce aux abricots et prunes pour tremper.',
   categories: ['Entrées'],
-  prepTime: 45,
-  cookTime: 30,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 30, max: 30 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [
@@ -43,7 +43,7 @@ export const rouleauxImperiauxAuCanard: Recipe = {
   ],
   tags: ['canard', 'friture', 'rouleaux'],
   accompaniment: 'Sauce aux abricots et aux prunes pour tremper',
-  marinatingTime: 20,
+  marinatingTime: { min: 20, max: 20 },
   notes: 'On peut faire cuire le canard jusqu\'à 400°F.',
   slug: 'rouleaux-imperiaux-au-canard'
 };

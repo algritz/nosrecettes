@@ -5,8 +5,8 @@ export const sucreALaCremeAuBaileys: Recipe = {
   title: 'Sucre à la crème au baileys',
   description: 'Une douceur crémeuse au Baileys, facile à préparer au micro-ondes, idéale pour une gourmandise rapide.',
   categories: ['Desserts'],
-  prepTime: 15,
-  cookTime: 9,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 9, max: 9 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

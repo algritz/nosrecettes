@@ -5,8 +5,8 @@ export const chiliConCarne: Recipe = {
   title: 'Chili con carne',
   description: 'Un chili réconfortant avec viande hachée, haricots rouges, et épices, à cuire doucement pour développer les saveurs.',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 100,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 100, max: 100 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const coregoneDeCarmainMarinadeJaponnaise: Recipe = {
   title: 'Corégone de Carmain (marinade japonnaise)',
   description: '',
   categories: ['Poisson', 'Marinade'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -24,6 +24,6 @@ export const coregoneDeCarmainMarinadeJaponnaise: Recipe = {
     'Couper le corégone en darnes et faire mariner plusieurs heures avant de cuire sur BBQ'
   ],
   tags: ['japonais', 'marinade', 'barbecue'],
-  marinatingTime: 480,
+  marinatingTime: { min: 480, max: 480 },
   slug: 'coregone-de-carmain-marinade-japonnaise'
 };

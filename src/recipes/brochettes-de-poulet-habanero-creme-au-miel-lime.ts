@@ -5,8 +5,8 @@ export const brochettesDePouletHabaneroCremeAuMielLime: Recipe = {
   title: 'Brochettes de Poulet Habanero + Creme au miel/lime',
   description: 'Brochettes de poulet marinées au piment habanero, servies avec une crème au miel et citron vert, parfaites pour un barbecue épicé et rafraîchissant.',
   categories: ['Vollaille', 'Barbecue'],
-  prepTime: 30,
-  cookTime: 10,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

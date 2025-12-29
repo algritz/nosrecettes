@@ -5,8 +5,8 @@ export const poivronsTandoori: Recipe = {
   title: 'Poivrons tandoori',
   description: 'Poivrons farcis épicés et grillés, marinés dans une sauce citronnée, servis chauds ou tièdes.',
   categories: ['Végétarien', 'Plats principaux', 'Barbecue'],
-  prepTime: 60,
-  cookTime: 40,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

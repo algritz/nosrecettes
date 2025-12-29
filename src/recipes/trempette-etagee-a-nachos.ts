@@ -5,8 +5,8 @@ export const trempetteEtageeANachos: Recipe = {
   title: 'Trempette étagée à Nachos',
   description: 'Simple, mais efficace Trempette étagée à Nachos',
   categories: ['Trempettes'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

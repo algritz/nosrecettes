@@ -5,8 +5,8 @@ export const saladeDUfsBaconEtAvocatATartiner: Recipe = {
   title: 'Salade d\'œufs, bacon et avocat à tartiner',
   description: 'Excellent avec un bon pain frais',
   categories: ['Salades', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const saladeTexMexEtage: Recipe = {
   title: 'Salade Tex-Mex étagé',
   description: 'Une salade colorée et fraîche avec des couches de haricots, laitue, oignons, fromage, tomates, avocat et coriandre, assaisonnée d\'une sauce à base de Miracle Whip et de mélange à tacos.',
   categories: ['Salades'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 11,
   difficulty: 'Facile',
   ingredients: [

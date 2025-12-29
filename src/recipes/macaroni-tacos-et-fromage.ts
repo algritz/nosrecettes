@@ -5,8 +5,8 @@ export const macaroniTacosEtFromage: Recipe = {
   title: 'Macaroni tacos et fromage',
   description: 'Excellent souper de semaine',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 11,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const roastBeefSousVide: Recipe = {
   title: 'Roast Beef sous Vide',
   description: 'Tendre, comme vous ne l\'aurez jamais vu. Roast Beef sous Vide',
   categories: ['Plats principaux', 'Cuisson sous-vide', 'Boeuf'],
-  prepTime: 20,
-  cookTime: 4319,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 4319, max: 4319 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

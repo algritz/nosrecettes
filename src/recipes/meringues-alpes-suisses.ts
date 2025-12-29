@@ -5,8 +5,8 @@ export const meringuesAlpesSuisses: Recipe = {
   title: 'Meringues Alpes Suisses',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

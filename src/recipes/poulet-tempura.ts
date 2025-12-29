@@ -5,8 +5,8 @@ export const pouletTempura: Recipe = {
   title: 'Poulet Tempura',
   description: 'Une recette de poulet tempura croustillant, servi avec une sauce de votre choix.',
   categories: ['Végétarien'],
-  prepTime: 10,
-  cookTime: 10,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

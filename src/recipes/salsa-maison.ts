@@ -5,8 +5,8 @@ export const salsaMaison: Recipe = {
   title: 'Salsa maison',
   description: 'Celle de l\'épicerie ne sera plus jamais aussi bonne',
   categories: ['Condiments'],
-  prepTime: 30,
-  cookTime: 90,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 90, max: 90 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const ramenMaisonAuPouletGrilleEtPatateDouce: Recipe = {
   title: 'Ramen maison au poulet grillé et patate douce',
   description: 'Une soupe ramen maison avec poulet grillé, patate douce, légumes frais et œufs mi-cuits, parfaite pour un repas réconfortant.',
   categories: ['Soupes', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 30,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 30, max: 30 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

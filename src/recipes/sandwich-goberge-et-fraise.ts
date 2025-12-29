@@ -5,8 +5,8 @@ export const sandwichGobergeEtFraise: Recipe = {
   title: 'Sandwich goberge et fraise',
   description: 'Un sandwich frais et savoureux combinant goberge, fraises, avocat et herbes, idéal pour un repas léger ou une entrée.',
   categories: ['Sandwichs'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

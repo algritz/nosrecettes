@@ -5,8 +5,8 @@ export const gateauCochon: Recipe = {
   title: 'Gâteau cochon',
   description: 'Sans farce, même les gens les plus anti-dessert y trouvent leur compte. Non, sans farce, même les gens les plus anti-dessert y trouvent leur compte.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 30,
-  cookTime: 30,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 30, max: 30 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

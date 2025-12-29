@@ -5,8 +5,8 @@ export const sandwichAuRotiDePaletteDeBUfEffiloche: Recipe = {
   title: 'Sandwich au rôti de palette de bœuf effiloché',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 10,
-  cookTime: 480,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 480, max: 480 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

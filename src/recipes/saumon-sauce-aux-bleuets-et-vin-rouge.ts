@@ -5,8 +5,8 @@ export const saumonSauceAuxBleuetsEtVinRouge: Recipe = {
   title: 'Saumon sauce aux bleuets et vin rouge',
   description: 'Un plat de saumon avec une sauce aux bleuets, vin rouge et sirop d\'érable, servi avec un accompagnement vert.',
   categories: ['Poisson', 'Sauces'],
-  prepTime: 10,
-  cookTime: 12,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 12, max: 12 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

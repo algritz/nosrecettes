@@ -5,8 +5,8 @@ export const soupeThaie: Recipe = {
   title: 'Soupe Thaïe',
   description: 'Soupe thaïe au curry rouge, lait de coco et bouillon de volaille, parfumée au lime kaffir et au krachaï.',
   categories: ['Soupes'],
-  prepTime: 10,
-  cookTime: 15,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 15, max: 15 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

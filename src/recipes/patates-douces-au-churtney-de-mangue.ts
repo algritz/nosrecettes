@@ -5,8 +5,8 @@ export const patatesDoucesAuChurtneyDeMangue: Recipe = {
   title: 'Patates douces au chutney de mangue',
   description: '',
   categories: ['Végétarien', 'Accompagnements'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const painDoreeAuSaumonFumeEtCremeSure: Recipe = {
   title: 'Pain dorée au saumon fumé et crème sure',
   description: 'Pain dorée au saumon fumé et crème sure',
   categories: ['Vollaille'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

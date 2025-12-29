@@ -5,8 +5,8 @@ export const marinadeAuxArachides: Recipe = {
   title: 'Marinade aux arachides',
   description: '',
   categories: ['Marinade'],
-  prepTime: 10,
-  cookTime: 0,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -23,7 +23,7 @@ export const marinadeAuxArachides: Recipe = {
     'Réfrigérer.'
   ],
   tags: ['arachide', 'sauce', 'marinade'],
-  marinatingTime: 300,
+  marinatingTime: { min: 300, max: 300 },
   notes: 'Idéal pour viande blanche',
   slug: 'marinade-aux-arachides'
 };

@@ -5,8 +5,8 @@ export const cremeDeCarotteAuxLentilles: Recipe = {
   title: 'Crème de carotte aux lentilles',
   description: 'Une soupe crémeuse à base de carottes, lentilles, et bouillon de volaille, relevée d\'un jus d\'orange et d\'herbes fines.',
   categories: ['Soupes'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

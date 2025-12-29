@@ -5,8 +5,8 @@ export const boulettesDePouletALOignon: Recipe = {
   title: 'Boulettes de poulet à l\'oignon',
   description: 'Une recette de boulettes de poulet savoureuses, cuites au four et servies avec une sauce aux oignons et au thym, garnies de Gruyère fondu.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 70,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 70, max: 70 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const soupeMexicaineALaMijoteuse: Recipe = {
   title: 'Soupe mexicaine à la mijoteuse',
   description: 'Une soupe mexicaine réconfortante préparée à la mijoteuse, avec du poulet, des légumes, des épices et de la crème, servie avec de la coriandre fraîche.',
   categories: ['Soupes', 'Mijoteuse'],
-  prepTime: 20,
-  cookTime: 240,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 240, max: 240 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

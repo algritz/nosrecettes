@@ -5,8 +5,8 @@ export const bavetteSauceAuPoivreMaison: Recipe = {
   title: 'Bavette sauce au poivre maison',
   description: 'Une recette de bavette de boeuf accompagnée d\'une sauce au poivre maison riche et crémeuse, parfaite pour un plat savoureux.',
   categories: ['Vollaille'],
-  prepTime: 10,
-  cookTime: 15,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 15, max: 15 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

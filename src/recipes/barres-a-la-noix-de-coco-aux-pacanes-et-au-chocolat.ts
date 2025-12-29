@@ -5,8 +5,8 @@ export const barresALaNoixDeCocoAuxPacanesEtAuChocolat: Recipe = {
   title: 'Barres à la noix de coco, aux pacanes et au chocolat',
   description: 'Une recette de barres croquantes à la noix de coco, aux pacanes et au chocolat, faciles à préparer et parfaites pour une collation ou un dessert.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 10,
-  cookTime: 30,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 30, max: 30 },
   servings: 18,
   difficulty: 'Facile',
   ingredients: [
@@ -29,6 +29,6 @@ export const barresALaNoixDeCocoAuxPacanesEtAuChocolat: Recipe = {
     'Démouler et couper.'
   ],
   tags: ['coco', 'pacanes', 'chocolat'],
-  marinatingTime: 120,
+  marinatingTime: { min: 120, max: 120 },
   slug: 'barres-a-la-noix-de-coco-aux-pacanes-et-au-chocolat'
 };

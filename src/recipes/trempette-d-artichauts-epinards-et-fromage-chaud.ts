@@ -5,8 +5,8 @@ export const trempetteDArtichautsEpinardsEtFromageChaud: Recipe = {
   title: 'Trempette d\'artichauts, épinards et fromage chaud',
   description: '',
   categories: ['Entrées', 'Végétarien'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

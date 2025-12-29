@@ -5,8 +5,8 @@ export const spaghettiBolognaiseAuCrabe: Recipe = {
   title: 'Spaghetti bolognaise au crabe',
   description: 'Un plat de spaghetti avec une sauce au crabe parfumée aux anchois, basilic et fenouil, simple et savoureux.',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

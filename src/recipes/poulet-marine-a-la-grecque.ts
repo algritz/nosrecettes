@@ -5,9 +5,9 @@ export const pouletMarineALaGrecque: Recipe = {
   title: 'Poulet mariné à la grecque',
   description: 'Poulet mariné au yogourt grec, citron, ail et origan, cuit au BBQ.',
   categories: ['Vollaille', 'Marinade', 'Barbecue'],
-  prepTime: 5,
-  cookTime: 0,
-  marinatingTime: 180,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 0, max: 0 },
+  marinatingTime: { min: 180, max: 180 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

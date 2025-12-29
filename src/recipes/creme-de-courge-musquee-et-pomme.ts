@@ -5,8 +5,8 @@ export const cremeDeCourgeMusqueeEtPomme: Recipe = {
   title: 'Crème de courge musquée et pomme',
   description: 'Une soupe crémeuse à base de courge musquée et de pomme, parfumée aux épices chinoises et à la sauge.',
   categories: ['Soupes'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

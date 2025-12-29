@@ -5,8 +5,8 @@ export const poitrinesDeCanardALaPoeleAvecSauceAuxBleuets: Recipe = {
   title: 'Poitrines de canard à la poêle avec sauce aux bleuets',
   description: 'Poitrines de canard à la poêle avec sauce aux bleuets',
   categories: ['Vollaille'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const poitrineDePouletMangueEtHabanero: Recipe = {
   title: 'Poitrine de poulet mangue et habanero',
   description: 'Une recette de poulet grillé avec un glaçage au miel et habanero, accompagné d\'une salsa à la pêche et à la mangue, offrant un équilibre de saveurs sucrées, épicées et acidulées.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 45,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 45, max: 45 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

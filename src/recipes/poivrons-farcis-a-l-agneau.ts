@@ -5,8 +5,8 @@ export const poivronsFarcisALAgneau: Recipe = {
   title: 'Poivrons farcis à l\'agneau',
   description: 'Une recette de poivrons farcis à l\'agneau, parfumée et savoureuse, idéale pour un plat principal convivial.',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 60,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

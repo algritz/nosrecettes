@@ -5,8 +5,8 @@ export const pouletALIndienneAvecSauceAuYogourtEtRizALaMangue: Recipe = {
   title: 'Poulet à l\'indienne avec sauce au yogourt et riz à la mangue',
   description: 'Un plat indien savoureux avec poulet mariné, sauce au yogourt à la mangue, servi avec du riz jasmin parfumé.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 30,
-  cookTime: 10,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -53,6 +53,6 @@ export const pouletALIndienneAvecSauceAuYogourtEtRizALaMangue: Recipe = {
     }
   ],
   tags: ['cari', 'mangue', 'grill'],
-  marinatingTime: 720,
+  marinatingTime: { min: 720, max: 720 },
   slug: 'poulet-a-l-indienne-avec-sauce-au-yogourt-et-riz-a-la-mangue'
 };

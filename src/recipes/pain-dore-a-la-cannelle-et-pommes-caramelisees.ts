@@ -5,8 +5,8 @@ export const painDoreALaCannelleEtPommesCaramelisees: Recipe = {
   title: 'Pain doré à la cannelle et pommes caramélisées',
   description: '',
   categories: ['Végétarien', 'Déjeuners'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

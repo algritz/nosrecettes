@@ -5,8 +5,8 @@ export const filetDePorcBraiseEtSauceAuPoivreRose: Recipe = {
   title: 'Filet de porc braisé et sauce au poivre rose',
   description: 'Une recette savoureuse de filet de porc braisé avec une sauce au poivre rose, idéale pour un repas convivial.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 50,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 50, max: 50 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const sauteALaCalifornienne: Recipe = {
   title: 'Sauté à la californienne',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 10,
-  cookTime: 25,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -26,7 +26,7 @@ export const sauteALaCalifornienne: Recipe = {
     'Servir sur un lit de riz.'
   ],
   tags: ['sauté', 'marinade sèche', 'cuisine rapide'],
-  marinatingTime: 20,
+  marinatingTime: { min: 20, max: 20 },
   notes: 'Ajouter les légumes préférés de la famille comme du céleri et des carottes. Vous pouvez faire mariner les lanières de poulet dans 2 ou 3 c. à soupe du mélange de vinaigrette Catalina, sauce soya et gingembre.',
   slug: 'saute-a-la-californienne'
 };

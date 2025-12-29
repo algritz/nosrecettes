@@ -5,8 +5,8 @@ export const tartareDeDuoDeSaumonCroustillantEtGrenade: Recipe = {
   title: 'Tartare de duo de saumon, croustillant et grenade',
   description: 'Tartare de duo de saumon, croustillant et grenade',
   categories: ['Entrées'],
-  prepTime: 25,
-  cookTime: 0,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

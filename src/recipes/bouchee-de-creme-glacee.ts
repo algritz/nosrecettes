@@ -5,8 +5,8 @@ export const boucheeDeCremeGlacee: Recipe = {
   title: 'Bouchée de crème glacée',
   description: 'Une recette de bouchées glacées enrobées de chocolat et Rice Krispies, à préparer à l\'avance et à congeler.',
   categories: ['Desserts'],
-  prepTime: 60,
-  cookTime: 3,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 3, max: 3 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -26,6 +26,6 @@ export const boucheeDeCremeGlacee: Recipe = {
     'Plongez les cubes de crème glacée dans le mélange de chocolat et remettez au congélateur pour faire durcir.'
   ],
   tags: ['chocolat', 'glace', 'enrobage'],
-  marinatingTime: 720,
+  marinatingTime: { min: 720, max: 720 },
   slug: 'bouchee-de-creme-glacee'
 };

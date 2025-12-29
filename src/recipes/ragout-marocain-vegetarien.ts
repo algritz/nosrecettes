@@ -5,8 +5,8 @@ export const ragoutMarocainVegetarien: Recipe = {
   title: 'Ragoût marocain végétarien',
   description: 'Un ragoût végétarien parfumé aux épices marocaines, riche en légumes et légumineuses, idéal pour un repas réconfortant.',
   categories: ['Soupes', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 40,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 40, max: 40 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

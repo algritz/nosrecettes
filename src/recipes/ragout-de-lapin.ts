@@ -5,8 +5,8 @@ export const ragoutDeLapin: Recipe = {
   title: 'Ragoût de lapin',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 60,
-  cookTime: 180,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 180, max: 180 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

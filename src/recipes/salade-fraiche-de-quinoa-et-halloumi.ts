@@ -5,8 +5,8 @@ export const saladeFraicheDeQuinoaEtHalloumi: Recipe = {
   title: 'Salade fraîche de quinoa et Halloumi',
   description: 'Une salade rafraîchissante à base de quinoa, légumes frais, haricots blancs et fromage Halloumi grillé.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

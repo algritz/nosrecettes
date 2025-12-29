@@ -5,8 +5,8 @@ export const saumonSurPlancheDeCedreAvecGlacageAuWhiskeyEtAuSiropDErable: Recipe
   title: 'Saumon sur planche de cèdre avec glaçage au whiskey et au sirop d\'érable',
   description: 'Saumon cuit sur planche de cèdre avec un glaçage au whiskey et sirop d\'érable, servi avec citron et persil.',
   categories: ['Vollaille'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -46,7 +46,7 @@ export const saumonSurPlancheDeCedreAvecGlacageAuWhiskeyEtAuSiropDErable: Recipe
   ],
   tags: ['fumoir', 'glaçage au whiskey', 'planche de cèdre'],
   wine: 'Wente Vineyard, chardonnay',
-  marinatingTime: 180,
+  marinatingTime: { min: 180, max: 180 },
   notes: 'Vous pouvez enlever la peau avant de faire cuire le saumon, ce n\'est pas si grave. Percez des trous dans la planche avec une perceuse pour une meilleure cuisson. S\'il reste du glaçage, n\'hésitez pas à le servir sur une boule de crème glacée à la vanille. Pour la cuisson au fumoir, viser 3 heures en pallier de 160-170-180°F.',
   slug: 'saumon-sur-planche-de-cedre-avec-glacage-au-whiskey-et-au-sirop-d-erable'
 };

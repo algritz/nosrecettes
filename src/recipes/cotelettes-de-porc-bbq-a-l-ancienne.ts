@@ -5,8 +5,8 @@ export const cotelettesDePorcBbqALAncienne: Recipe = {
   title: 'Côtelettes de porc BBQ à l\'ancienne',
   description: '',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 75,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 75, max: 75 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

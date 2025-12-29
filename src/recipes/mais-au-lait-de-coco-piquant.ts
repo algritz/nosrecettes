@@ -5,8 +5,8 @@ export const maisAuLaitDeCocoPiquant: Recipe = {
   title: 'Maïs au lait de coco piquant',
   description: 'Une recette de maïs épicé et crémeux au lait de coco, parfait pour une entrée ou un accompagnement.',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 30,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 30, max: 30 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

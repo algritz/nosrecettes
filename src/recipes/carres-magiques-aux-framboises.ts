@@ -5,8 +5,8 @@ export const carresMagiquesAuxFramboises: Recipe = {
   title: 'Carrés magiques aux framboises',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

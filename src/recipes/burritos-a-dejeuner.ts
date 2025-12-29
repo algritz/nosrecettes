@@ -5,8 +5,8 @@ export const burritosADejeuner: Recipe = {
   title: 'Burritos à déjeuner',
   description: 'Un déjeuner hors de l\'ordinaire Burritos à déjeuner',
   categories: ['Déjeuners'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

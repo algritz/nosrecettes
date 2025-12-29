@@ -5,8 +5,8 @@ export const tartareDeMagretDeCanardAuxNoisettesRotiesOlivesNoiresEtOignonsMarin
   title: 'Tartare de magret de canard aux noisettes rôties, olives noires et oignons marinés',
   description: 'Un tartare de canard délicatement assaisonné avec noisettes rôties, olives, et oignons marinés, servi avec des croutons maison.',
   categories: ['Entrées'],
-  prepTime: 30,
-  cookTime: 10,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

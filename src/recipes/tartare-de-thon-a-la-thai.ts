@@ -5,8 +5,8 @@ export const tartareDeThonALaThai: Recipe = {
   title: 'Tartare de thon à la Thaï',
   description: 'Un tartare de thon frais à la thaïlandaise, accompagné d\'une mousse d’avocat, de mangue et de roquette, relevé de saveurs asiatiques.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

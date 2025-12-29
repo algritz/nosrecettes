@@ -5,8 +5,8 @@ export const epauleDePorcALaMijoteuse: Recipe = {
   title: 'Épaule de porc à la mijoteuse',
   description: 'Une épaule de porc mijotée avec une marinade de moutarde et d\'épices, cuite lentement pour une tendreté optimale.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 360,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 360, max: 360 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const pouletAigreDoux: Recipe = {
   title: 'Poulet aigre-doux',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 30,
-  cookTime: 75,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 75, max: 75 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

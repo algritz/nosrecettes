@@ -5,8 +5,8 @@ export const tartareMexicainDeThon: Recipe = {
   title: 'Tartare mexicain de thon',
   description: 'Un tartare frais et épicé à base de thon, avocat, pomme verte et jalapeños, servi avec des croustilles émiettées.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

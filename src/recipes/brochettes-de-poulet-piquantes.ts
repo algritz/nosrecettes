@@ -5,8 +5,8 @@ export const brochettesDePouletPiquantes: Recipe = {
   title: 'Brochettes de poulet piquantes',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -28,6 +28,6 @@ export const brochettesDePouletPiquantes: Recipe = {
     'Déposer les poitrines sur la grille huilée et cuire.'
   ],
   tags: ['barbecue', 'marinade sèche', 'poulet'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'brochettes-de-poulet-piquantes'
 };

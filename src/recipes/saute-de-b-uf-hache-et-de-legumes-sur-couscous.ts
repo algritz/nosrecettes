@@ -5,8 +5,8 @@ export const sauteDeBUfHacheEtDeLegumesSurCouscous: Recipe = {
   title: 'Sauté de bœuf haché et de légumes sur couscous',
   description: 'Un sauté savoureux de bœuf haché et légumes, servi sur du couscous chaud, avec des épices aromatiques et des olives vertes.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 25,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

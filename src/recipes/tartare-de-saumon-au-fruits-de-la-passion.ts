@@ -5,8 +5,8 @@ export const tartareDeSaumonAuFruitsDeLaPassion: Recipe = {
   title: 'tartare de saumon au fruits de la passion',
   description: 'Un tartare frais de saumon aux saveurs exotiques des fruits de la passion, servi avec une salade verte.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

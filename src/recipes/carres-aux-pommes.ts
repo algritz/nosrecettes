@@ -5,8 +5,8 @@ export const carresAuxPommes: Recipe = {
   title: 'Carrés aux pommes',
   description: 'Un dessert croustillant aux pommes avec un croustillant à l\'avoine, servi tiède ou froid avec une boule de crème glacée à la vanille.',
   categories: ['Desserts'],
-  prepTime: 25,
-  cookTime: 45,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 45, max: 45 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

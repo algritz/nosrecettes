@@ -5,8 +5,8 @@ export const cretonMaisonAuGrasDeCanard: Recipe = {
   title: 'Creton maison au gras de canard',
   description: 'Des cretons maison c\'est toujours bon.',
   categories: ['Végétarien'],
-  prepTime: 10,
-  cookTime: 60,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 60, max: 60 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

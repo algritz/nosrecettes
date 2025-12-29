@@ -5,8 +5,8 @@ export const tartareDeBoeufAuBaconEtOignonsConfits: Recipe = {
   title: 'Tartare de boeuf au bacon et oignons confits',
   description: 'Un tartare de boeuf relevé avec des oignons confits, du bacon, et une sauce savoureuse, présenté avec du pain.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

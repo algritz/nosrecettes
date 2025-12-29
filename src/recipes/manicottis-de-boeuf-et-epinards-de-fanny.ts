@@ -5,8 +5,8 @@ export const manicottisDeBoeufEtEpinardsDeFanny: Recipe = {
   title: 'Manicottis de boeuf et épinards de Fanny',
   description: 'Une recette de manicottis farcis à la viande, épinards et ricotta, nappés de sauce Parma-Rosa, gratinés au fromage.',
   categories: ['Plats principaux'],
-  prepTime: 60,
-  cookTime: 90,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 90, max: 90 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

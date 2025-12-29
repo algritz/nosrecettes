@@ -5,6 +5,7 @@ import { Clock, Users, ChefHat, ArrowLeft, Timer, Utensils, Wine, BookOpen, Edit
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { formatTime } from '@/utils/timeFormat';
+import { getMaxTime } from '@/utils/timeUtils';
 import { useState, useEffect } from 'react';
 import { ResponsiveImage } from './ResponsiveImage';
 import { getRecipeCategories } from '@/utils/recipeUtils';
@@ -251,7 +252,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
             <ChefHat className="w-5 h-5" />
             <span>Cuisson: {formatTime(recipe.cookTime)}</span>
           </div>
-          {recipe.marinatingTime && recipe.marinatingTime > 0 && (
+          {recipe.marinatingTime && getMaxTime(recipe.marinatingTime) > 0 && (
             <div className="flex items-center gap-2">
               <Timer className="w-5 h-5" />
               <span>Marinage: {formatTime(recipe.marinatingTime)}</span>

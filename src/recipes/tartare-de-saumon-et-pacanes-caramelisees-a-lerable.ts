@@ -5,8 +5,8 @@ export const tartareDeSaumonEtPacanesCarameliseesALerable: Recipe = {
   title: 'Tartare de saumon et pacanes caramélisées à l\'érable',
   description: 'Un tartare de saumon frais agrémenté de pacanes caramélisées à l\'érable et de bacon croustillant, servi avec une mayonnaise à l\'érable maison.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

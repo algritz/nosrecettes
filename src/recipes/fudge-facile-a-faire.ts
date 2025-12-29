@@ -5,8 +5,8 @@ export const fudgeFacileAFaire: Recipe = {
   title: 'Fudge facile à faire',
   description: 'Dessert super facile à faire quand on manque de temps.',
   categories: ['Desserts'],
-  prepTime: 10,
-  cookTime: 4,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 4, max: 4 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

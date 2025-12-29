@@ -5,8 +5,8 @@ export const marinadePourPorcALAsiatique: Recipe = {
   title: 'Marinade pour porc à l\'asiatique',
   description: 'Marinade pour porc à l\'asiatique',
   categories: ['Marinade'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -27,7 +27,7 @@ export const marinadePourPorcALAsiatique: Recipe = {
     'Faire cuire sur le grill'
   ],
   tags: ['asiatique', 'marinade sèche', 'grill'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   notes: 'Bon avec du poulet ou du Tofu',
   slug: 'marinade-pour-porc-a-l-asiatique'
 };

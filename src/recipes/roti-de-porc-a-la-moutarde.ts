@@ -5,8 +5,8 @@ export const rotiDePorcALaMoutarde: Recipe = {
   title: 'Rôti de porc à la moutarde',
   description: 'Un rôti de porc tendre cuit lentement avec de la moutarde, des échalotes, et une sauce crémeuse.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 480,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 480, max: 480 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

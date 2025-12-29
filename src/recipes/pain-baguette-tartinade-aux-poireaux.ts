@@ -5,8 +5,8 @@ export const painBaguetteTartinadeAuxPoireaux: Recipe = {
   title: 'Pain baguette tartinade aux poireaux',
   description: 'Une tartinade savoureuse à base de poireaux, servie sur des baguettes dorées et gratinées au fromage.',
   categories: ['Entrées'],
-  prepTime: 10,
-  cookTime: 15,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 15, max: 15 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

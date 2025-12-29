@@ -5,8 +5,8 @@ export const pouletAuBeurreTandoori: Recipe = {
   title: 'Poulet au beurre (tandoori)',
   description: 'Un délicieux poulet tandoori mariné, cuit au four ou au barbecue, servi avec une sauce au beurre parfumée au gingembre, ail, tomates et épices.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 45,
-  cookTime: 30,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

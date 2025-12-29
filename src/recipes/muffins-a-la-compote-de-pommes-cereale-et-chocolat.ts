@@ -5,8 +5,8 @@ export const muffinsALaCompoteDePommesCerealeEtChocolat: Recipe = {
   title: 'Muffins à la compote de pommes, céréale et chocolat',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 22,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 22, max: 22 },
   servings: 12,
   difficulty: 'Facile',
   ingredients: [

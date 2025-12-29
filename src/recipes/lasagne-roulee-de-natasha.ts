@@ -5,8 +5,8 @@ export const lasagneRouleeDeNatasha: Recipe = {
   title: 'Lasagne roulée de Natasha',
   description: '',
   categories: ['Plats principaux', 'Pâtes'],
-  prepTime: 30,
-  cookTime: 45,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 45, max: 45 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

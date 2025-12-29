@@ -5,8 +5,8 @@ export const sauceGeneralTaoParfaite: Recipe = {
   title: 'Sauce Général Tao parfaite',
   description: 'Sauce Général Tao maison: sésame, gingembre, ail, sucré‑épicé, à napper sur poulet croustillant ou sautés.',
   categories: ['Sauces'],
-  prepTime: 5,
-  cookTime: 15,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 15, max: 15 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

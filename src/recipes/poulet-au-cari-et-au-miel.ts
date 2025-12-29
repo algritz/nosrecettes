@@ -5,8 +5,8 @@ export const pouletAuCariEtAuMiel: Recipe = {
   title: 'Poulet au cari et au miel',
   description: 'Une recette savoureuse de poulet mijoté dans une sauce au miel, moutarde, beurre et cari.',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 40,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

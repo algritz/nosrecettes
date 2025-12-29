@@ -5,8 +5,8 @@ export const browniesAuOreoEtFromageALaCreme: Recipe = {
   title: 'Brownies au Oréo et fromage à la crème',
   description: 'Un délicieux gâteau en couches combinant un brownie moelleux, une couche de fromage à la crème et des biscuits Oréo croquants, parfait pour une occasion sucrée.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 30,
-  cookTime: 45,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 45, max: 45 },
   servings: 20,
   difficulty: 'Facile',
   ingredients: [

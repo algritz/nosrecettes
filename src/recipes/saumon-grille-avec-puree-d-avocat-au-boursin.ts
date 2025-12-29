@@ -5,8 +5,8 @@ export const saumonGrilleAvecPureeDAvocatAuBoursin: Recipe = {
   title: 'Saumon grillé avec purée d’avocat au Boursin',
   description: 'Une recette de saumon grillé servi avec une purée d’avocat au Boursin, parfait pour une touche estivale.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

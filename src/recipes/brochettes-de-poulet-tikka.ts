@@ -5,8 +5,8 @@ export const brochettesDePouletTikka: Recipe = {
   title: 'Brochettes de poulet tikka',
   description: 'Une recette de brochettes de poulet marinées aux épices tikka, parfaites pour le barbecue. Servir avec du pain Naan et une sauce au yogourt.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -30,7 +30,7 @@ export const brochettesDePouletTikka: Recipe = {
   ],
   tags: ['barbecue', 'épices', 'marinade sèche'],
   accompaniment: 'Pain Naan et sauce au yogourt',
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   notes: 'Excellent avec des pommes de terre au curry',
   slug: 'brochettes-de-poulet-tikka'
 };

@@ -5,8 +5,8 @@ export const pouletAuxFraisesEtAuVinaigreBalsamique: Recipe = {
   title: 'Poulet aux fraises et au vinaigre balsamique',
   description: '',
   categories: ['Végétarien', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

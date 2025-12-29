@@ -5,8 +5,8 @@ export const pommeDeTerreAuCurry: Recipe = {
   title: 'Pomme de terre au curry',
   description: 'Pommes de terre en curry épicé avec tomate, oignon et épices moulues au mortier, finition crème (ou lait de coco).',
   categories: ['Légumes', 'Végétarien', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

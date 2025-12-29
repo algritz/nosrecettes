@@ -5,8 +5,8 @@ export const domino: Recipe = {
   title: 'Domino',
   description: '',
   categories: ['Desserts'],
-  prepTime: 0,
-  cookTime: 0,
+  prepTime: { min: 0, max: 0 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

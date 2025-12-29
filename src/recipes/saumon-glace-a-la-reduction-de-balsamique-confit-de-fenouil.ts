@@ -5,8 +5,8 @@ export const saumonGlaceALaReductionDeBalsamiqueConfitDeFenouil: Recipe = {
   title: 'Saumon glacé à la réduction de balsamique, confit de fenouil',
   description: 'Un plat élégant combinant un saumon glacé à la réduction de balsamique avec un confit de fenouil sucré-salé.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 40,
-  cookTime: 40,
+  prepTime: { min: 40, max: 40 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

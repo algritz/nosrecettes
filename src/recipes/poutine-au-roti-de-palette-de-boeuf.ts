@@ -5,8 +5,8 @@ export const poutineAuRotiDePaletteDeBoeuf: Recipe = {
   title: 'Poutine au rôti de palette de boeuf',
   description: 'Une surprenante poutine qui réconforte',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 25,
-  cookTime: 600,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 600, max: 600 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -7,14 +7,15 @@ import { Textarea } from '@/components/ui/textarea';
 import { Plus, Minus, Save, ArrowLeft, Layers, FileText, X } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
 import { GitHubService } from '@/services/github';
+import { validateTimeRange } from '@/utils/timeUtils';
 import { CategorySelector } from '@/components/CategorySelector';
-import { TimeInput } from '@/components/TimeInput';
+import { TimeRangeInput } from '@/components/TimeRangeInput';
 import { ImageUpload } from '@/components/ImageUpload';
 import { SectionedIngredients } from '@/components/SectionedIngredients';
 import { SectionedInstructions } from '@/components/SectionedInstructions';
 import { JSONImporter } from '@/components/JSONImporter';
 import { ProcessedImage } from '@/utils/imageUtils';
-import { IngredientSection, InstructionSection } from '@/types/recipe';
+import { IngredientSection, InstructionSection, TimeRange } from '@/types/recipe';
 import { recipes } from '@/data/recipes';
 import { recipeCategories } from '@/data/categories';
 import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils';
@@ -29,9 +30,9 @@ const NewRecipe = () => {
     title: '',
     description: '',
     categories: [] as string[],
-    prepTime: '',
-    cookTime: '',
-    marinatingTime: '',
+    prepTime: { min: 0, max: 0 } as TimeRange,
+    cookTime: { min: 0, max: 0 } as TimeRange,
+    marinatingTime: { min: 0, max: 0 } as TimeRange,
     servings: '',
     difficulty: 'Facile',
     ingredients: [''],
@@ -100,9 +101,9 @@ const NewRecipe = () => {
       title: jsonRecipe.title || '',
       description: jsonRecipe.description || '',
       categories: jsonRecipe.categories || [],
-      prepTime: jsonRecipe.prepTime?.toString() || '',
-      cookTime: jsonRecipe.cookTime?.toString() || '',
-      marinatingTime: jsonRecipe.marinatingTime?.toString() || '',
+      prepTime: jsonRecipe.prepTime || { min: 0, max: 0 },
+      cookTime: jsonRecipe.cookTime || { min: 0, max: 0 },
+      marinatingTime: jsonRecipe.marinatingTime || { min: 0, max: 0 },
       servings: jsonRecipe.servings?.toString() || '',
       difficulty: jsonRecipe.difficulty || 'Facile',
       ingredients: Array.isArray(jsonRecipe.ingredients) && typeof jsonRecipe.ingredients[0] === 'string' 
@@ -217,9 +218,23 @@ const NewRecipe = () => {
         return;
       }
 
+      // Validate TimeRange objects (ensure min <= max)
+      try {
+        validateTimeRange(recipe.prepTime);
+        validateTimeRange(recipe.cookTime);
+        if (recipe.marinatingTime.min > 0 || recipe.marinatingTime.max > 0) {
+          validateTimeRange(recipe.marinatingTime);
+        }
+      } catch (error) {
+        showError(`Temps invalide: ${error instanceof Error ? error.message : 'Erreur de validation'}`);
+        return;
+      }
+
       // Prepare recipe data with sectioned ingredients/instructions if enabled
       const recipeData = {
         ...recipe,
+        // Only include marinatingTime if it has non-zero values
+        marinatingTime: (recipe.marinatingTime.min > 0 || recipe.marinatingTime.max > 0) ? recipe.marinatingTime : undefined,
         ingredients: useSectionedIngredients ? sectionedIngredients : recipe.ingredients,
         instructions: useSectionedInstructions ? sectionedInstructions : recipe.instructions
       };
@@ -240,9 +255,9 @@ const NewRecipe = () => {
         title: '',
         description: '',
         categories: [],
-        prepTime: '',
-        cookTime: '',
-        marinatingTime: '',
+        prepTime: { min: 0, max: 0 },
+        cookTime: { min: 0, max: 0 },
+        marinatingTime: { min: 0, max: 0 },
         servings: '',
         difficulty: 'Facile',
         ingredients: [''],
@@ -368,29 +383,33 @@ const NewRecipe = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Temps de préparation</label>
-                <TimeInput
+                <TimeRangeInput
                   value={recipe.prepTime}
                   onChange={(value) => setRecipe(prev => ({ ...prev, prepTime: value }))}
+                  allowDays={false}
+                  label="Temps de préparation"
+                  required={true}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Temps de cuisson</label>
-                <TimeInput
+                <TimeRangeInput
                   value={recipe.cookTime}
                   onChange={(value) => setRecipe(prev => ({ ...prev, cookTime: value }))}
+                  allowDays={true}
+                  label="Temps de cuisson"
+                  required={true}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Temps de marinage</label>
-                <TimeInput
+                <TimeRangeInput
                   value={recipe.marinatingTime}
                   onChange={(value) => setRecipe(prev => ({ ...prev, marinatingTime: value }))}
                   allowDays={true}
+                  label="Temps de marinage"
+                  required={false}
                 />
-                <p className="text-xs text-muted-foreground mt-1">Optionnel - Peut inclure des jours</p>
               </div>
             </div>
 

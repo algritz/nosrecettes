@@ -5,8 +5,8 @@ export const pouletChinoisDeSemaine: Recipe = {
   title: 'Poulet chinois de semaine',
   description: '',
   categories: ['Végétarien'],
-  prepTime: 15,
-  cookTime: 20,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 20, max: 20 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

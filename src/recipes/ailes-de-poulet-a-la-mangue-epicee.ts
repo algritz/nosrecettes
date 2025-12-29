@@ -5,8 +5,8 @@ export const ailesDePouletALaMangueEpicee: Recipe = {
   title: 'Ailes de poulet à la mangue épicée',
   description: '',
   categories: ['Vollaille'],
-  prepTime: 25,
-  cookTime: 70,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 70, max: 70 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

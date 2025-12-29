@@ -5,8 +5,8 @@ export const bouillonDePouletMaison: Recipe = {
   title: 'Bouillon de poulet maison',
   description: 'Bouillon de poulet maison',
   categories: ['Soupes'],
-  prepTime: 5,
-  cookTime: 50,
+  prepTime: { min: 5, max: 5 },
+  cookTime: { min: 50, max: 50 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

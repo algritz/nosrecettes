@@ -5,8 +5,8 @@ export const ecorcesDeBleuetsAuChocolatNoir: Recipe = {
   title: 'Écorces de bleuets au chocolat noir',
   description: 'Une gourmandise croquante et fruitée, combinant du chocolat noir et des bleuets frais pour une texture et un goût riches.',
   categories: ['Végétarien', 'Desserts'],
-  prepTime: 15,
-  cookTime: 12,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 12, max: 12 },
   servings: 25,
   difficulty: 'Facile',
   ingredients: [

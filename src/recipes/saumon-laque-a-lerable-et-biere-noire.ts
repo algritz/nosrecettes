@@ -5,8 +5,8 @@ export const saumonLaqueALerableEtBiereNoire: Recipe = {
   title: 'Saumon laqué à l\'érable et bière noire',
   description: 'Une recette de saumon laqué avec une sauce à l\'érable et à la bière noire, parfait pour le barbecue.',
   categories: ['Poisson', 'Barbecue'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

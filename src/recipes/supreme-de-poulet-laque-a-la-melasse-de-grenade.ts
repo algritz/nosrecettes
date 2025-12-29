@@ -5,8 +5,8 @@ export const supremeDePouletLaqueALaMelasseDeGrenade: Recipe = {
   title: 'Suprême de poulet laqué à la mélasse de grenade',
   description: 'Une recette de poulet laqué avec une réduction de jus de grenade en sirop, servi avec du riz.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 60,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

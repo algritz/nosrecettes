@@ -5,8 +5,8 @@ export const pateAPizzaAu7Up: Recipe = {
   title: 'Pâte à pizza au 7 Up',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -32,6 +32,6 @@ export const pateAPizzaAu7Up: Recipe = {
     'Cuisson: 10 à 20 minutes'
   ],
   tags: ['pâte à pizza', 'levure', 'Seven-Up'],
-  marinatingTime: 30,
+  marinatingTime: { min: 30, max: 30 },
   slug: 'pate-a-pizza-au-7-up'
 };

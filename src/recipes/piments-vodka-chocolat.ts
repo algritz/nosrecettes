@@ -5,8 +5,8 @@ export const pimentsVodkaChocolat: Recipe = {
   title: 'Piments vodka chocolat',
   description: 'Sucré et piquant Piments vodka chocolat',
   categories: ['Végétarien'],
-  prepTime: 25,
-  cookTime: 15,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 15, max: 15 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [
@@ -28,6 +28,6 @@ export const pimentsVodkaChocolat: Recipe = {
     'Faites vous plaisir'
   ],
   tags: ['chocolat', 'piquant', 'vodka'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'piments-vodka-chocolat'
 };

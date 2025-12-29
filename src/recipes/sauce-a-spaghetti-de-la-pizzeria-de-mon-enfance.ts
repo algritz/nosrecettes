@@ -5,8 +5,8 @@ export const sauceASpaghettiDeLaPizzeriaDeMonEnfance: Recipe = {
   title: 'Sauce à spaghetti de la pizzeria de mon enfance',
   description: 'Grosse sauce à spaghetti façon pizzeria, riche en tomates, bœuf haché et aromates, mijotée longuement.',
   categories: ['Sauces'],
-  prepTime: 60,
-  cookTime: 180,
+  prepTime: { min: 60, max: 60 },
+  cookTime: { min: 180, max: 180 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

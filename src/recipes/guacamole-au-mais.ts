@@ -5,8 +5,8 @@ export const guacamoleAuMais: Recipe = {
   title: 'Guacamole au maïs',
   description: 'Une recette simple de guacamole avec du maïs grillé, des avocats, et des épices, parfaite pour accompagner vos apéritifs.',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

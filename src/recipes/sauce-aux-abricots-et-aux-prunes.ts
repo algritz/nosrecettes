@@ -5,8 +5,8 @@ export const sauceAuxAbricotsEtAuxPrunes: Recipe = {
   title: 'Sauce aux abricots et aux prunes',
   description: '',
   categories: ['Sauces'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

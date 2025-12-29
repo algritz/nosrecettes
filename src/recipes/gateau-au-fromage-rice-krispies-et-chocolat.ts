@@ -5,9 +5,9 @@ export const gateauAuFromageRiceKrispiesEtChocolat: Recipe = {
   title: 'Gâteau au fromage rice Krispies et chocolat',
   description: 'Cheesecake sans croûte classique: base de Rice Krispies-guimauves, appareil chocolat-fromage à la crème, décor fruits/chocolat.',
   categories: ['Pâtisseries et desserts', 'Desserts'],
-  prepTime: 20,
-  cookTime: 10,
-  marinatingTime: 180,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
+  marinatingTime: { min: 180, max: 180 },
   servings: 10,
   difficulty: 'Facile',
   ingredients: [

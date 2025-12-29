@@ -5,8 +5,8 @@ export const fudgeAuxCerises: Recipe = {
   title: 'Fudge aux cerises',
   description: 'Un fudge aux cerises crémeux et chocolaté, parfait pour les amateurs de saveurs fruitées et sucrées.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 10,
-  cookTime: 10,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 10, max: 10 },
   servings: 20,
   difficulty: 'Facile',
   ingredients: [

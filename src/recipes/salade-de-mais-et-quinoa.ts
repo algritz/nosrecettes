@@ -5,8 +5,8 @@ export const saladeDeMaisEtQuinoa: Recipe = {
   title: 'Salade de maïs et quinoa',
   description: 'Une salade fraîche et savoureuse combinant quinoa, maïs, légumes et épices, idéale pour un repas léger ou un accompagnement.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const gateauAuFromageEtBleuets: Recipe = {
   title: 'Gateau au fromage et bleuets',
   description: 'Un gâteau au fromage crémeux avec une garniture de bleuets frais et une croûte croustillante de biscuits Graham, parfait pour une occasion spéciale ou un dessert rafraîchissant.',
   categories: ['Desserts'],
-  prepTime: 30,
-  cookTime: 110,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 110, max: 110 },
   servings: 14,
   difficulty: 'Facile',
   ingredients: [

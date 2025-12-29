@@ -5,8 +5,8 @@ export const macAndCheeseBaconEtOignon: Recipe = {
   title: 'Mac and Cheese bacon et oignon',
   description: 'Un gratin de macaronis crémeux avec oignons, bacon croustillant et fromages fondus, gratiné au four.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 25,
-  cookTime: 25,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const cookieMonsterDeLaBelleSoeur: Recipe = {
   title: 'Cookie monster de la belle-soeur',
   description: 'Une recette de cookies simple et gourmande avec beurre d\'arachides, gruau et chocolat, cuits à 325°F pendant 11 à 12 minutes.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 15,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 15, max: 15 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

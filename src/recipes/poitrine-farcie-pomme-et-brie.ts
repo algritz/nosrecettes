@@ -5,8 +5,8 @@ export const poitrineFarciePommeEtBrie: Recipe = {
   title: 'Poitrine farcie pomme et brie',
   description: 'Une recette de poitrines de poulet farcies aux pommes et brie, nappées d\'une sauce miel citronnée, cuites au four.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 40,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

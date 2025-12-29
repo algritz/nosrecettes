@@ -5,8 +5,8 @@ export const filetDePouletALaSrirachaPanesAuFour: Recipe = {
   title: 'Filet de poulet à la Sriracha panés au four',
   description: 'Filet de poulet à la Sriracha panés au four',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 22,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 22, max: 22 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -33,6 +33,6 @@ export const filetDePouletALaSrirachaPanesAuFour: Recipe = {
   ],
   tags: ['poulet', 'panure', 'four'],
   accompaniment: 'Servir avec une trempette au choix - moutarde et miel par exemple.',
-  marinatingTime: 60,
+  marinatingTime: { min: 60, max: 60 },
   slug: 'filet-de-poulet-a-la-sriracha-panes-au-four'
 };

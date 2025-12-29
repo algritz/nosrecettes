@@ -5,8 +5,8 @@ export const saladeChaude: Recipe = {
   title: 'Salade chaude',
   description: 'Une salade chaude de riz basmati avec noix de cajou, légumes croquants et vinaigrette parfumée, à déguster tiède ou chaud.',
   categories: ['Salades'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

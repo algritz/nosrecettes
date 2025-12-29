@@ -5,8 +5,8 @@ export const biscuitsAuChocolatEtNutella: Recipe = {
   title: 'Biscuits au chocolat et Nutella',
   description: 'Une recette de biscuits fondants au Nutella, avec une pâte croustillante et un cœur fondant de Nutella congelé, saupoudrés de sel de mer.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 15,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 15, max: 15 },
   servings: 24,
   difficulty: 'Facile',
   ingredients: [
@@ -37,6 +37,6 @@ export const biscuitsAuChocolatEtNutella: Recipe = {
     'Laisser refroidir sur la poêle 5 minutes avant de servir.'
   ],
   tags: ['Nutella', 'cookies', 'four'],
-  marinatingTime: 60,
+  marinatingTime: { min: 60, max: 60 },
   slug: 'biscuits-au-chocolat-et-nutella'
 };

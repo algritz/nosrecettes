@@ -5,8 +5,8 @@ export const pouletAuBeurreStyleTandoori: Recipe = {
   title: 'Poulet au beurre (style tandoori)',
   description: 'Recette de poulet mariné aux épices, cuit dans une sauce crémeuse, servi avec du riz Basmati. Épicée et parfumée, idéale pour un plat savoureux.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 20,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -41,7 +41,7 @@ export const pouletAuBeurreStyleTandoori: Recipe = {
   ],
   tags: ['épices', 'crémeux', 'tandoori'],
   accompaniment: 'Riz Basmati',
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   notes: 'Même sans paprika fort, cette recette est assez épicée.',
   slug: 'poulet-au-beurre-style-tandoori'
 };

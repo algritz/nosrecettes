@@ -5,8 +5,8 @@ export const rotiDePorcAuBeurreDArachides: Recipe = {
   title: 'Rôti de porc au beurre d’arachides',
   description: 'Un rôti de porc tendre nappé d\'une sauce crémeuse au beurre d’arachides, sauce soja et sambal oelek.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

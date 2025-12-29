@@ -5,8 +5,8 @@ export const patatesFarciAuGoudaEtJalapenos: Recipe = {
   title: 'Patates farci au gouda et jalapeños',
   description: 'Recette de patates farcies au gouda fumé et jalapeños, cuites au barbecue, garnies de crème sure aux oignons verts.',
   categories: ['Plats principaux', 'Végétarien'],
-  prepTime: 10,
-  cookTime: 90,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 90, max: 90 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

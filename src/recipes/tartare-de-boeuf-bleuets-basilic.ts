@@ -5,8 +5,8 @@ export const tartareDeBoeufBleuetsBasilic: Recipe = {
   title: 'Tartare de boeuf bleuets & basilic',
   description: 'Tartare de boeuf bleuets & basilic',
   categories: ['Entrées'],
-  prepTime: 15,
-  cookTime: 4,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 4, max: 4 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

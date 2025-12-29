@@ -5,8 +5,8 @@ export const cotesLeveesDeKansasCity: Recipe = {
   title: 'Côtes levées de Kansas City',
   description: 'C\'est définitivement la meilleur recette de côte levée au monde.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 180,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 180, max: 180 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -36,7 +36,7 @@ export const cotesLeveesDeKansasCity: Recipe = {
   tags: ['barbecue', 'fumoir', 'marinade sèche'],
   wine: '7 Deadly Zins',
   accompaniment: 'Servir avec une sauce barbecue à la cassonade et au bourbon ou la Sauce BBQ au Whisky Laphroaig',
-  marinatingTime: 480,
+  marinatingTime: { min: 480, max: 480 },
   notes: 'Mettre de la sauce barbecue sur les côtes 5 minutes avant la fin de la cuisson et faire caraméliser.',
   slug: 'cotes-levees-de-kansas-city'
 };

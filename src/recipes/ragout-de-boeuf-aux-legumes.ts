@@ -5,8 +5,8 @@ export const ragoutDeBoeufAuxLegumes: Recipe = {
   title: 'Ragoût de boeuf aux légumes',
   description: 'Un ragoût de boeuf mijoté avec légumes variés, parfumé aux herbes et au vin rouge, idéal pour un plat réconfortant.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 180,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 180, max: 180 },
   servings: 6,
   difficulty: 'Facile',
   ingredients: [

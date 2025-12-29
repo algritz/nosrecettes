@@ -5,8 +5,8 @@ export const saumonGrilleSurUnePlancheDeCedre: Recipe = {
   title: 'Saumon grillé sur une planche de cèdre',
   description: 'Saumon grillé sur une planche de cèdre',
   categories: ['Végétarien'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -27,6 +27,6 @@ export const saumonGrilleSurUnePlancheDeCedre: Recipe = {
     'Badigeonner avec le mélange de vinaigrette; continuer la cuisson 10 min ou jusqu\'à ce que le saumon s\'émiette facilement à la fourchette.'
   ],
   tags: ['barbecue', 'fumé', 'saumon'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'saumon-grille-sur-une-planche-de-cedre'
 };

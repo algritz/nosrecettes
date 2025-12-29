@@ -5,8 +5,8 @@ export const feveAuLard: Recipe = {
   title: 'Fêve au lard',
   description: '',
   categories: ['Végétarien'],
-  prepTime: 25,
-  cookTime: 600,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 600, max: 600 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -26,7 +26,7 @@ export const feveAuLard: Recipe = {
     'Cuire au four 8 à 10h à 225 F.'
   ],
   tags: ['gibier', 'fèves', 'cuisson longue'],
-  marinatingTime: 720,
+  marinatingTime: { min: 720, max: 720 },
   notes: 'On peut remplacer le gibier par du porc',
   slug: 'feve-au-lard'
 };

@@ -5,8 +5,8 @@ export const pouletALaCremeEtVinBlanc: Recipe = {
   title: 'Poulet à la crème et vin blanc',
   description: '',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 15,
-  cookTime: 35,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 35, max: 35 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

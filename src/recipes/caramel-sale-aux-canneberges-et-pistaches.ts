@@ -5,8 +5,8 @@ export const caramelSaleAuxCannebergesEtPistaches: Recipe = {
   title: 'Caramel salé aux canneberges et pistaches',
   description: 'Une recette de caramel salé garni de canneberges séchées et pistaches, parfait pour offrir en cadeau ou savourer en bouchées.',
   categories: ['Desserts'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 17,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const rotiDePorcAuSiropDErable: Recipe = {
   title: 'Rôti de porc au sirop d\'érable',
   description: 'Une recette de rôti de porc cuit lentement avec un mélange de sirop d\'érable, sauce soja, oignons, ail et citron, pour une saveur sucrée-salée.',
   categories: ['Porc', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 480,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 480, max: 480 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

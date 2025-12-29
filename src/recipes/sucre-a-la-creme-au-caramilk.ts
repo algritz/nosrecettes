@@ -5,8 +5,8 @@ export const sucreALaCremeAuCaramilk: Recipe = {
   title: 'Sucre à la crème au Caramilk',
   description: '',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 40,
   difficulty: 'Facile',
   ingredients: [
@@ -27,6 +27,6 @@ export const sucreALaCremeAuCaramilk: Recipe = {
     'Laisser refroidir 30 minutes à température ambiante puis réfrigérer.'
   ],
   tags: ['caramilk', 'micro-ondes', 'dessert'],
-  marinatingTime: 30,
+  marinatingTime: { min: 30, max: 30 },
   slug: 'sucre-a-la-creme-au-caramilk'
 };

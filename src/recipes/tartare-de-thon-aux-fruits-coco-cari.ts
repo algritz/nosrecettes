@@ -5,8 +5,8 @@ export const tartareDeThonAuxFruitsCocoCari: Recipe = {
   title: 'Tartare de thon aux fruits coco-cari',
   description: 'Un tartare frais de thon, banane et pomme, relevé de citron vert, lait de coco et cari, servi après deux périodes de marinade au frais.',
   categories: ['Entrées'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
@@ -29,6 +29,6 @@ export const tartareDeThonAuxFruitsCocoCari: Recipe = {
     'Placez de nouveau 15 minutes au frais puis servez.'
   ],
   tags: ['coco', 'cari', 'frais'],
-  marinatingTime: 30,
+  marinatingTime: { min: 30, max: 30 },
   slug: 'tartare-de-thon-aux-fruits-coco-cari'
 };

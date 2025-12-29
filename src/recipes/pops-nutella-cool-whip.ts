@@ -5,8 +5,8 @@ export const popsNutellaCoolWhip: Recipe = {
   title: 'Pops Nutella Cool Whip',
   description: '',
   categories: ['Desserts'],
-  prepTime: 10,
-  cookTime: 0,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 0, max: 0 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const saladeDeCrabeEtDeFraisesAuCitronVert: Recipe = {
   title: 'Salade de crabe et de fraises au citron vert',
   description: 'Salade de crabe et de fraises au citron vert',
   categories: ['Salades'],
-  prepTime: 10,
-  cookTime: 0,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

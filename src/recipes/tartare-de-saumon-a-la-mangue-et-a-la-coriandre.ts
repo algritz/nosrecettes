@@ -5,8 +5,8 @@ export const tartareDeSaumonALaMangueEtALaCoriandre: Recipe = {
   title: 'Tartare de saumon à la mangue et à la coriandre',
   description: 'Un tartare frais et parfumé combinant saumon, mangue, coriandre et une sauce citronnée, idéal pour une entrée élégante.',
   categories: ['Entrées'],
-  prepTime: 30,
-  cookTime: 0,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

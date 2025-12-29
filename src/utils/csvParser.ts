@@ -1,10 +1,12 @@
+import type { TimeRange } from '@/types/recipe';
+
 export interface ParsedCSVRecipe {
   title: string;
   description: string;
   ingredients: string[];
   instructions: string[];
-  prepTime?: number;
-  cookTime?: number;
+  prepTime?: TimeRange;
+  cookTime?: TimeRange;
   servings?: number;
   tags: string[];
 }
@@ -14,18 +16,46 @@ export interface CSVParseResult {
   errors: string[];
 }
 
-const parseTimeFromText = (text: string): number => {
-  // Look for patterns like "Préparation: 15 minutes", "Cuisson: 30 min", etc.
-  const timeMatch = text.match(/(\d+)\s*(?:minutes?|mins?|h|heures?)/i);
-  if (timeMatch) {
-    const value = parseInt(timeMatch[1]);
+/**
+ * Parse time field from CSV text
+ * Supports:
+ * - Single values: "20 minutes" → { min: 20, max: 20 }
+ * - Range notation: "20-25 minutes" → { min: 20, max: 25 }
+ */
+const parseTimeFromText = (text: string): TimeRange => {
+  // Look for range notation first: "20-25 minutes" or "1-2 heures"
+  const rangeMatch = text.match(/(\d+)\s*-\s*(\d+)\s*(?:minutes?|mins?|h|heures?)/i);
+  if (rangeMatch) {
+    let min = parseInt(rangeMatch[1]);
+    let max = parseInt(rangeMatch[2]);
+
     // If it contains "h" or "heure", convert to minutes
     if (text.match(/h|heure/i)) {
-      return value * 60;
+      min *= 60;
+      max *= 60;
     }
-    return value;
+
+    // Ensure min <= max
+    if (max < min) {
+      console.warn(`Invalid time range in CSV: ${text}. Swapping values.`);
+      return { min: max, max: min };
+    }
+
+    return { min, max };
   }
-  return 0;
+
+  // Look for single value: "15 minutes", "30 min", etc.
+  const timeMatch = text.match(/(\d+)\s*(?:minutes?|mins?|h|heures?)/i);
+  if (timeMatch) {
+    let value = parseInt(timeMatch[1]);
+    // If it contains "h" or "heure", convert to minutes
+    if (text.match(/h|heure/i)) {
+      value *= 60;
+    }
+    return { min: value, max: value };
+  }
+
+  return { min: 0, max: 0 };
 };
 
 const parseServingsFromText = (text: string): number => {
@@ -260,8 +290,8 @@ export const parseCSVRecipes = (csvContent: string): CSVParseResult => {
           description,
           ingredients,
           instructions,
-          prepTime: prepTime || undefined,
-          cookTime: cookTime || undefined,
+          prepTime: (prepTime.min > 0 || prepTime.max > 0) ? prepTime : undefined,
+          cookTime: (cookTime.min > 0 || cookTime.max > 0) ? cookTime : undefined,
           servings: servings || undefined,
           tags
         };

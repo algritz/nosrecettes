@@ -5,8 +5,8 @@ export const saumonEnCrouteDEpicesSauceALOrange: Recipe = {
   title: 'Saumon en croûte d’épices, sauce à l’orange',
   description: 'Une recette de saumon épicé en croûte, servi avec une sauce à l’orange, accompagné d’asperges et de polenta au parmesan.',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 25,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 25, max: 25 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

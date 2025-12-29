@@ -5,8 +5,8 @@ export const nachosAuCanard: Recipe = {
   title: 'Nachos au canard',
   description: 'Pour ceux qui ont envie d\'un Nachos différent. Nachos au canard',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 10,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 10, max: 10 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

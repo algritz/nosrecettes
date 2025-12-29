@@ -5,8 +5,8 @@ export const poutineADejeuner: Recipe = {
   title: 'Poutine à déjeuner',
   description: 'Poutine à déjeuner',
   categories: ['Déjeuners'],
-  prepTime: 45,
-  cookTime: 15,
+  prepTime: { min: 45, max: 45 },
+  cookTime: { min: 15, max: 15 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

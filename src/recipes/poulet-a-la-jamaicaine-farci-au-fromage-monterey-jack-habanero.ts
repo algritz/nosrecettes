@@ -5,8 +5,8 @@ export const pouletALaJamaicaineFarciAuFromageMontereyJackHabanero: Recipe = {
   title: 'Poulet à la jamaïcaine farci au fromage Monterey Jack Habanero',
   description: 'Recette pleine de saveur.',
   categories: ['Vollaille', 'Plats principaux'],
-  prepTime: 30,
-  cookTime: 30,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

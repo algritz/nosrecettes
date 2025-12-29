@@ -5,8 +5,8 @@ export const gateauAuChocolatFacilePourEnfant: Recipe = {
   title: 'gateau au chocolat facile pour enfant',
   description: 'Gâteau au chocolat fondant, simple et rapide, idéal à préparer avec des enfants.',
   categories: ['Pâtisseries et desserts', 'Desserts'],
-  prepTime: 20,
-  cookTime: 20,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 20, max: 20 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [

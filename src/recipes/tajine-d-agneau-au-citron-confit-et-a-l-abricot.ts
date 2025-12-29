@@ -5,8 +5,8 @@ export const tajineDAgneauAuCitronConfitEtALAbricot: Recipe = {
   title: 'Tajine d\'agneau au citron confit et à l\'abricot',
   description: 'Un tajine savoureux d\'agneau avec citron confit et abricots, mijoté lentement pour une tendreté optimale.',
   categories: ['Plats principaux', 'Vollaille'],
-  prepTime: 30,
-  cookTime: 150,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 150, max: 150 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

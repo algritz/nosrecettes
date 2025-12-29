@@ -5,8 +5,8 @@ export const filetDePorcMoutardeEtMiel: Recipe = {
   title: 'Filet de porc moutarde et miel',
   description: '',
   categories: ['Plats principaux'],
-  prepTime: 15,
-  cookTime: 360,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 360, max: 360 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

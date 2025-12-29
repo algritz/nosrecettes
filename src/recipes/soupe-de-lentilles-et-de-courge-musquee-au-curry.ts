@@ -5,8 +5,8 @@ export const soupeDeLentillesEtDeCourgeMusqueeAuCurry: Recipe = {
   title: 'Soupe de lentilles et de courge musquée au curry',
   description: 'Une soupe réconfortante et parfumée à base de lentilles, courge musquée, épices et lait de coco, parfaite pour une entrée ou un plat principal végétarien.',
   categories: ['Soupes', 'Végétarien'],
-  prepTime: 25,
-  cookTime: 35,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 35, max: 35 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

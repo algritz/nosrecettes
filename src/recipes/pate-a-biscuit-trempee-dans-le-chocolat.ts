@@ -5,9 +5,9 @@ export const pateABiscuitTrempeeDansLeChocolat: Recipe = {
   title: 'Pâte à biscuit trempée dans le chocolat',
   description: 'Pâte à biscuit trempée dans le chocolat',
   categories: ['Végétarien'],
-  prepTime: 20,
-  cookTime: 0,
-  marinatingTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
+  marinatingTime: { min: 30, max: 30 },
   servings: 40,
   difficulty: 'Facile',
   ingredients: [

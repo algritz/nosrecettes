@@ -5,8 +5,8 @@ export const painAuBanane: Recipe = {
   title: 'Pain au banane',
   description: 'Pour passer la banane trop mûre qui reste Pain au banane',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 30,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 30, max: 30 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

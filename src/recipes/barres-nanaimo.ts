@@ -5,8 +5,8 @@ export const barresNanaimo: Recipe = {
   title: 'Barres Nanaïmo',
   description: 'Une recette de barres chocolatées et vanillées, décorées pour ressembler à des dominos, avec une base croustillante, une garniture à la vanille, et un glaçage au chocolat.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 30,
-  cookTime: 0,
+  prepTime: { min: 30, max: 30 },
+  cookTime: { min: 0, max: 0 },
   servings: 32,
   difficulty: 'Facile',
   ingredients: [

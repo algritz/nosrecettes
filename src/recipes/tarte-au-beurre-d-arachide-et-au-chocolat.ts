@@ -5,8 +5,8 @@ export const tarteAuBeurreDArachideEtAuChocolat: Recipe = {
   title: 'Tarte au beurre d\'arachide et au chocolat',
   description: 'Une tarte gourmande au beurre d\'arachide et au chocolat, avec une croûte croustillante et une garniture crémeuse et chocolatée.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 25,
-  cookTime: 0,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 0, max: 0 },
   servings: 9,
   difficulty: 'Facile',
   ingredients: [
@@ -33,6 +33,6 @@ export const tarteAuBeurreDArachideEtAuChocolat: Recipe = {
     'Réfrigérer 4 heures ou jusqu\'à ce que la garniture soit ferme.'
   ],
   tags: ['chocolat', 'arachide', 'gourmandise'],
-  marinatingTime: 240,
+  marinatingTime: { min: 240, max: 240 },
   slug: 'tarte-au-beurre-d-arachide-et-au-chocolat'
 };

@@ -5,8 +5,8 @@ export const burrataAuxTomates: Recipe = {
   title: 'Burrata aux tomates',
   description: 'La meilleure des Burrata Burrata aux tomates',
   categories: ['Entrées', 'Végétarien'],
-  prepTime: 15,
-  cookTime: 0,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 0, max: 0 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

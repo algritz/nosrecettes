@@ -5,8 +5,8 @@ export const gateauMoelleuxAuChocolatFondant: Recipe = {
   title: 'Gâteau moelleux au chocolat fondant',
   description: 'Un gâteau au chocolat fondant et moelleux, servi avec une garniture de blancs en neige. Peut être préparé en petits moules ou en gros ramequins.',
   categories: ['Pâtisseries et desserts'],
-  prepTime: 20,
-  cookTime: 12,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 12, max: 12 },
   servings: 8,
   difficulty: 'Facile',
   ingredients: [
@@ -35,7 +35,7 @@ export const gateauMoelleuxAuChocolatFondant: Recipe = {
     'Après le service, démouler et garnir avec les blancs en neige.'
   ],
   tags: ['chocolat', 'fondant', 'gâteau'],
-  marinatingTime: 120,
+  marinatingTime: { min: 120, max: 120 },
   notes: 'Attention c\'est vraiment chaud, ça brûle. Peut aussi être fait dans de gros ramequins de 3/4 de tasse, ce qui donne environ 4 portions.',
   slug: 'gateau-moelleux-au-chocolat-fondant'
 };

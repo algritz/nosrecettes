@@ -5,8 +5,8 @@ export const grillCheeseBaconEtJalapeno: Recipe = {
   title: 'Grill cheese bacon et Jalapeño',
   description: 'Un sandwich grillé chaud et fondant avec fromage à la crème, jalapeño, cheddar et bacon, idéal pour un déjeuner ou un snack épicé.',
   categories: ['Sandwichs'],
-  prepTime: 15,
-  cookTime: 10,
+  prepTime: { min: 15, max: 15 },
+  cookTime: { min: 10, max: 10 },
   servings: 3,
   difficulty: 'Facile',
   ingredients: [

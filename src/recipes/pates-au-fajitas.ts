@@ -5,8 +5,8 @@ export const patesAuFajitas: Recipe = {
   title: 'Pâtes au fajitas',
   description: 'Une recette de pâtes au style fajitas, avec poulet, poivrons, oignon et épices, crémeuse grâce au fromage râpé.',
   categories: ['Plats principaux'],
-  prepTime: 20,
-  cookTime: 35,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 35, max: 35 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

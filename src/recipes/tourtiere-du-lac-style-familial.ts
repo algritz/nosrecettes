@@ -5,9 +5,9 @@ export const tourtiereDuLacStyleFamilial: Recipe = {
   title: 'Tourtière du lac (style familial)',
   description: 'Pâté en cocotte garni de viandes marinées et de pommes de terre, cuisson longue à four doux.',
   categories: ['Pâtés', 'Plats principaux'],
-  prepTime: 120,
-  cookTime: 480,
-  marinatingTime: 2880,
+  prepTime: { min: 120, max: 120 },
+  cookTime: { min: 480, max: 480 },
+  marinatingTime: { min: 2880, max: 2880 },
   servings: 15,
   difficulty: 'Facile',
   ingredients: [

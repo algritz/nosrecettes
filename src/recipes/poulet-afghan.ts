@@ -5,8 +5,8 @@ export const pouletAfghan: Recipe = {
   title: 'Poulet Afghan',
   description: 'Une recette de poulet mariné au yogourt et épices, grillé et servi avec des légumes frais et citron.',
   categories: ['Vollaille'],
-  prepTime: 25,
-  cookTime: 20,
+  prepTime: { min: 25, max: 25 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [

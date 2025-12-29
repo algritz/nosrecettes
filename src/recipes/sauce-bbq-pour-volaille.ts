@@ -5,8 +5,8 @@ export const sauceBbqPourVolaille: Recipe = {
   title: 'Sauce BBQ pour volaille',
   description: '',
   categories: ['Sauces'],
-  prepTime: 10,
-  cookTime: 120,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 120, max: 120 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [

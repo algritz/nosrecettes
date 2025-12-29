@@ -5,8 +5,8 @@ export const roulesAuNutella: Recipe = {
   title: 'Roulés au Nutella',
   description: 'Version maison d\'uncrustable, mais encore meilleur Roulés au Nutella',
   categories: ['Vollaille'],
-  prepTime: 10,
-  cookTime: 5,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 5, max: 5 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [

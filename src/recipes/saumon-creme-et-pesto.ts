@@ -5,8 +5,8 @@ export const saumonCremeEtPesto: Recipe = {
   title: 'Saumon crème et pesto',
   description: 'Bon repas de semaine',
   categories: ['Poisson', 'Plats principaux'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [

@@ -5,8 +5,8 @@ export const tarteAuxFraisesSansCuisson: Recipe = {
   title: 'Tarte aux fraises sans cuisson',
   description: 'Une tarte aux fraises sans cuisson avec une croûte Oreo, une garniture au chocolat et des fraises fraîches, à préparer rapidement et à réfrigérer avant de servir.',
   categories: ['Desserts'],
-  prepTime: 20,
-  cookTime: 0,
+  prepTime: { min: 20, max: 20 },
+  cookTime: { min: 0, max: 0 },
   servings: 11,
   difficulty: 'Facile',
   ingredients: [
@@ -41,6 +41,6 @@ export const tarteAuxFraisesSansCuisson: Recipe = {
     'Verser la garniture au chocolat sur la croûte Oreo, puis garnir de fraises fraîches. Réfrigérer pendant au moins 2 heures ou toute la nuit avant de servir.'
   ],
   tags: ['sans cuisson', 'chocolat', 'fraises'],
-  marinatingTime: 120,
+  marinatingTime: { min: 120, max: 120 },
   slug: 'tarte-aux-fraises-sans-cuisson'
 };

@@ -5,8 +5,8 @@ export const sloppyJoeALindienne: Recipe = {
   title: 'Sloppy Joe à l\'indienne',
   description: 'Un plat épicé de viande de dindon hachée servi dans des mini-pains naans, accompagné d\'une sauce au yogourt et aux herbes.',
   categories: ['Plats principaux'],
-  prepTime: 10,
-  cookTime: 20,
+  prepTime: { min: 10, max: 10 },
+  cookTime: { min: 20, max: 20 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
