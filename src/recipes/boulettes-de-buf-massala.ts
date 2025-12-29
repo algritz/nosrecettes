@@ -1,11 +1,10 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const boulettesDeBufMassala: Recipe = {
   id: 'boulettes-de-b-uf-massala',
   title: 'Boulettes de bœuf massala',
-  description:
-    'Une recette de boulettes de bœuf parfumées au garam massala, servies avec une sauce crémeuse à la tomate et aux épices.',
-  categories: ['Plats principaux', 'Végétarien'],
+  description: 'Une recette de boulettes de bœuf parfumées au garam massala, servies avec une sauce crémeuse à la tomate et aux épices.',
+  categories: ['Plats principaux', 'Boeuf'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 55, max: 55 },
   servings: 3,
@@ -27,7 +26,7 @@ export const boulettesDeBufMassala: Recipe = {
     '1 cm de racine de gingembre fraîche pelée et râpée',
     '1 cuillerée à café de cumin',
     '1 cuillerée à café de paprika',
-    'coriandre fraîche ciselée',
+    'coriandre fraîche ciselée'
   ],
   instructions: [
     'Mélanger l’ail et l’oignon ensemble.',
@@ -38,20 +37,17 @@ export const boulettesDeBufMassala: Recipe = {
     'Ajouter le cumin, le paprika, le garam massala et le gingembre. Saler et poivrer.',
     'Verser le coulis de tomates et la crème. Laisser cuire à feu doux pendant 20 minutes.',
     'Ajouter les boulettes de bœuf et poursuivre la cuisson pendant 10 minutes.',
-    'Juste avant de servir, parsemer de coriandre ciselée.',
+    'Juste avant de servir, parsemer de coriandre ciselée.'
   ],
   tags: ['épices', 'curry', 'sauce crémeuse'],
   images: [
     {
-      small:
-        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes-de-b-uf-massala',
-      medium:
-        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes-de-b-uf-massala',
-      large:
-        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes-de-b-uf-massala',
-    },
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes-de-b-uf-massala',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes-de-b-uf-massala',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes-de-b-uf-massala'
+    }
   ],
   accompaniment: 'riz basmati et pains naan',
   source: 'David Cloutier',
-  slug: 'boulettes-de-buf-massala',
-}
+  slug: 'boulettes-de-buf-massala'
+};
