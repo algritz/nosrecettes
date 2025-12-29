@@ -1,11 +1,10 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const boulettesDePorcEtSauceRoseeAuFromage: Recipe = {
   id: 'boulettes-de-porc-et-sauce-rosee-au-fromage',
   title: 'Boulettes de porc et sauce rosée au fromage',
-  description:
-    "Une recette de boulettes de porc savoureuses accompagnées d'une sauce rosée crémeuse et fromagée, cuites au four pour une texture parfaite.",
-  categories: ['Plats principaux', 'Vollaille'],
+  description: 'Une recette de boulettes de porc savoureuses accompagnées d\'une sauce rosée crémeuse et fromagée, cuites au four pour une texture parfaite.',
+  categories: ['Plats principaux', 'Porc'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 40, max: 40 },
   servings: 4,
@@ -29,7 +28,7 @@ export const boulettesDePorcEtSauceRoseeAuFromage: Recipe = {
     '1 c. à soupe de basilic frais haché',
     '¼ tasse de crème à cuisson 35 %',
     'Mozzarella râpé',
-    'Basilic frais',
+    'Basilic frais'
   ],
   instructions: [
     'Dans un grand bol, mélanger ensemble tous les ingrédients pour les boulettes, à l’exception de l’huile d’olive. Former des boulettes.',
@@ -41,8 +40,9 @@ export const boulettesDePorcEtSauceRoseeAuFromage: Recipe = {
     'Dans un plat ou une poêle allant au four, transférer la sauce rosée. Répartir les boulettes dans la sauce et mélanger.',
     'Recouvrir de fromage mozzarella râpé.',
     'Cuire au four pendant 20 minutes.',
-    'Garnir de basilic frais et servir.',
+    'Garnir de basilic frais et servir.'
   ],
   tags: ['porc', 'sauce rosée', 'fromage'],
-  slug: 'boulettes-de-porc-et-sauce-rosee-au-fromage',
-}
+  source: 'David Cloutier',
+  slug: 'boulettes-de-porc-et-sauce-rosee-au-fromage'
+};
