@@ -1,5 +1,5 @@
 Contact: https://github.com/algritz/nosrecettes/security/advisories/new
-Expires: 2026-12-29T22:15:29.532Z
+Expires: 2026-12-29T23:20:34.790Z
 Acknowledgments: https://github.com/algritz/nosrecettes/security/advisories
 Preferred-Languages: fr, en
 Canonical: https://nosrecettes.ca/.well-known/security.txt
