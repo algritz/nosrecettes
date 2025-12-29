@@ -4,9 +4,10 @@ export const tzatziki: Recipe = {
   id: 'tzatziki',
   title: 'Tzatziki',
   description: 'Une recette de tzatziki rafraîchissante et simple à base de concombre, yaourt, menthe et citron, parfaite pour accompagner vos plats méditerranéens.',
-  categories: ['Végétarien', 'Sauces', 'Entrées'],
+  categories: ['Végétarien', 'Sauces'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 0, max: 0 },
+  marinatingTime: { min: 5, max: 5 },
   servings: 1,
   difficulty: 'Facile',
   ingredients: [
@@ -27,6 +28,6 @@ export const tzatziki: Recipe = {
     'Les restes de tzatziki se conservent bien, au frais, pendant environ 4 jours.'
   ],
   tags: ['rafraîchissant', 'méditerranéen', 'simple'],
-  marinatingTime: { min: 5, max: 5 },
+  source: 'David Cloutier',
   slug: 'tzatziki'
 };
