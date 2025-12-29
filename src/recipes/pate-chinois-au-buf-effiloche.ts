@@ -1,10 +1,10 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
-export const pateChinoisAuBUfEffiloche: Recipe = {
+export const pateChinoisAuBufEffiloche: Recipe = {
   id: 'pate-chinois-au-b-uf-effiloche',
   title: 'Pâté chinois au bœuf effiloché',
   description: '',
-  categories: ['Plats principaux', 'Végétarien'],
+  categories: ['Plats principaux', 'Boeuf'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 510, max: 510 },
   servings: 8,
@@ -21,16 +21,17 @@ export const pateChinoisAuBUfEffiloche: Recipe = {
     '2 tasses maïs en grains congelé',
     '2 c. à soupe beurre',
     '4 tasses de patates pilées maison',
-    'Sel et poivre au goût',
+    'Sel et poivre au goût'
   ],
   instructions: [
     'Préchauffez le four, la grille au centre à 200 °F.',
-    "Dans un plat allant au four, déposez la pièce de viande, ajoutez l’oignon, l’ail, le vin, le bouillon, le sirop, la fumée liquide, le piment, couvrez et laissez cuire au four 8 heures ou jusqu'à une température interne de 205°F.",
+    'Dans un plat allant au four, déposez la pièce de viande, ajoutez l’oignon, l’ail, le vin, le bouillon, le sirop, la fumée liquide, le piment, couvrez et laissez cuire au four 8 heures ou jusqu\'à une température interne de 205°F.',
     'Sur le plan de travail, effilochez la viande encore tiède.',
     'Dans une poêle chaude, faites revenir le maïs, 2 à 3 minutes. Vérifiez l’assaisonnement.',
     'Dans un plat à gratin, déposez une couche de viande effilochée, une couche de maïs, couvrez de purée et laissez cuire au four, 20 à 30 minutes.',
-    'Servez, accompagné de ketchup',
+    'Servez, accompagné de ketchup'
   ],
   tags: ['bœuf effiloché', 'effiloché', 'casserole'],
-  slug: 'pate-chinois-au-b-uf-effiloche',
-}
+  source: 'David Cloutier',
+  slug: 'pate-chinois-au-buf-effiloche'
+};
