@@ -4,6 +4,7 @@ import {
   getAllCategoriesFromRecipes,
   recipeMatchesCategories,
 } from '@/utils/recipeUtils'
+import { normalizeForSearch } from '@/utils/textUtils'
 
 interface UseInfiniteRecipesProps {
   recipes: Recipe[]
@@ -56,18 +57,17 @@ export const useInfiniteRecipes = ({
   const filteredRecipes = useMemo(
     () =>
       recipes.filter((recipe) => {
+        // Normalize search term once
+        const normalizedSearchTerm = normalizeForSearch(searchTerm)
+
         const matchesSearch =
           searchTerm === '' ||
-          recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          recipe.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          getIngredientsText(recipe.ingredients)
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          getInstructionsText(recipe.instructions)
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
+          normalizeForSearch(recipe.title).includes(normalizedSearchTerm) ||
+          normalizeForSearch(recipe.description).includes(normalizedSearchTerm) ||
+          normalizeForSearch(getIngredientsText(recipe.ingredients)).includes(normalizedSearchTerm) ||
+          normalizeForSearch(getInstructionsText(recipe.instructions)).includes(normalizedSearchTerm) ||
           recipe.tags.some((tag) =>
-            tag.toLowerCase().includes(searchTerm.toLowerCase()),
+            normalizeForSearch(tag).includes(normalizedSearchTerm),
           )
 
         const matchesCategory = recipeMatchesCategories(
