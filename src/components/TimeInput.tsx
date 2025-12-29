@@ -66,7 +66,6 @@ export const TimeInput = ({ value, onChange, placeholder, className, allowDays =
           type="number"
           min="0"
           max="59"
-          step="5"
           value={minutes || ''}
           onChange={(e) => handleMinutesChange(e.target.value)}
           placeholder="0"
