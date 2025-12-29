@@ -1,13 +1,13 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
-export const tartareDeBUfDInspirationIndienne: Recipe = {
+export const tartareDeBufDinspirationIndienne: Recipe = {
   id: 'tartare-de-b-uf-d-inspiration-indienne',
-  title: "Tartare de bœuf d'inspiration indienne",
-  description:
-    'Un tartare de bœuf aux saveurs indiennes, avec des tomates séchées, du cari, de la coriandre, et des épices, servi en portions pour deux personnes.',
-  categories: ['Plats principaux', 'Végétarien'],
+  title: 'Tartare de bœuf d\'inspiration indienne',
+  description: 'Un tartare de bœuf aux saveurs indiennes, avec des tomates séchées, du cari, de la coriandre, et des épices, servi en portions pour deux personnes.',
+  categories: ['Plats principaux', 'Boeuf', 'Tartares'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 0, max: 0 },
+  marinatingTime: { min: 15, max: 15 },
   servings: 2,
   difficulty: 'Facile',
   ingredients: [
@@ -21,9 +21,9 @@ export const tartareDeBUfDInspirationIndienne: Recipe = {
     'Des câpres',
     '2 feuilles de laitue iceberg hachée très finement',
     'Une racine de gingembre',
-    "Huile d'olive",
+    'Huile d\'olive',
     'Sambal oelek (facultatif)',
-    'Pistache ou arachide (facultatif)',
+    'Pistache ou arachide (facultatif)'
   ],
   instructions: [
     'Coupez la tomate en quatre et enlevez la partie des graines puis hachez-la en petits morceaux.',
@@ -31,14 +31,14 @@ export const tartareDeBUfDInspirationIndienne: Recipe = {
     'Ciselez l’échalote et la coriandre.',
     'Hachez finement les câpres et le cornichon.',
     'Hachez finement les feuilles de laitue.',
-    "Dans un saladier, mélangez l'huile d'olive et le cari pour que celui-ci se dissolve, puis ajoutez le reste de la préparation.",
+    'Dans un saladier, mélangez l\'huile d\'olive et le cari pour que celui-ci se dissolve, puis ajoutez le reste de la préparation.',
     'Ajoutez la viande.',
     'Râpez le gingembre au goût.',
     'Brassez le tout.',
     'Ajoutez du Sambal oelek si pas assez piquant à votre goût.',
-    'Si vous souhaitez plus de texture, ajoutez des arachides ou des pistaches grossièrement hachées.',
+    'Si vous souhaitez plus de texture, ajoutez des arachides ou des pistaches grossièrement hachées.'
   ],
   tags: ['épicé', 'indien', 'tartare'],
-  marinatingTime: { min: 15, max: 15 },
-  slug: 'tartare-de-b-uf-d-inspiration-indienne',
-}
+  source: 'David Cloutier',
+  slug: 'tartare-de-buf-dinspiration-indienne'
+};
