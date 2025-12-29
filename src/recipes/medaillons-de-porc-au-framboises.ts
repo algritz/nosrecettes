@@ -1,11 +1,10 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const medaillonsDePorcAuFramboises: Recipe = {
   id: 'medaillons-de-porc-au-framboises',
   title: 'Médaillons de porc au framboises',
-  description:
-    "Une recette savoureuse de médaillons de porc accompagnés d'une sauce aux framboises et au vinaigre, cuits au four et à la poêle.",
-  categories: ['Vollaille', 'Plats principaux'],
+  description: 'Une recette savoureuse de médaillons de porc accompagnés d\'une sauce aux framboises et au vinaigre, cuits au four et à la poêle.',
+  categories: ['Plats principaux', 'Porc'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 20, max: 20 },
   servings: 4,
@@ -21,7 +20,7 @@ export const medaillonsDePorcAuFramboises: Recipe = {
     '5 ml (1 c. à thé) de vinaigre de framboise',
     '125 ml (1/2 tasse) de bouillon de poulet',
     '250 ml (1 tasse) de framboises fraîches',
-    'Sel et poivre',
+    'Sel et poivre'
   ],
   instructions: [
     'Placer la grille au centre du four. Préchauffer le four à 180 °C (350 °F).',
@@ -31,8 +30,9 @@ export const medaillonsDePorcAuFramboises: Recipe = {
     'Déglacer avec le vinaigre. Ajouter le bouillon et 125 ml (1/2 tasse) de framboises. Cuire de 1 à 2 minutes.',
     'Remettre les médaillons dans la poêle. Cuire au four pendant environ 10 minutes.',
     'Ajouter le reste des framboises. Rectifier l’assaisonnement.',
-    'Au service, napper les médaillons de sauce.',
+    'Au service, napper les médaillons de sauce.'
   ],
   tags: ['framboises', 'sauce', 'cuisson au four'],
-  slug: 'medaillons-de-porc-au-framboises',
-}
+  source: 'David Cloutier',
+  slug: 'medaillons-de-porc-au-framboises'
+};
