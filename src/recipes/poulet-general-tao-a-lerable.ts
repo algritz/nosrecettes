@@ -1,11 +1,10 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
-export const pouletGeneralTaoALErable: Recipe = {
+export const pouletGeneralTaoALerable: Recipe = {
   id: 'poulet-general-tao-a-l-erable',
-  title: "Poulet Général Tao à l'érable",
-  description:
-    "Recette de poulet Général Tao à l'érable, croustillant et sucré-salé, prêt en 30 minutes avec un accompagnement de riz.",
-  categories: ['Plats principaux', 'Végétarien'],
+  title: 'Poulet Général Tao à l\'érable',
+  description: 'Recette de poulet Général Tao à l\'érable, croustillant et sucré-salé, prêt en 30 minutes avec un accompagnement de riz.',
+  categories: ['Plats principaux', 'Vollaille'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 30, max: 30 },
   servings: 4,
@@ -25,7 +24,7 @@ export const pouletGeneralTaoALErable: Recipe = {
     '1/2 tasse de sirop d’érable',
     '2 cuillères à soupe de fécule de maïs',
     '1/4 tasse de sauce soya',
-    '1/2 tasse de sauce chili',
+    '1/2 tasse de sauce chili'
   ],
   instructions: [
     'Enrober les cubes de poulet de fécule de maïs.',
@@ -39,8 +38,9 @@ export const pouletGeneralTaoALErable: Recipe = {
     'Dans un bol, dissoudre la fécule de maïs dans la sauce soya et la sauce chili.',
     'Verser le mélange dans la casserole.',
     'Cuire 2 minutes supplémentaires ou jusqu’à ce que la sauce ait épaissi.',
-    'Ajouter le poulet dans la sauce et servir avec un riz.',
+    'Ajouter le poulet dans la sauce et servir avec un riz.'
   ],
   tags: ['érable', 'friture', 'sauce sucrée-salée'],
-  slug: 'poulet-general-tao-a-l-erable',
-}
+  source: 'David Cloutier',
+  slug: 'poulet-general-tao-a-lerable'
+};
