@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const croissantAuChocolatEtFromageALaCremeDessert: Recipe = {
   id: 'croissant-au-chocolat-et-fromage-a-la-creme-dessert',
   title: 'Croissant au chocolat et fromage à la crème (déssert)',
-  description: 'Une tarte aux croissants, chocolat et fromage à la crème, cuite au four et servie avec une boule de crème glacée.',
+  description:
+    'Une tarte aux croissants, chocolat et fromage à la crème, cuite au four et servie avec une boule de crème glacée.',
   categories: ['Desserts'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 50, max: 50 },
@@ -16,23 +17,23 @@ export const croissantAuChocolatEtFromageALaCremeDessert: Recipe = {
     '1 tasse de cassonade',
     '2 œufs',
     '1 cuillère à café de vanille',
-    '1 ½ tasse de lait'
+    '1 ½ tasse de lait',
   ],
   instructions: [
     'Préchauffer le four à 450 °F.',
     'Ouvrez les 2 emballages de croissants et hachez-les en boules de 2 cm.',
-    'Vaporiser un moule moyen-grand d\'huile végétale et placer les boules dans le moule.',
+    "Vaporiser un moule moyen-grand d'huile végétale et placer les boules dans le moule.",
     'Saupoudrer de pépites de chocolat uniformément sur la pâte.',
-    'Dans un grand bol, battre le fromage à la crème jusqu\'à consistance légère et crémeuse.',
-    'Ajouter la cassonade, les œufs et la vanille et battre jusqu\'à ce que le mélange soit homogène.',
-    'Ajouter lentement le lait afin d\'obtenir une consistance plus liquide, sans grumeaux.',
+    "Dans un grand bol, battre le fromage à la crème jusqu'à consistance légère et crémeuse.",
+    "Ajouter la cassonade, les œufs et la vanille et battre jusqu'à ce que le mélange soit homogène.",
+    "Ajouter lentement le lait afin d'obtenir une consistance plus liquide, sans grumeaux.",
     'Verser uniformément le mélange de fromage à la crème sur la pâte.',
     'Laisser reposer pendant 20 minutes (optionnel).',
-    'Cuire au four pendant 45-50 minutes, ou jusqu\'à ce que le centre soit bien cuit.',
-    'Laisser refroidir pendant 10 minutes.'
+    "Cuire au four pendant 45-50 minutes, ou jusqu'à ce que le centre soit bien cuit.",
+    'Laisser refroidir pendant 10 minutes.',
   ],
   tags: ['chocolat', 'fromage à la crème', 'cuisson au four'],
   accompaniment: 'Servir avec une boule de crème glacée',
   marinatingTime: { min: 20, max: 20 },
-  slug: 'croissant-au-chocolat-et-fromage-a-la-creme-dessert'
-};
+  slug: 'croissant-au-chocolat-et-fromage-a-la-creme-dessert',
+}

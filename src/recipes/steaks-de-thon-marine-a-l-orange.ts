@@ -1,8 +1,8 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const steaksDeThonMarineALOrange: Recipe = {
   id: 'steaks-de-thon-marine-a-l-orange',
-  title: 'Steaks de thon mariné à l\'orange',
+  title: "Steaks de thon mariné à l'orange",
   description: '',
   categories: ['Poisson', 'Barbecue'],
   prepTime: { min: 15, max: 15 },
@@ -18,7 +18,7 @@ export const steaksDeThonMarineALOrange: Recipe = {
     '1 gousse d’ail émincée',
     '1/2 c. à thé d’origan séché',
     '1/2 c. à thé de poivre noir moulu',
-    '4 steaks de thon'
+    '4 steaks de thon',
   ],
   instructions: [
     'Dans un grand plat en verre ou en métal, combiner le jus d’orange, la sauce soya, l’huile d’olive, le persil, l’ail, l’origan et le poivre; mélanger.',
@@ -27,9 +27,9 @@ export const steaksDeThonMarineALOrange: Recipe = {
     'Préchauffer le barbecue à feu vif.',
     'Huiler légèrement la grille.',
     'Cuire les steaks de thon 5-6 minutes, les retourner, badigeonner avec la marinade et cuire de l’autre côté encore 5 minutes.',
-    'Jeter tout reste de marinade.'
+    'Jeter tout reste de marinade.',
   ],
   tags: ['barbecue', 'thon', 'marinade'],
   marinatingTime: { min: 30, max: 30 },
-  slug: 'steaks-de-thon-marine-a-l-orange'
-};
+  slug: 'steaks-de-thon-marine-a-l-orange',
+}

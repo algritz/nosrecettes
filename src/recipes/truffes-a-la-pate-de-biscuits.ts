@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const truffesALaPateDeBiscuits: Recipe = {
   id: 'truffes-a-la-pate-de-biscuits',
   title: 'Truffes à la pâte de biscuits',
-  description: 'Une recette de truffes faites avec une pâte de biscuits, enrobées de chocolat.',
+  description:
+    'Une recette de truffes faites avec une pâte de biscuits, enrobées de chocolat.',
   categories: ['Pâtisseries et desserts'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 15, max: 15 },
@@ -16,7 +17,7 @@ export const truffesALaPateDeBiscuits: Recipe = {
     '2 tasses de farine blanche',
     '1 boîte de lait Eagle Brand',
     '1/2 tasse de pépites de chocolat semi-sucré',
-    '3 tasses de chocolat mi-sucré'
+    '3 tasses de chocolat mi-sucré',
   ],
   instructions: [
     'Dans un bol, battre le beurre et la cassonade jusqu’à obtenir une texture légère.',
@@ -26,17 +27,20 @@ export const truffesALaPateDeBiscuits: Recipe = {
     'Prenez la pâte à biscuit dans votre main et faites des petites boules d’environ 1 pouce de diamètre.',
     'Déposez sur un papier parchemin sur une plaque à biscuits.',
     'Remettre un autre 15 à 20 minutes au réfrigérateur.',
-    'Dans un bol, faites fondre le chocolat pour l\'enrobage.',
-    'Trempez chacune des boules de pâte dans le chocolat et mettez-les sur le papier parchemin.'
+    "Dans un bol, faites fondre le chocolat pour l'enrobage.",
+    'Trempez chacune des boules de pâte dans le chocolat et mettez-les sur le papier parchemin.',
   ],
   tags: ['chocolat', 'réfrigération', 'boules'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/truffes-a-la-pate-de-biscuits',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/truffes-a-la-pate-de-biscuits',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/truffes-a-la-pate-de-biscuits'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/truffes-a-la-pate-de-biscuits',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/truffes-a-la-pate-de-biscuits',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/truffes-a-la-pate-de-biscuits',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'truffes-a-la-pate-de-biscuits'
-};
+  slug: 'truffes-a-la-pate-de-biscuits',
+}

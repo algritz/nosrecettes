@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const gateauChocoCarotte: Recipe = {
   id: 'gateau-choco-carotte',
   title: 'gâteau choco-carotte',
-  description: 'Un gâteau moelleux à la carotte avec un glaçage au chocolat noir et beurre.',
+  description:
+    'Un gâteau moelleux à la carotte avec un glaçage au chocolat noir et beurre.',
   categories: ['Pâtisseries et desserts'],
   prepTime: { min: 35, max: 35 },
   cookTime: { min: 43, max: 43 },
@@ -13,32 +14,29 @@ export const gateauChocoCarotte: Recipe = {
     {
       title: 'Mélange 1',
       items: [
-      '2 oeufs',
-      '3/4 tasse de cassonade',
-      '1/3 tasse d\'huile',
-      '1/2 tasse de chocolat fondu (pépittes mi-sucrées)',
-      '2 tasses de carottes râpées',
-      '1/4 tasse de lait'
-      ]
+        '2 oeufs',
+        '3/4 tasse de cassonade',
+        "1/3 tasse d'huile",
+        '1/2 tasse de chocolat fondu (pépittes mi-sucrées)',
+        '2 tasses de carottes râpées',
+        '1/4 tasse de lait',
+      ],
     },
     {
       title: 'Mélange 2',
       items: [
-      '1 1/2 tasses de farine',
-      '1 c à thé de poudre à pâte',
-      '1 c à thé de bicarbonate de soude',
-      '1/2 c à thé de canelle',
-      '1/2 c à thé de muscade',
-      '1/2 tasse de noix ou de raisins (facultatif)'
-      ]
+        '1 1/2 tasses de farine',
+        '1 c à thé de poudre à pâte',
+        '1 c à thé de bicarbonate de soude',
+        '1/2 c à thé de canelle',
+        '1/2 c à thé de muscade',
+        '1/2 tasse de noix ou de raisins (facultatif)',
+      ],
     },
     {
       title: 'Glaçage',
-      items: [
-      '100 g de chocolat noir',
-      '30 g de beurre'
-      ]
-    }
+      items: ['100 g de chocolat noir', '30 g de beurre'],
+    },
   ],
   instructions: [
     'Bien mélanger les ingrédients du mélange 1',
@@ -48,8 +46,8 @@ export const gateauChocoCarotte: Recipe = {
     'Cuire dans un four préchauffé à 350° pendant environ 40-45 minutes',
     'Refroidir',
     'On fait fondre le chocolat avec le beurre et on recouvre le gâteau de ce glaçage',
-    'On laisse durcir au froid'
+    'On laisse durcir au froid',
   ],
   tags: ['chocolat', 'carotte', 'gâteau'],
-  slug: 'gateau-choco-carotte'
-};
+  slug: 'gateau-choco-carotte',
+}

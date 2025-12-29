@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tatareDeThonPommeVerteEtMousseAuxAvocats: Recipe = {
   id: 'tatare-de-thon-pomme-verte-et-mousse-aux-avocats',
   title: 'Tatare de thon, pomme verte et mousse aux avocats',
-  description: 'Un tartare de thon frais accompagné d\'une mousse onctueuse à l\'avocat et de la fraîcheur de la pomme verte, idéal pour une entrée élégante.',
+  description:
+    "Un tartare de thon frais accompagné d'une mousse onctueuse à l'avocat et de la fraîcheur de la pomme verte, idéal pour une entrée élégante.",
   categories: ['Entrées'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 0, max: 0 },
@@ -19,8 +20,8 @@ export const tatareDeThonPommeVerteEtMousseAuxAvocats: Recipe = {
     '2 avocats',
     '1 gousse d’ail',
     '4 gouttes de Sriracha',
-    'huile d\'olive',
-    'Sel et poivre du moulin'
+    "huile d'olive",
+    'Sel et poivre du moulin',
   ],
   instructions: [
     'Zestez le citron vert et récupérez son jus.',
@@ -33,8 +34,8 @@ export const tatareDeThonPommeVerteEtMousseAuxAvocats: Recipe = {
     'Coupez le thon en très petits dés.',
     'Ajoutez un filet d’huile d’olive, du sel et du poivre et réservez.',
     'Déposez le tartare dans un emporte-pièce, disposez dessus un peu de mousse d’avocat.',
-    'Servez avec des croûtons.'
+    'Servez avec des croûtons.',
   ],
   tags: ['avocat', 'thon', 'entrée'],
-  slug: 'tatare-de-thon-pomme-verte-et-mousse-aux-avocats'
-};
+  slug: 'tatare-de-thon-pomme-verte-et-mousse-aux-avocats',
+}

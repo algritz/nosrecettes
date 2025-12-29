@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const ailesDePouletALaMangueEpicee: Recipe = {
   id: 'ailes-de-poulet-a-la-mangue-epicee',
@@ -12,31 +12,31 @@ export const ailesDePouletALaMangueEpicee: Recipe = {
   ingredients: [
     '½ tasse de farine (60 g)',
     '½ cuillère à café de poudre de chili',
-    '½ cuillère à café d\'ail en poudre',
+    "½ cuillère à café d'ail en poudre",
     '½ cuillère à café de poivre',
     '½ cuillère à café de sel',
-    '1 lb d\'aile de poulet (455 g)',
+    "1 lb d'aile de poulet (455 g)",
     '1 mangue',
     '3 poivrons habanero, facultatifs, épépinés ou non',
-    '2 gousses d\'ail',
+    "2 gousses d'ail",
     '½ cuillère à café de paprika',
     '¼ tasse de vinaigre de cidre (60 ml)',
     '2 cuillères à soupe de jus de citron vert',
-    '¼ tasse de miel (85 g)'
+    '¼ tasse de miel (85 g)',
   ],
   instructions: [
     'Préchauffer le four à 425 °F.',
-    'Dans un petit bol, mélanger la farine, la poudre de chili, la poudre d\'ail, le poivre et le sel.',
+    "Dans un petit bol, mélanger la farine, la poudre de chili, la poudre d'ail, le poivre et le sel.",
     'Sécher les ailes de poulet avec une essuie-tout.',
     'Mettre les ailes de poulet dans le mélange de farine et les placer sur une plaque à pâtisserie.',
     'Cuire à 425 °F pendant 45 minutes, en retournant à mi-cuisson pour une cuisson uniforme.',
-    'Dans un robot culinaire ou un mélangeur, mélanger la mangue, les poivrons habanero, l\'ail, le paprika, le vinaigre de cidre et le jus de citron vert.',
-    'Mélanger jusqu\'à homogénéité. Le mélange doit être d\'une couleur orange vif.',
+    "Dans un robot culinaire ou un mélangeur, mélanger la mangue, les poivrons habanero, l'ail, le paprika, le vinaigre de cidre et le jus de citron vert.",
+    "Mélanger jusqu'à homogénéité. Le mélange doit être d'une couleur orange vif.",
     'Dans une casserole, mélanger le miel avec le mélange de mangue habanero à feu moyen.',
-    'Remuer de temps en temps pour éviter de coller et laisser mijoter pendant 5 à 10 minutes ou jusqu\'à ce que la sauce atteigne une consistance préférée.',
+    "Remuer de temps en temps pour éviter de coller et laisser mijoter pendant 5 à 10 minutes ou jusqu'à ce que la sauce atteigne une consistance préférée.",
     'Enduire complètement les ailes cuites dans la sauce, puis les placer sur une plaque à pâtisserie tapissée de papier sulfurisé.',
-    'Cuire au four à 450 °F pendant 8-10 minutes ou jusqu\'à ce que la sauce ait légèrement caramélisé.'
+    "Cuire au four à 450 °F pendant 8-10 minutes ou jusqu'à ce que la sauce ait légèrement caramélisé.",
   ],
   tags: ['épicé', 'mangue', 'grill'],
-  slug: 'ailes-de-poulet-a-la-mangue-epicee'
-};
+  slug: 'ailes-de-poulet-a-la-mangue-epicee',
+}

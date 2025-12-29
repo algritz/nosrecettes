@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const brochettesDeSteak: Recipe = {
   id: 'brochettes-de-steak',
   title: 'Brochettes de steak',
-  description: 'Brochettes de steak marinées et grillées, servies avec une sauce satay aux arachides.',
+  description:
+    'Brochettes de steak marinées et grillées, servies avec une sauce satay aux arachides.',
   categories: ['Viande', 'Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 5, max: 5 },
@@ -17,7 +18,7 @@ export const brochettesDeSteak: Recipe = {
     '2 gousses d’ail, hachées',
     '2 c. à soupe de cassonade',
     '1 c. à soupe Sriracha',
-    '1 c. à thé de gingembre frais râpé'
+    '1 c. à thé de gingembre frais râpé',
   ],
   instructions: [
     'Si vous utilisez des brochettes en bambou, les tremper dans l’eau pendant que vous faites mariner le boeuf.',
@@ -27,8 +28,8 @@ export const brochettesDeSteak: Recipe = {
     'Frotter le sac pour disperser la marinade uniformément.',
     'Réfrigérer pendant 2 à 4 heures.',
     'Embrocher la viande et faire griller à feu vif (pour les moyennes, griller à 320°C / 600°F pendant deux minutes de chaque côté).',
-    'Servir avec une sauce au arachide style sauce satay.'
+    'Servir avec une sauce au arachide style sauce satay.',
   ],
   tags: ['grill', 'marinade sèche', 'satay'],
-  slug: 'brochettes-de-steak'
-};
+  slug: 'brochettes-de-steak',
+}

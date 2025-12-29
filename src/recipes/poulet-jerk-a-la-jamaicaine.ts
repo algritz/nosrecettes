@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pouletJerkALaJamaicaine: Recipe = {
   id: 'poulet-jerk-a-la-jamaicaine',
@@ -14,14 +14,14 @@ export const pouletJerkALaJamaicaine: Recipe = {
     '30 ml (2 c. à table) de Jerk Jamaïcain',
     '15 ml (1 c. à table) de rhum brun',
     'Le jus de 1 lime',
-    '15 ml (1 c. à table) d’huile végétale'
+    '15 ml (1 c. à table) d’huile végétale',
   ],
   instructions: [
     'Frotter les poitrines de poulet du mélange d’Assaisonnement Jerk Jamaïcain, de rhum, de jus de lime et d’huile végétale.',
     'Laisser mariner au frigo.',
-    'Cuire sur le BBQ.'
+    'Cuire sur le BBQ.',
   ],
   tags: ['jamaïcain', 'marinade sèche', 'grill'],
   marinatingTime: { min: 240, max: 240 },
-  slug: 'poulet-jerk-a-la-jamaicaine'
-};
+  slug: 'poulet-jerk-a-la-jamaicaine',
+}

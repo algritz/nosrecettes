@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const marinadePourBoeuf: Recipe = {
   id: 'marinade-pour-boeuf',
@@ -20,15 +20,15 @@ export const marinadePourBoeuf: Recipe = {
     '1/2 cuillère à thé de thym',
     '1/2 cuillère à thé d’origan',
     'Sel et poivre',
-    '2 feuilles de laurier'
+    '2 feuilles de laurier',
   ],
   instructions: [
     'Coupez votre bœuf en cube.',
     'Mélanger tous les ingrédients ensemble dans un bol.',
     'Combinez le bœuf et la marinade dans un grand sac ziplock.',
-    'Réfrigérer pendant 6 à 8 heures ou encore mieux, toute la nuit.'
+    'Réfrigérer pendant 6 à 8 heures ou encore mieux, toute la nuit.',
   ],
   tags: ['marinade', 'bœuf', 'réfrigération'],
   marinatingTime: { min: 360, max: 360 },
-  slug: 'marinade-pour-boeuf'
-};
+  slug: 'marinade-pour-boeuf',
+}

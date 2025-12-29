@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeDeBetteravesEtFeta: Recipe = {
   id: 'salade-de-betteraves-et-feta',
@@ -17,7 +17,7 @@ export const saladeDeBetteravesEtFeta: Recipe = {
     '1 pincée de poivre noir du moulin',
     '1 pincée de sucre',
     '1/4 tasse de fromage féta émietté',
-    '1 cuillère à soupe de menthe fraîche hachée'
+    '1 cuillère à soupe de menthe fraîche hachée',
   ],
   instructions: [
     'Dans une casserole d’eau bouillante salée, cuire les betteraves à couvert pendant environ 20 minutes ou jusqu’à ce qu’elles soient tendres.',
@@ -25,16 +25,19 @@ export const saladeDeBetteravesEtFeta: Recipe = {
     'À l’aide d’un couteau, enlever la peau. Couper en deux ou en quartiers.',
     'Entre-temps, dans un bol, mélanger l’huile, le vinaigre de vin, le sel, le poivre et le sucre.',
     'Disposer les betteraves sur une assiette de service et les arroser de la vinaigrette.',
-    'Parsemer du fromage feta et de la menthe.'
+    'Parsemer du fromage feta et de la menthe.',
   ],
   tags: ['salade', 'betteraves', 'feta'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-de-betteraves-et-feta',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-de-betteraves-et-feta',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-de-betteraves-et-feta'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-de-betteraves-et-feta',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-de-betteraves-et-feta',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-de-betteraves-et-feta',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'salade-de-betteraves-et-feta'
-};
+  slug: 'salade-de-betteraves-et-feta',
+}

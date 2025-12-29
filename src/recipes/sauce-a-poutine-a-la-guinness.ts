@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const sauceAPoutineALaGuinness: Recipe = {
   id: 'sauce-a-poutine-a-la-guinness',
   title: 'Sauce à poutine à la Guinness',
-  description: 'Pour une poutine à saveur irlandaise Sauce à poutine à la Guinness',
+  description:
+    'Pour une poutine à saveur irlandaise Sauce à poutine à la Guinness',
   categories: ['Sauces', 'Plats principaux'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 15, max: 15 },
@@ -16,7 +17,7 @@ export const sauceAPoutineALaGuinness: Recipe = {
     '2 cuillères à thé de fécule de maïs',
     '1 tasse (250 ml) de bouillon de poulet',
     '1 tasse (250 ml) de bière Guinness',
-    'Sel et poivre au goût'
+    'Sel et poivre au goût',
   ],
   instructions: [
     'Dans un chaudron, faites fondre le beurre à feu moyen.',
@@ -27,16 +28,19 @@ export const sauceAPoutineALaGuinness: Recipe = {
     'Ajouter le mélange de bouillon et fécule de maïs.',
     'Porter à ébullition, puis réduire le feu et laisser mijoter jusqu’à ce que la sauce ait épaissi.',
     'Assaisonner de sel et de poivre.',
-    'Servir sur des frites maison et du fromage en crotte frais.'
+    'Servir sur des frites maison et du fromage en crotte frais.',
   ],
   tags: ['irish', 'sauce', 'mijoter'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sauce-a-poutine-a-la-guinness',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sauce-a-poutine-a-la-guinness',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sauce-a-poutine-a-la-guinness'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sauce-a-poutine-a-la-guinness',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sauce-a-poutine-a-la-guinness',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sauce-a-poutine-a-la-guinness',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'sauce-a-poutine-a-la-guinness'
-};
+  slug: 'sauce-a-poutine-a-la-guinness',
+}

@@ -5,6 +5,7 @@ A modern, responsive recipe website built with React, TypeScript, and Tailwind C
 ## 🌟 Features
 
 ### Recipe Management
+
 - **Beautiful Recipe Display**: Clean, card-based layout with responsive images
 - **Advanced Search & Filtering**: Search by recipe name, ingredients, tags, or categories
 - **Category Management**: Organize recipes with multiple categories per recipe
@@ -12,6 +13,7 @@ A modern, responsive recipe website built with React, TypeScript, and Tailwind C
 - **Recipe Details**: Comprehensive recipe pages with ingredients, instructions, timing, and notes
 
 ### Content Management
+
 - **Web-Based Recipe Editor**: Add and edit recipes through intuitive forms
 - **GitHub Integration**: All changes create pull requests for review and collaboration
 - **CSV Import**: Bulk import recipes from CSV files with intelligent parsing
@@ -19,6 +21,7 @@ A modern, responsive recipe website built with React, TypeScript, and Tailwind C
 - **Sectioned Content**: Organize ingredients and instructions into logical sections
 
 ### Image Management
+
 - **Advanced Image Editor**: Crop, rotate, zoom, and adjust images before upload
 - **Cloudinary Integration**: Automatic image hosting with responsive sizing (small, medium, large)
 - **Multiple Images**: Support for multiple images per recipe with gallery view
@@ -26,6 +29,7 @@ A modern, responsive recipe website built with React, TypeScript, and Tailwind C
 - **Image Optimization**: Automatic format conversion and quality optimization
 
 ### Technical Features
+
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile
 - **Static Hosting**: Deployable to GitHub Pages with automatic CI/CD
 - **Dynamic Index**: Automatic recipe discovery eliminates merge conflicts
@@ -52,7 +56,7 @@ Visit the live site: [https://algritz.github.io/nosrecettes](https://algritz.git
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Git
 - Cloudinary account (for image hosting)
@@ -61,17 +65,20 @@ Visit the live site: [https://algritz.github.io/nosrecettes](https://algritz.git
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/algritz/nosrecettes.git
    cd nosrecettes
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```
@@ -112,12 +119,13 @@ Visit the live site: [https://algritz.github.io/nosrecettes](https://algritz.git
 ### GitHub Action Setup (Required for automatic image cleanup)
 
 1. **Add Cloudinary URL to GitHub Secrets**
+
    ```bash
    # Go to your repository Settings → Secrets and variables → Actions
    # Add a new secret named CLOUDINARY_URL with the value:
    cloudinary://API_Key:API_Secret@Cloud_Name
    ```
-   
+
    You can find these values in your Cloudinary dashboard under "API Keys".
 
 2. **Enable GitHub Actions**
@@ -157,6 +165,7 @@ Visit the live site: [https://algritz.github.io/nosrecettes](https://algritz.git
 ## 🖼️ Image Management
 
 ### Automatic Features
+
 - **Image Editing**: Crop, zoom, rotate, and adjust aspect ratios before upload
 - **Responsive Images**: Automatically generates small (400px), medium (800px), and large (1200px) versions
 - **Cloudinary Hosting**: Images are hosted on Cloudinary CDN with automatic optimization
@@ -164,6 +173,7 @@ Visit the live site: [https://algritz.github.io/nosrecettes](https://algritz.git
 - **Automatic Cleanup**: Old images are automatically deleted when replaced via GitHub Actions
 
 ### Image Workflow
+
 1. **Upload**: Drag & drop or select images (supports PNG, JPG, WebP up to 10MB)
 2. **Edit**: Use the built-in editor to crop and adjust images
 3. **Process**: Images are uploaded to Cloudinary in multiple sizes
@@ -233,10 +243,13 @@ src/
 ## 🤖 GitHub Actions
 
 ### Deployment Action
+
 Automatically builds and deploys the site when changes are pushed to main.
 
 ### Cloudinary Cleanup Action
+
 Automatically cleans up old Cloudinary images when PRs are merged:
+
 - Extracts image IDs from PR descriptions
 - Deletes old images using Cloudinary CLI
 - Posts cleanup results as PR comments
@@ -245,23 +258,27 @@ Automatically cleans up old Cloudinary images when PRs are merged:
 ## 🔧 Advanced Features
 
 ### Recipe Categories
+
 - **Multiple Categories**: Each recipe can belong to multiple categories
 - **Dynamic Categories**: Add new categories through the web interface
 - **Category Management**: Dedicated page for adding/removing categories
 - **Backward Compatibility**: Supports both old single-category and new multi-category formats
 
 ### Sectioned Content
+
 - **Sectioned Ingredients**: Organize ingredients into logical groups (e.g., "For the sauce", "For the meat")
 - **Sectioned Instructions**: Break instructions into phases (e.g., "Preparation", "Cooking", "Assembly")
 - **Flexible Format**: Switch between simple lists and sectioned content as needed
 
 ### Search & Discovery
+
 - **Advanced Search**: Search across titles, descriptions, ingredients, and tags
 - **Category Filtering**: Filter by one or multiple categories
 - **Infinite Scroll**: Smooth loading of large recipe collections
 - **Performance Optimized**: Efficient filtering and pagination
 
 ### Content Import
+
 - **CSV Import**: Bulk import recipes from spreadsheets or other systems
 - **Intelligent Parsing**: Automatically extracts ingredients, instructions, timing, and metadata
 - **Preview & Edit**: Review imported recipes before adding to the collection

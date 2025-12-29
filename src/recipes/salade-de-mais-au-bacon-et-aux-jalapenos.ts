@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeDeMaisAuBaconEtAuxJalapenos: Recipe = {
   id: 'salade-de-mais-au-bacon-et-aux-jalapenos',
   title: 'Salade de maïs au bacon et aux jalapeños',
-  description: 'Une salade fraîche et piquante combinant maïs, bacon croustillant, jalapeños et une vinaigrette citronnée à la coriandre.',
+  description:
+    'Une salade fraîche et piquante combinant maïs, bacon croustillant, jalapeños et une vinaigrette citronnée à la coriandre.',
   categories: ['Salades'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 0, max: 0 },
@@ -17,14 +18,14 @@ export const saladeDeMaisAuBaconEtAuxJalapenos: Recipe = {
     '1/3 de tasse de mayonnaise',
     'Le jus de 2 lime',
     '1 cuillère à thé de poudre de chili',
-    '1 cuillère à thé de poudre d\'ail',
+    "1 cuillère à thé de poudre d'ail",
     'sel casher',
-    'Poivre noir fraîchement moulu'
+    'Poivre noir fraîchement moulu',
   ],
   instructions: [
     'Dans un grand bol, combiner tous les ingrédients.',
-    'Remuer jusqu\'à ce que les ingrédients soient complètement mélangés et enrobés de vinaigrette.'
+    "Remuer jusqu'à ce que les ingrédients soient complètement mélangés et enrobés de vinaigrette.",
   ],
   tags: ['piquant', 'maïs', 'bacon'],
-  slug: 'salade-de-mais-au-bacon-et-aux-jalapenos'
-};
+  slug: 'salade-de-mais-au-bacon-et-aux-jalapenos',
+}

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const salsaMexicaine: Recipe = {
   id: '1765124799336',
   title: 'Salsa mexicaine',
-  description: 'Grande salsa maison aux tomates, poivrons, piments, herbes et épices, mijotée puis mise en pots.',
+  description:
+    'Grande salsa maison aux tomates, poivrons, piments, herbes et épices, mijotée puis mise en pots.',
   categories: ['Condiments'],
   prepTime: { min: 60, max: 60 },
   cookTime: { min: 120, max: 120 },
@@ -11,7 +12,7 @@ export const salsaMexicaine: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '10 lb (4,5 kg) de tomates italiennes bien mûres (pesées brutes)',
-    '4 tasses (420 g) d\'oignon, en gros dés',
+    "4 tasses (420 g) d'oignon, en gros dés",
     '1 tasse (150 g) de poivron vert, en dés',
     '1 tasse (150 g) de poivron jaune ou orangé, en dés',
     '1 à 2 piments forts, au goût, en petits dés',
@@ -21,11 +22,11 @@ export const salsaMexicaine: Recipe = {
     '1 c. à soupe de sel',
     '2 tasses (300 g) de branches de céleri, en très petits dés',
     '2 tasses de feuilles de coriandre fraîche, hachées',
-    '3 c. à soupe d\'origan frais, finement haché',
-    '1 tête d\'ail (12–13 gousses), écrasée puis hachée finement',
+    "3 c. à soupe d'origan frais, finement haché",
+    "1 tête d'ail (12–13 gousses), écrasée puis hachée finement",
     '1 c. à soupe de cumin fraîchement grillé et moulu',
     '2 feuilles de laurier',
-    '1 grosse boîte de pâte de tomate'
+    '1 grosse boîte de pâte de tomate',
   ],
   instructions: [
     'Porter un grand chaudron d’eau à ébullition pour blanchir les tomates.',
@@ -35,10 +36,11 @@ export const salsaMexicaine: Recipe = {
     'Dans un chaudron en inox, mélanger tomates, oignons, sucre, sel, graines de moutarde et vinaigre. Porter à ébullition, réduire le feu, ajouter les poivrons et les piments, puis mijoter à découvert 10 minutes en remuant à l’occasion.',
     'Ajouter le céleri, l’ail, la coriandre, l’origan, le cumin et les feuilles de laurier. Bien mélanger et laisser mijoter 2 à 3 heures.',
     'Retirer du feu, incorporer la pâte de tomate et bien brasser. Réchauffer sans faire réduire.',
-    'Empoter en laissant 1/2 po (1 cm) sous le goulot.'
+    'Empoter en laissant 1/2 po (1 cm) sous le goulot.',
   ],
   tags: ['coriandre', 'cumin grillé', 'mise en pot'],
   source: 'David Cloutier',
-  notes: 'Manipuler les piments forts avec des gants; éviter de les réutiliser pour toute autre activité.',
-  slug: 'salsa-mexicaine'
-};
+  notes:
+    'Manipuler les piments forts avec des gants; éviter de les réutiliser pour toute autre activité.',
+  slug: 'salsa-mexicaine',
+}

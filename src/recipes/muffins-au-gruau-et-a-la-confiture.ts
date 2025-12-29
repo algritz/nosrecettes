@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const muffinsAuGruauEtALaConfiture: Recipe = {
   id: 'muffins-au-gruau-et-a-la-confiture',
@@ -19,19 +19,19 @@ export const muffinsAuGruauEtALaConfiture: Recipe = {
     '1 œuf',
     '30 ml de margarine ou de beurre fondu',
     '½ tasse de lait',
-    '50 ml de confiture'
+    '50 ml de confiture',
   ],
   instructions: [
     'Préchauffer le four à 400 F.',
     'Placez des moules de papier dans les moules à muffins.',
-    'Dans un petit bol, battre l\'œuf et le mettre de côté.',
+    "Dans un petit bol, battre l'œuf et le mettre de côté.",
     'Dans un grand bol, mêlez les ingrédients secs.',
     'Ajouter graduellement les ingrédients liquides.',
     'Déposer environ 15 ml de pâte dans chaque moule.',
     'Ajoutez un peu de confiture au centre de chaque moule.',
     'Recouvrez du reste de la pâte.',
-    'Faire au four environ 20 minutes.'
+    'Faire au four environ 20 minutes.',
   ],
   tags: ['pâtisserie', 'confiture', 'muffins'],
-  slug: 'muffins-au-gruau-et-a-la-confiture'
-};
+  slug: 'muffins-au-gruau-et-a-la-confiture',
+}

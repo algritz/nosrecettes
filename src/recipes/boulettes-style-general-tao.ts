@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const boulettesStyleGeneralTao: Recipe = {
   id: 'boulettes-style-general-tao',
   title: 'Boulettes style général tao',
-  description: 'Une recette de boulettes de veau avec une sauce asiatique savoureuse, idéale pour un plat principal pour deux personnes.',
+  description:
+    'Une recette de boulettes de veau avec une sauce asiatique savoureuse, idéale pour un plat principal pour deux personnes.',
   categories: ['Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
@@ -31,7 +32,7 @@ export const boulettesStyleGeneralTao: Recipe = {
     '1/2 c. à thé de paprika',
     '1/2 c. à thé de sambal oelek',
     '2 c. à thé de fécule de maïs',
-    '15 ml (1 c. à soupe) d’eau'
+    '15 ml (1 c. à soupe) d’eau',
   ],
   instructions: [
     'Préchauffer le four à 400 °F.',
@@ -46,16 +47,19 @@ export const boulettesStyleGeneralTao: Recipe = {
     'Laisser mijoter à feu doux de 3 à 5 minutes, jusqu’à épaississement.',
     'Répartir les boulettes dans les assiettes.',
     'Napper chacune d’elles de sauce.',
-    'Garnir de graines de sésame grillées, d’oignon vert.'
+    'Garnir de graines de sésame grillées, d’oignon vert.',
   ],
   tags: ['sésame', 'sauce hoisin', 'cuisine asiatique'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes-style-general-tao',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes-style-general-tao',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes-style-general-tao'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes-style-general-tao',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes-style-general-tao',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes-style-general-tao',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'boulettes-style-general-tao'
-};
+  slug: 'boulettes-style-general-tao',
+}

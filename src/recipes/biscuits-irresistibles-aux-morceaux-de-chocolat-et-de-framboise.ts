@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const biscuitsIrresistiblesAuxMorceauxDeChocolatEtDeFramboise: Recipe = {
   id: 'biscuits-irresistibles-aux-morceaux-de-chocolat-et-de-framboise',
   title: 'Biscuits irrésistibles aux morceaux de chocolat et de framboise',
-  description: 'Excellents biscuits que ma fille a vu passer dans un vidéo instagram.',
+  description:
+    'Excellents biscuits que ma fille a vu passer dans un vidéo instagram.',
   categories: ['Pâtisseries et desserts'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 12, max: 12 },
@@ -17,9 +18,9 @@ export const biscuitsIrresistiblesAuxMorceauxDeChocolatEtDeFramboise: Recipe = {
     '½ tasse de sucre',
     '½ tasse de cassonade tassée',
     '1 gros œuf',
-    '1 cuillère à café d\'extrait de vanille',
+    "1 cuillère à café d'extrait de vanille",
     '½ tasse de framboises fraîche',
-    '1 tasse de morceaux de chocolat'
+    '1 tasse de morceaux de chocolat',
   ],
   instructions: [
     'Préchauffer le four à 350°F.',
@@ -29,11 +30,11 @@ export const biscuitsIrresistiblesAuxMorceauxDeChocolatEtDeFramboise: Recipe = {
     'Ajouter l’œuf et l’extrait de vanille et mélanger jusqu’à ce que le tout soit bien mélangé.',
     'Ajouter progressivement les ingrédients secs au mélange humide, en remuant jusqu’à ce qu’ils soient bien mélangés.',
     'Incorporer délicatement les framboises et les morceaux de chocolat. Veillez à ne pas trop écraser les framboises.',
-    'Déposer des cuillères à soupe de pâte sur les plaques à pâtisserie préparées, en les espaçant d\'environ 2 pouces.',
+    "Déposer des cuillères à soupe de pâte sur les plaques à pâtisserie préparées, en les espaçant d'environ 2 pouces.",
     'Aplatir légèrement chaque boule de pâte pour une cuisson uniforme.',
     'Cuire au four pendant 10 à 12 minutes ou jusqu’à ce que les bords soient légèrement dorés.',
-    'Laisser refroidir les biscuits sur la plaque à pâtisserie pendant 5 minutes avant de les transférer sur une grille.'
+    'Laisser refroidir les biscuits sur la plaque à pâtisserie pendant 5 minutes avant de les transférer sur une grille.',
   ],
   tags: ['chocolat', 'framboise', 'pâtisserie'],
-  slug: 'biscuits-irresistibles-aux-morceaux-de-chocolat-et-de-framboise'
-};
+  slug: 'biscuits-irresistibles-aux-morceaux-de-chocolat-et-de-framboise',
+}

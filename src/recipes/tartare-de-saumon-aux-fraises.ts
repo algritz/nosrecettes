@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeSaumonAuxFraises: Recipe = {
   id: 'tartare-de-saumon-aux-fraises',
   title: 'Tartare de saumon aux fraises',
-  description: 'Un tartare frais et coloré combinant saumon, fraises et saveurs asiatiques, parfait pour une entrée élégante.',
+  description:
+    'Un tartare frais et coloré combinant saumon, fraises et saveurs asiatiques, parfait pour une entrée élégante.',
   categories: ['Entrées'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 0, max: 0 },
@@ -19,7 +20,7 @@ export const tartareDeSaumonAuxFraises: Recipe = {
     '1 c. à thé de graines de sésame',
     '1/2 c. à thé de sauce sriracha',
     'Un filet de jus de citron',
-    'Sel et poivre, au goût'
+    'Sel et poivre, au goût',
   ],
   instructions: [
     'Afin de s’assurer de garder le saumon très frais, sortir deux bols, un plus petit et un plus grand. Dans le plus grand, mettre quelques glaçons. Asseoir le plus petit bol sur les glaçons, de manière à ce qu’il reste bien froid. Cette étape permet de cuisiner le tartare sans se presser, en sachant qu’il restera très frais.',
@@ -27,16 +28,19 @@ export const tartareDeSaumonAuxFraises: Recipe = {
     'Ajouter le reste des ingrédients « pour le tartare », sans brasser.',
     'Une fois tous les ingrédients dans le bol, bien mélanger. Le fait de ne brasser qu’une seule fois minimise la manipulation et nous assure que les cubes de saumon ne perdront pas leur belle forme et leur texture.',
     'Rectifier l’assaisonnement.',
-    'Servir.'
+    'Servir.',
   ],
   tags: ['frais', 'saumon', 'asiatique'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-aux-fraises',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-aux-fraises',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-aux-fraises'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-aux-fraises',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-aux-fraises',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-saumon-aux-fraises',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'tartare-de-saumon-aux-fraises'
-};
+  slug: 'tartare-de-saumon-aux-fraises',
+}

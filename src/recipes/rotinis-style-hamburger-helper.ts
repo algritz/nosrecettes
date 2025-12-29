@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const rotinisStyleHamburgerHelper: Recipe = {
   id: 'rotinis-style-hamburger-helper',
   title: 'Rotinis style Hamburger Helper',
-  description: 'Un plat réconfortant de pâtes avec viande hachée, légumes et fromage, mijoté dans une sauce tomate savoureuse.',
+  description:
+    'Un plat réconfortant de pâtes avec viande hachée, légumes et fromage, mijoté dans une sauce tomate savoureuse.',
   categories: ['Plats principaux'],
   prepTime: { min: 30, max: 30 },
   cookTime: { min: 30, max: 30 },
@@ -26,16 +27,16 @@ export const rotinisStyleHamburgerHelper: Recipe = {
     'Une canne (398ml) de sauce tomate Hunts',
     '1 boite de 450g de rotinis non-cuits',
     '2 tasses de cheddar fort râpé',
-    'Sel et poivre du moulin'
+    'Sel et poivre du moulin',
   ],
   instructions: [
     'Dans une grande casserole faire chauffer l’huile d’olive et ajouter les carottes, l’oignon et de l’ail. Saler et poivrer, mélanger et cuire pendant 5 minutes en remuant.',
     'Ajouter la courgette et poursuivre la cuisson 3 minutes.',
     'Ajouter le boeuf haché et cuire pendant 4-5 minutes ou jusqu’à ce que la viande soit brunit. Égoutter le gras.',
     'À l’exception du fromage, ajouter le reste des ingrédients puis saler et poivrer. Bien mélanger, couvrir et amener à ébullition.',
-    'Réduire à feu moyen-bas et laisser mijoter pendant 12-14 minutes ou jusqu’à ce que les pâtes soient cuites. Remuer de temps en temps. S\'il manque de liquidité et que les pâtes ne sont pas assez cuites, ajouter un peu de lait.',
-    'Retirer du feu et ajouter le fromage. Mélanger pour faire fondre le fromage puis servir immédiatement.'
+    "Réduire à feu moyen-bas et laisser mijoter pendant 12-14 minutes ou jusqu’à ce que les pâtes soient cuites. Remuer de temps en temps. S'il manque de liquidité et que les pâtes ne sont pas assez cuites, ajouter un peu de lait.",
+    'Retirer du feu et ajouter le fromage. Mélanger pour faire fondre le fromage puis servir immédiatement.',
   ],
   tags: ['pâtes', 'viande hachée', 'mijoteuse'],
-  slug: 'rotinis-style-hamburger-helper'
-};
+  slug: 'rotinis-style-hamburger-helper',
+}

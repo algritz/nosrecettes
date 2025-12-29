@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const macAndCheeseBacon: Recipe = {
   id: 'mac-en-cheese-bacon',
@@ -18,7 +18,7 @@ export const macAndCheeseBacon: Recipe = {
     '2 1/4 tasses de macaronis',
     '1/4 tasse de fromage mascarpone',
     '2 tasses de fromage cheddar orange fort râpé',
-    'Poivre au goût'
+    'Poivre au goût',
   ],
   instructions: [
     'Dans une casserole ou une grande poêle profonde à feu moyen-élevé, faire dorer le bacon.',
@@ -26,16 +26,19 @@ export const macAndCheeseBacon: Recipe = {
     'Ajouter le bouillon de poulet et le lait.',
     'Porter à ébullition et ajouter les macaronis.',
     'Cuire à feu moyen de 16 à 18 minutes couvert ou jusqu’à ce que les pâtes soient tendres, en remuant fréquemment.',
-    'Retirer du feu, ajouter les fromages et poivrer.'
+    'Retirer du feu, ajouter les fromages et poivrer.',
   ],
   tags: ['bacon', 'fromage', 'pâtes'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/mac-en-cheese-bacon',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/mac-en-cheese-bacon',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/mac-en-cheese-bacon'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/mac-en-cheese-bacon',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/mac-en-cheese-bacon',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/mac-en-cheese-bacon',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'mac-and-cheese-bacon'
-};
+  slug: 'mac-and-cheese-bacon',
+}

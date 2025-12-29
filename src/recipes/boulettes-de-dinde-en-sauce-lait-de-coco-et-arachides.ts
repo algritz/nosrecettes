@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const boulettesDeDindeEnSauceLaitDeCocoEtArachides: Recipe = {
   id: 'boulettes-de-dinde-en-sauce-lait-de-coco-et-arachides',
   title: 'Boulettes de dinde en sauce lait de coco et arachides',
-  description: 'Une recette savoureuse de boulettes de dinde accompagnées d\'une sauce crémeuse au lait de coco et arachides, garnies de fèves germées, micro pousses, basilic et piment chili.',
+  description:
+    "Une recette savoureuse de boulettes de dinde accompagnées d'une sauce crémeuse au lait de coco et arachides, garnies de fèves germées, micro pousses, basilic et piment chili.",
   categories: ['Plats principaux', 'Végétarien'],
   prepTime: { min: 45, max: 45 },
   cookTime: { min: 30, max: 30 },
@@ -29,18 +30,18 @@ export const boulettesDeDindeEnSauceLaitDeCocoEtArachides: Recipe = {
     'Quelques feuilles de basilic',
     '1 petit piment chili, émincé',
     '1 1/2 tasse de fèves germées',
-    '1/2 tasse de micro pousses'
+    '1/2 tasse de micro pousses',
   ],
   instructions: [
     'Placer la grille au centre du four préchauffé à 425°F. Huiler une plaque à biscuits.',
-    'Dans un grand bol, mélanger tous les ingrédients, sauf l\'huile.',
+    "Dans un grand bol, mélanger tous les ingrédients, sauf l'huile.",
     'Former des boulettes de la grosseur d’une balle de golf et les déposer sur la plaque.',
     'Badigeonner le dessus des boulettes d’huile d’olive et cuire au four durant 25 minutes.',
     'Dans une grande poêle anti-adhésive, mélanger tous les ingrédients.',
-    'Cuire à feu très doux, en brassant au fouet, jusqu\'à ce que la préparation soit fumante.',
+    "Cuire à feu très doux, en brassant au fouet, jusqu'à ce que la préparation soit fumante.",
     'Lorsque les boulettes sont cuites, verser la sauce dans un plat de service.',
-    'Ajouter les boulettes et déposer les fèves germées, le basilic, le piment chili et les micro pousses au centre du plat.'
+    'Ajouter les boulettes et déposer les fèves germées, le basilic, le piment chili et les micro pousses au centre du plat.',
   ],
   tags: ['coco', 'arachides', 'four'],
-  slug: 'boulettes-de-dinde-en-sauce-lait-de-coco-et-arachides'
-};
+  slug: 'boulettes-de-dinde-en-sauce-lait-de-coco-et-arachides',
+}

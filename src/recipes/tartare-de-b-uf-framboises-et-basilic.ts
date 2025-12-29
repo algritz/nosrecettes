@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeBUfFramboisesEtBasilic: Recipe = {
   id: 'tartare-de-b-uf-framboises-et-basilic',
@@ -18,12 +18,12 @@ export const tartareDeBUfFramboisesEtBasilic: Recipe = {
     '20 framboises lavées coupée en deux',
     '2 - 3 grosses feuilles de basilic grossièrement émincées',
     'Sel et poivre',
-    '1 cuillère à soupe ou moins de sauce épicée de votre choix'
+    '1 cuillère à soupe ou moins de sauce épicée de votre choix',
   ],
   instructions: [
     'Mettre tous les ingrédients dans un bol, mélangez.',
-    'Ajoutez les framboises et mélangez tranquillement pour ne pas les écraser.'
+    'Ajoutez les framboises et mélangez tranquillement pour ne pas les écraser.',
   ],
   tags: ['bœuf cru', 'framboises', 'basilic'],
-  slug: 'tartare-de-b-uf-framboises-et-basilic'
-};
+  slug: 'tartare-de-b-uf-framboises-et-basilic',
+}

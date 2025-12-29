@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const carresAuxPommes: Recipe = {
   id: 'carres-aux-pommes',
   title: 'Carrés aux pommes',
-  description: 'Un dessert croustillant aux pommes avec un croustillant à l\'avoine, servi tiède ou froid avec une boule de crème glacée à la vanille.',
+  description:
+    "Un dessert croustillant aux pommes avec un croustillant à l'avoine, servi tiède ou froid avec une boule de crème glacée à la vanille.",
   categories: ['Desserts'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 45, max: 45 },
@@ -11,24 +12,24 @@ export const carresAuxPommes: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     {
-      title: 'Croustillant à l\'avoine',
+      title: "Croustillant à l'avoine",
       items: [
-      '310 ml (1 ¼ tasse) de flocons d’avoine à cuisson rapide',
-      '250 ml (1 tasse) de farine tout usage non blanchie',
-      '125 ml (½ tasse) de cassonade',
-      '125 ml (½ tasse) de beurre non salé, fondu',
-      '30 ml (2 c. à soupe) de sirop d’érable'
-      ]
+        '310 ml (1 ¼ tasse) de flocons d’avoine à cuisson rapide',
+        '250 ml (1 tasse) de farine tout usage non blanchie',
+        '125 ml (½ tasse) de cassonade',
+        '125 ml (½ tasse) de beurre non salé, fondu',
+        '30 ml (2 c. à soupe) de sirop d’érable',
+      ],
     },
     {
       title: 'Garniture aux pommes',
       items: [
-      '125 ml (½ tasse) de cassonade',
-      '45 ml (3 c. à soupe) de fécule de maïs',
-      '2,5 ml (½ c. à thé) de cannelle moulue',
-      '500 ml (2 tasses) de compote de pommes non sucrée'
-      ]
-    }
+        '125 ml (½ tasse) de cassonade',
+        '45 ml (3 c. à soupe) de fécule de maïs',
+        '2,5 ml (½ c. à thé) de cannelle moulue',
+        '500 ml (2 tasses) de compote de pommes non sucrée',
+      ],
+    },
   ],
   instructions: [
     'Place la grille au centre du four. Préchauffe le four à 190 °C (375 °F).',
@@ -39,8 +40,8 @@ export const carresAuxPommes: Recipe = {
     'Répartir la garniture aux pommes sur le croustillant.',
     'Parsemer délicatement le reste du croustillant.',
     'Mettre le plat dans le four et faire cuire environ 45 minutes ou jusqu’à ce que le croustillant soit doré.',
-    'Servir tiède ou froid. Coupés en carrés.'
+    'Servir tiède ou froid. Coupés en carrés.',
   ],
   tags: ['croustillant', 'pommes', 'four'],
-  slug: 'carres-aux-pommes'
-};
+  slug: 'carres-aux-pommes',
+}

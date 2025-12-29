@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const sauceASpaghettiALine: Recipe = {
   id: 'sauce-a-spaghetti-a-line',
@@ -31,15 +31,16 @@ export const sauceASpaghettiALine: Recipe = {
     'Sel et poivre',
     'Sucre (environ 1 c. à thé)',
     '2 c. à soupe de Tabasco',
-    '2 c. à soupe de sauce Worcestershire'
+    '2 c. à soupe de sauce Worcestershire',
   ],
   instructions: [
     'Faire revenir la viande, enlevez le surplus de gras, ajoutez les légumes et tout le reste.',
     'Cuire ½ heure à 350 F.',
     'Cuire 1 heure à 300 F.',
-    'Cuire 2 heures à 250 F.'
+    'Cuire 2 heures à 250 F.',
   ],
   tags: ['sauce tomate', 'longue cuisson', 'italien'],
-  notes: 'Préparation totale: 1h30, Cuisson totale: 3h30. Source: Line St-Pierre.',
-  slug: 'sauce-a-spaghetti-a-line'
-};
+  notes:
+    'Préparation totale: 1h30, Cuisson totale: 3h30. Source: Line St-Pierre.',
+  slug: 'sauce-a-spaghetti-a-line',
+}

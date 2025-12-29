@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const rouleauxImperiauxAuCanard: Recipe = {
   id: 'rouleaux-imperiaux-au-canard',
   title: 'Rouleaux impériaux au canard',
-  description: 'Recette de rouleaux impériaux farcis au canard, accompagnés d\'une sauce aux abricots et prunes pour tremper.',
+  description:
+    "Recette de rouleaux impériaux farcis au canard, accompagnés d'une sauce aux abricots et prunes pour tremper.",
   categories: ['Entrées'],
   prepTime: { min: 45, max: 45 },
   cookTime: { min: 30, max: 30 },
@@ -15,12 +16,12 @@ export const rouleauxImperiauxAuCanard: Recipe = {
     '1 échalote, émincée',
     'Fécule de maïs',
     '1 emballage de pâte de rouleaux impériaux de 8 x 14.5 cm (3 x 6 po)',
-    'Huile d\'arachide pour frire',
+    "Huile d'arachide pour frire",
     '30 ml de sauce aux huîtres',
-    '15 ml d\'huile d\'arachide',
+    "15 ml d'huile d'arachide",
     '15 ml de 5 épices chinois',
     '30 ml de sauce soya légère',
-    '30 ml de vin de riz de Shaoshing ou de xérès'
+    '30 ml de vin de riz de Shaoshing ou de xérès',
   ],
   instructions: [
     'Mélanger tous les ingrédients pour la marinade dans un grand bol. Ajouter le canard et tourner pour bien l’enrober. Laisser mariner 20 min.',
@@ -39,11 +40,11 @@ export const rouleauxImperiauxAuCanard: Recipe = {
     'Égoutter les rouleaux sur du papier absorbant.',
     'Mettre la marinade réservée dans un petit wok ou une poêle et porter à ébullition.',
     'Mélanger 1 c. à café de fécule de maïs avec 1 c. à soupe d’eau froide, ajouter ce mélange au wok et mélanger jusqu’à ce que la sauce épaississe.',
-    'Servir les rouleaux impériaux avec la sauce aux abricots et prunes pour tremper.'
+    'Servir les rouleaux impériaux avec la sauce aux abricots et prunes pour tremper.',
   ],
   tags: ['canard', 'friture', 'rouleaux'],
   accompaniment: 'Sauce aux abricots et aux prunes pour tremper',
   marinatingTime: { min: 20, max: 20 },
-  notes: 'On peut faire cuire le canard jusqu\'à 400°F.',
-  slug: 'rouleaux-imperiaux-au-canard'
-};
+  notes: "On peut faire cuire le canard jusqu'à 400°F.",
+  slug: 'rouleaux-imperiaux-au-canard',
+}

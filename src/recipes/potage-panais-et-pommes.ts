@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const potagePanaisEtPommes: Recipe = {
   id: 'potage-panais-et-pommes',
   title: 'Potage panais et pommes',
-  description: 'Une soupe douce et parfumée à base de panais, pommes, et pommes de terre, relevée de thym et de cari de Madras.',
+  description:
+    'Une soupe douce et parfumée à base de panais, pommes, et pommes de terre, relevée de thym et de cari de Madras.',
   categories: ['Soupes'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 30, max: 30 },
@@ -19,8 +20,8 @@ export const potagePanaisEtPommes: Recipe = {
     'Un blanc de poireau, haché grossièrement',
     '3 pommes Spartan ou Cortland',
     '3 branches de thym frais',
-    '5 litre d\'eau bouillante',
-    '⅓ tasse de crème 35%'
+    "5 litre d'eau bouillante",
+    '⅓ tasse de crème 35%',
   ],
   instructions: [
     'Pelez les pommes, coupez en morceaux.',
@@ -30,9 +31,9 @@ export const potagePanaisEtPommes: Recipe = {
     'Versez l’eau et laissez mijoter environ 20 minutes, jusqu’à ce que les légumes soient tendres.',
     'Retirez les branches de thym et réduisez la soupe au mélangeur jusqu’à obtenir un potage lisse.',
     'Rectifiez l’assaisonnement. Si désiré, ajoutez la crème.',
-    'Répartissez le potage dans des bols, garnissez de tranches de pomme et d’un peu d’huile d’olive.'
+    'Répartissez le potage dans des bols, garnissez de tranches de pomme et d’un peu d’huile d’olive.',
   ],
   tags: ['soupe', 'panais', 'cari'],
   notes: 'Parfumez le potage en y ajoutant de 15 ml de cari de Madras.',
-  slug: 'potage-panais-et-pommes'
-};
+  slug: 'potage-panais-et-pommes',
+}

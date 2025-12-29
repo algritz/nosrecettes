@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const trempetteEtageeANachos: Recipe = {
   id: 'trempette-etagee-a-nachos',
@@ -16,11 +16,11 @@ export const trempetteEtageeANachos: Recipe = {
     'Salsa',
     'Fromage râpé',
     'Tomates en dès',
-    'Olives noires tranchées'
+    'Olives noires tranchées',
   ],
   instructions: [
-    'Placer les ingrédients dans l\'ordre mentionné ci-haut dans un plat de pyrex.'
+    "Placer les ingrédients dans l'ordre mentionné ci-haut dans un plat de pyrex.",
   ],
   tags: [],
-  slug: 'trempette-etagee-a-nachos'
-};
+  slug: 'trempette-etagee-a-nachos',
+}

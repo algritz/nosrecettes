@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const browniesSurprises: Recipe = {
   id: 'brownies-surprises',
   title: 'Brownies surprises',
-  description: 'Une recette de brownies surprenants avec des légumes, chocolat et noix, cuits au four.',
+  description:
+    'Une recette de brownies surprenants avec des légumes, chocolat et noix, cuits au four.',
   categories: ['Pâtisseries et desserts'],
   prepTime: { min: 30, max: 30 },
   cookTime: { min: 45, max: 45 },
@@ -21,7 +22,7 @@ export const browniesSurprises: Recipe = {
     '180 ml (3/4 tasse) de farine de blé entier ou de farine tout usage',
     '2 ml (1/2 c. à thé) de poudre à pâte',
     '2 ml (1/2 c. à thé) de sel',
-    '125 ml (1/2 tasse) de noix hachées (facultatif)'
+    '125 ml (1/2 tasse) de noix hachées (facultatif)',
   ],
   instructions: [
     'Préchauffer le four à 180 ̊C (350 ̊F).',
@@ -36,8 +37,8 @@ export const browniesSurprises: Recipe = {
     'Dans un troisième bol, mélanger la farine, la poudre à pâte, le sel et les noix.',
     'Incorporer les ingrédients secs au mélange de chocolat et mélanger délicatement, sans plus, jusqu’à ce que la pâte soit homogène.',
     'Verser la pâte dans un plat de 20 cm x 30 cm (8 po x 15 po) allant au four, préalablement beurré.',
-    'Faire cuire au four environ 35 minutes.'
+    'Faire cuire au four environ 35 minutes.',
   ],
   tags: ['chocolat', 'légumes', 'gourmand'],
-  slug: 'brownies-surprises'
-};
+  slug: 'brownies-surprises',
+}

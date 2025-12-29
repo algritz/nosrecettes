@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareMexicainDeThon: Recipe = {
   id: 'tartare-mexicain-de-thon',
   title: 'Tartare mexicain de thon',
-  description: 'Un tartare frais et épicé à base de thon, avocat, pomme verte et jalapeños, servi avec des croustilles émiettées.',
+  description:
+    'Un tartare frais et épicé à base de thon, avocat, pomme verte et jalapeños, servi avec des croustilles émiettées.',
   categories: ['Entrées'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 0, max: 0 },
@@ -24,13 +25,13 @@ export const tartareMexicainDeThon: Recipe = {
     '1 pomme verte, en dés',
     '1 piment jalapenos sans les pépins, haché très finement + quelques rondelles minces pour garnir',
     '1/2 tasse de coriandre hachée',
-    'Quelques Tostitos, émiettées'
+    'Quelques Tostitos, émiettées',
   ],
   instructions: [
     'Dans un grand bol, à l’aide d’un fouet, mélanger tous les ingrédients de la sauce.',
     'Ajouter les ingrédients du tartare, sauf les croustilles, et mélanger délicatement.',
-    'Servir à l\'aide d\'un emporte pièces, garnir de tostitos émiettés et de rondelles de jalapenos.'
+    "Servir à l'aide d'un emporte pièces, garnir de tostitos émiettés et de rondelles de jalapenos.",
   ],
   tags: ['épicé', 'frais', 'thon'],
-  slug: 'tartare-mexicain-de-thon'
-};
+  slug: 'tartare-mexicain-de-thon',
+}

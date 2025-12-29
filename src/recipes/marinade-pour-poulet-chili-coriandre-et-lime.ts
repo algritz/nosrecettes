@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const marinadePourPouletChiliCoriandreEtLime: Recipe = {
   id: 'marinade-pour-poulet-chili-coriandre-et-lime',
   title: 'Marinade pour poulet, chili, coriandre et lime',
-  description: 'Goûteux et très rafraichissant Marinade pour poulet, chili, coriandre et lime',
+  description:
+    'Goûteux et très rafraichissant Marinade pour poulet, chili, coriandre et lime',
   categories: ['Marinade'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 10, max: 10 },
@@ -18,7 +19,7 @@ export const marinadePourPouletChiliCoriandreEtLime: Recipe = {
     '1 cuillère à thé de sel',
     '1 cuillère à thé de cassonade ou de miel',
     '1 cuillère à thé de flocons de poivre de cayenne',
-    '1/2 cuillère à thé de cumin'
+    '1/2 cuillère à thé de cumin',
   ],
   instructions: [
     'Mélanger tous les ingrédients de la marinade dans un bol.',
@@ -26,8 +27,8 @@ export const marinadePourPouletChiliCoriandreEtLime: Recipe = {
     'Verser la marinade.',
     'Réfrigérer pendant au moins 4 heures ou encore mieux, pour 24 heures.',
     'Préchauffer le barbecue, à feu moyen élevé et faire griller pour 5 minutes de chaque côté.',
-    'Servir dans des tortillas ou en bol mexicain.'
+    'Servir dans des tortillas ou en bol mexicain.',
   ],
   tags: ['citron vert', 'marinade sèche', 'grill'],
-  slug: 'marinade-pour-poulet-chili-coriandre-et-lime'
-};
+  slug: 'marinade-pour-poulet-chili-coriandre-et-lime',
+}

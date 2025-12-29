@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pouletToscanALitalienne: Recipe = {
   id: 'poulet-toscan-a-l-italienne',
-  title: 'Poulet toscan à l\'italienne',
-  description: 'Un plat savoureux de poulet à la sauce tomate, champignons, chorizo, olives et herbes aromatiques, mijoté avec du vin rouge et du bouillon de légumes.',
+  title: "Poulet toscan à l'italienne",
+  description:
+    'Un plat savoureux de poulet à la sauce tomate, champignons, chorizo, olives et herbes aromatiques, mijoté avec du vin rouge et du bouillon de légumes.',
   categories: ['Plats principaux'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 45, max: 45 },
@@ -25,7 +26,7 @@ export const pouletToscanALitalienne: Recipe = {
     '5 brins de thym',
     '3 brins de romarin',
     'huile d’olive',
-    'sel et poivre'
+    'sel et poivre',
   ],
   instructions: [
     'Retirez la peau du chorizo et coupez-le en rondelles.',
@@ -42,16 +43,19 @@ export const pouletToscanALitalienne: Recipe = {
     'Salez et poivrez.',
     'Hachez le thym et le romarin. Mélangez les herbes avec le mascarpone.',
     'Incorporez cette préparation dans la sauce tomate.',
-    'Laissez cuire encore 30 minutes.'
+    'Laissez cuire encore 30 minutes.',
   ],
   tags: ['tomate', 'vin rouge', 'herbes aromatiques'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poulet-toscan-a-l-italienne',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poulet-toscan-a-l-italienne',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poulet-toscan-a-l-italienne'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poulet-toscan-a-l-italienne',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poulet-toscan-a-l-italienne',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poulet-toscan-a-l-italienne',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'poulet-toscan-a-litalienne'
-};
+  slug: 'poulet-toscan-a-litalienne',
+}

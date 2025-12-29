@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const patatesToutesGarnies: Recipe = {
   id: 'patates-toutes-garnies',
@@ -16,7 +16,7 @@ export const patatesToutesGarnies: Recipe = {
     '1/4 tasse de beurre mou',
     '1 tasse de crème sure',
     '1 1/2 tasse de fromage cheddar jaune ou blanc râpé',
-    'Sel et poivre'
+    'Sel et poivre',
   ],
   instructions: [
     'Préchauffer le barbecue à puissance élevée.',
@@ -33,8 +33,8 @@ export const patatesToutesGarnies: Recipe = {
     'Farcir généreusement les pommes de terre avec la préparation.',
     'Parsemer du reste de fromage, de bacon et d’oignons verts.',
     'Réduire l’intensité du barbecue à feu moyen.',
-    'Déposer les pommes de terre farcies directement sur la grille et poursuivre la cuisson de 15 à 20 minutes ou jusqu’à ce que le fromage soit fondu.'
+    'Déposer les pommes de terre farcies directement sur la grille et poursuivre la cuisson de 15 à 20 minutes ou jusqu’à ce que le fromage soit fondu.',
   ],
   tags: ['barbecue', 'fromage', 'bacon'],
-  slug: 'patates-toutes-garnies'
-};
+  slug: 'patates-toutes-garnies',
+}

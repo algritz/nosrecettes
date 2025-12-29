@@ -6,18 +6,18 @@
  */
 
 interface SiteConfig {
-  domain: string;
-  protocol: 'http' | 'https';
-  basePath: string;
-  baseUrl: string;
-  isDevelopment: boolean;
+  domain: string
+  protocol: 'http' | 'https'
+  basePath: string
+  baseUrl: string
+  isDevelopment: boolean
 }
 
 /**
  * Get site configuration based on environment
  */
 function getSiteConfig(): SiteConfig {
-  const isDevelopment = import.meta.env.DEV;
+  const isDevelopment = import.meta.env.DEV
 
   if (isDevelopment) {
     return {
@@ -26,7 +26,7 @@ function getSiteConfig(): SiteConfig {
       basePath: '',
       baseUrl: 'http://localhost:8080',
       isDevelopment: true,
-    };
+    }
   }
 
   return {
@@ -35,10 +35,10 @@ function getSiteConfig(): SiteConfig {
     basePath: '',
     baseUrl: 'https://nosrecettes.ca',
     isDevelopment: false,
-  };
+  }
 }
 
-export const siteConfig = getSiteConfig();
+export const siteConfig = getSiteConfig()
 
 /**
  * Get full URL for a given path
@@ -47,14 +47,14 @@ export const siteConfig = getSiteConfig();
  */
 export function getFullUrl(path: string): string {
   // Normalize path to start with /
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
 
   // Combine basePath (if any) with the path
   const fullPath = siteConfig.basePath
     ? `/${siteConfig.basePath}${normalizedPath}`
-    : normalizedPath;
+    : normalizedPath
 
-  return `${siteConfig.protocol}://${siteConfig.domain}${fullPath}`;
+  return `${siteConfig.protocol}://${siteConfig.domain}${fullPath}`
 }
 
 /**
@@ -64,10 +64,10 @@ export function getFullUrl(path: string): string {
  */
 export function getAssetUrl(path: string): string {
   // Normalize path to start with /
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
 
   // Return path with basePath if configured
   return siteConfig.basePath
     ? `/${siteConfig.basePath}${normalizedPath}`
-    : normalizedPath;
+    : normalizedPath
 }

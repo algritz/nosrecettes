@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const sauceAuPoivres: Recipe = {
   id: 'sauce-au-poivres',
   title: 'Sauce au poivres',
-  description: 'Sauce au poivre que nous avons extrait d\'une autre recette, car elle mérite d\'être sa propre recette.',
+  description:
+    "Sauce au poivre que nous avons extrait d'une autre recette, car elle mérite d'être sa propre recette.",
   categories: ['Sauces'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 20, max: 20 },
@@ -16,7 +17,7 @@ export const sauceAuPoivres: Recipe = {
     '100 ml de cognac ou brandy',
     '250 ml de crème fraiche épaisse',
     '1 c. à soupe de moutarde de Dijon',
-    'Sel au goût'
+    'Sel au goût',
   ],
   instructions: [
     'Écrasez légèrement les grains de poivre noir avec un mortier et un pilon ou le dos d’une cuillère pour les concasser. Cela permet de libérer leurs arômes tout en conservant une texture intéressante.',
@@ -27,8 +28,8 @@ export const sauceAuPoivres: Recipe = {
     'Ajoutez les 250 ml de crème fraîche épaisse et la cuillère à soupe de moutarde de Dijon. Mélangez bien pour obtenir une consistance homogène.',
     'Laissez la sauce mijoter à feu doux pendant environ 5 à 10 minutes, jusqu’à ce qu’elle épaississe légèrement. Remuez de temps en temps pour éviter qu’elle ne colle au fond de la casserole.',
     'Goûtez la sauce et ajoutez du sel selon votre goût. Mélangez bien.',
-    'Servez la sauce au poivre chaude, idéale pour accompagner une viande grillée ou un steak.'
+    'Servez la sauce au poivre chaude, idéale pour accompagner une viande grillée ou un steak.',
   ],
   tags: ['poivre', 'sauce', 'cognac'],
-  slug: 'sauce-au-poivres'
-};
+  slug: 'sauce-au-poivres',
+}

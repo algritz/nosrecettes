@@ -7,12 +7,14 @@ Remove the artificial `step="5"` constraint from the minutes input field in the 
 ## Current State Analysis
 
 The TimeInput component at [src/components/TimeInput.tsx:69](src/components/TimeInput.tsx#L69) enforces a `step="5"` HTML attribute on the minutes input field, which suggests only multiples of 5 are valid. This constraint:
+
 - Is purely UI-level (no backend validation exists)
 - Creates friction for accurate time entry (e.g., 7-minute eggs, 13-minute pasta, 47-minute roasts)
 - Is inconsistent with import flows (JSON/CSV imports accept any minute value)
 - Only affects the minutes field (hours and days have no step constraint)
 
 ### Key Discoveries:
+
 - Single change location: [src/components/TimeInput.tsx:69](src/components/TimeInput.tsx#L69)
 - No tests exist in the codebase (clean slate)
 - Import flows already bypass this constraint, allowing non-multiple-of-5 values
@@ -22,6 +24,7 @@ The TimeInput component at [src/components/TimeInput.tsx:69](src/components/Time
 ## Desired End State
 
 After implementation:
+
 - Users can enter any minute value from 0-59 in recipe time inputs
 - The `step="5"` attribute is removed from the minutes input field
 - No other input constraints are changed (max="59" remains)
@@ -29,6 +32,7 @@ After implementation:
 - Application compiles and builds successfully
 
 ### Verification:
+
 - TypeScript compilation succeeds
 - Build process completes without errors
 - Manual testing confirms minute values like 7, 13, 17, 23, 47 are accepted
@@ -51,15 +55,18 @@ Single-phase implementation: Remove the `step="5"` attribute from the minutes in
 ## Phase 1: Remove Step Constraint
 
 ### Overview
+
 Remove the `step="5"` attribute from the minutes input field in the TimeInput component.
 
 ### Changes Required:
 
 #### 1. TimeInput Component
+
 **File**: `src/components/TimeInput.tsx`
 **Changes**: Remove the `step="5"` attribute from line 69
 
 **Current code (lines 64-76):**
+
 ```tsx
 <div className="flex items-center gap-1">
   <Input
@@ -77,6 +84,7 @@ Remove the `step="5"` attribute from the minutes input field in the TimeInput co
 ```
 
 **Updated code:**
+
 ```tsx
 <div className="flex items-center gap-1">
   <Input
@@ -97,11 +105,13 @@ Remove the `step="5"` attribute from the minutes input field in the TimeInput co
 ### Success Criteria:
 
 #### Automated Verification:
+
 - [x] TypeScript compiles without errors: `npx tsc --noEmit`
 - [x] Build succeeds: `npm run build`
 - [x] Linting passes (if configured): `npm run lint` - Pre-existing warnings/errors unrelated to this change
 
 #### Manual Verification:
+
 - [ ] Can enter minute value 7 in prep time field
 - [ ] Can enter minute value 13 in cook time field
 - [ ] Can enter minute value 17 in marinating time field
@@ -120,6 +130,7 @@ Remove the `step="5"` attribute from the minutes input field in the TimeInput co
 ## Testing Strategy
 
 ### Manual Testing Steps:
+
 1. Navigate to recipe creation page (`/new`)
 2. Test prep time input:
    - Enter 7 minutes
@@ -140,7 +151,9 @@ Remove the `step="5"` attribute from the minutes input field in the TimeInput co
 9. Verify imported recipes with non-multiple-of-5 values display correctly
 
 ### Future Enhancement - Automated Tests:
+
 Consider adding test coverage in a future ticket:
+
 - Unit tests for TimeInput component
 - Integration tests for recipe forms
 - E2E tests for recipe creation/editing flows
@@ -148,6 +161,7 @@ Consider adding test coverage in a future ticket:
 ## Performance Considerations
 
 No performance impact expected:
+
 - Single attribute removal
 - No logic changes
 - No additional computation
@@ -156,6 +170,7 @@ No performance impact expected:
 ## Migration Notes
 
 No migration needed:
+
 - Change is purely UI-level
 - Existing recipes are unaffected (storage format unchanged)
 - Import flows continue working as before

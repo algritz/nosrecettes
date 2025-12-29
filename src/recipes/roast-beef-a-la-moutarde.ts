@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const roastBeefALaMoutarde: Recipe = {
   id: 'roast-beef-a-la-moutarde',
@@ -21,7 +21,7 @@ export const roastBeefALaMoutarde: Recipe = {
     '1 rôti de boeuf français de 1,5 kg',
     'Sel et poivre au goût',
     '1 1/2 tasse de bouillon de boeuf',
-    '1 c. à soupe de fécule de maïs'
+    '1 c. à soupe de fécule de maïs',
   ],
   instructions: [
     'Préchauffer le four à 450 °F.',
@@ -42,8 +42,8 @@ export const roastBeefALaMoutarde: Recipe = {
     'Verser dans la rôtissoire en remuant.',
     'Saler et poivrer.',
     'Filtrer la sauce dans une passoire fine.',
-    'Servir avec le rosbif.'
+    'Servir avec le rosbif.',
   ],
   tags: ['moutarde', 'bœuf', 'rôtisserie'],
-  slug: 'roast-beef-a-la-moutarde'
-};
+  slug: 'roast-beef-a-la-moutarde',
+}

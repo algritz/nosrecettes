@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const gateauAuxCarottes: Recipe = {
   id: 'gateau-aux-carottes',
   title: 'Gateau aux carottes',
-  description: 'Un gâteau aux carottes moelleux avec un crémage au fromage en crème.',
+  description:
+    'Un gâteau aux carottes moelleux avec un crémage au fromage en crème.',
   categories: ['Gâteaux', 'Pâtisseries et desserts'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 60, max: 60 },
@@ -17,21 +18,21 @@ export const gateauAuxCarottes: Recipe = {
     '1 ½ c. à thé de soda',
     '1 c. à thé de cannelle',
     '4 tasses de carottes râpées',
-    '1 tasse d\'huile Crisco',
+    "1 tasse d'huile Crisco",
     '¾ de tasse de noix hachées (facultatif)',
     'Sel',
     '¼ de tasse de margarine',
     '¾ à 1 livre de sucre en poudre',
     '4 onces de fromage en crème Philadelphie doux',
-    'Un peu de lait pour éclaircir'
+    'Un peu de lait pour éclaircir',
   ],
   instructions: [
     'Gâteau: Battre les œufs, sucre, huile.',
     'Ajouter les ingrédients secs, battre 2 minutes.',
     'Ajouter les carottes et noix.',
     'Cuire environ 1 heure à 325°F dans un moule de Pyrex.',
-    'Crémage: Tout battre ensemble et éclaircir avec du lait au besoin.'
+    'Crémage: Tout battre ensemble et éclaircir avec du lait au besoin.',
   ],
   tags: ['carottes', 'gâteau', 'crémage'],
-  slug: 'gateau-aux-carottes'
-};
+  slug: 'gateau-aux-carottes',
+}

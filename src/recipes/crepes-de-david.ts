@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const crepesDeDavid: Recipe = {
   id: 'crepes-de-david',
@@ -14,12 +14,13 @@ export const crepesDeDavid: Recipe = {
     '1 pincée de sel',
     '1/4 de c. à thé de vanille (facultatif)',
     '1 tasse de farine',
-    '1 1/4 tasse de lait'
+    '1 1/4 tasse de lait',
   ],
   instructions: [
-    'Bien mélanger le tout et faire cuire les crêpes dans une poêle avec du beurre'
+    'Bien mélanger le tout et faire cuire les crêpes dans une poêle avec du beurre',
   ],
   tags: ['crêpes', 'pâtisserie', 'facile'],
-  notes: 'Si vous êtes plus, ajouter un œuf par personne et ajuster la farine et le lait en conséquence.',
-  slug: 'crepes-de-david'
-};
+  notes:
+    'Si vous êtes plus, ajouter un œuf par personne et ajuster la farine et le lait en conséquence.',
+  slug: 'crepes-de-david',
+}

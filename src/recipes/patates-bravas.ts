@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const patatesBravas: Recipe = {
   id: '1766771017858',
@@ -14,24 +14,24 @@ export const patatesBravas: Recipe = {
       title: 'Base',
       items: [
         '3 pommes de terre',
-        '45 ml d\'huile d\'olive',
+        "45 ml d'huile d'olive",
         'Sel',
         '5 ml de paprika fumé',
-        'Persil frais, haché'
-      ]
+        'Persil frais, haché',
+      ],
     },
     {
       title: 'Sauce Napolitaine',
       items: [
-        '30 ml d\'huile d\'olive',
+        "30 ml d'huile d'olive",
         '1/2 oignon rouge, coupé en dés',
-        '2 gousses d\'ail, broyées',
+        "2 gousses d'ail, broyées",
         '5 ml de piments en flocons',
         '1 boîte de tomates broyées',
         '1/2 poivron vert, coupé en dés',
-        '1/2 poivron rouge, coupé en dés'
-      ]
-    }
+        '1/2 poivron rouge, coupé en dés',
+      ],
+    },
   ],
   instructions: [
     'Préchauffer le four à 350 °F (180 °C).',
@@ -43,10 +43,10 @@ export const patatesBravas: Recipe = {
     'Assaisonner et laisser mijoter.',
     'Lorsque les pommes de terre sont cuites, les transférer dans un bol et ajouter du persil et du paprika fumé.',
     'Bien mélanger.',
-    'Servir avec la sauce napolitaine.'
+    'Servir avec la sauce napolitaine.',
   ],
   tags: ['friture', 'tomates', 'mijoteuse'],
   source: 'David Cloutier',
   notes: 'Excellentes patates même sans la sauce',
-  slug: 'patates-bravas'
-};
+  slug: 'patates-bravas',
+}

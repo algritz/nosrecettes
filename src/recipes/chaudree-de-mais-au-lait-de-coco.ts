@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const chaudreeDeMaisAuLaitDeCoco: Recipe = {
   id: 'chaudree-de-mais-au-lait-de-coco',
   title: 'Chaudrée de maïs au lait de coco',
-  description: 'Une soupe crémeuse de maïs et chou kale au lait de coco, garnie de bacon croustillant.',
+  description:
+    'Une soupe crémeuse de maïs et chou kale au lait de coco, garnie de bacon croustillant.',
   categories: ['Soupes'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 20, max: 20 },
@@ -21,7 +22,7 @@ export const chaudreeDeMaisAuLaitDeCoco: Recipe = {
     '1 c. à soupe de fécule de maïs',
     '1 tasse de chou kale émincé finement',
     'Sel et poivre, au goût',
-    '4 tranches de bacon cuit, émietté'
+    '4 tranches de bacon cuit, émietté',
   ],
   instructions: [
     'Dans une casserole, à feu vif, chauffer l’huile.',
@@ -35,8 +36,8 @@ export const chaudreeDeMaisAuLaitDeCoco: Recipe = {
     'Saler et poivrer.',
     'Mélanger, éteindre le feu et couvrir.',
     'Laisser reposer le temps que le chou kale tombe.',
-    'Au moment de servir, garnir de bacon émietté.'
+    'Au moment de servir, garnir de bacon émietté.',
   ],
   tags: ['soupe', 'coco', 'maïs'],
-  slug: 'chaudree-de-mais-au-lait-de-coco'
-};
+  slug: 'chaudree-de-mais-au-lait-de-coco',
+}

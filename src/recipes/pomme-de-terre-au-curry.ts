@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pommeDeTerreAuCurry: Recipe = {
   id: '1764531803575',
   title: 'Pomme de terre au curry',
-  description: 'Pommes de terre en curry épicé avec tomate, oignon et épices moulues au mortier, finition crème (ou lait de coco).',
+  description:
+    'Pommes de terre en curry épicé avec tomate, oignon et épices moulues au mortier, finition crème (ou lait de coco).',
   categories: ['Légumes', 'Végétarien', 'Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
@@ -14,7 +15,7 @@ export const pommeDeTerreAuCurry: Recipe = {
     '1 tomate, coupée en dés',
     '1 gros oignon',
     '1 cm de gingembre frais',
-    '1 gousse d\'ail',
+    "1 gousse d'ail",
     '1 piment thaï',
     '1 c. à thé de graines de cumin',
     '1/2 c. à thé de graines de moutarde',
@@ -24,9 +25,9 @@ export const pommeDeTerreAuCurry: Recipe = {
     '1 c. à thé de garam masala',
     '1/4 de tasse de crème 35 %',
     '1 c. à thé de cassonade',
-    'Huile d\'olive',
+    "Huile d'olive",
     'Sel et poivre noir',
-    'Persil et/ou coriandre et/ou menthe fraîche, pour la décoration'
+    'Persil et/ou coriandre et/ou menthe fraîche, pour la décoration',
   ],
   instructions: [
     'Couper les pommes de terre en gros dés et les faire bouillir jusqu’à al dente; égoutter et réserver.',
@@ -37,17 +38,20 @@ export const pommeDeTerreAuCurry: Recipe = {
     'Ajouter les pommes de terre égouttées et bien mélanger.',
     'Ajouter le mélange d’épices et bien enrober.',
     'Ajouter la crème et la cassonade; mélanger, puis saler et poivrer au besoin.',
-    'Avant de servir, ajouter du persil, de la coriandre et/ou de la menthe pour plus de fraîcheur.'
+    'Avant de servir, ajouter du persil, de la coriandre et/ou de la menthe pour plus de fraîcheur.',
   ],
   tags: ['curry', 'garam masala', 'épices entières'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pomme_terre_curry',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pomme_terre_curry',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pomme_terre_curry'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pomme_terre_curry',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pomme_terre_curry',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pomme_terre_curry',
+    },
   ],
   source: 'David Cloutier',
   notes: 'On peut remplacer la crème par du lait de coco.',
-  slug: 'pomme-de-terre-au-curry'
-};
+  slug: 'pomme-de-terre-au-curry',
+}

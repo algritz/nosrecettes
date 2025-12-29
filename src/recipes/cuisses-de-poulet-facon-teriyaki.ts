@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const cuissesDePouletFaconTeriyaki: Recipe = {
   id: 'cuisses-de-poulet-facon-teriyaki',
   title: 'Cuisses de poulet façon teriyaki',
-  description: 'Une recette de cuisses de poulet marinées à la sauce teriyaki, cuites au four et servies avec une sauce au yogourt, coriandre et lime.',
+  description:
+    'Une recette de cuisses de poulet marinées à la sauce teriyaki, cuites au four et servies avec une sauce au yogourt, coriandre et lime.',
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 40, max: 40 },
@@ -13,15 +14,15 @@ export const cuissesDePouletFaconTeriyaki: Recipe = {
     '85 ml de sauce soya',
     '65 ml de sauce hoisin',
     '30 ml de cassonade',
-    '30 ml d\'huile d\'olive',
+    "30 ml d'huile d'olive",
     '30 ml de mirin',
-    '1 gousse d\'ail, hachée finement',
-    '1/2 d\'un petit oignon, haché finement',
+    "1 gousse d'ail, hachée finement",
+    "1/2 d'un petit oignon, haché finement",
     '15 ml de gingembre frais, haché finement',
     '5 ml de poivre noir moulu',
     '5 ml de coriandre moulue',
     '1 ml de piment de Cayenne',
-    '4 cuisses de poulet'
+    '4 cuisses de poulet',
   ],
   instructions: [
     'Dans un grand plat, mélanger tous les ingrédients de la marinade.',
@@ -29,15 +30,16 @@ export const cuissesDePouletFaconTeriyaki: Recipe = {
     'Préchauffer le four à 400 °F (200 °C).',
     'Retirer les cuisses de la marinade et les déposer sur une plaque à pâtisserie tapissée de papier sulfurisé.',
     'Cuire 15 min au four.',
-    'Pendant ce temps, dans une casserole, verser la marinade et laisser mijoter à feu moyen jusqu\'à ce qu\'elle réduise de moitié.',
+    "Pendant ce temps, dans une casserole, verser la marinade et laisser mijoter à feu moyen jusqu'à ce qu'elle réduise de moitié.",
     'Réserver.',
     'Retirer les cuisses du four et les badigeonner de la marinade réduite.',
     'Mettre les cuisses au four 10 min de plus puis badigeonner à nouveau de marinade.',
-    'Remettre au four jusqu\'à ce que le poulet soit bien cuit.',
-    'Servir les cuisses de poulet avec la sauce au yogourt, à la coriandre et à la lime.'
+    "Remettre au four jusqu'à ce que le poulet soit bien cuit.",
+    'Servir les cuisses de poulet avec la sauce au yogourt, à la coriandre et à la lime.',
   ],
   tags: ['teriyaki', 'marinade sèche', 'cuisson au four'],
-  accompaniment: 'Servir les cuisses de poulet avec la sauce au yogourt, à la coriandre et à la lime',
+  accompaniment:
+    'Servir les cuisses de poulet avec la sauce au yogourt, à la coriandre et à la lime',
   marinatingTime: { min: 480, max: 480 },
-  slug: 'cuisses-de-poulet-facon-teriyaki'
-};
+  slug: 'cuisses-de-poulet-facon-teriyaki',
+}

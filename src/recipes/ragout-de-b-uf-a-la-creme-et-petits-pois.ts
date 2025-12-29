@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const ragoutDeBUfALaCremeEtPetitsPois: Recipe = {
   id: 'ragout-de-b-uf-a-la-creme-et-petits-pois',
@@ -13,7 +13,7 @@ export const ragoutDeBUfALaCremeEtPetitsPois: Recipe = {
     '1 kg (2,2 lb) de cubes de bœuf à ragoût',
     '2 c. à soupe d’huile d’olive',
     '2 oignons, hachés',
-    '1 gousse d\'ail hachée finement',
+    "1 gousse d'ail hachée finement",
     '3/4 tasse de bouillon de bœuf',
     '20 pommes de terre grelots, coupées en deux',
     '2 c. à soupe de persil plat ciselé',
@@ -23,20 +23,20 @@ export const ragoutDeBUfALaCremeEtPetitsPois: Recipe = {
     '2 c. à soupe d’eau',
     '3 tasses de petits pois surgelés, décongelés',
     '1/3 tasse de crème 35 %',
-    'Sel et poivre'
+    'Sel et poivre',
   ],
   instructions: [
     'Mettre le four à 300 F.',
     'Dans une cocotte, à feu moyen-vif, dorer les cubes de bœuf, une petite quantité à la fois, dans l’huile. Saler et poivrer. Réserver sur une assiette.',
-    'Conserver l\'huile chaude et y dorer les oignons et l\'ail. Ajouter de l’huile au besoin.',
+    "Conserver l'huile chaude et y dorer les oignons et l'ail. Ajouter de l’huile au besoin.",
     'Déglacer avec le bouillon.',
     'Remettre la viande dans la cocotte. Ajouter les pommes de terre, le persil, la moutarde et le romarin.',
     'Couvrir et cuire au four 2h.',
     'Sortir du four.',
     'Dans un petit bol, délayer la fécule dans l’eau.',
     'Ajouter les pois, la crème et la fécule délayée. Porter à ébullition en remuant. Laisser mijoter 5 minute.',
-    'Salez et poivrez.'
+    'Salez et poivrez.',
   ],
   tags: ['ragoût', 'bœuf', 'crème'],
-  slug: 'ragout-de-b-uf-a-la-creme-et-petits-pois'
-};
+  slug: 'ragout-de-b-uf-a-la-creme-et-petits-pois',
+}

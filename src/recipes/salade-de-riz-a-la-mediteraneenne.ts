@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeDeRizALaMediteraneenne: Recipe = {
   id: 'salade-de-riz-a-la-mediteraneenne',
   title: 'Salade de riz à la méditéranéenne',
-  description: 'Une salade de riz méditerranéenne fraîche et savoureuse, parfaite pour un déjeuner léger ou un accompagnement.',
+  description:
+    'Une salade de riz méditerranéenne fraîche et savoureuse, parfaite pour un déjeuner léger ou un accompagnement.',
   categories: ['Salades'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
@@ -22,18 +23,18 @@ export const saladeDeRizALaMediteraneenne: Recipe = {
     '3 c. à soupe huile de canola',
     '3/4 c. à thé origan séché',
     '2 c. à soupe vinaigre de vin',
-    'le jus de 1/2 citron'
+    'le jus de 1/2 citron',
   ],
   instructions: [
-    'Cuire le riz. Laisser reposer au moins 1 heure au réfrigérateur (on peut faire cette étape à l\'avance).',
+    "Cuire le riz. Laisser reposer au moins 1 heure au réfrigérateur (on peut faire cette étape à l'avance).",
     'Entre-temps, couper les légumes, couper le fromage féta et les olives. Hacher le persil. Rincer et égoutter les légumineuses.',
     'Ajouter ces ingrédients au riz refroidi dans un saladier.',
-    'Dans un petit bol, bien mélanger l\'huile, le vinaigre, le jus de citron et l\'origan.',
+    "Dans un petit bol, bien mélanger l'huile, le vinaigre, le jus de citron et l'origan.",
     'Verser cette vinaigrette dans le saladier et touiller délicatement.',
     'Poivrer au goût.',
-    'Laisser reposer au réfrigérateur au moins 1 h avant de servir.'
+    'Laisser reposer au réfrigérateur au moins 1 h avant de servir.',
   ],
   tags: ['méditerranéen', 'salade', 'frais'],
   marinatingTime: { min: 60, max: 60 },
-  slug: 'salade-de-riz-a-la-mediteraneenne'
-};
+  slug: 'salade-de-riz-a-la-mediteraneenne',
+}

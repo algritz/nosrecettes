@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const carresMagiquesAuxFramboises: Recipe = {
   id: 'carres-magiques-aux-framboises',
@@ -16,7 +16,7 @@ export const carresMagiquesAuxFramboises: Recipe = {
     '1 1/2 tasse (375 ml) de framboises fraîches ou congelées, écrasées grossièrement à la fourchette',
     '1 1/2 tasse (375 ml) de noix de coco sucrée, râpée',
     '1 tasse (250 ml) de pépites de chocolat blanc',
-    '1 boîte (300 ml) de lait condensé sucré régulier'
+    '1 boîte (300 ml) de lait condensé sucré régulier',
   ],
   instructions: [
     'Placer la grille au centre du four préchauffé à 350 °F (180 °C).',
@@ -31,8 +31,8 @@ export const carresMagiquesAuxFramboises: Recipe = {
     'Cuire 40 minutes ou jusqu’à ce que le dessus des carrés soit légèrement doré.',
     'Laisser refroidir complètement.',
     'Réfrigérer 1 h avant de démouler.',
-    'Couper en 12 carrés.'
+    'Couper en 12 carrés.',
   ],
   tags: ['framboise', 'pâtisserie', 'four'],
-  slug: 'carres-magiques-aux-framboises'
-};
+  slug: 'carres-magiques-aux-framboises',
+}

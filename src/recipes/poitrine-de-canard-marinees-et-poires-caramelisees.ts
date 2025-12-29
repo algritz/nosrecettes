@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const poitrineDeCanardMarineesEtPoiresCaramelisees: Recipe = {
   id: 'poitrine-de-canard-marinees-et-poires-caramelisees',
   title: 'Poitrine de canard marinées et poires caramélisées',
-  description: 'Une recette savoureuse de poitrine de canard marinée accompagnée de poires caramélisées, idéale pour un plat principal élégant.',
+  description:
+    'Une recette savoureuse de poitrine de canard marinée accompagnée de poires caramélisées, idéale pour un plat principal élégant.',
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 30, max: 30 },
@@ -19,7 +20,7 @@ export const poitrineDeCanardMarineesEtPoiresCaramelisees: Recipe = {
     '1 c. à soupe de gingembre en purée (15 ml)',
     '2 poires mûres, pelées, évidées et coupées en quartiers (une canne de conserve si hors saison)',
     '2 c. à soupe de beurre (30 ml)',
-    'Poivre'
+    'Poivre',
   ],
   instructions: [
     'Quadriller la partie grasse des poitrines avec un couteau.',
@@ -32,8 +33,8 @@ export const poitrineDeCanardMarineesEtPoiresCaramelisees: Recipe = {
     'Dans la même poêle, faire réduire la marinade de moitié.',
     'Une fois réduite, remettre les poires et poivrer.',
     'Poursuivre la cuisson jusqu’à ce que les poires soient tendres.',
-    'Badigeonner les poitrines avec la marinade réduite, poivrer, trancher et servir avec les poires.'
+    'Badigeonner les poitrines avec la marinade réduite, poivrer, trancher et servir avec les poires.',
   ],
   tags: ['marinade', 'poires', 'barbecue'],
-  slug: 'poitrine-de-canard-marinees-et-poires-caramelisees'
-};
+  slug: 'poitrine-de-canard-marinees-et-poires-caramelisees',
+}

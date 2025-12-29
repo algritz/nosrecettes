@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeBoeufALItalienne: Recipe = {
   id: 'tartare-de-boeuf-a-l-italienne',
   title: 'Tartare de boeuf à l’italienne',
-  description: 'Un tartare de boeuf frais et aromatique, relevé avec du basilic, du parmesan, du Sambal Oelek et du pesto de tomates séchées, servi frais.',
+  description:
+    'Un tartare de boeuf frais et aromatique, relevé avec du basilic, du parmesan, du Sambal Oelek et du pesto de tomates séchées, servi frais.',
   categories: ['Entrées'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 0, max: 0 },
@@ -19,7 +20,7 @@ export const tartareDeBoeufALItalienne: Recipe = {
     '1 cuil. à thé (5 ml) de vinaigre balsamique blanc',
     '1 cuil. à soupe d’huile d’olive',
     'Poivre du moulin',
-    'Fleur de sel'
+    'Fleur de sel',
   ],
   instructions: [
     'Hacher le boeuf en petits cubes. Je le préfère en très petits morceaux. Ça prend plus de temps, mais ça vaut vraiment la peine.',
@@ -27,8 +28,8 @@ export const tartareDeBoeufALItalienne: Recipe = {
     'Faire une émulsion avec l’huile d’olive et le vinaigre balsamique blanc en les fouettant quelques secondes.',
     'Ajouter le mélange au tartare, avec le Sambal Oelek et le pesto de tomates séchées.',
     'Saler, poivrer et laisser reposer 15 à 30 minutes au frais.',
-    'Servir'
+    'Servir',
   ],
   tags: ['basilic', 'parmesan', 'relevé'],
-  slug: 'tartare-de-boeuf-a-l-italienne'
-};
+  slug: 'tartare-de-boeuf-a-l-italienne',
+}

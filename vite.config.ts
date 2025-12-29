@@ -1,13 +1,13 @@
-import { defineConfig } from "vite";
-import dyadComponentTagger from "@dyad-sh/react-vite-component-tagger";
-import react from "@vitejs/plugin-react-swc";
-import { VitePWA } from 'vite-plugin-pwa';
-import path from "path";
+import { defineConfig } from 'vite'
+import dyadComponentTagger from '@dyad-sh/react-vite-component-tagger'
+import react from '@vitejs/plugin-react-swc'
+import { VitePWA } from 'vite-plugin-pwa'
+import path from 'path'
 
 export default defineConfig(({ mode }) => ({
-  base: "/",
+  base: '/',
   server: {
-    host: "::",
+    host: '::',
     port: 8080,
   },
   plugins: [
@@ -27,19 +27,19 @@ export default defineConfig(({ mode }) => ({
           {
             // Cloudinary images - NetworkOnly (no caching)
             urlPattern: /^https:\/\/res\.cloudinary\.com\/.*/,
-            handler: 'NetworkOnly'
-          }
-        ]
+            handler: 'NetworkOnly',
+          },
+        ],
       },
       devOptions: {
         enabled: true, // Enable in dev mode for testing
-        type: 'module'
-      }
-    })
+        type: 'module',
+      },
+    }),
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
   build: {
@@ -49,4 +49,4 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-}));
+}))

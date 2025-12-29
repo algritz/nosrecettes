@@ -1,19 +1,29 @@
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Search, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
-import { Check } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input'
+import { Badge } from '@/components/ui/badge'
+import { Search, X, Check } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command'
+import { cn } from '@/lib/utils'
 
 interface SearchBarProps {
-  searchTerm: string;
-  onSearchChange: (value: string) => void;
-  selectedCategories: string[];
-  onCategoriesChange: (categories: string[]) => void;
-  categories: string[];
-  onClearFilters: () => void;
+  searchTerm: string
+  onSearchChange: (value: string) => void
+  selectedCategories: string[]
+  onCategoriesChange: (categories: string[]) => void
+  categories: string[]
+  onClearFilters: () => void
 }
 
 export const SearchBar = ({
@@ -22,21 +32,21 @@ export const SearchBar = ({
   selectedCategories,
   onCategoriesChange,
   categories,
-  onClearFilters
+  onClearFilters,
 }: SearchBarProps) => {
-  const hasFilters = selectedCategories.length > 0 || searchTerm !== '';
+  const hasFilters = selectedCategories.length > 0 || searchTerm !== ''
 
   const toggleCategory = (category: string) => {
     if (selectedCategories.includes(category)) {
-      onCategoriesChange(selectedCategories.filter(c => c !== category));
+      onCategoriesChange(selectedCategories.filter((c) => c !== category))
     } else {
-      onCategoriesChange([...selectedCategories, category]);
+      onCategoriesChange([...selectedCategories, category])
     }
-  };
+  }
 
   const removeCategory = (category: string) => {
-    onCategoriesChange(selectedCategories.filter(c => c !== category));
-  };
+    onCategoriesChange(selectedCategories.filter((c) => c !== category))
+  }
 
   return (
     <div className="space-y-4">
@@ -49,7 +59,7 @@ export const SearchBar = ({
           className="pl-10"
         />
       </div>
-      
+
       <div className="flex flex-wrap gap-3 items-center">
         <Popover>
           <PopoverTrigger asChild>
@@ -75,8 +85,10 @@ export const SearchBar = ({
                     >
                       <Check
                         className={cn(
-                          "mr-2 h-4 w-4",
-                          selectedCategories.includes(category) ? "opacity-100" : "opacity-0"
+                          'mr-2 h-4 w-4',
+                          selectedCategories.includes(category)
+                            ? 'opacity-100'
+                            : 'opacity-0',
                         )}
                       />
                       {category}
@@ -89,7 +101,11 @@ export const SearchBar = ({
         </Popover>
 
         {hasFilters && (
-          <Button variant="outline" onClick={onClearFilters} className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            onClick={onClearFilters}
+            className="flex items-center gap-2"
+          >
             <X className="w-4 h-4" />
             Effacer les filtres
           </Button>
@@ -100,10 +116,14 @@ export const SearchBar = ({
       {selectedCategories.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {selectedCategories.map((category) => (
-            <Badge key={category} variant="default" className="flex items-center gap-1">
+            <Badge
+              key={category}
+              variant="default"
+              className="flex items-center gap-1"
+            >
               {category}
-              <X 
-                className="w-3 h-3 cursor-pointer hover:text-destructive" 
+              <X
+                className="w-3 h-3 cursor-pointer hover:text-destructive"
                 onClick={() => removeCategory(category)}
               />
             </Badge>
@@ -111,5 +131,5 @@ export const SearchBar = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}

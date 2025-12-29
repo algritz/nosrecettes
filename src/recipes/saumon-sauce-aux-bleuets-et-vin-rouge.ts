@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saumonSauceAuxBleuetsEtVinRouge: Recipe = {
   id: 'saumon-sauce-aux-bleuets-et-vin-rouge',
   title: 'Saumon sauce aux bleuets et vin rouge',
-  description: 'Un plat de saumon avec une sauce aux bleuets, vin rouge et sirop d\'érable, servi avec un accompagnement vert.',
+  description:
+    "Un plat de saumon avec une sauce aux bleuets, vin rouge et sirop d'érable, servi avec un accompagnement vert.",
   categories: ['Poisson', 'Sauces'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 12, max: 12 },
@@ -19,7 +20,7 @@ export const saumonSauceAuxBleuetsEtVinRouge: Recipe = {
     '1 c. à table de sirop d’érable',
     '1 c. à table de vinaigre balsamique',
     '2 c. à table de crème 35%',
-    '¼ tasse de bleuets'
+    '¼ tasse de bleuets',
   ],
   instructions: [
     'Fariner le côté peau des pavés et retirer l’excédent de farine. Assaisonner.',
@@ -28,8 +29,8 @@ export const saumonSauceAuxBleuetsEtVinRouge: Recipe = {
     'Déglacer au vin rouge puis réduire presque à sec.',
     'Ajouter le sirop d’érable, le balsamique et la crème. Porter à ébullition, ajouter les bleuets puis fermer le feu.',
     'Goûter et assaisonner.',
-    'Servir le saumon avec de la roquette, des épinards ou tout autre accompagnement puis napper de sauce.'
+    'Servir le saumon avec de la roquette, des épinards ou tout autre accompagnement puis napper de sauce.',
   ],
   tags: ['saumon', 'sauce aux bleuets', 'vin rouge'],
-  slug: 'saumon-sauce-aux-bleuets-et-vin-rouge'
-};
+  slug: 'saumon-sauce-aux-bleuets-et-vin-rouge',
+}

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const boeufEnCrouteDeCacao72: Recipe = {
   id: 'boeuf-en-croute-de-cacao-72',
   title: 'Boeuf en croûte de cacao 72%',
-  description: 'Un plat sophistiqué de filet de bœuf en croûte de cacao, accompagné d\'une sauce à la liqueur de cassis et demi-glace.',
+  description:
+    "Un plat sophistiqué de filet de bœuf en croûte de cacao, accompagné d'une sauce à la liqueur de cassis et demi-glace.",
   categories: ['Boeuf'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 25, max: 25 },
@@ -14,12 +15,12 @@ export const boeufEnCrouteDeCacao72: Recipe = {
     '65 ml de cacao 72%',
     '30 ml de cèpes déshydratés',
     '15 ml de beurre',
-    '15 ml d\'huile d\'olive',
+    "15 ml d'huile d'olive",
     'Sel et poivre, au goût',
     '2 échalotes françaises, hachées',
     '15 ml de beurre',
-    '15 ml de liqueur de cassis de l\'île d\'Orléans',
-    '250 ml de sauce demi-glace'
+    "15 ml de liqueur de cassis de l'île d'Orléans",
+    '250 ml de sauce demi-glace',
   ],
   instructions: [
     'Dans un moulin à café, moudre les cèpes jusqu’à l’obtention d’une poudre fine.',
@@ -33,8 +34,8 @@ export const boeufEnCrouteDeCacao72: Recipe = {
     'Faire fondre le beurre dans une casserole puis ajouter les échalotes et faire revenir jusqu’à coloration dorée.',
     'Déglacer avec la liqueur de cassis puis laisser réduire jusqu’à évaporation complète.',
     'Incorporer la sauce demi-glace, laisser réduire 2 min puis saler et poivrer.',
-    'Trancher le filet de bœuf, napper de sauce et servir.'
+    'Trancher le filet de bœuf, napper de sauce et servir.',
   ],
   tags: ['cacao', 'sauce cassis', 'bœuf'],
-  slug: 'boeuf-en-croute-de-cacao-72'
-};
+  slug: 'boeuf-en-croute-de-cacao-72',
+}

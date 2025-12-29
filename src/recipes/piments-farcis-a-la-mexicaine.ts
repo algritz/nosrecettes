@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pimentsFarcisALaMexicaine: Recipe = {
   id: 'piments-farcis-a-la-mexicaine',
   title: 'Piments farcis à la mexicaine',
-  description: 'Excellente recette pour passer des restants. Faire blanchir les piments, les farcir avec un mélange de boeuf, riz, maïs, puis cuire au four. Servir avec crème sure, guacamole et coriandre.',
+  description:
+    'Excellente recette pour passer des restants. Faire blanchir les piments, les farcir avec un mélange de boeuf, riz, maïs, puis cuire au four. Servir avec crème sure, guacamole et coriandre.',
   categories: ['Entrées'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 30, max: 30 },
@@ -18,7 +19,7 @@ export const pimentsFarcisALaMexicaine: Recipe = {
     'Maïs surgelé en grain (facultatif)',
     'Fromage Tex-Mex',
     'Guacamole',
-    'Coriandre'
+    'Coriandre',
   ],
   instructions: [
     'Faire blanchir les piments 4 minutes et laisser refroidir.',
@@ -27,8 +28,8 @@ export const pimentsFarcisALaMexicaine: Recipe = {
     'Mettre une tranche de Philadelphia dans chaque moitié de piment.',
     'Ajouter le mélange de boeuf haché et riz, la crème sure et le fromage Tex-Mex.',
     'Faire cuire au four 20-30 minutes à 350F.',
-    'Servir avec de la crème sure et de la guacamole et parsemer de coriandre.'
+    'Servir avec de la crème sure et de la guacamole et parsemer de coriandre.',
   ],
   tags: ['mexicain', 'farce', 'four'],
-  slug: 'piments-farcis-a-la-mexicaine'
-};
+  slug: 'piments-farcis-a-la-mexicaine',
+}

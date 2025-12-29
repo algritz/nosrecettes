@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pateAPizzaAu7Up: Recipe = {
   id: 'pate-a-pizza-au-7-up',
@@ -17,7 +17,7 @@ export const pateAPizzaAu7Up: Recipe = {
     '1 c.à.table (15 ml)',
     '1 1/2 c.à.thé (8 ml) de sel',
     '2 c.à.thé (10 ml) de levure en pot ou 1 sachet de levure rapide',
-    'œuf'
+    'œuf',
   ],
   instructions: [
     'Ouvrir le Seven-Up verser dans un plat et saupoudrer le sachet de levure.',
@@ -29,9 +29,9 @@ export const pateAPizzaAu7Up: Recipe = {
     'Huiler un moule et faire monter la pâte recouverte d’un linge propre environ 30 minutes.',
     'Ensuite couper la pâte en deux et étendre sur des plaques à pizza rondes de 12 pouces ou 30 centimètres.',
     'Cuisson 400 degré',
-    'Cuisson: 10 à 20 minutes'
+    'Cuisson: 10 à 20 minutes',
   ],
   tags: ['pâte à pizza', 'levure', 'Seven-Up'],
   marinatingTime: { min: 30, max: 30 },
-  slug: 'pate-a-pizza-au-7-up'
-};
+  slug: 'pate-a-pizza-au-7-up',
+}

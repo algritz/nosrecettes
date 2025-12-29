@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pouletSauceCremeuseAuMaisStyleMexicain: Recipe = {
   id: 'poulet-sauce-cremeuse-au-mais-style-mexicain',
   title: 'Poulet sauce crémeuse au maïs style mexicain',
-  description: 'Une recette de poulet avec une sauce crémeuse au maïs, parfumée aux épices mexicaines et garnie d’avocats, coriandre et basilic.',
+  description:
+    'Une recette de poulet avec une sauce crémeuse au maïs, parfumée aux épices mexicaines et garnie d’avocats, coriandre et basilic.',
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
@@ -29,7 +30,7 @@ export const pouletSauceCremeuseAuMaisStyleMexicain: Recipe = {
     '1/2 tasse de crème de cuisson 35%',
     '2 avocats, en dés',
     '1/2 tasse de coriandre fraîche hachée grossièrement',
-    '1 tasse de basilic frais'
+    '1 tasse de basilic frais',
   ],
   instructions: [
     'Préchauffer le four à 400°F et placer la grille au centre.',
@@ -42,9 +43,9 @@ export const pouletSauceCremeuseAuMaisStyleMexicain: Recipe = {
     'Déposer les poitrines sur le mélange de maïs et cuire au four 15 minutes, ou jusqu’à ce que les poitrines soient cuites.',
     'Dans une tasse allant au micro-ondes, réchauffer la crème 45 secondes.',
     'Verser la crème autour des poitrines de poulet à la sortie du four et mélanger délicatement avec une cuillère.',
-    'Garnir des avocats, de la coriandre et du basilic.'
+    'Garnir des avocats, de la coriandre et du basilic.',
   ],
   tags: ['mexicain', 'crème', 'maïs'],
   source: 'David Cloutier',
-  slug: 'poulet-sauce-cremeuse-au-mais-style-mexicain'
-};
+  slug: 'poulet-sauce-cremeuse-au-mais-style-mexicain',
+}

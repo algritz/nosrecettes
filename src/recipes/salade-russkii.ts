@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeRusskii: Recipe = {
   id: 'salade-russkii',
   title: 'Salade Russkii',
-  description: 'Une salade froide russe à base de pommes de terre, petits pois, œufs, poivron rouge et vinaigrette crémeuse.',
+  description:
+    'Une salade froide russe à base de pommes de terre, petits pois, œufs, poivron rouge et vinaigrette crémeuse.',
   categories: ['Salades'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 15, max: 15 },
@@ -18,7 +19,7 @@ export const saladeRusskii: Recipe = {
     '2,5 ml (1/2 c. à thé) d’herbes de Provence',
     '3 œufs cuits durs, tranchés',
     '1 petit poivron rouge, haché finement',
-    'Sel et poivre noir, au goût'
+    'Sel et poivre noir, au goût',
   ],
   instructions: [
     'Faire cuire les pommes de terre à la vapeur, dans une marguerite, pendant environ 10 à 15 minutes.',
@@ -27,8 +28,8 @@ export const saladeRusskii: Recipe = {
     'Laisser refroidir au réfrigérateur quelques minutes.',
     'Pendant ce temps, mélanger la mayonnaise, la crème sûre, la moutarde et les herbes dans un petit bol.',
     'Verser la vinaigrette sur les légumes, puis ajouter les œufs, et le poivron rouge.',
-    'Assaisonner au goût et bien mélanger pour que tous les légumes soient bien couverts de vinaigrette crémeuse.'
+    'Assaisonner au goût et bien mélanger pour que tous les légumes soient bien couverts de vinaigrette crémeuse.',
   ],
   tags: ['salade', 'crème', 'pommes de terre'],
-  slug: 'salade-russkii'
-};
+  slug: 'salade-russkii',
+}

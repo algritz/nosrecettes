@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const brochettesDePouletAuLaitDeCocoEtCari: Recipe = {
   id: 'brochettes-de-poulet-au-lait-de-coco-et-cari',
   title: 'Brochettes de poulet au lait de coco et cari',
-  description: 'Brochettes de poulet marinées dans une sauce au lait de coco et pâte de cari, grillées au barbecue avec légumes, garnies de coriandre et servies avec des quartiers de lime.',
+  description:
+    'Brochettes de poulet marinées dans une sauce au lait de coco et pâte de cari, grillées au barbecue avec légumes, garnies de coriandre et servies avec des quartiers de lime.',
   categories: ['Plats principaux', 'Vollaille'],
   prepTime: { min: 30, max: 30 },
   cookTime: { min: 20, max: 20 },
@@ -17,7 +18,7 @@ export const brochettesDePouletAuLaitDeCocoEtCari: Recipe = {
     '2 poivrons de couleur, coupés en morceaux',
     '1 brocoli, coupé en bouquets',
     '2 c. à soupe de coriandre hachée',
-    '1 lime coupée en quartiers'
+    '1 lime coupée en quartiers',
   ],
   instructions: [
     'Dans un grand bol, fouetter le lait de coco avec la pâte de cari, le miel et le sel.',
@@ -28,16 +29,19 @@ export const brochettesDePouletAuLaitDeCocoEtCari: Recipe = {
     'Enfiler sur les brochettes, en alternant, les morceaux de poulet, de poivron et de brocoli.',
     'Griller les brochettes, le couvercle fermé, jusqu’à ce que le poulet soit cuit, 4 ou 5 minutes de chaque côté.',
     'Badigeonner les brochettes de la marinade réservée pendant les 2 dernières minutes de cuisson.',
-    'Garnir de la coriandre et servir avec les quartiers de lime.'
+    'Garnir de la coriandre et servir avec les quartiers de lime.',
   ],
   tags: ['barbecue', 'marinade sèche', 'cari'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/brochettes-de-poulet-au-lait-de-coco-et-cari',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/brochettes-de-poulet-au-lait-de-coco-et-cari',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brochettes-de-poulet-au-lait-de-coco-et-cari'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/brochettes-de-poulet-au-lait-de-coco-et-cari',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/brochettes-de-poulet-au-lait-de-coco-et-cari',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brochettes-de-poulet-au-lait-de-coco-et-cari',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'brochettes-de-poulet-au-lait-de-coco-et-cari'
-};
+  slug: 'brochettes-de-poulet-au-lait-de-coco-et-cari',
+}

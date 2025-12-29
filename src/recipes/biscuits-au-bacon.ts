@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const biscuitsAuBacon: Recipe = {
   id: 'biscuits-au-bacon',
   title: 'Biscuits au bacon',
-  description: 'Recette de biscuits au bacon croustillant, chocolaté et parfumé à la vanille, parfaits pour une collation ou un apéritif original.',
+  description:
+    'Recette de biscuits au bacon croustillant, chocolaté et parfumé à la vanille, parfaits pour une collation ou un apéritif original.',
   categories: ['Pâtisseries et desserts'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
@@ -19,7 +20,7 @@ export const biscuitsAuBacon: Recipe = {
     '2 1/2 tasse de flocons d’avoine',
     '1 tasse de farine',
     '1/2 c. à thé de poudre à pâte',
-    '1/2 c. à thé de bicarbonate de soude'
+    '1/2 c. à thé de bicarbonate de soude',
   ],
   instructions: [
     'Préchauffer le four à 350F. Tapisser une grande plaque à pâtisserie de papier parchemin. Réserver.',
@@ -30,8 +31,8 @@ export const biscuitsAuBacon: Recipe = {
     'Incorporer le bacon et les pépites de chocolat.',
     'Répartir 12 boules de pâte à biscuits sur la plaque à pâtisserie.',
     'Presser les boules légèrement à l’aide des doigts puis enfourner 20 minutes ou jusqu’à ce que le contour des biscuits soient légèrement dorés.',
-    'Laisser refroidir complètement sur la plaque avant de déguster.'
+    'Laisser refroidir complètement sur la plaque avant de déguster.',
   ],
   tags: ['bacon', 'chocolat', 'pâtisserie'],
-  slug: 'biscuits-au-bacon'
-};
+  slug: 'biscuits-au-bacon',
+}

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const roastBeefMoutardesEtVinRouge: Recipe = {
   id: 'roast-beef-moutardes-et-vin-rouge',
   title: 'Roast beef moutardes et vin rouge',
-  description: 'Un délicieux roast beef cuit au four avec une sauce à base de moutarde, vin rouge, champignons et oignons perlés, reposant avant de trancher pour une texture parfaite.',
+  description:
+    'Un délicieux roast beef cuit au four avec une sauce à base de moutarde, vin rouge, champignons et oignons perlés, reposant avant de trancher pour une texture parfaite.',
   categories: ['Plats principaux'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 40, max: 40 },
@@ -22,7 +23,7 @@ export const roastBeefMoutardesEtVinRouge: Recipe = {
     '125 ml de bouillon de boeuf',
     '1 sachet de sauce demi-glace',
     '227 g de champignons, coupés en deux',
-    '12 oignons perlés épluchés'
+    '12 oignons perlés épluchés',
   ],
   instructions: [
     'Préchauffer le four à 400 °F.',
@@ -38,9 +39,10 @@ export const roastBeefMoutardesEtVinRouge: Recipe = {
     'Couvrir d’une feuille de papier d’aluminium, sans serrer.',
     'Laisser reposer 15 minutes avant de trancher.',
     'Si le jus de cuisson est trop liquide, le transférer dans une casserole et laisser mijoter à feu moyen jusqu’à ce qu’il ait réduit de moitié.',
-    'Trancher le rôti et servir avec la sauce.'
+    'Trancher le rôti et servir avec la sauce.',
   ],
   tags: ['vin rouge', 'sauce demi-glace', 'rôti'],
-  notes: 'La cuisson doit atteindre 118 °F pour une cuisson saignante. Laisser reposer 15 minutes avant de trancher pour une meilleure texture.',
-  slug: 'roast-beef-moutardes-et-vin-rouge'
-};
+  notes:
+    'La cuisson doit atteindre 118 °F pour une cuisson saignante. Laisser reposer 15 minutes avant de trancher pour une meilleure texture.',
+  slug: 'roast-beef-moutardes-et-vin-rouge',
+}

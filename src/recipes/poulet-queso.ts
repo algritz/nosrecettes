@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pouletQueso: Recipe = {
   id: 'poulet-queso',
   title: 'Poulet queso',
-  description: 'Un plat de poulet savoureux avec une sauce fromagère, parfait pour un repas convivial.',
+  description:
+    'Un plat de poulet savoureux avec une sauce fromagère, parfait pour un repas convivial.',
   categories: ['Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
@@ -23,7 +24,7 @@ export const pouletQueso: Recipe = {
     '3/4 de tasse de salsa',
     '1/2 tasse de crème à cuisson 35%',
     '2 c. à soupe de persil frais haché',
-    '2 tomates italiennes épépinées et coupées en dés'
+    '2 tomates italiennes épépinées et coupées en dés',
   ],
   instructions: [
     'Dans une grande poêle, chauffer l’huile à feu moyen.',
@@ -35,8 +36,8 @@ export const pouletQueso: Recipe = {
     'Incorporer le cheez whiz, la salsa et la crème.',
     'Porter à ébullition, puis laisser mijoter de 6 à 8 minutes à feu doux-moyen, jusqu’à ce que l’intérieur de la chair du poulet ait perdu sa teinte rosée.',
     'Ajouter le persil et les tomates.',
-    'Remuer et servir.'
+    'Remuer et servir.',
   ],
   tags: ['fromage', 'poulet', 'tacos'],
-  slug: 'poulet-queso'
-};
+  slug: 'poulet-queso',
+}

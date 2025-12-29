@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pouletAigreDoux: Recipe = {
   id: 'poulet-aigre-doux',
@@ -22,17 +22,17 @@ export const pouletAigreDoux: Recipe = {
     'Poulet 1/4 tasse (65 ml) beurre',
     '1 tasse (250 ml) céleri, émincé',
     '2 oignons, moyens, coupés en tranches',
-    '4 poitrines de poulet, désossées, sans la peau'
+    '4 poitrines de poulet, désossées, sans la peau',
   ],
   instructions: [
     'Préchauffer le four à 350°F (180°C).',
-    'Dans un bol, mélanger les ingrédients de la sauce jusqu\'à l\'obtention d\'un mélange lisse. Réserver.',
+    "Dans un bol, mélanger les ingrédients de la sauce jusqu'à l'obtention d'un mélange lisse. Réserver.",
     'Dans un poêlon, faire fondre le beurre et y dorer les poitrines de chaque côté. Déposer dans un plat allant au four. Réserver.',
     'Dans le gras de la cuisson, cuire le céleri et les oignons de 2 à 3 minutes.',
     'Ajouter la sauce, mélanger et faire mijoter 10 minutes.',
     'Verser sur les poitrines de poulet.',
-    'Cuire au four à découvert pendant environ 1 heure, en remuant de temps en temps.'
+    'Cuire au four à découvert pendant environ 1 heure, en remuant de temps en temps.',
   ],
   tags: ['sauce aigre-douce', 'cuisine au four', 'poulet'],
-  slug: 'poulet-aigre-doux'
-};
+  slug: 'poulet-aigre-doux',
+}

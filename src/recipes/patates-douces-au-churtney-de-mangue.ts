@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const patatesDoucesAuChurtneyDeMangue: Recipe = {
   id: 'patates-douces-au-churtney-de-mangue',
@@ -15,18 +15,18 @@ export const patatesDoucesAuChurtneyDeMangue: Recipe = {
     '2 c à soupe de chutney de mangue',
     '2 limes',
     'Coriandre hachée',
-    'huile d\'olive',
+    "huile d'olive",
     'Sel',
-    'piment d\'Espelette'
+    "piment d'Espelette",
   ],
   instructions: [
     'Laver, éplucher et cuire à la vapeur les patates douces coupées en gros morceaux avec une lime coupée en deux.',
     'Pendant ce temps, hacher la coriandre sur une planche de travail.',
-    'Mélanger la coriandre hachée avec le chutney de mangue, la sauce soya, l\'huile d\'olive et le jus d\'une demi lime.',
+    "Mélanger la coriandre hachée avec le chutney de mangue, la sauce soya, l'huile d'olive et le jus d'une demi lime.",
     'Déposer les patates douces cuites et chaudes sur le mélange, puis les écraser grossièrement avec une fourchette ou un pilon à patate.',
     'Récupérer la lime qui a cuit avec les patates douces et ajouter la moitié du jus de la lime par-dessus.',
-    'Bien mélanger l\'ensemble et rectifier l\'assaisonnement selon votre goût.'
+    "Bien mélanger l'ensemble et rectifier l'assaisonnement selon votre goût.",
   ],
   tags: ['mangue', 'chutney', 'cuisson vapeur'],
-  slug: 'patates-douces-au-churtney-de-mangue'
-};
+  slug: 'patates-douces-au-churtney-de-mangue',
+}

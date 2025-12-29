@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saumonAuBeurreCajun: Recipe = {
   id: 'saumon-au-beurre-cajun',
   title: 'Saumon au beurre cajun',
-  description: 'Une recette de saumon cuit au four avec une marinade au beurre cajun, servi avec des rondelles de citron et décoré d\'oignons verts.',
+  description:
+    "Une recette de saumon cuit au four avec une marinade au beurre cajun, servi avec des rondelles de citron et décoré d'oignons verts.",
   categories: ['Poisson', 'Plats principaux'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 25, max: 25 },
@@ -15,23 +16,23 @@ export const saumonAuBeurreCajun: Recipe = {
     'Sel casher',
     'Poivre noir fraichement moulu',
     '4 cuillères à soupe beurre fondu',
-    '3 gousses d\'ail émincées',
-    '2 cuillères à soupe moutarde l\'ancienne',
-    '2 c. à thé d\'épice cajun',
+    "3 gousses d'ail émincées",
+    "2 cuillères à soupe moutarde l'ancienne",
+    "2 c. à thé d'épice cajun",
     '1 c. à thé de thym frais',
     'Une pincée de flocons de piment rouge',
-    'Oignons verts émincés pour servir'
+    'Oignons verts émincés pour servir',
   ],
   instructions: [
-    'Préchauffer le four à 350 °F et tapisser une grande plaque à pâtisserie de papier d\'aluminium.',
+    "Préchauffer le four à 350 °F et tapisser une grande plaque à pâtisserie de papier d'aluminium.",
     'Disposer les rondelles de citron en une couche uniforme au centre du moule.',
     'Placer le saumon dessus et assaisonner avec du sel et du poivre.',
-    'Dans un petit bol, mélanger le beurre fondu, l\'ail, la moutarde, les épices cajun, le thym et les flocons de piment rouge.',
+    "Dans un petit bol, mélanger le beurre fondu, l'ail, la moutarde, les épices cajun, le thym et les flocons de piment rouge.",
     'Badigeonner le saumon avec ce mélange.',
-    'Cuire au four jusqu\'à ce que le saumon soit bien cuit, environ 25 minutes.',
-    'Mettre le four en mode grill et faire griller pendant 2 minutes ou jusqu\'à ce que le mélange de beurre ait épaissi.',
-    'Décorer d\'oignons verts avant de servir.'
+    "Cuire au four jusqu'à ce que le saumon soit bien cuit, environ 25 minutes.",
+    "Mettre le four en mode grill et faire griller pendant 2 minutes ou jusqu'à ce que le mélange de beurre ait épaissi.",
+    "Décorer d'oignons verts avant de servir.",
   ],
   tags: ['cajun', 'saumon', 'grill'],
-  slug: 'saumon-au-beurre-cajun'
-};
+  slug: 'saumon-au-beurre-cajun',
+}

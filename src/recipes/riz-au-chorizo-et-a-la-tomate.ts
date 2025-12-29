@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const rizAuChorizoEtALaTomate: Recipe = {
   id: 'riz-au-chorizo-et-a-la-tomate',
@@ -20,7 +20,7 @@ export const rizAuChorizoEtALaTomate: Recipe = {
     '1/2 cuillère à café de poivre noir',
     '1 cuillère à soupe d’huile d’olive',
     'Quelques feuilles de basilic frais',
-    '50 g de fromage râpé'
+    '50 g de fromage râpé',
   ],
   instructions: [
     'Dans une grande casserole, fais chauffer l’huile d’olive à feu moyen.',
@@ -33,8 +33,8 @@ export const rizAuChorizoEtALaTomate: Recipe = {
     'Verse 400 ml d’eau dans la casserole, porte à ébullition, puis réduis le feu et couvre.',
     'Laisse cuire à feu doux pendant 15 à 20 minutes, ou jusqu’à ce que le riz soit tendre et que le liquide soit absorbé.',
     'Ajoute quelques feuilles de basilic frais pour une touche de fraîcheur.',
-    'Saupoudre de fromage râpé avant de servir.'
+    'Saupoudre de fromage râpé avant de servir.',
   ],
   tags: ['tomate', 'chorizo', 'riz'],
-  slug: 'riz-au-chorizo-et-a-la-tomate'
-};
+  slug: 'riz-au-chorizo-et-a-la-tomate',
+}

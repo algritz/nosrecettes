@@ -1,88 +1,90 @@
-import { useState, useEffect } from 'react';
-import { Input } from '@/components/ui/input';
-import type { TimeRange } from '../types/recipe';
-import { isExactTime } from '../utils/timeUtils';
+import { useState, useEffect } from 'react'
+import { Input } from '@/components/ui/input'
+import type { TimeRange } from '../types/recipe'
+import { isExactTime } from '../utils/timeUtils'
 
 interface TimeRangeInputProps {
   /**
    * Current time range value
    * Accepts TimeRange object or string for backward compatibility during migration
    */
-  value: TimeRange | string;
+  value: TimeRange | string
 
   /**
    * Callback when time range changes
    * Always provides a valid TimeRange object
    */
-  onChange: (range: TimeRange) => void;
+  onChange: (range: TimeRange) => void
 
   /**
    * Whether to show days input field (default: false)
    * When true, each column shows: days, hours, minutes
    * When false, each column shows: hours, minutes
    */
-  allowDays?: boolean;
+  allowDays?: boolean
 
   /**
    * Additional CSS class for container
    */
-  className?: string;
+  className?: string
 
   /**
    * Label for the entire input group (optional)
    * Example: "Prep Time" or "Cook Time"
    */
-  label?: string;
+  label?: string
 
   /**
    * Whether the field is required (default: false)
    */
-  required?: boolean;
+  required?: boolean
 
   /**
    * Whether the input is disabled (default: false)
    */
-  disabled?: boolean;
+  disabled?: boolean
 }
 
 /**
  * Parse TimeRange object to display format
  */
 function parseTimeRangeToDisplay(range: TimeRange, allowDays: boolean) {
-  const { min, max } = range;
+  const { min, max } = range
 
   // Convert min to display units
-  const minDays = allowDays ? Math.floor(min / 1440) : 0;
-  const minHours = Math.floor((min % 1440) / 60);
-  const minMins = min % 60;
+  const minDays = allowDays ? Math.floor(min / 1440) : 0
+  const minHours = Math.floor((min % 1440) / 60)
+  const minMins = min % 60
 
   // Convert max to display units
-  const maxDays = allowDays ? Math.floor(max / 1440) : 0;
-  const maxHours = Math.floor((max % 1440) / 60);
-  const maxMins = max % 60;
+  const maxDays = allowDays ? Math.floor(max / 1440) : 0
+  const maxHours = Math.floor((max % 1440) / 60)
+  const maxMins = max % 60
 
-  return { minDays, minHours, minMins, maxDays, maxHours, maxMins };
+  return { minDays, minHours, minMins, maxDays, maxHours, maxMins }
+}
+
+interface TimeDisplayValues {
+  days: number
+  hours: number
+  mins: number
 }
 
 /**
  * Convert display values back to TimeRange object
  */
 function displayToTimeRange(
-  minDays: number,
-  minHours: number,
-  minMins: number,
-  maxDays: number,
-  maxHours: number,
-  maxMins: number
+  minValues: TimeDisplayValues,
+  maxValues: TimeDisplayValues,
 ): TimeRange {
-  const min = minDays * 1440 + minHours * 60 + minMins;
-  const max = maxDays * 1440 + maxHours * 60 + maxMins;
+  const min = minValues.days * 1440 + minValues.hours * 60 + minValues.mins
+  const max = maxValues.days * 1440 + maxValues.hours * 60 + maxValues.mins
 
   // Validation: ensure max >= min (auto-adjust if needed)
   return {
     min,
     max: Math.max(min, max),
-  };
+  }
 }
 
 /**
@@ -91,28 +93,28 @@ function displayToTimeRange(
 function parseValue(value: TimeRange | string): TimeRange {
   // If already a TimeRange, return as-is
   if (typeof value === 'object' && value !== null) {
-    return value as TimeRange;
+    return value
   }
 
   // If string (legacy format), parse as single value
   if (typeof value === 'string') {
-    const minutes = parseInt(value, 10) || 0;
-    return { min: minutes, max: minutes };
+    const minutes = parseInt(value, 10) || 0
+    return { min: minutes, max: minutes }
   }
 
   // Default fallback
-  return { min: 0, max: 0 };
+  return { min: 0, max: 0 }
 }
 
 /**
  * Validate time range and return validation state
  */
 function validateRange(range: TimeRange): {
-  isValid: boolean;
-  isExact: boolean;
-  errorMessage?: string;
+  isValid: boolean
+  isExact: boolean
+  errorMessage?: string
 } {
-  const { min, max } = range;
+  const { min, max } = range
 
   // Check non-negative
   if (min < 0 || max < 0) {
@@ -120,7 +122,7 @@ function validateRange(range: TimeRange): {
       isValid: false,
       isExact: false,
       errorMessage: 'Time values must be non-negative',
-    };
+    }
   }
 
   // Check min <= max
@@ -128,17 +130,18 @@ function validateRange(range: TimeRange): {
     return {
       isValid: false,
       isExact: false,
-      errorMessage: 'Maximum time must be greater than or equal to minimum time',
-    };
+      errorMessage:
+        'Maximum time must be greater than or equal to minimum time',
+    }
   }
 
   // Check if exact time
-  const isExact = isExactTime(range);
+  const isExact = isExactTime(range)
 
   return {
     isValid: true,
     isExact,
-  };
+  }
 }
 
 export function TimeRangeInput({
@@ -151,52 +154,55 @@ export function TimeRangeInput({
   disabled = false,
 }: TimeRangeInputProps) {
   // Parse initial value
-  const initialRange = parseValue(value);
-  const initialDisplay = parseTimeRangeToDisplay(initialRange, allowDays);
+  const initialRange = parseValue(value)
+  const initialDisplay = parseTimeRangeToDisplay(initialRange, allowDays)
 
   // Local state for display values
-  const [minDays, setMinDays] = useState(initialDisplay.minDays);
-  const [minHours, setMinHours] = useState(initialDisplay.minHours);
-  const [minMins, setMinMins] = useState(initialDisplay.minMins);
-  const [maxDays, setMaxDays] = useState(initialDisplay.maxDays);
-  const [maxHours, setMaxHours] = useState(initialDisplay.maxHours);
-  const [maxMins, setMaxMins] = useState(initialDisplay.maxMins);
+  const [minDays, setMinDays] = useState(initialDisplay.minDays)
+  const [minHours, setMinHours] = useState(initialDisplay.minHours)
+  const [minMins, setMinMins] = useState(initialDisplay.minMins)
+  const [maxDays, setMaxDays] = useState(initialDisplay.maxDays)
+  const [maxHours, setMaxHours] = useState(initialDisplay.maxHours)
+  const [maxMins, setMaxMins] = useState(initialDisplay.maxMins)
 
   // Sync internal state when value prop changes (e.g., from import)
   useEffect(() => {
-    const newRange = parseValue(value);
-    const newDisplay = parseTimeRangeToDisplay(newRange, allowDays);
+    const newRange = parseValue(value)
+    const newDisplay = parseTimeRangeToDisplay(newRange, allowDays)
 
-    setMinDays(newDisplay.minDays);
-    setMinHours(newDisplay.minHours);
-    setMinMins(newDisplay.minMins);
-    setMaxDays(newDisplay.maxDays);
-    setMaxHours(newDisplay.maxHours);
-    setMaxMins(newDisplay.maxMins);
-  }, [value, allowDays]);
+    setMinDays(newDisplay.minDays)
+    setMinHours(newDisplay.minHours)
+    setMinMins(newDisplay.minMins)
+    setMaxDays(newDisplay.maxDays)
+    setMaxHours(newDisplay.maxHours)
+    setMaxMins(newDisplay.maxMins)
+  }, [value, allowDays])
 
   // Calculate current range and validation
-  const currentRange = displayToTimeRange(minDays, minHours, minMins, maxDays, maxHours, maxMins);
-  const validation = validateRange(currentRange);
+  const currentRange = displayToTimeRange(
+    { days: minDays, hours: minHours, mins: minMins },
+    { days: maxDays, hours: maxHours, mins: maxMins },
+  )
+  const validation = validateRange(currentRange)
 
   // Update parent when display values change
   useEffect(() => {
     if (validation.isValid) {
-      onChange(currentRange);
+      onChange(currentRange)
     } else {
       // If max < min, auto-set max to equal min (creating an exact time)
-      const calculatedMin = minDays * 1440 + minHours * 60 + minMins;
-      const calculatedMax = maxDays * 1440 + maxHours * 60 + maxMins;
+      const calculatedMin = minDays * 1440 + minHours * 60 + minMins
+      const calculatedMax = maxDays * 1440 + maxHours * 60 + maxMins
 
       if (calculatedMax < calculatedMin && calculatedMin > 0) {
         // Auto-copy min values to max
-        setMaxDays(minDays);
-        setMaxHours(minHours);
-        setMaxMins(minMins);
+        setMaxDays(minDays)
+        setMaxHours(minHours)
+        setMaxMins(minMins)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [minDays, minHours, minMins, maxDays, maxHours, maxMins]);
+  }, [minDays, minHours, minMins, maxDays, maxHours, maxMins])
 
   return (
     <div className={`space-y-3 ${className}`}>
@@ -305,11 +311,14 @@ export function TimeRangeInput({
 
       {/* Validation feedback - only show errors */}
       {!validation.isValid && validation.errorMessage && (
-        <div className="text-xs text-destructive flex items-center gap-1" role="alert">
+        <div
+          className="text-xs text-destructive flex items-center gap-1"
+          role="alert"
+        >
           <span>⚠</span>
           <span>{validation.errorMessage}</span>
         </div>
       )}
     </div>
-  );
+  )
 }

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saumonAuVinaigreBalsamique: Recipe = {
   id: 'saumon-au-vinaigre-balsamique',
   title: 'Saumon au Vinaigre balsamique',
-  description: 'Une recette savoureuse de filets de saumon cuits avec une sauce au vinaigre balsamique, miel, ail et moutarde, garnie de graines de sésame.',
+  description:
+    'Une recette savoureuse de filets de saumon cuits avec une sauce au vinaigre balsamique, miel, ail et moutarde, garnie de graines de sésame.',
   categories: ['Poisson', 'Plats principaux'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 20, max: 20 },
@@ -20,7 +21,7 @@ export const saumonAuVinaigreBalsamique: Recipe = {
     'Sel et poivre du moulin',
     '1 cuillère à soupe d’origan frais haché',
     'Une pincée de flocons de piment rouge',
-    'Graines de sésame'
+    'Graines de sésame',
   ],
   instructions: [
     'Chauffer l’huile dans une poêle à feu moyen et faire revenir l’ail.',
@@ -31,8 +32,8 @@ export const saumonAuVinaigreBalsamique: Recipe = {
     'Enfourner.',
     'Badigeonner les filets de temps en temps avec le reste de la sauce.',
     'Cuire environ 10 à 14 minutes.',
-    'À la sortie du four, parsemer de graines de sésame.'
+    'À la sortie du four, parsemer de graines de sésame.',
   ],
   tags: ['vinaigre balsamique', 'miel', 'saumon'],
-  slug: 'saumon-au-vinaigre-balsamique'
-};
+  slug: 'saumon-au-vinaigre-balsamique',
+}

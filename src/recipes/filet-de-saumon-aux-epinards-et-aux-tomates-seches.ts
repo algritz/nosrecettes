@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const filetDeSaumonAuxEpinardsEtAuxTomatesSeches: Recipe = {
   id: 'filet-de-saumon-aux-epinards-et-aux-tomates-seches',
@@ -13,12 +13,12 @@ export const filetDeSaumonAuxEpinardsEtAuxTomatesSeches: Recipe = {
     '1 filet de saumon peau enlevée',
     'Épinard',
     '1 oignon rouge',
-    'une gousse d\'ail hachée finement',
+    "une gousse d'ail hachée finement",
     'Tomate séchée',
     'Vinaigrette aux tomates séchées et à l’origan',
     'Fromage à la crème Philadelphia',
     'Fromage parmesan',
-    'Sel et poivre au goût'
+    'Sel et poivre au goût',
   ],
   instructions: [
     'Faire mariner le filet de saumon dans la vinaigrette pendant une heure si désiré.',
@@ -30,8 +30,8 @@ export const filetDeSaumonAuxEpinardsEtAuxTomatesSeches: Recipe = {
     'Ajouter les tomates séchées coupées en dés.',
     'Ajouter le fromage à la crème et le faire fondre.',
     'Étendre ce mélange d’épinards, tomates et de fromage sur le filet de saumon.',
-    'Saupoudrer de parmesan et faire cuire au four à 400°F pendant au moins 20 minutes.'
+    'Saupoudrer de parmesan et faire cuire au four à 400°F pendant au moins 20 minutes.',
   ],
   tags: ['saumon', 'épinards', 'tomates séchées'],
-  slug: 'filet-de-saumon-aux-epinards-et-aux-tomates-seches'
-};
+  slug: 'filet-de-saumon-aux-epinards-et-aux-tomates-seches',
+}

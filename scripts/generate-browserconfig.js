@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { getAssetUrl } from './site.config.js';
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { getAssetUrl } from './site.config.js'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export function generateBrowserConfig() {
   const browserConfigContent = `<?xml version="1.0" encoding="utf-8"?>
@@ -17,29 +17,28 @@ export function generateBrowserConfig() {
             <TileColor>#0f172a</TileColor>
         </tile>
     </msapplication>
-</browserconfig>`;
+</browserconfig>`
 
-  return browserConfigContent;
+  return browserConfigContent
 }
 
 function main() {
   try {
-    console.log('Generating browserconfig.xml...');
-    
-    const browserConfigContent = generateBrowserConfig();
-    const outputPath = path.join(__dirname, '..', 'public', 'browserconfig.xml');
-    
-    fs.writeFileSync(outputPath, browserConfigContent, 'utf-8');
-    
-    console.log('✅ Browserconfig.xml generated successfully');
-    
+    console.log('Generating browserconfig.xml...')
+
+    const browserConfigContent = generateBrowserConfig()
+    const outputPath = path.join(__dirname, '..', 'public', 'browserconfig.xml')
+
+    fs.writeFileSync(outputPath, browserConfigContent, 'utf-8')
+
+    console.log('✅ Browserconfig.xml generated successfully')
   } catch (error) {
-    console.error('❌ Error generating browserconfig.xml:', error);
-    process.exit(1);
+    console.error('❌ Error generating browserconfig.xml:', error)
+    process.exit(1)
   }
 }
 
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main();
+  main()
 }

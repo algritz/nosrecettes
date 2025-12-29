@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const lobsterRoll: Recipe = {
   id: 'lobster-roll',
@@ -19,18 +19,18 @@ export const lobsterRoll: Recipe = {
     'mayonnaise',
     'sel',
     'poivre',
-    '4 petits pains (à hot dog ou autre)'
+    '4 petits pains (à hot dog ou autre)',
   ],
   instructions: [
-    'Faire bouillir de l\'eau saturée de sel. Quand elle boue, y mettre les homards.',
-    'Attendre que l\'eau boue à nouveau à gros bouillon et calculer 11 minutes, puis les homards seront prêts.',
-    'Sortir les homards de l\'eau bouillante et les mettre dans un grand bol d\'eau glacée.',
+    "Faire bouillir de l'eau saturée de sel. Quand elle boue, y mettre les homards.",
+    "Attendre que l'eau boue à nouveau à gros bouillon et calculer 11 minutes, puis les homards seront prêts.",
+    "Sortir les homards de l'eau bouillante et les mettre dans un grand bol d'eau glacée.",
     'Évidez-les et mettez la chair des homards au froid en attendant de faire la sauce.',
-    'Mélanger l\'oignon vert, la ciboulette, le céleri, la sauce sriracha et le jus de citron.',
-    'Ajouter la chair de homards et la mayonnaise jusqu\'à la consistance désirée.',
+    "Mélanger l'oignon vert, la ciboulette, le céleri, la sauce sriracha et le jus de citron.",
+    "Ajouter la chair de homards et la mayonnaise jusqu'à la consistance désirée.",
     'Saler et poivrer.',
-    'Servir dans des petits pains.'
+    'Servir dans des petits pains.',
   ],
   tags: ['homard', 'barbecue', 'sandwich'],
-  slug: 'lobster-roll'
-};
+  slug: 'lobster-roll',
+}

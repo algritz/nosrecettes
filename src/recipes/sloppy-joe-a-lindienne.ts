@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const sloppyJoeALindienne: Recipe = {
   id: 'sloppy-joe-a-l-indienne',
-  title: 'Sloppy Joe à l\'indienne',
-  description: 'Un plat épicé de viande de dindon hachée servi dans des mini-pains naans, accompagné d\'une sauce au yogourt et aux herbes.',
+  title: "Sloppy Joe à l'indienne",
+  description:
+    "Un plat épicé de viande de dindon hachée servi dans des mini-pains naans, accompagné d'une sauce au yogourt et aux herbes.",
   categories: ['Plats principaux'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 20, max: 20 },
@@ -22,7 +23,7 @@ export const sloppyJoeALindienne: Recipe = {
     '¼ de tasse de raisins secs dorés',
     '¼ de tasse de pistaches hachées grossièrement',
     '4 mini-pains naans',
-    '2 branches de coriandre fraîche'
+    '2 branches de coriandre fraîche',
   ],
   instructions: [
     'Dans une grande poêle, faire revenir l’oignon, le gingembre et les épices (curcuma et poudre de cari) à feu moyen pendant 3 minutes.',
@@ -32,16 +33,19 @@ export const sloppyJoeALindienne: Recipe = {
     'Pendant ce temps, mélanger les ingrédients de la sauce au yogourt et à la crème sure. Réserver au réfrigérateur.',
     'Faire griller les pains naans au four à 400 °F pendant 2 minutes.',
     'Garnir le pain avec le mélange de dindon et quelques feuilles de coriandre fraîche.',
-    'Servir accompagné de la sauce au yogourt.'
+    'Servir accompagné de la sauce au yogourt.',
   ],
   tags: ['épicé', 'curry', 'naan'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sloppy-joe-a-l-indienne',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sloppy-joe-a-l-indienne',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sloppy-joe-a-l-indienne'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sloppy-joe-a-l-indienne',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sloppy-joe-a-l-indienne',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sloppy-joe-a-l-indienne',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'sloppy-joe-a-lindienne'
-};
+  slug: 'sloppy-joe-a-lindienne',
+}

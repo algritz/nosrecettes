@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const jambonJusDePommesEtAuMiel: Recipe = {
   id: 'jambon-jus-de-pommes-et-au-miel',
@@ -17,21 +17,21 @@ export const jambonJusDePommesEtAuMiel: Recipe = {
     '15 ml (1 c. à soupe) de gingembre frais, haché',
     '5 ml (1 c. à thé) de piment de la Jamaïque',
     '500 ml (2 tasses) de jus de cuisson',
-    '30 ml (2 c. à soupe) de fécule de maïs délayée dans 60 ml (1/4 tasse) d\'eau',
+    "30 ml (2 c. à soupe) de fécule de maïs délayée dans 60 ml (1/4 tasse) d'eau",
     '15 ml (1 c. à soupe) de beurre',
-    'Sel et poivre, au goût'
+    'Sel et poivre, au goût',
   ],
   instructions: [
     'Dans une casserole, porter à ébullition le jus de pomme, le miel, le vinaigre, le gingembre et le piment de la Jamaïque. Réserver.',
-    'Retirer le jambon de son emballage, mais laisser le filet. Bien rincer le jambon à l\'eau froide et le déposer dans la mijoteuse.',
+    "Retirer le jambon de son emballage, mais laisser le filet. Bien rincer le jambon à l'eau froide et le déposer dans la mijoteuse.",
     'Verser le mélange au jus de pomme sur le jambon et faire cuire à température faible 8 heures.',
     'Retirer le jambon de la mijoteuse et réserver.',
     'Préparer la sauce. Récupérer 500 ml (2 tasses) du jus de cuisson.',
     'Mettre le liquide dans une petite casserole et porter à ébullition.',
     'Verser la fécule délayée dans la casserole. Bien mélanger et faire cuire 1 minute.',
     'Ajouter le beurre et bien mélanger. Saler et poivrer.',
-    'Servir le jambon nappé de la sauce.'
+    'Servir le jambon nappé de la sauce.',
   ],
   tags: ['mijoteuse', 'sauce', 'jambon'],
-  slug: 'jambon-jus-de-pommes-et-au-miel'
-};
+  slug: 'jambon-jus-de-pommes-et-au-miel',
+}

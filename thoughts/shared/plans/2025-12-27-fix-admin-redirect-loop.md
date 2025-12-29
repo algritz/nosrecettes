@@ -21,17 +21,30 @@ After fixing the blank page issue by migrating from `/nosrecettes/` to `/` (comm
 The [public/404.html:85](public/404.html#L85) file contains a `pathSegmentsToKeep` variable set to `1`, which was correct for the `/nosrecettes/` subdirectory deployment but is incorrect for root `/` deployment.
 
 **Broken redirect logic:**
+
 ```javascript
-var pathSegmentsToKeep = 1;  // This was correct for /nosrecettes/ base, wrong for / base
-var l = window.location;
+var pathSegmentsToKeep = 1 // This was correct for /nosrecettes/ base, wrong for / base
+var l = window.location
 
 l.replace(
-  l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-  l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-  l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-  (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-  l.hash
-);
+  l.protocol +
+    '//' +
+    l.hostname +
+    (l.port ? ':' + l.port : '') +
+    l.pathname
+      .split('/')
+      .slice(0, 1 + pathSegmentsToKeep)
+      .join('/') +
+    '/?/' +
+    l.pathname
+      .slice(1)
+      .split('/')
+      .slice(pathSegmentsToKeep)
+      .join('/')
+      .replace(/&/g, '~and~') +
+    (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+    l.hash,
+)
 ```
 
 ### How the Loop Occurs
@@ -63,11 +76,13 @@ l.replace(
 ### Redirect Behavior Comparison
 
 **With `pathSegmentsToKeep = 1` (BROKEN):**
+
 - `/admin` → `/admin/?/` (causes loop)
 - `/recipe/test` → `/recipe/?/test` (might work but incorrect)
 - `/` → `//?/` (broken)
 
 **With `pathSegmentsToKeep = 0` (CORRECT):**
+
 - `/admin` → `/?/admin` (works - SPA handles routing)
 - `/recipe/test` → `/?/recipe/test` (works)
 - `/` → `/?/` (works)
@@ -84,6 +99,7 @@ l.replace(
 ### Success Metrics
 
 After implementation:
+
 - `/admin` page is accessible without redirect loop
 - All other routes continue to work correctly
 - 404 page displays for truly non-existent routes
@@ -120,6 +136,7 @@ After implementation:
 This is a **single-line fix** that updates the `pathSegmentsToKeep` constant from `1` to `0` to reflect the root-level deployment structure. The change is surgical and low-risk.
 
 **Why this is safe:**
+
 - Only affects 404.html redirect logic
 - Doesn't modify authentication checks
 - Aligns with the existing root-level configuration in [src/config/site.config.ts](src/config/site.config.ts)
@@ -138,16 +155,19 @@ Update the `pathSegmentsToKeep` variable in 404.html to reflect root-level deplo
 **File**: [public/404.html:85](public/404.html#L85)
 
 **Current code:**
+
 ```javascript
-var pathSegmentsToKeep = 1;
+var pathSegmentsToKeep = 1
 ```
 
 **Updated code:**
+
 ```javascript
-var pathSegmentsToKeep = 0;
+var pathSegmentsToKeep = 0
 ```
 
 **Rationale**:
+
 - With root deployment, there is no base path segment to preserve
 - `0` tells the redirect logic to keep only the root segment (`/`)
 - All route segments after root should be encoded in the query parameter
@@ -155,6 +175,7 @@ var pathSegmentsToKeep = 0;
 **Line to modify**: Line 85 only
 
 **No other changes needed**: The rest of the 404.html logic remains unchanged because:
+
 - Authentication checks are independent of path segments
 - Protected routes array doesn't need updates
 - SPA redirect URL construction algorithm is correct
@@ -172,6 +193,7 @@ var pathSegmentsToKeep = 0;
 #### Manual Verification
 
 1. **Start local development server**:
+
    ```bash
    npm run dev
    ```
@@ -210,6 +232,7 @@ npm run dev
 ```
 
 **Verification checklist:**
+
 - [ ] `/admin` loads without redirect loop
 - [ ] Homepage loads at root `/`
 - [ ] Recipe pages load correctly
@@ -226,6 +249,7 @@ npm run preview
 ```
 
 **Verification checklist:**
+
 - [ ] Build completes successfully
 - [ ] Preview server runs without errors
 - [ ] All routes work the same as in development
@@ -235,11 +259,13 @@ npm run preview
 ### Pre-Deployment Checklist
 
 **Code Review:**
+
 - [ ] Only `pathSegmentsToKeep` value changed (line 85)
 - [ ] No other modifications to 404.html
 - [ ] Change from `1` to `0` is correct
 
 **Final Testing:**
+
 ```bash
 # Clean build
 rm -rf dist node_modules/.vite
@@ -257,6 +283,7 @@ npm run preview
 ### Post-Deployment Verification
 
 **Immediate Checks (on https://nosrecettes.ca):**
+
 - [ ] Navigate to `/admin` - loads successfully
 - [ ] No redirect loop in Network tab
 - [ ] Homepage works
@@ -268,6 +295,7 @@ npm run preview
 **Browser Testing:**
 
 Test on Chrome, Firefox, Safari:
+
 - [ ] `/admin` loads on all browsers
 - [ ] No infinite redirects
 - [ ] SPA routing works
@@ -279,12 +307,14 @@ Test on Chrome, Firefox, Safari:
 If issues are found post-deployment:
 
 **Quick Rollback:**
+
 ```bash
 git revert HEAD --no-edit
 git push origin main
 ```
 
 **Monitor:**
+
 - GitHub Actions workflow completes
 - Site loads after rollback
 - `/admin` behavior (will have redirect loop again, but site is stable)
@@ -292,10 +322,11 @@ git push origin main
 **Alternative Fix:**
 
 If `pathSegmentsToKeep = 0` causes unexpected issues with other routes:
+
 1. Investigate which routes break
 2. Consider conditional logic:
    ```javascript
-   var pathSegmentsToKeep = currentPath === '/admin' ? 0 : 1;
+   var pathSegmentsToKeep = currentPath === '/admin' ? 0 : 1
    ```
 3. Test thoroughly before redeploying
 
@@ -316,6 +347,7 @@ None. This fix restores functionality that was broken in the previous migration.
 ### Related Changes
 
 This fix completes the migration started in commit ffe3a78:
+
 - Vite base path: Changed from `/nosrecettes/` to `/` ✅
 - Site config: Centralized with empty basePath ✅
 - Build scripts: Updated to use root paths ✅

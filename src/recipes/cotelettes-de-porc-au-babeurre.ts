@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const cotelettesDePorcAuBabeurre: Recipe = {
   id: 'cotelettes-de-porc-au-babeurre',
   title: 'Côtelettes de porc au babeurre',
-  description: 'Marinade de côtelettes de porc au babeurre avec épices, puis grillées à la perfection.',
+  description:
+    'Marinade de côtelettes de porc au babeurre avec épices, puis grillées à la perfection.',
   categories: ['Porc', 'Plats principaux'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 10, max: 10 },
@@ -17,7 +18,7 @@ export const cotelettesDePorcAuBabeurre: Recipe = {
     '5 ml de piment de la Jamaïque moulu',
     '5 ml de sel',
     'Une pincée de piment de cayenne',
-    '6 côtelettes de porc'
+    '6 côtelettes de porc',
   ],
   instructions: [
     'Dans un grand sac de plastique à fermeture hermétique, mélanger le babeurre et les épices.',
@@ -29,8 +30,8 @@ export const cotelettesDePorcAuBabeurre: Recipe = {
     'Égoutter la viande et jeter la marinade.',
     'Griller les côtelettes 5 minutes de chaque côté ou jusqu’à cuisson rosée.',
     'Réserver sur une assiette.',
-    'Couvrir et laisser reposer 5 minutes.'
+    'Couvrir et laisser reposer 5 minutes.',
   ],
   tags: ['marinade sèche', 'barbecue', 'porc'],
-  slug: 'cotelettes-de-porc-au-babeurre'
-};
+  slug: 'cotelettes-de-porc-au-babeurre',
+}

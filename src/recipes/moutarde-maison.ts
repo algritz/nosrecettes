@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const moutardeMaison: Recipe = {
   id: 'moutarde-maison',
@@ -12,16 +12,16 @@ export const moutardeMaison: Recipe = {
   ingredients: [
     '70 g de graines de moutarde',
     '60 ml de vinaigre de cidre',
-    '½ tasse d\'eau',
-    '1 gousse d\'ail coupée en 2',
-    '4 c. à thé de sirop d\'érable',
+    "½ tasse d'eau",
+    "1 gousse d'ail coupée en 2",
+    "4 c. à thé de sirop d'érable",
     '½ c. à thé de sel',
-    '6 g de curcuma'
+    '6 g de curcuma',
   ],
   instructions: [
-    'Faites macérer les graines de moutarde, le vinaigre, l\'eau et l\'ail au moins 8 heures.',
-    'Après la période macération, retirer l\'ail et mélanger au robot culinaire avec le sirop, le sel, le curcuma pour obtenir une substance crémeuse.'
+    "Faites macérer les graines de moutarde, le vinaigre, l'eau et l'ail au moins 8 heures.",
+    "Après la période macération, retirer l'ail et mélanger au robot culinaire avec le sirop, le sel, le curcuma pour obtenir une substance crémeuse.",
   ],
   tags: ['moutarde', 'macération', 'crème'],
-  slug: 'moutarde-maison'
-};
+  slug: 'moutarde-maison',
+}

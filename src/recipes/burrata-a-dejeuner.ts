@@ -1,9 +1,9 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const burrataADejeuner: Recipe = {
   id: 'burrata-a-dejeuner',
   title: 'Burrata à déjeuner',
-  description: 'J\'adore cette recette, mon déjeuner préféré Burrata à déjeuner',
+  description: "J'adore cette recette, mon déjeuner préféré Burrata à déjeuner",
   categories: ['Déjeuners', 'Végétarien'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 20, max: 20 },
@@ -22,7 +22,7 @@ export const burrataADejeuner: Recipe = {
     '1 c à soupe de Firebarns bacon ou sambal oelek',
     'Sel et poivre au goût',
     'Pousses fraîches pour garnir',
-    'Pain baguette pour servir'
+    'Pain baguette pour servir',
   ],
   instructions: [
     'Précuire le bacon et la saucisse, éponger sur un essuie-tout et trancher en petits morceaux le bacon et en rondelles les saucisses.',
@@ -31,8 +31,8 @@ export const burrataADejeuner: Recipe = {
     'Laisser cuire quelques minutes et déglacer avec le Whisky, ajouter ensuite le sirop d’érable, la Firebarns Bacon et continuer la cuisson à feu moyen pendant environ 5 à 10 minutes en remuant de temps en temps.',
     'Placer la boule de Burrata au centre d’une assiette et déposer le mélange autour.',
     'Verser ensuite quelques filets de sauces hollandaise sur le dessus de la Burrata.',
-    'Saler, poivrer et servir avec des pousses fraîches et du pain.'
+    'Saler, poivrer et servir avec des pousses fraîches et du pain.',
   ],
   tags: ['burrata', 'saucisses', 'hollandaise'],
-  slug: 'burrata-a-dejeuner'
-};
+  slug: 'burrata-a-dejeuner',
+}

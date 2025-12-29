@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const croustadeAuPomme: Recipe = {
   id: 'croustade-au-pomme',
@@ -15,7 +15,7 @@ export const croustadeAuPomme: Recipe = {
     '50 ml de blé entier',
     '100 ml de gruau',
     '125 ml de cassonade',
-    '50 ml de beurre'
+    '50 ml de beurre',
   ],
   instructions: [
     'Chauffer le four à 450 F',
@@ -24,10 +24,10 @@ export const croustadeAuPomme: Recipe = {
     'Étendre les pommes dans le moule',
     'Ajouter le jus de citron',
     'Dans un bol, mêler la farine, le gruau et la cassonade',
-    'Ajouter le beurre au mélange de farine; réduire en miettes à l\'aide d\'un coupe-pâte',
+    "Ajouter le beurre au mélange de farine; réduire en miettes à l'aide d'un coupe-pâte",
     'Déposer ce mélange sur les pommes sans presser',
-    'Cuire au four de 20 à 30 minutes'
+    'Cuire au four de 20 à 30 minutes',
   ],
   tags: ['croustade', 'pomme', 'dessert'],
-  slug: 'croustade-au-pomme'
-};
+  slug: 'croustade-au-pomme',
+}

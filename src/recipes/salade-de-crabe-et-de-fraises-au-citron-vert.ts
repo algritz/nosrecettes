@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeDeCrabeEtDeFraisesAuCitronVert: Recipe = {
   id: 'salade-de-crabe-et-de-fraises-au-citron-vert',
@@ -16,13 +16,13 @@ export const saladeDeCrabeEtDeFraisesAuCitronVert: Recipe = {
     '350 g (3/4 lb) de chair de crabe des neiges',
     'Le jus de 2 limes',
     '45 ml (3 c. à soupe) d’huile d’olive',
-    'Sel et poivre'
+    'Sel et poivre',
   ],
   instructions: [
     'Dans un bol, mélanger délicatement tous les ingrédients.',
     'Salent et poivrer.',
-    'Servir immédiatement.'
+    'Servir immédiatement.',
   ],
   tags: ['fraises', 'crabe', 'citron vert'],
-  slug: 'salade-de-crabe-et-de-fraises-au-citron-vert'
-};
+  slug: 'salade-de-crabe-et-de-fraises-au-citron-vert',
+}

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const cremeAsiatiqueCitrouilleEtLaitDeCoco: Recipe = {
   id: 'creme-asiatique-citrouille-et-lait-de-coco',
   title: 'Crème asiatique citrouille et lait de coco',
-  description: 'Une soupe onctueuse à la citrouille, parfumée à la citronnelle, au curry et garnie de basilic frais.',
+  description:
+    'Une soupe onctueuse à la citrouille, parfumée à la citronnelle, au curry et garnie de basilic frais.',
   categories: ['Soupes'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 30, max: 30 },
@@ -20,15 +21,15 @@ export const cremeAsiatiqueCitrouilleEtLaitDeCoco: Recipe = {
     '4 tasses de citrouille pelée, coupée en dés',
     '1 1/2 tasse de lait de coco non sucré',
     '1 c. à thé de cari',
-    '1 poignée de feuilles de basilic'
+    '1 poignée de feuilles de basilic',
   ],
   instructions: [
     'Dans une casserole, faire chauffer l’huile et le beurre à feu doux et y faire revenir l’ail, les échalotes, les piments et la citronnelle. Faire bien attention de ne pas laisser brûler l’ail !',
     'Ajouter le bouillon de poulet, le lait de coco, le cari et la citrouille, puis porter à ébullition.',
     'Faire cuire jusqu’à ce que la citrouille soit tendre.',
     'Mixer la soupe avec un mélangeur électrique pour qu’elle soit lisse et onctueuse.',
-    'Garnir de feuilles de basilic et servir.'
+    'Garnir de feuilles de basilic et servir.',
   ],
   tags: ['soupe', 'citrouille', 'curry'],
-  slug: 'creme-asiatique-citrouille-et-lait-de-coco'
-};
+  slug: 'creme-asiatique-citrouille-et-lait-de-coco',
+}

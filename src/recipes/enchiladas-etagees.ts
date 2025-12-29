@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const enchiladasEtagees: Recipe = {
   id: 'enchiladas-etagees',
@@ -12,33 +12,33 @@ export const enchiladasEtagees: Recipe = {
   ingredients: [
     '1 lb (450 g) de bœuf haché maigre',
     '1 gros oignon, haché',
-    '1 gousse d\'ail haché',
+    "1 gousse d'ail haché",
     '1 ou 2 piments jalapenos coupé en dés au goût',
-    '3/4 d\'un piments jaune, rouge ou orange dés',
+    "3/4 d'un piments jaune, rouge ou orange dés",
     '2 tasses de salsa avec de gros morceaux',
     '1 boîte (19 oz ou 540 ml) de haricots noirs, rincés',
     '1/4 tasse de vinaigrette Italienne piquante Kraft',
     '2 c. à soupe de chili en poudre',
-    '2 c. à soupe d\'assaisonnement à fajitas (facultatif)',
+    "2 c. à soupe d'assaisonnement à fajitas (facultatif)",
     '6 grandes tortillas au blé',
     '1/2 tasse de crème sure',
     '1 tasse de fromage Tex Mex râpé Kraft',
     'Tomate en dés',
     'avocat en dés',
-    'Coriandre haché'
+    'Coriandre haché',
   ],
   instructions: [
     'Préchauffer le four à 400 ºF.',
-    'Faire revenir la viande avec les oignons, l\'ail et les piments dans une grande poêle, à feu mi-vif.',
-    'Ajouter la salsa, les haricots, la vinaigrette, le chili en poudre et l\'assaisonnement à fajitas.',
-    'Mettre trois tortillas en une seule couche au fond d\'un moule de 13 pouces x 9 pouces.',
+    "Faire revenir la viande avec les oignons, l'ail et les piments dans une grande poêle, à feu mi-vif.",
+    "Ajouter la salsa, les haricots, la vinaigrette, le chili en poudre et l'assaisonnement à fajitas.",
+    "Mettre trois tortillas en une seule couche au fond d'un moule de 13 pouces x 9 pouces.",
     'Couvrir avec la moitié de la garniture à la viande, de la crème sure et du fromage.',
     'Répéter les couches.',
     'Couvrir.',
-    'Cuire au four 40 minutes ou jusqu\'à ce que le tout soit bien chaud et que le fromage ait fondu, en cuisant à découvert après 30 minutes de cuisson.',
+    "Cuire au four 40 minutes ou jusqu'à ce que le tout soit bien chaud et que le fromage ait fondu, en cuisant à découvert après 30 minutes de cuisson.",
     'Laisser reposer 5 minutes.',
-    'Servir en décorant d\'avocat, tomate fraîche et coriandre.'
+    "Servir en décorant d'avocat, tomate fraîche et coriandre.",
   ],
   tags: ['fromage', 'piments', 'cuisine mexicaine'],
-  slug: 'enchiladas-etagees'
-};
+  slug: 'enchiladas-etagees',
+}

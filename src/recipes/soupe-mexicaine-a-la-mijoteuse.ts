@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const soupeMexicaineALaMijoteuse: Recipe = {
   id: 'soupe-mexicaine-a-la-mijoteuse',
   title: 'Soupe mexicaine à la mijoteuse',
-  description: 'Une soupe mexicaine réconfortante préparée à la mijoteuse, avec du poulet, des légumes, des épices et de la crème, servie avec de la coriandre fraîche.',
+  description:
+    'Une soupe mexicaine réconfortante préparée à la mijoteuse, avec du poulet, des légumes, des épices et de la crème, servie avec de la coriandre fraîche.',
   categories: ['Soupes', 'Mijoteuse'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 240, max: 240 },
@@ -23,7 +24,7 @@ export const soupeMexicaineALaMijoteuse: Recipe = {
     '1 boîte de haricots rouges de 540 ml, rincés et égouttés',
     'Sel au goût',
     '1 tasse de crème 15%',
-    '1/4 de tasse de coriandre fraîche émincée'
+    '1/4 de tasse de coriandre fraîche émincée',
   ],
   instructions: [
     'Dans une poêle, chauffer l’huile à feu moyen. Faire dorer les cubes de poulet sur toutes les faces de 3 à 4 minutes.',
@@ -34,8 +35,8 @@ export const soupeMexicaineALaMijoteuse: Recipe = {
     'Ajouter la crème et remuer.',
     'Couvrir et prolonger la cuisson de 10 minutes à intensité élevée.',
     'Ajouter la coriandre et remuer.',
-    'Servir.'
+    'Servir.',
   ],
   tags: ['épicée', 'tacos', 'mijoteuse'],
-  slug: 'soupe-mexicaine-a-la-mijoteuse'
-};
+  slug: 'soupe-mexicaine-a-la-mijoteuse',
+}

@@ -1,9 +1,9 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeSaumonAuxFruitsExotiques: Recipe = {
   id: 'tartare-de-saumon-aux-fruits-exotiques',
   title: 'Tartare de saumon aux fruits exotiques',
-  description: 'Un petit tartare d\'été',
+  description: "Un petit tartare d'été",
   categories: ['Entrées'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 0, max: 0 },
@@ -16,19 +16,19 @@ export const tartareDeSaumonAuxFruitsExotiques: Recipe = {
     '1/2 fruit de la passion',
     '1 poignée de grenade',
     '1/2 lime',
-    '1 c à soupe d\'huile d\'olive',
-    'De l\'aneth'
+    "1 c à soupe d'huile d'olive",
+    "De l'aneth",
   ],
   instructions: [
     'Couper la demie mangue en brunoise.',
-    'Faire de même avec l\'avocat.',
-    'Placer la mangue et l\'avocat dans un grand saladier.',
-    'Ajouter le demi fruit de la passion, la grenade, le jus de lime et l\'huile d\'olive.',
+    "Faire de même avec l'avocat.",
+    "Placer la mangue et l'avocat dans un grand saladier.",
+    "Ajouter le demi fruit de la passion, la grenade, le jus de lime et l'huile d'olive.",
     'Bien mélanger.',
     'Couper le saumon en tout petits morceaux et verser avec les fruits.',
-    'Enfin, ajouter un peu d\'aneth ciselée.',
-    'Servir à l\'aide d\'un emporte-pièce.'
+    "Enfin, ajouter un peu d'aneth ciselée.",
+    "Servir à l'aide d'un emporte-pièce.",
   ],
   tags: ['été', 'frais', 'cru'],
-  slug: 'tartare-de-saumon-aux-fruits-exotiques'
-};
+  slug: 'tartare-de-saumon-aux-fruits-exotiques',
+}

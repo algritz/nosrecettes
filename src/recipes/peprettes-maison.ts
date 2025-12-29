@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const peprettesMaison: Recipe = {
   id: 'peprettes-maison',
   title: 'Péprettes maison',
-  description: 'Tout mélanger les ingrédients et laisser mariner 24h. Faire les péprettes avec le pistolet à saucisse en les déposant directement sur les gilles du fumoirs. Faire fumer, jusqu\'à ce que le centre atteigne 152°C, environ 3h. Laisser refroidir et emballer sous vide.',
+  description:
+    "Tout mélanger les ingrédients et laisser mariner 24h. Faire les péprettes avec le pistolet à saucisse en les déposant directement sur les gilles du fumoirs. Faire fumer, jusqu'à ce que le centre atteigne 152°C, environ 3h. Laisser refroidir et emballer sous vide.",
   categories: ['Fumoir'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 180, max: 180 },
@@ -13,25 +14,28 @@ export const peprettesMaison: Recipe = {
     '2 lbs de bœuf haché',
     '1 lbs de porc haché',
     '1 c. à soupe de Sri Racha',
-    '1 c. à soupe de poudre d\'ail',
-    '1 c. à soupe d\'épice à steak (#avache)',
+    "1 c. à soupe de poudre d'ail",
+    "1 c. à soupe d'épice à steak (#avache)",
     '1 c. à soupe de poivre moulu',
-    '1 c. à soupe de sel'
+    '1 c. à soupe de sel',
   ],
   instructions: [
     'Tout mélanger les ingrédients et laisser mariner 24h.',
     'Faire les péprettes avec le pistolet à saucisse en les déposant directement sur les gilles du fumoirs.',
-    'Faire fumer, jusqu\'à ce que le centre atteigne 152°C, environ 3h.',
-    'Laisser refroidir et emballer sous vide.'
+    "Faire fumer, jusqu'à ce que le centre atteigne 152°C, environ 3h.",
+    'Laisser refroidir et emballer sous vide.',
   ],
   tags: ['fumoir', 'saucisse', 'marinade'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/peprettes-maison',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/peprettes-maison',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/peprettes-maison'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/peprettes-maison',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/peprettes-maison',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/peprettes-maison',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'peprettes-maison'
-};
+  slug: 'peprettes-maison',
+}

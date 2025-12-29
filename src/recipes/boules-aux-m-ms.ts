@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const boulesAuxMMs: Recipe = {
   id: '1764532005479',
-  title: 'Boules aux M & M\'s',
-  description: 'Boules de beurre d\'arachide enrobées de chocolat, garnies d\'un M&M.',
+  title: "Boules aux M & M's",
+  description:
+    "Boules de beurre d'arachide enrobées de chocolat, garnies d'un M&M.",
   categories: ['Pâtisseries et desserts', 'Desserts'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 10, max: 10 },
@@ -11,21 +12,21 @@ export const boulesAuxMMs: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '1/2 tasse de beurre fondu',
-    '1 1/2 tasses de beurre d\'arachide',
+    "1 1/2 tasses de beurre d'arachide",
     '2 1/2 tasses de sucre en poudre',
     '2 tasses de pépites de chocolat',
-    '1 sac de M & M\'s au chocolat',
-    '2 c. à soupe de beurre'
+    "1 sac de M & M's au chocolat",
+    '2 c. à soupe de beurre',
   ],
   instructions: [
-    'Dans un bol, mélanger le beurre fondu, le beurre d\'arachide, les M & M\'s et le sucre jusqu\'à consistance homogène.',
+    "Dans un bol, mélanger le beurre fondu, le beurre d'arachide, les M & M's et le sucre jusqu'à consistance homogène.",
     'Réfrigérer 30 minutes.',
     'Façonner de petites boules et les déposer sur une plaque à biscuits tapissée de papier parchemin. Remettre au frais.',
-    'Faire fondre les pépites de chocolat au bain-marie avec les 2 c. à soupe de beurre, en remuant jusqu\'à ce que le mélange soit lisse.',
+    "Faire fondre les pépites de chocolat au bain-marie avec les 2 c. à soupe de beurre, en remuant jusqu'à ce que le mélange soit lisse.",
     'Tremper chaque boule dans le chocolat fondu et redéposer sur la plaque. Ajouter un M & M sur le dessus de chaque boule.',
-    'Réfrigérer jusqu’à prise.'
+    'Réfrigérer jusqu’à prise.',
   ],
-  tags: ['beurre d\'arachide', 'M & M\'s', 'enrobage chocolat'],
+  tags: ["beurre d'arachide", "M & M's", 'enrobage chocolat'],
   source: 'David Cloutier',
-  slug: 'boules-aux-m-ms'
-};
+  slug: 'boules-aux-m-ms',
+}

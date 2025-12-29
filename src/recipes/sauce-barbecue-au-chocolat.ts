@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const sauceBarbecueAuChocolat: Recipe = {
   id: 'sauce-barbecue-au-chocolat',
@@ -25,7 +25,7 @@ export const sauceBarbecueAuChocolat: Recipe = {
     '80 ml (1/3 tasse) de miel',
     '60 ml (1/4 tasse) de jus de lime',
     '15 ml (1 c. à soupe) de sauce Worcestershire',
-    '2 morceaux (20 g) de chocolat noir Lindt 90 % cacao, haché'
+    '2 morceaux (20 g) de chocolat noir Lindt 90 % cacao, haché',
   ],
   instructions: [
     'Dans une casserole, chauffer l’huile d’olive à feu moyen.',
@@ -36,8 +36,8 @@ export const sauceBarbecueAuChocolat: Recipe = {
     'Porter à ébullition et laisser mijoter pendant 10 minutes pour épaissir la sauce.',
     'Retirer la casserole du feu.',
     'Incorporer le chocolat haché et remuer jusqu’à ce qu’il soit fondu.',
-    'Rectifier l’assaisonnement en ajoutant du sel et du poivre au goût.'
+    'Rectifier l’assaisonnement en ajoutant du sel et du poivre au goût.',
   ],
   tags: ['chocolat', 'barbecue', 'sauce'],
-  slug: 'sauce-barbecue-au-chocolat'
-};
+  slug: 'sauce-barbecue-au-chocolat',
+}

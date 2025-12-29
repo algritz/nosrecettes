@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pouletDelhiAuBeurre: Recipe = {
   id: 'poulet-delhi-au-beurre',
   title: 'Poulet Delhi au beurre',
-  description: 'Un plat indien savoureux avec du poulet mariné, grillé puis mijoté dans une sauce épicée au beurre et à la crème, garni de coriandre fraîche.',
+  description:
+    'Un plat indien savoureux avec du poulet mariné, grillé puis mijoté dans une sauce épicée au beurre et à la crème, garni de coriandre fraîche.',
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 25, max: 25 },
@@ -12,7 +13,7 @@ export const pouletDelhiAuBeurre: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '4 cuisses de poulet entières, sans peau ou poitrine de poulet',
-    '5 gousses d\'ail, écrasées',
+    "5 gousses d'ail, écrasées",
     '1 morceau de 2 cm de gingembre, râpé finement',
     '3 ml de sel',
     '3 ml de paprika',
@@ -23,9 +24,9 @@ export const pouletDelhiAuBeurre: Recipe = {
     '3 ml de garam masala',
     '10 ml de jus de lime',
     '250 ml de yogourt nature',
-    '30 ml d\'huile végétale',
+    "30 ml d'huile végétale",
     '30 ml de beurre',
-    '3 gousses d\'ail, pelées et hachées',
+    "3 gousses d'ail, pelées et hachées",
     '1 morceau de 2 cm de gingembre, râpé finement',
     '5 ml de coriandre',
     '5 ml de curcuma',
@@ -39,7 +40,7 @@ export const pouletDelhiAuBeurre: Recipe = {
     '25 g de beurre non salé',
     '100 ml de crème',
     'Coriandre fraîche, pour décorer',
-    'Pain naan chaud, pour servir'
+    'Pain naan chaud, pour servir',
   ],
   instructions: [
     'Dans un bol, mélanger tous les ingrédients de la marinade.',
@@ -52,16 +53,19 @@ export const pouletDelhiAuBeurre: Recipe = {
     'Ajouter les tomates, la cassonade et le jus de citron et laisser mijoter.',
     'Ajouter le poulet et laisser mijoter 10 minutes ou jusqu’à ce que le poulet soit complètement cuit.',
     'Ajouter le beurre et la crème et assaisonner au goût.',
-    'Décorer de coriandre fraîche hachée et servir avec un pain naan chaud.'
+    'Décorer de coriandre fraîche hachée et servir avec un pain naan chaud.',
   ],
   tags: ['épicé', 'curry', 'grill'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poulet-delhi-au-beurre',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poulet-delhi-au-beurre',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poulet-delhi-au-beurre'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poulet-delhi-au-beurre',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poulet-delhi-au-beurre',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poulet-delhi-au-beurre',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'poulet-delhi-au-beurre'
-};
+  slug: 'poulet-delhi-au-beurre',
+}

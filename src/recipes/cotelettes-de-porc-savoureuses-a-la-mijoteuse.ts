@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const cotelettesDePorcSavoureusesALaMijoteuse: Recipe = {
   id: 'cotelettes-de-porc-savoureuses-a-la-mijoteuse',
@@ -19,15 +19,15 @@ export const cotelettesDePorcSavoureusesALaMijoteuse: Recipe = {
     '1 c. à thé d’origan séché',
     '1 c. à thé de basilic séché',
     '4 côtelettes de porc épaisses, désossées',
-    'sel et poivre au goût'
+    'sel et poivre au goût',
   ],
   instructions: [
     'Dans un bol, mélanger les 8 premiers ingrédients; verser dans le bol de la mijoteuse.',
     'Faire de petites entailles dans les côtelettes de porc à l’aide d’un couteau pointu.',
     'Assaisonner de sel et poivre.',
     'Placer les côtelettes dans la mijoteuse, couvrir et cuire à puissance élevée (HIGH) pendant 4 heures.',
-    'Badigeonner les côtelettes régulièrement avec la sauce.'
+    'Badigeonner les côtelettes régulièrement avec la sauce.',
   ],
   tags: ['mijoteuse', 'porc', 'sauce'],
-  slug: 'cotelettes-de-porc-savoureuses-a-la-mijoteuse'
-};
+  slug: 'cotelettes-de-porc-savoureuses-a-la-mijoteuse',
+}

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saumonSurPlancheDeSel: Recipe = {
   id: 'saumon-sur-planche-de-sel',
   title: 'Saumon sur planche de sel',
-  description: 'Une recette de saumon grillé sur une planche de sel, parfumé aux herbes et servi avec une sauce tomate à l\'huile d\'olive et citron.',
+  description:
+    "Une recette de saumon grillé sur une planche de sel, parfumé aux herbes et servi avec une sauce tomate à l'huile d'olive et citron.",
   categories: ['Poisson', 'Barbecue'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 15, max: 15 },
@@ -21,7 +22,7 @@ export const saumonSurPlancheDeSel: Recipe = {
     '15 ml (1 c. à soupe) de jus de citron',
     '15 ml (1 c. à soupe) de ciboulette fraîche, ciselée',
     '15 ml (1 c. à soupe) d’estragon frais, ciselé',
-    'Sel et poivre'
+    'Sel et poivre',
   ],
   instructions: [
     'Dans un petit bol, mélanger le beurre, les herbes et le zeste de citron. Tartiner le saumon de ce mélange côté chair.',
@@ -30,8 +31,8 @@ export const saumonSurPlancheDeSel: Recipe = {
     'Préchauffer le barbecue à puissance élevée.',
     'Cuire de 12 à 15 minutes ou jusqu’à la cuisson désirée.',
     'Entre-temps, dans un bol, mélanger tous les ingrédients de la sauce.',
-    'Servir avec le saumon.'
+    'Servir avec le saumon.',
   ],
   tags: ['barbecue', 'saumon', 'herbes'],
-  slug: 'saumon-sur-planche-de-sel'
-};
+  slug: 'saumon-sur-planche-de-sel',
+}

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const bouillonAFondueThai: Recipe = {
   id: 'bouillon-a-fondue-thai',
   title: 'Bouillon à fondue Thaï',
-  description: 'Un bouillon épicé et parfumé pour fondue, idéal pour accompagner fruits de mer, viande ou tofu.',
+  description:
+    'Un bouillon épicé et parfumé pour fondue, idéal pour accompagner fruits de mer, viande ou tofu.',
   categories: ['Soupes', 'Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
@@ -20,13 +21,13 @@ export const bouillonAFondueThai: Recipe = {
     '3 branches coriandre, fraîche',
     '3 c.à soupe (45 ml) huile harachide',
     'Sel',
-    'Poivre'
+    'Poivre',
   ],
   instructions: [
-    'Émincer l\'oignon.',
-    'Faire revenir dans un caquelon avec 1 c.à soupe (15 ml) d\'huile.',
+    "Émincer l'oignon.",
+    "Faire revenir dans un caquelon avec 1 c.à soupe (15 ml) d'huile.",
     'Râper le gingembre.',
-    'Presser l\'ail.',
+    "Presser l'ail.",
     'Ajouter ces deux ingrédients dans le caquelon.',
     'Faire revenir légèrement.',
     'Ajouter la pâte de piments, un zeste et le jus de la limette.',
@@ -34,11 +35,11 @@ export const bouillonAFondueThai: Recipe = {
     'Ajouter le lait de coco, le bouillon de poulet et la coriandre.',
     'Mélanger.',
     'Saler et poivrer au goût.',
-    'Ajouter le reste de l\'huile.',
+    "Ajouter le reste de l'huile.",
     'Porter à ébullition pendant 2 à 3 min.',
     'Déposer sur le réchaud.',
-    'Servir avec des pinces et des queues de homard, des pattes de crabe, des crevettes décortiquées, du boeuf, du poulet ou du tofu en cubes.'
+    'Servir avec des pinces et des queues de homard, des pattes de crabe, des crevettes décortiquées, du boeuf, du poulet ou du tofu en cubes.',
   ],
   tags: ['épicé', 'fondue', 'thaï'],
-  slug: 'bouillon-a-fondue-thai'
-};
+  slug: 'bouillon-a-fondue-thai',
+}

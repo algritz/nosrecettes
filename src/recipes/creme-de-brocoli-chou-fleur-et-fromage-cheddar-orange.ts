@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const cremeDeBrocoliChouFleurEtFromageCheddarOrange: Recipe = {
   id: '1765124087987',
@@ -18,7 +18,7 @@ export const cremeDeBrocoliChouFleurEtFromageCheddarOrange: Recipe = {
     '1 c. à soupe de beurre',
     '2 tasses de lait',
     '3/4 de tasse de farine',
-    '4 tasses de bouillon de légumes ou de poulet'
+    '4 tasses de bouillon de légumes ou de poulet',
   ],
   instructions: [
     'Hacher finement le brocoli et le chou-fleur en conservant quelques fleurons plus gros. Hacher l’oignon. Râper la carotte et le fromage.',
@@ -27,17 +27,20 @@ export const cremeDeBrocoliChouFleurEtFromageCheddarOrange: Recipe = {
     'Verser le mélange lait-farine et le bouillon dans la casserole; porter à ébullition en remuant.',
     'Ajouter le fromage et mélanger pour le faire fondre.',
     'Ajouter le brocoli, le chou-fleur et la carotte; réduire à feu moyen-doux et laisser mijoter 10 minutes, jusqu’à ce que le brocoli et le chou-fleur soient cuits mais encore fermes.',
-    'Poivrer généreusement et servir.'
+    'Poivrer généreusement et servir.',
   ],
   tags: ['cheddar', 'brocoli', 'chou-fleur'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/creme_brocoli_chou_fleur',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/creme_brocoli_chou_fleur',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/creme_brocoli_chou_fleur'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/creme_brocoli_chou_fleur',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/creme_brocoli_chou_fleur',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/creme_brocoli_chou_fleur',
+    },
   ],
   source: 'David Cloutier',
   notes: 'La prochaine fois je vais ajouter du bacon.',
-  slug: 'creme-de-brocoli-chou-fleur-et-fromage-cheddar-orange'
-};
+  slug: 'creme-de-brocoli-chou-fleur-et-fromage-cheddar-orange',
+}

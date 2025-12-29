@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pouletChinoisDeSemaine: Recipe = {
   id: 'poulet-chinois-de-semaine',
@@ -20,18 +20,18 @@ export const pouletChinoisDeSemaine: Recipe = {
     '1/2 c. à thé de Sambal Oelek',
     'Huile végétale, pour la cuisson',
     'Ail haché finement',
-    'Oignon haché'
+    'Oignon haché',
   ],
   instructions: [
     'Couper le poulet en lanières.',
     'Placer la farine dans un bol et le cinq épices chinois et bien mélanger.',
     'Enfariner le poulet en le trempant dans la farine.',
-    'Chauffer l\'huile à feu moyen/vif dans un poêlon et faire dorer le poulet.',
-    'Ajouter l\'eau, la sauce soya, le miel, la sauce hoisin, le sambal oelek, l\'ail et l\'oignon.',
-    'Couvrir et laisser mijoter de 15 à 20 minutes ou jusqu\'à ce que le poulet soit cuit.'
+    "Chauffer l'huile à feu moyen/vif dans un poêlon et faire dorer le poulet.",
+    "Ajouter l'eau, la sauce soya, le miel, la sauce hoisin, le sambal oelek, l'ail et l'oignon.",
+    "Couvrir et laisser mijoter de 15 à 20 minutes ou jusqu'à ce que le poulet soit cuit.",
   ],
   tags: ['chinois', 'sauce soja', 'mijoter'],
   accompaniment: 'Servir avec du riz',
-  notes: 'Vous pouvez aussi mettre du piment et d\'autres légumes.',
-  slug: 'poulet-chinois-de-semaine'
-};
+  notes: "Vous pouvez aussi mettre du piment et d'autres légumes.",
+  slug: 'poulet-chinois-de-semaine',
+}

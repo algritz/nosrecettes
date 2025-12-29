@@ -1,21 +1,22 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const sauceASpaghettiDeJasmine: Recipe = {
   id: 'sauce-a-spaghetti-de-jasmine',
   title: 'Sauce à Spaghetti de "Jasmine"',
-  description: 'Une sauce à spaghetti riche et savoureuse, mijotée lentement pour développer toutes ses saveurs, idéale pour accompagner vos pâtes ou autres plats italiens.',
+  description:
+    'Une sauce à spaghetti riche et savoureuse, mijotée lentement pour développer toutes ses saveurs, idéale pour accompagner vos pâtes ou autres plats italiens.',
   categories: ['Sauces', 'Plats principaux'],
   prepTime: { min: 60, max: 60 },
   cookTime: { min: 240, max: 240 },
   servings: 15,
   difficulty: 'Facile',
   ingredients: [
-    '1/4 de tasse d\'huile végétale (ou d\'huile d\'olive)',
+    "1/4 de tasse d'huile végétale (ou d'huile d'olive)",
     '2 gros oignons, hachés',
     '1 gros poivron vert, haché',
     '4 branches de céleri, hachées',
     '4 carottes moyennes, hachées',
-    '3 gousses d\'ail, hachées fin',
+    "3 gousses d'ail, hachées fin",
     '1 boîte de conserve (284 ml) de champignons en tranches, hachés',
     '2 lbs de boeuf haché mi-maigre (ou substitut comme tofu haché)',
     '1 petite boîte de pâte de tomate (156 ml)',
@@ -32,22 +33,22 @@ export const sauceASpaghettiDeJasmine: Recipe = {
     '1/2 cuillère à thé de sel',
     '1/2 cuillère à thé de poivre',
     '4 feuilles de laurier',
-    '1/2 tasse de cassonade dorée bien tassée'
+    '1/2 tasse de cassonade dorée bien tassée',
   ],
   instructions: [
-    'Chauffer l\'huile sur feu moyen dans un grand chaudron profond.',
+    "Chauffer l'huile sur feu moyen dans un grand chaudron profond.",
     'Ajouter les légumes hachés et cuire en remuant durant 10 minutes.',
-    'Ajouter la viande hachée et continuer la cuisson jusqu\'à ce qu\'elle brunisse.',
+    "Ajouter la viande hachée et continuer la cuisson jusqu'à ce qu'elle brunisse.",
     'Ajouter ensuite les tomates (pâte, tomates, sauce et jus), un ingrédient à la fois, en brassant après chaque addition.',
     'Ajouter les épices, une à une, en brassant à chaque fois, ainsi que les feuilles de laurier.',
     'Ajouter ensuite la cassonade. Mélanger bien.',
-    'Amener la sauce au point d\'ébullition.',
+    "Amener la sauce au point d'ébullition.",
     'Baisser ensuite le feu à moyen et laisser mijoter à découvert durant 4 heures, en remuant de temps à autre.',
     'La surface de la sauce doit faire des petits bouillons. La sauce est prête quand elle a bien épaissi.',
     'Retirer les feuilles de laurier.',
     'Mettre en pot stérilisés pendant que la sauce est encore chaude.',
-    'Lorsqu\'elle est refroidie, visser les couvercles.'
+    "Lorsqu'elle est refroidie, visser les couvercles.",
   ],
   tags: ['mijoteuse', 'tomate', 'mijoté'],
-  slug: 'sauce-a-spaghetti-de-jasmine'
-};
+  slug: 'sauce-a-spaghetti-de-jasmine',
+}

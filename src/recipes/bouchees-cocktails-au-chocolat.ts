@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const boucheesCocktailsAuChocolat: Recipe = {
   id: '1764533154016',
   title: 'Bouchées Cocktails au Chocolat',
-  description: 'Carrés de cheesecake au chocolat trempés et enrobés de chapelure graham, taillés en bouchées.',
+  description:
+    'Carrés de cheesecake au chocolat trempés et enrobés de chapelure graham, taillés en bouchées.',
   categories: ['Pâtisseries et desserts', 'Desserts'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 10, max: 10 },
@@ -14,7 +15,7 @@ export const boucheesCocktailsAuChocolat: Recipe = {
     '1/2 tasse de sucre',
     '1/4 tasse de beurre fondu',
     '1 paquet (250 g) de fromage à la crème, coupé en cubes d’un pouce',
-    'Chapelure de biscuits Graham, pour garnir'
+    'Chapelure de biscuits Graham, pour garnir',
   ],
   instructions: [
     'Faire fondre la fondue au chocolat selon les instructions de la conserve.',
@@ -23,9 +24,9 @@ export const boucheesCocktailsAuChocolat: Recipe = {
     'Planter des mini-fourchettes ou pics, espacés pour permettre de couper des cubes d’environ 1" x 1".',
     'Congeler 20 minutes.',
     'Couper en cubes, tremper dans le reste de la fondue au chocolat, puis garnir de chapelure Graham.',
-    'Réfrigérer 10 minutes. Déguster.'
+    'Réfrigérer 10 minutes. Déguster.',
   ],
   tags: ['fondue au chocolat', 'fromage à la crème', 'graham'],
   source: 'David Cloutier',
-  slug: 'bouchees-cocktails-au-chocolat'
-};
+  slug: 'bouchees-cocktails-au-chocolat',
+}

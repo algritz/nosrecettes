@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const brochettesDeFrikkadelsBoulettesDeBoeufAssaisonnees: Recipe = {
   id: 'brochettes-de-frikkadels-boulettes-de-boeuf-assaisonnees',
   title: 'Brochettes de frikkadels (boulettes de boeuf assaisonnées)',
-  description: 'Des boulettes qui ne laissent pas indifférente Brochettes de frikkadels',
+  description:
+    'Des boulettes qui ne laissent pas indifférente Brochettes de frikkadels',
   categories: ['Plats principaux'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 15, max: 15 },
@@ -26,7 +27,7 @@ export const brochettesDeFrikkadelsBoulettesDeBoeufAssaisonnees: Recipe = {
     '125 ml (1/2 tasse) de ketchup',
     '10 ml (2 c. à thé) de sauce Worcestershire',
     '15 ml (1 c. à soupe) d’origan frais, haché',
-    '10 ml (2 c. à thé) de fleur d’ail'
+    '10 ml (2 c. à thé) de fleur d’ail',
   ],
   instructions: [
     'Dans un grand bol, mélanger les 7 premiers ingrédients.',
@@ -37,8 +38,8 @@ export const brochettesDeFrikkadelsBoulettesDeBoeufAssaisonnees: Recipe = {
     'Dans un grand poêlon chaud, faire fondre le beurre dans l’huile.',
     'Faire dorer toutes les facettes de la viande et déposer les brochettes sur une plaque de cuisson.',
     'Placer au four jusqu’à cuisson complète, soit environ 5 minutes.',
-    'Servir les brochettes chaudes avec la sauce d’accompagnement.'
+    'Servir les brochettes chaudes avec la sauce d’accompagnement.',
   ],
   tags: ['boulettes', 'barbecue', 'sauce'],
-  slug: 'brochettes-de-frikkadels-boulettes-de-boeuf-assaisonnees'
-};
+  slug: 'brochettes-de-frikkadels-boulettes-de-boeuf-assaisonnees',
+}

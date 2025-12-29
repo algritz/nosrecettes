@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const filetsDePorcAuxCannebergesEtAuPorto: Recipe = {
   id: 'filets-de-porc-aux-canneberges-et-au-porto',
@@ -15,10 +15,10 @@ export const filetsDePorcAuxCannebergesEtAuPorto: Recipe = {
     '1/2 oignon, tranchés finement',
     '1 tasse (250 ml) canneberges',
     '3/4 tasse (190 ml) porto',
-    '1/4 tasse (65 ml) sirop d\'érable',
+    "1/4 tasse (65 ml) sirop d'érable",
     '2 c.à soupe (30 ml) romarin, frais',
     'Sel, au goût',
-    'Poivre, au goût'
+    'Poivre, au goût',
   ],
   instructions: [
     'Faire fondre le beurre dans un grand poêlon.',
@@ -28,8 +28,8 @@ export const filetsDePorcAuxCannebergesEtAuPorto: Recipe = {
     'Remettre le porc dans le poêlon et cuire à couvert 5 minutes de plus.',
     'Puisque le filet de porc est meilleur rosé, ne pas trop cuire.',
     'Servir avec des légumes au choix.',
-    'Les asperges et les courges se marient bien avec cette recette.'
+    'Les asperges et les courges se marient bien avec cette recette.',
   ],
   tags: ['porc', 'canneberges', 'porto'],
-  slug: 'filets-de-porc-aux-canneberges-et-au-porto'
-};
+  slug: 'filets-de-porc-aux-canneberges-et-au-porto',
+}

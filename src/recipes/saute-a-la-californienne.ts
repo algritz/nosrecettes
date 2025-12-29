@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const sauteALaCalifornienne: Recipe = {
   id: 'saute-a-la-californienne',
@@ -16,17 +16,18 @@ export const sauteALaCalifornienne: Recipe = {
     '1/2 tasse de germes de haricot',
     '1/2 tasse de vinaigrette Catalina',
     '2 c. à soupe de sauce soya',
-    '1 c. à thé de gingembre moulu'
+    '1 c. à thé de gingembre moulu',
   ],
   instructions: [
     'Sauter le poulet en remuant dans une poêle.',
-    'Ajouter les légumes et cuire jusqu\'à ce qu\'ils soient tendres.',
+    "Ajouter les légumes et cuire jusqu'à ce qu'ils soient tendres.",
     'Mélanger bien ensemble la vinaigrette, la sauce soya et le gingembre.',
     'Ajouter dans la poêle et bien enrober.',
-    'Servir sur un lit de riz.'
+    'Servir sur un lit de riz.',
   ],
   tags: ['sauté', 'marinade sèche', 'cuisine rapide'],
   marinatingTime: { min: 20, max: 20 },
-  notes: 'Ajouter les légumes préférés de la famille comme du céleri et des carottes. Vous pouvez faire mariner les lanières de poulet dans 2 ou 3 c. à soupe du mélange de vinaigrette Catalina, sauce soya et gingembre.',
-  slug: 'saute-a-la-californienne'
-};
+  notes:
+    'Ajouter les légumes préférés de la famille comme du céleri et des carottes. Vous pouvez faire mariner les lanières de poulet dans 2 ou 3 c. à soupe du mélange de vinaigrette Catalina, sauce soya et gingembre.',
+  slug: 'saute-a-la-californienne',
+}

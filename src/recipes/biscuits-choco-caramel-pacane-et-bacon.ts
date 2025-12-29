@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const biscuitsChocoCaramelPacaneEtBacon: Recipe = {
   id: 'biscuits-choco-caramel-pacane-et-bacon',
   title: 'Biscuits choco-caramel pacane et bacon',
-  description: 'Une recette de biscuits gourmands aux pacanes, chocolat, caramel et bacon, parfaits pour une touche sucrée-salée.',
+  description:
+    'Une recette de biscuits gourmands aux pacanes, chocolat, caramel et bacon, parfaits pour une touche sucrée-salée.',
   categories: ['Pâtisseries et desserts'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 15, max: 15 },
@@ -18,7 +19,7 @@ export const biscuitsChocoCaramelPacaneEtBacon: Recipe = {
     '½ c. À thé de bicarbonate de soude',
     '½ c. À thé de poudre à pâte',
     '14 petits caramels durs (de type Werther’s Original)',
-    '5 tranches de bacon'
+    '5 tranches de bacon',
   ],
   instructions: [
     'Préchauffer le four à 350 °F (177 °C).',
@@ -35,16 +36,19 @@ export const biscuitsChocoCaramelPacaneEtBacon: Recipe = {
     'Déposer une grosse cuillérée à soupe de pâte sur la plaque pour former des biscuits en prenant soin de bien les espacer.',
     'Aplatir très légèrement.',
     'Faire cuire au four 14 minutes.',
-    'Laisser les biscuits refroidir quelques minutes avant de déguster.'
+    'Laisser les biscuits refroidir quelques minutes avant de déguster.',
   ],
   tags: ['gourmand', 'salé-sucré', 'bacon'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/biscuits-choco-caramel-pacane-et-bacon',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/biscuits-choco-caramel-pacane-et-bacon',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuits-choco-caramel-pacane-et-bacon'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/biscuits-choco-caramel-pacane-et-bacon',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/biscuits-choco-caramel-pacane-et-bacon',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuits-choco-caramel-pacane-et-bacon',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'biscuits-choco-caramel-pacane-et-bacon'
-};
+  slug: 'biscuits-choco-caramel-pacane-et-bacon',
+}

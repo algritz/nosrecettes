@@ -2,19 +2,14 @@
   "name": "Nos Recettes - 720 Recettes Québécoises",
   "short_name": "Nos Recettes",
   "description": "Collection de 720 recettes québécoises traditionnelles et modernes avec instructions détaillées et images appétissantes.",
-  "start_url": "https://nosrecettes.ca/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0f172a",
   "orientation": "portrait-primary",
-  "categories": [
-    "food",
-    "lifestyle",
-    "cooking",
-    "recipes"
-  ],
+  "categories": ["food", "lifestyle", "cooking", "recipes"],
   "lang": "fr-CA",
-  "scope": "https://nosrecettes.ca/",
+  "scope": "/",
   "icons": [
     {
       "src": "/favicon.ico",
@@ -55,11 +50,12 @@
       "name": "Rechercher des recettes",
       "short_name": "Recherche",
       "description": "Rechercher dans la collection de recettes",
-      "url": "https://nosrecettes.ca/?search=",
+      "url": "/?search=",
       "icons": [
         {
           "src": "/icon-192.png",
-          "sizes": "192x192"
+          "sizes": "192x192",
+          "type": "image/png"
         }
       ]
     }

@@ -7,6 +7,7 @@ Implement service worker-based offline functionality for nosrecettes.ca to enabl
 ## Current State Analysis
 
 ### What Exists:
+
 - PWA manifest at [public/manifest.json](public/manifest.json) with proper configuration
 - All 721 recipes bundled at build time via `import.meta.glob` in [src/recipes/index.ts:6-27](src/recipes/index.ts#L6-L27)
 - Client-side routing with React Router v6 in [src/App.tsx](src/App.tsx)
@@ -16,12 +17,14 @@ Implement service worker-based offline functionality for nosrecettes.ca to enabl
 - Production bundle: 3.5MB gzipped (5.7MB minified)
 
 ### What's Missing:
+
 - Service worker registration
 - Cache strategy for app shell (HTML, CSS, JS)
 - Update notification banner UI
 - Runtime caching configuration
 
 ### Key Constraints:
+
 - **Public pages only**: Admin routes (`/admin`, `/new-recipe`, `/edit-recipe/:slug`, `/manage-categories`) will NOT work offline
 - **No image caching**: Images from Cloudinary will not be cached - show "Pas d'image" placeholder when offline
 - **Auto-update**: New versions automatically applied in background, banner informs user of update happening
@@ -30,6 +33,7 @@ Implement service worker-based offline functionality for nosrecettes.ca to enabl
 ## Desired End State
 
 Users can:
+
 1. Visit nosrecettes.ca once while online
 2. Install as PWA on Android (already possible)
 3. Browse all 721 recipes offline (new capability)
@@ -37,6 +41,7 @@ Users can:
 5. Automatically receive new recipe updates without manual intervention
 
 ### Verification:
+
 - Open nosrecettes.ca in browser
 - Enable offline mode (DevTools → Network → Offline)
 - Navigate to multiple recipe pages - all should load instantly
@@ -57,6 +62,7 @@ Users can:
 ## Implementation Approach
 
 Use `vite-plugin-pwa` with Workbox to generate and manage service worker automatically. This provides:
+
 - Automatic cache versioning via file hashes
 - Built-in cache invalidation on deployment
 - TypeScript support
@@ -65,6 +71,7 @@ Use `vite-plugin-pwa` with Workbox to generate and manage service worker automat
 The service worker will use **CacheFirst** strategy for app shell (HTML, CSS, JS) and **NetworkOnly** for Cloudinary images (fail gracefully to existing placeholder).
 
 Update flow:
+
 1. New service worker installs in background when deployed
 2. Banner appears: "Mise à jour en cours... Nouvelles recettes bientôt disponibles!"
 3. Page automatically reloads when update completes
@@ -74,28 +81,31 @@ Update flow:
 ## Phase 1: Install and Configure vite-plugin-pwa
 
 ### Overview
+
 Add the `vite-plugin-pwa` package and configure Workbox with cache strategies for app shell and images.
 
 ### Changes Required:
 
 #### 1. Install Dependency
+
 **Command**: `pnpm add -D vite-plugin-pwa`
 
 #### 2. Update Vite Configuration
+
 **File**: [vite.config.ts](vite.config.ts)
 **Changes**: Add VitePWA plugin with Workbox configuration
 
 ```typescript
-import { defineConfig } from "vite";
-import dyadComponentTagger from "@dyad-sh/react-vite-component-tagger";
-import react from "@vitejs/plugin-react-swc";
-import { VitePWA } from 'vite-plugin-pwa';
-import path from "path";
+import { defineConfig } from 'vite'
+import dyadComponentTagger from '@dyad-sh/react-vite-component-tagger'
+import react from '@vitejs/plugin-react-swc'
+import { VitePWA } from 'vite-plugin-pwa'
+import path from 'path'
 
 export default defineConfig(({ mode }) => ({
-  base: "/",
+  base: '/',
   server: {
-    host: "::",
+    host: '::',
     port: 8080,
   },
   plugins: [
@@ -113,25 +123,25 @@ export default defineConfig(({ mode }) => ({
           /^\/admin/,
           /^\/new-recipe/,
           /^\/edit-recipe/,
-          /^\/manage-categories/
+          /^\/manage-categories/,
         ],
         runtimeCaching: [
           {
             // Cloudinary images - NetworkOnly (no caching)
             urlPattern: /^https:\/\/res\.cloudinary\.com\/.*/,
-            handler: 'NetworkOnly'
-          }
-        ]
+            handler: 'NetworkOnly',
+          },
+        ],
       },
       devOptions: {
         enabled: true, // Enable in dev mode for testing
-        type: 'module'
-      }
-    })
+        type: 'module',
+      },
+    }),
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
   build: {
@@ -141,10 +151,11 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-}));
+}))
 ```
 
 **Key Configuration Decisions:**
+
 - `registerType: 'autoUpdate'`: Automatically reload when new version available (no user action needed)
 - `manifest: false`: Keep existing manifest.json generation from build:seo script
 - `navigateFallbackDenylist`: Block admin routes from offline access
@@ -154,6 +165,7 @@ export default defineConfig(({ mode }) => ({
 ### Success Criteria:
 
 #### Automated Verification:
+
 - [x] `pnpm install` completes without errors
 - [x] `pnpm run build` succeeds and generates service worker files in `dist/`
 - [x] Verify `dist/sw.js` exists after build
@@ -162,6 +174,7 @@ export default defineConfig(({ mode }) => ({
 - [x] No build warnings related to PWA configuration
 
 #### Manual Verification:
+
 - [x] Run `pnpm run build && pnpm run preview`
 - [x] Open browser DevTools → Application → Service Workers
 - [x] Verify service worker is registered at `/sw.js`
@@ -175,17 +188,19 @@ export default defineConfig(({ mode }) => ({
 ## Phase 2: Add Service Worker Registration and Update Notification
 
 ### Overview
+
 Register the service worker in the app entry point and add hooks to detect when updates are happening (informational only - updates are automatic).
 
 ### Changes Required:
 
 #### 1. Create Service Worker Registration Hook
+
 **File**: `src/hooks/usePwaUpdate.ts` (new file)
 **Changes**: Create custom hook to handle service worker lifecycle and show update status
 
 ```typescript
-import { useEffect, useState } from 'react';
-import { useRegisterSW } from 'virtual:pwa-register/react';
+import { useEffect, useState } from 'react'
+import { useRegisterSW } from 'virtual:pwa-register/react'
 
 export function usePwaUpdate() {
   const {
@@ -194,37 +209,38 @@ export function usePwaUpdate() {
     updateServiceWorker,
   } = useRegisterSW({
     onRegistered(r) {
-      console.log('Service Worker registered:', r);
+      console.log('Service Worker registered:', r)
     },
     onRegisterError(error) {
-      console.error('Service Worker registration error:', error);
+      console.error('Service Worker registration error:', error)
     },
-  });
+  })
 
-  const [showUpdateBanner, setShowUpdateBanner] = useState(false);
+  const [showUpdateBanner, setShowUpdateBanner] = useState(false)
 
   useEffect(() => {
     if (needRefresh) {
-      setShowUpdateBanner(true);
+      setShowUpdateBanner(true)
       // Auto-update is enabled, so the page will reload automatically
       // The banner just shows "updating..." status
-      updateServiceWorker(true); // true = reload page after update
+      updateServiceWorker(true) // true = reload page after update
     }
-  }, [needRefresh, updateServiceWorker]);
+  }, [needRefresh, updateServiceWorker])
 
   const dismissBanner = () => {
-    setShowUpdateBanner(false);
-  };
+    setShowUpdateBanner(false)
+  }
 
   return {
     showUpdateBanner,
     offlineReady,
     dismissBanner,
-  };
+  }
 }
 ```
 
 #### 2. Update Main App Entry Point
+
 **File**: [src/App.tsx](src/App.tsx)
 **Changes**: Import and use the PWA update hook
 
@@ -285,12 +301,14 @@ export default App;
 ### Success Criteria:
 
 #### Automated Verification:
+
 - [x] Type checking passes: `pnpm run build`
 - [x] Build succeeds: `pnpm run build`
 - [x] No TypeScript errors in `src/hooks/usePwaUpdate.ts`
 - [x] No TypeScript errors in `src/App.tsx`
 
 #### Manual Verification:
+
 - [x] Run `pnpm run dev`
 - [x] Open browser DevTools → Console
 - [x] Verify "Service Worker registered" message appears
@@ -304,11 +322,13 @@ export default App;
 ## Phase 3: Create Update Banner UI Component
 
 ### Overview
+
 Build a user-friendly banner component that appears at the top of the page when an update is in progress. Since auto-update is enabled, this is purely informational - the page will reload automatically when the update completes.
 
 ### Changes Required:
 
 #### 1. Create Update Banner Component
+
 **File**: `src/components/UpdateBanner.tsx` (new file)
 **Changes**: Create banner component showing update in progress
 
@@ -355,6 +375,7 @@ export function UpdateBanner({ onDismiss }: UpdateBannerProps) {
 ```
 
 **Design Decisions:**
+
 - **Fixed positioning**: Always visible at top, doesn't scroll away
 - **Primary color background**: High visibility, matches brand
 - **Spinning icon**: RefreshCw with animate-spin to show active update
@@ -365,6 +386,7 @@ export function UpdateBanner({ onDismiss }: UpdateBannerProps) {
 - **Clear expectations**: Explains page will refresh automatically
 
 #### 2. Add Layout Padding for Banner (Optional Enhancement)
+
 **File**: [src/pages/Index.tsx](src/pages/Index.tsx) (and other page components if needed)
 **Changes**: Add top padding when banner is visible to prevent content overlap
 
@@ -381,12 +403,14 @@ export function UpdateBanner({ onDismiss }: UpdateBannerProps) {
 ### Success Criteria:
 
 #### Automated Verification:
+
 - [x] Type checking passes: `pnpm run build`
 - [x] Build succeeds: `pnpm run build`
 - [x] No TypeScript errors in `src/components/UpdateBanner.tsx`
 - [x] Component uses existing shadcn/ui Button component correctly
 
 #### Manual Verification:
+
 - [x] Banner appears at top of page when update is detected
 - [x] Banner displays "Mise à jour en cours..." with spinning RefreshCw icon
 - [x] Second line explains automatic refresh clearly
@@ -404,11 +428,13 @@ export function UpdateBanner({ onDismiss }: UpdateBannerProps) {
 ## Phase 4: Add Offline Route Handling
 
 ### Overview
+
 Implement graceful handling for admin routes when accessed offline, showing a clear message that these features require internet connectivity.
 
 ### Changes Required:
 
 #### 1. Create Offline Fallback Component
+
 **File**: `src/components/OfflineFallback.tsx` (new file)
 **Changes**: Create component to show when offline on restricted routes
 
@@ -462,33 +488,35 @@ export function OfflineFallback() {
 ```
 
 #### 2. Create Online Status Hook
+
 **File**: `src/hooks/useOnlineStatus.ts` (new file)
 **Changes**: Create hook to detect online/offline state
 
 ```typescript
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 export function useOnlineStatus() {
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isOnline, setIsOnline] = useState(navigator.onLine)
 
   useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
+    const handleOnline = () => setIsOnline(true)
+    const handleOffline = () => setIsOnline(false)
 
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
+    window.addEventListener('online', handleOnline)
+    window.addEventListener('offline', handleOffline)
 
     return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, []);
+      window.removeEventListener('online', handleOnline)
+      window.removeEventListener('offline', handleOffline)
+    }
+  }, [])
 
-  return isOnline;
+  return isOnline
 }
 ```
 
 #### 3. Update Admin Pages with Offline Guard
+
 **File**: [src/pages/Admin.tsx](src/pages/Admin.tsx)
 **Changes**: Add offline detection and show fallback
 
@@ -513,6 +541,7 @@ export default Admin;
 ```
 
 **Apply same pattern to:**
+
 - [src/pages/NewRecipe.tsx](src/pages/NewRecipe.tsx)
 - [src/pages/EditRecipe.tsx](src/pages/EditRecipe.tsx)
 - [src/pages/ManageCategories.tsx](src/pages/ManageCategories.tsx)
@@ -520,6 +549,7 @@ export default Admin;
 ### Success Criteria:
 
 #### Automated Verification:
+
 - [x] Type checking passes: `pnpm run build`
 - [x] Build succeeds: `pnpm run build`
 - [x] No TypeScript errors in new components/hooks
@@ -530,6 +560,7 @@ export default Admin;
 **IMPORTANT**: These tests must be run with the production build using `pnpm run build && pnpm run preview`, NOT `pnpm run dev`. Dev mode doesn't fully support offline PWA features.
 
 **Test Steps:**
+
 1. [x] Run `pnpm run build && pnpm run preview`
 2. [x] Navigate to home page while online - service worker registers
 3. [x] Navigate to `/admin` while online - normal page loads
@@ -548,11 +579,13 @@ export default Admin;
 ## Phase 5: End-to-End Testing and Documentation
 
 ### Overview
+
 Comprehensive testing of the full offline experience and documentation of the implementation.
 
 ### Changes Required:
 
 #### 1. Update Research Document
+
 **File**: [thoughts/shared/research/2025-12-28-offline-pwa-capabilities.md](thoughts/shared/research/2025-12-28-offline-pwa-capabilities.md)
 **Changes**: Add implementation summary at the end
 
@@ -564,6 +597,7 @@ Comprehensive testing of the full offline experience and documentation of the im
 **Status**: ✅ Implemented
 
 **Changes Made:**
+
 1. Installed `vite-plugin-pwa` v0.20.5
 2. Configured Workbox in [vite.config.ts](vite.config.ts) with CacheFirst for app shell
 3. Created service worker registration hook at [src/hooks/usePwaUpdate.ts](src/hooks/usePwaUpdate.ts)
@@ -572,6 +606,7 @@ Comprehensive testing of the full offline experience and documentation of the im
 6. Added online status detection hook at [src/hooks/useOnlineStatus.ts](src/hooks/useOnlineStatus.ts)
 
 **Resolved Questions:**
+
 - ✅ Admin pages: Read-only offline mode (admin routes blocked)
 - ✅ Image caching: No caching (NetworkOnly strategy, show placeholder)
 - ✅ Update mechanism: Auto-update (page automatically reloads when new version ready)
@@ -579,11 +614,13 @@ Comprehensive testing of the full offline experience and documentation of the im
 - ✅ Service worker scope: Public pages only
 
 **Performance Impact:**
+
 - Service worker runtime: +15KB (~5KB gzipped)
 - Initial cache storage: ~3.5MB (app shell)
 - Update mechanism: Background installation, user-triggered activation
 
 **Verification:**
+
 - Offline browsing: All 721 recipes accessible without network
 - Admin routes: Blocked offline with clear message
 - Update flow: Banner appears, user clicks, page reloads with new content
@@ -591,10 +628,11 @@ Comprehensive testing of the full offline experience and documentation of the im
 ```
 
 #### 2. Create README Section (Optional)
+
 **File**: `README.md` (if it exists)
 **Changes**: Add PWA/Offline section documenting the feature
 
-```markdown
+````markdown
 ## PWA & Offline Support
 
 Nosrecettes.ca is a Progressive Web App with full offline capabilities:
@@ -609,14 +647,17 @@ Nosrecettes.ca is a Progressive Web App with full offline capabilities:
 Service worker is generated by `vite-plugin-pwa` during build. Configuration in [vite.config.ts](vite.config.ts).
 
 **Testing offline mode:**
+
 ```bash
 pnpm run build
 pnpm run preview
 # Open DevTools → Network → Enable "Offline"
 ```
+````
 
 **Admin routes**: Intentionally blocked offline (require network connectivity)
-```
+
+````
 
 #### 3. Add Package.json Script for PWA Testing
 **File**: [package.json](package.json)
@@ -634,11 +675,12 @@ pnpm run preview
     // ... other scripts
   }
 }
-```
+````
 
 ### Success Criteria:
 
 #### Automated Verification:
+
 - [ ] Build succeeds: `pnpm run build`
 - [ ] Preview server starts: `pnpm run preview`
 - [ ] No console errors when loading site
@@ -648,6 +690,7 @@ pnpm run preview
 #### Manual Verification (Full End-to-End Test):
 
 **Online Initial Load:**
+
 1. [ ] Clear all site data (DevTools → Application → Clear storage)
 2. [ ] Load https://nosrecettes.ca (or preview URL)
 3. [ ] Verify service worker registers (DevTools → Application → Service Workers)
@@ -656,44 +699,13 @@ pnpm run preview
 6. [ ] Verify images load from Cloudinary
 7. [ ] No console errors
 
-**Offline Browsing:**
-8. [ ] Enable offline mode (DevTools → Network → Offline)
-9. [ ] Refresh page - should load from cache
-10. [ ] Navigate to home page - loads instantly
-11. [ ] Navigate to 5-10 different recipes - all load instantly
-12. [ ] Verify images show "Pas d'image" placeholder (existing behavior)
-13. [ ] Search/filter recipes - all functionality works
-14. [ ] Navigate to `/admin` - shows OfflineFallback component
-15. [ ] Click "Retour aux recettes" - returns to home page
+**Offline Browsing:** 8. [ ] Enable offline mode (DevTools → Network → Offline) 9. [ ] Refresh page - should load from cache 10. [ ] Navigate to home page - loads instantly 11. [ ] Navigate to 5-10 different recipes - all load instantly 12. [ ] Verify images show "Pas d'image" placeholder (existing behavior) 13. [ ] Search/filter recipes - all functionality works 14. [ ] Navigate to `/admin` - shows OfflineFallback component 15. [ ] Click "Retour aux recettes" - returns to home page
 
-**Update Flow:**
-16. [ ] Disable offline mode (back online)
-17. [ ] Simulate new deployment: Unregister service worker, clear cache
-18. [ ] Re-register service worker with modified version
-19. [ ] Reload page - update banner should appear at top
-20. [ ] Verify banner text: "Mise à jour en cours..."
-21. [ ] Verify second line: "Nouvelles recettes bientôt disponibles! La page se rafraîchira automatiquement."
-22. [ ] Verify RefreshCw icon is spinning (animate-spin class)
-23. [ ] Wait a few seconds - page should automatically reload
-24. [ ] Verify new service worker activated
-25. [ ] Verify old cache deleted
-26. [ ] Test dismissing banner: Click X - banner closes but update still proceeds
+**Update Flow:** 16. [ ] Disable offline mode (back online) 17. [ ] Simulate new deployment: Unregister service worker, clear cache 18. [ ] Re-register service worker with modified version 19. [ ] Reload page - update banner should appear at top 20. [ ] Verify banner text: "Mise à jour en cours..." 21. [ ] Verify second line: "Nouvelles recettes bientôt disponibles! La page se rafraîchira automatiquement." 22. [ ] Verify RefreshCw icon is spinning (animate-spin class) 23. [ ] Wait a few seconds - page should automatically reload 24. [ ] Verify new service worker activated 25. [ ] Verify old cache deleted 26. [ ] Test dismissing banner: Click X - banner closes but update still proceeds
 
-**Mobile/PWA Install (Android):**
-27. [ ] Open site on Android device (Chrome)
-28. [ ] Verify "Add to Home Screen" prompt appears
-29. [ ] Install PWA to home screen
-30. [ ] Open from home screen - launches in standalone mode
-31. [ ] Test offline browsing from PWA install
-32. [ ] Verify update banner appears in PWA mode
-33. [ ] Verify auto-reload works in PWA mode
+**Mobile/PWA Install (Android):** 27. [ ] Open site on Android device (Chrome) 28. [ ] Verify "Add to Home Screen" prompt appears 29. [ ] Install PWA to home screen 30. [ ] Open from home screen - launches in standalone mode 31. [ ] Test offline browsing from PWA install 32. [ ] Verify update banner appears in PWA mode 33. [ ] Verify auto-reload works in PWA mode
 
-**Accessibility:**
-34. [ ] Update banner readable at 200% zoom
-35. [ ] Banner dismiss button keyboard accessible (Tab navigation)
-36. [ ] OfflineFallback component screen reader friendly
-37. [ ] Sufficient color contrast on update banner
-38. [ ] Spinning icon doesn't trigger motion sensitivity (smooth animation)
+**Accessibility:** 34. [ ] Update banner readable at 200% zoom 35. [ ] Banner dismiss button keyboard accessible (Tab navigation) 36. [ ] OfflineFallback component screen reader friendly 37. [ ] Sufficient color contrast on update banner 38. [ ] Spinning icon doesn't trigger motion sensitivity (smooth animation)
 
 **Implementation Note**: This is the final verification phase. All items must pass before considering the implementation complete.
 
@@ -702,13 +714,17 @@ pnpm run preview
 ## Testing Strategy
 
 ### Unit Tests
+
 **Not Required**: This implementation is primarily configuration and UI components that integrate with browser APIs. Manual testing is more effective than unit tests for service worker behavior.
 
 ### Integration Tests
+
 **Not Required**: Service worker lifecycle and cache behavior are best tested manually in browser DevTools due to their reliance on browser-specific implementations.
 
 ### Manual Testing Steps
+
 See Phase 5 Success Criteria for comprehensive manual testing checklist covering:
+
 - Initial load and cache population
 - Offline browsing all routes
 - Admin route blocking offline
@@ -717,13 +733,16 @@ See Phase 5 Success Criteria for comprehensive manual testing checklist covering
 - Accessibility verification
 
 ### Performance Testing
+
 **Recommended Manual Checks:**
+
 1. **Initial Load Impact**: Compare load time before/after service worker (should be similar first visit)
 2. **Subsequent Visits**: Verify instant load from cache (0 network requests)
 3. **Cache Storage Size**: Verify ~3.5MB cache size (acceptable for recipe app)
 4. **Update Performance**: Verify background installation doesn't block UI
 
 **Tools:**
+
 - Chrome DevTools Lighthouse (PWA audit)
 - DevTools Network tab (cache hits vs misses)
 - DevTools Application → Cache Storage (size verification)
@@ -731,39 +750,47 @@ See Phase 5 Success Criteria for comprehensive manual testing checklist covering
 ## Performance Considerations
 
 ### Cache Storage Impact:
+
 - **Initial cache**: 3.5MB (app shell: HTML, CSS, JS)
 - **No image caching**: 0MB additional (images always network-only)
 - **Total storage**: ~3.5MB (well within PWA limits)
 
 ### Network Performance:
+
 - **First visit**: Same as current (3.5MB download)
 - **Subsequent visits**: 0 network requests (instant load)
 - **Update deployment**: Background download (non-blocking)
 
 ### Service Worker Overhead:
+
 - **Runtime cost**: ~15KB additional JavaScript (~5KB gzipped)
 - **Registration time**: <50ms on modern devices
 - **Cache lookup**: <10ms per request
 
 ### User Experience Impact:
+
 - **Positive**: Instant load on repeat visits, offline capability
 - **Negative**: None (update banner is non-intrusive, dismissible)
 
 ## Migration Notes
 
 ### No Data Migration Required
+
 This is a pure addition - no existing data or behavior changes.
 
 ### Deployment Considerations:
+
 1. **First deployment**: Users won't see service worker until they visit post-deploy
 2. **Cache invalidation**: Automatic via file hash versioning
 3. **Rollback strategy**: Remove VitePWA plugin from vite.config.ts, rebuild, deploy
 4. **User cache cleanup**: Automatic on service worker unregistration (if rolled back)
 
 ### Breaking Changes:
+
 None. This is a progressive enhancement - browsers without service worker support will continue to work as before.
 
 ### Compatibility:
+
 - **Service Workers**: Chrome 40+, Firefox 44+, Safari 11.1+, Edge 17+
 - **PWA Install**: Chrome Android 31+, Safari iOS 11.3+
 - **Cache API**: Chrome 40+, Firefox 39+, Safari 11.1+
@@ -781,15 +808,18 @@ Modern browser coverage: 97%+ of users (caniuse.com/serviceworkers)
 ## Risk Assessment
 
 ### Low Risk:
+
 - ✅ Service worker is well-isolated (can't break existing functionality)
 - ✅ Automatic fallback for unsupported browsers
 - ✅ Easy rollback (remove plugin, rebuild)
 
 ### Medium Risk:
+
 - ⚠️ Cache invalidation bugs (mitigated by Workbox automatic versioning)
 - ⚠️ Update banner UX issues (mitigated by user testing in Phase 5)
 
 ### Mitigation Strategies:
+
 1. **Cache versioning**: Workbox handles this automatically via file hashes
 2. **Manual cache clear**: Users can clear in DevTools if issues arise
 3. **Update skip**: Users can dismiss banner and update later

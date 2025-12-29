@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const rizEpiceAuxLegumes: Recipe = {
   id: 'riz-epice-aux-legumes',
@@ -31,7 +31,7 @@ export const rizEpiceAuxLegumes: Recipe = {
     '500 ml',
     '1 tasse pois verts surgelés',
     '250 ml',
-    'Sel au goût'
+    'Sel au goût',
   ],
   instructions: [
     'Dans un petit bol, mélanger ensemble l’ail, le gingembre et les épices. Réserver.',
@@ -40,8 +40,8 @@ export const rizEpiceAuxLegumes: Recipe = {
     'Ajouter le mélange d’épices, et brasser sans arrêt pour bien enrober le riz et les légumes.',
     'Verser l’eau, ajouter les pois et le sel.',
     'Couvrir, amener à ébullition, puis mijoter à feu doux sans soulever le couvercle pendant 15-20 minutes.',
-    'Retirer du feu, enlever le couvercle puis laisser reposer quelques minutes avant de servir.'
+    'Retirer du feu, enlever le couvercle puis laisser reposer quelques minutes avant de servir.',
   ],
   tags: ['épicé', 'légumes', 'riz'],
-  slug: 'riz-epice-aux-legumes'
-};
+  slug: 'riz-epice-aux-legumes',
+}

@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeDuoDeSaumonCroustillantEtGrenade: Recipe = {
   id: 'tartare-de-duo-de-saumon-croustillant-et-grenade',
@@ -18,23 +18,23 @@ export const tartareDeDuoDeSaumonCroustillantEtGrenade: Recipe = {
     '15 ml de câpres, hachées finement',
     '15 ml d’huile d’olive',
     '15 ml de mayonnaise',
-    '15 ml de moutarde de Dijon à l\'ancienne',
+    "15 ml de moutarde de Dijon à l'ancienne",
     '15 ml de tempura',
     'Fleur de sel au goût',
-    'Sauce sriracha au goût'
+    'Sauce sriracha au goût',
   ],
-  instructions: [
-    'Dans un bol, mélanger tous les ingrédients.',
-    'Servir.'
-  ],
+  instructions: ['Dans un bol, mélanger tous les ingrédients.', 'Servir.'],
   tags: ['saumon', 'cru', 'grenade'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-duo-de-saumon-croustillant-et-grenade',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-duo-de-saumon-croustillant-et-grenade',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-duo-de-saumon-croustillant-et-grenade'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-de-duo-de-saumon-croustillant-et-grenade',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-de-duo-de-saumon-croustillant-et-grenade',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-de-duo-de-saumon-croustillant-et-grenade',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'tartare-de-duo-de-saumon-croustillant-et-grenade'
-};
+  slug: 'tartare-de-duo-de-saumon-croustillant-et-grenade',
+}

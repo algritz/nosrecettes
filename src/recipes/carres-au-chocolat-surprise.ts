@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const carresAuChocolatSurprise: Recipe = {
   id: 'carres-au-chocolat-surprise',
@@ -14,16 +14,17 @@ export const carresAuChocolatSurprise: Recipe = {
     '1 sac de 6 once de brisures de chocolat (ou de butterscotch, caramel)',
     '¾ de tasse de beurre d’arachides',
     '1 tasse de sucre en poudre tamisé',
-    '4 tasses de flocons de maïs, Rice Krispies'
+    '4 tasses de flocons de maïs, Rice Krispies',
   ],
   instructions: [
     'Faire fondre au bain-marie la paraffine, le sac de brisures de chocolat, le beurre d’arachide et le sucre en poudre.',
     'Une fois fondu, retirer du feu, et ajouter graduellement les flocons de maïs et brasser jusqu’à ce que les céréales soient complètement enrobées de chocolat.',
     'Étendre dans une lèchefrite beurrée.',
     'Mettre au réfrigérateur environ 30 minutes.',
-    'Couper en carrés.'
+    'Couper en carrés.',
   ],
   tags: ['chocolat', 'céréales', 'réfrigération'],
-  notes: 'Temps de préparation total: 15 à 20 minutes, cuisson: 5 à 10 minutes, source: Lynda Morin',
-  slug: 'carres-au-chocolat-surprise'
-};
+  notes:
+    'Temps de préparation total: 15 à 20 minutes, cuisson: 5 à 10 minutes, source: Lynda Morin',
+  slug: 'carres-au-chocolat-surprise',
+}

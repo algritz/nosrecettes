@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const burritoEnBol: Recipe = {
   id: 'burrito-en-bol',
   title: 'Burrito en bol',
-  description: 'Un bol de burrito avec riz, poulet, légumes, et garnitures fraîches, parfait pour un repas complet et savoureux.',
+  description:
+    'Un bol de burrito avec riz, poulet, légumes, et garnitures fraîches, parfait pour un repas complet et savoureux.',
   categories: ['Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 15, max: 15 },
@@ -24,7 +25,7 @@ export const burritoEnBol: Recipe = {
     'Un avocat, coupé en cubes',
     '1 tasse de fromage style tex mex',
     '1 jalapeño pour garnir',
-    'Coriandre fraîche, pour garnir'
+    'Coriandre fraîche, pour garnir',
   ],
   instructions: [
     'Faire cuire le riz.',
@@ -35,9 +36,9 @@ export const burritoEnBol: Recipe = {
     'Dans un petit bol, mélanger la crème sure et le jus de lime.',
     'Répartir le riz dans quatre bols.',
     'Garnir de poulet, de haricots, de tomates, d’oignon, de cubes d’avocat, de fromage, de jalapeño, et de coriandre.',
-    'Ajouter la crème sure au mélange de lime sur le dessus.'
+    'Ajouter la crème sure au mélange de lime sur le dessus.',
   ],
   tags: ['riz', 'poulet', 'garnitures fraîches'],
   notes: 'On peut remplacer le poulet haché par de la dinde hachée.',
-  slug: 'burrito-en-bol'
-};
+  slug: 'burrito-en-bol',
+}

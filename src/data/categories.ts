@@ -34,10 +34,8 @@ export const recipeCategories = [
   'Trempettes',
   'Veau',
   'Vollaille',
-  'Végétarien'
-];
+  'Végétarien',
+]
 
 // Helper function to get all categories (from recipes + defaults)
-export const getAllCategories = (): string[] => {
-  return recipeCategories;
-};
+export const getAllCategories = (): string[] => recipeCategories

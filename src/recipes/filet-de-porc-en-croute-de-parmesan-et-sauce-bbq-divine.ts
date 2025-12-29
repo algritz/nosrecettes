@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const filetDePorcEnCrouteDeParmesanEtSauceBbqDivine: Recipe = {
   id: 'filet-de-porc-en-croute-de-parmesan-et-sauce-bbq-divine',
@@ -15,25 +15,25 @@ export const filetDePorcEnCrouteDeParmesanEtSauceBbqDivine: Recipe = {
     '1/3 tasse de fromage Parmesan',
     'Sel',
     'Poivre',
-    '1 enveloppe de sauce demi-glace en sachet préparée tel qu\'indiqué sur l\'emballage',
+    "1 enveloppe de sauce demi-glace en sachet préparée tel qu'indiqué sur l'emballage",
     '2 c à soupe de moutarde de dyjon',
     '2 c à soupe de ketchup',
     '2 c à soupe de mélasse',
     '1 c à soupe de sauce Red hot ou Sriracha',
     '1 à 2 gouttes de fumée liquide à saveur de hickory',
-    '1 pincée de sel d\'ail',
-    '1 pincée de sel d\'oignon',
-    '1 pincée d\'épices BBQ'
+    "1 pincée de sel d'ail",
+    "1 pincée de sel d'oignon",
+    "1 pincée d'épices BBQ",
   ],
   instructions: [
     'Tremper les filets de porc dans le vinaigre balsamique de framboises.',
     'Mélanger le parmesan, le sel et le poivre ensemble et verser sur tous les côtés des filets de porc.',
     'Cuire sur le BBQ à la cuisson désirée.',
-    'Dans une casserole, préparer votre mélange de sauce demi-glace tel qu\'indiqué sur le sachet.',
+    "Dans une casserole, préparer votre mélange de sauce demi-glace tel qu'indiqué sur le sachet.",
     'Ajouter le reste des ingrédients de la sauce.',
     'Bien mélanger et laisser mijoter quelques minutes.',
-    'Verser sur vos filets de porc.'
+    'Verser sur vos filets de porc.',
   ],
   tags: ['barbecue', 'parmesan', 'sauce'],
-  slug: 'filet-de-porc-en-croute-de-parmesan-et-sauce-bbq-divine'
-};
+  slug: 'filet-de-porc-en-croute-de-parmesan-et-sauce-bbq-divine',
+}

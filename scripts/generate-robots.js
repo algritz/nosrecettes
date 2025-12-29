@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { siteConfig } from './site.config.js';
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { siteConfig } from './site.config.js'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export function generateRobots() {
-  const baseUrl = siteConfig.baseUrl;
+  const baseUrl = siteConfig.baseUrl
 
   const robotsContent = `User-agent: *
 Allow: /
@@ -35,29 +35,28 @@ Disallow: /tmp/
 Disallow: /private/
 
 # Generated on: ${new Date().toISOString()}
-`;
+`
 
-  return robotsContent;
+  return robotsContent
 }
 
 function main() {
   try {
-    console.log('Generating robots.txt...');
-    
-    const robotsContent = generateRobots();
-    const outputPath = path.join(__dirname, '..', 'public', 'robots.txt');
-    
-    fs.writeFileSync(outputPath, robotsContent, 'utf-8');
-    
-    console.log(`✅ Robots.txt generated successfully at ${outputPath}`);
-    
+    console.log('Generating robots.txt...')
+
+    const robotsContent = generateRobots()
+    const outputPath = path.join(__dirname, '..', 'public', 'robots.txt')
+
+    fs.writeFileSync(outputPath, robotsContent, 'utf-8')
+
+    console.log(`✅ Robots.txt generated successfully at ${outputPath}`)
   } catch (error) {
-    console.error('❌ Error generating robots.txt:', error);
-    process.exit(1);
+    console.error('❌ Error generating robots.txt:', error)
+    process.exit(1)
   }
 }
 
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main();
+  main()
 }

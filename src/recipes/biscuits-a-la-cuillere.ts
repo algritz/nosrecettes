@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const biscuitsALaCuillere: Recipe = {
   id: 'biscuits-a-la-cuillere',
@@ -18,7 +18,7 @@ export const biscuitsALaCuillere: Recipe = {
     '½ c. à thé de soda',
     '½ c. à thé de sel',
     '½ tasse de lait',
-    '1 c. thé de vanille'
+    '1 c. thé de vanille',
   ],
   instructions: [
     'Défaire la graisse en crème, ajouter la cassonade puis les œufs un à la fois.',
@@ -27,16 +27,19 @@ export const biscuitsALaCuillere: Recipe = {
     'Ajouter la vanille.',
     'Déposer par cuillerées à thé sur une plaque à biscuits graissée.',
     'Cuire à 350 F, de 12 à 15 minutes.',
-    'Garnir à votre goût.'
+    'Garnir à votre goût.',
   ],
   tags: ['pâtisserie', 'cuisson au four', 'garniture'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/biscuits-a-la-cuillere',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/biscuits-a-la-cuillere',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuits-a-la-cuillere'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/biscuits-a-la-cuillere',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/biscuits-a-la-cuillere',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuits-a-la-cuillere',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'biscuits-a-la-cuillere'
-};
+  slug: 'biscuits-a-la-cuillere',
+}

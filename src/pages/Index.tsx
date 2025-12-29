@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react';
-import { recipes } from '@/data/recipes';
-import { RecipeCard } from '@/components/RecipeCard';
-import { SearchBar } from '@/components/SearchBar';
-import { RecipeStats } from '@/components/RecipeStats';
-import { LoadingSpinner } from '@/components/LoadingSpinner';
-import { SEOHead } from '@/components/SEOHead';
-import { useInfiniteRecipes } from '@/hooks/useInfiniteRecipes';
-import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
-import { MadeWithDyad } from '@/components/made-with-dyad';
-import { Button } from '@/components/ui/button';
-import { Plus, Settings, ArrowUp } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { generateWebsiteStructuredData } from '@/utils/seoUtils';
-import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils';
+import { useEffect, useState } from 'react'
+import { recipes } from '@/data/recipes'
+import { RecipeCard } from '@/components/RecipeCard'
+import { SearchBar } from '@/components/SearchBar'
+import { RecipeStats } from '@/components/RecipeStats'
+import { LoadingSpinner } from '@/components/LoadingSpinner'
+import { SEOHead } from '@/components/SEOHead'
+import { useInfiniteRecipes } from '@/hooks/useInfiniteRecipes'
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
+import { MadeWithDyad } from '@/components/made-with-dyad'
+import { Button } from '@/components/ui/button'
+import { Plus, Settings, ArrowUp } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { generateWebsiteStructuredData } from '@/utils/seoUtils'
+import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils'
 
 const Index = () => {
-  const [hasGitHubConfig, setHasGitHubConfig] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  
+  const [hasGitHubConfig, setHasGitHubConfig] = useState(false)
+  const [showScrollTop, setShowScrollTop] = useState(false)
+
   const {
     searchTerm,
     setSearchTerm,
@@ -30,48 +30,50 @@ const Index = () => {
     loadMore,
     clearFilters,
     totalCount,
-    displayedCount
-  } = useInfiniteRecipes({ recipes, batchSize: 10 });
+    displayedCount,
+  } = useInfiniteRecipes({ recipes, batchSize: 10 })
 
   // Set up infinite scroll
   useInfiniteScroll({
     hasMore,
     isLoading,
     onLoadMore: loadMore,
-    threshold: 200
-  });
+    threshold: 200,
+  })
 
   useEffect(() => {
     // Check if GitHub configuration exists
-    const savedConfig = localStorage.getItem('github-config');
-    setHasGitHubConfig(!!savedConfig);
+    const savedConfig = localStorage.getItem('github-config')
+    setHasGitHubConfig(!!savedConfig)
 
     // Handle scroll to show/hide scroll-to-top button
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setShowScrollTop(scrollTop > 300);
-    };
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      setShowScrollTop(scrollTop > 300)
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
-    });
-  };
+      behavior: 'smooth',
+    })
+  }
 
   // Generate SEO data
-  const allCategories = getAllCategoriesFromRecipes(recipes);
-  const seoTitle = searchTerm || selectedCategories.length > 0 
-    ? `Recettes ${selectedCategories.join(', ')} ${searchTerm} - Nos Recettes`
-    : 'Nos Recettes - Collection de recettes québécoises authentiques';
-  
-  const seoDescription = searchTerm || selectedCategories.length > 0
-    ? `Découvrez ${totalCount} recette${totalCount !== 1 ? 's' : ''} ${selectedCategories.join(', ')} ${searchTerm}. Recettes québécoises avec instructions détaillées et images.`
-    : `Découvrez notre collection de ${recipes.length} recettes québécoises traditionnelles et modernes. Instructions détaillées, temps de préparation, et images pour chaque recette.`;
+  const allCategories = getAllCategoriesFromRecipes(recipes)
+  const seoTitle =
+    searchTerm || selectedCategories.length > 0
+      ? `Recettes ${selectedCategories.join(', ')} ${searchTerm} - Nos Recettes`
+      : 'Nos Recettes - Collection de recettes québécoises authentiques'
+
+  const seoDescription =
+    searchTerm || selectedCategories.length > 0
+      ? `Découvrez ${totalCount} recette${totalCount !== 1 ? 's' : ''} ${selectedCategories.join(', ')} ${searchTerm}. Recettes québécoises avec instructions détaillées et images.`
+      : `Découvrez notre collection de ${recipes.length} recettes québécoises traditionnelles et modernes. Instructions détaillées, temps de préparation, et images pour chaque recette.`
 
   const seoKeywords = [
     'recettes québécoises',
@@ -81,10 +83,10 @@ const Index = () => {
     'cuisine du Québec',
     ...allCategories.slice(0, 10), // Add top categories
     'recettes faciles',
-    'recettes familiales'
-  ];
+    'recettes familiales',
+  ]
 
-  const websiteStructuredData = generateWebsiteStructuredData();
+  const websiteStructuredData = generateWebsiteStructuredData()
 
   return (
     <>
@@ -96,7 +98,7 @@ const Index = () => {
         url="/"
         structuredData={websiteStructuredData}
       />
-      
+
       <div className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-8">
           <header className="mb-12">
@@ -116,12 +118,13 @@ const Index = () => {
                 </Link>
               </div>
             )}
-            
+
             <div className="text-center">
               <h1 className="text-4xl font-bold mb-4">Nos Recettes</h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Découvrez notre collection de recettes québécoises traditionnelles et modernes. 
-                Recherchez par nom, ingrédient ou catégorie pour trouver votre prochaine création culinaire.
+                Découvrez notre collection de recettes québécoises
+                traditionnelles et modernes. Recherchez par nom, ingrédient ou
+                catégorie pour trouver votre prochaine création culinaire.
               </p>
             </div>
           </header>
@@ -205,11 +208,11 @@ const Index = () => {
             </Button>
           </div>
         )}
-        
+
         <MadeWithDyad />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index

@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const preparationAuRiz: Recipe = {
   id: 'preparation-au-riz',
@@ -17,13 +17,13 @@ export const preparationAuRiz: Recipe = {
     '1 oignon',
     'beurre',
     'sel',
-    'poivre'
+    'poivre',
   ],
   instructions: [
-    'Faire frire l\'oignon et le beurre, ajouter le bœuf haché, quand c\'est cuit ajouter les pois, le riz cuit et les tomates. Saler et poivrer.',
-    'Mettre au four à 350 F jusqu\'à ce que le dessus soit rôti.'
+    "Faire frire l'oignon et le beurre, ajouter le bœuf haché, quand c'est cuit ajouter les pois, le riz cuit et les tomates. Saler et poivrer.",
+    "Mettre au four à 350 F jusqu'à ce que le dessus soit rôti.",
   ],
   tags: ['ragoût', 'four', 'simple'],
   notes: 'Source: Grand-maman Aline',
-  slug: 'preparation-au-riz'
-};
+  slug: 'preparation-au-riz',
+}

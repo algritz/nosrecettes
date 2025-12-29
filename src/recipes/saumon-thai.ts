@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saumonThai: Recipe = {
   id: 'saumon-thai',
   title: 'Saumon thai',
-  description: 'Un plat de saumon thaï épicé avec une sauce au curry, servi avec du riz basmati et décoré de menthe ou de coriandre.',
+  description:
+    'Un plat de saumon thaï épicé avec une sauce au curry, servi avec du riz basmati et décoré de menthe ou de coriandre.',
   categories: ['Poisson', 'Plats principaux'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 20, max: 20 },
@@ -14,9 +15,9 @@ export const saumonThai: Recipe = {
     'pâte de cari doux',
     'piment rouge en gros dés',
     'oignon en dés',
-    '2 gousses d\'ail hachées',
+    "2 gousses d'ail hachées",
     '1 c. à soupe de gingembre haché',
-    '1 c. à soupe d\'huile de sésame',
+    "1 c. à soupe d'huile de sésame",
     'une boîte de lait de coco',
     '1 c. à thé pâte de cari épicé',
     '2 c. à soupe de cassonade',
@@ -27,20 +28,20 @@ export const saumonThai: Recipe = {
     'Menthe hachée',
     'Coriandre en feuille hachée',
     'Sambal Oelek (facultatif)',
-    'Feuilles de coriandre ou menthe entière pour la garniture'
+    'Feuilles de coriandre ou menthe entière pour la garniture',
   ],
   instructions: [
-    'Enduire d\'une fine couche tous les côtés du saumon et réserver.',
+    "Enduire d'une fine couche tous les côtés du saumon et réserver.",
     'Couper les légumes.',
-    'Faire revenir l\'ail, l\'oignon, le piment et le gingembre dans l\'huile de sésame.',
+    "Faire revenir l'ail, l'oignon, le piment et le gingembre dans l'huile de sésame.",
     'Faire cuire le saumon au four à 350°F pendant 15 à 20 minutes.',
     'Ajouter au légume le lait de coco, la pâte de cari forte et bien mélanger.',
     'Ajouter tous les autres ingrédients, remuer et laisser mijoter 15 à 20 minutes.',
     'Vous pouvez ajouter du Sambal Oelek pour un goût encore plus relevé.',
-    'Servir avec du riz Basmati décoré de feuilles de menthe ou de coriandre.'
+    'Servir avec du riz Basmati décoré de feuilles de menthe ou de coriandre.',
   ],
   tags: ['curry', 'épicé', 'saumon'],
   accompaniment: 'Riz basmati',
   marinatingTime: { min: 10, max: 10 },
-  slug: 'saumon-thai'
-};
+  slug: 'saumon-thai',
+}

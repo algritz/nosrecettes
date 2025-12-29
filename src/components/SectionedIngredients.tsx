@@ -1,46 +1,55 @@
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Plus, Minus, GripVertical, FolderPlus } from 'lucide-react';
-import { IngredientSection } from '@/types/recipe';
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Plus, Minus, GripVertical, FolderPlus } from 'lucide-react'
+import { IngredientSection } from '@/types/recipe'
 
 interface SectionedIngredientsProps {
-  sections: IngredientSection[];
-  onChange: (sections: IngredientSection[]) => void;
+  sections: IngredientSection[]
+  onChange: (sections: IngredientSection[]) => void
 }
 
-export const SectionedIngredients = ({ sections, onChange }: SectionedIngredientsProps) => {
+export const SectionedIngredients = ({
+  sections,
+  onChange,
+}: SectionedIngredientsProps) => {
   const addSection = () => {
-    onChange([...sections, { title: '', items: [''] }]);
-  };
+    onChange([...sections, { title: '', items: [''] }])
+  }
 
   const removeSection = (sectionIndex: number) => {
-    onChange(sections.filter((_, i) => i !== sectionIndex));
-  };
+    onChange(sections.filter((_, i) => i !== sectionIndex))
+  }
 
   const updateSectionTitle = (sectionIndex: number, title: string) => {
-    const newSections = [...sections];
-    newSections[sectionIndex].title = title;
-    onChange(newSections);
-  };
+    const newSections = [...sections]
+    newSections[sectionIndex].title = title
+    onChange(newSections)
+  }
 
   const addIngredient = (sectionIndex: number) => {
-    const newSections = [...sections];
-    newSections[sectionIndex].items.push('');
-    onChange(newSections);
-  };
+    const newSections = [...sections]
+    newSections[sectionIndex].items.push('')
+    onChange(newSections)
+  }
 
   const removeIngredient = (sectionIndex: number, itemIndex: number) => {
-    const newSections = [...sections];
-    newSections[sectionIndex].items = newSections[sectionIndex].items.filter((_, i) => i !== itemIndex);
-    onChange(newSections);
-  };
+    const newSections = [...sections]
+    newSections[sectionIndex].items = newSections[sectionIndex].items.filter(
+      (_, i) => i !== itemIndex,
+    )
+    onChange(newSections)
+  }
 
-  const updateIngredient = (sectionIndex: number, itemIndex: number, value: string) => {
-    const newSections = [...sections];
-    newSections[sectionIndex].items[itemIndex] = value;
-    onChange(newSections);
-  };
+  const updateIngredient = (
+    sectionIndex: number,
+    itemIndex: number,
+    value: string,
+  ) => {
+    const newSections = [...sections]
+    newSections[sectionIndex].items[itemIndex] = value
+    onChange(newSections)
+  }
 
   return (
     <div className="space-y-4">
@@ -51,7 +60,9 @@ export const SectionedIngredients = ({ sections, onChange }: SectionedIngredient
               <GripVertical className="w-4 h-4 text-muted-foreground" />
               <Input
                 value={section.title}
-                onChange={(e) => updateSectionTitle(sectionIndex, e.target.value)}
+                onChange={(e) =>
+                  updateSectionTitle(sectionIndex, e.target.value)
+                }
                 placeholder={`Section ${sectionIndex + 1} (ex: Pour les keftas)`}
                 className="font-medium"
               />
@@ -73,7 +84,9 @@ export const SectionedIngredients = ({ sections, onChange }: SectionedIngredient
                 <div key={itemIndex} className="flex gap-2">
                   <Input
                     value={item}
-                    onChange={(e) => updateIngredient(sectionIndex, itemIndex, e.target.value)}
+                    onChange={(e) =>
+                      updateIngredient(sectionIndex, itemIndex, e.target.value)
+                    }
                     placeholder="Ex: 500g de bœuf haché"
                     className="flex-1"
                   />
@@ -103,7 +116,7 @@ export const SectionedIngredients = ({ sections, onChange }: SectionedIngredient
           </CardContent>
         </Card>
       ))}
-      
+
       <Button
         type="button"
         variant="outline"
@@ -114,5 +127,5 @@ export const SectionedIngredients = ({ sections, onChange }: SectionedIngredient
         Ajouter une section
       </Button>
     </div>
-  );
-};
+  )
+}

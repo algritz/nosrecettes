@@ -1,43 +1,49 @@
-import { ProcessedImage } from '@/utils/imageUtils';
-import { ImageSizes, IngredientSection, InstructionSection, TimeRange } from '@/types/recipe';
-import { generateCleanupInstructions } from '@/utils/cloudinaryUtils';
-import { getMaxTime } from '@/utils/timeUtils';
-import { formatTime } from '@/utils/timeFormat';
+import { ProcessedImage } from '@/utils/imageUtils'
+import {
+  Recipe,
+  ImageSizes,
+  IngredientSection,
+  InstructionSection,
+  TimeRange,
+} from '@/types/recipe'
+import { generateCleanupInstructions } from '@/utils/cloudinaryUtils'
+import { getMaxTime } from '@/utils/timeUtils'
+import { formatTime } from '@/utils/timeFormat'
 
 interface GitHubConfig {
-  owner: string;
-  repo: string;
-  token: string;
+  owner: string
+  repo: string
+  token: string
 }
 
 interface RecipeData {
-  title: string;
-  description: string;
-  categories: string[]; // Updated to handle multiple categories
-  prepTime: TimeRange;
-  cookTime: TimeRange;
-  marinatingTime?: TimeRange;
-  servings: string;
-  difficulty: string;
-  ingredients: string[] | IngredientSection[];
-  instructions: string[] | InstructionSection[];
-  tags: string[];
-  accompaniment?: string;
-  wine?: string;
-  source?: string;
-  notes?: string;
+  title: string
+  description: string
+  categories: string[] // Updated to handle multiple categories
+  prepTime: TimeRange
+  cookTime: TimeRange
+  marinatingTime?: TimeRange
+  servings: string
+  difficulty: string
+  ingredients: string[] | IngredientSection[]
+  instructions: string[] | InstructionSection[]
+  tags: string[]
+  accompaniment?: string
+  wine?: string
+  source?: string
+  notes?: string
 }
 
 interface CategoryChange {
-  type: 'add' | 'remove';
-  category: string;
+  type: 'add' | 'remove'
+  category: string
 }
 
 export class GitHubService {
-  private config: GitHubConfig;
+  private config: GitHubConfig
 
   constructor(config: GitHubConfig) {
-    this.config = config;
+    this.config = config
   }
 
   private createSlug(title: string): string {
@@ -48,201 +54,216 @@ export class GitHubService {
       .replace(/[^a-z0-9\s-]/g, '')
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-')
-      .trim('-');
+      .trim('-')
   }
 
   private createVariableName(slug: string): string {
     // Convert slug to camelCase for variable name
-    return slug.split('-').map((word, index) => {
-      if (index === 0) return word;
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    }).join('');
+    return slug
+      .split('-')
+      .map((word, index) => {
+        if (index === 0) return word
+        return word.charAt(0).toUpperCase() + word.slice(1)
+      })
+      .join('')
   }
 
   private async getUserInfo(): Promise<{ login: string; name?: string }> {
     const response = await fetch('https://api.github.com/user', {
       headers: {
-        'Authorization': `token ${this.config.token}`,
-        'Accept': 'application/vnd.github.v3+json',
+        Authorization: `token ${this.config.token}`,
+        Accept: 'application/vnd.github.v3+json',
       },
-    });
-    
+    })
+
     if (!response.ok) {
-      throw new Error('Failed to get user info');
+      throw new Error('Failed to get user info')
     }
-    
-    return await response.json();
+
+    return await response.json()
   }
 
   private escapeString(str: string): string {
     return str
-      .replace(/\\/g, '\\\\')  // Escape backslashes first
-      .replace(/'/g, "\\'")    // Escape single quotes
-      .replace(/\n/g, '\\n')   // Escape newlines
-      .replace(/\r/g, '\\r')   // Escape carriage returns
-      .replace(/\t/g, '\\t');  // Escape tabs
+      .replace(/\\/g, '\\\\') // Escape backslashes first
+      .replace(/'/g, "\\'") // Escape single quotes
+      .replace(/\n/g, '\\n') // Escape newlines
+      .replace(/\r/g, '\\r') // Escape carriage returns
+      .replace(/\t/g, '\\t') // Escape tabs
   }
 
   private base64Encode(str: string): string {
     // Use TextEncoder to properly handle UTF-8 encoding
-    const encoder = new TextEncoder();
-    const data = encoder.encode(str);
-    
+    const encoder = new TextEncoder()
+    const data = encoder.encode(str)
+
     // Convert to base64
-    let binary = '';
-    const len = data.byteLength;
+    let binary = ''
+    const len = data.byteLength
     for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(data[i]);
+      binary += String.fromCharCode(data[i])
     }
-    return btoa(binary);
+    return btoa(binary)
   }
 
   private base64Decode(str: string): string {
     // Decode base64 to binary string
-    const binary = atob(str);
-    
+    const binary = atob(str)
+
     // Convert binary string to Uint8Array
-    const bytes = new Uint8Array(binary.length);
+    const bytes = new Uint8Array(binary.length)
     for (let i = 0; i < binary.length; i++) {
-      bytes[i] = binary.charCodeAt(i);
+      bytes[i] = binary.charCodeAt(i)
     }
-    
+
     // Use TextDecoder to properly handle UTF-8 decoding
-    const decoder = new TextDecoder('utf-8');
-    return decoder.decode(bytes);
+    const decoder = new TextDecoder('utf-8')
+    return decoder.decode(bytes)
   }
 
-  private formatIngredientsForFile(ingredients: string[] | IngredientSection[]): string {
+  private formatIngredientsForFile(
+    ingredients: string[] | IngredientSection[],
+  ): string {
     if (!ingredients || ingredients.length === 0) {
-      return "    ''";
+      return "    ''"
     }
 
     // Check if it's sectioned ingredients
     if (typeof ingredients[0] === 'object' && 'title' in ingredients[0]) {
-      const sections = ingredients as IngredientSection[];
-      const sectionObjects = sections.map(section => {
-        const items = section.items.filter(item => item.trim() !== '');
+      const sections = ingredients as IngredientSection[]
+      const sectionObjects = sections.map((section) => {
+        const items = section.items.filter((item) => item.trim() !== '')
         return `    {
       title: '${this.escapeString(section.title)}',
       items: [
-${items.map(item => `        '${this.escapeString(item)}'`).join(',\n')}
+${items.map((item) => `        '${this.escapeString(item)}'`).join(',\n')}
       ]
-    }`;
-      });
-      
-      return `[\n${sectionObjects.join(',\n')}\n  ]`;
-    } else {
-      // Regular string array
-      const cleanIngredients = (ingredients as string[]).filter(ing => ing.trim() !== '');
-      return `[\n${cleanIngredients.map(ing => `    '${this.escapeString(ing)}'`).join(',\n')}\n  ]`;
+    }`
+      })
+
+      return `[\n${sectionObjects.join(',\n')}\n  ]`
     }
+    // Regular string array
+    const cleanIngredients = (ingredients as string[]).filter(
+      (ing) => ing.trim() !== '',
+    )
+    return `[\n${cleanIngredients.map((ing) => `    '${this.escapeString(ing)}'`).join(',\n')}\n  ]`
   }
 
-  private formatInstructionsForFile(instructions: string[] | InstructionSection[]): string {
+  private formatInstructionsForFile(
+    instructions: string[] | InstructionSection[],
+  ): string {
     if (!instructions || instructions.length === 0) {
-      return "    ''";
+      return "    ''"
     }
 
     // Check if it's sectioned instructions
     if (typeof instructions[0] === 'object' && 'title' in instructions[0]) {
-      const sections = instructions as InstructionSection[];
-      const sectionObjects = sections.map(section => {
-        const steps = section.steps.filter(step => step.trim() !== '');
+      const sections = instructions as InstructionSection[]
+      const sectionObjects = sections.map((section) => {
+        const steps = section.steps.filter((step) => step.trim() !== '')
         return `    {
       title: '${this.escapeString(section.title)}',
       steps: [
-${steps.map(step => `        '${this.escapeString(step)}'`).join(',\n')}
+${steps.map((step) => `        '${this.escapeString(step)}'`).join(',\n')}
       ]
-    }`;
-      });
-      
-      return `[\n${sectionObjects.join(',\n')}\n  ]`;
-    } else {
-      // Regular string array
-      const cleanInstructions = (instructions as string[]).filter(inst => inst.trim() !== '');
-      return `[\n${cleanInstructions.map(inst => `    '${this.escapeString(inst)}'`).join(',\n')}\n  ]`;
+    }`
+      })
+
+      return `[\n${sectionObjects.join(',\n')}\n  ]`
     }
+    // Regular string array
+    const cleanInstructions = (instructions as string[]).filter(
+      (inst) => inst.trim() !== '',
+    )
+    return `[\n${cleanInstructions.map((inst) => `    '${this.escapeString(inst)}'`).join(',\n')}\n  ]`
   }
 
   private async generateRecipeFile(
-    data: RecipeData, 
-    images: ProcessedImage[], 
-    existingId?: string, 
-    existingImages?: ImageSizes[]
+    data: RecipeData,
+    images: ProcessedImage[],
+    options?: { existingId?: string; existingImages?: ImageSizes[] },
   ): Promise<string> {
-    const slug = this.createSlug(data.title);
-    const id = existingId || Date.now().toString();
-    const variableName = this.createVariableName(slug);
+    const existingId = options?.existingId
+    const existingImages = options?.existingImages
+    const slug = this.createSlug(data.title)
+    const id = existingId || Date.now().toString()
+    const variableName = this.createVariableName(slug)
 
-    const marinatingTimeField = data.marinatingTime && (data.marinatingTime.min > 0 || data.marinatingTime.max > 0)
-      ? `  marinatingTime: { min: ${data.marinatingTime.min}, max: ${data.marinatingTime.max} },\n`
-      : '';
+    const marinatingTimeField =
+      data.marinatingTime &&
+      (data.marinatingTime.min > 0 || data.marinatingTime.max > 0)
+        ? `  marinatingTime: { min: ${data.marinatingTime.min}, max: ${data.marinatingTime.max} },\n`
+        : ''
 
     // Get default source if not provided
-    let source = data.source?.trim();
+    let source = data.source?.trim()
     if (!source) {
       try {
-        const userInfo = await this.getUserInfo();
-        source = userInfo.name || userInfo.login;
-      } catch (error) {
-        source = this.config.owner; // Fallback to repo owner
+        const userInfo = await this.getUserInfo()
+        source = userInfo.name || userInfo.login
+      } catch {
+        source = this.config.owner // Fallback to repo owner
       }
     }
 
-    const accompanimentField = data.accompaniment?.trim() 
-      ? `  accompaniment: '${this.escapeString(data.accompaniment)}',\n` 
-      : '';
+    const accompanimentField = data.accompaniment?.trim()
+      ? `  accompaniment: '${this.escapeString(data.accompaniment)}',\n`
+      : ''
 
-    const wineField = data.wine?.trim() 
-      ? `  wine: '${this.escapeString(data.wine)}',\n` 
-      : '';
+    const wineField = data.wine?.trim()
+      ? `  wine: '${this.escapeString(data.wine)}',\n`
+      : ''
 
-    const sourceField = source 
-      ? `  source: '${this.escapeString(source)}',\n` 
-      : '';
+    const sourceField = source
+      ? `  source: '${this.escapeString(source)}',\n`
+      : ''
 
-    const notesField = data.notes?.trim() 
-      ? `  notes: '${this.escapeString(data.notes)}',\n` 
-      : '';
+    const notesField = data.notes?.trim()
+      ? `  notes: '${this.escapeString(data.notes)}',\n`
+      : ''
 
     // Generate images field - prioritize new images, then existing images
-    let imagesField = '';
-    const finalImages = images.length > 0 ? images : [];
-    const imagesToUse = existingImages && existingImages.length > 0 && images.length === 0 ? existingImages : [];
+    let imagesField = ''
+    const finalImages = images.length > 0 ? images : []
+    const imagesToUse =
+      existingImages && existingImages.length > 0 && images.length === 0
+        ? existingImages
+        : []
 
     if (finalImages.length > 0) {
       // Use new ProcessedImages (Cloudinary URLs)
-      const imageObjects = finalImages.map((image) => {
-        return `    {
+      const imageObjects = finalImages.map(
+        (image) => `    {
       small: '${image.sizes.small}',
       medium: '${image.sizes.medium}',
       large: '${image.sizes.large}'
-    }`;
-      });
-      
-      imagesField = `  images: [\n${imageObjects.join(',\n')}\n  ],\n`;
+    }`,
+      )
+
+      imagesField = `  images: [\n${imageObjects.join(',\n')}\n  ],\n`
     } else if (imagesToUse.length > 0) {
       // Use existing images
-      const imageObjects = imagesToUse.map((image) => {
-        return `    {
+      const imageObjects = imagesToUse.map(
+        (image) => `    {
       small: '${image.small}',
       medium: '${image.medium}',
       large: '${image.large}'
-    }`;
-      });
-      
-      imagesField = `  images: [\n${imageObjects.join(',\n')}\n  ],\n`;
+    }`,
+      )
+
+      imagesField = `  images: [\n${imageObjects.join(',\n')}\n  ],\n`
     }
 
     // Generate categories field
-    const categoriesField = `  categories: [${data.categories.map(cat => `'${this.escapeString(cat)}'`).join(', ')}],\n`;
+    const categoriesField = `  categories: [${data.categories.map((cat) => `'${this.escapeString(cat)}'`).join(', ')}],\n`
 
     // Format ingredients and instructions (handles both regular and sectioned)
-    const ingredientsField = this.formatIngredientsForFile(data.ingredients);
-    const instructionsField = this.formatInstructionsForFile(data.instructions);
+    const ingredientsField = this.formatIngredientsForFile(data.ingredients)
+    const instructionsField = this.formatInstructionsForFile(data.instructions)
 
     // Clean tags
-    const cleanTags = data.tags.filter(tag => tag.trim() !== '');
+    const cleanTags = data.tags.filter((tag) => tag.trim() !== '')
 
     return `import { Recipe } from '@/types/recipe';
 
@@ -256,71 +277,81 @@ ${marinatingTimeField}  servings: ${data.servings || 1},
   difficulty: '${data.difficulty}',
   ingredients: ${ingredientsField},
   instructions: ${instructionsField},
-  tags: [${cleanTags.map(tag => `'${this.escapeString(tag)}'`).join(', ')}],
+  tags: [${cleanTags.map((tag) => `'${this.escapeString(tag)}'`).join(', ')}],
 ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug: '${slug}'
 };
-`;
+`
   }
 
-  private updateCategoriesFile(currentContent: string, changes: CategoryChange[]): string {
+  private updateCategoriesFile(
+    currentContent: string,
+    changes: CategoryChange[],
+  ): string {
     // Find the recipeCategories array
-    const arrayRegex = /export const recipeCategories = \[([\s\S]*?)\];/;
-    const match = currentContent.match(arrayRegex);
-    
+    const arrayRegex = /export const recipeCategories = \[([\s\S]*?)\];/
+    const match = currentContent.match(arrayRegex)
+
     if (match) {
       // Parse existing categories
-      const existingCategoriesStr = match[1];
+      const existingCategoriesStr = match[1]
       let existingCategories = existingCategoriesStr
         .split(',')
-        .map(cat => cat.trim().replace(/['"]/g, ''))
-        .filter(cat => cat.length > 0);
-      
+        .map((cat) => cat.trim().replace(/['"]/g, ''))
+        .filter((cat) => cat.length > 0)
+
       // Apply changes
-      changes.forEach(change => {
+      changes.forEach((change) => {
         if (change.type === 'add') {
           if (!existingCategories.includes(change.category)) {
-            existingCategories.push(change.category);
+            existingCategories.push(change.category)
           }
         } else if (change.type === 'remove') {
-          existingCategories = existingCategories.filter(cat => cat !== change.category);
+          existingCategories = existingCategories.filter(
+            (cat) => cat !== change.category,
+          )
         }
-      });
-      
+      })
+
       // Sort categories
-      existingCategories.sort();
-      
+      existingCategories.sort()
+
       // Generate new array content
-      const newArrayContent = existingCategories.map(cat => `  '${this.escapeString(cat)}'`).join(',\n');
-      
-      return currentContent.replace(arrayRegex, `export const recipeCategories = [\n${newArrayContent}\n];`);
+      const newArrayContent = existingCategories
+        .map((cat) => `  '${this.escapeString(cat)}'`)
+        .join(',\n')
+
+      return currentContent.replace(
+        arrayRegex,
+        `export const recipeCategories = [\n${newArrayContent}\n];`,
+      )
     }
-    
-    return currentContent;
+
+    return currentContent
   }
 
-  async deleteRecipePR(existingRecipe: any): Promise<string> {
-    const slug = existingRecipe.slug;
-    const branchName = `delete-recipe/${slug}-${Date.now()}`;
-    const recipeFileName = `${slug}.ts`;
-    
+  async deleteRecipePR(existingRecipe: Recipe): Promise<string> {
+    const slug = existingRecipe.slug
+    const branchName = `delete-recipe/${slug}-${Date.now()}`
+    const recipeFileName = `${slug}.ts`
+
     try {
       // Get the default branch SHA
       const mainBranchResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/ref/heads/main`,
         {
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
           },
-        }
-      );
-      
+        },
+      )
+
       if (!mainBranchResponse.ok) {
-        throw new Error('Failed to get main branch');
+        throw new Error('Failed to get main branch')
       }
-      
-      const mainBranch = await mainBranchResponse.json();
-      const baseSha = mainBranch.object.sha;
+
+      const mainBranch = await mainBranchResponse.json()
+      const baseSha = mainBranch.object.sha
 
       // Create new branch
       await fetch(
@@ -328,33 +359,33 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
         {
           method: 'POST',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             ref: `refs/heads/${branchName}`,
             sha: baseSha,
           }),
-        }
-      );
+        },
+      )
 
       // Get recipe file SHA for deletion
       const recipeFileResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${recipeFileName}?ref=main`,
         {
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
           },
-        }
-      );
-      
+        },
+      )
+
       if (!recipeFileResponse.ok) {
-        throw new Error('Recipe file not found');
+        throw new Error('Recipe file not found')
       }
-      
-      const recipeFile = await recipeFileResponse.json();
+
+      const recipeFile = await recipeFileResponse.json()
 
       // Delete recipe file (index.ts will auto-update on next build)
       await fetch(
@@ -362,8 +393,8 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
         {
           method: 'DELETE',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
@@ -371,24 +402,25 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
             sha: recipeFile.sha,
             branch: branchName,
           }),
-        }
-      );
+        },
+      )
 
       // Generate cleanup instructions for images
-      const cleanupInstructions = generateCleanupInstructions();
+      const cleanupInstructions = generateCleanupInstructions()
 
       // Create pull request
-      const imageInfo = existingRecipe.images?.length > 0 || existingRecipe.image 
-        ? `\n**Images:** Toutes les images associées seront supprimées automatiquement` 
-        : '';
+      const imageInfo =
+        existingRecipe.images?.length > 0 || existingRecipe.image
+          ? '\n**Images:** Toutes les images associées seront supprimées automatiquement'
+          : ''
 
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
           method: 'POST',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
@@ -412,46 +444,49 @@ ${cleanupInstructions}
 *Cette recette a été supprimée via le formulaire web avec nettoyage automatique des images.*
 *L'index des recettes sera mis à jour automatiquement lors du prochain déploiement.*`,
           }),
-        }
-      );
+        },
+      )
 
       if (!prResponse.ok) {
-        throw new Error('Failed to create pull request');
+        throw new Error('Failed to create pull request')
       }
 
-      const pr = await prResponse.json();
-      return pr.html_url;
-
+      const pr = await prResponse.json()
+      return pr.html_url
     } catch (error) {
-      console.error('Error deleting recipe PR:', error);
-      throw error;
+      console.error('Error deleting recipe PR:', error)
+      throw error
     }
   }
 
   async createCategoryPR(changes: CategoryChange[]): Promise<string> {
-    const addedCategories = changes.filter(c => c.type === 'add').map(c => c.category);
-    const removedCategories = changes.filter(c => c.type === 'remove').map(c => c.category);
-    
-    const branchName = `categories/update-${Date.now()}`;
-    
+    const addedCategories = changes
+      .filter((c) => c.type === 'add')
+      .map((c) => c.category)
+    const removedCategories = changes
+      .filter((c) => c.type === 'remove')
+      .map((c) => c.category)
+
+    const branchName = `categories/update-${Date.now()}`
+
     try {
       // Get the default branch SHA
       const mainBranchResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/ref/heads/main`,
         {
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
           },
-        }
-      );
-      
+        },
+      )
+
       if (!mainBranchResponse.ok) {
-        throw new Error('Failed to get main branch');
+        throw new Error('Failed to get main branch')
       }
-      
-      const mainBranch = await mainBranchResponse.json();
-      const baseSha = mainBranch.object.sha;
+
+      const mainBranch = await mainBranchResponse.json()
+      const baseSha = mainBranch.object.sha
 
       // Create new branch
       await fetch(
@@ -459,33 +494,36 @@ ${cleanupInstructions}
         {
           method: 'POST',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             ref: `refs/heads/${branchName}`,
             sha: baseSha,
           }),
-        }
-      );
+        },
+      )
 
       // Get current categories.ts content
       const categoriesResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/data/categories.ts?ref=main`,
         {
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
           },
-        }
-      );
-      
-      const categoriesFile = await categoriesResponse.json();
-      const currentCategoriesContent = this.base64Decode(categoriesFile.content);
+        },
+      )
+
+      const categoriesFile = await categoriesResponse.json()
+      const currentCategoriesContent = this.base64Decode(categoriesFile.content)
 
       // Update categories.ts content
-      const updatedCategoriesContent = this.updateCategoriesFile(currentCategoriesContent, changes);
+      const updatedCategoriesContent = this.updateCategoriesFile(
+        currentCategoriesContent,
+        changes,
+      )
 
       // Update categories.ts file
       await fetch(
@@ -493,8 +531,8 @@ ${cleanupInstructions}
         {
           method: 'PUT',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
@@ -503,44 +541,48 @@ ${cleanupInstructions}
             branch: branchName,
             sha: categoriesFile.sha,
           }),
-        }
-      );
+        },
+      )
 
       // Create pull request
-      let prTitle = 'Mise à jour des catégories';
+      let prTitle = 'Mise à jour des catégories'
       if (addedCategories.length > 0 && removedCategories.length > 0) {
-        prTitle = `Mise à jour des catégories: +${addedCategories.length} -${removedCategories.length}`;
+        prTitle = `Mise à jour des catégories: +${addedCategories.length} -${removedCategories.length}`
       } else if (addedCategories.length > 0) {
-        prTitle = `Ajouter ${addedCategories.length > 1 ? 'les catégories' : 'la catégorie'}: ${addedCategories.join(', ')}`;
+        prTitle = `Ajouter ${addedCategories.length > 1 ? 'les catégories' : 'la catégorie'}: ${addedCategories.join(', ')}`
       } else if (removedCategories.length > 0) {
-        prTitle = `Supprimer ${removedCategories.length > 1 ? 'les catégories' : 'la catégorie'}: ${removedCategories.join(', ')}`;
+        prTitle = `Supprimer ${removedCategories.length > 1 ? 'les catégories' : 'la catégorie'}: ${removedCategories.join(', ')}`
       }
 
-      let prBody = '## Modifications des catégories\n\n';
-      
+      let prBody = '## Modifications des catégories\n\n'
+
       if (addedCategories.length > 0) {
-        prBody += '### ✅ Catégories ajoutées\n';
-        prBody += addedCategories.map(cat => `- **${cat}**`).join('\n') + '\n\n';
+        prBody += '### ✅ Catégories ajoutées\n'
+        prBody +=
+          addedCategories.map((cat) => `- **${cat}**`).join('\n') + '\n\n'
       }
-      
+
       if (removedCategories.length > 0) {
-        prBody += '### ❌ Catégories supprimées\n';
-        prBody += removedCategories.map(cat => `- **${cat}**`).join('\n') + '\n\n';
+        prBody += '### ❌ Catégories supprimées\n'
+        prBody +=
+          removedCategories.map((cat) => `- **${cat}**`).join('\n') + '\n\n'
       }
-      
-      prBody += '### Détails\n';
-      prBody += `- **Ajouts:** ${addedCategories.length}\n`;
-      prBody += `- **Suppressions:** ${removedCategories.length}\n`;
-      prBody += `- **Modifiées via:** Interface web de gestion des catégories\n\n`;
-      prBody += '---\n*Catégories modifiées automatiquement via l\'interface de gestion.*';
+
+      prBody += '### Détails\n'
+      prBody += `- **Ajouts:** ${addedCategories.length}\n`
+      prBody += `- **Suppressions:** ${removedCategories.length}\n`
+      prBody +=
+        '- **Modifiées via:** Interface web de gestion des catégories\n\n'
+      prBody +=
+        "---\n*Catégories modifiées automatiquement via l'interface de gestion.*"
 
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
           method: 'POST',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
@@ -549,45 +591,47 @@ ${cleanupInstructions}
             base: 'main',
             body: prBody,
           }),
-        }
-      );
+        },
+      )
 
       if (!prResponse.ok) {
-        throw new Error('Failed to create pull request');
+        throw new Error('Failed to create pull request')
       }
 
-      const pr = await prResponse.json();
-      return pr.html_url;
-
+      const pr = await prResponse.json()
+      return pr.html_url
     } catch (error) {
-      console.error('Error creating category PR:', error);
-      throw error;
+      console.error('Error creating category PR:', error)
+      throw error
     }
   }
 
-  async createRecipePR(recipeData: RecipeData, images: ProcessedImage[] = []): Promise<string> {
-    const slug = this.createSlug(recipeData.title);
-    const branchName = `recipe/${slug}`;
-    const recipeFileName = `${slug}.ts`;
-    
+  async createRecipePR(
+    recipeData: RecipeData,
+    images: ProcessedImage[] = [],
+  ): Promise<string> {
+    const slug = this.createSlug(recipeData.title)
+    const branchName = `recipe/${slug}`
+    const recipeFileName = `${slug}.ts`
+
     try {
       // Get the default branch SHA
       const mainBranchResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/ref/heads/main`,
         {
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
           },
-        }
-      );
-      
+        },
+      )
+
       if (!mainBranchResponse.ok) {
-        throw new Error('Failed to get main branch');
+        throw new Error('Failed to get main branch')
       }
-      
-      const mainBranch = await mainBranchResponse.json();
-      const baseSha = mainBranch.object.sha;
+
+      const mainBranch = await mainBranchResponse.json()
+      const baseSha = mainBranch.object.sha
 
       // Create new branch
       await fetch(
@@ -595,19 +639,22 @@ ${cleanupInstructions}
         {
           method: 'POST',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             ref: `refs/heads/${branchName}`,
             sha: baseSha,
           }),
-        }
-      );
+        },
+      )
 
       // Generate new recipe file content (images are already uploaded to Cloudinary)
-      const recipeFileContent = await this.generateRecipeFile(recipeData, images);
+      const recipeFileContent = await this.generateRecipeFile(
+        recipeData,
+        images,
+      )
 
       // Create recipe file (index.ts will auto-update on next build)
       await fetch(
@@ -615,8 +662,8 @@ ${cleanupInstructions}
         {
           method: 'PUT',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
@@ -624,48 +671,54 @@ ${cleanupInstructions}
             content: this.base64Encode(recipeFileContent),
             branch: branchName,
           }),
-        }
-      );
+        },
+      )
 
       // Create pull request - use max values for time calculations
-      const totalTime = getMaxTime(recipeData.prepTime) +
-                        getMaxTime(recipeData.cookTime) +
-                        (recipeData.marinatingTime ? getMaxTime(recipeData.marinatingTime) : 0);
+      const totalTime =
+        getMaxTime(recipeData.prepTime) +
+        getMaxTime(recipeData.cookTime) +
+        (recipeData.marinatingTime ? getMaxTime(recipeData.marinatingTime) : 0)
 
-      const marinatingInfo = recipeData.marinatingTime && (recipeData.marinatingTime.min > 0 || recipeData.marinatingTime.max > 0)
-        ? `\n**Temps de marinage:** ${formatTime(recipeData.marinatingTime)} (${recipeData.marinatingTime.min}-${recipeData.marinatingTime.max} minutes)`
-        : '';
+      const marinatingInfo =
+        recipeData.marinatingTime &&
+        (recipeData.marinatingTime.min > 0 || recipeData.marinatingTime.max > 0)
+          ? `\n**Temps de marinage:** ${formatTime(recipeData.marinatingTime)} (${recipeData.marinatingTime.min}-${recipeData.marinatingTime.max} minutes)`
+          : ''
 
-      const accompanimentInfo = recipeData.accompaniment?.trim() 
-        ? `\n**Accompagnement:** ${recipeData.accompaniment}` 
-        : '';
+      const accompanimentInfo = recipeData.accompaniment?.trim()
+        ? `\n**Accompagnement:** ${recipeData.accompaniment}`
+        : ''
 
-      const wineInfo = recipeData.wine?.trim() 
-        ? `\n**Accord vin:** ${recipeData.wine}` 
-        : '';
+      const wineInfo = recipeData.wine?.trim()
+        ? `\n**Accord vin:** ${recipeData.wine}`
+        : ''
 
-      const sourceInfo = recipeData.source?.trim() 
-        ? `\n**Source:** ${recipeData.source}` 
-        : '';
+      const sourceInfo = recipeData.source?.trim()
+        ? `\n**Source:** ${recipeData.source}`
+        : ''
 
-      const notesInfo = recipeData.notes?.trim() 
-        ? `\n**Notes:** ${recipeData.notes}` 
-        : '';
+      const notesInfo = recipeData.notes?.trim()
+        ? `\n**Notes:** ${recipeData.notes}`
+        : ''
 
-      const imageInfo = images.length > 0 
-        ? `\n**Images:** ${images.length} image(s) hébergée(s) sur Cloudinary` 
-        : '';
+      const imageInfo =
+        images.length > 0
+          ? `\n**Images:** ${images.length} image(s) hébergée(s) sur Cloudinary`
+          : ''
 
       // Get tags for display, filtering out empty ones
-      const displayTags = Array.isArray(recipeData.tags) ? recipeData.tags.filter(t => t.trim()) : [];
+      const displayTags = Array.isArray(recipeData.tags)
+        ? recipeData.tags.filter((t) => t.trim())
+        : []
 
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
           method: 'POST',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
@@ -689,52 +742,52 @@ ${recipeData.description}
 *Cette recette a été ajoutée via le formulaire web avec images hébergées sur Cloudinary.*
 *L'index des recettes sera mis à jour automatiquement lors du prochain déploiement.*`,
           }),
-        }
-      );
+        },
+      )
 
       if (!prResponse.ok) {
-        throw new Error('Failed to create pull request');
+        throw new Error('Failed to create pull request')
       }
 
-      const pr = await prResponse.json();
-      return pr.html_url;
-
+      const pr = await prResponse.json()
+      return pr.html_url
     } catch (error) {
-      console.error('Error creating recipe PR:', error);
-      throw error;
+      console.error('Error creating recipe PR:', error)
+      throw error
     }
   }
 
   async updateRecipePR(
-    recipeData: RecipeData, 
-    existingRecipe: any, 
-    images: ProcessedImage[] = [], 
-    existingImages: ImageSizes[] = []
+    recipeData: RecipeData,
+    existingRecipe: Recipe,
+    options?: { images?: ProcessedImage[]; existingImages?: ImageSizes[] },
   ): Promise<string> {
-    const newSlug = this.createSlug(recipeData.title);
-    const oldSlug = existingRecipe.slug;
-    const branchName = `update-recipe/${newSlug}-${Date.now()}`;
-    const newRecipeFileName = `${newSlug}.ts`;
-    const oldRecipeFileName = `${oldSlug}.ts`;
-    
+    const images = options?.images || []
+    const existingImages = options?.existingImages || []
+    const newSlug = this.createSlug(recipeData.title)
+    const oldSlug = existingRecipe.slug
+    const branchName = `update-recipe/${newSlug}-${Date.now()}`
+    const newRecipeFileName = `${newSlug}.ts`
+    const oldRecipeFileName = `${oldSlug}.ts`
+
     try {
       // Get the default branch SHA
       const mainBranchResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/git/ref/heads/main`,
         {
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
           },
-        }
-      );
-      
+        },
+      )
+
       if (!mainBranchResponse.ok) {
-        throw new Error('Failed to get main branch');
+        throw new Error('Failed to get main branch')
       }
-      
-      const mainBranch = await mainBranchResponse.json();
-      const baseSha = mainBranch.object.sha;
+
+      const mainBranch = await mainBranchResponse.json()
+      const baseSha = mainBranch.object.sha
 
       // Create new branch
       await fetch(
@@ -742,24 +795,23 @@ ${recipeData.description}
         {
           method: 'POST',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             ref: `refs/heads/${branchName}`,
             sha: baseSha,
           }),
-        }
-      );
+        },
+      )
 
       // Generate updated recipe file content (preserve existing ID, handle images properly)
       const recipeFileContent = await this.generateRecipeFile(
-        recipeData, 
-        images, 
-        existingRecipe.id, 
-        existingImages
-      );
+        recipeData,
+        images,
+        { existingId: existingRecipe.id, existingImages },
+      )
 
       // If slug changed, delete old file and create new one
       if (oldSlug !== newSlug) {
@@ -768,23 +820,23 @@ ${recipeData.description}
           `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${oldRecipeFileName}?ref=main`,
           {
             headers: {
-              'Authorization': `token ${this.config.token}`,
-              'Accept': 'application/vnd.github.v3+json',
+              Authorization: `token ${this.config.token}`,
+              Accept: 'application/vnd.github.v3+json',
             },
-          }
-        );
-        
+          },
+        )
+
         if (oldFileResponse.ok) {
-          const oldFile = await oldFileResponse.json();
-          
+          const oldFile = await oldFileResponse.json()
+
           // Delete old file
           await fetch(
             `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${oldRecipeFileName}`,
             {
               method: 'DELETE',
               headers: {
-                'Authorization': `token ${this.config.token}`,
-                'Accept': 'application/vnd.github.v3+json',
+                Authorization: `token ${this.config.token}`,
+                Accept: 'application/vnd.github.v3+json',
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
@@ -792,8 +844,8 @@ ${recipeData.description}
                 sha: oldFile.sha,
                 branch: branchName,
               }),
-            }
-          );
+            },
+          )
         }
 
         // Create new file
@@ -802,8 +854,8 @@ ${recipeData.description}
           {
             method: 'PUT',
             headers: {
-              'Authorization': `token ${this.config.token}`,
-              'Accept': 'application/vnd.github.v3+json',
+              Authorization: `token ${this.config.token}`,
+              Accept: 'application/vnd.github.v3+json',
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
@@ -811,30 +863,30 @@ ${recipeData.description}
               content: this.base64Encode(recipeFileContent),
               branch: branchName,
             }),
-          }
-        );
+          },
+        )
       } else {
         // Update existing file
         const existingFileResponse = await fetch(
           `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${oldRecipeFileName}?ref=main`,
           {
             headers: {
-              'Authorization': `token ${this.config.token}`,
-              'Accept': 'application/vnd.github.v3+json',
+              Authorization: `token ${this.config.token}`,
+              Accept: 'application/vnd.github.v3+json',
             },
-          }
-        );
-        
-        const existingFile = await existingFileResponse.json();
-        
+          },
+        )
+
+        const existingFile = await existingFileResponse.json()
+
         await fetch(
           `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/src/recipes/${newRecipeFileName}`,
           {
             method: 'PUT',
             headers: {
-              'Authorization': `token ${this.config.token}`,
-              'Accept': 'application/vnd.github.v3+json',
-              'Content-Type':  'application/json',
+              Authorization: `token ${this.config.token}`,
+              Accept: 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify({
               message: `Update recipe: ${recipeData.title}`,
@@ -842,52 +894,57 @@ ${recipeData.description}
               branch: branchName,
               sha: existingFile.sha,
             }),
-          }
-        );
+          },
+        )
       }
 
       // Create pull request - use max values for time calculations
-      const totalTime = getMaxTime(recipeData.prepTime) +
-                        getMaxTime(recipeData.cookTime) +
-                        (recipeData.marinatingTime ? getMaxTime(recipeData.marinatingTime) : 0);
+      const totalTime =
+        getMaxTime(recipeData.prepTime) +
+        getMaxTime(recipeData.cookTime) +
+        (recipeData.marinatingTime ? getMaxTime(recipeData.marinatingTime) : 0)
 
-      const marinatingInfo = recipeData.marinatingTime && (recipeData.marinatingTime.min > 0 || recipeData.marinatingTime.max > 0)
-        ? `\n**Temps de marinage:** ${formatTime(recipeData.marinatingTime)} (${recipeData.marinatingTime.min}-${recipeData.marinatingTime.max} minutes)`
-        : '';
+      const marinatingInfo =
+        recipeData.marinatingTime &&
+        (recipeData.marinatingTime.min > 0 || recipeData.marinatingTime.max > 0)
+          ? `\n**Temps de marinage:** ${formatTime(recipeData.marinatingTime)} (${recipeData.marinatingTime.min}-${recipeData.marinatingTime.max} minutes)`
+          : ''
 
-      const accompanimentInfo = recipeData.accompaniment?.trim() 
-        ? `\n**Accompagnement:** ${recipeData.accompaniment}` 
-        : '';
+      const accompanimentInfo = recipeData.accompaniment?.trim()
+        ? `\n**Accompagnement:** ${recipeData.accompaniment}`
+        : ''
 
-      const wineInfo = recipeData.wine?.trim() 
-        ? `\n**Accord vin:** ${recipeData.wine}` 
-        : '';
+      const wineInfo = recipeData.wine?.trim()
+        ? `\n**Accord vin:** ${recipeData.wine}`
+        : ''
 
-      const sourceInfo = recipeData.source?.trim() 
-        ? `\n**Source:** ${recipeData.source}` 
-        : '';
+      const sourceInfo = recipeData.source?.trim()
+        ? `\n**Source:** ${recipeData.source}`
+        : ''
 
-      const notesInfo = recipeData.notes?.trim() 
-        ? `\n**Notes:** ${recipeData.notes}` 
-        : '';
+      const notesInfo = recipeData.notes?.trim()
+        ? `\n**Notes:** ${recipeData.notes}`
+        : ''
 
-      let imageInfo = '';
+      let imageInfo = ''
       if (images.length > 0) {
-        imageInfo = `\n**Images:** ${images.length} nouvelle(s) image(s) sur Cloudinary`;
+        imageInfo = `\n**Images:** ${images.length} nouvelle(s) image(s) sur Cloudinary`
       } else if (existingImages.length > 0) {
-        imageInfo = `\n**Images:** ${existingImages.length} image(s) existante(s) conservée(s)`;
+        imageInfo = `\n**Images:** ${existingImages.length} image(s) existante(s) conservée(s)`
       }
 
       // Get tags for display, filtering out empty ones
-      const displayTags = Array.isArray(recipeData.tags) ? recipeData.tags.filter(t => t.trim()) : [];
+      const displayTags = Array.isArray(recipeData.tags)
+        ? recipeData.tags.filter((t) => t.trim())
+        : []
 
       const prResponse = await fetch(
         `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/pulls`,
         {
           method: 'POST',
           headers: {
-            'Authorization': `token ${this.config.token}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `token ${this.config.token}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
@@ -911,19 +968,18 @@ ${recipeData.description}
 *Cette recette a été modifiée via le formulaire web avec gestion intelligente des images.*
 *L'index des recettes sera mis à jour automatiquement lors du prochain déploiement.*`,
           }),
-        }
-      );
+        },
+      )
 
       if (!prResponse.ok) {
-        throw new Error('Failed to create pull request');
+        throw new Error('Failed to create pull request')
       }
 
-      const pr = await prResponse.json();
-      return pr.html_url;
-
+      const pr = await prResponse.json()
+      return pr.html_url
     } catch (error) {
-      console.error('Error updating recipe PR:', error);
-      throw error;
+      console.error('Error updating recipe PR:', error)
+      throw error
     }
   }
 }

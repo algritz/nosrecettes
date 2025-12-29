@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pouletAuLaitDeCocoBasilicEtCariRougeViteEtSimple: Recipe = {
   id: 'poulet-au-lait-de-coco-basilic-et-cari-rouge-vite-et-simple',
   title: 'Poulet au lait de coco, basilic et cari rouge vite et simple',
-  description: 'Une recette rapide et savoureuse de poulet au lait de coco, basilic et cari rouge, idéale pour un repas express.',
+  description:
+    'Une recette rapide et savoureuse de poulet au lait de coco, basilic et cari rouge, idéale pour un repas express.',
   categories: ['Plats principaux'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 25, max: 25 },
@@ -23,7 +24,7 @@ export const pouletAuLaitDeCocoBasilicEtCariRougeViteEtSimple: Recipe = {
     '1 c. à soupe de sauce poisson',
     'Sambal Oelek au goût (si vous souhaitez plus épicé)',
     '30 feuilles de basilic frais',
-    '1 lime'
+    '1 lime',
   ],
   instructions: [
     'En frappant du poing sur le côté d’un couteau de chef, aplatissez les poitrines pour les attendrir.',
@@ -34,8 +35,8 @@ export const pouletAuLaitDeCocoBasilicEtCariRougeViteEtSimple: Recipe = {
     'Ajoutez l’oignon vert, la coriandre et le cari rouge et continuez de faire sauter 2 minutes.',
     'Versez le lait de coco, la cassonade, la sauce poisson et le Sambal Oelek si désiré, et laissez mijoter le tout à découvert pendant 6-8 minutes (la sauce doit épaissir).',
     '2 minutes avant de servir, ajoutez les feuilles de basilic entières, un peu de jus de lime et remettez les lanières de poulet dorées.',
-    'Servez avec un riz basmati, en décorant de quelques brins de ciboulette laissés entiers.'
+    'Servez avec un riz basmati, en décorant de quelques brins de ciboulette laissés entiers.',
   ],
   tags: ['cari rouge', 'lait de coco', 'rapide'],
-  slug: 'poulet-au-lait-de-coco-basilic-et-cari-rouge-vite-et-simple'
-};
+  slug: 'poulet-au-lait-de-coco-basilic-et-cari-rouge-vite-et-simple',
+}

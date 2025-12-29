@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const filetDePorcAuCaramelDeBeurreSale: Recipe = {
   id: 'filet-de-porc-au-caramel-de-beurre-sale',
   title: 'Filet de porc au caramel de beurre salé',
-  description: 'Un délicieux filet de porc accompagné d\'une sauce caramel au beurre salé, parfait pour une cuisson rapide et savoureuse.',
+  description:
+    "Un délicieux filet de porc accompagné d'une sauce caramel au beurre salé, parfait pour une cuisson rapide et savoureuse.",
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 25, max: 25 },
@@ -17,7 +18,7 @@ export const filetDePorcAuCaramelDeBeurreSale: Recipe = {
     '40 g de beurre demi-sel',
     '100 ml de crème 35%',
     '3 pincées de fleur de sel',
-    '200 ml de fond de veau'
+    '200 ml de fond de veau',
   ],
   instructions: [
     'Préchauffer le four à 350 °F (175 °C).',
@@ -32,8 +33,8 @@ export const filetDePorcAuCaramelDeBeurreSale: Recipe = {
     'Dans une poêle, verser le fond de veau et réduire légèrement.',
     'Ajouter le caramel et mélanger.',
     'Rectifier l’assaisonnement au besoin.',
-    'Dans chaque assiette, déposer les médaillons et napper de sauce.'
+    'Dans chaque assiette, déposer les médaillons et napper de sauce.',
   ],
   tags: ['caramel', 'beurre salé', 'porc'],
-  slug: 'filet-de-porc-au-caramel-de-beurre-sale'
-};
+  slug: 'filet-de-porc-au-caramel-de-beurre-sale',
+}

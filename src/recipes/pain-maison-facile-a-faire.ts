@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const painMaisonFacileAFaire: Recipe = {
   id: 'pain-maison-facile-a-faire',
@@ -15,7 +15,7 @@ export const painMaisonFacileAFaire: Recipe = {
     '¼ tasse de sucre',
     '1 cuillère à soupe de sel',
     '2 cuillères à soupe d’huile',
-    '5½ à 6½ tasses de farine'
+    '5½ à 6½ tasses de farine',
   ],
   instructions: [
     'Dans un grand bol, dissoudre la levure dans l’eau tiède avec le sucre.',
@@ -27,9 +27,9 @@ export const painMaisonFacileAFaire: Recipe = {
     'Diviser la pâte en deux.',
     'Pétrir pour faire 2 pains et mettre dans des moules à pains préalablement beurrés.',
     'Couvrir et laisser gonfler la pâte pendant une heure.',
-    'Préchauffer le four à 375 degrés F et cuire au four de 30 à 35 minutes.'
+    'Préchauffer le four à 375 degrés F et cuire au four de 30 à 35 minutes.',
   ],
   tags: ['pain maison', 'levure', 'pâte'],
   source: 'David Cloutier',
-  slug: 'pain-maison-facile-a-faire'
-};
+  slug: 'pain-maison-facile-a-faire',
+}

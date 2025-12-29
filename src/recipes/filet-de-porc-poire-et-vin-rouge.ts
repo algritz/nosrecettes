@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const filetDePorcPoireEtVinRouge: Recipe = {
   id: 'filet-de-porc-poire-et-vin-rouge',
   title: 'filet de porc poire et vin rouge',
-  description: 'Une recette savoureuse de filet de porc accompagné de poires caramélisées au vin rouge, nappé d\'une sauce demi-glace et crème.',
+  description:
+    "Une recette savoureuse de filet de porc accompagné de poires caramélisées au vin rouge, nappé d'une sauce demi-glace et crème.",
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 20, max: 20 },
@@ -18,7 +19,7 @@ export const filetDePorcPoireEtVinRouge: Recipe = {
     '80 ml (1/3 de tasse) de crème à cuisson 15%',
     '30 ml (2 c. à soupe) d’huile d’olive',
     '1 oignon émincé',
-    '30 ml (2 c. à soupe) de sucre'
+    '30 ml (2 c. à soupe) de sucre',
   ],
   instructions: [
     'Saler et poivrer le filet de porc.',
@@ -32,8 +33,8 @@ export const filetDePorcPoireEtVinRouge: Recipe = {
     'Verser la crème et prolonger la cuisson de 2 à 3 minutes.',
     'Retirer le filet et déposer dans une assiette.',
     'Couvrir d’une feuille de papier d’aluminium et laisser reposer 8 minutes avant de trancher.',
-    'Servir avec la sauce.'
+    'Servir avec la sauce.',
   ],
   tags: ['vin rouge', 'poire', 'sauce demi-glace'],
-  slug: 'filet-de-porc-poire-et-vin-rouge'
-};
+  slug: 'filet-de-porc-poire-et-vin-rouge',
+}

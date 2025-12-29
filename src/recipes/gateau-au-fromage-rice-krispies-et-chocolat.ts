@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const gateauAuFromageRiceKrispiesEtChocolat: Recipe = {
   id: '1764533624954',
   title: 'Gâteau au fromage rice Krispies et chocolat',
-  description: 'Cheesecake sans croûte classique: base de Rice Krispies-guimauves, appareil chocolat-fromage à la crème, décor fruits/chocolat.',
+  description:
+    'Cheesecake sans croûte classique: base de Rice Krispies-guimauves, appareil chocolat-fromage à la crème, décor fruits/chocolat.',
   categories: ['Pâtisseries et desserts', 'Desserts'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 10, max: 10 },
@@ -20,7 +21,7 @@ export const gateauAuFromageRiceKrispiesEtChocolat: Recipe = {
     '1/2 tasse (100 g) de sucre',
     '1 c. à thé de vanille',
     '2 1/2 tasses (150 g) de crème fouettée',
-    'Barre de chocolat et/ou petits fruits des champs frais, pour décoration'
+    'Barre de chocolat et/ou petits fruits des champs frais, pour décoration',
   ],
   instructions: [
     'Dans une grande casserole à feu moyen, faire fondre le beurre. Ajouter les guimauves et remuer jusqu’à ce qu’elles soient fondues.',
@@ -30,9 +31,9 @@ export const gateauAuFromageRiceKrispiesEtChocolat: Recipe = {
     'Ajouter 1 1/2 tasse (90 g) de crème fouettée et plier à la spatule jusqu’à homogénéité.',
     'Verser l’appareil au fromage sur la base de riz croustillant et lisser. Réfrigérer 3 à 4 heures ou toute la nuit, jusqu’à prise.',
     'Démouler. Mettre la crème fouettée restante dans une poche à douille (pointe étoile) et décorer le dessus.',
-    'Râper du chocolat au milieu du gâteau et/ou garnir de petits fruits. Servir.'
+    'Râper du chocolat au milieu du gâteau et/ou garnir de petits fruits. Servir.',
   ],
   tags: ['rice krispies', 'cheesecake', 'chocolat'],
   source: 'David Cloutier',
-  slug: 'gateau-au-fromage-rice-krispies-et-chocolat'
-};
+  slug: 'gateau-au-fromage-rice-krispies-et-chocolat',
+}

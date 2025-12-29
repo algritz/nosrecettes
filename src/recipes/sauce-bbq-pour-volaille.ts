@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const sauceBbqPourVolaille: Recipe = {
   id: 'sauce-bbq-pour-volaille',
@@ -18,14 +18,14 @@ export const sauceBbqPourVolaille: Recipe = {
     '3 gouttes sauce Worcestershire',
     '3 à 6 gouttes Firebarn original',
     '1 oignon rond',
-    '1 branche céleri entière'
+    '1 branche céleri entière',
   ],
   instructions: [
     'Bien mélanger tous les ingrédients',
     'Faire mijoter 2h à feu doux',
-    'Retirer les légumes'
+    'Retirer les légumes',
   ],
   tags: ['barbecue', 'sauce', 'fumée'],
   notes: 'Ce conserve 15 jours au réfrigérateur',
-  slug: 'sauce-bbq-pour-volaille'
-};
+  slug: 'sauce-bbq-pour-volaille',
+}

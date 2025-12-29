@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const patatesRoties: Recipe = {
   id: 'patates-roties',
@@ -14,7 +14,7 @@ export const patatesRoties: Recipe = {
     'sel et poivre au goût',
     'une à deux pincées de poivre de Cayenne',
     'une à deux pincées d’herbes de Provence',
-    '2 c. à soupe d’huile d’olive'
+    '2 c. à soupe d’huile d’olive',
   ],
   instructions: [
     'Préchauffer le four à 425°F.',
@@ -24,8 +24,8 @@ export const patatesRoties: Recipe = {
     'Cuire au four 15 minutes.',
     'Retirer du four, retourner les pommes de terre sur elles-mêmes et remettre à cuire environ 30 minutes.',
     'Au besoin, après 15 minutes, tourner les pommes de terre à nouveau.',
-    'Les pommes de terre devraient être croustillantes sur les bords et tendres au centre.'
+    'Les pommes de terre devraient être croustillantes sur les bords et tendres au centre.',
   ],
   tags: ['rôties', 'croustillantes', 'pommes de terre'],
-  slug: 'patates-roties'
-};
+  slug: 'patates-roties',
+}

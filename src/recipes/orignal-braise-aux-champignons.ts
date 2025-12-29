@@ -1,25 +1,26 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const orignalBraiseAuxChampignons: Recipe = {
   id: 'orignal-braise-aux-champignons',
   title: 'Orignal braisé aux champignons',
-  description: 'Un plat de viande braisée tendre avec une sauce aux champignons, parfait pour un repas réconfortant.',
+  description:
+    'Un plat de viande braisée tendre avec une sauce aux champignons, parfait pour un repas réconfortant.',
   categories: ['Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 195, max: 195 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
-    '1 kg (2 lb) de rôti de palette d\'orignal sans os (ou autre viande à braiser)',
-    '30 ml d\'huile d\'olive',
+    "1 kg (2 lb) de rôti de palette d'orignal sans os (ou autre viande à braiser)",
+    "30 ml d'huile d'olive",
     '2 oignons en dés',
     '1 lb de champignons variés au goût, tranchés',
-    '2 gousses d\'ail hachées',
+    "2 gousses d'ail hachées",
     '30 ml de moutarde de Dijon',
     '500 ml de bouillon de poulet',
     '15 ml de sauce Worcestershire',
     '250 ml de persil plat ciselé',
-    'Sel et poivre au goût'
+    'Sel et poivre au goût',
   ],
   instructions: [
     'Placer la grille au centre du four. Préchauffer le four à 300 °F.',
@@ -30,8 +31,8 @@ export const orignalBraiseAuxChampignons: Recipe = {
     'Couvrir et cuire au four environ 2 h 30.',
     'Retirer le couvert et poursuivre la cuisson environ 30 minutes ou jusqu’à ce que la viande se défasse à la fourchette.',
     'Ajouter le persil et rectifier l’assaisonnement.',
-    'Servir la viande en morceaux avec des pommes de terre.'
+    'Servir la viande en morceaux avec des pommes de terre.',
   ],
   tags: ['braisé', 'champignons', 'viande'],
-  slug: 'orignal-braise-aux-champignons'
-};
+  slug: 'orignal-braise-aux-champignons',
+}

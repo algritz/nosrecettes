@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeBoeufBleuetsBasilic: Recipe = {
   id: 'tartare-de-boeuf-bleuets-basilic',
@@ -11,26 +11,26 @@ export const tartareDeBoeufBleuetsBasilic: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '400g de bavette de boeuf à tartare',
-    '1 jaune d\'oeuf',
-    '15 ml d\'huile de pépins de raisin',
+    "1 jaune d'oeuf",
+    "15 ml d'huile de pépins de raisin",
     '30 ml de basilic haché',
-    '15 ml d\'échalotes françaises coupée en dés',
+    "15 ml d'échalotes françaises coupée en dés",
     '15 ml de moutarde de Dijon',
     '15 ml de ciboulette ciselée',
     '3/4 tasse de bleuets coupés en deux',
     'Sel',
     'Poivre',
     '1/2 baguette de ciabatta',
-    'Huile d\'olive'
+    "Huile d'olive",
   ],
   instructions: [
     'Préchauffer le four à broil.',
     'Couper la baguette en tranches minces pour faire des croûtons.',
-    'Placer les sur une plaque avec un peu d\'huile d\'olive 3 minutes d\'un côté et 1 minute de l\'autre.',
-    'Couper le basilic, l\'échalote, la surlonge de bœuf, la ciboulette, les bleuets et mélanger dans un bol avec le jaune d’œuf, l\'huile de pépin de raisin, la sauce piquante et la moutarde de Dijon.',
+    "Placer les sur une plaque avec un peu d'huile d'olive 3 minutes d'un côté et 1 minute de l'autre.",
+    "Couper le basilic, l'échalote, la surlonge de bœuf, la ciboulette, les bleuets et mélanger dans un bol avec le jaune d’œuf, l'huile de pépin de raisin, la sauce piquante et la moutarde de Dijon.",
     'Saler et poivrer au goût.',
-    'Servir avec les croûtons.'
+    'Servir avec les croûtons.',
   ],
   tags: ['bœuf', 'bleuets', 'basilic'],
-  slug: 'tartare-de-boeuf-bleuets-basilic'
-};
+  slug: 'tartare-de-boeuf-bleuets-basilic',
+}

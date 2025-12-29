@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const porcEffilochePulledPorkAuFour: Recipe = {
   id: '1765124321555',
   title: 'Porc effiloché (pulled pork) au four',
-  description: 'Épaule de porc dorée puis braisée longuement au four dans une sauce ketchup–vinaigre de cidre, épices et aromates, effilochée et mélangée à la sauce.',
+  description:
+    'Épaule de porc dorée puis braisée longuement au four dans une sauce ketchup–vinaigre de cidre, épices et aromates, effilochée et mélangée à la sauce.',
   categories: ['Porc', 'Plats principaux'],
   prepTime: { min: 30, max: 30 },
   cookTime: { min: 360, max: 360 },
@@ -26,17 +27,18 @@ export const porcEffilochePulledPorkAuFour: Recipe = {
     '2 feuilles de laurier',
     '1/2 c.c. de marjolaine',
     '1/2 à 1 c.c. de paprika fort (au goût)',
-    'Sel et poivre'
+    'Sel et poivre',
   ],
   instructions: [
     'Préchauffer le four à 275°F.',
     'Dans une cocotte allant au four, chauffer l’huile et dorer l’épaule sur tous les côtés. Saler, poivrer, ajouter l’oignon et faire revenir jusqu’à doré.',
     'Dans un saladier, mélanger le reste des ingrédients et verser sur l’épaule.',
     'Couvrir et cuire au four 6 heures, en retournant le porc et en l’arrosant de sauce à mi-cuisson.',
-    'Retirer la viande, l’effilocher à la fourchette, puis mélanger l’effiloché avec la sauce.'
+    'Retirer la viande, l’effilocher à la fourchette, puis mélanger l’effiloché avec la sauce.',
   ],
   tags: ['effiloché', 'vinaigre de cidre', 'Worcestershire'],
-  accompaniment: 'Petits pains style hamburger, fromage Tex-Mex, salade de choux, cornichons',
+  accompaniment:
+    'Petits pains style hamburger, fromage Tex-Mex, salade de choux, cornichons',
   source: 'David Cloutier',
-  slug: 'porc-effiloche-pulled-pork-au-four'
-};
+  slug: 'porc-effiloche-pulled-pork-au-four',
+}

@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const sauceAuPoivreDesVoisins: Recipe = {
   id: 'sauce-au-poivre-des-voisins',
@@ -16,12 +16,12 @@ export const sauceAuPoivreDesVoisins: Recipe = {
     '1/8 c. à thé de moutarde sèche',
     '1/4 tasse d’eau tiède',
     '1/4 tasse de Southern Comfort ou autre boisson',
-    '1/2 tasse de crème 35%'
+    '1/2 tasse de crème 35%',
   ],
   instructions: [
     'Mélanger les ingrédients secs dans un chaudron et ajouter tous les liquides.',
-    'Cuire sur feu doux en brassant continuellement jusqu’à épaississement de la sauce.'
+    'Cuire sur feu doux en brassant continuellement jusqu’à épaississement de la sauce.',
   ],
   tags: ['sauce', 'poivre', 'réconfort'],
-  slug: 'sauce-au-poivre-des-voisins'
-};
+  slug: 'sauce-au-poivre-des-voisins',
+}

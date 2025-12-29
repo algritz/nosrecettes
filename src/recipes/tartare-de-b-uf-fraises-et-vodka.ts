@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeBUfFraisesEtVodka: Recipe = {
   id: 'tartare-de-b-uf-fraises-et-vodka',
@@ -24,15 +24,15 @@ export const tartareDeBUfFraisesEtVodka: Recipe = {
     '2 c. à thé de vinaigre balsamique',
     '3/4 oz de vodka',
     '1 c. à soupe d’épices à Steak Sauce piquante',
-    'Sel et poivre'
+    'Sel et poivre',
   ],
   instructions: [
     'À feu moyen, mettre un peu d’huile dans un poêle et faire revenir les amandes avec le romarin, l’ail et finir avec le miel. Laisser refroidir un peu et hacher le tout finement.',
     'Dans un four à 350 F, mettre les tranches de prosciutto sur une plaque pour en faire des chips, environ 10 minutes. Laisser refroidir et hacher grossièrement.',
     'Faire frire les câpres.',
     'Couper le bœuf et les fraises en petits cubes.',
-    'Mélanger le reste des ingrédients en vous assurant que les amandes, les câpres et le prosciutto sont refroidis avant de les mettre dans le tartare.'
+    'Mélanger le reste des ingrédients en vous assurant que les amandes, les câpres et le prosciutto sont refroidis avant de les mettre dans le tartare.',
   ],
   tags: ['bœuf', 'fraise', 'vodka'],
-  slug: 'tartare-de-b-uf-fraises-et-vodka'
-};
+  slug: 'tartare-de-b-uf-fraises-et-vodka',
+}

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const mijoteDeBoeufALaSaugeALAnisEtALOignon: Recipe = {
   id: 'mijote-de-boeuf-a-la-sauge-a-l-anis-et-a-l-oignon',
-  title: 'Mijoté de boeuf à la sauge, à l\'anis et à l\'oignon',
-  description: 'Un mijoté savoureux de boeuf avec des saveurs d\'anis, sauge et oignon, cuit lentement pour une tendreté optimale.',
+  title: "Mijoté de boeuf à la sauge, à l'anis et à l'oignon",
+  description:
+    "Un mijoté savoureux de boeuf avec des saveurs d'anis, sauge et oignon, cuit lentement pour une tendreté optimale.",
   categories: ['Plats principaux'],
   prepTime: { min: 30, max: 30 },
   cookTime: { min: 180, max: 180 },
@@ -16,16 +17,16 @@ export const mijoteDeBoeufALaSaugeALAnisEtALOignon: Recipe = {
     '2 poireaux, coupés en tronçons de 2,5 cm (1 po)',
     '14 champignons de Paris, coupés en deux',
     '6 pommes de terre moyennes, coupées en quartiers',
-    '1 gousse d\'ail, écrasée',
+    "1 gousse d'ail, écrasée",
     '1 feuille de laurier',
     '4 feuilles de sauge',
-    '1 étoile d\'anis',
+    "1 étoile d'anis",
     '2 branches de thym frais',
     '1,5 l de fond de veau',
     '65 ml de Marsala',
     'Sel et poivre, au goût',
     '15 ml de beurre',
-    '65 ml de farine tout usage'
+    '65 ml de farine tout usage',
   ],
   instructions: [
     'Dans une poêle, faire fondre le beurre.',
@@ -37,8 +38,8 @@ export const mijoteDeBoeufALaSaugeALAnisEtALOignon: Recipe = {
     'Déglacer avec le Marsala, le fond de veau puis porter à ébullition.',
     'Transférer le tout dans la cocotte et incorporer les feuilles de sauge.',
     'Couvrir et enfourner à 325 °F (170 °C) pendant 1 h 30 min.',
-    'Ajouter les pommes de terre et mettre au four environ 1 h 30 min de plus.'
+    'Ajouter les pommes de terre et mettre au four environ 1 h 30 min de plus.',
   ],
   tags: ['bœuf', 'mijoté', 'aromates'],
-  slug: 'mijote-de-boeuf-a-la-sauge-a-l-anis-et-a-l-oignon'
-};
+  slug: 'mijote-de-boeuf-a-la-sauge-a-l-anis-et-a-l-oignon',
+}

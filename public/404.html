@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Nos Recettes - Page non trouvée</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
         margin: 0;
         padding: 0;
         background-color: #ffffff;
@@ -59,39 +60,55 @@
     </style>
     <script type="text/javascript">
       // Check if this is a protected admin route that should show static 404
-      var protectedAdminRoutes = ['/new-recipe', '/edit-recipe', '/manage-categories'];
-      var currentPath = window.location.pathname;
+      var protectedAdminRoutes = [
+        '/new-recipe',
+        '/edit-recipe',
+        '/manage-categories',
+      ]
+      var currentPath = window.location.pathname
 
       // Check if user has GitHub config (authentication check)
-      var hasGitHubConfig = false;
+      var hasGitHubConfig = false
       try {
-        hasGitHubConfig = !!localStorage.getItem('github-config');
+        hasGitHubConfig = !!localStorage.getItem('github-config')
       } catch (e) {
         // localStorage might not be available
-        hasGitHubConfig = false;
+        hasGitHubConfig = false
       }
 
-      var isProtectedAdminRoute = protectedAdminRoutes.some(function(route) {
-        return currentPath.startsWith(route);
-      });
+      var isProtectedAdminRoute = protectedAdminRoutes.some(function (route) {
+        return currentPath.startsWith(route)
+      })
 
       if (isProtectedAdminRoute && !hasGitHubConfig) {
         // For protected admin routes without authentication, show static 404 page
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
           // Page will show the static 404 content below
-        });
+        })
       } else {
         // For all other routes (including /admin), redirect to SPA for proper handling
-        var pathSegmentsToKeep = 0;
-        var l = window.location;
-        
+        var pathSegmentsToKeep = 0
+        var l = window.location
+
         l.replace(
-          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-          l.hash
-        );
+          l.protocol +
+            '//' +
+            l.hostname +
+            (l.port ? ':' + l.port : '') +
+            l.pathname
+              .split('/')
+              .slice(0, 1 + pathSegmentsToKeep)
+              .join('/') +
+            '/?/' +
+            l.pathname
+              .slice(1)
+              .split('/')
+              .slice(pathSegmentsToKeep)
+              .join('/')
+              .replace(/&/g, '~and~') +
+            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+            l.hash,
+        )
       }
     </script>
   </head>
@@ -103,8 +120,18 @@
         Désolé, cette page n'existe pas ou a été déplacée.
       </p>
       <a href="/" class="home-button">
-        <svg class="home-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+        <svg
+          class="home-icon"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+          ></path>
         </svg>
         Retour à l'accueil
       </a>

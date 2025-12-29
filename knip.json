@@ -1,0 +1,10 @@
+{
+  "entry": [
+    "src/conversations/conversation_*.ts",
+    "tests/**/*.spec.ts",
+    "src/**/*Fixture.ts",
+    "src/fixtures/**/*.ts",
+    "src/utils/lineAssignment/index.ts"
+  ],
+  "project": ["src/**/*.ts", "tests/**/*.ts"]
+}

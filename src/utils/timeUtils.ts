@@ -1,20 +1,20 @@
-import type { TimeRange } from '../types/recipe';
+import type { TimeRange } from '../types/recipe'
 
 /**
  * Type guard to check if a value is a valid TimeRange object
  */
 export function isTimeRange(value: unknown): value is TimeRange {
   if (typeof value !== 'object' || value === null) {
-    return false;
+    return false
   }
 
-  const range = value as Record<string, unknown>;
+  const range = value as Record<string, unknown>
   return (
     typeof range.min === 'number' &&
     typeof range.max === 'number' &&
     Number.isFinite(range.min) &&
     Number.isFinite(range.max)
-  );
+  )
 }
 
 /**
@@ -23,15 +23,21 @@ export function isTimeRange(value: unknown): value is TimeRange {
  */
 export function validateTimeRange(range: TimeRange): void {
   if (!isTimeRange(range)) {
-    throw new Error('Invalid TimeRange: must be an object with numeric min and max properties');
+    throw new Error(
+      'Invalid TimeRange: must be an object with numeric min and max properties',
+    )
   }
 
   if (range.min < 0 || range.max < 0) {
-    throw new Error(`Invalid TimeRange: times must be non-negative (got min: ${range.min}, max: ${range.max})`);
+    throw new Error(
+      `Invalid TimeRange: times must be non-negative (got min: ${range.min}, max: ${range.max})`,
+    )
   }
 
   if (range.min > range.max) {
-    throw new Error(`Invalid TimeRange: min (${range.min}) cannot be greater than max (${range.max})`);
+    throw new Error(
+      `Invalid TimeRange: min (${range.min}) cannot be greater than max (${range.max})`,
+    )
   }
 }
 
@@ -39,21 +45,21 @@ export function validateTimeRange(range: TimeRange): void {
  * Get the maximum time from a TimeRange
  */
 export function getMaxTime(range: TimeRange): number {
-  return range.max;
+  return range.max
 }
 
 /**
  * Get the minimum time from a TimeRange
  */
 export function getMinTime(range: TimeRange): number {
-  return range.min;
+  return range.min
 }
 
 /**
  * Check if a TimeRange represents an exact time (min === max)
  */
 export function isExactTime(range: TimeRange): boolean {
-  return range.min === range.max;
+  return range.min === range.max
 }
 
 /**
@@ -61,17 +67,17 @@ export function isExactTime(range: TimeRange): boolean {
  */
 export function createExactTime(minutes: number): TimeRange {
   if (minutes < 0 || !Number.isFinite(minutes)) {
-    throw new Error(`Invalid time value: ${minutes}`);
+    throw new Error(`Invalid time value: ${minutes}`)
   }
 
-  return { min: minutes, max: minutes };
+  return { min: minutes, max: minutes }
 }
 
 /**
  * Create a TimeRange from min and max values
  */
 export function createTimeRange(min: number, max: number): TimeRange {
-  const range: TimeRange = { min, max };
-  validateTimeRange(range);
-  return range;
+  const range: TimeRange = { min, max }
+  validateTimeRange(range)
+  return range
 }

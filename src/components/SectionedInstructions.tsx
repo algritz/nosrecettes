@@ -1,56 +1,65 @@
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Plus, Minus, GripVertical, FolderPlus } from 'lucide-react';
-import { InstructionSection } from '@/types/recipe';
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Plus, Minus, GripVertical, FolderPlus } from 'lucide-react'
+import { InstructionSection } from '@/types/recipe'
 
 interface SectionedInstructionsProps {
-  sections: InstructionSection[];
-  onChange: (sections: InstructionSection[]) => void;
+  sections: InstructionSection[]
+  onChange: (sections: InstructionSection[]) => void
 }
 
-export const SectionedInstructions = ({ sections, onChange }: SectionedInstructionsProps) => {
+export const SectionedInstructions = ({
+  sections,
+  onChange,
+}: SectionedInstructionsProps) => {
   const addSection = () => {
-    onChange([...sections, { title: '', steps: [''] }]);
-  };
+    onChange([...sections, { title: '', steps: [''] }])
+  }
 
   const removeSection = (sectionIndex: number) => {
-    onChange(sections.filter((_, i) => i !== sectionIndex));
-  };
+    onChange(sections.filter((_, i) => i !== sectionIndex))
+  }
 
   const updateSectionTitle = (sectionIndex: number, title: string) => {
-    const newSections = [...sections];
-    newSections[sectionIndex].title = title;
-    onChange(newSections);
-  };
+    const newSections = [...sections]
+    newSections[sectionIndex].title = title
+    onChange(newSections)
+  }
 
   const addInstruction = (sectionIndex: number) => {
-    const newSections = [...sections];
-    newSections[sectionIndex].steps.push('');
-    onChange(newSections);
-  };
+    const newSections = [...sections]
+    newSections[sectionIndex].steps.push('')
+    onChange(newSections)
+  }
 
   const removeInstruction = (sectionIndex: number, stepIndex: number) => {
-    const newSections = [...sections];
-    newSections[sectionIndex].steps = newSections[sectionIndex].steps.filter((_, i) => i !== stepIndex);
-    onChange(newSections);
-  };
+    const newSections = [...sections]
+    newSections[sectionIndex].steps = newSections[sectionIndex].steps.filter(
+      (_, i) => i !== stepIndex,
+    )
+    onChange(newSections)
+  }
 
-  const updateInstruction = (sectionIndex: number, stepIndex: number, value: string) => {
-    const newSections = [...sections];
-    newSections[sectionIndex].steps[stepIndex] = value;
-    onChange(newSections);
-  };
+  const updateInstruction = (
+    sectionIndex: number,
+    stepIndex: number,
+    value: string,
+  ) => {
+    const newSections = [...sections]
+    newSections[sectionIndex].steps[stepIndex] = value
+    onChange(newSections)
+  }
 
   // Calculate step numbers across all sections
   const getStepNumber = (sectionIndex: number, stepIndex: number): number => {
-    let stepNumber = 1;
+    let stepNumber = 1
     for (let i = 0; i < sectionIndex; i++) {
-      stepNumber += sections[i].steps.length;
+      stepNumber += sections[i].steps.length
     }
-    return stepNumber + stepIndex;
-  };
+    return stepNumber + stepIndex
+  }
 
   return (
     <div className="space-y-4">
@@ -61,7 +70,9 @@ export const SectionedInstructions = ({ sections, onChange }: SectionedInstructi
               <GripVertical className="w-4 h-4 text-muted-foreground" />
               <Input
                 value={section.title}
-                onChange={(e) => updateSectionTitle(sectionIndex, e.target.value)}
+                onChange={(e) =>
+                  updateSectionTitle(sectionIndex, e.target.value)
+                }
                 placeholder={`Section ${sectionIndex + 1} (ex: Préparation des keftas)`}
                 className="font-medium"
               />
@@ -86,7 +97,9 @@ export const SectionedInstructions = ({ sections, onChange }: SectionedInstructi
                   </span>
                   <Textarea
                     value={step}
-                    onChange={(e) => updateInstruction(sectionIndex, stepIndex, e.target.value)}
+                    onChange={(e) =>
+                      updateInstruction(sectionIndex, stepIndex, e.target.value)
+                    }
                     placeholder="Décrivez cette étape..."
                     rows={2}
                     className="flex-1"
@@ -118,7 +131,7 @@ export const SectionedInstructions = ({ sections, onChange }: SectionedInstructi
           </CardContent>
         </Card>
       ))}
-      
+
       <Button
         type="button"
         variant="outline"
@@ -129,5 +142,5 @@ export const SectionedInstructions = ({ sections, onChange }: SectionedInstructi
         Ajouter une section
       </Button>
     </div>
-  );
-};
+  )
+}

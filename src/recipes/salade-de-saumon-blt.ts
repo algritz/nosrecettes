@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeDeSaumonBlt: Recipe = {
   id: 'salade-de-saumon-blt',
   title: 'Salade de saumon BLT',
-  description: 'Une salade fraîche de saumon, bacon, légumes et vinaigrette crémeuse, parfaite pour un déjeuner léger ou un dîner estival.',
+  description:
+    'Une salade fraîche de saumon, bacon, légumes et vinaigrette crémeuse, parfaite pour un déjeuner léger ou un dîner estival.',
   categories: ['Salades'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 20, max: 20 },
@@ -21,29 +22,32 @@ export const saladeDeSaumonBlt: Recipe = {
     '1/3 tasse Mayonnaise',
     '1/2 tasse yogourt grec nature',
     'Jus de 1 citron',
-    '2 gousses d\'ail émincées',
+    "2 gousses d'ail émincées",
     '1 c. à thé vinaigre de vin blanc',
     '1 c. à thé de miel',
-    'Poivre au goût'
+    'Poivre au goût',
   ],
   instructions: [
     'Préchauffer le four à 400 °F.',
     'Déposer le saumon sur une plaque à pâtisserie tapissée et saupoudrer uniformément de sel et de poivre.',
-    'Cuire jusqu\'à ce qu\'ils soient dorés et croustillants sur les bords, de 18 à 20 minutes.',
+    "Cuire jusqu'à ce qu'ils soient dorés et croustillants sur les bords, de 18 à 20 minutes.",
     'Retirer du four et laisser refroidir.',
-    'Mélanger la laitue, les tomates, les croûtons, l\'avocat et le bacon ensemble.',
+    "Mélanger la laitue, les tomates, les croûtons, l'avocat et le bacon ensemble.",
     'Fouetter tous les ingrédients de la vinaigrette ensemble et assaisonner de sel et de poivre.',
     'Hacher le saumon et mélanger dans la salade avec la vinaigrette.',
-    'Servir immédiatement.'
+    'Servir immédiatement.',
   ],
   tags: ['saumon', 'bacon', 'salade'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-de-saumon-blt',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-de-saumon-blt',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-de-saumon-blt'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/salade-de-saumon-blt',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/salade-de-saumon-blt',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade-de-saumon-blt',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'salade-de-saumon-blt'
-};
+  slug: 'salade-de-saumon-blt',
+}

@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const marinadePleineDeSaveurPourPouletEtPorc: Recipe = {
   id: 'marinade-pleine-de-saveur-pour-poulet-et-porc',
@@ -21,12 +21,12 @@ export const marinadePleineDeSaveurPourPouletEtPorc: Recipe = {
     '1 c. à thé de gingembre frais haché',
     '1 c. à thé de poudre de chili',
     '1 c. à thé de poudre d’oignon',
-    '1/2 c. à thé de poudre d’ail'
+    '1/2 c. à thé de poudre d’ail',
   ],
   instructions: [
     'Dans un bol peu profond, combiner tous les ingrédients; mélanger.',
-    'Faire mariner la viande de votre choix de 4 à 6 heures.'
+    'Faire mariner la viande de votre choix de 4 à 6 heures.',
   ],
   tags: ['saveur', 'marinade sèche', 'poulet'],
-  slug: 'marinade-pleine-de-saveur-pour-poulet-et-porc'
-};
+  slug: 'marinade-pleine-de-saveur-pour-poulet-et-porc',
+}

@@ -4,8 +4,9 @@ researcher: dacloutier
 git_commit: a21df1a915c651fcafebc3600a6a29046e8d6d7c
 branch: main
 repository: nosrecettes
-topic: "Time Measure Multiple-of-5 Constraint in Recipe Forms"
-tags: [research, codebase, recipe-forms, time-input, validation, user-experience]
+topic: 'Time Measure Multiple-of-5 Constraint in Recipe Forms'
+tags:
+  [research, codebase, recipe-forms, time-input, validation, user-experience]
 status: complete
 last_updated: 2025-12-28
 last_updated_by: dacloutier
@@ -34,6 +35,7 @@ The constraint affects all recipe time inputs (prep time, cook time, marinating 
 ### Constraint Location
 
 **Primary Implementation**
+
 - **File**: [src/components/TimeInput.tsx:69](https://github.com/algritz/nosrecettes/blob/a21df1a915c651fcafebc3600a6a29046e8d6d7c/src/components/TimeInput.tsx#L69)
 - **Constraint Type**: HTML5 `step` attribute
 - **Value**: `step="5"`
@@ -44,7 +46,7 @@ The constraint affects all recipe time inputs (prep time, cook time, marinating 
   type="number"
   min="0"
   max="59"
-  step="5"  // <-- Multiple-of-5 constraint
+  step="5" // <-- Multiple-of-5 constraint
   value={minutes || ''}
   onChange={(e) => handleMinutesChange(e.target.value)}
   placeholder="0"
@@ -74,6 +76,7 @@ The TimeInput component provides a structured time entry interface with three se
    - Enforces 60-minute hour boundary
 
 **Internal Storage Format**:
+
 - All time values stored as total minutes (single number)
 - Decomposed for display: `totalMinutes -> days/hours/minutes`
 - Recomposed on change: `days/hours/minutes -> totalMinutes`
@@ -99,14 +102,15 @@ Both forms use identical TimeInput implementations, ensuring consistent behavior
 **Decomposition: Total Minutes → Display Fields** ([src/components/TimeInput.tsx:11-16](https://github.com/algritz/nosrecettes/blob/a21df1a915c651fcafebc3600a6a29046e8d6d7c/src/components/TimeInput.tsx#L11-L16))
 
 ```typescript
-const totalMinutes = parseInt(value) || 0;
-const days = Math.floor(totalMinutes / (24 * 60));
-const remainingMinutes = totalMinutes % (24 * 60);
-const hours = Math.floor(remainingMinutes / 60);
-const minutes = remainingMinutes % 60;
+const totalMinutes = parseInt(value) || 0
+const days = Math.floor(totalMinutes / (24 * 60))
+const remainingMinutes = totalMinutes % (24 * 60)
+const hours = Math.floor(remainingMinutes / 60)
+const minutes = remainingMinutes % 60
 ```
 
 Conversion constants:
+
 - 1 day = 1440 minutes (24 × 60)
 - 1 hour = 60 minutes
 
@@ -114,25 +118,26 @@ Conversion constants:
 
 ```typescript
 const handleDaysChange = (newDays: string) => {
-  const d = parseInt(newDays) || 0;
-  const newTotal = d * 24 * 60 + hours * 60 + minutes;
-  onChange(newTotal.toString());
-};
+  const d = parseInt(newDays) || 0
+  const newTotal = d * 24 * 60 + hours * 60 + minutes
+  onChange(newTotal.toString())
+}
 
 const handleHoursChange = (newHours: string) => {
-  const h = parseInt(newHours) || 0;
-  const newTotal = days * 24 * 60 + h * 60 + minutes;
-  onChange(newTotal.toString());
-};
+  const h = parseInt(newHours) || 0
+  const newTotal = days * 24 * 60 + h * 60 + minutes
+  onChange(newTotal.toString())
+}
 
 const handleMinutesChange = (newMinutes: string) => {
-  const m = parseInt(newMinutes) || 0;
-  const newTotal = days * 24 * 60 + hours * 60 + m;
-  onChange(newTotal.toString());
-};
+  const m = parseInt(newMinutes) || 0
+  const newTotal = days * 24 * 60 + hours * 60 + m
+  onChange(newTotal.toString())
+}
 ```
 
 Each change handler:
+
 1. Parses the new value (defaulting to 0 if invalid)
 2. Recalculates total minutes using all three fields
 3. Calls onChange with the new total as a string
@@ -140,11 +145,13 @@ Each change handler:
 ### Validation Boundaries
 
 **Current Input Constraints**:
+
 - Days: 0-365 (no step)
 - Hours: 0-23 (no step) - enforces 24-hour day boundary
 - Minutes: 0-59, step=5 - enforces 60-minute hour boundary AND 5-minute increments
 
 **Behavior**:
+
 - HTML5 input controls provide increment/decrement arrows that respect the step value
 - Users can manually type any value, including non-multiples of 5
 - No automatic rollover (typing 65 minutes doesn't become 1h 5min)
@@ -156,15 +163,15 @@ Each change handler:
 
 ```typescript
 export interface Recipe {
-  id: string;
-  title: string;
-  description: string;
-  categories: string[];
-  prepTime: number;           // Required - stored in minutes
-  cookTime: number;           // Required - stored in minutes
-  marinatingTime?: number;    // Optional - stored in minutes
-  servings: number;
-  difficulty: 'Facile' | 'Moyen' | 'Difficile';
+  id: string
+  title: string
+  description: string
+  categories: string[]
+  prepTime: number // Required - stored in minutes
+  cookTime: number // Required - stored in minutes
+  marinatingTime?: number // Optional - stored in minutes
+  servings: number
+  difficulty: 'Facile' | 'Moyen' | 'Difficile'
   // ... other fields
 }
 ```
@@ -188,6 +195,7 @@ Two formatting functions convert total minutes to human-readable strings:
    - Used in recipe cards
 
 Both functions:
+
 - Accept any number of minutes (no rounding to multiples of 5)
 - Display whatever value is stored
 - Handle pluralization for French language
@@ -198,6 +206,7 @@ Both functions:
 The multiple-of-5 constraint is not representative of real cooking scenarios:
 
 **Common cooking times that are NOT multiples of 5**:
+
 - 2-3 minutes: blanching vegetables
 - 6-7 minutes: soft-boiled eggs
 - 8 minutes: al dente pasta
@@ -207,6 +216,7 @@ The multiple-of-5 constraint is not representative of real cooking scenarios:
 - 52 minutes: precise baking times
 
 **Current workaround behavior**:
+
 - Users must round to nearest 5-minute increment
 - Manual typing allows non-multiples, but UI suggests increments of 5
 - This creates potential data entry friction and accuracy issues
@@ -232,6 +242,7 @@ The time input system follows a decomposition/recomposition pattern:
 3. **Display Layer**: Formatted human-readable strings
 
 This architecture:
+
 - Simplifies storage and calculations
 - Provides intuitive user input experience
 - Allows flexible display formatting
@@ -240,12 +251,14 @@ This architecture:
 ### Validation Strategy
 
 **Current validation is UI-only**:
+
 - HTML5 attributes (`min`, `max`, `step`) provide browser-level constraints
 - No backend validation exists for the multiple-of-5 constraint
 - No schema validation library (e.g., Zod) is used for time fields
 - Time parsing uses `parseInt()` with `|| 0` fallback for safety
 
 **Single Component Pattern**:
+
 - TimeInput component is the single source of truth for time input
 - Used consistently across NewRecipe and EditRecipe pages
 - Ensures uniform behavior and constraints across the application

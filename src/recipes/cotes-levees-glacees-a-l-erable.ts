@@ -1,70 +1,71 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const cotesLeveesGlaceesALErable: Recipe = {
   id: 'cotes-levees-glacees-a-l-erable',
-  title: 'Côtes levées glacées à l\'érable',
-  description: 'Une recette de côtes levées glacées à l\'érable, grillées et caramélisées, parfaites pour une cuisson au barbecue.',
+  title: "Côtes levées glacées à l'érable",
+  description:
+    "Une recette de côtes levées glacées à l'érable, grillées et caramélisées, parfaites pour une cuisson au barbecue.",
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: { min: 40, max: 40 },
   cookTime: { min: 105, max: 105 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
-    '2 carrés de petite côtes levées de dos d\'environ 2 kg (4 lb)',
-    '30 ml de sucre d\'érable',
+    "2 carrés de petite côtes levées de dos d'environ 2 kg (4 lb)",
+    "30 ml de sucre d'érable",
     '15 ml de moutarde sèche',
     '10 ml de gros sel',
     '5 ml de poivre noir fraîchement moulu',
     '10 ml de paprika',
     'Origan frais haché, au goût',
-    '250 ml de sirop d\'érable',
+    "250 ml de sirop d'érable",
     '45 ml de ketchup',
     '30 ml de sauce Worcestershire',
     '15 ml de moutarde de Dijon',
     '15 ml de vinaigre de cidre',
-    '600 g de copeaux de bois (facultatif)'
+    '600 g de copeaux de bois (facultatif)',
   ],
   instructions: [
     {
       title: 'Assaisonnement',
       steps: [
-      'Mettre le sucre d\'érable, la moutarde sèche, le sel, le poivre, le paprika et l\'origan dans un petit bol, puis mélanger avec les doigts en défaisant les grumeaux qui auraient pu se former dans le sucre d\'érable ou dans la moutarde.',
-      'Sur une plaque à biscuits, déposer un carré de côtes, la viande vers le bas. Retirer la fine membrane qui se trouve à l\'arrière du carré de côtes en y insérant un instrument mince comme un couteau à beurre ou la pointe d\'un thermomètre à viande. Le meilleur endroit pour insérer l\'instrument est sur l\'un des os du milieu. Pour détacher la membrane tout en ayant une bonne prise, utiliser un linge à vaisselle, un morceau de papier essuie-tout ou des pinces.',
-      'Répéter l\'opération pour l\'autre carré.',
-      'Parsemer les 2 côtés des côtes d\'assaisonnement en frottant la viande.',
-      'Couvrir les côtes d\'une pellicule plastique, puis les placer au réfrigérateur pendant la préparation de la glace et du barbecue.'
-      ]
+        "Mettre le sucre d'érable, la moutarde sèche, le sel, le poivre, le paprika et l'origan dans un petit bol, puis mélanger avec les doigts en défaisant les grumeaux qui auraient pu se former dans le sucre d'érable ou dans la moutarde.",
+        "Sur une plaque à biscuits, déposer un carré de côtes, la viande vers le bas. Retirer la fine membrane qui se trouve à l'arrière du carré de côtes en y insérant un instrument mince comme un couteau à beurre ou la pointe d'un thermomètre à viande. Le meilleur endroit pour insérer l'instrument est sur l'un des os du milieu. Pour détacher la membrane tout en ayant une bonne prise, utiliser un linge à vaisselle, un morceau de papier essuie-tout ou des pinces.",
+        "Répéter l'opération pour l'autre carré.",
+        "Parsemer les 2 côtés des côtes d'assaisonnement en frottant la viande.",
+        "Couvrir les côtes d'une pellicule plastique, puis les placer au réfrigérateur pendant la préparation de la glace et du barbecue.",
+      ],
     },
     {
       title: 'Glace',
       steps: [
-      'Verser le sirop d\'érable, le ketchup, la sauce Worcestershire, la moutarde et le vinaigre dans une casserole.',
-      'À feu élevé, porter à ébullition, en fouettant pour bien mélanger.',
-      'Réduire à feu moyen et laisser la glace mijoter doucement de 3 à 5 min, jusqu\'à ce qu\'elle soit épaisse et qu\'elle ait la consistance d\'un sirop, en fouettant, au besoin.',
-      'Réserver la glace.'
-      ]
+        "Verser le sirop d'érable, le ketchup, la sauce Worcestershire, la moutarde et le vinaigre dans une casserole.",
+        'À feu élevé, porter à ébullition, en fouettant pour bien mélanger.',
+        "Réduire à feu moyen et laisser la glace mijoter doucement de 3 à 5 min, jusqu'à ce qu'elle soit épaisse et qu'elle ait la consistance d'un sirop, en fouettant, au besoin.",
+        'Réserver la glace.',
+      ],
     },
     {
       title: 'Cuisson au barbecue',
       steps: [
-      'Préparer le gril pour une cuisson à chaleur indirecte et le préchauffer à une température de 160°C à 180°C (325°F à 350°F).',
-      'Déposer une grande lèchefrite au milieu du barbecue, sous la grille.',
-      'Quand le barbecue est prêt, badigeonner la grille d\'huile.',
-      'Déposer les côtes, les os vers le bas, au milieu de la grille, au-dessus de la lèchefrite et loin du feu (si le barbecue n\'est pas très grand, placer les carrés de côtes à la verticale dans un support à côtes levées).',
-      'Si l\'on a un barbecue au charbon de bois et que l\'on utilise des copeaux de bois, remuer la moitié des copeaux sur chacun des petits tas de charbon.',
-      'Fermer le couvercle du barbecue et cuire les côtes levées pendant 45 min.',
-      'Badigeonner les 2 côtés des côtes de glace à l\'érable.',
-      'Fermer de nouveau le couvercle et poursuivre la cuisson des côtes de 30 à 45 min de plus, soit 1 h 15 à 1 h 30 au total, jusqu\'à ce qu\'elles soient bien dorées, bien cuites et suffisamment tendres pour se défaire avec les doigts.',
-      'Quand les côtes sont cuites, la viande s\'est contractée d\'environ ½ cm (¼ de po) aux extrémités des os.',
-      'Badigeonner les côtes levées de glace une fois ou deux encore et, si l\'on utilise un appareil au charbon de bois, remettre du charbon de bois, au besoin.',
-      'Juste avant de servir, badigeonner encore les 2 côtés des côtes de glace à l\'érable, puis les parsemer de sucre d\'érable.',
-      'Mettre ensuite les côtes directement sur le feu et les faire griller de 1 à 3 min de chaque côté, jusqu\'à ce que la glace soit bien dorée et caramélisée.',
-      'Déposer ensuite les côtes sur un grand plat de service ou sur une planche à découper.',
-      'Les laisser reposer pendant quelques minutes, puis couper les carrés en 2 ou en côtes individuelles.',
-      'Servir aussitôt avec le reste de glace.'
-      ]
-    }
+        'Préparer le gril pour une cuisson à chaleur indirecte et le préchauffer à une température de 160°C à 180°C (325°F à 350°F).',
+        'Déposer une grande lèchefrite au milieu du barbecue, sous la grille.',
+        "Quand le barbecue est prêt, badigeonner la grille d'huile.",
+        "Déposer les côtes, les os vers le bas, au milieu de la grille, au-dessus de la lèchefrite et loin du feu (si le barbecue n'est pas très grand, placer les carrés de côtes à la verticale dans un support à côtes levées).",
+        "Si l'on a un barbecue au charbon de bois et que l'on utilise des copeaux de bois, remuer la moitié des copeaux sur chacun des petits tas de charbon.",
+        'Fermer le couvercle du barbecue et cuire les côtes levées pendant 45 min.',
+        "Badigeonner les 2 côtés des côtes de glace à l'érable.",
+        "Fermer de nouveau le couvercle et poursuivre la cuisson des côtes de 30 à 45 min de plus, soit 1 h 15 à 1 h 30 au total, jusqu'à ce qu'elles soient bien dorées, bien cuites et suffisamment tendres pour se défaire avec les doigts.",
+        "Quand les côtes sont cuites, la viande s'est contractée d'environ ½ cm (¼ de po) aux extrémités des os.",
+        "Badigeonner les côtes levées de glace une fois ou deux encore et, si l'on utilise un appareil au charbon de bois, remettre du charbon de bois, au besoin.",
+        "Juste avant de servir, badigeonner encore les 2 côtés des côtes de glace à l'érable, puis les parsemer de sucre d'érable.",
+        "Mettre ensuite les côtes directement sur le feu et les faire griller de 1 à 3 min de chaque côté, jusqu'à ce que la glace soit bien dorée et caramélisée.",
+        'Déposer ensuite les côtes sur un grand plat de service ou sur une planche à découper.',
+        'Les laisser reposer pendant quelques minutes, puis couper les carrés en 2 ou en côtes individuelles.',
+        'Servir aussitôt avec le reste de glace.',
+      ],
+    },
   ],
   tags: ['barbecue', 'érable', 'caramélisation'],
-  slug: 'cotes-levees-glacees-a-l-erable'
-};
+  slug: 'cotes-levees-glacees-a-l-erable',
+}

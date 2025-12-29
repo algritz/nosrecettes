@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const poitrineFarciePommeEtBrie: Recipe = {
   id: 'poitrine-farcie-pomme-et-brie',
   title: 'Poitrine farcie pomme et brie',
-  description: 'Une recette de poitrines de poulet farcies aux pommes et brie, nappées d\'une sauce miel citronnée, cuites au four.',
+  description:
+    "Une recette de poitrines de poulet farcies aux pommes et brie, nappées d'une sauce miel citronnée, cuites au four.",
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 40, max: 40 },
@@ -19,7 +20,7 @@ export const poitrineFarciePommeEtBrie: Recipe = {
     '2 oignon vert émincé',
     '8 tranches de brie (enlever la croûte)',
     'le jus de 2 citron',
-    '6 c. à table miel 90 ml'
+    '6 c. à table miel 90 ml',
   ],
   instructions: [
     'Dans un poêlon, chauffer 2 c. à table (30 ml) de beurre et l’huile à feu moyen jusqu’à l’obtention d’une couleur noisette.',
@@ -29,8 +30,8 @@ export const poitrineFarciePommeEtBrie: Recipe = {
     'Répartir la préparation dans les poitrines, ajouter le brie, refermer.',
     'Ajouter dans le poêlon le jus de citron et le miel, porter à ébullition, déposer les poitrines de poulet, les napper de miel et mettre au four préchauffé à 350°F (180°C) de 12 à 15 min.',
     'Arroser à quelques reprises en cours de cuisson.',
-    'Trancher les poitrines en biais, les déposer dans les assiettes et napper de miel citronné.'
+    'Trancher les poitrines en biais, les déposer dans les assiettes et napper de miel citronné.',
   ],
   tags: ['poulet farci', 'miel', 'citron'],
-  slug: 'poitrine-farcie-pomme-et-brie'
-};
+  slug: 'poitrine-farcie-pomme-et-brie',
+}

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const burrataStyleRatatouille: Recipe = {
   id: 'burrata-style-ratatouille',
   title: 'Burrata style ratatouille',
-  description: 'Une ratatouille classique enrichie de burrata, cuite au four pour une texture crémeuse et parfumée.',
+  description:
+    'Une ratatouille classique enrichie de burrata, cuite au four pour une texture crémeuse et parfumée.',
   categories: ['Végétarien', 'Plats principaux'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 35, max: 35 },
@@ -11,7 +12,7 @@ export const burrataStyleRatatouille: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '1 burrata tempérée',
-    '¼ de tasse d\'huile d’olive',
+    "¼ de tasse d'huile d’olive",
     '2 courgettes coupées en gros dés',
     '1 grosse aubergine pelée et coupée en gros dés',
     '2 poivrons rouge, jaune, orange mais pas vert, coupés en gros dés',
@@ -23,7 +24,7 @@ export const burrataStyleRatatouille: Recipe = {
     '¼ tasse d’olives Kalamata',
     '¼ tasse de câpres',
     'Fleur de sel au goût',
-    'Feuilles de basilic'
+    'Feuilles de basilic',
   ],
   instructions: [
     'Dans une poêle à feu moyen, faire sauter les courgettes dans l’huile d’olive. Les retirer et répéter l’opération avec l’aubergine et les poivrons.',
@@ -32,8 +33,8 @@ export const burrataStyleRatatouille: Recipe = {
     'Ajouter de l’eau à hauteur des légumes, bien mélanger. Incorporer les herbes de Provence et la feuille de laurier, puis laisser mijoter 15 à 20 minutes.',
     'Préchauffer le four à 375°F (190°C).',
     'Transférer la ratatouille dans un plat à gratin, déposer la burrata au centre, puis enfourner pour environ 10 minutes.',
-    'Sortir du four, arroser d’huile d’olive, poivrer, saler avec la fleur de sel, et garnir de feuilles de basilic.'
+    'Sortir du four, arroser d’huile d’olive, poivrer, saler avec la fleur de sel, et garnir de feuilles de basilic.',
   ],
   tags: ['rataouille', 'burrata', 'four'],
-  slug: 'burrata-style-ratatouille'
-};
+  slug: 'burrata-style-ratatouille',
+}

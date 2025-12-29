@@ -1,14 +1,14 @@
-import { Helmet } from 'react-helmet-async';
-import { siteConfig } from '@/config/site.config';
+import { Helmet } from 'react-helmet-async'
+import { siteConfig } from '@/config/site.config'
 
 interface SEOHeadProps {
-  title: string;
-  description: string;
-  keywords?: string[];
-  image?: string;
-  url?: string;
-  type?: 'website' | 'article';
-  structuredData?: object;
+  title: string
+  description: string
+  keywords?: string[]
+  image?: string
+  url?: string
+  type?: 'website' | 'article'
+  structuredData?: object
 }
 
 export const SEOHead = ({
@@ -18,20 +18,22 @@ export const SEOHead = ({
   image,
   url,
   type = 'website',
-  structuredData
+  structuredData,
 }: SEOHeadProps) => {
-  const siteName = 'Nos Recettes';
-  const baseUrl = siteConfig.baseUrl;
-  const fullUrl = url ? `${baseUrl}${url}` : baseUrl;
-  const defaultImage = `${baseUrl}/images/og-default.jpg`;
-  const ogImage = image || defaultImage;
+  const siteName = 'Nos Recettes'
+  const baseUrl = siteConfig.baseUrl
+  const fullUrl = url ? `${baseUrl}${url}` : baseUrl
+  const defaultImage = `${baseUrl}/images/og-default.jpg`
+  const ogImage = image || defaultImage
 
   return (
     <Helmet>
       {/* Basic Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
-      {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+      {keywords.length > 0 && (
+        <meta name="keywords" content={keywords.join(', ')} />
+      )}
       <meta name="author" content="Nos Recettes" />
       <link rel="canonical" href={fullUrl} />
 
@@ -63,5 +65,5 @@ export const SEOHead = ({
         </script>
       )}
     </Helmet>
-  );
-};
+  )
+}

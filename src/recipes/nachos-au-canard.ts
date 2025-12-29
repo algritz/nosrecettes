@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const nachosAuCanard: Recipe = {
   id: 'nachos-au-canard',
   title: 'Nachos au canard',
-  description: 'Pour ceux qui ont envie d\'un Nachos différent. Nachos au canard',
+  description:
+    "Pour ceux qui ont envie d'un Nachos différent. Nachos au canard",
   categories: ['Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 10, max: 10 },
@@ -25,7 +26,7 @@ export const nachosAuCanard: Recipe = {
     'Crème sure',
     '1/4 de tasse de feuilles de coriandre',
     '1 petit jalapeño coupé en rondelles',
-    'Sel et poivre au goût'
+    'Sel et poivre au goût',
   ],
   instructions: [
     'Couper les tomates cerises, le poivron et l’oignon rouge en dés.',
@@ -39,16 +40,19 @@ export const nachosAuCanard: Recipe = {
     'Garnir de tranches de canard, de salsa et de fromages râpés.',
     'Faire griller au four à broil de 4 à 5 minutes, jusqu’à ce que le fromage soit doré.',
     'Au moment de servir, garnir de coriandre et de jalapeño.',
-    'Servir avec la crème sure.'
+    'Servir avec la crème sure.',
   ],
   tags: ['canard', 'nachos', 'fromage'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/nachos-au-canard',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/nachos-au-canard',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/nachos-au-canard'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/nachos-au-canard',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/nachos-au-canard',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/nachos-au-canard',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'nachos-au-canard'
-};
+  slug: 'nachos-au-canard',
+}

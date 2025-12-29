@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeDeCouscousALaMangue: Recipe = {
   id: 'salade-de-couscous-a-la-mangue',
   title: 'Salade de couscous à la mangue',
-  description: 'Une salade rafraîchissante de couscous israélien avec mangue, légumes frais et herbes aromatiques, parfaite pour l\'été.',
+  description:
+    "Une salade rafraîchissante de couscous israélien avec mangue, légumes frais et herbes aromatiques, parfaite pour l'été.",
   categories: ['Salades'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
@@ -23,7 +24,7 @@ export const saladeDeCouscousALaMangue: Recipe = {
     '30 feuilles de menthe, hachées',
     '20 feuilles de basilic, hachées',
     'Le jus et le zeste de 1 citron',
-    'Sel et poivre du moulin'
+    'Sel et poivre du moulin',
   ],
   instructions: [
     'Dans une casserole chauffée à feu moyen, ajouter le couscous et 3 c. à soupe d’huile d’olive puis bien mélanger.',
@@ -33,8 +34,8 @@ export const saladeDeCouscousALaMangue: Recipe = {
     'Verser dans une passoire et rincer abondamment à l’eau froide.',
     'Bien égoutter, verser dans un grand saladier et réserver.',
     'Ajouter le reste des ingrédients puis saler et poivrer généreusement.',
-    'Bien mélanger et réserver au frigo pour 15 à 20 minutes avant de servir.'
+    'Bien mélanger et réserver au frigo pour 15 à 20 minutes avant de servir.',
   ],
   tags: ['rafraîchissant', 'herbes', 'couscous'],
-  slug: 'salade-de-couscous-a-la-mangue'
-};
+  slug: 'salade-de-couscous-a-la-mangue',
+}

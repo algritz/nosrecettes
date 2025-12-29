@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const gateauAuChocolatFacilePourEnfant: Recipe = {
   id: '1761495167746',
   title: 'gateau au chocolat facile pour enfant',
-  description: 'Gâteau au chocolat fondant, simple et rapide, idéal à préparer avec des enfants.',
+  description:
+    'Gâteau au chocolat fondant, simple et rapide, idéal à préparer avec des enfants.',
   categories: ['Pâtisseries et desserts', 'Desserts'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
@@ -15,7 +16,7 @@ export const gateauAuChocolatFacilePourEnfant: Recipe = {
     'Beurre pour le moule',
     '3 oeufs',
     '50 g de farine',
-    '100 g de sucre en poudre'
+    '100 g de sucre en poudre',
   ],
   instructions: [
     'Préchauffer le four à 350°F (180°C).',
@@ -24,17 +25,20 @@ export const gateauAuChocolatFacilePourEnfant: Recipe = {
     'Ajouter le mélange chocolat-beurre et bien mélanger.',
     'Beurrer et fariner un petit moule à charnière, puis verser la pâte.',
     'Cuire au four environ 20 minutes.',
-    'À la sortie du four, le gâteau peut paraître insuffisamment cuit : laisser refroidir puis démouler.'
+    'À la sortie du four, le gâteau peut paraître insuffisamment cuit : laisser refroidir puis démouler.',
   ],
   tags: ['chocolat noir', 'fondant', 'moule à charnière'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/gateau_chocolat',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/gateau_chocolat',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/gateau_chocolat'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/gateau_chocolat',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/gateau_chocolat',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/gateau_chocolat',
+    },
   ],
   source: 'David Cloutier',
   notes: 'Facile à faire avec des enfants.',
-  slug: 'gateau-au-chocolat-facile-pour-enfant'
-};
+  slug: 'gateau-au-chocolat-facile-pour-enfant',
+}

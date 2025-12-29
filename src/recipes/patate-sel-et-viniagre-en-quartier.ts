@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const patateSelEtViniagreEnQuartier: Recipe = {
   id: 'patate-sel-et-viniagre-en-quartier',
   title: 'Patate sel et viniagre en quartier',
-  description: 'Une recette simple de pommes de terre grelots assaisonnées et rôties, finissant avec un filet de vinaigre de malt pour une touche acidulée.',
+  description:
+    'Une recette simple de pommes de terre grelots assaisonnées et rôties, finissant avec un filet de vinaigre de malt pour une touche acidulée.',
   categories: ['Végétarien', 'Plats principaux'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 45, max: 45 },
@@ -14,7 +15,7 @@ export const patateSelEtViniagreEnQuartier: Recipe = {
     '1 c. à table de sel',
     '1 1/2 c. à table Huile d’olive',
     '½ c. à thé de sel',
-    'c. à table Vinaigre de malt'
+    'c. à table Vinaigre de malt',
   ],
   instructions: [
     'Couper les pommes de terre grelots en deux. Selon leur taille, les couper en quatre.',
@@ -24,8 +25,8 @@ export const patateSelEtViniagreEnQuartier: Recipe = {
     'Pendant la cuisson des pommes de terre, préchauffer le four à 425 °F.',
     'Mélanger les pommes de terre à l’huile d’olive et au sel restant.',
     'Étaler sur une plaque à pâtisserie tapissée de papier parchemin, et cuire de 25 à 30 minutes, jusqu’à ce que les pommes de terre soient dorées et croustillantes.',
-    'Retirer du four et verser un filet de vinaigre de malt.'
+    'Retirer du four et verser un filet de vinaigre de malt.',
   ],
   tags: ['rôties', 'acidulé', 'pommes de terre'],
-  slug: 'patate-sel-et-viniagre-en-quartier'
-};
+  slug: 'patate-sel-et-viniagre-en-quartier',
+}

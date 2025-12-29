@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeDeMacaroni: Recipe = {
   id: 'salade-de-macaroni',
   title: 'Salade de macaroni',
-  description: 'Une salade de macaroni rafraîchissante avec légumes croquants et sauce crémeuse, idéale pour un repas léger ou un picnic.',
+  description:
+    'Une salade de macaroni rafraîchissante avec légumes croquants et sauce crémeuse, idéale pour un repas léger ou un picnic.',
   categories: ['Salades'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 15, max: 15 },
@@ -20,17 +21,17 @@ export const saladeDeMacaroni: Recipe = {
     '1 cuillère à soupe de vinaigre de cidre de pommes',
     '1 cuillère à soupe de sucre',
     '1 cuillère à thé de sel',
-    '1 cuillère à thé de poivre'
+    '1 cuillère à thé de poivre',
   ],
   instructions: [
     'Faire cuire les macaronis.',
     'Égouttez les pâtes et mettez de côté.',
     'Dans un petit bol, mélanger la mayonnaise, le vinaigre de cidre de pomme, le sucre, le sel et le poivre.',
     'Dans un grand bol, mettre les légumes, les pâtes et la sauce et bien mélanger.',
-    'Couvrir et mettre au réfrigérateur pendant 2 à 4 heures avant de servir.'
+    'Couvrir et mettre au réfrigérateur pendant 2 à 4 heures avant de servir.',
   ],
   tags: ['salade', 'mayonnaise', 'réfrigération'],
   marinatingTime: { min: 240, max: 240 },
   notes: 'Vous pouvez y ajouter du jambon en cube.',
-  slug: 'salade-de-macaroni'
-};
+  slug: 'salade-de-macaroni',
+}

@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const fudgeDivin: Recipe = {
   id: 'fudge-divin',
@@ -14,8 +14,8 @@ export const fudgeDivin: Recipe = {
     '1 ½ tasse de lait',
     '¾ tasse de beurre',
     '1 paquet de capuchons de chocolat mi-sucré (300 g)',
-    '2 tasses de guimauves (La grosseur n\'a pas d\'importance)',
-    '1 ½ c. à thé de vanille'
+    "2 tasses de guimauves (La grosseur n'a pas d'importance)",
+    '1 ½ c. à thé de vanille',
   ],
   instructions: [
     'Beurrer un moule de 12 x 7 x 1 ½ pouce.',
@@ -24,8 +24,8 @@ export const fudgeDivin: Recipe = {
     'Retirer du feu.',
     'Ajouter les brisures de chocolat, les guimauves et la vanille.',
     'Battre vigoureusement jusqu’à ce que tout soit complètement fondu.',
-    'Verser dans le moule et réfrigérer jusqu’à ferme.'
+    'Verser dans le moule et réfrigérer jusqu’à ferme.',
   ],
   tags: ['chocolat', 'guimauve', 'fudge'],
-  slug: 'fudge-divin'
-};
+  slug: 'fudge-divin',
+}

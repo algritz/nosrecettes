@@ -16,6 +16,7 @@ The nosrecettes.ca site currently fails to load on the custom domain due to two 
 ### Affected Files (30+ Hardcoded References)
 
 **Build Scripts (6 files):**
+
 - [scripts/generate-index-html.js](scripts/generate-index-html.js) - 18 hardcoded references
 - [scripts/generate-sitemap.js](scripts/generate-sitemap.js) - 1 hardcoded URL (used 3 times)
 - [scripts/generate-manifest.js](scripts/generate-manifest.js) - 9 hardcoded paths
@@ -24,12 +25,14 @@ The nosrecettes.ca site currently fails to load on the custom domain due to two 
 - [scripts/generate-security.js](scripts/generate-security.js) - 1 hardcoded URL
 
 **Runtime Code (4 files):**
+
 - [src/App.tsx:18](src/App.tsx#L18) - React Router basename still uses `/nosrecettes`
 - [src/utils/seoUtils.ts](src/utils/seoUtils.ts) - 3 functions with hardcoded URLs (lines 6, 100, 125)
 - [src/components/SEOHead.tsx:23](src/components/SEOHead.tsx#L23) - Hardcoded base URL
 - [src/utils/imageUtils.ts:18](src/utils/imageUtils.ts#L18) - Hardcoded base path
 
 **Static Files:**
+
 - [public/404.html](public/404.html) - Lines 63, 105 contain `/nosrecettes` paths
 - [CNAME](CNAME) - Correctly configured with `nosrecettes.ca`
 
@@ -45,6 +48,7 @@ The nosrecettes.ca site currently fails to load on the custom domain due to two 
 ### Success Metrics
 
 After implementation:
+
 - All URLs use `https://nosrecettes.ca` domain
 - All paths use `/` (root) instead of `/nosrecettes/`
 - Single source of truth for site configuration
@@ -92,6 +96,7 @@ This plan follows a **centralized configuration** strategy to eliminate URL hard
 This phase establishes the foundation for eliminating URL hardcoding by creating two configuration files: one for runtime code (TypeScript) and one for build scripts (JavaScript). These files become the single source of truth for all domain and path information throughout the project.
 
 **Why two files?** The build scripts run in Node.js during the build process (before transpilation), while the runtime code runs in the browser after compilation. Each environment needs its own native format:
+
 - **TypeScript config** (`src/config/site.config.ts`) - Used by React components, utilities, and other TypeScript code
 - **JavaScript config** (`scripts/site.config.js`) - Used by build scripts that generate SEO files (sitemap, manifest, etc.)
 
@@ -112,17 +117,17 @@ Both files export identical configuration values and helper functions to ensure 
  */
 
 interface SiteConfig {
-  domain: string;
-  protocol: 'http' | 'https';
-  basePath: string;
-  isDevelopment: boolean;
+  domain: string
+  protocol: 'http' | 'https'
+  basePath: string
+  isDevelopment: boolean
 }
 
 /**
  * Get site configuration based on environment
  */
 function getSiteConfig(): SiteConfig {
-  const isDevelopment = import.meta.env.DEV;
+  const isDevelopment = import.meta.env.DEV
 
   if (isDevelopment) {
     return {
@@ -130,7 +135,7 @@ function getSiteConfig(): SiteConfig {
       protocol: 'http',
       basePath: '',
       isDevelopment: true,
-    };
+    }
   }
 
   return {
@@ -138,10 +143,10 @@ function getSiteConfig(): SiteConfig {
     protocol: 'https',
     basePath: '',
     isDevelopment: false,
-  };
+  }
 }
 
-export const siteConfig = getSiteConfig();
+export const siteConfig = getSiteConfig()
 
 /**
  * Get full URL for a given path
@@ -150,14 +155,14 @@ export const siteConfig = getSiteConfig();
  */
 export function getFullUrl(path: string): string {
   // Normalize path to start with /
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
 
   // Combine basePath (if any) with the path
   const fullPath = siteConfig.basePath
     ? `/${siteConfig.basePath}${normalizedPath}`
-    : normalizedPath;
+    : normalizedPath
 
-  return `${siteConfig.protocol}://${siteConfig.domain}${fullPath}`;
+  return `${siteConfig.protocol}://${siteConfig.domain}${fullPath}`
 }
 
 /**
@@ -167,16 +172,17 @@ export function getFullUrl(path: string): string {
  */
 export function getAssetUrl(path: string): string {
   // Normalize path to start with /
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
 
   // Return path with basePath if configured
   return siteConfig.basePath
     ? `/${siteConfig.basePath}${normalizedPath}`
-    : normalizedPath;
+    : normalizedPath
 }
 ```
 
 **Purpose:**
+
 - Provides type-safe configuration for all TypeScript/React code
 - Automatically detects development vs production environment using Vite's `import.meta.env.DEV`
 - Exports helper functions to generate full URLs and asset paths consistently
@@ -198,7 +204,7 @@ export function getAssetUrl(path: string): string {
  * @returns {Object} Site configuration
  */
 function getSiteConfig() {
-  const isDevelopment = process.env.NODE_ENV !== 'production';
+  const isDevelopment = process.env.NODE_ENV !== 'production'
 
   if (isDevelopment) {
     return {
@@ -206,7 +212,7 @@ function getSiteConfig() {
       protocol: 'http',
       basePath: '',
       isDevelopment: true,
-    };
+    }
   }
 
   return {
@@ -214,10 +220,10 @@ function getSiteConfig() {
     protocol: 'https',
     basePath: '',
     isDevelopment: false,
-  };
+  }
 }
 
-const siteConfig = getSiteConfig();
+const siteConfig = getSiteConfig()
 
 /**
  * Get full URL for a given path
@@ -226,14 +232,14 @@ const siteConfig = getSiteConfig();
  */
 function getFullUrl(path) {
   // Normalize path to start with /
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
 
   // Combine basePath (if any) with the path
   const fullPath = siteConfig.basePath
     ? `/${siteConfig.basePath}${normalizedPath}`
-    : normalizedPath;
+    : normalizedPath
 
-  return `${siteConfig.protocol}://${siteConfig.domain}${fullPath}`;
+  return `${siteConfig.protocol}://${siteConfig.domain}${fullPath}`
 }
 
 /**
@@ -243,22 +249,23 @@ function getFullUrl(path) {
  */
 function getAssetUrl(path) {
   // Normalize path to start with /
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
 
   // Return path with basePath if configured
   return siteConfig.basePath
     ? `/${siteConfig.basePath}${normalizedPath}`
-    : normalizedPath;
+    : normalizedPath
 }
 
 module.exports = {
   siteConfig,
   getFullUrl,
   getAssetUrl,
-};
+}
 ```
 
 **Purpose:**
+
 - Provides configuration for Node.js build scripts that run during `npm run build`
 - Uses `process.env.NODE_ENV` to detect environment (build scripts don't have access to Vite's `import.meta.env`)
 - Uses CommonJS exports (`module.exports`) for compatibility with existing build scripts
@@ -285,6 +292,7 @@ The nosrecettes.ca project has two distinct execution contexts:
 **Alternative Considered and Rejected:**
 
 We could transpile TypeScript during the build script phase, but this would:
+
 - Add complexity (separate TypeScript compilation step)
 - Slow down builds (additional tooling overhead)
 - Create circular dependencies (build scripts would depend on the build process)
@@ -316,6 +324,7 @@ node -e "const config = require('./scripts/site.config.js'); console.log('✓ Ja
    - JavaScript file uses `process.env.NODE_ENV` for environment detection
 
 2. **Test the helper functions** in Node.js REPL:
+
    ```bash
    node
    > const { getFullUrl, getAssetUrl } = require('./scripts/site.config.js')
@@ -346,14 +355,15 @@ Migrate all 6 build scripts from hardcoded URLs and paths to use the centralized
 **Single hardcoded URL to update:**
 
 **Line 68** - Base URL constant
+
 ```javascript
 // BEFORE
-const baseUrl = 'https://algritz.github.io/nosrecettes';
+const baseUrl = 'https://algritz.github.io/nosrecettes'
 
 // AFTER
-import { siteConfig } from './site.config.js';
+import { siteConfig } from './site.config.js'
 
-const baseUrl = siteConfig.baseUrl;
+const baseUrl = siteConfig.baseUrl
 ```
 
 **What this accomplishes**: The sitemap XML will use `https://nosrecettes.ca` for all `<loc>` elements, ensuring search engines index the correct URLs.
@@ -365,14 +375,15 @@ const baseUrl = siteConfig.baseUrl;
 **Single hardcoded URL to update:**
 
 **Line 11** - Base URL constant
+
 ```javascript
 // BEFORE
-const baseUrl = 'https://algritz.github.io/nosrecettes';
+const baseUrl = 'https://algritz.github.io/nosrecettes'
 
 // AFTER
-import { siteConfig } from './site.config.js';
+import { siteConfig } from './site.config.js'
 
-const baseUrl = siteConfig.baseUrl;
+const baseUrl = siteConfig.baseUrl
 ```
 
 **What this accomplishes**: The robots.txt sitemap reference will point to `https://nosrecettes.ca/sitemap.xml`.
@@ -384,12 +395,15 @@ const baseUrl = siteConfig.baseUrl;
 **9 hardcoded paths to update:**
 
 **Import statement:**
+
 ```javascript
-import { getFullUrl, getAssetUrl } from './site.config.js';
+import { getFullUrl, getAssetUrl } from './site.config.js'
 ```
+
 Add after line 6.
 
 **Changes:**
+
 - **Line 19** `start_url`: Change `"/nosrecettes/"` to `getFullUrl('/')`
 - **Line 26** `scope`: Change `"/nosrecettes/"` to `getFullUrl('/')`
 - **Line 29** favicon src: Change `"/nosrecettes/favicon.ico"` to `getAssetUrl('favicon.ico')`
@@ -407,12 +421,15 @@ Add after line 6.
 **18 hardcoded references to update:**
 
 **Import statement:**
+
 ```javascript
-import { siteConfig, getFullUrl, getAssetUrl } from './site.config.js';
+import { siteConfig, getFullUrl, getAssetUrl } from './site.config.js'
 ```
+
 Add after line 6.
 
 **URL References (11 instances) - use `siteConfig.baseUrl` or `getFullUrl()`:**
+
 - **Line 55** og:url: `${siteConfig.baseUrl}/`
 - **Line 58** og:image: `${getFullUrl('/images/og-default.jpg')}`
 - **Line 67** twitter:url: `${siteConfig.baseUrl}/`
@@ -426,6 +443,7 @@ Add after line 6.
 - **Line 165** Schema BreadcrumbList: `${siteConfig.baseUrl}/`
 
 **Asset Paths (7 instances) - use `getAssetUrl()`:**
+
 - **Line 85** favicon: `${getAssetUrl('favicon.ico')}`
 - **Line 86** apple-touch-icon: `${getAssetUrl('apple-touch-icon.png')}`
 - **Line 87** favicon-32: `${getAssetUrl('favicon-32x32.png')}`
@@ -441,11 +459,13 @@ Add after line 6.
 **Single path to update:**
 
 **Import:**
+
 ```javascript
-import { getAssetUrl } from './site.config.js';
+import { getAssetUrl } from './site.config.js'
 ```
 
 **Line 15** - Update tile image and convert to template literal:
+
 ```javascript
 export function generateBrowserConfig() {
   const browserConfigContent = `<?xml version="1.0" encoding="utf-8"?>
@@ -456,9 +476,9 @@ export function generateBrowserConfig() {
             <TileColor>#0f172a</TileColor>
         </tile>
     </msapplication>
-</browserconfig>`;
+</browserconfig>`
 
-  return browserConfigContent;
+  return browserConfigContent
 }
 ```
 
@@ -467,11 +487,13 @@ export function generateBrowserConfig() {
 **Single URL to update:**
 
 **Import:**
+
 ```javascript
-import { siteConfig } from './site.config.js';
+import { siteConfig } from './site.config.js'
 ```
 
 **Line 19** - Update canonical and convert to template literal:
+
 ```javascript
 Canonical: ${siteConfig.baseUrl}/.well-known/security.txt
 ```
@@ -497,6 +519,7 @@ grep -r "nosrecettes.ca" public/ index.html
 #### Manual Verification
 
 Inspect generated files:
+
 - `public/sitemap.xml` - All URLs use `https://nosrecettes.ca`
 - `public/robots.txt` - Sitemap URL is `https://nosrecettes.ca/sitemap.xml`
 - `public/manifest.json` - `start_url` is `"/"`, all icons use root paths
@@ -517,15 +540,17 @@ Replace all hardcoded URLs and base paths in React components and utilities with
 #### 3.1 - [src/App.tsx:18](src/App.tsx#L18) - React Router Configuration
 
 **Current:**
+
 ```typescript
-const basename = import.meta.env.PROD ? "/nosrecettes" : "";
+const basename = import.meta.env.PROD ? '/nosrecettes' : ''
 ```
 
 **Updated:**
-```typescript
-import { siteConfig } from '@/config/site.config';
 
-const basename = siteConfig.basePath;
+```typescript
+import { siteConfig } from '@/config/site.config'
+
+const basename = siteConfig.basePath
 ```
 
 **Purpose:** Dynamically set React Router's base path from configuration.
@@ -533,17 +558,21 @@ const basename = siteConfig.basePath;
 #### 3.2 - [src/utils/seoUtils.ts](src/utils/seoUtils.ts) - SEO Utilities
 
 **Import to add:**
+
 ```typescript
-import { siteConfig, getFullUrl } from '@/config/site.config';
+import { siteConfig, getFullUrl } from '@/config/site.config'
 ```
 
 **Line 6, 100, 125** - Replace all instances of:
+
 ```typescript
 // BEFORE
-const baseUrl = import.meta.env.PROD ? 'https://algritz.github.io/nosrecettes' : 'http://localhost:8080';
+const baseUrl = import.meta.env.PROD
+  ? 'https://algritz.github.io/nosrecettes'
+  : 'http://localhost:8080'
 
 // AFTER
-const baseUrl = siteConfig.baseUrl;
+const baseUrl = siteConfig.baseUrl
 ```
 
 **Purpose:** Use centralized base URL for all SEO metadata generation.
@@ -551,17 +580,21 @@ const baseUrl = siteConfig.baseUrl;
 #### 3.3 - [src/components/SEOHead.tsx:23](src/components/SEOHead.tsx#L23) - SEO Head Component
 
 **Import to add:**
+
 ```typescript
-import { siteConfig } from '@/config/site.config';
+import { siteConfig } from '@/config/site.config'
 ```
 
 **Line 23** - Replace hardcoded base URL:
+
 ```typescript
 // BEFORE
-const baseUrl = import.meta.env.PROD ? 'https://algritz.github.io/nosrecettes' : 'http://localhost:8080';
+const baseUrl = import.meta.env.PROD
+  ? 'https://algritz.github.io/nosrecettes'
+  : 'http://localhost:8080'
 
 // AFTER
-const baseUrl = siteConfig.baseUrl;
+const baseUrl = siteConfig.baseUrl
 ```
 
 **Purpose:** Ensure consistency with seoUtils and eliminate duplicate domain knowledge.
@@ -569,17 +602,19 @@ const baseUrl = siteConfig.baseUrl;
 #### 3.4 - [src/utils/imageUtils.ts:18](src/utils/imageUtils.ts#L18) - Image Utilities
 
 **Import to add:**
+
 ```typescript
-import { siteConfig } from '@/config/site.config';
+import { siteConfig } from '@/config/site.config'
 ```
 
 **Line 18** - Replace hardcoded base path:
+
 ```typescript
 // BEFORE
-const basePath = import.meta.env.PROD ? "/nosrecettes" : "";
+const basePath = import.meta.env.PROD ? '/nosrecettes' : ''
 
 // AFTER
-const basePath = siteConfig.basePath;
+const basePath = siteConfig.basePath
 ```
 
 **Purpose:** Use centralized base path for asset URL construction.
@@ -624,21 +659,23 @@ Address remaining hardcoded `/nosrecettes` path references in static files and e
 Two hardcoded references to remove:
 
 **Line 63** - Path normalization:
+
 ```javascript
 // BEFORE
-var currentPath = window.location.pathname.replace('/nosrecettes', '');
+var currentPath = window.location.pathname.replace('/nosrecettes', '')
 
 // AFTER
-var currentPath = window.location.pathname;
+var currentPath = window.location.pathname
 ```
 
 **Line 105** - Home link:
+
 ```html
 <!-- BEFORE -->
 <a href="/nosrecettes/" class="home-button">
-
-<!-- AFTER -->
-<a href="/" class="home-button">
+  <!-- AFTER -->
+  <a href="/" class="home-button"></a
+></a>
 ```
 
 **Rationale**: Custom domain serves from root, no `/nosrecettes` prefix to strip.
@@ -654,12 +691,14 @@ mv CNAME public/CNAME
 ```
 
 **Why this approach:**
+
 - Leverages Vite's built-in static asset copying
 - No workflow modifications needed
 - Automatic inclusion in every build
 - `/public` is the semantically correct location for deployment config files
 
 **Alternative (Not Recommended):** Add copy step to `.github/workflows/deploy.yml` between build and upload steps:
+
 ```yaml
 - name: Copy CNAME to dist
   run: cp CNAME ./dist/CNAME
@@ -683,6 +722,7 @@ test -f dist/CNAME && cat dist/CNAME
 #### Manual Verification
 
 After deployment:
+
 1. **404 page**: Navigate to non-existent URL, verify 404 loads and home button redirects to root
 2. **Custom domain**: Check GitHub Pages settings shows `nosrecettes.ca`
 3. **SPA routing**: Test invalid routes properly redirect through 404 handler
@@ -700,6 +740,7 @@ npm run dev
 ```
 
 **Verification checklist:**
+
 - Site loads at `http://localhost:8080`
 - All pages navigate correctly
 - React Router handles routes without 404s
@@ -713,6 +754,7 @@ npm run build
 ```
 
 **Inspect generated files:**
+
 - `dist/index.html` - asset references use `/assets/` not `/nosrecettes/assets/`
 - Icon links point to root (`/favicon.ico`, not `/nosrecettes/favicon.ico`)
 - All meta tags contain `https://nosrecettes.ca`
@@ -727,6 +769,7 @@ npm run preview
 ```
 
 **Verification:**
+
 - Site loads at preview URL
 - All assets load (check Network tab)
 - Navigate through routes - all work
@@ -737,12 +780,14 @@ npm run preview
 ### Pre-Deployment Checklist
 
 **Configuration Files:**
+
 - `vite.config.ts` - base is `/`
 - `CNAME` in `public/` - contains `nosrecettes.ca`
 - Build scripts import from `site.config.js`
 - Runtime code imports from `@/config/site.config`
 
 **Final Verification:**
+
 ```bash
 # Clean build
 rm -rf dist node_modules/.vite
@@ -763,12 +808,14 @@ npm run preview
 ### Post-Deployment Verification
 
 **Immediate Checks:**
+
 - Navigate to `https://nosrecettes.ca` - loads successfully
 - Open DevTools Network tab - no 404 errors
 - All assets return HTTP 200
 - React Router works (click links, direct URLs, back button)
 
 **SEO Verification:**
+
 - View source - `og:url` contains `nosrecettes.ca`
 - Canonical URL is correct
 - No `algritz.github.io` references
@@ -778,6 +825,7 @@ npm run preview
 
 **Browser Testing:**
 Test on Chrome, Firefox, Safari (desktop & mobile):
+
 - Site loads without blank page
 - No console errors
 - Assets load correctly
@@ -789,12 +837,14 @@ Test on Chrome, Firefox, Safari (desktop & mobile):
 If issues are found:
 
 **Quick Rollback:**
+
 ```bash
 git revert HEAD --no-edit
 git push origin main
 ```
 
 **Monitor:**
+
 - GitHub Actions completes
 - Site loads after rollback
 - No 404 errors

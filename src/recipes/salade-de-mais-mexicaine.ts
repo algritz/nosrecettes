@@ -1,9 +1,9 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeDeMaisMexicaine: Recipe = {
   id: 'salade-de-mais-mexicaine',
   title: 'Salade de maïs mexicaine',
-  description: 'Une salade d\'été ! Salade de maïs mexicaine',
+  description: "Une salade d'été ! Salade de maïs mexicaine",
   categories: ['Salades'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 10, max: 10 },
@@ -23,14 +23,14 @@ export const saladeDeMaisMexicaine: Recipe = {
     '1 c. à soupe de zestes de lime',
     '2 c. à thé d’ail haché',
     '1 c. à thé de poudre de chili',
-    'Sel et poivre au goût'
+    'Sel et poivre au goût',
   ],
   instructions: [
     'Faire cuire le maïs congelé vapeur et laisser refroidir.',
     'Dans un saladier, mélanger les ingrédients de la vinaigrette.',
     'Ajouter l’oignon, le poivron, le jalapeño, les haricots, l’avocat, le maïs et la feta dans le saladier.',
-    'Remuer délicatement.'
+    'Remuer délicatement.',
   ],
   tags: ['été', 'maïs', 'feta'],
-  slug: 'salade-de-mais-mexicaine'
-};
+  slug: 'salade-de-mais-mexicaine',
+}

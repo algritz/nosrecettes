@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const bombeDePouletGuacamoleEtBacon: Recipe = {
   id: '1764531922385',
   title: 'Bombe de poulet guacamole et bacon',
-  description: 'Poitrines de poulet farcies de guacamole, enveloppées de bacon, saisies puis finies au four.',
+  description:
+    'Poitrines de poulet farcies de guacamole, enveloppées de bacon, saisies puis finies au four.',
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 15, max: 15 },
@@ -18,8 +19,8 @@ export const bombeDePouletGuacamoleEtBacon: Recipe = {
         '1/2 tomate, hachée',
         '2 c. à soupe de coriandre, hachée',
         '1/2 c. à soupe de sel kasher',
-        '2 c. à soupe de jus de lime fraîchement pressé'
-      ]
+        '2 c. à soupe de jus de lime fraîchement pressé',
+      ],
     },
     {
       title: 'Poulet',
@@ -27,9 +28,9 @@ export const bombeDePouletGuacamoleEtBacon: Recipe = {
         '4 poitrines de poulet désossées, sans peau',
         'Sel kasher et poivre noir fraîchement moulu',
         '8 tranches de bacon',
-        '1 c. à soupe d\'huile'
-      ]
-    }
+        "1 c. à soupe d'huile",
+      ],
+    },
   ],
   instructions: [
     'Préchauffer le four à 400°F.',
@@ -38,9 +39,9 @@ export const bombeDePouletGuacamoleEtBacon: Recipe = {
     'Garnir chaque poche d’une cuillère bien remplie de guacamole et pincer les bords pour fermer.',
     'Envelopper chaque morceau de poulet d’une tranche de bacon.',
     'Chauffer l’huile dans une poêle sur feu vif. Saisir les morceaux 3 à 4 minutes de chaque côté.',
-    'Transférer au four et cuire 10 minutes, ou jusqu’à ce que le poulet soit bien cuit. Servir.'
+    'Transférer au four et cuire 10 minutes, ou jusqu’à ce que le poulet soit bien cuit. Servir.',
   ],
   tags: ['guacamole', 'bacon', 'farci'],
   source: 'David Cloutier',
-  slug: 'bombe-de-poulet-guacamole-et-bacon'
-};
+  slug: 'bombe-de-poulet-guacamole-et-bacon',
+}

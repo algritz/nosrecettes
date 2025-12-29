@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeSaumonPommeVerteEtFraises: Recipe = {
   id: 'tartare-de-saumon-pomme-verte-et-fraises',
   title: 'Tartare de saumon pomme verte et fraises',
-  description: 'Un tartare frais et coloré combinant saumon, pomme verte et fraises, parfait pour une entrée légère.',
+  description:
+    'Un tartare frais et coloré combinant saumon, pomme verte et fraises, parfait pour une entrée légère.',
   categories: ['Entrées'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 0, max: 0 },
@@ -19,15 +20,15 @@ export const tartareDeSaumonPommeVerteEtFraises: Recipe = {
     '1 échalote française, hachée finement',
     'Sel et poivre, au goût',
     '1 pomme Granny Smith, parée et coupée en petits cubes',
-    '10 fraises, équeutées et coupées en cubes'
+    '10 fraises, équeutées et coupées en cubes',
   ],
   instructions: [
     'Tailler le saumon en petits cubes. Réserver dans un bol au réfrigérateur.',
     'Dans un autre bol, mélanger l’huile d’olive, le jus et le zeste de citron, la moutarde à l’ancienne, le persil et l’échalote.',
     'Assaisonner au goût de sel et de poivre, puis ajouter le mélange au saumon.',
     'Ajouter les petits cubes de pommes et de fraises.',
-    'Servir aussitôt accompagné de tranches de baguettes grillées.'
+    'Servir aussitôt accompagné de tranches de baguettes grillées.',
   ],
   tags: ['frais', 'saumon', 'entrée'],
-  slug: 'tartare-de-saumon-pomme-verte-et-fraises'
-};
+  slug: 'tartare-de-saumon-pomme-verte-et-fraises',
+}

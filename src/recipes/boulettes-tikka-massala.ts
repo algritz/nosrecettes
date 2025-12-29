@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const boulettesTikkaMassala: Recipe = {
   id: 'boulettes-tikka-massala',
   title: 'Boulettes Tikka Massala',
-  description: 'Une recette de boulettes de viande épicées servies avec une sauce tomate crémeuse, parfumée aux épices tikka et garam massala, garnie de coriandre fraîche.',
+  description:
+    'Une recette de boulettes de viande épicées servies avec une sauce tomate crémeuse, parfumée aux épices tikka et garam massala, garnie de coriandre fraîche.',
   categories: ['Plats principaux'],
   prepTime: { min: 45, max: 45 },
   cookTime: { min: 50, max: 50 },
@@ -26,13 +27,13 @@ export const boulettesTikkaMassala: Recipe = {
     '1 bon cm de racine de gingembre fraîche pelée et râpée',
     '1 cuillerée à café de cumin',
     '1 cuillerée à café de paprika',
-    'Coriandre fraîche ciselée'
+    'Coriandre fraîche ciselée',
   ],
   instructions: [
     'Mélangez tous les ingrédients pour les boulettes avec les mains. Formez des boulettes. Réservez au froid une heure. Faites-les cuire dans une poêle avec un fond d’huile jusqu’à ce qu’elles soient bien colorées sur toutes leurs surfaces. Réservez.',
     'Dans une sauteuse ou une cocotte, faites chauffer de l’huile avec la gousse d’ail pelée et écrasée. Ajoutez le cumin, le paprika et le gingembre. Salez et poivrez. Versez le coulis de tomates et la crème fraîche. Laissez cuire à petit feu pendant 20 minutes.',
-    'Ajoutez les boulettes de bœuf et faites cuire encore 10 minutes. Juste au moment de servir, parsemez de coriandre ciselée.'
+    'Ajoutez les boulettes de bœuf et faites cuire encore 10 minutes. Juste au moment de servir, parsemez de coriandre ciselée.',
   ],
   tags: ['épicé', 'curry', 'gourmand'],
-  slug: 'boulettes-tikka-massala'
-};
+  slug: 'boulettes-tikka-massala',
+}

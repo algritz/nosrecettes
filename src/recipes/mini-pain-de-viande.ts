@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const miniPainDeViande: Recipe = {
   id: 'mini-pain-de-viande',
@@ -17,15 +17,15 @@ export const miniPainDeViande: Recipe = {
     'Worcestershire',
     'tabasco',
     '1/2 tasse de chapelure',
-    '1/2 tasse de Ketchup'
+    '1/2 tasse de Ketchup',
   ],
   instructions: [
     'Préchauffer le four à 350 F',
     'Mélanger tous les ingrédients ensemble',
     'Façonner en forme de petit pain ou moule à muffin',
-    'Cuire au four 10 à 15 minutes'
+    'Cuire au four 10 à 15 minutes',
   ],
   tags: ['bœuf', 'moule à muffin', 'cuisine américaine'],
   notes: 'Source: Mona Turcotte',
-  slug: 'mini-pain-de-viande'
-};
+  slug: 'mini-pain-de-viande',
+}

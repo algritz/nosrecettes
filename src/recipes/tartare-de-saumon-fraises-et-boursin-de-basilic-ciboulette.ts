@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeSaumonFraisesEtBoursinDeBasilicCiboulette: Recipe = {
   id: 'tartare-de-saumon-fraises-et-boursin-de-basilic-ciboulette',
   title: 'Tartare de saumon, fraises et Boursin de basilic & Ciboulette',
-  description: 'Un tartare frais et aromatique combinant saumon, fraises, herbes et Boursin, servi en verrines avec des croutons grillés.',
+  description:
+    'Un tartare frais et aromatique combinant saumon, fraises, herbes et Boursin, servi en verrines avec des croutons grillés.',
   categories: ['Entrées'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 0, max: 0 },
@@ -19,7 +20,7 @@ export const tartareDeSaumonFraisesEtBoursinDeBasilicCiboulette: Recipe = {
     'Jus de ½ citron',
     '¼ c. à thé de fleur de sel',
     'Poivre du moulin',
-    'Croutons grillés'
+    'Croutons grillés',
   ],
   instructions: [
     'Mélanger dans un bol l’huile d’olive, le jus de citron, le basilic et la ciboulette finement ciselée.',
@@ -27,8 +28,8 @@ export const tartareDeSaumonFraisesEtBoursinDeBasilicCiboulette: Recipe = {
     'Ajouter au mélange d’huile, saler, poivrer et mélanger le tout délicatement.',
     'Déposer le mélange dans des verrines et garnir de Boursin Bouquet de basilic & Ciboulette.',
     'Décorer de feuilles de basilic et de brins de ciboulette.',
-    'Servir avec des croutons grillés.'
+    'Servir avec des croutons grillés.',
   ],
   tags: ['frais', 'herbes', 'croutons'],
-  slug: 'tartare-de-saumon-fraises-et-boursin-de-basilic-ciboulette'
-};
+  slug: 'tartare-de-saumon-fraises-et-boursin-de-basilic-ciboulette',
+}

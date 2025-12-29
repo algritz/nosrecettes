@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeAuxPommesEtAuxNoix: Recipe = {
   id: 'salade-aux-pommes-et-aux-noix',
   title: 'Salade aux pommes et aux noix',
-  description: 'Une salade fraîche combinant pommes, noix, céleri et guimauves, assaisonnée de mayonnaise et décorée de quartiers de pommes.',
+  description:
+    'Une salade fraîche combinant pommes, noix, céleri et guimauves, assaisonnée de mayonnaise et décorée de quartiers de pommes.',
   categories: ['Salades'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 0, max: 0 },
@@ -17,15 +18,15 @@ export const saladeAuxPommesEtAuxNoix: Recipe = {
     '¼ de tasse noix de Grenoble hachées ou de pacanes',
     '3 c. à table de mayonnaise',
     'Laitue',
-    'Sel et poivre au goût'
+    'Sel et poivre au goût',
   ],
   instructions: [
-    'Couper les pommes en dés et arroser de jus de citron pour qu\'elles gardent leur couleur.',
+    "Couper les pommes en dés et arroser de jus de citron pour qu'elles gardent leur couleur.",
     'Déchiqueter la laitue et ajouter les noix hachées, le céleri haché et la mayonnaise pour mouiller.',
     'Assaisonner de sel et de poivre.',
     'Décorer de quartiers de pommes non pelées.',
-    'Mettre les guimauves à la dernière minute et servir.'
+    'Mettre les guimauves à la dernière minute et servir.',
   ],
   tags: ['salade', 'fruit', 'noix'],
-  slug: 'salade-aux-pommes-et-aux-noix'
-};
+  slug: 'salade-aux-pommes-et-aux-noix',
+}

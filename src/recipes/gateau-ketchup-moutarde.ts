@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const gateauKetchupMoutarde: Recipe = {
   id: 'gateau-ketchup-moutarde',
   title: 'Gâteau ketchup-moutarde',
-  description: 'Un gâteau sucré-salé combinant le ketchup et la moutarde, avec un glaçage à la moutarde et au beurre.',
+  description:
+    'Un gâteau sucré-salé combinant le ketchup et la moutarde, avec un glaçage à la moutarde et au beurre.',
   categories: ['Pâtisseries et desserts'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 30, max: 30 },
@@ -18,7 +19,7 @@ export const gateauKetchupMoutarde: Recipe = {
     '½ cuillère à café de gingembre',
     '½ cuillère à café de noix de muscade',
     '½ tasse de ketchup',
-    '½ tasse d\'eau',
+    "½ tasse d'eau",
     '2 cuillères à soupe de colorant alimentaire rouge',
     '¾ tasse de beurre ramolli',
     '1 ½ tasse de sucre brun',
@@ -27,24 +28,24 @@ export const gateauKetchupMoutarde: Recipe = {
     '2 tasses de beurre ramolli',
     '4 tasses de sucre en poudre',
     '1 ½ tasse de moutarde',
-    'Colorant alimentaire jaune'
+    'Colorant alimentaire jaune',
   ],
   instructions: [
     'Préchauffer le four à 350°F.',
     'Préparer 2 moules à gâteaux à charnière de 9 pouces et couvrir le fond de papier parchemin.',
     'Mélanger la farine, la poudre à pâte, le bicarbonate de soude et les épices.',
-    'Mélanger le ketchup, l\'eau et le colorant alimentaire dans un bol séparé jusqu\'à homogénéité.',
-    'Battre ¾ tasse de beurre et la cassonade dans un grand bol au batteur jusqu\'à consistance légère et mousseuse.',
+    "Mélanger le ketchup, l'eau et le colorant alimentaire dans un bol séparé jusqu'à homogénéité.",
+    "Battre ¾ tasse de beurre et la cassonade dans un grand bol au batteur jusqu'à consistance légère et mousseuse.",
     'Ajouter les œufs, un à la fois, en battant bien après chaque ajout.',
     'Ajouter le mélange de farine en alternance avec le mélange de ketchup, en mélangeant bien après chaque addition.',
     'Verser dans les deux moules à charnière de façon égale.',
-    'Cuire au four 30 minutes ou jusqu\'à ce qu\'un cure-dent inséré dans le centre en ressorte propre.',
+    "Cuire au four 30 minutes ou jusqu'à ce qu'un cure-dent inséré dans le centre en ressorte propre.",
     'Laisser refroidir 10 minutes avant de démouler et de laisser refroidir complètement sur une grille.',
-    'À l\'aide d\'un batteur électrique à vitesse moyenne, battre le beurre pour le glaçage.',
+    "À l'aide d'un batteur électrique à vitesse moyenne, battre le beurre pour le glaçage.",
     'Une fois lisse, ajouter la moutarde et mélanger encore 30 secondes.',
-    'Ajouter le sucre en poudre ¼ tasse à la fois et le colorant jusqu\'à l\'épaisseur et la couleur désirées.',
-    'Garnir le premier gâteau de crémage, y ajouter le deuxième gâteau et bien étendre le glaçage.'
+    "Ajouter le sucre en poudre ¼ tasse à la fois et le colorant jusqu'à l'épaisseur et la couleur désirées.",
+    'Garnir le premier gâteau de crémage, y ajouter le deuxième gâteau et bien étendre le glaçage.',
   ],
   tags: ['salé', 'ketchup', 'moutarde'],
-  slug: 'gateau-ketchup-moutarde'
-};
+  slug: 'gateau-ketchup-moutarde',
+}

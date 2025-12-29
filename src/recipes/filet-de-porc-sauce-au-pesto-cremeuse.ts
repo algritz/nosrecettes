@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const filetDePorcSauceAuPestoCremeuse: Recipe = {
   id: 'filet-de-porc-sauce-au-pesto-cremeuse',
@@ -11,12 +11,12 @@ export const filetDePorcSauceAuPestoCremeuse: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '2 filet de porc',
-    'huile d\'olive',
+    "huile d'olive",
     '1 échalote française hachée finement',
     '3/4 tasse de crème 35%',
     '1/4 de tasse de fromage à la crème',
     '3 c. à soupe de pesto de basilic',
-    'Quelques feuilles de basilic frais'
+    'Quelques feuilles de basilic frais',
   ],
   instructions: [
     'Préchauffer le four à 375 °F.',
@@ -32,8 +32,8 @@ export const filetDePorcSauceAuPestoCremeuse: Recipe = {
     'Porter à ébullition, puis cuire à feu moyen de 3 à 4 minutes.',
     'Trancher le filet de porc.',
     'Répartir les tranches de porc dans les assiettes.',
-    'Napper de sauce et garnir de basilic.'
+    'Napper de sauce et garnir de basilic.',
   ],
   tags: ['pesto', 'crème', 'porc'],
-  slug: 'filet-de-porc-sauce-au-pesto-cremeuse'
-};
+  slug: 'filet-de-porc-sauce-au-pesto-cremeuse',
+}

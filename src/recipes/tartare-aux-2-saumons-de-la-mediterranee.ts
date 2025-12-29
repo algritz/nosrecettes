@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareAux2SaumonsDeLaMediterranee: Recipe = {
   id: 'tartare-aux-2-saumons-de-la-mediterranee',
   title: 'Tartare aux 2 saumons de la méditerranée',
-  description: 'Un tartare frais combinant deux types de saumon, agrémenté d\'herbes et de feta, parfait pour une entrée élégante.',
+  description:
+    "Un tartare frais combinant deux types de saumon, agrémenté d'herbes et de feta, parfait pour une entrée élégante.",
   categories: ['Entrées'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 0, max: 0 },
@@ -24,21 +25,24 @@ export const tartareAux2SaumonsDeLaMediterranee: Recipe = {
     'Quelques gouttes de Firebarns vert, au goût',
     '400 g (14 oz) de saumon, haché au couteau',
     '200 g (7 oz) de saumon fumé en fines tranches, haché',
-    'Sel et poivre du moulin'
+    'Sel et poivre du moulin',
   ],
   instructions: [
     'Dans un bol, mélanger tous les ingrédients à l’exception du saumon et du saumon fumé et mélanger.',
     'Ajouter ensuite le saumon frais et le saumon fumé, et mélanger délicatement.',
-    'Servir.'
+    'Servir.',
   ],
   tags: ['frais', 'herbes', 'saumon'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-aux-2-saumons-de-la-mediterranee',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-aux-2-saumons-de-la-mediterranee',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-aux-2-saumons-de-la-mediterranee'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/tartare-aux-2-saumons-de-la-mediterranee',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/tartare-aux-2-saumons-de-la-mediterranee',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare-aux-2-saumons-de-la-mediterranee',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'tartare-aux-2-saumons-de-la-mediterranee'
-};
+  slug: 'tartare-aux-2-saumons-de-la-mediterranee',
+}

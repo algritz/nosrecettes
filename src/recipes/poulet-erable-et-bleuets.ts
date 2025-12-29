@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pouletErableEtBleuets: Recipe = {
   id: 'poulet-erable-et-bleuets',
@@ -11,27 +11,27 @@ export const pouletErableEtBleuets: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '4 poitrines de poulet',
-    '3 c. à soupe de sirop d\'érable',
-    '2 c. à soupe d\'huile d\'olive',
+    "3 c. à soupe de sirop d'érable",
+    "2 c. à soupe d'huile d'olive",
     '2 c. à soupe de jus de pommes',
     '1 c. à thé de vinaigre blanc',
     '160 ml (2/3 tasse) de bleuets',
-    '30 ml (2 c. à soupe) de sirop d\'érable',
-    '15 ml (1 c. à soupe) de Sortilège (Whiskey à l\'érable)',
+    "30 ml (2 c. à soupe) de sirop d'érable",
+    "15 ml (1 c. à soupe) de Sortilège (Whiskey à l'érable)",
     '250 ml (1 tasse) de sauce demi-glace maison ou en sachet',
-    'Sel et poivre'
+    'Sel et poivre',
   ],
   instructions: [
     'Mélanger les ingrédients de la marinade et y déposer le poulet.',
     'Mariner minimum 4 heures.',
     'Faire cuire le poulet sur le grill.',
     'Dans un chaudron, préparer la sauce demi-glace ou suivre les instructions inscrites sur le sachet.',
-    'Dans un autre poêlon, chauffer, à feu moyen, les bleuets et 30 ml (2 c. à soupe) de sirop d\'érable.',
+    "Dans un autre poêlon, chauffer, à feu moyen, les bleuets et 30 ml (2 c. à soupe) de sirop d'érable.",
     'Laisser réduire environ 5 minutes.',
     'Ajouter le Sortilège et flamber 1 minute.',
     'Ajouter la sauce demi-glace et laisser réduire 10 à 15 minutes.',
-    'Saler et poivrer.'
+    'Saler et poivrer.',
   ],
   tags: ['érable', 'marinade sèche', 'grill'],
-  slug: 'poulet-erable-et-bleuets'
-};
+  slug: 'poulet-erable-et-bleuets',
+}

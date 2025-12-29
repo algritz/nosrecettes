@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const filetDePorcMoutardeEtMiel: Recipe = {
   id: 'filet-de-porc-moutarde-et-miel',
@@ -12,27 +12,27 @@ export const filetDePorcMoutardeEtMiel: Recipe = {
   ingredients: [
     '2 filets de porc (750gr)',
     'Poivre et sel',
-    '1 gousse d\'ail hachée',
-    '4 c. à table de moutarde de Dijon ou à l\'ancienne',
+    "1 gousse d'ail hachée",
+    "4 c. à table de moutarde de Dijon ou à l'ancienne",
     '2 c. à table de miel',
     '2 c. à table de cassonade',
     '1 c. à table de vinaigre de cidre ou vinaigre balsamique',
     '1/2 c. à thé de thym séché',
     '1 c. à table de fécule de maïs',
-    '1 c. à table d\'eau froide'
+    "1 c. à table d'eau froide",
   ],
   instructions: [
     'Laver les filets de porc, les sécher et les rouler dans le sel et le poivre.',
     'Placer les filets de porc dans la mijoteuse ou une cocotte.',
-    'Combiner l\'ail, la moutarde, le miel, la cassonade, le vinaigre et le thym.',
+    "Combiner l'ail, la moutarde, le miel, la cassonade, le vinaigre et le thym.",
     'Verser sur les filets de porc.',
     'Couvrir et cuire 6h à 190°F au four ou à low à la mijoteuse en retournant au heure.',
     'Retirer les filets et garder au chaud.',
     'Retirer la sauce de la mijoteuse ou de la cocotte et mettre dans un chaudron.',
-    'Mélanger l\'eau froide et la fécule de maïs et verser dans la sauce chaude.',
+    "Mélanger l'eau froide et la fécule de maïs et verser dans la sauce chaude.",
     'Chauffer environ 10 minutes pour faire épaissir la sauce.',
-    'Verser sur les filets au moment de servir.'
+    'Verser sur les filets au moment de servir.',
   ],
   tags: ['moutarde', 'miel', 'mijoteuse'],
-  slug: 'filet-de-porc-moutarde-et-miel'
-};
+  slug: 'filet-de-porc-moutarde-et-miel',
+}

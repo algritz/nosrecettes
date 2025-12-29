@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const painAuBanane: Recipe = {
   id: 'pain-au-banane',
@@ -19,22 +19,25 @@ export const painAuBanane: Recipe = {
     '1 grosse pincée de cardamome',
     '1 petite pincée de cannelle',
     '60 ml de lait',
-    '1 œuf'
+    '1 œuf',
   ],
   instructions: [
     'Préchauffer le four à 425°F',
-    'Dans un saladier, mélanger la farine, la poudre à pâte, la cassonade, l\'œuf, le beurre, la banane, les pépites de chocolat, le lait, la cannelle et la cardamome.',
-    'Verser dans un moule à pain préalablement d\'un papier parchemin.',
-    'Faire cuire 30 minutes.'
+    "Dans un saladier, mélanger la farine, la poudre à pâte, la cassonade, l'œuf, le beurre, la banane, les pépites de chocolat, le lait, la cannelle et la cardamome.",
+    "Verser dans un moule à pain préalablement d'un papier parchemin.",
+    'Faire cuire 30 minutes.',
   ],
   tags: ['banane', 'pâtisserie', 'gâteau'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pain-au-banane',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pain-au-banane',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pain-au-banane'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/pain-au-banane',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/pain-au-banane',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pain-au-banane',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'pain-au-banane'
-};
+  slug: 'pain-au-banane',
+}

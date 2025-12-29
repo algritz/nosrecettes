@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const lasagneCremeuseAuFromageALaCreme: Recipe = {
   id: '1758811126984',
@@ -11,21 +11,21 @@ export const lasagneCremeuseAuFromageALaCreme: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '2 livre de bœuf haché',
-    '1 d\'oignon haché',
+    "1 d'oignon haché",
     '1 boîte (9 oz) de tomates en dés',
     '1 boîte de pâte de tomate',
-    '1/3 tasse d\'eau',
-    '1 gousse d\'ail émincée',
-    '1 c. à thé d\'origan',
+    "1/3 tasse d'eau",
+    "1 gousse d'ail émincée",
+    "1 c. à thé d'origan",
     '1 c. à thé de basilic',
-    '1 c. à thé d\'épices italiennes',
+    "1 c. à thé d'épices italiennes",
     '1 c. à thé de sucre ',
     '1/2 c. à thé de sel',
     '1/4 c. à thé de poivre',
     '1 paquets de fromage à la crème, coupé en cubes ',
     '1/4 tasse de lait',
     '9 lasagnes, cuites, égouttées',
-    '400 g de mozzarella râpé'
+    '400 g de mozzarella râpé',
   ],
   instructions: [
     'Faire revenir le bœuf haché dans un poêlon, égoutter.',
@@ -37,16 +37,19 @@ export const lasagneCremeuseAuFromageALaCreme: Recipe = {
     'Répéter.',
     'Garnir de fromage rapé.',
     'Cuire à 350°F, 30 minutes et passer à grill pour gratiner la lasagne.',
-    'Laisser reposer 5-10 minutes avant de servir.'
+    'Laisser reposer 5-10 minutes avant de servir.',
   ],
   tags: [],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/lasagne',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/lasagne',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/lasagne'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/lasagne',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/lasagne',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/lasagne',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'lasagne-cremeuse-au-fromage-a-la-creme'
-};
+  slug: 'lasagne-cremeuse-au-fromage-a-la-creme',
+}

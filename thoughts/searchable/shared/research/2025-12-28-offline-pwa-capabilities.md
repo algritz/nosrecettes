@@ -4,12 +4,23 @@ researcher: dacloutier
 git_commit: f5ab74867b32ee73afd3a7bf2b16535f5da32a44
 branch: main
 repository: nosrecettes.ca
-topic: "Offline PWA Capabilities - Making Recipes Available Without Network"
-tags: [research, codebase, pwa, offline, service-worker, recipes, caching, workbox, bundle-size]
+topic: 'Offline PWA Capabilities - Making Recipes Available Without Network'
+tags:
+  [
+    research,
+    codebase,
+    pwa,
+    offline,
+    service-worker,
+    recipes,
+    caching,
+    workbox,
+    bundle-size,
+  ]
 status: complete
 last_updated: 2025-12-28
 last_updated_by: dacloutier
-last_updated_note: "Added bundle size analysis and Workbox recommendation"
+last_updated_note: 'Added bundle size analysis and Workbox recommendation'
 ---
 
 # Research: Offline PWA Capabilities - Making Recipes Available Without Network
@@ -42,6 +53,7 @@ The nosrecettes.ca application is a **static React SPA with 721 recipes** bundle
 **Manifest Location**: [public/manifest.json](public/manifest.json)
 
 The site has a complete PWA manifest with:
+
 - `display: "standalone"` - Opens like a native app
 - `start_url: "https://nosrecettes.ca/"` - Entry point
 - Icons: 192x192 and 512x512 PNG (maskable)
@@ -54,11 +66,11 @@ The site has a complete PWA manifest with:
 The manifest is generated at build time using the `npm run build:seo` command, which counts recipes and injects the number into the name and description:
 
 ```javascript
-const recipeCount = getRecipeFiles().length; // Currently 721
+const recipeCount = getRecipeFiles().length // Currently 721
 const manifest = {
-  "name": `Nos Recettes - ${recipeCount} Recettes Québécoises`,
-  "description": `Collection de ${recipeCount} recettes québécoises...`
-};
+  name: `Nos Recettes - ${recipeCount} Recettes Québécoises`,
+  description: `Collection de ${recipeCount} recettes québécoises...`,
+}
 ```
 
 **Installability**: The manifest is properly linked in the HTML via `<link rel="manifest">`, making the site installable on Android.
@@ -75,7 +87,7 @@ Each of the 721 recipes is stored as a TypeScript file exporting a typed `Recipe
 
 ```typescript
 // src/recipes/guacamole.ts
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const guacamole: Recipe = {
   id: '1758826632070',
@@ -86,10 +98,14 @@ export const guacamole: Recipe = {
   cookTime: 0,
   servings: 1,
   difficulty: 'Facile',
-  ingredients: [ /* ... */ ],
-  instructions: [ /* ... */ ],
-  slug: 'guacamole'
-};
+  ingredients: [
+    /* ... */
+  ],
+  instructions: [
+    /* ... */
+  ],
+  slug: 'guacamole',
+}
 ```
 
 **Build-Time Aggregation**: [src/recipes/index.ts:6-27](src/recipes/index.ts#L6-L27)
@@ -97,23 +113,24 @@ export const guacamole: Recipe = {
 All recipes are loaded at build time using Vite's glob import:
 
 ```typescript
-const recipeModules = import.meta.glob('./*.ts', { eager: true });
-export const recipes: Recipe[] = [];
+const recipeModules = import.meta.glob('./*.ts', { eager: true })
+export const recipes: Recipe[] = []
 
 Object.entries(recipeModules).forEach(([path, module]) => {
-  if (path === './index.ts') return;
-  const moduleExports = module as Record<string, any>;
+  if (path === './index.ts') return
+  const moduleExports = module as Record<string, any>
   Object.values(moduleExports).forEach((exportedValue) => {
     if (exportedValue && typeof exportedValue === 'object') {
-      recipes.push(exportedValue as Recipe);
+      recipes.push(exportedValue as Recipe)
     }
-  });
-});
+  })
+})
 
-recipes.sort((a, b) => a.title.localeCompare(b.title));
+recipes.sort((a, b) => a.title.localeCompare(b.title))
 ```
 
 Key characteristics:
+
 - `eager: true` - All recipes loaded immediately at app startup
 - No API calls - Everything bundled in JavaScript
 - Total in-memory array - Simple client-side filtering/searching
@@ -121,29 +138,35 @@ Key characteristics:
 **Data Re-export**: [src/data/recipes.ts:1-2](src/data/recipes.ts#L1-L2)
 
 Provides clean API boundary:
+
 ```typescript
-export { recipes, getRecipeBySlug, getRecipesByCategory, getCategories } from '@/recipes';
+export {
+  recipes,
+  getRecipeBySlug,
+  getRecipesByCategory,
+  getCategories,
+} from '@/recipes'
 ```
 
 **Recipe Type**: [src/types/recipe.ts:1-46](src/types/recipe.ts#L1-L46)
 
 ```typescript
 export interface Recipe {
-  id: string;
-  title: string;
-  description: string;
-  categories: string[];
-  prepTime: number;           // Minutes
-  cookTime: number;           // Minutes
-  marinatingTime?: number;    // Optional, minutes
-  servings: number;
-  difficulty: 'Facile' | 'Moyen' | 'Difficile';
-  ingredients: string[] | IngredientSection[];
-  instructions: string[] | InstructionSection[];
-  tags: string[];
-  images?: ImageSizes[];      // New: responsive Cloudinary URLs
-  image?: string;             // Deprecated: backward compatibility
-  slug: string;
+  id: string
+  title: string
+  description: string
+  categories: string[]
+  prepTime: number // Minutes
+  cookTime: number // Minutes
+  marinatingTime?: number // Optional, minutes
+  servings: number
+  difficulty: 'Facile' | 'Moyen' | 'Difficile'
+  ingredients: string[] | IngredientSection[]
+  instructions: string[] | InstructionSection[]
+  tags: string[]
+  images?: ImageSizes[] // New: responsive Cloudinary URLs
+  image?: string // Deprecated: backward compatibility
+  slug: string
   // ... other optional fields
 }
 ```
@@ -169,17 +192,18 @@ export interface Recipe {
 **Recipe Loading**: [src/pages/RecipePage.tsx:18-19](src/pages/RecipePage.tsx#L18-L19)
 
 ```typescript
-const { slug } = useParams<{ slug: string }>();
-const recipe = recipes.find(r => r.slug === slug);
+const { slug } = useParams<{ slug: string }>()
+const recipe = recipes.find((r) => r.slug === slug)
 ```
 
 **Key characteristics**:
+
 - No code splitting - All routes eagerly imported
 - No lazy loading - All pages loaded upfront
 - Client-side only - No server-side rendering
 - Direct array lookup - No fetch calls for recipes
 
-**SPA Fallback**: [public/_redirects](public/_redirects) and [public/404.html](public/404.html)
+**SPA Fallback**: [public/\_redirects](public/_redirects) and [public/404.html](public/404.html)
 
 The site includes proper SPA routing fallback configuration for hosting platforms like Netlify.
 
@@ -194,10 +218,13 @@ The site includes proper SPA routing fallback configuration for hosting platform
 ```typescript
 images: [
   {
-    small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/lasagne',
-    medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/lasagne',
-    large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/lasagne'
-  }
+    small:
+      'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/lasagne',
+    medium:
+      'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/lasagne',
+    large:
+      'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/lasagne',
+  },
 ]
 ```
 
@@ -207,7 +234,7 @@ The component already handles missing/failed images gracefully:
 
 ```tsx
 if (imageError || !imageSrc) {
-  if (!showPlaceholder) return null;
+  if (!showPlaceholder) return null
 
   return (
     <div className="bg-muted flex items-center justify-center border-2 border-dashed">
@@ -216,11 +243,12 @@ if (imageError || !imageSrc) {
         <span className="text-sm font-medium">Pas d'image</span>
       </div>
     </div>
-  );
+  )
 }
 ```
 
 **Key characteristics**:
+
 - Placeholder system exists - Shows "Pas d'image" with utensils icon
 - Error handling - `onError` callback sets `imageError` state
 - Lazy loading - `loading="lazy"` attribute on images
@@ -244,6 +272,7 @@ Handles image processing, Cloudinary uploads, and URL generation. All images are
 **SEO Build Orchestrator**: [scripts/build-seo.js:16-79](scripts/build-seo.js#L16-L79)
 
 Runs before Vite build to generate:
+
 1. `public/sitemap.xml` - All recipe URLs with image metadata
 2. `public/robots.txt` - Crawling instructions
 3. `public/manifest.json` - PWA manifest with recipe count
@@ -255,12 +284,12 @@ Runs before Vite build to generate:
 
 ```javascript
 export function getRecipeFiles() {
-  const recipesDir = path.join(__dirname, '..', 'src', 'recipes');
-  const files = fs.readdirSync(recipesDir);
+  const recipesDir = path.join(__dirname, '..', 'src', 'recipes')
+  const files = fs.readdirSync(recipesDir)
 
   return files
-    .filter(file => file.endsWith('.ts') && file !== 'index.ts')
-    .map(file => file.replace('.ts', ''));
+    .filter((file) => file.endsWith('.ts') && file !== 'index.ts')
+    .map((file) => file.replace('.ts', ''))
 }
 ```
 
@@ -270,14 +299,20 @@ Uses regex to parse TypeScript source files without compiling:
 
 ```javascript
 export function getRecipeData(filename) {
-  const filePath = path.join(__dirname, '..', 'src', 'recipes', `${filename}.ts`);
-  const content = fs.readFileSync(filePath, 'utf-8');
+  const filePath = path.join(
+    __dirname,
+    '..',
+    'src',
+    'recipes',
+    `${filename}.ts`,
+  )
+  const content = fs.readFileSync(filePath, 'utf-8')
 
-  const titleMatch = content.match(/title:\s*['"`]([^'"`]+)['"`]/);
-  const slugMatch = content.match(/slug:\s*['"`]([^'"`]+)['"`]/);
+  const titleMatch = content.match(/title:\s*['"`]([^'"`]+)['"`]/)
+  const slugMatch = content.match(/slug:\s*['"`]([^'"`]+)['"`]/)
   // Extract images, etc.
 
-  return { title, slug, imageUrl };
+  return { title, slug, imageUrl }
 }
 ```
 
@@ -292,6 +327,7 @@ Standard Vite React setup with TypeScript. No special bundling configuration for
 **Browser Storage**: No usage found
 
 Searched for:
+
 - `localStorage`
 - `sessionStorage`
 - `IndexedDB`
@@ -302,6 +338,7 @@ Searched for:
 **Service Worker**: None
 
 Searched for:
+
 - `serviceWorker`
 - `workbox`
 - `sw.js`
@@ -319,6 +356,7 @@ The site relies on standard browser caching (HTTP cache headers). No custom cach
 ### Data Volume Analysis
 
 **Recipe Statistics**:
+
 - Total recipes: 721 TypeScript files
 - Recipes with images: 149 (20.7%)
 - Recipes without images: 572 (79.3%)
@@ -326,12 +364,14 @@ The site relies on standard browser caching (HTTP cache headers). No custom cach
 - Average lines per recipe: ~40 lines
 
 **Actual Bundle Size (Production Build)**:
+
 - **Minified JavaScript**: 5.7MB (5,741.95 KB)
 - **Gzipped size**: 3.5MB (3,459 KB)
 - **CSS**: 70.21 KB (12.34 KB gzipped)
 - **Total initial load**: ~3.5MB gzipped
 
 Breakdown from `vite build` output:
+
 ```
 dist/index.html                     7.89 kB │ gzip:     2.36 kB
 dist/assets/index-BsP4pAQl.css     70.21 kB │ gzip:    12.34 kB
@@ -341,18 +381,21 @@ dist/assets/index-DbeAWzEa.js   5,741.95 kB │ gzip: 3,459.00 kB
 ```
 
 **Bundle Size Analysis**:
+
 - Recipe data accounts for majority of bundle (6.6MB source → 3.5MB gzipped)
 - No code splitting - entire app loaded upfront (`manualChunks: undefined` in [vite.config.ts:21](vite.config.ts#L21))
 - Recipe data is text-only (no images bundled)
 - Images hosted externally on Cloudinary CDN
 
 **Performance Implications**:
+
 - 3.5MB initial download on first visit (significant on mobile)
 - Subsequent visits depend on browser cache (no service worker currently)
 - Once loaded, navigation is instant (no additional requests)
 - Bundle size warning from Vite: chunks larger than 500KB
 
 **Network Requirements (Current)**:
+
 - Initial load: Downloads 3.5MB gzipped (all recipes)
 - Navigation: No additional requests (client-side routing)
 - Images: Loaded on-demand from Cloudinary (~800KB-1.2MB per recipe with images)
@@ -362,26 +405,31 @@ dist/assets/index-DbeAWzEa.js   5,741.95 kB │ gzip: 3,459.00 kB
 ## Code References
 
 ### PWA Manifest
+
 - [public/manifest.json:1-69](public/manifest.json#L1-L69) - PWA manifest file
 - [scripts/generate-manifest.js:12-82](scripts/generate-manifest.js#L12-L82) - Manifest generation
 
 ### Recipe Data Architecture
+
 - [src/recipes/index.ts:6-27](src/recipes/index.ts#L6-L27) - Recipe aggregation via glob import
 - [src/data/recipes.ts:1-2](src/data/recipes.ts#L1-L2) - Recipe data re-export
 - [src/types/recipe.ts:1-46](src/types/recipe.ts#L1-L46) - Recipe interface definition
 - [src/recipes/guacamole.ts](src/recipes/guacamole.ts) - Example recipe file
 
 ### Routing and Navigation
+
 - [src/App.tsx](src/App.tsx) - React Router configuration
 - [src/pages/RecipePage.tsx:18-19](src/pages/RecipePage.tsx#L18-L19) - Recipe lookup by slug
 - [src/pages/Index.tsx](src/pages/Index.tsx) - Home page with recipe listing
 
 ### Image Handling
+
 - [src/components/ResponsiveImage.tsx:38-52](src/components/ResponsiveImage.tsx#L38-L52) - Placeholder rendering
 - [src/utils/imageUtils.ts](src/utils/imageUtils.ts) - Image processing utilities
 - [src/utils/cloudinaryUtils.ts](src/utils/cloudinaryUtils.ts) - Cloudinary integration
 
 ### Build Process
+
 - [scripts/build-seo.js:16-79](scripts/build-seo.js#L16-L79) - SEO file generation
 - [scripts/generate-sitemap.js:12-65](scripts/generate-sitemap.js#L12-L65) - Sitemap generation
 - [vite.config.ts](vite.config.ts) - Vite build configuration
@@ -393,12 +441,14 @@ dist/assets/index-DbeAWzEa.js   5,741.95 kB │ gzip: 3,459.00 kB
 ### Current Implementation Pattern
 
 **Static Bundle Architecture**:
+
 1. **Build Time**: All recipes compiled into JavaScript via `import.meta.glob`
 2. **Runtime**: Entire recipe database loaded in memory
 3. **Navigation**: Client-side routing with array lookups
 4. **Images**: External CDN with graceful fallback
 
 This creates an **all-or-nothing** loading model:
+
 - ✅ Fast navigation (no API calls)
 - ✅ Works offline once loaded (except images)
 - ❌ Large initial bundle
@@ -407,6 +457,7 @@ This creates an **all-or-nothing** loading model:
 ### PWA Readiness
 
 **What's Already There**:
+
 - ✅ PWA manifest with proper configuration
 - ✅ All recipe data bundled (no API dependency)
 - ✅ Client-side routing (works without server)
@@ -415,6 +466,7 @@ This creates an **all-or-nothing** loading model:
 - ✅ Installable on Android
 
 **What's Missing**:
+
 - ❌ Service worker registration
 - ❌ Cache-first strategy for app shell
 - ❌ Offline page fallback
@@ -459,23 +511,27 @@ After reviewing the production build, the 3.5MB gzipped bundle size raised conce
 **Answer**: Yes, but with architectural trade-offs:
 
 **Option A: Lazy Loading Individual Recipes**
+
 - Change [src/recipes/index.ts:7](src/recipes/index.ts#L7) from `import.meta.glob('./*.ts', { eager: true })` to `{ eager: false }`
 - Result: App shell loads fast (~500KB-1MB), each recipe fetched on navigation
 - Trade-off: Requires network for each recipe view, complicates offline mode
 
 **Option B: Load Recipe Metadata Separately**
+
 - Bundle only recipe metadata (title, slug, categories, image URLs) - ~200KB
 - Lazy load full recipe details (ingredients, instructions) on demand
 - Result: Fast homepage, individual recipe pages load incrementally
 - Trade-off: Requires restructuring recipe storage format
 
 **Option C: Keep Current + Add Service Worker (Recommended)**
+
 - Keep eager loading (users download 3.5MB once)
 - Add service worker to cache everything
 - Result: First visit = 3.5MB download, all subsequent visits = instant load from cache
 - Trade-off: First visit performance, but perfect offline experience thereafter
 
 **Option D: Split by Category**
+
 - Load recipes in category-based chunks
 - Result: Reduces initial bundle, loads relevant chunks on demand
 - Trade-off: Complex chunk management, multiple network requests
@@ -489,6 +545,7 @@ After reviewing the production build, the 3.5MB gzipped bundle size raised conce
 **Recommended Approach**: Use `vite-plugin-pwa` with Workbox
 
 **Why Workbox?**
+
 - Free and open source (MIT license)
 - Maintained by Google Chrome team
 - Built-in cache strategies
@@ -497,50 +554,57 @@ After reviewing the production build, the 3.5MB gzipped bundle size raised conce
 - ~10-20KB runtime overhead
 
 **Installation**:
+
 ```bash
 pnpm add -D vite-plugin-pwa
 ```
 
 **Configuration**: [vite.config.ts](vite.config.ts)
+
 ```typescript
-import { VitePWA } from 'vite-plugin-pwa';
+import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
   plugins: [
     VitePWA({
-      registerType: 'prompt',  // Ask user to update when new version available
+      registerType: 'prompt', // Ask user to update when new version available
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-        runtimeCaching: [{
-          // Cloudinary images - network first, cache as backup
-          urlPattern: /^https:\/\/res\.cloudinary\.com\/.*/,
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'cloudinary-images',
-            expiration: {
-              maxEntries: 50,
-              maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
-            }
-          }
-        }]
-      }
-    })
-  ]
-});
+        runtimeCaching: [
+          {
+            // Cloudinary images - network first, cache as backup
+            urlPattern: /^https:\/\/res\.cloudinary\.com\/.*/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'cloudinary-images',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+              },
+            },
+          },
+        ],
+      },
+    }),
+  ],
+})
 ```
 
 **Cache Strategy for App Shell**:
+
 - Use **CacheFirst** for app bundle (HTML, CSS, JS)
 - Version-based cache invalidation via file hashes
 - Automatic cleanup of old caches on service worker activation
 
 **Cache Strategy for Images**:
+
 - Use **NetworkFirst** for Cloudinary images
 - Falls back to "Pas d'image" placeholder on network failure (already implemented)
 - Cache up to 50 most recent images for 30 days
 - Keeps bundle size small while providing offline image support for frequently viewed recipes
 
 **Update Strategy**: Stale-While-Revalidate
+
 - New service worker installs in background when deployed
 - User sees banner: "New recipes available! Refresh to update."
 - On refresh, new cache replaces old cache
@@ -570,24 +634,26 @@ export default defineConfig({
    - Next launch shows new recipes
 
 **Cache Invalidation Code** (auto-generated by Workbox):
+
 ```javascript
-const CACHE_VERSION = 'v1.2.3';  // Auto-incremented on build
-const CACHE_NAME = `nosrecettes-${CACHE_VERSION}`;
+const CACHE_VERSION = 'v1.2.3' // Auto-incremented on build
+const CACHE_NAME = `nosrecettes-${CACHE_VERSION}`
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames
-          .filter(name => name !== CACHE_NAME)
-          .map(name => caches.delete(name))
-      );
-    })
-  );
-});
+          .filter((name) => name !== CACHE_NAME)
+          .map((name) => caches.delete(name)),
+      )
+    }),
+  )
+})
 ```
 
 **User Experience Timeline**:
+
 - **First visit**: Download 3.5MB gzipped, cache everything, app works offline
 - **Subsequent visits**: Instant load from cache (0 network)
 - **New deployment**: Background update, prompt to refresh
@@ -595,6 +661,7 @@ self.addEventListener('activate', (event) => {
 - **Recipe updates**: Users max 1 version behind until explicit refresh
 
 **Implementation Checklist**:
+
 1. Install `vite-plugin-pwa`
 2. Configure Workbox in [vite.config.ts](vite.config.ts)
 3. Add update prompt UI component
@@ -603,6 +670,7 @@ self.addEventListener('activate', (event) => {
 6. Monitor service worker activation in production
 
 **Image Placeholder Handling**:
+
 - Keep existing "Pas d'image" text (no need for "images not available in offline mode")
 - Cloudinary images naturally fail offline → existing error handling shows placeholder
 - Optional: Detect offline state and preemptively show placeholder to avoid loading delay

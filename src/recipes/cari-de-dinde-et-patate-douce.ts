@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const cariDeDindeEtPatateDouce: Recipe = {
   id: 'cari-de-dinde-et-patate-douce',
   title: 'Cari de dinde et patate douce',
-  description: 'Un curry savoureux à base de dinde, patates douces, lait de coco et épices, mijoté lentement pour un plat réconfortant.',
+  description:
+    'Un curry savoureux à base de dinde, patates douces, lait de coco et épices, mijoté lentement pour un plat réconfortant.',
   categories: ['Plats principaux', 'Végétarien'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 360, max: 360 },
@@ -21,7 +22,7 @@ export const cariDeDindeEtPatateDouce: Recipe = {
     '2 c. à soupe de pâte de cari indienne (douce ou piquante)',
     'Poivre et sel',
     '1 lime',
-    '½ tasse de coriandre fraîche'
+    '½ tasse de coriandre fraîche',
   ],
   instructions: [
     'Couper le dindon en cubes.',
@@ -35,9 +36,9 @@ export const cariDeDindeEtPatateDouce: Recipe = {
     'Couvrir et cuire 6 heures à faible intensité.',
     'Servir avec riz.',
     'Garnir avec coriandre et quartiers de lime.',
-    'Accompagner de pains naans.'
+    'Accompagner de pains naans.',
   ],
   tags: ['curry', 'mijoteuse', 'épices'],
   notes: 'Vous pouvez remplacer la dinde par du poulet.',
-  slug: 'cari-de-dinde-et-patate-douce'
-};
+  slug: 'cari-de-dinde-et-patate-douce',
+}

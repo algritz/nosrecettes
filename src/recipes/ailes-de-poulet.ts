@@ -1,16 +1,17 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const ailesDePoulet: Recipe = {
   id: 'ailes-de-poulet',
   title: 'Ailes de poulet',
-  description: 'Recette de ailes de poulet marinées, cuites au four et nappées d\'une sauce onctueuse à base de marinade réduite et de beurre.',
+  description:
+    "Recette de ailes de poulet marinées, cuites au four et nappées d'une sauce onctueuse à base de marinade réduite et de beurre.",
   categories: ['Vollaille'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 60, max: 60 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
-    '1.3 kg d\'ailes de poulet',
+    "1.3 kg d'ailes de poulet",
     '15 ml de beurre',
     '90 ml de sauce soya',
     '5 ml de sauce Worcestershire',
@@ -19,10 +20,10 @@ export const ailesDePoulet: Recipe = {
     '15 ml de moutarde de Dijon',
     '5 ml de moutarde sèche',
     '15 ml de romarin, haché',
-    '3 gousses d\'ail, pressées',
+    "3 gousses d'ail, pressées",
     '1 piment chili, tranché finement',
     '5 ml de poivre noir',
-    '3 ml de sel'
+    '3 ml de sel',
   ],
   instructions: [
     'Mélanger et fouetter tous les ingrédients de la marinade.',
@@ -40,8 +41,8 @@ export const ailesDePoulet: Recipe = {
     'Retirer du feu et incorporer le beurre.',
     'Transférer les ailes dans un grand bol et les napper de la sauce.',
     'Remuer pour enrober entièrement.',
-    'Répartir les ailes dans des assiettes et servir.'
+    'Répartir les ailes dans des assiettes et servir.',
   ],
   tags: ['marinade', 'four', 'sauce'],
-  slug: 'ailes-de-poulet'
-};
+  slug: 'ailes-de-poulet',
+}

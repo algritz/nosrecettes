@@ -1,194 +1,220 @@
-import { useState, useRef, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Upload, X, Image as ImageIcon, Loader2, Edit, Clock, Zap, Trash2 } from 'lucide-react';
-import { processImageFile, ProcessedImage, scheduleOldImageCleanup } from '@/utils/imageUtils';
-import { CloudinaryConfig, getScheduledCleanups } from '@/utils/cloudinaryUtils';
-import { showError } from '@/utils/toast';
-import { ImageEditor } from './ImageEditor';
-import { ResponsiveImage } from './ResponsiveImage';
-import { ImageSizes } from '@/types/recipe';
+import { useState, useRef, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Upload, X, Loader2, Edit, Clock, Zap, Trash2 } from 'lucide-react'
+import {
+  processImageFile,
+  ProcessedImage,
+  scheduleOldImageCleanup,
+} from '@/utils/imageUtils'
+import { CloudinaryConfig, getScheduledCleanups } from '@/utils/cloudinaryUtils'
+import { showError } from '@/utils/toast'
+import { ImageEditor } from './ImageEditor'
+import { ResponsiveImage } from './ResponsiveImage'
+import { ImageSizes } from '@/types/recipe'
 
 interface ImageUploadProps {
-  images: ProcessedImage[];
-  onImagesChange: (images: ProcessedImage[]) => void;
-  maxImages?: number;
-  className?: string;
-  recipeSlug?: string; // For tracking cleanup
-  existingImages?: ImageSizes[]; // Existing images from recipe
-  onExistingImageDelete?: (index: number) => void; // Callback for deleting existing images
-  showExistingImages?: boolean; // Whether to show existing images section
+  images: ProcessedImage[]
+  onImagesChange: (images: ProcessedImage[]) => void
+  maxImages?: number
+  className?: string
+  recipeSlug?: string // For tracking cleanup
+  existingImages?: ImageSizes[] // Existing images from recipe
+  onExistingImageDelete?: (index: number) => void // Callback for deleting existing images
+  showExistingImages?: boolean // Whether to show existing images section
 }
 
-export const ImageUpload = ({ 
-  images, 
-  onImagesChange, 
+export const ImageUpload = ({
+  images,
+  onImagesChange,
   maxImages = 5,
   className,
   recipeSlug = 'unknown',
   existingImages = [],
   onExistingImageDelete,
-  showExistingImages = false
+  showExistingImages = false,
 }: ImageUploadProps) => {
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [dragOver, setDragOver] = useState(false);
-  const [cloudinaryConfig, setCloudinaryConfig] = useState<CloudinaryConfig | null>(null);
-  const [editingFile, setEditingFile] = useState<File | null>(null);
-  const [editingIndex, setEditingIndex] = useState<number | null>(null);
-  const [isEditorOpen, setIsEditorOpen] = useState(false);
-  const [scheduledCleanups, setScheduledCleanups] = useState(0);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isProcessing, setIsProcessing] = useState(false)
+  const [dragOver, setDragOver] = useState(false)
+  const [cloudinaryConfig, setCloudinaryConfig] =
+    useState<CloudinaryConfig | null>(null)
+  const [editingFile, setEditingFile] = useState<File | null>(null)
+  const [editingIndex, setEditingIndex] = useState<number | null>(null)
+  const [isEditorOpen, setIsEditorOpen] = useState(false)
+  const [scheduledCleanups, setScheduledCleanups] = useState(0)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     // Load Cloudinary config
-    const savedConfig = localStorage.getItem('cloudinary-config');
+    const savedConfig = localStorage.getItem('cloudinary-config')
     if (savedConfig) {
-      setCloudinaryConfig(JSON.parse(savedConfig));
+      setCloudinaryConfig(JSON.parse(savedConfig))
     }
 
     // Load scheduled cleanups count
-    const cleanups = getScheduledCleanups();
-    setScheduledCleanups(cleanups.length);
-  }, []);
+    const cleanups = getScheduledCleanups()
+    setScheduledCleanups(cleanups.length)
+  }, [])
 
   const processAndAddImage = async (file: File) => {
-    setIsProcessing(true);
+    setIsProcessing(true)
     try {
-      const processedImage = await processImageFile(file, cloudinaryConfig || undefined);
-      onImagesChange([...images, processedImage]);
+      const processedImage = await processImageFile(
+        file,
+        cloudinaryConfig || undefined,
+      )
+      onImagesChange([...images, processedImage])
     } catch (error) {
-      showError(error instanceof Error ? error.message : 'Erreur lors du traitement de l\'image');
+      showError(
+        error instanceof Error
+          ? error.message
+          : "Erreur lors du traitement de l'image",
+      )
     } finally {
-      setIsProcessing(false);
+      setIsProcessing(false)
     }
-  };
+  }
 
   const processAndReplaceImage = async (file: File, index: number) => {
-    setIsProcessing(true);
+    setIsProcessing(true)
     try {
       // Get the old image for cleanup scheduling
-      const oldImage = images[index];
-      
+      const oldImage = images[index]
+
       // Process the new image
-      const processedImage = await processImageFile(file, cloudinaryConfig || undefined);
-      
+      const processedImage = await processImageFile(
+        file,
+        cloudinaryConfig || undefined,
+      )
+
       // Replace the image in the array
-      const newImages = [...images];
-      newImages[index] = processedImage;
-      onImagesChange(newImages);
-      
+      const newImages = [...images]
+      newImages[index] = processedImage
+      onImagesChange(newImages)
+
       // Schedule cleanup of old image (will happen via GitHub Action after PR merge)
       if (oldImage.publicId && cloudinaryConfig) {
-        scheduleOldImageCleanup([oldImage.sizes], recipeSlug, 'replaced');
-        setScheduledCleanups(prev => prev + 1);
+        scheduleOldImageCleanup([oldImage.sizes], recipeSlug, 'replaced')
+        setScheduledCleanups((prev) => prev + 1)
       }
-      
     } catch (error) {
-      showError(error instanceof Error ? error.message : 'Erreur lors du traitement de l\'image');
+      showError(
+        error instanceof Error
+          ? error.message
+          : "Erreur lors du traitement de l'image",
+      )
     } finally {
-      setIsProcessing(false);
+      setIsProcessing(false)
     }
-  };
+  }
 
   const handleFileSelect = async (files: FileList | null) => {
-    if (!files) return;
+    if (!files) return
 
-    const fileArray = Array.from(files);
-    const remainingSlots = maxImages - images.length;
-    
+    const fileArray = Array.from(files)
+    const remainingSlots = maxImages - images.length
+
     if (fileArray.length > remainingSlots) {
-      showError(`Vous ne pouvez ajouter que ${remainingSlots} image(s) supplémentaire(s)`);
-      return;
+      showError(
+        `Vous ne pouvez ajouter que ${remainingSlots} image(s) supplémentaire(s)`,
+      )
+      return
     }
 
     // For single file, open editor
     if (fileArray.length === 1) {
-      setEditingFile(fileArray[0]);
-      setEditingIndex(null); // New image, not replacing
-      setIsEditorOpen(true);
+      setEditingFile(fileArray[0])
+      setEditingIndex(null) // New image, not replacing
+      setIsEditorOpen(true)
     } else {
       // For multiple files, process directly
-      setIsProcessing(true);
+      setIsProcessing(true)
       try {
         const processedImages = await Promise.all(
-          fileArray.map(file => processImageFile(file, cloudinaryConfig || undefined))
-        );
-        onImagesChange([...images, ...processedImages]);
+          fileArray.map(async (file) =>
+            processImageFile(file, cloudinaryConfig || undefined),
+          ),
+        )
+        onImagesChange([...images, ...processedImages])
       } catch (error) {
-        showError(error instanceof Error ? error.message : 'Erreur lors du traitement des images');
+        showError(
+          error instanceof Error
+            ? error.message
+            : 'Erreur lors du traitement des images',
+        )
       } finally {
-        setIsProcessing(false);
+        setIsProcessing(false)
       }
     }
-  };
+  }
 
   const handleEditorSave = (editedFile: File) => {
     if (editingIndex !== null) {
       // Replacing existing image
-      processAndReplaceImage(editedFile, editingIndex);
+      void processAndReplaceImage(editedFile, editingIndex)
     } else {
       // Adding new image
-      processAndAddImage(editedFile);
+      void processAndAddImage(editedFile)
     }
-    setEditingFile(null);
-    setEditingIndex(null);
-  };
+    setEditingFile(null)
+    setEditingIndex(null)
+  }
 
   const handleEditorClose = () => {
-    setIsEditorOpen(false);
-    setEditingFile(null);
-    setEditingIndex(null);
-  };
+    setIsEditorOpen(false)
+    setEditingFile(null)
+    setEditingIndex(null)
+  }
 
   const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-    handleFileSelect(e.dataTransfer.files);
-  };
+    e.preventDefault()
+    setDragOver(false)
+    void handleFileSelect(e.dataTransfer.files)
+  }
 
   const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    setDragOver(true);
-  };
+    e.preventDefault()
+    setDragOver(true)
+  }
 
   const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-  };
+    e.preventDefault()
+    setDragOver(false)
+  }
 
-  const removeImage = async (index: number) => {
-    const imageToRemove = images[index];
-    
+  const removeImage = (index: number) => {
+    const imageToRemove = images[index]
+
     // Remove from array first
-    const newImages = images.filter((_, i) => i !== index);
-    onImagesChange(newImages);
-    
+    const newImages = images.filter((_, i) => i !== index)
+    onImagesChange(newImages)
+
     // Schedule cleanup from Cloudinary (will happen via GitHub Action after PR merge)
     if (imageToRemove.publicId && cloudinaryConfig) {
-      scheduleOldImageCleanup([imageToRemove.sizes], recipeSlug, 'removed');
-      setScheduledCleanups(prev => prev + 1);
+      scheduleOldImageCleanup([imageToRemove.sizes], recipeSlug, 'removed')
+      setScheduledCleanups((prev) => prev + 1)
     }
-  };
+  }
 
   const moveImage = (fromIndex: number, toIndex: number) => {
-    const newImages = [...images];
-    const [movedImage] = newImages.splice(fromIndex, 1);
-    newImages.splice(toIndex, 0, movedImage);
-    onImagesChange(newImages);
-  };
+    const newImages = [...images]
+    const [movedImage] = newImages.splice(fromIndex, 1)
+    newImages.splice(toIndex, 0, movedImage)
+    onImagesChange(newImages)
+  }
 
   const editImage = (index: number) => {
-    const imageToEdit = images[index];
-    setEditingFile(imageToEdit.file);
-    setEditingIndex(index);
-    setIsEditorOpen(true);
-  };
+    const imageToEdit = images[index]
+    setEditingFile(imageToEdit.file)
+    setEditingIndex(index)
+    setIsEditorOpen(true)
+  }
 
   const handleDeleteExistingImage = (index: number) => {
     if (onExistingImageDelete) {
-      onExistingImageDelete(index);
+      onExistingImageDelete(index)
     }
-  };
+  }
 
   return (
     <div className={className}>
@@ -200,12 +226,14 @@ export const ImageUpload = ({
           </p>
           <div className="flex items-center gap-2 mt-2 text-xs text-green-600">
             <Zap className="w-3 h-3" />
-            Les anciennes images seront supprimées automatiquement par GitHub Action
+            Les anciennes images seront supprimées automatiquement par GitHub
+            Action
           </div>
           {scheduledCleanups > 0 && (
             <div className="flex items-center gap-1 mt-1 text-xs text-orange-600">
               <Clock className="w-3 h-3" />
-              {scheduledCleanups} image(s) programmée(s) pour suppression automatique
+              {scheduledCleanups} image(s) programmée(s) pour suppression
+              automatique
             </div>
           )}
         </div>
@@ -235,7 +263,7 @@ export const ImageUpload = ({
                         className="w-full h-full"
                         showPlaceholder={true}
                       />
-                      
+
                       {/* Delete Button */}
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <Button
@@ -249,7 +277,7 @@ export const ImageUpload = ({
                           <Trash2 className="w-3 h-3" />
                         </Button>
                       </div>
-                      
+
                       {/* Primary Image Badge */}
                       {index === 0 && (
                         <div className="absolute top-2 left-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded">
@@ -262,8 +290,8 @@ export const ImageUpload = ({
               ))}
             </div>
             <p className="text-xs text-muted-foreground mt-2">
-              Ces images seront conservées si vous n'ajoutez pas de nouvelles images. 
-              Cliquez sur une image pour la supprimer.
+              Ces images seront conservées si vous n'ajoutez pas de nouvelles
+              images. Cliquez sur une image pour la supprimer.
             </p>
           </CardContent>
         </Card>
@@ -271,9 +299,11 @@ export const ImageUpload = ({
 
       {/* Upload Area */}
       {images.length < maxImages && (
-        <Card 
+        <Card
           className={`border-2 border-dashed transition-colors ${
-            dragOver ? 'border-primary bg-primary/5' : 'border-muted-foreground/25'
+            dragOver
+              ? 'border-primary bg-primary/5'
+              : 'border-muted-foreground/25'
           }`}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
@@ -285,15 +315,17 @@ export const ImageUpload = ({
               type="file"
               accept="image/*"
               multiple
-              onChange={(e) => handleFileSelect(e.target.files)}
+              onChange={async (e) => handleFileSelect(e.target.files)}
               className="hidden"
             />
-            
+
             {isProcessing ? (
               <div className="flex flex-col items-center gap-4">
                 <Loader2 className="w-8 h-8 animate-spin text-primary" />
                 <p className="text-sm text-muted-foreground">
-                  {cloudinaryConfig ? 'Upload vers Cloudinary...' : 'Traitement des images...'}
+                  {cloudinaryConfig
+                    ? 'Upload vers Cloudinary...'
+                    : 'Traitement des images...'}
                 </p>
               </div>
             ) : (
@@ -312,14 +344,16 @@ export const ImageUpload = ({
                     </Button>
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    PNG, JPG, WEBP jusqu'à 10MB • {images.length}/{maxImages} images
+                    PNG, JPG, WEBP jusqu'à 10MB • {images.length}/{maxImages}{' '}
+                    images
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">
                     💡 Sélectionnez une seule image pour l'éditer avant upload
                   </p>
                   {showExistingImages && existingImages.length > 0 && (
                     <p className="text-xs text-muted-foreground mt-1">
-                      ⚠️ Ajouter de nouvelles images remplacera les images existantes
+                      ⚠️ Ajouter de nouvelles images remplacera les images
+                      existantes
                     </p>
                   )}
                 </div>
@@ -341,7 +375,7 @@ export const ImageUpload = ({
                     alt={`Nouvelle image ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
-                  
+
                   {/* Image Controls */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1">
                     <Button
@@ -354,7 +388,7 @@ export const ImageUpload = ({
                     >
                       <Edit className="w-3 h-3" />
                     </Button>
-                    
+
                     <Button
                       type="button"
                       size="sm"
@@ -365,7 +399,7 @@ export const ImageUpload = ({
                     >
                       <X className="w-3 h-3" />
                     </Button>
-                    
+
                     {index > 0 && (
                       <Button
                         type="button"
@@ -378,7 +412,7 @@ export const ImageUpload = ({
                         ←
                       </Button>
                     )}
-                    
+
                     {index < images.length - 1 && (
                       <Button
                         type="button"
@@ -392,7 +426,7 @@ export const ImageUpload = ({
                       </Button>
                     )}
                   </div>
-                  
+
                   {/* Primary Image Badge */}
                   {index === 0 && (
                     <div className="absolute top-2 left-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded">
@@ -412,7 +446,7 @@ export const ImageUpload = ({
                     Nouveau
                   </div>
                 </div>
-                
+
                 <p className="text-xs text-muted-foreground mt-2 truncate">
                   {processedImage.file.name}
                 </p>
@@ -432,5 +466,5 @@ export const ImageUpload = ({
         />
       )}
     </div>
-  );
-};
+  )
+}

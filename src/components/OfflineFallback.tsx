@@ -1,17 +1,17 @@
-import { WifiOff } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useNavigate } from 'react-router-dom';
+import { WifiOff } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useNavigate } from 'react-router-dom'
 
 export function OfflineFallback() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleGoHome = () => {
-    navigate('/');
-  };
+    navigate('/')
+  }
 
   const handleRetry = () => {
-    window.location.reload();
-  };
+    window.location.reload()
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-background">
@@ -27,8 +27,8 @@ export function OfflineFallback() {
             Connexion requise
           </h1>
           <p className="text-muted-foreground">
-            Cette fonctionnalité nécessite une connexion Internet.
-            Les recettes sont disponibles hors ligne, mais pas les outils d'administration.
+            Cette fonctionnalité nécessite une connexion Internet. Les recettes
+            sont disponibles hors ligne, mais pas les outils d'administration.
           </p>
         </div>
 
@@ -42,5 +42,5 @@ export function OfflineFallback() {
         </div>
       </div>
     </div>
-  );
+  )
 }

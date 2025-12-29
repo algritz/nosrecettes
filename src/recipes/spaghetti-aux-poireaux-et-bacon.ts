@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const spaghettiAuxPoireauxEtBacon: Recipe = {
   id: 'spaghetti-aux-poireaux-et-bacon',
@@ -18,22 +18,23 @@ export const spaghettiAuxPoireauxEtBacon: Recipe = {
     'Parmesan',
     'Eau de cuisson des pâtes',
     '2 œufs pochés',
-    'Sel et poivre au goût'
+    'Sel et poivre au goût',
   ],
   instructions: [
-    'Faire cuire les pâte dans de l\'eau bouillante salée.',
+    "Faire cuire les pâte dans de l'eau bouillante salée.",
     'Séparer la partie blanche du poireau du vert.',
     'Couper le blanc en fines tranches et mettre de côté.',
-    'Couper le vert sur le sens de la longueur en julienne pour qu\'il ressemble à de long spaghetti et bien les laver.',
-    'Plonger les poireaux verts dans de l\'eau bouillante 3 minutes et par la suite mettre dans de l\'eau glacée pour fixer la chlorophylle.',
+    "Couper le vert sur le sens de la longueur en julienne pour qu'il ressemble à de long spaghetti et bien les laver.",
+    "Plonger les poireaux verts dans de l'eau bouillante 3 minutes et par la suite mettre dans de l'eau glacée pour fixer la chlorophylle.",
     'Couper le bacon en fine tranche et faire revenir dans une casserole avec le beurre.',
-    'Une fois le bacon cuit, ajouter le blanc de poireau et faire revenir jusqu\'à ce qu\'ils tombent.',
+    "Une fois le bacon cuit, ajouter le blanc de poireau et faire revenir jusqu'à ce qu'ils tombent.",
     'Ajouter la crème et bien brasser.',
-    'Ajouter les pâtes cuites et environ une louche d\'eau de cuisson des pâtes et bien mélanger.',
+    "Ajouter les pâtes cuites et environ une louche d'eau de cuisson des pâtes et bien mélanger.",
     'Saler et poivrer.',
-    'Servir dans des bols, garnir de parmesan et d\'un œuf poché coulant.'
+    "Servir dans des bols, garnir de parmesan et d'un œuf poché coulant.",
   ],
   tags: ['pâtes', 'poireaux', 'bacon'],
-  notes: 'La prochaine fois au lieu des œufs pochés, je vais mettre une burrata.',
-  slug: 'spaghetti-aux-poireaux-et-bacon'
-};
+  notes:
+    'La prochaine fois au lieu des œufs pochés, je vais mettre une burrata.',
+  slug: 'spaghetti-aux-poireaux-et-bacon',
+}

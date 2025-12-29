@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeBUfParmesanBalsamiqueEtPestoDeTomates: Recipe = {
   id: 'tartare-de-b-uf-parmesan-balsamique-et-pesto-de-tomates',
   title: 'Tartare de bœuf, parmesan, balsamique et pesto de tomates',
-  description: 'Un tartare de bœuf frais, agrémenté de parmesan, pesto de tomates, et servi avec une salade de roquette et croûtons maison.',
+  description:
+    'Un tartare de bœuf frais, agrémenté de parmesan, pesto de tomates, et servi avec une salade de roquette et croûtons maison.',
   categories: ['Entrées'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 0, max: 0 },
@@ -24,7 +25,7 @@ export const tartareDeBUfParmesanBalsamiqueEtPestoDeTomates: Recipe = {
     '2 c. à soupe de Rice Krispies',
     '1 c. à soupe de fromage parmesan (pour la garniture)',
     'Salade de roquette',
-    '8 croûtons maison'
+    '8 croûtons maison',
   ],
   instructions: [
     'Dans un bol, mélanger le vinaigre, l’huile d’olive, la moutarde, la sauce Sriracha et le pesto de tomates. Réserver.',
@@ -32,8 +33,8 @@ export const tartareDeBUfParmesanBalsamiqueEtPestoDeTomates: Recipe = {
     'Incorporer la vinaigrette au filet mignon. Saler et poivrer et mettre au frigo pendant une heure.',
     'Dans une assiette, écraser les Rice Krispies avec les 3 c. à thé de fromage parmesan. Réserver.',
     'À l’aide d’un emporte-pièce, déposer le tartare dans une assiette et garnir du mélange de céréales et de parmesan.',
-    'Servir avec de la roquette.'
+    'Servir avec de la roquette.',
   ],
   tags: ['frais', 'bœuf', 'garniture'],
-  slug: 'tartare-de-b-uf-parmesan-balsamique-et-pesto-de-tomates'
-};
+  slug: 'tartare-de-b-uf-parmesan-balsamique-et-pesto-de-tomates',
+}

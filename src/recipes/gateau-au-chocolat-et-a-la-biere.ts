@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const gateauAuChocolatEtALaBiere: Recipe = {
   id: 'gateau-au-chocolat-et-a-la-biere',
   title: 'Gâteau au Chocolat et à la Bière',
-  description: 'Un gâteau moelleux au chocolat infusé à la bière noire, garni d\'un glaçage chocolaté à la bière et à la crème.',
+  description:
+    "Un gâteau moelleux au chocolat infusé à la bière noire, garni d'un glaçage chocolaté à la bière et à la crème.",
   categories: ['Pâtisseries et desserts'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 50, max: 50 },
@@ -22,7 +23,7 @@ export const gateauAuChocolatEtALaBiere: Recipe = {
     '1/4 tasse de bière noire',
     '1/4 tasse de crème 35 %',
     '2 c. à soupe de beurre froid coupé en dés',
-    '2 c. à soupe de miel'
+    '2 c. à soupe de miel',
   ],
   instructions: [
     'Placer la grille au centre du four. Préchauffer le four à 350 °F. Beurrer les parois et tapisser le fond d’un moule à charnière de 23 cm (9 po) de diamètre de papier parchemin.',
@@ -35,8 +36,8 @@ export const gateauAuChocolatEtALaBiere: Recipe = {
     'Glaçage: Placer le chocolat dans un bol. Réserver.',
     'Dans une casserole, porter à ébullition la bière, la crème et le miel. Retirer du feu et verser sur le chocolat. Laisser reposer 1 minute.',
     'À l’aide d’un fouet, mélanger jusqu’à ce que le chocolat soit fondu. Ajouter le beurre et bien mélanger.',
-    'Faire couler sur le gâteau.'
+    'Faire couler sur le gâteau.',
   ],
   tags: ['chocolat', 'bière', 'glaçage'],
-  slug: 'gateau-au-chocolat-et-a-la-biere'
-};
+  slug: 'gateau-au-chocolat-et-a-la-biere',
+}

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladePasDeSalade: Recipe = {
   id: 'salade-pas-de-salade',
   title: 'Salade pas de salade',
-  description: 'Cette salade est excellente en été avec des fines herbes de votre jardin.',
+  description:
+    'Cette salade est excellente en été avec des fines herbes de votre jardin.',
   categories: ['Salades'],
   prepTime: { min: 45, max: 45 },
   cookTime: { min: 0, max: 0 },
@@ -22,7 +23,7 @@ export const saladePasDeSalade: Recipe = {
     'Moutarde de Dijon ordinaire',
     'Moutarde de Dijon à l’ancienne',
     'Sirop d’érable',
-    'Sel et poivre au goût'
+    'Sel et poivre au goût',
   ],
   instructions: [
     'Prendre les fines herbes fraiche, hachez-les grossièrement et mettre dans un saladier.',
@@ -31,8 +32,8 @@ export const saladePasDeSalade: Recipe = {
     'Mélanger les ingrédients de la sauce à votre goût en mettant la même quantité pour les deux sortes de moutarde.',
     'Avant de mettre la sauce dans la salade, prendre le temps d’égoutter la salade pour enlever le jus des tomates, si non la salade sera trop liquide.',
     'Verser la sauce à salade dans le saladier, saler, poivrer et bien brasser.',
-    'Si vous avez le temps laisser reposer un peu.'
+    'Si vous avez le temps laisser reposer un peu.',
   ],
   tags: ['fines herbes', 'tomates cerises', 'sauce'],
-  slug: 'salade-pas-de-salade'
-};
+  slug: 'salade-pas-de-salade',
+}

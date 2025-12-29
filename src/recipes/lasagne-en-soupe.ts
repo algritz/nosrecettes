@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const lasagneEnSoupe: Recipe = {
   id: 'lasagne-en-soupe',
   title: 'Lasagne en soupe',
-  description: 'Une soupe réconfortante avec des pâtes de lasagne, de la viande hachée et des épices italiennes, servie avec du persil frais et du fromage râpé.',
+  description:
+    'Une soupe réconfortante avec des pâtes de lasagne, de la viande hachée et des épices italiennes, servie avec du persil frais et du fromage râpé.',
   categories: ['Soupes'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 45, max: 45 },
@@ -12,7 +13,7 @@ export const lasagneEnSoupe: Recipe = {
   ingredients: [
     '1 lb de bœuf haché',
     '1 oignon haché finement',
-    '1 gousse d\'ail haché finement',
+    "1 gousse d'ail haché finement",
     '2 carottes coupées en petits cubes',
     '2 branches de céleri coupées en petits cubes',
     '1 piment coupé en petits dés',
@@ -20,27 +21,27 @@ export const lasagneEnSoupe: Recipe = {
     '1 litre de bouillons de bœuf',
     '1 canne de crème tomate',
     '3 c. à soupe de pâte de tomate',
-    '1 c. à soupe d\'épice italienne',
+    "1 c. à soupe d'épice italienne",
     '1 c. à thé de basilic',
-    '1 c. à thé d\'origan',
+    "1 c. à thé d'origan",
     '1/4 c. à thé de piment broyé',
     '1/4 c. à thé de piments moulus',
     '1 c. à thé de sauce worcestershire',
     '6 pâtes de lasagne cru cassées en morceaux',
     'Sel poivre au goût',
-    'Persil et fromage râpé pour servir'
+    'Persil et fromage râpé pour servir',
   ],
   instructions: [
-    'Dans un grand chaudron, faire revenir l\'oignon et l\'ail.',
-    'Saler et poivrer le bœuf haché et le faire sauter avec l\'oignon et l\'ail.',
+    "Dans un grand chaudron, faire revenir l'oignon et l'ail.",
+    "Saler et poivrer le bœuf haché et le faire sauter avec l'oignon et l'ail.",
     'Une fois la viande brunit, ajouter les carottes, le céleri et le piment et faire sauter quelques minutes en remuant.',
     'Ajouter la tomate et bien brasser.',
     'Ajouter le bouillon de bœuf, la crème de tomate et la pâte de tomate et bien remuer.',
     'Ajouter les épices et la sauce worcestershire et bien remuer.',
     'Ajouter les pâtes de lasagne cassées et bien brasser.',
-    'Couvrir et laisser cuire à feu doux pendant 25 minutes ou jusqu\'à ce que les pâtes soient prêtes. Remuer de temps en temps pendant la cuisson.',
-    'Servir avec du persil frais et un peu de fromage râpé.'
+    "Couvrir et laisser cuire à feu doux pendant 25 minutes ou jusqu'à ce que les pâtes soient prêtes. Remuer de temps en temps pendant la cuisson.",
+    'Servir avec du persil frais et un peu de fromage râpé.',
   ],
   tags: ['soupe', 'italien', 'pâtes'],
-  slug: 'lasagne-en-soupe'
-};
+  slug: 'lasagne-en-soupe',
+}

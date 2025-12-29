@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const crepesEpicee: Recipe = {
   id: 'crepes-epicee',
   title: 'Crêpes épicée',
-  description: 'Crêpes épicée avec farce de pommes de terre, accompagnée d\'une sauce au yogourt à la coriandre.',
+  description:
+    "Crêpes épicée avec farce de pommes de terre, accompagnée d'une sauce au yogourt à la coriandre.",
   categories: ['Végétarien', 'Plats principaux', 'Tartares'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 20, max: 20 },
@@ -12,9 +13,9 @@ export const crepesEpicee: Recipe = {
   ingredients: [
     'Crêpes',
     '10 ml de graines de cumin',
-    'Huile d\'olive',
+    "Huile d'olive",
     '1 piment chili vert, épépiné et haché finement (facultatif)',
-    '2 gousses d\'ail, pelées et hachées finement',
+    "2 gousses d'ail, pelées et hachées finement",
     '1 morceau de 3 cm de gingembre frais, pelé et haché finement',
     '125 g de farine blanche',
     '1 gros œuf',
@@ -24,11 +25,11 @@ export const crepesEpicee: Recipe = {
     '30 ml de coriandre fraîche, hachée',
     'Sel de mer (au goût)',
     'Poivre du moulin (au goût)',
-    'Huile d\'olive',
+    "Huile d'olive",
     '5 ml de graines de moutarde',
     '1/2 oignon, pelé et émincé finement',
     '5 ml de curcuma moulu',
-    '6 pommes de terre cuites, refroidies, tranchées grossièrement'
+    '6 pommes de terre cuites, refroidies, tranchées grossièrement',
   ],
   instructions: [
     'Dans une poêle, rôtir les graines de cumin avec une pincée de sel à moyen-élevé pour environ 1 minute.',
@@ -46,8 +47,8 @@ export const crepesEpicee: Recipe = {
     'Plonger une louche dans le mélange à pancakes et déposer dans la poêle chaude. Incliner la poêle afin de bien étendre le mélange.',
     'Cuire 1 minute de chaque côté, jusqu’à ce que la crêpe soit dorée. Répéter pour chaque pancake.',
     'Mélanger le yogourt et la coriandre et assaisonner au goût.',
-    'Pour servir, placer une bonne portion de la farce de pommes de terre au milieu de chaque crêpe, déposer une noisette de yogourt si désiré et rouler en forme de saucisse.'
+    'Pour servir, placer une bonne portion de la farce de pommes de terre au milieu de chaque crêpe, déposer une noisette de yogourt si désiré et rouler en forme de saucisse.',
   ],
   tags: ['épicé', 'crêpes', 'farce'],
-  slug: 'crepes-epicee'
-};
+  slug: 'crepes-epicee',
+}

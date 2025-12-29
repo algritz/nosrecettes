@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const browniesAuBarresMars: Recipe = {
   id: 'brownies-au-barres-mars',
@@ -16,7 +16,7 @@ export const browniesAuBarresMars: Recipe = {
     '2 oeufs',
     '1 c. à thé de vanille',
     '70 g (1/2 tasse) de farine tout usage non blanchie',
-    '8 petites barres Mars de 13 g, chacune coupée en 3 tranches'
+    '8 petites barres Mars de 13 g, chacune coupée en 3 tranches',
   ],
   instructions: [
     'Placer la grille au centre du four. Préchauffer le four à 180 °C (350 °F).',
@@ -28,16 +28,19 @@ export const browniesAuBarresMars: Recipe = {
     'Répartir la pâte dans les moules.',
     'Placer un morceau de barre Mars au centre de chaque brownie en l’enfonçant un peu dans la pâte et en déposer un autre sur le dessus.',
     'Cuire au four 15 minutes ou jusqu’à ce qu’un cure-dents inséré au centre du gâteau, en évitant la barre, en ressorte avec des grumeaux et pas complètement propre.',
-    'Laisser tempérer les brownies environ 2 heures avant de les manger.'
+    'Laisser tempérer les brownies environ 2 heures avant de les manger.',
   ],
   tags: ['chocolat', 'mars', 'gâteaux'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/brownies-au-barres-mars',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/brownies-au-barres-mars',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brownies-au-barres-mars'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/brownies-au-barres-mars',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/brownies-au-barres-mars',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brownies-au-barres-mars',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'brownies-au-barres-mars'
-};
+  slug: 'brownies-au-barres-mars',
+}

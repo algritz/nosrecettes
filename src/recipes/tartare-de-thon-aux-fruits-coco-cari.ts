@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeThonAuxFruitsCocoCari: Recipe = {
   id: 'tartare-de-thon-aux-fruits-coco-cari',
   title: 'Tartare de thon aux fruits coco-cari',
-  description: 'Un tartare frais de thon, banane et pomme, relevé de citron vert, lait de coco et cari, servi après deux périodes de marinade au frais.',
+  description:
+    'Un tartare frais de thon, banane et pomme, relevé de citron vert, lait de coco et cari, servi après deux périodes de marinade au frais.',
   categories: ['Entrées'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 0, max: 0 },
@@ -16,8 +17,8 @@ export const tartareDeThonAuxFruitsCocoCari: Recipe = {
     'Oignons verts ciselés ou ciboulette au goût',
     'Sel & Poivre',
     '5 cuillères à soupe de lait de coco',
-    'Le jus d\'un citron vert',
-    'Cari fort au goût'
+    "Le jus d'un citron vert",
+    'Cari fort au goût',
   ],
   instructions: [
     'Dans un récipient non métallique, déposez le poisson, la banane et la pomme.',
@@ -25,10 +26,10 @@ export const tartareDeThonAuxFruitsCocoCari: Recipe = {
     'Mélangez.',
     'Disposez 15 minutes au frais.',
     'Après les 15 minutes, incorporez le lait de coco et le cari à la préparation.',
-    'Rectifiez l\'assaisonnement.',
-    'Placez de nouveau 15 minutes au frais puis servez.'
+    "Rectifiez l'assaisonnement.",
+    'Placez de nouveau 15 minutes au frais puis servez.',
   ],
   tags: ['coco', 'cari', 'frais'],
   marinatingTime: { min: 30, max: 30 },
-  slug: 'tartare-de-thon-aux-fruits-coco-cari'
-};
+  slug: 'tartare-de-thon-aux-fruits-coco-cari',
+}

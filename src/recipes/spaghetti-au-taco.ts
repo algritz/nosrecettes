@@ -1,39 +1,40 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const spaghettiAuTaco: Recipe = {
   id: 'spaghetti-au-taco',
   title: 'Spaghetti au Taco',
-  description: 'Un plat de spaghetti savoureux avec une touche de tacos, garni de fromages et de tomates fraîches.',
+  description:
+    'Un plat de spaghetti savoureux avec une touche de tacos, garni de fromages et de tomates fraîches.',
   categories: ['Plats principaux'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 40, max: 40 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
-    '1 cuillère à soupe huile d\'olive',
+    "1 cuillère à soupe huile d'olive",
     '1 lb boeuf haché',
     '½ tasse oignon jaune coupé en dés',
-    '1 paquet d\'assaisonnement pour tacos',
+    "1 paquet d'assaisonnement pour tacos",
     '1 cuillère à soupe pâte de tomate',
     '1 boîte de conserve tomate coupée en dés',
     '230 g spaghettis',
-    '3 tasses d\'eau',
+    "3 tasses d'eau",
     '½ tasse fromage cheddar râpé (50 g)',
     '½ tasse fromage mozzarella râpé (50 g)',
     '1 tomate coupée en dés',
-    '2 cuillères à soupe coriandre fraîche hachée'
+    '2 cuillères à soupe coriandre fraîche hachée',
   ],
   instructions: [
-    'Chauffer l\'huile d\'olive dans une grande casserole à feu moyen-vif.',
-    'Ajouter le boeuf haché, les oignons jaunes et l\'assaisonnement pour tacos.',
-    'Cuire jusqu\'à ce que le boeuf ait bruni, environ 3-5 minutes, en veillant à le réduire en morceaux pendant la cuisson.',
+    "Chauffer l'huile d'olive dans une grande casserole à feu moyen-vif.",
+    "Ajouter le boeuf haché, les oignons jaunes et l'assaisonnement pour tacos.",
+    "Cuire jusqu'à ce que le boeuf ait bruni, environ 3-5 minutes, en veillant à le réduire en morceaux pendant la cuisson.",
     'Incorporer la pâte de tomates et les tomates en dés, puis remuer.',
-    'Ajouter les spaghettis et 3 tasses d\'eau.',
-    'Porter à ébullition; couvrir, réduire le feu et laisser mijoter jusqu\'à ce que les pâtes soient bien cuites, environ 15 minutes.',
+    "Ajouter les spaghettis et 3 tasses d'eau.",
+    "Porter à ébullition; couvrir, réduire le feu et laisser mijoter jusqu'à ce que les pâtes soient bien cuites, environ 15 minutes.",
     'Retirer du feu et garnir de fromage cheddar, mozzarella, tomate Roma et coriandre.',
-    'Mélanger jusqu\'à ce que le fromage soit fondu.',
-    'Servir immédiatement. Décorer de tomates et de coriandre supplémentaires, si désiré.'
+    "Mélanger jusqu'à ce que le fromage soit fondu.",
+    'Servir immédiatement. Décorer de tomates et de coriandre supplémentaires, si désiré.',
   ],
   tags: ['tacos', 'pâtes', 'fromage'],
-  slug: 'spaghetti-au-taco'
-};
+  slug: 'spaghetti-au-taco',
+}

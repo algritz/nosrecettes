@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pateFrancais: Recipe = {
   id: 'pate-francais',
@@ -17,19 +17,20 @@ export const pateFrancais: Recipe = {
     '1 conserve (10 oz; 284 ml) de crème de tomates',
     '1 enveloppe de sauce brune de votre marque favorite',
     'Sel, au goût',
-    'Poivre, au goût'
+    'Poivre, au goût',
   ],
   instructions: [
     'Cuire le boeuf haché dans le beurre. Si trop de gras, égoutter un peu au besoin.',
     'Déposer dans un plat allant au four.',
-    'Recouvrir de tranches d\'oignons, de carottes et de pommes de terre.',
-    'Faire chauffer la sauce brune tel qu\'indiquer sur l\'enveloppe.',
+    "Recouvrir de tranches d'oignons, de carottes et de pommes de terre.",
+    "Faire chauffer la sauce brune tel qu'indiquer sur l'enveloppe.",
     'Une fois que la sauce est prête, y ajouter la crème de tomate et bien mélanger.',
     'Verser sur la viande et les légumes la sauce brune et la crème de tomate mélangés.',
     'Saler et poivrer.',
-    'Cuire au four à 350°F (180°C) pendant environ 1h30 à 2 heures.'
+    'Cuire au four à 350°F (180°C) pendant environ 1h30 à 2 heures.',
   ],
   tags: ['bœuf', 'sauce brune', 'four'],
-  notes: 'Pour plus de goût, vous pouvez ajouter vos épices préférées au boeuf haché. Vous pouvez aussi gratiner le tout.',
-  slug: 'pate-francais'
-};
+  notes:
+    'Pour plus de goût, vous pouvez ajouter vos épices préférées au boeuf haché. Vous pouvez aussi gratiner le tout.',
+  slug: 'pate-francais',
+}

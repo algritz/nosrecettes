@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const brochettesDeThonEtDAnanas: Recipe = {
   id: 'brochettes-de-thon-et-d-ananas',
@@ -17,7 +17,7 @@ export const brochettesDeThonEtDAnanas: Recipe = {
     'Jus de 1 lime fraîche',
     '30 ml (2 c. à soupe) d’huile végétale',
     'Poivre noir moulu, au goût',
-    '30 ml (2 c. à soupe) de coriandre fraîche hachée'
+    '30 ml (2 c. à soupe) de coriandre fraîche hachée',
   ],
   instructions: [
     'Former les brochettes avec le thon, les ananas et les oignons.',
@@ -28,8 +28,8 @@ export const brochettesDeThonEtDAnanas: Recipe = {
     'Préchauffer le barbecue à intensité maximale.',
     'Égoutter les brochettes et les déposer sur la grille bien chaude du barbecue et réduire la chaleur à moyenne.',
     'Cuire de 6 à 7 minutes en tournant régulièrement.',
-    'Servir avec des légumes de saison.'
+    'Servir avec des légumes de saison.',
   ],
   tags: ['barbecue', 'marinade sèche', 'grill'],
-  slug: 'brochettes-de-thon-et-d-ananas'
-};
+  slug: 'brochettes-de-thon-et-d-ananas',
+}

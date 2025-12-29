@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const chiliConCarneSucculent: Recipe = {
   id: 'chili-con-carne-succulent',
   title: 'Chili con carne succulent',
-  description: 'Un chili riche et savoureux avec une cuisson longue pour attendrir la viande et développer les saveurs.',
+  description:
+    'Un chili riche et savoureux avec une cuisson longue pour attendrir la viande et développer les saveurs.',
   categories: ['Plats principaux', 'Végétarien'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 720, max: 720 },
@@ -12,29 +13,29 @@ export const chiliConCarneSucculent: Recipe = {
   ingredients: [
     '900 g (2 lb) de roti de palettes de boeuf',
     '45 ml (3 c. à soupe) de pâte de tomate',
-    '5 ml (1 c. à thé) d\'assaisonnement chilis',
+    "5 ml (1 c. à thé) d'assaisonnement chilis",
     '2 piment jalapeños',
     '250 ml (1 tasse) de bouillon de boeuf',
-    '1 boîte d\'haricots rouges rincés',
+    "1 boîte d'haricots rouges rincés",
     '500 ml (2 tasses) de tomates coupées en cubes',
     '1 oignon rouge moyen coupé en cubes',
     '2 poivrons rouges coupés en cubes',
     '1 tasse de maïs congelés',
     '250 ml (1 tasse) de crème sure',
-    '4 tiges d\'oignons verts ciselés',
+    "4 tiges d'oignons verts ciselés",
     '1/2 botte de coriandre effeuillée',
-    'Jus de citron'
+    'Jus de citron',
   ],
   instructions: [
     'Saler et poivrer le roti de palette de bœuf et rôtir de chaque côté dans un fait-tout.',
     'Ajouter la pâte de tomate, la poudre de chili, le jalapeños et mouiller au bouillon de bœuf.',
     'Porter à ébullition, couvrir et cuire au four à 250°F durant 8-10 heures. (ou au fumoir à la même température)',
     'Au terme de la cuisson, effilocher la viande à la fourchette, à même le fait-tout.',
-    'Ajouter les haricots, la tomate, l\'oignon, les poivrons et le maïs, puis assaisonner.',
+    "Ajouter les haricots, la tomate, l'oignon, les poivrons et le maïs, puis assaisonner.",
     'Remettre au four à découvert, pendant 1 à 2 heures.',
     'Mélanger la crème sûre, avec les oignons vert, la coriandre et le jus de citron et servir sur le chili.',
-    'Déguster avec des Tostitos.'
+    'Déguster avec des Tostitos.',
   ],
   tags: ['longue cuisson', 'épicé', 'confort'],
-  slug: 'chili-con-carne-succulent'
-};
+  slug: 'chili-con-carne-succulent',
+}

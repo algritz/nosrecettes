@@ -10,7 +10,7 @@
  * @returns {Object} Site configuration
  */
 function getSiteConfig() {
-  const isDevelopment = process.env.NODE_ENV !== 'production';
+  const isDevelopment = process.env.NODE_ENV !== 'production'
 
   if (isDevelopment) {
     return {
@@ -19,7 +19,7 @@ function getSiteConfig() {
       basePath: '',
       baseUrl: 'http://localhost:8080',
       isDevelopment: true,
-    };
+    }
   }
 
   return {
@@ -28,10 +28,10 @@ function getSiteConfig() {
     basePath: '',
     baseUrl: 'https://nosrecettes.ca',
     isDevelopment: false,
-  };
+  }
 }
 
-const siteConfig = getSiteConfig();
+const siteConfig = getSiteConfig()
 
 /**
  * Get full URL for a given path
@@ -40,14 +40,14 @@ const siteConfig = getSiteConfig();
  */
 function getFullUrl(path) {
   // Normalize path to start with /
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
 
   // Combine basePath (if any) with the path
   const fullPath = siteConfig.basePath
     ? `/${siteConfig.basePath}${normalizedPath}`
-    : normalizedPath;
+    : normalizedPath
 
-  return `${siteConfig.protocol}://${siteConfig.domain}${fullPath}`;
+  return `${siteConfig.protocol}://${siteConfig.domain}${fullPath}`
 }
 
 /**
@@ -57,16 +57,12 @@ function getFullUrl(path) {
  */
 function getAssetUrl(path) {
   // Normalize path to start with /
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
 
   // Return path with basePath if configured
   return siteConfig.basePath
     ? `/${siteConfig.basePath}${normalizedPath}`
-    : normalizedPath;
+    : normalizedPath
 }
 
-export {
-  siteConfig,
-  getFullUrl,
-  getAssetUrl,
-};
+export { siteConfig, getFullUrl, getAssetUrl }

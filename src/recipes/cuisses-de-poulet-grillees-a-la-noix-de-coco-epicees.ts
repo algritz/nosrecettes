@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const cuissesDePouletGrilleesALaNoixDeCocoEpicees: Recipe = {
   id: 'cuisses-de-poulet-grillees-a-la-noix-de-coco-epicees',
   title: 'Cuisses de poulet grillées à la noix de coco épicées',
-  description: 'Une recette de cuisses de poulet épicées et parfumées à la noix de coco, grillées au barbecue et servies avec de la coriandre et du citron vert.',
+  description:
+    'Une recette de cuisses de poulet épicées et parfumées à la noix de coco, grillées au barbecue et servies avec de la coriandre et du citron vert.',
   categories: ['Vollaille', 'Plats principaux'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 15, max: 15 },
@@ -20,7 +21,7 @@ export const cuissesDePouletGrilleesALaNoixDeCocoEpicees: Recipe = {
     '2 c. à soupe d’huile végétale',
     '2 lb. de haut de cuisse de poulet',
     '½ tasse de feuilles de coriandre hachée',
-    'Quartiers de lime (pour servir)'
+    'Quartiers de lime (pour servir)',
   ],
   instructions: [
     'Râper finement le gingembre et l’ail dans un bol moyen.',
@@ -30,10 +31,10 @@ export const cuissesDePouletGrilleesALaNoixDeCocoEpicees: Recipe = {
     'Verser la marinade dans une petite casserole. Porter à ébullition la marinade, puis réduire le feu à doux et laisser mijoter, en remuant de temps en temps, jusqu’à ce qu’elle soit légèrement réduite et suffisamment épaisse pour recouvrir le dos d’une cuillère, 2 à 3 minutes.',
     'Préparer le barbecue à feu moyen. Faire griller le poulet sur un barbecue bien huilé en le retournant une fois et en badigeonnant de temps en temps avec de la marinade, jusqu’à ce que vous voyiez de bonnes marques de grill et que le poulet soit cuit, 8 à 10 minutes.',
     'Badigeonner avec le reste de la marinade.',
-    'Garnir de coriandre et servir avec des quartiers de citron vert à côté.'
+    'Garnir de coriandre et servir avec des quartiers de citron vert à côté.',
   ],
   tags: ['barbecue', 'épicé', 'coco'],
   accompaniment: 'Riz basmati',
   marinatingTime: { min: 480, max: 480 },
-  slug: 'cuisses-de-poulet-grillees-a-la-noix-de-coco-epicees'
-};
+  slug: 'cuisses-de-poulet-grillees-a-la-noix-de-coco-epicees',
+}

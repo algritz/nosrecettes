@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const pimentsVodkaChocolat: Recipe = {
   id: 'piments-vodka-chocolat',
@@ -15,19 +15,19 @@ export const pimentsVodkaChocolat: Recipe = {
     '150 g de chocolat noir',
     'Pincée de poivre noir',
     '100 g de chocolat blanc',
-    'Mettre des gang de latex'
+    'Mettre des gang de latex',
   ],
   instructions: [
     'Couper les piments en rondelles de 1 1/2 cm et jeter les bouts',
     'Enlever les graines et les veines de 6 piments',
     'Faire mariner les piments pendant 4-12 heures dans la vodka.',
     'Faire fondre le chocolat noir, ajouter du poivre noir et remuer pour bien mélanger.',
-    'À l\'aide d\'une fourchette, tremper les piments dans le chocolat noir, enlever le surplus de chocolat et déposer sur un papier parchemin ou ciré.',
-    'Faire fondre le chocolat blanc et arroser délicatement les piments avec. (Si le chocolat blanc est trop épais, ajouter un peu d\'huile végétale)',
+    "À l'aide d'une fourchette, tremper les piments dans le chocolat noir, enlever le surplus de chocolat et déposer sur un papier parchemin ou ciré.",
+    "Faire fondre le chocolat blanc et arroser délicatement les piments avec. (Si le chocolat blanc est trop épais, ajouter un peu d'huile végétale)",
     'Réfrigérer environ 30-60 minutes pour faire durcir.',
-    'Faites vous plaisir'
+    'Faites vous plaisir',
   ],
   tags: ['chocolat', 'piquant', 'vodka'],
   marinatingTime: { min: 240, max: 240 },
-  slug: 'piments-vodka-chocolat'
-};
+  slug: 'piments-vodka-chocolat',
+}

@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const painBaguetteTartinadeAuxPoireaux: Recipe = {
   id: 'pain-baguette-tartinade-aux-poireaux',
   title: 'Pain baguette tartinade aux poireaux',
-  description: 'Une tartinade savoureuse à base de poireaux, servie sur des baguettes dorées et gratinées au fromage.',
+  description:
+    'Une tartinade savoureuse à base de poireaux, servie sur des baguettes dorées et gratinées au fromage.',
   categories: ['Entrées'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 15, max: 15 },
@@ -11,14 +12,14 @@ export const painBaguetteTartinadeAuxPoireaux: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '1 poireau la partie verte incluse',
-    '5 ml d\'huile d’olive',
+    "5 ml d'huile d’olive",
     '2 c. à soupe de farine tout usage',
     '1 tasse de lait',
     '1 c. à thé de moutarde de Dijon',
     'Poivre',
     'Sel',
     'Une baguette de pain',
-    '1 tasse de fromage râpé'
+    '1 tasse de fromage râpé',
   ],
   instructions: [
     'Trancher finement le poireau.',
@@ -34,8 +35,8 @@ export const painBaguetteTartinadeAuxPoireaux: Recipe = {
     'Déposer les pains sur une plaque de cuisson et cuire sous le gril 1 ou 2 minutes, jusqu’à ce que le pain commence à dorer.',
     'Retirer du four.',
     'Répartir le mélange de poireau sur les croûtons de pain et garnir de fromage râpé.',
-    'Dorer sous le gril 3 minutes ou jusqu’à ce que le fromage soit gratiné.'
+    'Dorer sous le gril 3 minutes ou jusqu’à ce que le fromage soit gratiné.',
   ],
   tags: ['poireaux', 'gril', 'fromage'],
-  slug: 'pain-baguette-tartinade-aux-poireaux'
-};
+  slug: 'pain-baguette-tartinade-aux-poireaux',
+}

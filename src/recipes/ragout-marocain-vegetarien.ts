@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const ragoutMarocainVegetarien: Recipe = {
   id: 'ragout-marocain-vegetarien',
   title: 'Ragoût marocain végétarien',
-  description: 'Un ragoût végétarien parfumé aux épices marocaines, riche en légumes et légumineuses, idéal pour un repas réconfortant.',
+  description:
+    'Un ragoût végétarien parfumé aux épices marocaines, riche en légumes et légumineuses, idéal pour un repas réconfortant.',
   categories: ['Soupes', 'Plats principaux'],
   prepTime: { min: 30, max: 30 },
   cookTime: { min: 40, max: 40 },
@@ -32,7 +33,7 @@ export const ragoutMarocainVegetarien: Recipe = {
     '1 tasse de lentilles sèches, rincées',
     '1 c. à thé de poivre noir moulu',
     '1 c. à soupe de fécule de maïs (optionnel)',
-    '1 c. à soupe d’eau (optionnel)'
+    '1 c. à soupe d’eau (optionnel)',
   ],
   instructions: [
     'Dans un petit bol, combiner la cannelle, le cumin, le gingembre, le clou de girofle, la muscade, le curcuma, la poudre de cari et le sel; réserver.',
@@ -41,9 +42,9 @@ export const ragoutMarocainVegetarien: Recipe = {
     'Ajouter le bouillon de légumes, les tomates, le miel, les carottes, les patates douces, les pommes de terre, les pois chiches, les abricots et les lentilles; porter à ébullition et réduire à feu doux.',
     'Laisser mijoter 30 minutes, ou jusqu’à ce que les légumes et les lentilles soient tendres.',
     'Assaisonner de sel et poivre.',
-    'Si désiré, combiner la fécule de maïs et l’eau et ajouter à la casserole, pour épaissir le ragoût.'
+    'Si désiré, combiner la fécule de maïs et l’eau et ajouter à la casserole, pour épaissir le ragoût.',
   ],
   tags: ['épices marocaines', 'légumes', 'végétarien'],
   notes: 'Ce ragoût se conserve bien dans des pots massons.',
-  slug: 'ragout-marocain-vegetarien'
-};
+  slug: 'ragout-marocain-vegetarien',
+}

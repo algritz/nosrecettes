@@ -1,38 +1,43 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { getRecipeFiles, getRecipeData } from './generate-sitemap.js';
-import { siteConfig, getFullUrl, getAssetUrl } from './site.config.js';
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { getRecipeFiles, getRecipeData } from './generate-sitemap.js'
+import { siteConfig, getFullUrl, getAssetUrl } from './site.config.js'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export function generateIndexHTML() {
-  const recipeFiles = getRecipeFiles();
-  const recipeCount = recipeFiles.length;
-  const currentDate = new Date().toISOString();
-  
+  const recipeFiles = getRecipeFiles()
+  const recipeCount = recipeFiles.length
+  const currentDate = new Date().toISOString()
+
   // Get some sample recipes for keywords
-  const sampleRecipes = recipeFiles.slice(0, 5).map(filename => getRecipeData(filename));
-  const sampleTitles = sampleRecipes.map(recipe => recipe.title).join(', ');
-  
+  const sampleRecipes = recipeFiles
+    .slice(0, 5)
+    .map((filename) => getRecipeData(filename))
+  const sampleTitles = sampleRecipes.map((recipe) => recipe.title).join(', ')
+
   // Generate dynamic keywords based on actual recipes
   const baseKeywords = [
     'recettes québécoises',
-    'cuisine québécoise', 
+    'cuisine québécoise',
     'recettes canadiennes',
     'recettes traditionnelles',
     'cuisine du Québec',
     'recettes faciles',
     'recettes familiales',
     'recettes avec photos',
-    'instructions détaillées'
-  ];
-  
-  const dynamicKeywords = [...baseKeywords, ...sampleTitles.toLowerCase().split(', ')];
-  
+    'instructions détaillées',
+  ]
+
+  const dynamicKeywords = [
+    ...baseKeywords,
+    ...sampleTitles.toLowerCase().split(', '),
+  ]
+
   const htmlContent = `<!doctype html>
 <html lang="fr-CA">
   <head>
@@ -198,30 +203,31 @@ export function generateIndexHTML() {
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
-</html>`;
+</html>`
 
-  return htmlContent;
+  return htmlContent
 }
 
 function main() {
   try {
-    console.log('Generating index.html...');
-    
-    const htmlContent = generateIndexHTML();
-    const outputPath = path.join(__dirname, '..', 'index.html');
-    
-    fs.writeFileSync(outputPath, htmlContent, 'utf-8');
-    
-    const recipeCount = getRecipeFiles().length;
-    console.log(`✅ Index.html generated successfully with ${recipeCount} recipes`);
-    
+    console.log('Generating index.html...')
+
+    const htmlContent = generateIndexHTML()
+    const outputPath = path.join(__dirname, '..', 'index.html')
+
+    fs.writeFileSync(outputPath, htmlContent, 'utf-8')
+
+    const recipeCount = getRecipeFiles().length
+    console.log(
+      `✅ Index.html generated successfully with ${recipeCount} recipes`,
+    )
   } catch (error) {
-    console.error('❌ Error generating index.html:', error);
-    process.exit(1);
+    console.error('❌ Error generating index.html:', error)
+    process.exit(1)
   }
 }
 
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main();
+  main()
 }

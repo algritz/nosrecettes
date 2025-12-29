@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const saladeDAvocatEtDeMaisGrille: Recipe = {
   id: 'salade-d-avocat-et-de-mais-grille',
-  title: 'Salade d\'avocat et de maïs grillé',
-  description: 'Une salade fraîche et savoureuse combinant avocat crémeux et maïs grillé, parfumée à la coriandre et au piment jalapeño.',
+  title: "Salade d'avocat et de maïs grillé",
+  description:
+    'Une salade fraîche et savoureuse combinant avocat crémeux et maïs grillé, parfumée à la coriandre et au piment jalapeño.',
   categories: ['Salades'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 25, max: 25 },
@@ -15,7 +16,7 @@ export const saladeDAvocatEtDeMaisGrille: Recipe = {
     '2 c. à soupe de jus de lime',
     '¼ tasse de coriandre ciselée grossièrement',
     '1 oignon vert, haché finement',
-    '1 petit piment jalapeño, épépiné et haché finement'
+    '1 petit piment jalapeño, épépiné et haché finement',
   ],
   instructions: [
     'Préchauffer le barbecue à puissance élevée.',
@@ -28,8 +29,8 @@ export const saladeDAvocatEtDeMaisGrille: Recipe = {
     'Dans un bol, mélanger l’avocat et le jus de lime.',
     'Ajouter les grains de maïs et le reste des ingrédients.',
     'Saler et poivrer.',
-    'Servir.'
+    'Servir.',
   ],
   tags: ['barbecue', 'maïs grillé', 'avocat'],
-  slug: 'salade-d-avocat-et-de-mais-grille'
-};
+  slug: 'salade-d-avocat-et-de-mais-grille',
+}

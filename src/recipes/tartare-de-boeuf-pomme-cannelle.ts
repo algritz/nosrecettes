@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const tartareDeBoeufPommeCannelle: Recipe = {
   id: 'tartare-de-boeuf-pomme-cannelle',
@@ -21,13 +21,13 @@ export const tartareDeBoeufPommeCannelle: Recipe = {
     '1 c. à thé de sauce sriracha',
     '1 1/4 de c. à thé de cannelle moulue',
     'Un filet de jus de citron',
-    'Sel et poivre, au goût'
+    'Sel et poivre, au goût',
   ],
   instructions: [
     'À l’aide d’un couteau, couper le bœuf en petits dés, puis réserver dans un bol froid.',
     'Ajouter le reste des ingrédients, puis bien mélanger.',
-    'Rectifier l’assaisonnement au besoin, puis servir avec des croûtons ou du pain.'
+    'Rectifier l’assaisonnement au besoin, puis servir avec des croûtons ou du pain.',
   ],
   tags: ['bœuf', 'tartare', 'cannelle'],
-  slug: 'tartare-de-boeuf-pomme-cannelle'
-};
+  slug: 'tartare-de-boeuf-pomme-cannelle',
+}

@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const marinadeALaGrecque: Recipe = {
   id: 'marinade-a-la-grecque',
@@ -20,12 +20,12 @@ export const marinadeALaGrecque: Recipe = {
     '2 gousses ail',
     '1 c.à soupe (15 ml) sauce soya',
     '1 c.à soupe (15 ml) vinaigre blanc',
-    '1/4 c.à thé (1 ml) origan'
+    '1/4 c.à thé (1 ml) origan',
   ],
   instructions: [
     'Mêler ensemble tous les ingrédient des la marinade.',
-    'Laisser reposer le porc ou poulet dans cette marinade au réfrigérateur pendant 2 heures minimum puis faire cuire selon son choix, mais idéale sur le BBQ'
+    'Laisser reposer le porc ou poulet dans cette marinade au réfrigérateur pendant 2 heures minimum puis faire cuire selon son choix, mais idéale sur le BBQ',
   ],
   tags: ['marinade sèche', 'grill'],
-  slug: 'marinade-a-la-grecque'
-};
+  slug: 'marinade-a-la-grecque',
+}

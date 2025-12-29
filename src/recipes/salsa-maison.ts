@@ -1,9 +1,9 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const salsaMaison: Recipe = {
   id: 'salsa-maison',
   title: 'Salsa maison',
-  description: 'Celle de l\'épicerie ne sera plus jamais aussi bonne',
+  description: "Celle de l'épicerie ne sera plus jamais aussi bonne",
   categories: ['Condiments'],
   prepTime: { min: 30, max: 30 },
   cookTime: { min: 90, max: 90 },
@@ -22,7 +22,7 @@ export const salsaMaison: Recipe = {
     '1 c. à soupe de sel',
     '2 c. à thé de paprika',
     '1 c. à thé d’origan',
-    '1 c. à thé de persil'
+    '1 c. à thé de persil',
   ],
   instructions: [
     'Préparer tous les légumes et déposer dans une grande marmite.',
@@ -30,9 +30,9 @@ export const salsaMaison: Recipe = {
     'Porter à ébullition pendant 5 minutes.',
     'Baisser le feu, laisser mijoter 1h30.',
     'Ajouter la pâte de tomates.',
-    'Canner'
+    'Canner',
   ],
   tags: ['condiments', 'épicé', 'sauce'],
   notes: 'Source: Janie Cloutier',
-  slug: 'salsa-maison'
-};
+  slug: 'salsa-maison',
+}

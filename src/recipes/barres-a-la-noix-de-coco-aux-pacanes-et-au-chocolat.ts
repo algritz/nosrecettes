@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import { Recipe } from '@/types/recipe'
 
 export const barresALaNoixDeCocoAuxPacanesEtAuChocolat: Recipe = {
   id: 'barres-a-la-noix-de-coco-aux-pacanes-et-au-chocolat',
   title: 'Barres à la noix de coco, aux pacanes et au chocolat',
-  description: 'Une recette de barres croquantes à la noix de coco, aux pacanes et au chocolat, faciles à préparer et parfaites pour une collation ou un dessert.',
+  description:
+    'Une recette de barres croquantes à la noix de coco, aux pacanes et au chocolat, faciles à préparer et parfaites pour une collation ou un dessert.',
   categories: ['Pâtisseries et desserts'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 30, max: 30 },
@@ -15,7 +16,7 @@ export const barresALaNoixDeCocoAuxPacanesEtAuChocolat: Recipe = {
     '250 ml (1 tasse) de noix de coco râpée finement non sucrée',
     '180 ml (¾ tasse) de pépites de chocolat noir ou au lait',
     '180 ml (¾ tasse) de pacanes, concassées grossièrement',
-    '180 ml (¾ tasse) de lait concentré sucré'
+    '180 ml (¾ tasse) de lait concentré sucré',
   ],
   instructions: [
     'Placer la grille au centre du four. Préchauffer le four à 180 °C (350 °F).',
@@ -26,9 +27,9 @@ export const barresALaNoixDeCocoAuxPacanesEtAuChocolat: Recipe = {
     'Y verser le lait concentré sucré.',
     'Cuire au four environ 30 minutes ou jusqu’à ce que la garniture soit bien dorée.',
     'Laisser refroidir complètement, environ 2h.',
-    'Démouler et couper.'
+    'Démouler et couper.',
   ],
   tags: ['coco', 'pacanes', 'chocolat'],
   marinatingTime: { min: 120, max: 120 },
-  slug: 'barres-a-la-noix-de-coco-aux-pacanes-et-au-chocolat'
-};
+  slug: 'barres-a-la-noix-de-coco-aux-pacanes-et-au-chocolat',
+}

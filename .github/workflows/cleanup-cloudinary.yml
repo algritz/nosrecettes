@@ -9,13 +9,13 @@ jobs:
   cleanup-images:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Check for cleanup instructions
         id: check-cleanup
         run: |
           PR_BODY="${{ github.event.pull_request.body }}"
-          
+
           # Check if PR body contains cleanup section
           if echo "$PR_BODY" | grep -q "🧹 Cloudinary Cleanup"; then
             echo "cleanup_needed=true" >> $GITHUB_OUTPUT
@@ -47,7 +47,7 @@ jobs:
         run: |
           # Extract public IDs from PR body
           PR_BODY="${{ github.event.pull_request.body }}"
-          
+
           # Look for cleanup section and extract public IDs
           if echo "$PR_BODY" | grep -q "🧹 Cloudinary Cleanup"; then
             # Extract public IDs using regex
@@ -74,7 +74,7 @@ jobs:
           CLOUDINARY_URL: ${{ secrets.CLOUDINARY_URL }}
         run: |
           echo "Starting Cloudinary cleanup..."
-          
+
           # Read the cleanup list
           if [ -f cleanup_list.txt ]; then
             while IFS= read -r public_id; do
@@ -90,7 +90,7 @@ jobs:
               fi
             done < cleanup_list.txt
           fi
-          
+
           echo "Cloudinary cleanup completed"
 
       - name: Comment on PR with cleanup results
@@ -99,9 +99,9 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
+
             let comment = '## 🧹 Cloudinary Cleanup Results\n\n';
-            
+
             if (fs.existsSync('cleanup_list.txt')) {
               const publicIds = fs.readFileSync('cleanup_list.txt', 'utf8').trim().split('\n');
               const validIds = publicIds.filter(id => id.trim());
@@ -118,7 +118,7 @@ jobs:
             } else {
               comment += '❌ No cleanup list generated.';
             }
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
