@@ -1,11 +1,10 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const ragoutDeBoulettesCariEtLaitDeCoco: Recipe = {
   id: 'ragout-de-boulettes-cari-et-lait-de-coco',
   title: 'Ragoût de boulettes cari et lait de coco',
-  description:
-    'Un ragoût savoureux de boulettes épicées au cari mijotées dans un lait de coco crémeux, servi avec du riz et du naan.',
-  categories: ['Plats principaux', 'Végétarien'],
+  description: 'Un ragoût savoureux de boulettes épicées au cari mijotées dans un lait de coco crémeux, servi avec du riz et du naan.',
+  categories: ['Plats principaux', 'Boeuf'],
   prepTime: { min: 60, max: 60 },
   cookTime: { min: 60, max: 60 },
   servings: 4,
@@ -29,12 +28,13 @@ export const ragoutDeBoulettesCariEtLaitDeCoco: Recipe = {
     '30 ml de pâte de tomates',
     '1/4 de tasse de pâte de cari',
     '1 boîte de 398 ml de lait de coco',
-    '2 pommes de terre, pelées et coupées en gros cubes',
+    '2 pommes de terre, pelées et coupées en gros cubes'
   ],
   instructions: [
     'Boulettes: Dans un grand bol, verser l’eau. Y tremper rapidement les tranches de pain. Avec les mains, presser le pain pour l’essorer. Jeter l’eau. Dans le même bol, bien mélanger le pain mouillé avec tous les ingrédients sauf l’huile. Saler et poivrer. Avec les mains, façonner de petites boulettes d’environ 2 c. à soupe de viande chacune. Dans une grande poêle, à feu moyen-élevé, dorer les boulettes dans l’huile. Réserver.',
-    'Cari: Dans une casserole, dorer l’oignon dans l’huile. Ajouter la sauce tomate et cuire jusqu’à ce qu’elle boue. Ajouter la pâte de tomates, la pâte de cari et cuire 2 minutes en ajoutant un peu d’eau si la préparation adhère trop à la casserole. Ajouter le lait de coco, les pommes de terre et les boulettes. Porter à ébullition. Couvrir et laisser mijoter environ 45 minutes, jusqu’à ce que les boulettes et les pommes de terre soient tendres.',
+    'Cari: Dans une casserole, dorer l’oignon dans l’huile. Ajouter la sauce tomate et cuire jusqu’à ce qu’elle boue. Ajouter la pâte de tomates, la pâte de cari et cuire 2 minutes en ajoutant un peu d’eau si la préparation adhère trop à la casserole. Ajouter le lait de coco, les pommes de terre et les boulettes. Porter à ébullition. Couvrir et laisser mijoter environ 45 minutes, jusqu’à ce que les boulettes et les pommes de terre soient tendres.'
   ],
   tags: ['cari', 'lait de coco', 'boulettes'],
-  slug: 'ragout-de-boulettes-cari-et-lait-de-coco',
-}
+  source: 'David Cloutier',
+  slug: 'ragout-de-boulettes-cari-et-lait-de-coco'
+};

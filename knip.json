@@ -1,10 +1,17 @@
 {
   "entry": [
-    "src/conversations/conversation_*.ts",
-    "tests/**/*.spec.ts",
-    "src/**/*Fixture.ts",
-    "src/fixtures/**/*.ts",
-    "src/utils/lineAssignment/index.ts"
+    "src/main.tsx",
+    "scripts/**/*.js",
+    "src/recipes/**/*.ts"
   ],
-  "project": ["src/**/*.ts", "tests/**/*.ts"]
+  "project": [
+    "src/**/*.{ts,tsx}",
+    "scripts/**/*.{js,ts}",
+    "*.config.{ts,js}"
+  ],
+  "ignore": [
+    "src/vite-env.d.ts",
+    "scripts/backups/**",
+    "src/utils/timeUtils.test.ts"
+  ]
 }

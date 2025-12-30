@@ -1,11 +1,10 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const pizzaAuxFruitsSurLeBbq: Recipe = {
   id: 'pizza-aux-fruits-sur-le-bbq',
   title: 'Pizza aux fruits sur le BBQ',
-  description:
-    "Une pizza fruitée cuite sur le barbecue, garnie de chocolat, guimauves, et zestes d'orange, parfaite pour une dégustation estivale.",
-  categories: ['Végétarien', 'Plats principaux', 'Barbecue'],
+  description: 'Une pizza fruitée cuite sur le barbecue, garnie de chocolat, guimauves, et zestes d\'orange, parfaite pour une dégustation estivale.',
+  categories: ['Végétarien', 'Barbecue', 'Pâtisseries et desserts'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 5, max: 5 },
   servings: 4,
@@ -19,7 +18,7 @@ export const pizzaAuxFruitsSurLeBbq: Recipe = {
     '2 onces de chocolat mi-sucré pour la cuisson, séparés',
     '¼ de tasse de mini guimauves',
     'Zestes d’orange (facultatif)',
-    'Fleur de sel (facultatif)',
+    'Fleur de sel (facultatif)'
   ],
   instructions: [
     'Préchauffer le BBQ et la plaque à pizza.',
@@ -33,8 +32,9 @@ export const pizzaAuxFruitsSurLeBbq: Recipe = {
     'Saupoudrer le mélange de sucre et de cannelle.',
     'Répartir les fruits coupés, les guimauves et le chocolat haché sur la pâte.',
     'Cuire la pizza au BBQ, environ 4-5 minutes ou jusqu’à ce que la croûte et les guimauves soient dorées.',
-    'Pour servir, ajouter une pincée de fleur de sel et des zestes d’orange.',
+    'Pour servir, ajouter une pincée de fleur de sel et des zestes d’orange.'
   ],
   tags: ['barbecue', 'fruité', 'chocolat'],
-  slug: 'pizza-aux-fruits-sur-le-bbq',
-}
+  source: 'David Cloutier',
+  slug: 'pizza-aux-fruits-sur-le-bbq'
+};

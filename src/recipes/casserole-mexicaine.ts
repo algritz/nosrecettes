@@ -1,19 +1,18 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const casseroleMexicaine: Recipe = {
   id: 'casserole-mexicaine',
   title: 'Casserole mexicaine',
-  description:
-    'Une casserole savoureuse aux saveurs mexicaines, combinant riz, bœuf haché, légumes et épices, gratinée avec du fromage Monterey Jack.',
-  categories: ['Plats principaux', 'Végétarien'],
+  description: 'Une casserole savoureuse aux saveurs mexicaines, combinant riz, bœuf haché, légumes et épices, gratinée avec du fromage Monterey Jack.',
+  categories: ['Plats principaux', 'Boeuf'],
   prepTime: { min: 10, max: 10 },
   cookTime: { min: 30, max: 30 },
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
-    "2 c. À soupe d'huile d'olive",
+    '2 c. À soupe d\'huile d\'olive',
     '1 oignon haché finement',
-    "3 gousses d'ail émincées",
+    '3 gousses d\'ail émincées',
     '1 lb de boeuf haché maigre',
     '1/3 tasse de pâte de tomate',
     '1 1/4 tasse de riz blanc',
@@ -22,32 +21,33 @@ export const casseroleMexicaine: Recipe = {
     'Haricots noirs en boîte de 400 g / 14 oz égouttés',
     '1 poivron coupé en dés',
     '1 tomate en dés',
-    "1 tasse d'oignons verts",
+    '1 tasse d\'oignons verts',
     '2 tasses de fromage Monterey Jack râpé',
     'Épices à la mexicaine',
     '1/2 c. À thé de poivre de Cayenne',
-    "1 1/2 c. à soupe d'origan séché",
+    '1 1/2 c. à soupe d\'origan séché',
     '3 c. À thé de cumin',
     '3 c. À thé de coriandre',
-    "3 c. À thé de poudre d'oignon",
+    '3 c. À thé de poudre d\'oignon',
     '2 c. À thé de paprika',
-    '1 c. À thé de sel',
+    '1 c. À thé de sel'
   ],
   instructions: [
-    "Chauffer l'huile dans une grande casserole à feu vif.",
-    "Ajouter l'ail et l'oignon, cuire 1 1/2 minute jusqu'à ce que l'oignon soit translucide.",
-    "Ajouter le boeuf et faire cuire, en le défaisant au fur et à mesure, jusqu'à ce que vous ne voyiez plus de viande crue.",
+    'Chauffer l\'huile dans une grande casserole à feu vif.',
+    'Ajouter l\'ail et l\'oignon, cuire 1 1/2 minute jusqu\'à ce que l\'oignon soit translucide.',
+    'Ajouter le boeuf et faire cuire, en le défaisant au fur et à mesure, jusqu\'à ce que vous ne voyiez plus de viande crue.',
     'Ajouter les épices mexicaines et cuire pendant 30 secondes.',
     'Ajouter le poivron et la tomate et cuire 1 minute.',
     'Ajouter la pâte de tomates et le bouillon, remuer pour bien mélanger.',
     'Ajouter le riz, le maïs et les haricots noirs.',
     'Remuez, faites mijoter puis couvrez et baissez le feu à moyen-doux.',
     'Cuire 15 minutes.',
-    "Enlevez le couvercle, mélangez rapidement l'oignon vert et la moitié du fromage.",
+    'Enlevez le couvercle, mélangez rapidement l\'oignon vert et la moitié du fromage.',
     'Lissez le dessus, puis saupoudrez du fromage restant.',
     'Couvrir et laisser reposer 1 minute pour faire fondre le fromage.',
-    'Retirer du feu et servir immédiatement.',
+    'Retirer du feu et servir immédiatement.'
   ],
   tags: ['mexicain', 'riz', 'fromage'],
-  slug: 'casserole-mexicaine',
-}
+  source: 'David Cloutier',
+  slug: 'casserole-mexicaine'
+};

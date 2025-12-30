@@ -16,6 +16,7 @@ import {
   CommandList,
 } from '@/components/ui/command'
 import { cn } from '@/lib/utils'
+import { normalizeForSearch } from '@/utils/textUtils'
 
 interface SearchBarProps {
   searchTerm: string
@@ -24,6 +25,20 @@ interface SearchBarProps {
   onCategoriesChange: (categories: string[]) => void
   categories: string[]
   onClearFilters: () => void
+}
+
+/**
+ * Custom filter function for cmdk that supports accent-insensitive matching
+ * @param value - Item value (category name)
+ * @param search - User's search input
+ * @returns 1 if match, 0 if no match
+ */
+const accentInsensitiveFilter = (value: string, search: string) => {
+  const normalizedValue = normalizeForSearch(value)
+  const normalizedSearch = normalizeForSearch(search)
+
+  // Return 1 for match (cmdk expects number score)
+  return normalizedValue.includes(normalizedSearch) ? 1 : 0
 }
 
 export const SearchBar = ({
@@ -73,7 +88,7 @@ export const SearchBar = ({
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-64 p-0" align="start">
-            <Command>
+            <Command filter={accentInsensitiveFilter}>
               <CommandInput placeholder="Rechercher une catégorie..." />
               <CommandList>
                 <CommandEmpty>Aucune catégorie trouvée.</CommandEmpty>
@@ -81,6 +96,7 @@ export const SearchBar = ({
                   {categories.map((category) => (
                     <CommandItem
                       key={category}
+                      value={category}
                       onSelect={() => toggleCategory(category)}
                     >
                       <Check
