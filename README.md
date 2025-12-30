@@ -46,7 +46,7 @@ Visit the live site: [https://algritz.github.io/nosrecettes](https://algritz.git
 - **Styling**: Tailwind CSS + shadcn/ui components
 - **Routing**: React Router with GitHub Pages support
 - **Icons**: Lucide React
-- **Image Management**: Cloudinary + React Image Crop
+- **Image Management**: Cloudinary + React Image Crop + browser-image-compression
 - **Forms**: React Hook Form with Zod validation
 - **State Management**: React hooks with custom hooks for complex state
 - **Build Tool**: Vite with optimized production builds
@@ -166,19 +166,39 @@ Visit the live site: [https://algritz.github.io/nosrecettes](https://algritz.git
 
 ### Automatic Features
 
+- **Client-Side Compression**: Automatically compresses large images (>8MB) before upload using Web Workers for responsive UI
 - **Image Editing**: Crop, zoom, rotate, and adjust aspect ratios before upload
 - **Responsive Images**: Automatically generates small (400px), medium (800px), and large (1200px) versions
 - **Cloudinary Hosting**: Images are hosted on Cloudinary CDN with automatic optimization
 - **Format Optimization**: Automatic WebP conversion and quality optimization
 - **Automatic Cleanup**: Old images are automatically deleted when replaced via GitHub Actions
 
+### Image Upload & Compression
+
+The application supports uploading large phone photos with automatic client-side compression:
+
+- **Upload Limit**: Up to 50MB per image
+- **Automatic Optimization**: Large images are transparently compressed to ~8MB before upload
+- **Quality Preservation**: Compression uses 90% initial quality to maintain visual fidelity
+- **Non-Blocking**: Compression runs in a Web Worker (keeps UI responsive)
+- **Smart Processing**: Files under 8MB skip compression (no unnecessary quality loss)
+- **Supported Formats**: PNG, JPG, GIF, WebP (all converted to JPEG during compression if needed)
+
+**Technical Details**:
+- Compression library: `browser-image-compression`
+- Target size: 8MB (provides 2MB safety buffer under Cloudinary's 10MB free tier limit)
+- Maximum resolution: 4096px (width or height)
+- Output format: JPEG for optimal compression ratio
+- Performance: ~2-5 seconds for 20-30MB images on modern devices
+
 ### Image Workflow
 
-1. **Upload**: Drag & drop or select images (supports PNG, JPG, WebP up to 10MB)
-2. **Edit**: Use the built-in editor to crop and adjust images
-3. **Process**: Images are uploaded to Cloudinary in multiple sizes
-4. **Replace**: When updating images, old ones are scheduled for cleanup
-5. **Cleanup**: GitHub Action automatically deletes old images after PR merge
+1. **Upload**: Drag & drop or select images (supports PNG, JPG, WebP up to 50MB)
+2. **Compress**: Large images (>8MB) are automatically compressed in the background
+3. **Edit**: Use the built-in editor to crop and adjust images
+4. **Process**: Images are uploaded to Cloudinary in multiple sizes
+5. **Replace**: When updating images, old ones are scheduled for cleanup
+6. **Cleanup**: GitHub Action automatically deletes old images after PR merge
 
 ## 🚀 Deployment
 
@@ -336,6 +356,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Built with [shadcn/ui](https://ui.shadcn.com/) components
 - Icons by [Lucide](https://lucide.dev/)
 - Image editing with [React Image Crop](https://github.com/DominicTobias/react-image-crop)
+- Image compression with [browser-image-compression](https://github.com/Donaldcwl/browser-image-compression)
 - Image hosting by [Cloudinary](https://cloudinary.com/)
 - Powered by [Vite](https://vitejs.dev/) and [React](https://reactjs.org/)
 

@@ -344,7 +344,7 @@ export const ImageUpload = ({
                     </Button>
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    PNG, JPG, WEBP jusqu'à 10MB • {images.length}/{maxImages}{' '}
+                    PNG, JPG, WEBP jusqu'à 50MB • {images.length}/{maxImages}{' '}
                     images
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">

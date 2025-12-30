@@ -109,17 +109,17 @@ export function normalizeForSearch(text: string): string {
 ### Success Criteria:
 
 #### Automated Verification:
-- [ ] File exists at `src/utils/textUtils.ts`
-- [ ] Type checking passes: `pnpm run typecheck`
-- [ ] Linting passes: `pnpm run lint`
-- [ ] Build succeeds: `pnpm run build`
+- [x] File exists at `src/utils/textUtils.ts`
+- [x] Type checking passes: `pnpm run typecheck`
+- [x] Linting passes: `pnpm run lint`
+- [x] Build succeeds: `pnpm run build`
 
 #### Manual Verification:
-- [ ] Function correctly normalizes "Pâté" → "pate"
-- [ ] Function correctly normalizes "Bœuf" → "boeuf"
-- [ ] Function correctly normalizes "Entrées" → "entrees"
-- [ ] Function handles empty strings without errors
-- [ ] Function handles special characters without errors
+- [x] Function correctly normalizes "Pâté" → "pate"
+- [x] Function correctly normalizes "Bœuf" → "boeuf"
+- [x] Function correctly normalizes "Entrées" → "entrees"
+- [x] Function handles empty strings without errors
+- [x] Function handles special characters without errors
 
 ---
 
@@ -180,18 +180,18 @@ const filteredRecipes = useMemo(
 ### Success Criteria:
 
 #### Automated Verification:
-- [ ] No TypeScript errors: `pnpm run typecheck`
-- [ ] No linting errors: `pnpm run lint`
-- [ ] Build succeeds: `pnpm run build`
+- [x] No TypeScript errors: `pnpm run typecheck`
+- [x] No linting errors: `pnpm run lint`
+- [x] Build succeeds: `pnpm run build`
 
 #### Manual Verification:
-- [ ] Searching "pate" finds recipes with "Pâté" in title
-- [ ] Searching "boeuf" finds recipes with "Bœuf" in title
-- [ ] Searching "oeuf" finds recipes with "Œuf" in ingredients
-- [ ] Partial matching still works: "uf" matches "œuf" and "boeuf"
-- [ ] Empty search term shows all recipes (no regression)
-- [ ] Category filtering still works correctly
-- [ ] Search performance is acceptable (no noticeable lag)
+- [x] Searching "pate" finds recipes with "Pâté" in title
+- [x] Searching "boeuf" finds recipes with "Bœuf" in title
+- [x] Searching "oeuf" finds recipes with "Œuf" in ingredients
+- [x] Partial matching still works: "uf" matches "œuf" and "boeuf"
+- [x] Empty search term shows all recipes (no regression)
+- [x] Category filtering still works correctly
+- [x] Search performance is acceptable (no noticeable lag)
 
 **Implementation Note**: After completing this phase and all automated verification passes, pause here for manual confirmation from the human that the manual testing was successful before proceeding to the next phase.
 
@@ -247,14 +247,14 @@ const filteredRecipes = useMemo(
 ### Success Criteria:
 
 #### Automated Verification:
-- [ ] No TypeScript errors: `pnpm run typecheck`
-- [ ] No linting errors: `pnpm run lint`
-- [ ] Build succeeds: `pnpm run build`
+- [x] No TypeScript errors: `pnpm run typecheck`
+- [x] No linting errors: `pnpm run lint`
+- [x] Build succeeds: `pnpm run build`
 
 #### Manual Verification:
-- [ ] Both hooks produce consistent results for same search terms
-- [ ] No regressions in existing search functionality
-- [ ] Search behavior is identical across all pages using this hook
+- [x] Both hooks produce consistent results for same search terms
+- [x] No regressions in existing search functionality
+- [x] Search behavior is identical across all pages using this hook
 
 **Implementation Note**: After completing this phase and all automated verification passes, pause here for manual confirmation from the human that the manual testing was successful before proceeding to the next phase.
 
@@ -335,17 +335,17 @@ const accentInsensitiveFilter = (value: string, search: string) => {
 ### Success Criteria:
 
 #### Automated Verification:
-- [ ] No TypeScript errors: `pnpm run typecheck`
-- [ ] No linting errors: `pnpm run lint`
-- [ ] Build succeeds: `pnpm run build`
+- [x] No TypeScript errors: `pnpm run typecheck`
+- [x] No linting errors: `pnpm run lint`
+- [x] Build succeeds: `pnpm run build`
 
 #### Manual Verification:
-- [ ] Typing "entree" in category dropdown shows "Entrées"
-- [ ] Typing "dessert" shows "Desserts" category
-- [ ] Category selection still works after filtering
-- [ ] Empty search shows all categories (no regression)
-- [ ] Fuzzy matching behavior preserved for non-accented characters
-- [ ] Dropdown remains performant with 10+ categories
+- [x] Typing "entree" in category dropdown shows "Entrées"
+- [x] Typing "dessert" shows "Desserts" category
+- [x] Category selection still works after filtering
+- [x] Empty search shows all categories (no regression)
+- [x] Fuzzy matching behavior preserved for non-accented characters
+- [x] Dropdown remains performant with 10+ categories
 
 **Implementation Note**: After completing this phase and all automated verification passes, pause here for manual confirmation from the human that the manual testing was successful before proceeding to the next phase.
 

@@ -6,6 +6,7 @@ import {
   extractPublicIdFromUrl,
 } from './cloudinaryUtils'
 import { siteConfig } from '@/config/site.config'
+import imageCompression from 'browser-image-compression'
 
 export interface ImageSizes {
   small: string
@@ -51,24 +52,77 @@ export const getImageUrl = (imagePath: string): string => {
   return `${basePath}${imagePath}`
 }
 
+/**
+ * Compresses an image file if it exceeds the target size threshold.
+ * Files under 8MB are returned unchanged. Larger files are compressed
+ * to approximately 8MB using Web Worker to keep UI responsive.
+ *
+ * @param file - The image file to potentially compress
+ * @returns The original file if under 8MB, or a compressed version
+ * @throws Error if compression fails
+ */
+async function compressImageIfNeeded(file: File): Promise<File> {
+  const SIZE_THRESHOLD_MB = 8
+  const SIZE_THRESHOLD_BYTES = SIZE_THRESHOLD_MB * 1024 * 1024
+  const originalSizeMB = (file.size / (1024 * 1024)).toFixed(2)
+
+  // Skip compression if file is already under threshold
+  if (file.size <= SIZE_THRESHOLD_BYTES) {
+    console.log(`[ImageCompression] File "${file.name}" is ${originalSizeMB}MB, skipping compression`)
+    return file
+  }
+
+  console.log(`[ImageCompression] Starting compression for "${file.name}" (${originalSizeMB}MB)`)
+
+  try {
+    const options = {
+      maxSizeMB: SIZE_THRESHOLD_MB,          // Target file size
+      maxWidthOrHeight: 4096,                 // Max dimension to prevent excessive resolution
+      useWebWorker: true,                     // Run compression in Web Worker
+      fileType: 'image/jpeg',                 // Output format (best compression)
+      initialQuality: 0.9,                    // Starting quality (90%)
+    }
+
+    const compressedFile = await imageCompression(file, options)
+    const compressedSizeMB = (compressedFile.size / (1024 * 1024)).toFixed(2)
+    const reductionPercent = (((file.size - compressedFile.size) / file.size) * 100).toFixed(1)
+
+    console.log(
+      `[ImageCompression] Compressed "${file.name}" from ${originalSizeMB}MB to ${compressedSizeMB}MB ` +
+      `(${reductionPercent}% reduction)`
+    )
+
+    return compressedFile
+  } catch (error) {
+    console.error(`[ImageCompression] Failed to compress "${file.name}":`, error)
+    throw new Error(`Échec de la compression de l'image: ${error instanceof Error ? error.message : 'Erreur inconnue'}`)
+  }
+}
+
 export const processImageFile = async (
   file: File,
   cloudinaryConfig?: CloudinaryConfig,
 ): Promise<ProcessedImage> => {
-  if (!file.type.startsWith('image/')) {
-    throw new Error('Le fichier doit être une image')
+  // Compress large images before validation
+  const compressedFile = await compressImageIfNeeded(file)
+
+  // Validate image type
+  const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
+  if (!validTypes.includes(compressedFile.type)) {
+    throw new Error('Type d\'image non supporté. Utilisez JPG, PNG, GIF ou WebP.')
   }
 
-  if (file.size > 10 * 1024 * 1024) {
-    // 10MB limit
-    throw new Error("L'image ne peut pas dépasser 10MB")
+  // Validate file size (10MB limit - compressed files should be under 8MB)
+  const maxSize = 10 * 1024 * 1024 // 10MB in bytes
+  if (compressedFile.size > maxSize) {
+    throw new Error('L\'image ne peut pas dépasser 10MB')
   }
 
   // If Cloudinary is configured, upload to Cloudinary
   if (cloudinaryConfig) {
     try {
       const uploadResult = await uploadToCloudinary(
-        file,
+        compressedFile,
         cloudinaryConfig,
         'recipes',
       )
@@ -78,7 +132,7 @@ export const processImageFile = async (
       )
 
       return {
-        file,
+        file: compressedFile,
         publicId: uploadResult.public_id,
         sizes: responsiveUrls,
         preview: responsiveUrls.medium,
@@ -90,10 +144,10 @@ export const processImageFile = async (
   }
 
   // Fallback: create local preview (for development or if Cloudinary fails)
-  const preview = await createImagePreview(file)
+  const preview = await createImagePreview(compressedFile)
 
   return {
-    file,
+    file: compressedFile,
     sizes: { small: preview, medium: preview, large: preview },
     preview,
   }
