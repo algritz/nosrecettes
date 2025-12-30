@@ -32,13 +32,13 @@ export function generateManifest() {
         type: 'image/x-icon',
       },
       {
-        src: getAssetUrl('icon-192.png'),
+        src: getAssetUrl('icon-192x192.png'),
         sizes: '192x192',
         type: 'image/png',
         purpose: 'any maskable',
       },
       {
-        src: getAssetUrl('icon-512.png'),
+        src: getAssetUrl('icon-512x512.png'),
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any maskable',
@@ -68,7 +68,7 @@ export function generateManifest() {
         url: getFullUrl('/?search='),
         icons: [
           {
-            src: getAssetUrl('icon-192.png'),
+            src: getAssetUrl('icon-192x192.png'),
             sizes: '192x192',
           },
         ],
