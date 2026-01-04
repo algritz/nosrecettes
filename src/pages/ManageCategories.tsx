@@ -9,7 +9,7 @@ import { Plus, Trash2, ArrowLeft, Save, AlertTriangle } from 'lucide-react'
 import { showSuccess, showError } from '@/utils/toast'
 import { GitHubService } from '@/services/github'
 import { useCategoryManager } from '@/hooks/useCategoryManager'
-import { recipes } from '@/data/recipes'
+import { useRecipes } from '@/hooks/useRecipes'
 import { recipeCategories } from '@/data/categories'
 import { getRecipeCategories } from '@/utils/recipeUtils'
 import { NotFound } from '@/components/NotFound'
@@ -29,6 +29,7 @@ import { OfflineFallback } from '@/components/OfflineFallback'
 
 const ManageCategories = () => {
   const isOnline = useOnlineStatus()
+  const { recipes, loading: recipesLoading } = useRecipes()
   const [githubConfig, setGithubConfig] = useState<{
     owner: string
     repo: string
@@ -84,8 +85,8 @@ const ManageCategories = () => {
     return <NotFound />
   }
 
-  // Don't render until config is checked
-  if (!configChecked) {
+  // Don't render until config and recipes are loaded
+  if (!configChecked || recipesLoading) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="text-center">

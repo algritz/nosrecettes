@@ -207,17 +207,17 @@ export async function processImageFile(file: File): Promise<ProcessedImage> {
 ### Success Criteria
 
 **Automated Verification**:
-- Run `npm run type-check` - TypeScript compilation succeeds with no errors
-- Run `npm run lint` - ESLint passes with no warnings about the new compression code
-- Run `npm run build` - Production build completes successfully
-- Check browser console - No import errors when loading the image upload page
+- [x] Run `npm run type-check` - TypeScript compilation succeeds with no errors
+- [x] Run `npm run lint` - ESLint passes with no warnings about the new compression code
+- [x] Run `npm run build` - Production build completes successfully
+- [ ] Check browser console - No import errors when loading the image upload page
 
 **Manual Verification**:
-1. **Small file passthrough**: Upload a 2MB image, verify console shows "skipping compression" and upload succeeds
-2. **Large file compression**: Upload a 15MB phone photo, verify console shows compression logs with before/after sizes
-3. **Editor integration**: Upload single large image, crop it in editor, save, verify compression happens after editor
-4. **Multiple file upload**: Upload 3 large images at once, verify all compress independently and upload
-5. **Compression failure handling**: If available, test with corrupted image to verify error handling
+1. [ ] **Small file passthrough**: Upload a 2MB image, verify console shows "skipping compression" and upload succeeds
+2. [x] **Large file compression**: Upload a 15MB phone photo, verify console shows compression logs with before/after sizes ✅ TESTED: 10.49MB PNG compressed to 1.22MB (88.4% reduction)
+3. [ ] **Editor integration**: Upload single large image, crop it in editor, save, verify compression happens after editor
+4. [ ] **Multiple file upload**: Upload 3 large images at once, verify all compress independently and upload (NOTE: Only single image per recipe in this app)
+5. [ ] **Compression failure handling**: If available, test with corrupted image to verify error handling
 
 **Implementation Note**: After completing these changes and verifying automated checks pass, pause for manual testing confirmation before proceeding to Phase 2. The compression integration is critical and must work correctly across all upload paths.
 
@@ -284,17 +284,17 @@ These console logs provide transparency for developers and power users without c
 ### Success Criteria
 
 **Automated Verification**:
-- Run `npm run type-check` - TypeScript compilation succeeds
-- Run `npm run lint` - ESLint passes with no warnings
-- Run `npm run build` - Production build completes successfully
-- Visual regression test (if available) - Upload UI renders correctly with updated text
+- [x] Run `npm run type-check` - TypeScript compilation succeeds
+- [x] Run `npm run lint` - ESLint passes with no warnings
+- [x] Run `npm run build` - Production build completes successfully
+- [ ] Visual regression test (if available) - Upload UI renders correctly with updated text
 
 **Manual Verification**:
-1. **Updated messaging visible**: Load the image upload page, verify dropzone shows "jusqu'à 50MB" instead of "jusqu'à 10MB"
-2. **No broken layouts**: Upload component renders correctly across mobile and desktop viewports
-3. **Text accurately reflects capability**: The 50MB limit aligns with tested compression capability from Phase 1
-4. **Console feedback helpful**: Upload large file, check console for clear compression logs
-5. **Optional badge (if implemented)**: Verify compression badge appears only for compressed images and doesn't clutter the UI
+1. [ ] **Updated messaging visible**: Load the image upload page, verify dropzone shows "jusqu'à 50MB" instead of "jusqu'à 10MB"
+2. [ ] **No broken layouts**: Upload component renders correctly across mobile and desktop viewports
+3. [ ] **Text accurately reflects capability**: The 50MB limit aligns with tested compression capability from Phase 1
+4. [ ] **Console feedback helpful**: Upload large file, check console for clear compression logs
+5. [ ] **Optional badge (if implemented)**: Verify compression badge appears only for compressed images and doesn't clutter the UI (SKIPPED - keeping compression transparent as designed)
 
 **Implementation Note**: This phase has minimal risk since we're primarily updating static text. The core compression logic from Phase 1 is unchanged. Focus on ensuring the UI accurately communicates the new capability without overpromising - we're targeting 50MB based on testing, but compression success depends on image content and complexity.
 
@@ -397,60 +397,60 @@ Track the following metrics in a spreadsheet or testing document:
 ### Success Criteria
 
 **Automated Verification**:
-- Run `npm run type-check` - TypeScript compilation succeeds
-- Run `npm run lint` - ESLint passes with no warnings
-- Run `npm run build` - Production build completes successfully
-- Run `npm run test` (if unit tests exist) - All existing tests pass
+- [x] Run `npm run type-check` - TypeScript compilation succeeds
+- [x] Run `npm run lint` - ESLint passes with no warnings
+- [x] Run `npm run build` - Production build completes successfully
+- [x] Run `npm run test` (if unit tests exist) - All existing tests pass (no tests in project)
 
 **Manual Verification**:
 
 1. **iPhone Photo Upload (10-30MB)**:
-   - ✓ Upload completes successfully without errors
-   - ✓ Compression time <6s for 20MB image
-   - ✓ Compressed file size 7-9MB
-   - ✓ Visual quality acceptable (no obvious artifacts)
-   - ✓ Upload to Cloudinary succeeds
+   - [ ] Upload completes successfully without errors
+   - [ ] Compression time <6s for 20MB image
+   - [ ] Compressed file size 7-9MB
+   - [ ] Visual quality acceptable (no obvious artifacts)
+   - [ ] Upload to Cloudinary succeeds
 
 2. **Android Photo Upload (10-25MB)**:
-   - ✓ Upload completes successfully without errors
-   - ✓ Compression time <5s for 15MB image
-   - ✓ Compressed file size 7-9MB
-   - ✓ Visual quality acceptable
-   - ✓ Upload to Cloudinary succeeds
+   - [ ] Upload completes successfully without errors
+   - [ ] Compression time <5s for 15MB image
+   - [ ] Compressed file size 7-9MB
+   - [ ] Visual quality acceptable
+   - [ ] Upload to Cloudinary succeeds
 
 3. **Edge Case: 50MB+ Image**:
-   - ✓ Compression succeeds (may take 8-10s)
-   - ✓ Output size under 10MB
-   - ✓ Quality degradation acceptable for extreme size reduction
-   - ✓ Upload succeeds
+   - [ ] Compression succeeds (may take 8-10s)
+   - [ ] Output size under 10MB
+   - [ ] Quality degradation acceptable for extreme size reduction
+   - [ ] Upload succeeds
 
 4. **Edge Case: Already Small Image (2MB)**:
-   - ✓ Console log shows "skipping compression"
-   - ✓ Original file uploaded unchanged
-   - ✓ Upload time faster than compressed images
+   - [ ] Console log shows "skipping compression"
+   - [ ] Original file uploaded unchanged
+   - [ ] Upload time faster than compressed images
 
 5. **Multiple File Upload (5 images, ~100MB total)**:
-   - ✓ All files compress independently
-   - ✓ All uploads succeed
-   - ✓ No browser memory issues
-   - ✓ UI remains responsive throughout
+   - [ ] All files compress independently
+   - [ ] All uploads succeed
+   - [ ] No browser memory issues
+   - [ ] UI remains responsive throughout
 
 6. **Editor Workflow**:
-   - ✓ Crop large image, compression happens after save
-   - ✓ Rotate large image, compression happens after save
-   - ✓ Cancel editor, no compression occurs
-   - ✓ Cropped small result skips compression
+   - [ ] Crop large image, compression happens after save
+   - [ ] Rotate large image, compression happens after save
+   - [ ] Cancel editor, no compression occurs
+   - [ ] Cropped small result skips compression
 
 7. **Performance Metrics**:
-   - ✓ 20MB image compresses in <5s
-   - ✓ 50MB image compresses in <10s
-   - ✓ Web Worker keeps UI responsive
-   - ✓ Upload success rate 100% for valid images
+   - [ ] 20MB image compresses in <5s
+   - [ ] 50MB image compresses in <10s
+   - [ ] Web Worker keeps UI responsive
+   - [ ] Upload success rate 100% for valid images
 
 8. **Documentation**:
-   - ✓ README.md updated with compression details
-   - ✓ Technical details documented (limits, formats, behavior)
-   - ✓ User-facing language clear and accurate
+   - [x] README.md updated with compression details
+   - [x] Technical details documented (limits, formats, behavior)
+   - [x] User-facing language clear and accurate
 
 **Implementation Note**: This phase requires access to real device photos for authentic testing. If test images aren't available, use online repositories of sample phone photos (e.g., Unsplash high-resolution downloads) or generate large test images with appropriate EXIF data. Focus particularly on food photography samples since that's the primary use case for this recipe application. Document any edge cases or quality issues discovered during testing for potential future optimization.
 

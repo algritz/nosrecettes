@@ -9,6 +9,7 @@ import { generateSecurityTxt } from './generate-security.js'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { spawn } from 'child_process'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -68,6 +69,22 @@ async function buildSEO() {
     fs.writeFileSync(securityPath, securityContent, 'utf-8')
     console.log(`✅ Security.txt generated successfully`)
 
+    // Generate recipes.json using tsx
+    console.log('\n7. Generating recipes.json...')
+    const tsxProcess = spawn('npx', ['tsx', 'scripts/generate-recipes-json.ts'], {
+      stdio: 'inherit',
+    })
+    await new Promise((resolve, reject) => {
+      tsxProcess.on('close', (code) => {
+        if (code === 0) {
+          console.log(`✅ Recipes.json generated successfully`)
+          resolve()
+        } else {
+          reject(new Error(`tsx process exited with code ${code}`))
+        }
+      })
+    })
+
     console.log('\n✅ All SEO and PWA files generated successfully!')
     console.log('📁 Files created:')
     console.log('   - public/sitemap.xml (dynamic recipe sitemap)')
@@ -76,6 +93,7 @@ async function buildSEO() {
     console.log('   - index.html (dynamic meta tags and structured data)')
     console.log('   - public/browserconfig.xml (Windows tile configuration)')
     console.log('   - public/.well-known/security.txt (security policy)')
+    console.log('   - public/recipes.json (recipe data for IndexedDB)')
   } catch (error) {
     console.error('\n❌ Error building SEO files:', error)
     process.exit(1)

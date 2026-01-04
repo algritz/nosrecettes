@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
-import { useEffect } from 'react'
-import { recipes } from '@/data/recipes'
+import { useEffect, useState } from 'react'
+import { Recipe } from '@/types/recipe'
+import { getRecipeBySlug } from '@/utils/recipeDb'
 import { RecipeDetail } from '@/components/RecipeDetail'
 import { NotFound } from '@/components/NotFound'
 import { SEOHead } from '@/components/SEOHead'
@@ -12,19 +13,27 @@ import {
 } from '@/utils/seoUtils'
 import { getResponsiveImageSrc } from '@/utils/imageUtils'
 import { getRecipeCategories } from '@/utils/recipeUtils'
+import { RecipeDetailSkeleton } from '@/components/RecipeDetailSkeleton'
 
 const RecipePage = () => {
   const { slug } = useParams<{ slug: string }>()
-  const recipe = recipes.find((r) => r.slug === slug)
+  const [recipe, setRecipe] = useState<Recipe | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     // Always scroll to top when recipe page loads
     window.scrollTo(0, 0)
 
+    // Load recipe from IndexedDB
+    loadRecipe().catch(console.error)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug])
+
+  useEffect(() => {
     if (recipe) {
       // Set page title for browser tab
       document.title = `${recipe.title} - Nos Recettes`
-    } else {
+    } else if (!loading) {
       document.title = 'Recette non trouvée - Nos Recettes'
     }
 
@@ -32,7 +41,26 @@ const RecipePage = () => {
     return () => {
       document.title = 'Nos Recettes'
     }
-  }, [recipe, slug]) // Include slug in dependencies to ensure scroll on route change
+  }, [recipe, loading])
+
+  async function loadRecipe() {
+    if (!slug) return
+
+    try {
+      setLoading(true)
+      const fetchedRecipe = await getRecipeBySlug(slug)
+      setRecipe(fetchedRecipe || null)
+    } catch (error) {
+      console.error('Failed to load recipe:', error)
+      setRecipe(null)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  if (loading) {
+    return <RecipeDetailSkeleton />
+  }
 
   if (!recipe) {
     return (

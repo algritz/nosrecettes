@@ -38,6 +38,8 @@ export const ResponsiveImage = ({
   if (imageError || !imageSrc) {
     if (!showPlaceholder) return null
 
+    const isOffline = !navigator.onLine
+
     return (
       <div
         className={cn(
@@ -48,7 +50,9 @@ export const ResponsiveImage = ({
       >
         <div className="flex flex-col items-center justify-center text-muted-foreground p-4">
           <Utensils className="w-12 h-12 mb-2" />
-          <span className="text-sm font-medium">Pas d'image</span>
+          <span className="text-sm font-medium">
+            {isOffline ? 'Image non disponible hors ligne' : "Pas d'image"}
+          </span>
         </div>
       </div>
     )

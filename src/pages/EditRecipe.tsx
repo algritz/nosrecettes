@@ -20,12 +20,9 @@ import {
   ImageSizes,
   TimeRange,
 } from '@/types/recipe'
-import { recipes } from '@/data/recipes'
+import { getRecipeBySlug } from '@/utils/recipeDb'
 import { recipeCategories } from '@/data/categories'
-import {
-  getRecipeCategories,
-  getAllCategoriesFromRecipes,
-} from '@/utils/recipeUtils'
+import { getRecipeCategories } from '@/utils/recipeUtils'
 import { NotFound } from '@/components/NotFound'
 import {
   AlertDialog,
@@ -45,7 +42,10 @@ const EditRecipe = () => {
   const isOnline = useOnlineStatus()
   const { slug } = useParams<{ slug: string }>()
   const navigate = useNavigate()
-  const existingRecipe = recipes.find((r) => r.slug === slug)
+  const [existingRecipe, setExistingRecipe] = useState<Recipe | undefined>(
+    undefined,
+  )
+  const [loadingRecipe, setLoadingRecipe] = useState(true)
 
   const [recipe, setRecipe] = useState({
     title: '',
@@ -94,6 +94,27 @@ const EditRecipe = () => {
     InstructionSection[]
   >([{ title: '', steps: [''] }])
 
+  // Load recipe from IndexedDB
+  useEffect(() => {
+    async function loadRecipeFromDB() {
+      if (!slug) {
+        setLoadingRecipe(false)
+        return
+      }
+
+      try {
+        const loadedRecipe = await getRecipeBySlug(slug)
+        setExistingRecipe(loadedRecipe)
+      } catch (error) {
+        console.error('Failed to load recipe:', error)
+      } finally {
+        setLoadingRecipe(false)
+      }
+    }
+
+    loadRecipeFromDB().catch(console.error)
+  }, [slug])
+
   useEffect(() => {
     // Check GitHub config
     const savedConfig = localStorage.getItem('github-config')
@@ -102,12 +123,8 @@ const EditRecipe = () => {
     }
     setConfigChecked(true)
 
-    // Get categories from existing recipes and merge with defaults
-    const existingCategories = getAllCategoriesFromRecipes(recipes)
-    const allCategories = Array.from(
-      new Set([...recipeCategories, ...existingCategories]),
-    ).sort()
-    setAvailableCategories(allCategories)
+    // Use default categories (categories from IndexedDB not needed for editing)
+    setAvailableCategories(recipeCategories.sort())
 
     // Pre-fill form with existing recipe data
     if (existingRecipe) {
@@ -195,8 +212,8 @@ const EditRecipe = () => {
     return <NotFound />
   }
 
-  // Don't render until config is checked
-  if (!configChecked) {
+  // Don't render until config and recipe are loaded
+  if (!configChecked || loadingRecipe) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="text-center">

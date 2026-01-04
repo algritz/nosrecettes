@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { recipes } from '@/data/recipes'
+import { useRecipes } from '@/hooks/useRecipes'
 import { RecipeCard } from '@/components/RecipeCard'
 import { SearchBar } from '@/components/SearchBar'
 import { RecipeStats } from '@/components/RecipeStats'
@@ -13,10 +13,19 @@ import { Plus, Settings, ArrowUp } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { generateWebsiteStructuredData } from '@/utils/seoUtils'
 import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils'
+import { RecipeLoadError } from '@/components/RecipeLoadError'
+import { RecipeListSkeleton } from '@/components/RecipeListSkeleton'
 
 const Index = () => {
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
+
+  // Load recipes from IndexedDB
+  const {
+    recipes,
+    loading: recipesLoading,
+    error: recipesError,
+  } = useRecipes()
 
   const {
     searchTerm,
@@ -87,6 +96,21 @@ const Index = () => {
   ]
 
   const websiteStructuredData = generateWebsiteStructuredData()
+
+  // Show loading skeleton while recipes are loading
+  if (recipesLoading) {
+    return <RecipeListSkeleton />
+  }
+
+  // Show error if recipes failed to load
+  if (recipesError) {
+    return (
+      <RecipeLoadError
+        error={recipesError}
+        onRetry={() => window.location.reload()}
+      />
+    )
+  }
 
   return (
     <>

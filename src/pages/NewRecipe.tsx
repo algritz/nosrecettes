@@ -21,9 +21,7 @@ import {
   InstructionSection,
   TimeRange,
 } from '@/types/recipe'
-import { recipes } from '@/data/recipes'
 import { recipeCategories } from '@/data/categories'
-import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils'
 import { NotFound } from '@/components/NotFound'
 import { useOnlineStatus } from '@/hooks/useOnlineStatus'
 import { OfflineFallback } from '@/components/OfflineFallback'
@@ -78,12 +76,8 @@ const NewRecipe = () => {
     }
     setConfigChecked(true)
 
-    // Get categories from existing recipes and merge with defaults
-    const existingCategories = getAllCategoriesFromRecipes(recipes)
-    const allCategories = Array.from(
-      new Set([...recipeCategories, ...existingCategories]),
-    ).sort()
-    setAvailableCategories(allCategories)
+    // Use default categories
+    setAvailableCategories(recipeCategories.sort())
   }, [])
 
   if (!isOnline) {
