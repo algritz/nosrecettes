@@ -1,15 +1,14 @@
 import { getRecipeVersion, updateRecipes, openRecipeDB } from '@/utils/recipeDb'
 import { toast } from 'sonner'
+import { fetchRecipes } from '@/utils/recipeCoordinator'
 
 export async function checkForRecipeUpdates(): Promise<boolean> {
   try {
-    const response = await fetch('/recipes.json', {
-      cache: 'no-store',
+    const serverData = await fetchRecipes({
+      bustCache: true, // Force fresh fetch for update check
+      reason: 'update-check',
     })
 
-    if (!response.ok) return false
-
-    const serverData = await response.json()
     const localVersion = await getRecipeVersion()
 
     if (serverData.version !== localVersion) {

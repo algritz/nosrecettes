@@ -7,6 +7,7 @@ import {
   updateRecipes,
   isRecipeDBPopulated,
 } from '@/utils/recipeDb'
+import { fetchRecipes } from '@/utils/recipeCoordinator'
 
 interface RecipeState {
   recipes: Recipe[]
@@ -66,16 +67,18 @@ export function useRecipes(): RecipeState {
   }
 
   async function fetchAndPopulate() {
-    if (!navigator.onLine) {
-      throw new Error('OFFLINE_NO_DATA')
-    }
+    const data = await fetchRecipes({
+      reason: 'initial-load',
+      onProgress: (loaded, total) => {
+        // Optional: Could update state with progress percentage
+        // For now, just log it
+        if (total > 0) {
+          const percent = Math.round((loaded / total) * 100)
+          console.log(`[useRecipes] Download progress: ${percent}%`)
+        }
+      },
+    })
 
-    const response = await fetch('/recipes.json')
-    if (!response.ok) {
-      throw new Error(`Failed to fetch recipes: ${response.status}`)
-    }
-
-    const data = await response.json()
     await populateRecipes(data.recipes, data.version)
 
     setState({
@@ -88,13 +91,11 @@ export function useRecipes(): RecipeState {
 
   async function checkForUpdates() {
     try {
-      const response = await fetch('/recipes.json', {
-        cache: 'no-store', // Always check server
+      const serverData = await fetchRecipes({
+        bustCache: true, // Force fresh fetch for update check
+        reason: 'update-check',
       })
 
-      if (!response.ok) return
-
-      const serverData = await response.json()
       const localVersion = await getRecipeVersion()
 
       if (serverData.version !== localVersion) {

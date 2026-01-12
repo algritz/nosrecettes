@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Recipe } from '@/types/recipe'
-import { getRecipeBySlug } from '@/utils/recipeDb'
+import { getRecipeBySlug, openRecipeDB } from '@/utils/recipeDb'
 import { RecipeDetail } from '@/components/RecipeDetail'
 import { NotFound } from '@/components/NotFound'
 import { SEOHead } from '@/components/SEOHead'
@@ -14,6 +14,7 @@ import {
 import { getResponsiveImageSrc } from '@/utils/imageUtils'
 import { getRecipeCategories } from '@/utils/recipeUtils'
 import { RecipeDetailSkeleton } from '@/components/RecipeDetailSkeleton'
+import { fetchRecipes } from '@/utils/recipeCoordinator'
 
 const RecipePage = () => {
   const { slug } = useParams<{ slug: string }>()
@@ -43,12 +44,50 @@ const RecipePage = () => {
     }
   }, [recipe, loading])
 
+  async function fetchRecipeFromNetwork(recipeSlug: string): Promise<Recipe | null> {
+    try {
+      const data = await fetchRecipes({
+        reason: 'network-fallback',
+      })
+
+      const foundRecipe = data.recipes.find((r: Recipe) => r.slug === recipeSlug)
+
+      if (foundRecipe) {
+        console.log(`Found recipe "${recipeSlug}" in network response, caching to IndexedDB...`)
+        const db = await openRecipeDB()
+        await db.put('recipes', foundRecipe)
+        console.log(`Recipe "${recipeSlug}" cached successfully`)
+      } else {
+        console.log(`Recipe "${recipeSlug}" not found in recipes.json`)
+      }
+
+      return foundRecipe || null
+    } catch (error) {
+      // Preserve existing error handling: log and return null
+      if (error instanceof Error && error.message === 'OFFLINE') {
+        console.log('Offline - cannot fetch recipe from network')
+      } else {
+        console.error('Network fallback failed:', error)
+      }
+      return null
+    }
+  }
+
   async function loadRecipe() {
     if (!slug) return
 
     try {
       setLoading(true)
-      const fetchedRecipe = await getRecipeBySlug(slug)
+
+      // Try IndexedDB first
+      let fetchedRecipe = await getRecipeBySlug(slug)
+
+      // If not found in IndexedDB, try network fallback
+      if (!fetchedRecipe) {
+        console.log(`Recipe "${slug}" not found in IndexedDB, attempting network fallback...`)
+        fetchedRecipe = await fetchRecipeFromNetwork(slug)
+      }
+
       setRecipe(fetchedRecipe || null)
     } catch (error) {
       console.error('Failed to load recipe:', error)
