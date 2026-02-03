@@ -21,20 +21,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Fetch last 2 commits for git diff
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
-      - name: Generate SEO files
-        run: npm run build:seo
+      - name: Install Chrome for Puppeteer
+        run: pnpm exec puppeteer browsers install chrome
 
-      - name: Build
-        run: npm run build
+      - name: Build (includes SEO generation and smart pre-rendering)
+        run: pnpm build
+        env:
+          NODE_ENV: production
+          PRERENDER_CONCURRENCY: 20
+          INCREMENTAL_PRERENDER: true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
