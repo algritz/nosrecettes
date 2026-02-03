@@ -39,3 +39,6 @@ snap-routes.json
 
 # CodeGraph cache
 .codegraph/
+
+# Pre-rendering browser data cache
+.browser-data/

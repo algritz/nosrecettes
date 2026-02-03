@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card'
 
 export function RecipeDetailSkeleton(): React.ReactElement {
   return (
-    <div className="container mx-auto p-4 max-w-4xl">
+    <div className="container mx-auto p-4 max-w-4xl" data-testid="recipe-skeleton">
       {/* Header skeleton */}
       <div className="mb-6">
         <Skeleton className="h-10 w-3/4 mb-4" />

@@ -37,12 +37,26 @@ async function prerender() {
   const baseUrl = `http://localhost:3001`
   console.log(`✅ Server running at ${baseUrl}`)
 
-  // Launch Playwright browser
-  console.log('\n🎭 Launching browser...')
-  const browser = await chromium.launch({
+  // Launch Playwright browser with persistent context to share IndexedDB
+  console.log('\n🎭 Launching browser with persistent context...')
+  const browserContext = await chromium.launchPersistentContext(path.join(__dirname, '..', '.browser-data'), {
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   })
+
+  // Pre-populate IndexedDB by visiting homepage first
+  console.log('\n📦 Pre-populating IndexedDB with recipe data...')
+  const initPage = await browserContext.newPage()
+  await initPage.goto(`${baseUrl}/`, { waitUntil: 'networkidle', timeout: 30000 })
+
+  // Wait for IndexedDB to be populated
+  await initPage.waitForFunction(async () => {
+    const dbs = await window.indexedDB.databases()
+    return dbs.some(db => db.name === 'RecipeDB')
+  }, { timeout: 30000 })
+
+  console.log('✅ IndexedDB populated')
+  await initPage.close()
 
   let successCount = 0
   let errorCount = 0
@@ -67,7 +81,7 @@ async function prerender() {
         const routeNumber = batchIndex * CONCURRENCY + index + 1
 
         try {
-          const page = await browser.newPage()
+          const page = await browserContext.newPage()
 
           // Set viewport
           await page.setViewportSize({ width: 1280, height: 720 })
@@ -78,9 +92,48 @@ async function prerender() {
             timeout: 30000
           })
 
-          // Additional wait to ensure React Helmet has updated the DOM
-          // Give a small delay for React Helmet to process
-          await page.waitForTimeout(500)
+          // For recipe pages, wait for recipe-specific content to load
+          if (route.startsWith('/recipe/')) {
+            try {
+              // Wait for recipe content to actually render (not just skeleton)
+              // This indicates IndexedDB has loaded and recipe is displayed
+              await page.waitForFunction(() => {
+                // Check if we have actual recipe content, not just skeleton
+                const h1 = document.querySelector('h1')
+                if (!h1 || !h1.textContent || h1.textContent.trim() === '') {
+                  return false
+                }
+
+                // Also verify we're not showing loading state
+                const skeleton = document.querySelector('[data-testid="recipe-skeleton"]')
+                if (skeleton) {
+                  return false
+                }
+
+                return true
+              }, { timeout: 15000 })
+
+              // Now wait for React Helmet to update meta tags with recipe-specific data
+              // This should happen quickly once recipe is rendered
+              await page.waitForFunction(() => {
+                const ogTitle = document.querySelector('meta[property="og:title"]')
+                if (!ogTitle) return false
+                const titleContent = ogTitle.getAttribute('content')
+                // Ensure it's not the homepage title
+                return titleContent && !titleContent.includes('720 Recettes')
+              }, { timeout: 5000 })
+
+              // Small buffer for any final DOM updates
+              await page.waitForTimeout(200)
+            } catch (error) {
+              console.warn(`  ⚠️  Recipe content wait failed for ${route}: ${error.message}`)
+              // Fall back to basic timeout
+              await page.waitForTimeout(1000)
+            }
+          } else {
+            // For non-recipe pages, use basic timeout
+            await page.waitForTimeout(500)
+          }
 
           // Get the rendered HTML
           const html = await page.content()
@@ -118,7 +171,7 @@ async function prerender() {
       errorCount += results.filter(r => !r.success).length
     }
   } finally {
-    await browser.close()
+    await browserContext.close()
     server.httpServer.close()
   }
 
