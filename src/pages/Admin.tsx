@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useOnlineStatus } from '@/hooks/useOnlineStatus'
 import { OfflineFallback } from '@/components/OfflineFallback'
 
-const Admin = () => {
+const Admin = (): React.ReactElement => {
   const isOnline = useOnlineStatus()
   const [githubConfig, setGithubConfig] = useState<{
     owner: string
@@ -38,14 +38,14 @@ const Admin = () => {
     owner: string
     repo: string
     token: string
-  }) => {
+  }): void => {
     setGithubConfig(config)
   }
 
   const handleCloudinaryConfigSaved = (config: {
     cloudName: string
     uploadPreset: string
-  }) => {
+  }): void => {
     setCloudinaryConfig(config)
   }
 

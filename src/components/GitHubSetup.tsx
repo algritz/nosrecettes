@@ -13,7 +13,9 @@ interface GitHubSetupProps {
   }) => void
 }
 
-export const GitHubSetup = ({ onConfigSaved }: GitHubSetupProps) => {
+export const GitHubSetup = ({
+  onConfigSaved,
+}: GitHubSetupProps): React.ReactElement => {
   const [config, setConfig] = useState({
     owner: '',
     repo: '',
@@ -22,7 +24,7 @@ export const GitHubSetup = ({ onConfigSaved }: GitHubSetupProps) => {
   const [showToken, setShowToken] = useState(false)
   const [isValid, setIsValid] = useState(false)
 
-  const handleSave = () => {
+  const handleSave = (): void => {
     if (config.owner && config.repo && config.token) {
       // Store in localStorage (in production, consider more secure storage)
       localStorage.setItem('github-config', JSON.stringify(config))
@@ -31,7 +33,7 @@ export const GitHubSetup = ({ onConfigSaved }: GitHubSetupProps) => {
     }
   }
 
-  const handleTestConnection = async () => {
+  const handleTestConnection = async (): Promise<void> => {
     try {
       const response = await fetch(
         `https://api.github.com/repos/${config.owner}/${config.repo}`,

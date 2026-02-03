@@ -26,7 +26,7 @@ import { NotFound } from '@/components/NotFound'
 import { useOnlineStatus } from '@/hooks/useOnlineStatus'
 import { OfflineFallback } from '@/components/OfflineFallback'
 
-const NewRecipe = () => {
+const NewRecipe = (): React.ReactElement => {
   const isOnline = useOnlineStatus()
   const [recipe, setRecipe] = useState({
     title: '',
@@ -102,7 +102,7 @@ const NewRecipe = () => {
 
   const handleJSONImportSuccess = (
     jsonRecipe: Partial<Omit<Recipe, 'id' | 'slug'>>,
-  ) => {
+  ): void => {
     // Apply JSON recipe to form
     setRecipe({
       title: jsonRecipe.title || '',
@@ -159,21 +159,21 @@ const NewRecipe = () => {
     showSuccess(`Recette "${jsonRecipe.title}" importée depuis JSON`)
   }
 
-  const addIngredient = () => {
+  const addIngredient = (): void => {
     setRecipe((prev) => ({
       ...prev,
       ingredients: [...prev.ingredients, ''],
     }))
   }
 
-  const removeIngredient = (index: number) => {
+  const removeIngredient = (index: number): void => {
     setRecipe((prev) => ({
       ...prev,
       ingredients: prev.ingredients.filter((_, i) => i !== index),
     }))
   }
 
-  const updateIngredient = (index: number, value: string) => {
+  const updateIngredient = (index: number, value: string): void => {
     setRecipe((prev) => ({
       ...prev,
       ingredients: prev.ingredients.map((ing, i) =>
@@ -182,21 +182,21 @@ const NewRecipe = () => {
     }))
   }
 
-  const addInstruction = () => {
+  const addInstruction = (): void => {
     setRecipe((prev) => ({
       ...prev,
       instructions: [...prev.instructions, ''],
     }))
   }
 
-  const removeInstruction = (index: number) => {
+  const removeInstruction = (index: number): void => {
     setRecipe((prev) => ({
       ...prev,
       instructions: prev.instructions.filter((_, i) => i !== index),
     }))
   }
 
-  const updateInstruction = (index: number, value: string) => {
+  const updateInstruction = (index: number, value: string): void => {
     setRecipe((prev) => ({
       ...prev,
       instructions: prev.instructions.map((inst, i) =>
@@ -205,28 +205,28 @@ const NewRecipe = () => {
     }))
   }
 
-  const addTag = () => {
+  const addTag = (): void => {
     setRecipe((prev) => ({
       ...prev,
       tags: [...prev.tags, ''],
     }))
   }
 
-  const removeTag = (index: number) => {
+  const removeTag = (index: number): void => {
     setRecipe((prev) => ({
       ...prev,
       tags: prev.tags.filter((_, i) => i !== index),
     }))
   }
 
-  const updateTag = (index: number, value: string) => {
+  const updateTag = (index: number, value: string): void => {
     setRecipe((prev) => ({
       ...prev,
       tags: prev.tags.map((tag, i) => (i === index ? value : tag)),
     }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): void => {
     e.preventDefault()
     setIsSubmitting(true)
 

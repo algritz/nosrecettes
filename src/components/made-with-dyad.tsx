@@ -1,4 +1,4 @@
-export const MadeWithDyad = () => (
+export const MadeWithDyad = (): React.ReactElement => (
   <div className="p-4 text-center">
     <a
       href="https://www.dyad.sh/"

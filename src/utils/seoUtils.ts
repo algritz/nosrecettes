@@ -4,11 +4,11 @@ import { formatTime } from './timeFormat'
 import { getMaxTime, getMinTime } from './timeUtils'
 import { siteConfig } from '@/config/site.config'
 
-export const generateRecipeStructuredData = (recipe: Recipe) => {
+export const generateRecipeStructuredData = (recipe: Recipe): object => {
   const baseUrl = siteConfig.baseUrl
 
   // Get ingredients as flat array
-  const getIngredientsArray = (): string[] => {
+  const getIngredientsArray = (): readonly string[] => {
     if (!recipe.ingredients || recipe.ingredients.length === 0) return []
 
     if (
@@ -22,7 +22,7 @@ export const generateRecipeStructuredData = (recipe: Recipe) => {
   }
 
   // Get instructions as flat array with proper formatting
-  const getInstructionsArray = (): object[] => {
+  const getInstructionsArray = (): readonly object[] => {
     if (!recipe.instructions || recipe.instructions.length === 0) return []
 
     let stepNumber = 1
@@ -113,7 +113,7 @@ export const generateRecipeStructuredData = (recipe: Recipe) => {
   return JSON.parse(JSON.stringify(structuredData))
 }
 
-export const generateWebsiteStructuredData = () => {
+export const generateWebsiteStructuredData = (): object => {
   const baseUrl = siteConfig.baseUrl
 
   return {
@@ -141,7 +141,7 @@ export const generateWebsiteStructuredData = () => {
 
 export const generateBreadcrumbStructuredData = (
   items: Array<{ name: string; url?: string }>,
-) => {
+): object => {
   const baseUrl = siteConfig.baseUrl
 
   return {

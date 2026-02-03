@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -31,10 +31,10 @@ export const CategorySelector = ({
   availableCategories,
   placeholder = 'Sélectionner des catégories...',
   className,
-}: CategorySelectorProps) => {
+}: CategorySelectorProps): React.ReactElement => {
   const [open, setOpen] = useState(false)
 
-  const toggleCategory = (category: string) => {
+  const toggleCategory = (category: string): void => {
     if (selectedCategories.includes(category)) {
       onCategoriesChange(selectedCategories.filter((c) => c !== category))
     } else {
@@ -42,7 +42,7 @@ export const CategorySelector = ({
     }
   }
 
-  const removeCategory = (category: string) => {
+  const removeCategory = (category: string): void => {
     onCategoriesChange(selectedCategories.filter((c) => c !== category))
   }
 

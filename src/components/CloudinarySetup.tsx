@@ -10,7 +10,9 @@ interface CloudinarySetupProps {
   onConfigSaved: (config: { cloudName: string; uploadPreset: string }) => void
 }
 
-export const CloudinarySetup = ({ onConfigSaved }: CloudinarySetupProps) => {
+export const CloudinarySetup = ({
+  onConfigSaved,
+}: CloudinarySetupProps): React.ReactElement => {
   const [config, setConfig] = useState({
     cloudName: '',
     uploadPreset: '',
@@ -18,7 +20,7 @@ export const CloudinarySetup = ({ onConfigSaved }: CloudinarySetupProps) => {
   const [isValid, setIsValid] = useState(false)
   const [isTesting, setIsTesting] = useState(false)
 
-  const handleSave = () => {
+  const handleSave = (): void => {
     if (config.cloudName && config.uploadPreset) {
       localStorage.setItem('cloudinary-config', JSON.stringify(config))
       onConfigSaved(config)
@@ -26,7 +28,7 @@ export const CloudinarySetup = ({ onConfigSaved }: CloudinarySetupProps) => {
     }
   }
 
-  const testConnection = () => {
+  const testConnection = (): void => {
     if (!config.cloudName || !config.uploadPreset) {
       alert('Veuillez remplir tous les champs avant de tester.')
       return

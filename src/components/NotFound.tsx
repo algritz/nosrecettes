@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 import { Home } from 'lucide-react'
 
-export const NotFound = () => (
+export const NotFound = (): React.ReactElement => (
   <div className="min-h-screen flex items-center justify-center bg-background">
     <div className="container mx-auto px-4 py-8">
       <div className="text-center max-w-md mx-auto">

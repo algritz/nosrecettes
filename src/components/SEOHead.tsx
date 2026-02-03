@@ -19,7 +19,7 @@ export const SEOHead = ({
   url,
   type = 'website',
   structuredData,
-}: SEOHeadProps) => {
+}: SEOHeadProps): React.ReactElement => {
   const siteName = 'Nos Recettes'
   const baseUrl = siteConfig.baseUrl
   const fullUrl = url ? `${baseUrl}${url}` : baseUrl

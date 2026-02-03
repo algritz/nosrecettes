@@ -12,8 +12,8 @@ export const useInfiniteScroll = ({
   isLoading,
   onLoadMore,
   threshold = 200,
-}: UseInfiniteScrollProps) => {
-  const handleScroll = useCallback(() => {
+}: UseInfiniteScrollProps): void => {
+  const handleScroll = useCallback((): void => {
     if (isLoading || !hasMore) return
 
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop
@@ -28,6 +28,6 @@ export const useInfiniteScroll = ({
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    return (): void => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
 }

@@ -19,7 +19,7 @@ export const ResponsiveImage = ({
   size = 'medium',
   aspectRatio = 'video',
   showPlaceholder = true,
-}: ResponsiveImageProps) => {
+}: ResponsiveImageProps): React.ReactElement | null => {
   const [imageError, setImageError] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
 

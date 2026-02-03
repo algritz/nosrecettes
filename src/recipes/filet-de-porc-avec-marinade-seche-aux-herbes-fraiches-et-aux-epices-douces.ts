@@ -1,6 +1,7 @@
 import { Recipe } from '@/types/recipe';
 
-export const filetDePorcAvecMarinadeSecheAuxHerbesFraichesEtAuxEpicesDouces: Recipe = {
+export const filetDePorcAvecMarinadeSecheAuxHerbesFraichesEtAuxEpicesDouces:
+  Recipe = {
   id: 'filet-de-porc-avec-marinade-seche-aux-herbes-fraiches-et-aux-epices-douces',
   title: 'Filet de porc avec marinade sèche aux herbes fraîches et aux épices douces',
   description: 'Une recette de filet de porc en marinade sèche aux herbes fraîches et épices douces, idéal pour une cuisson au barbecue ou au four, servi en tranches avec une salade de pâtes et légumes frais.',

@@ -33,7 +33,7 @@ interface SearchBarProps {
  * @param search - User's search input
  * @returns 1 if match, 0 if no match
  */
-const accentInsensitiveFilter = (value: string, search: string) => {
+const accentInsensitiveFilter = (value: string, search: string): number => {
   const normalizedValue = normalizeForSearch(value)
   const normalizedSearch = normalizeForSearch(search)
 
@@ -48,10 +48,10 @@ export const SearchBar = ({
   onCategoriesChange,
   categories,
   onClearFilters,
-}: SearchBarProps) => {
+}: SearchBarProps): React.ReactElement => {
   const hasFilters = selectedCategories.length > 0 || searchTerm !== ''
 
-  const toggleCategory = (category: string) => {
+  const toggleCategory = (category: string): void => {
     if (selectedCategories.includes(category)) {
       onCategoriesChange(selectedCategories.filter((c) => c !== category))
     } else {
@@ -59,7 +59,7 @@ export const SearchBar = ({
     }
   }
 
-  const removeCategory = (category: string) => {
+  const removeCategory = (category: string): void => {
     onCategoriesChange(selectedCategories.filter((c) => c !== category))
   }
 
@@ -68,6 +68,7 @@ export const SearchBar = ({
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
         <Input
+          data-testid="search-input"
           placeholder="Rechercher par nom, ingrédient ou tag..."
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}

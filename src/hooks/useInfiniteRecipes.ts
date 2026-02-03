@@ -14,7 +14,20 @@ interface UseInfiniteRecipesProps {
 export const useInfiniteRecipes = ({
   recipes,
   batchSize = 10,
-}: UseInfiniteRecipesProps) => {
+}: UseInfiniteRecipesProps): {
+  searchTerm: string
+  setSearchTerm: (term: string) => void
+  selectedCategories: string[]
+  setSelectedCategories: (categories: string[]) => void
+  displayedCount: number
+  isLoading: boolean
+  categories: string[]
+  filteredRecipes: Recipe[]
+  displayedRecipes: Recipe[]
+  hasMore: boolean
+  loadMore: () => void
+  clearFilters: () => void
+} => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [displayedCount, setDisplayedCount] = useState(batchSize)
@@ -63,9 +76,15 @@ export const useInfiniteRecipes = ({
         const matchesSearch =
           searchTerm === '' ||
           normalizeForSearch(recipe.title).includes(normalizedSearchTerm) ||
-          normalizeForSearch(recipe.description).includes(normalizedSearchTerm) ||
-          normalizeForSearch(getIngredientsText(recipe.ingredients)).includes(normalizedSearchTerm) ||
-          normalizeForSearch(getInstructionsText(recipe.instructions)).includes(normalizedSearchTerm) ||
+          normalizeForSearch(recipe.description).includes(
+            normalizedSearchTerm,
+          ) ||
+          normalizeForSearch(getIngredientsText(recipe.ingredients)).includes(
+            normalizedSearchTerm,
+          ) ||
+          normalizeForSearch(
+            getInstructionsText(recipe.instructions),
+          ).includes(normalizedSearchTerm) ||
           recipe.tags.some((tag) =>
             normalizeForSearch(tag).includes(normalizedSearchTerm),
           )

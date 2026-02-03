@@ -12,28 +12,31 @@ interface SectionedIngredientsProps {
 export const SectionedIngredients = ({
   sections,
   onChange,
-}: SectionedIngredientsProps) => {
-  const addSection = () => {
+}: SectionedIngredientsProps): React.ReactElement => {
+  const addSection = (): void => {
     onChange([...sections, { title: '', items: [''] }])
   }
 
-  const removeSection = (sectionIndex: number) => {
+  const removeSection = (sectionIndex: number): void => {
     onChange(sections.filter((_, i) => i !== sectionIndex))
   }
 
-  const updateSectionTitle = (sectionIndex: number, title: string) => {
+  const updateSectionTitle = (sectionIndex: number, title: string): void => {
     const newSections = [...sections]
     newSections[sectionIndex].title = title
     onChange(newSections)
   }
 
-  const addIngredient = (sectionIndex: number) => {
+  const addIngredient = (sectionIndex: number): void => {
     const newSections = [...sections]
     newSections[sectionIndex].items.push('')
     onChange(newSections)
   }
 
-  const removeIngredient = (sectionIndex: number, itemIndex: number) => {
+  const removeIngredient = (
+    sectionIndex: number,
+    itemIndex: number,
+  ): void => {
     const newSections = [...sections]
     newSections[sectionIndex].items = newSections[sectionIndex].items.filter(
       (_, i) => i !== itemIndex,
@@ -45,7 +48,7 @@ export const SectionedIngredients = ({
     sectionIndex: number,
     itemIndex: number,
     value: string,
-  ) => {
+  ): void => {
     const newSections = [...sections]
     newSections[sectionIndex].items[itemIndex] = value
     onChange(newSections)

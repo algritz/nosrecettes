@@ -12,7 +12,7 @@ interface RecipeCardProps {
   recipe: Recipe
 }
 
-export const RecipeCard = ({ recipe }: RecipeCardProps) => {
+export const RecipeCard = ({ recipe }: RecipeCardProps): React.ReactElement => {
   // Use max values for total time calculation (conservative estimate)
   const totalTime =
     getMaxTime(recipe.prepTime) +
@@ -25,7 +25,7 @@ export const RecipeCard = ({ recipe }: RecipeCardProps) => {
   const primaryImage = recipe.images?.[0] || recipe.image
 
   return (
-    <Link to={`/recipe/${recipe.slug}`}>
+    <Link to={`/recipe/${recipe.slug}`} data-testid="recipe-card">
       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer overflow-hidden">
         <ResponsiveImage
           src={primaryImage}

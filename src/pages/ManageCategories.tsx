@@ -27,7 +27,7 @@ import {
 import { useOnlineStatus } from '@/hooks/useOnlineStatus'
 import { OfflineFallback } from '@/components/OfflineFallback'
 
-const ManageCategories = () => {
+const ManageCategories = (): React.ReactElement => {
   const isOnline = useOnlineStatus()
   const { recipes, loading: recipesLoading } = useRecipes()
   const [githubConfig, setGithubConfig] = useState<{
@@ -96,7 +96,7 @@ const ManageCategories = () => {
     )
   }
 
-  const handleAddCategory = () => {
+  const handleAddCategory = (): void => {
     const trimmedName = newCategoryName.trim()
 
     if (!trimmedName) {
@@ -114,7 +114,7 @@ const ManageCategories = () => {
     showSuccess(`Catégorie "${trimmedName}" ajoutée`)
   }
 
-  const handleDeleteCategory = (category: string) => {
+  const handleDeleteCategory = (category: string): void => {
     if (!canDeleteCategory(category)) {
       showError(
         'Impossible de supprimer une catégorie utilisée par des recettes',
@@ -126,7 +126,7 @@ const ManageCategories = () => {
     showSuccess(`Catégorie "${category}" supprimée`)
   }
 
-  const handleSubmitChanges = async () => {
+  const handleSubmitChanges = async (): Promise<void> => {
     const changes = getChangesForPR()
 
     if (changes.length === 0) {

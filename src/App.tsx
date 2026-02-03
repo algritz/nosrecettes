@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from '@/components/ui/sonner'
 import { TooltipProvider } from '@/components/ui/tooltip'
@@ -22,7 +22,7 @@ const queryClient = new QueryClient()
 
 const basename = siteConfig.basePath
 
-const App = () => {
+const App = (): React.ReactElement => {
   const { showUpdateBanner, dismissBanner } = usePwaUpdate()
   const { requestPersistence } = usePersistentStorage()
 
@@ -48,7 +48,7 @@ const App = () => {
       30 * 60 * 1000,
     ) // Every 30 minutes WHILE APP IS OPEN
 
-    return () => clearInterval(interval) // Clean up when app closes
+    return (): void => clearInterval(interval) // Clean up when app closes
   }, [requestPersistence])
 
   return (

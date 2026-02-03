@@ -27,7 +27,9 @@ interface RecipeDetailProps {
   recipe: Recipe
 }
 
-export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
+export const RecipeDetail = ({
+  recipe,
+}: RecipeDetailProps): React.ReactElement => {
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
@@ -44,18 +46,18 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
   const hasMultipleImages = allImages.length > 1
   const hasAnyImage = allImages.length > 0
 
-  const nextImage = () => {
+  const nextImage = (): void => {
     setCurrentImageIndex((prev) => (prev + 1) % allImages.length)
   }
 
-  const prevImage = () => {
+  const prevImage = (): void => {
     setCurrentImageIndex(
       (prev) => (prev - 1 + allImages.length) % allImages.length,
     )
   }
 
   // Helper function to render ingredients
-  const renderIngredients = () => {
+  const renderIngredients = (): React.ReactElement => {
     if (!recipe.ingredients || recipe.ingredients.length === 0) {
       return <p className="text-muted-foreground">Aucun ingrédient spécifié</p>
     }
@@ -102,7 +104,7 @@ export const RecipeDetail = ({ recipe }: RecipeDetailProps) => {
   }
 
   // Helper function to render instructions
-  const renderInstructions = () => {
+  const renderInstructions = (): React.ReactElement => {
     if (!recipe.instructions || recipe.instructions.length === 0) {
       return (
         <p className="text-muted-foreground">Aucune instruction spécifiée</p>

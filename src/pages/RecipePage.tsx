@@ -15,20 +15,24 @@ import { getResponsiveImageSrc } from '@/utils/imageUtils'
 import { getRecipeCategories } from '@/utils/recipeUtils'
 import { RecipeDetailSkeleton } from '@/components/RecipeDetailSkeleton'
 import { fetchRecipes } from '@/utils/recipeCoordinator'
+import { useIndexedDBReady } from '@/hooks/useIndexedDBReady'
 
-const RecipePage = () => {
+const RecipePage = (): React.JSX.Element => {
   const { slug } = useParams<{ slug: string }>()
   const [recipe, setRecipe] = useState<Recipe | null>(null)
   const [loading, setLoading] = useState(true)
+  const { isReady: dbReady, isChecking: dbChecking } = useIndexedDBReady()
 
   useEffect(() => {
     // Always scroll to top when recipe page loads
     window.scrollTo(0, 0)
 
-    // Load recipe from IndexedDB
-    loadRecipe().catch(console.error)
+    // Only load recipe once IndexedDB is ready
+    if (dbReady) {
+      loadRecipe().catch(console.error)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug])
+  }, [slug, dbReady])
 
   useEffect(() => {
     if (recipe) {
@@ -39,18 +43,22 @@ const RecipePage = () => {
     }
 
     // Cleanup: reset title when component unmounts
-    return () => {
+    return (): void => {
       document.title = 'Nos Recettes'
     }
   }, [recipe, loading])
 
-  async function fetchRecipeFromNetwork(recipeSlug: string): Promise<Recipe | null> {
+  async function fetchRecipeFromNetwork(
+    recipeSlug: string,
+  ): Promise<Recipe | null> {
     try {
       const data = await fetchRecipes({
         reason: 'network-fallback',
       })
 
-      const foundRecipe = data.recipes.find((r: Recipe) => r.slug === recipeSlug)
+      const foundRecipe = data.recipes.find(
+        (r: Recipe) => r.slug === recipeSlug,
+      )
 
       if (foundRecipe) {
         console.log(`Found recipe "${recipeSlug}" in network response, caching to IndexedDB...`)
@@ -73,13 +81,14 @@ const RecipePage = () => {
     }
   }
 
-  async function loadRecipe() {
+  async function loadRecipe(): Promise<void> {
     if (!slug) return
 
     try {
       setLoading(true)
 
-      // Try IndexedDB first
+      // IndexedDB is guaranteed to be ready at this point (via useEffect dependency)
+      // Try to get recipe directly from IndexedDB
       let fetchedRecipe = await getRecipeBySlug(slug)
 
       // If not found in IndexedDB, try network fallback
@@ -97,7 +106,8 @@ const RecipePage = () => {
     }
   }
 
-  if (loading) {
+  // Show loading skeleton while DB is initializing or recipe is loading
+  if (dbChecking || loading) {
     return <RecipeDetailSkeleton />
   }
 

@@ -6,7 +6,10 @@ interface RecipeLoadErrorProps {
   onRetry: () => void
 }
 
-export function RecipeLoadError({ error, onRetry }: RecipeLoadErrorProps) {
+export function RecipeLoadError({
+  error,
+  onRetry,
+}: RecipeLoadErrorProps): React.ReactElement {
   const isOfflineError = error.message === 'OFFLINE_NO_DATA'
 
   return (

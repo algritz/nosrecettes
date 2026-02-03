@@ -29,7 +29,7 @@ export const ImageEditor = ({
   isOpen,
   onClose,
   onSave,
-}: ImageEditorProps) => {
+}: ImageEditorProps): React.ReactElement => {
   const [imageSrc, setImageSrc] = useState<string>('')
   const [crop, setCrop] = useState<Crop>()
   const [completedCrop, setCompletedCrop] = useState<PixelCrop>()
@@ -45,7 +45,7 @@ export const ImageEditor = ({
   useEffect(() => {
     if (file) {
       const reader = new FileReader()
-      reader.onload = () => {
+      reader.onload = (): void => {
         setImageSrc(reader.result as string)
       }
       reader.readAsDataURL(file)
@@ -76,15 +76,15 @@ export const ImageEditor = ({
     [aspect],
   )
 
-  const handleZoomChange = (value: number[]) => {
+  const handleZoomChange = (value: number[]): void => {
     setZoom(value[0])
   }
 
-  const handleRotationChange = (value: number[]) => {
+  const handleRotationChange = (value: number[]): void => {
     setRotation(value[0])
   }
 
-  const resetTransforms = () => {
+  const resetTransforms = (): void => {
     setZoom(1)
     setRotation(0)
     if (imgRef.current) {
@@ -106,7 +106,7 @@ export const ImageEditor = ({
     }
   }
 
-  const setAspectRatio = (newAspect: number | undefined) => {
+  const setAspectRatio = (newAspect: number | undefined): void => {
     setAspect(newAspect)
     if (imgRef.current && newAspect) {
       const { width, height } = imgRef.current
@@ -208,7 +208,7 @@ export const ImageEditor = ({
     })
   }, [completedCrop, zoom, rotation, file])
 
-  const handleSave = async () => {
+  const handleSave = async (): Promise<void> => {
     if (!completedCrop) return
 
     setIsProcessing(true)

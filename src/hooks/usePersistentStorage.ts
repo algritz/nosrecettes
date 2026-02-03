@@ -20,7 +20,7 @@ export function usePersistentStorage(): PersistentStorageState {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canPersist])
 
-  async function checkPersistence() {
+  async function checkPersistence(): Promise<void> {
     if (!canPersist) return
 
     try {

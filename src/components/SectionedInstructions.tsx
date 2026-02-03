@@ -13,28 +13,31 @@ interface SectionedInstructionsProps {
 export const SectionedInstructions = ({
   sections,
   onChange,
-}: SectionedInstructionsProps) => {
-  const addSection = () => {
+}: SectionedInstructionsProps): React.ReactElement => {
+  const addSection = (): void => {
     onChange([...sections, { title: '', steps: [''] }])
   }
 
-  const removeSection = (sectionIndex: number) => {
+  const removeSection = (sectionIndex: number): void => {
     onChange(sections.filter((_, i) => i !== sectionIndex))
   }
 
-  const updateSectionTitle = (sectionIndex: number, title: string) => {
+  const updateSectionTitle = (sectionIndex: number, title: string): void => {
     const newSections = [...sections]
     newSections[sectionIndex].title = title
     onChange(newSections)
   }
 
-  const addInstruction = (sectionIndex: number) => {
+  const addInstruction = (sectionIndex: number): void => {
     const newSections = [...sections]
     newSections[sectionIndex].steps.push('')
     onChange(newSections)
   }
 
-  const removeInstruction = (sectionIndex: number, stepIndex: number) => {
+  const removeInstruction = (
+    sectionIndex: number,
+    stepIndex: number,
+  ): void => {
     const newSections = [...sections]
     newSections[sectionIndex].steps = newSections[sectionIndex].steps.filter(
       (_, i) => i !== stepIndex,
@@ -46,7 +49,7 @@ export const SectionedInstructions = ({
     sectionIndex: number,
     stepIndex: number,
     value: string,
-  ) => {
+  ): void => {
     const newSections = [...sections]
     newSections[sectionIndex].steps[stepIndex] = value
     onChange(newSections)

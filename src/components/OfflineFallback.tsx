@@ -2,14 +2,14 @@ import { WifiOff } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
 
-export function OfflineFallback() {
+export function OfflineFallback(): React.ReactElement {
   const navigate = useNavigate()
 
-  const handleGoHome = () => {
+  const handleGoHome = (): void => {
     navigate('/')
   }
 
-  const handleRetry = () => {
+  const handleRetry = (): void => {
     window.location.reload()
   }
 

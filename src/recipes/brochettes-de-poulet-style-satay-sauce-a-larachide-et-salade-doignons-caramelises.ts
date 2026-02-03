@@ -1,6 +1,7 @@
 import { Recipe } from '@/types/recipe';
 
-export const brochettesDePouletStyleSataySauceALarachideEtSaladeDoignonsCaramelises: Recipe = {
+export const brochettesDePouletStyleSataySauceALarachideEtSaladeDoignonsCaramelises:
+  Recipe = {
   id: 'brochettes-de-poulet-style-satay-sauce-a-l-arachide-et-salade-d-oignons-caramelises',
   title: 'Brochettes de poulet style satay, sauce à l\'arachide et salade d\'oignons caramélisés',
   description: 'Une recette savoureuse de brochettes de poulet marinées dans une sauce satay, accompagnées d\'une salade d\'oignons caramélisés et de roquette.',

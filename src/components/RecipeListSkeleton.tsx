@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 
-export function RecipeListSkeleton() {
+export function RecipeListSkeleton(): React.ReactElement {
   return (
     <div className="container mx-auto p-4">
       {/* Search bar skeleton */}

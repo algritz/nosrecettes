@@ -1,6 +1,7 @@
 import { Recipe } from '@/types/recipe';
 
-export const saumonSurPlancheDeCedreAvecGlacageAuWhiskeyEtAuSiropDerable: Recipe = {
+export const saumonSurPlancheDeCedreAvecGlacageAuWhiskeyEtAuSiropDerable:
+  Recipe = {
   id: 'saumon-sur-planche-de-cedre-avec-glacage-au-whiskey-et-au-sirop-d-erable',
   title: 'Saumon sur planche de cèdre avec glaçage au whiskey et au sirop d\'érable',
   description: 'Saumon cuit sur planche de cèdre avec un glaçage au whiskey et sirop d\'érable, servi avec citron et persil.',

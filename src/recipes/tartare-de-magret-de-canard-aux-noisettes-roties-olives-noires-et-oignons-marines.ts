@@ -1,7 +1,7 @@
 import { Recipe } from '@/types/recipe'
 
-export const tartareDeMagretDeCanardAuxNoisettesRotiesOlivesNoiresEtOignonsMarines: Recipe =
-  {
+export const tartareDeMagretDeCanardAuxNoisettesRotiesOlivesNoiresEtOignonsMarines:
+  Recipe = {
     id: 'tartare-de-magret-de-canard-aux-noisettes-roties-olives-noires-et-oignons-marines',
     title:
       'Tartare de magret de canard aux noisettes rôties, olives noires et oignons marinés',

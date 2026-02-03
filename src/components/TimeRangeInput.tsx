@@ -48,7 +48,17 @@ interface TimeRangeInputProps {
 /**
  * Parse TimeRange object to display format
  */
-function parseTimeRangeToDisplay(range: TimeRange, allowDays: boolean) {
+function parseTimeRangeToDisplay(
+  range: TimeRange,
+  allowDays: boolean,
+): {
+  minDays: number
+  minHours: number
+  minMins: number
+  maxDays: number
+  maxHours: number
+  maxMins: number
+} {
   const { min, max } = range
 
   // Convert min to display units
@@ -152,7 +162,7 @@ export function TimeRangeInput({
   label,
   required = false,
   disabled = false,
-}: TimeRangeInputProps) {
+}: TimeRangeInputProps): React.ReactElement {
   // Parse initial value
   const initialRange = parseValue(value)
   const initialDisplay = parseTimeRangeToDisplay(initialRange, allowDays)

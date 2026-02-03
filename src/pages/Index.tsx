@@ -16,7 +16,7 @@ import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils'
 import { RecipeLoadError } from '@/components/RecipeLoadError'
 import { RecipeListSkeleton } from '@/components/RecipeListSkeleton'
 
-const Index = () => {
+const Index = (): React.ReactElement => {
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
 
@@ -56,16 +56,16 @@ const Index = () => {
     setHasGitHubConfig(!!savedConfig)
 
     // Handle scroll to show/hide scroll-to-top button
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop
       setShowScrollTop(scrollTop > 300)
     }
 
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    return (): void => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -182,7 +182,7 @@ const Index = () => {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div data-testid="recipe-list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {displayedRecipes.map((recipe) => (
                   <RecipeCard key={recipe.id} recipe={recipe} />
                 ))}

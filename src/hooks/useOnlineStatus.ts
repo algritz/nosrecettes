@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 
-export function useOnlineStatus() {
+export function useOnlineStatus(): boolean {
   const [isOnline, setIsOnline] = useState(navigator.onLine)
 
   useEffect(() => {
     // Function to check actual connectivity by trying to fetch manifest
-    const checkConnectivity = async () => {
+    const checkConnectivity = async (): Promise<void> => {
       if (!navigator.onLine) {
         setIsOnline(false)
         return
@@ -33,15 +33,15 @@ export function useOnlineStatus() {
     }, 5000)
 
     // Also listen to browser online/offline events
-    const handleOnline = () => {
+    const handleOnline = (): void => {
       void checkConnectivity() // Verify with actual request
     }
-    const handleOffline = () => setIsOnline(false)
+    const handleOffline = (): void => setIsOnline(false)
 
     window.addEventListener('online', handleOnline)
     window.addEventListener('offline', handleOffline)
 
-    return () => {
+    return (): void => {
       clearInterval(interval)
       window.removeEventListener('online', handleOnline)
       window.removeEventListener('offline', handleOffline)

@@ -5,7 +5,15 @@ export interface CategoryChange {
   category: string
 }
 
-export const useCategoryManager = (initialCategories: string[]) => {
+export const useCategoryManager = (initialCategories: string[]): {
+  categories: string[]
+  addCategory: (categoryName: string) => boolean
+  removeCategory: (categoryName: string) => void
+  getChangesForPR: () => CategoryChange[]
+  getNewCategoriesForPR: () => string[]
+  hasChanges: () => boolean
+  clearChanges: () => void
+} => {
   const [categories, setCategories] = useState<string[]>(initialCategories)
   const [changes, setChanges] = useState<CategoryChange[]>([])
 

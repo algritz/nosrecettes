@@ -189,7 +189,7 @@ export const generateCleanupInstructions = (): string => {
 export const generateResponsiveImageUrls = (
   publicId: string,
   cloudName: string,
-) => ({
+): { small: string; medium: string; large: string } => ({
   small: getCloudinaryUrl(publicId, cloudName, {
     width: 400,
     height: 300,

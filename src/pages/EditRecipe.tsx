@@ -38,7 +38,7 @@ import {
 import { useOnlineStatus } from '@/hooks/useOnlineStatus'
 import { OfflineFallback } from '@/components/OfflineFallback'
 
-const EditRecipe = () => {
+const EditRecipe = (): React.ReactElement => {
   const isOnline = useOnlineStatus()
   const { slug } = useParams<{ slug: string }>()
   const navigate = useNavigate()
@@ -96,7 +96,7 @@ const EditRecipe = () => {
 
   // Load recipe from IndexedDB
   useEffect(() => {
-    async function loadRecipeFromDB() {
+    async function loadRecipeFromDB(): Promise<void> {
       if (!slug) {
         setLoadingRecipe(false)
         return
@@ -223,7 +223,7 @@ const EditRecipe = () => {
     )
   }
 
-  const handleDeleteExistingImage = (index: number) => {
+  const handleDeleteExistingImage = (index: number): void => {
     const imageToDelete = existingImages[index]
 
     // Move to deleted list for cleanup scheduling
@@ -235,7 +235,7 @@ const EditRecipe = () => {
     showSuccess('Image marquée pour suppression')
   }
 
-  const handleDeleteRecipe = async () => {
+  const handleDeleteRecipe = async (): void => {
     if (!existingRecipe || !githubConfig) return
 
     setIsDeleting(true)
@@ -275,21 +275,21 @@ const EditRecipe = () => {
     }
   }
 
-  const addIngredient = () => {
+  const addIngredient = (): void => {
     setRecipe((prev) => ({
       ...prev,
       ingredients: [...prev.ingredients, ''],
     }))
   }
 
-  const removeIngredient = (index: number) => {
+  const removeIngredient = (index: number): void => {
     setRecipe((prev) => ({
       ...prev,
       ingredients: prev.ingredients.filter((_, i) => i !== index),
     }))
   }
 
-  const updateIngredient = (index: number, value: string) => {
+  const updateIngredient = (index: number, value: string): void => {
     setRecipe((prev) => ({
       ...prev,
       ingredients: prev.ingredients.map((ing, i) =>
@@ -298,21 +298,21 @@ const EditRecipe = () => {
     }))
   }
 
-  const addInstruction = () => {
+  const addInstruction = (): void => {
     setRecipe((prev) => ({
       ...prev,
       instructions: [...prev.instructions, ''],
     }))
   }
 
-  const removeInstruction = (index: number) => {
+  const removeInstruction = (index: number): void => {
     setRecipe((prev) => ({
       ...prev,
       instructions: prev.instructions.filter((_, i) => i !== index),
     }))
   }
 
-  const updateInstruction = (index: number, value: string) => {
+  const updateInstruction = (index: number, value: string): void => {
     setRecipe((prev) => ({
       ...prev,
       instructions: prev.instructions.map((inst, i) =>
@@ -321,28 +321,28 @@ const EditRecipe = () => {
     }))
   }
 
-  const addTag = () => {
+  const addTag = (): void => {
     setRecipe((prev) => ({
       ...prev,
       tags: [...prev.tags, ''],
     }))
   }
 
-  const removeTag = (index: number) => {
+  const removeTag = (index: number): void => {
     setRecipe((prev) => ({
       ...prev,
       tags: prev.tags.filter((_, i) => i !== index),
     }))
   }
 
-  const updateTag = (index: number, value: string) => {
+  const updateTag = (index: number, value: string): void => {
     setRecipe((prev) => ({
       ...prev,
       tags: prev.tags.map((tag, i) => (i === index ? value : tag)),
     }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): void => {
     e.preventDefault()
     setIsSubmitting(true)
 

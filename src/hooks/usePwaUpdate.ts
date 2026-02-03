@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
-export function usePwaUpdate() {
+export function usePwaUpdate(): {
+  showUpdateBanner: boolean
+  offlineReady: boolean
+  dismissBanner: () => void
+} {
   const {
     offlineReady: [offlineReady],
     needRefresh: [needRefresh],
@@ -26,7 +30,7 @@ export function usePwaUpdate() {
     }
   }, [needRefresh, updateServiceWorker])
 
-  const dismissBanner = () => {
+  const dismissBanner = (): void => {
     setShowUpdateBanner(false)
   }
 

@@ -33,7 +33,7 @@ export const ImageUpload = ({
   existingImages = [],
   onExistingImageDelete,
   showExistingImages = false,
-}: ImageUploadProps) => {
+}: ImageUploadProps): React.ReactElement => {
   const [isProcessing, setIsProcessing] = useState(false)
   const [dragOver, setDragOver] = useState(false)
   const [cloudinaryConfig, setCloudinaryConfig] =
@@ -56,7 +56,7 @@ export const ImageUpload = ({
     setScheduledCleanups(cleanups.length)
   }, [])
 
-  const processAndAddImage = async (file: File) => {
+  const processAndAddImage = async (file: File): Promise<void> => {
     setIsProcessing(true)
     try {
       const processedImage = await processImageFile(
@@ -75,7 +75,10 @@ export const ImageUpload = ({
     }
   }
 
-  const processAndReplaceImage = async (file: File, index: number) => {
+  const processAndReplaceImage = async (
+    file: File,
+    index: number,
+  ): Promise<void> => {
     setIsProcessing(true)
     try {
       // Get the old image for cleanup scheduling
@@ -108,7 +111,7 @@ export const ImageUpload = ({
     }
   }
 
-  const handleFileSelect = async (files: FileList | null) => {
+  const handleFileSelect = async (files: FileList | null): Promise<void> => {
     if (!files) return
 
     const fileArray = Array.from(files)
@@ -148,7 +151,7 @@ export const ImageUpload = ({
     }
   }
 
-  const handleEditorSave = (editedFile: File) => {
+  const handleEditorSave = (editedFile: File): void => {
     if (editingIndex !== null) {
       // Replacing existing image
       void processAndReplaceImage(editedFile, editingIndex)
@@ -160,29 +163,29 @@ export const ImageUpload = ({
     setEditingIndex(null)
   }
 
-  const handleEditorClose = () => {
+  const handleEditorClose = (): void => {
     setIsEditorOpen(false)
     setEditingFile(null)
     setEditingIndex(null)
   }
 
-  const handleDrop = (e: React.DragEvent) => {
+  const handleDrop = (e: React.DragEvent): void => {
     e.preventDefault()
     setDragOver(false)
     void handleFileSelect(e.dataTransfer.files)
   }
 
-  const handleDragOver = (e: React.DragEvent) => {
+  const handleDragOver = (e: React.DragEvent): void => {
     e.preventDefault()
     setDragOver(true)
   }
 
-  const handleDragLeave = (e: React.DragEvent) => {
+  const handleDragLeave = (e: React.DragEvent): void => {
     e.preventDefault()
     setDragOver(false)
   }
 
-  const removeImage = (index: number) => {
+  const removeImage = (index: number): void => {
     const imageToRemove = images[index]
 
     // Remove from array first
@@ -196,21 +199,21 @@ export const ImageUpload = ({
     }
   }
 
-  const moveImage = (fromIndex: number, toIndex: number) => {
+  const moveImage = (fromIndex: number, toIndex: number): void => {
     const newImages = [...images]
     const [movedImage] = newImages.splice(fromIndex, 1)
     newImages.splice(toIndex, 0, movedImage)
     onImagesChange(newImages)
   }
 
-  const editImage = (index: number) => {
+  const editImage = (index: number): void => {
     const imageToEdit = images[index]
     setEditingFile(imageToEdit.file)
     setEditingIndex(index)
     setIsEditorOpen(true)
   }
 
-  const handleDeleteExistingImage = (index: number) => {
+  const handleDeleteExistingImage = (index: number): void => {
     if (onExistingImageDelete) {
       onExistingImageDelete(index)
     }

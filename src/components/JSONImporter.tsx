@@ -66,9 +66,7 @@ const parseTimeField = (
     try {
       validateTimeRange(timeRange)
     } catch (error) {
-      throw new Error(
-        `Invalid ${fieldName}: ${error instanceof Error ? error.message : 'Invalid range'}`,
-      )
+      throw new Error(`Invalid ${fieldName}`, { cause: error })
     }
 
     return timeRange
@@ -83,13 +81,13 @@ const parseTimeField = (
 export const JSONImporter = ({
   onImportSuccess,
   onClose,
-}: JSONImporterProps) => {
+}: JSONImporterProps): React.ReactElement => {
   const [jsonContent, setJsonContent] = useState('')
   const [parsedRecipe, setParsedRecipe] = useState<JSONRecipe | null>(null)
   const [parseError, setParseError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
 
-  const handleParseJSON = () => {
+  const handleParseJSON = (): void => {
     if (!jsonContent.trim()) {
       showError('Veuillez coller du contenu JSON')
       return
@@ -164,7 +162,7 @@ export const JSONImporter = ({
     }
   }
 
-  const handleImport = () => {
+  const handleImport = (): void => {
     if (!parsedRecipe) {
       showError('Aucune recette à importer')
       return
@@ -175,7 +173,7 @@ export const JSONImporter = ({
     onClose()
   }
 
-  const copyExampleJSON = async () => {
+  const copyExampleJSON = async (): Promise<void> => {
     const exampleJSON = `{
   "title": "Filet de porc glacé à l'érable",
   "description": "Filet de porc mariné aux épices et glacé à l'érable (four ou grill).",
@@ -241,7 +239,7 @@ export const JSONImporter = ({
   // Helper function to detect ingredient/instruction format
   const getFormatInfo = (
     items: string[] | IngredientSection[] | InstructionSection[],
-  ) => {
+  ): string => {
     if (!items || items.length === 0) return 'Vide'
 
     if (

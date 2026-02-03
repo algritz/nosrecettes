@@ -12,8 +12,8 @@ export const RecipeStats = ({
   totalCount,
   isLoading,
   hasMore,
-}: RecipeStatsProps) => (
-  <div className="flex items-center justify-between mb-6">
+}: RecipeStatsProps): React.ReactElement => (
+  <div data-testid="recipe-stats" className="flex items-center justify-between mb-6">
     <p className="text-sm text-muted-foreground">
       {displayedCount} sur {totalCount} recette{totalCount !== 1 ? 's' : ''}{' '}
       affichée{displayedCount !== 1 ? 's' : ''}

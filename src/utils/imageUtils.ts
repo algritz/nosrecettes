@@ -85,7 +85,10 @@ async function compressImageIfNeeded(file: File): Promise<File> {
 
     const compressedFile = await imageCompression(file, options)
     const compressedSizeMB = (compressedFile.size / (1024 * 1024)).toFixed(2)
-    const reductionPercent = (((file.size - compressedFile.size) / file.size) * 100).toFixed(1)
+    const reductionPercent = (
+      ((file.size - compressedFile.size) / file.size) *
+      100
+    ).toFixed(1)
 
     console.log(
       `[ImageCompression] Compressed "${file.name}" from ${originalSizeMB}MB to ${compressedSizeMB}MB ` +
@@ -95,7 +98,10 @@ async function compressImageIfNeeded(file: File): Promise<File> {
     return compressedFile
   } catch (error) {
     console.error(`[ImageCompression] Failed to compress "${file.name}":`, error)
-    throw new Error(`Échec de la compression de l'image: ${error instanceof Error ? error.message : 'Erreur inconnue'}`)
+    throw new Error(
+      `Échec de la compression de l'image: ${error instanceof Error ? error.message : 'Erreur inconnue'}`,
+      { cause: error },
+    )
   }
 }
 
@@ -139,7 +145,7 @@ export const processImageFile = async (
       }
     } catch (error) {
       console.error('Cloudinary upload failed:', error)
-      throw new Error("Échec de l'upload vers Cloudinary")
+      throw new Error("Échec de l'upload vers Cloudinary", { cause: error })
     }
   }
 
@@ -189,7 +195,9 @@ export const scheduleOldImageCleanup = (
 const createImagePreview = async (file: File): Promise<string> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader()
-    reader.onload = () => resolve(reader.result as string)
+    reader.onload = (): void => {
+      resolve(reader.result as string)
+    }
     reader.onerror = reject
     reader.readAsDataURL(file)
   })

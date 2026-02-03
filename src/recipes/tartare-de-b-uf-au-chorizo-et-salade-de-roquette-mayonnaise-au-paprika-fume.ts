@@ -1,7 +1,7 @@
 import { Recipe } from '@/types/recipe'
 
-export const tartareDeBUfAuChorizoEtSaladeDeRoquetteMayonnaiseAuPaprikaFume: Recipe =
-  {
+export const tartareDeBUfAuChorizoEtSaladeDeRoquetteMayonnaiseAuPaprikaFume:
+  Recipe = {
     id: 'tartare-de-b-uf-au-chorizo-et-salade-de-roquette-mayonnaise-au-paprika-fume',
     title:
       'Tartare de bœuf au chorizo et salade de roquette mayonnaise au paprika fumé',

@@ -29,7 +29,7 @@ export function useRecipes(): RecipeState {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  async function loadRecipes() {
+  async function loadRecipes(): Promise<void> {
     try {
       // Check if IndexedDB has data
       const hasData = await isRecipeDBPopulated()
@@ -66,7 +66,7 @@ export function useRecipes(): RecipeState {
     }
   }
 
-  async function fetchAndPopulate() {
+  async function fetchAndPopulate(): Promise<void> {
     const data = await fetchRecipes({
       reason: 'initial-load',
       onProgress: (loaded, total) => {
@@ -89,7 +89,7 @@ export function useRecipes(): RecipeState {
     })
   }
 
-  async function checkForUpdates() {
+  async function checkForUpdates(): Promise<void> {
     try {
       const serverData = await fetchRecipes({
         bustCache: true, // Force fresh fetch for update check
