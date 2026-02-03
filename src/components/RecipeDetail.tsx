@@ -14,6 +14,7 @@ import {
   ChevronLeft,
   ChevronRight,
   StickyNote,
+  Share2,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
@@ -22,6 +23,7 @@ import { getMaxTime } from '@/utils/timeUtils'
 import { useState, useEffect } from 'react'
 import { ResponsiveImage } from './ResponsiveImage'
 import { getRecipeCategories } from '@/utils/recipeUtils'
+import { useToast } from '@/hooks/use-toast'
 
 interface RecipeDetailProps {
   recipe: Recipe
@@ -32,6 +34,7 @@ export const RecipeDetail = ({
 }: RecipeDetailProps): React.ReactElement => {
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const { toast } = useToast()
 
   const categories = getRecipeCategories(recipe)
 
@@ -54,6 +57,38 @@ export const RecipeDetail = ({
     setCurrentImageIndex(
       (prev) => (prev - 1 + allImages.length) % allImages.length,
     )
+  }
+
+  const handleShare = async (): Promise<void> => {
+    const shareData = {
+      title: recipe.title,
+      text: recipe.description,
+      url: window.location.href,
+    }
+
+    try {
+      // Try Web Share API first (mobile-friendly)
+      if (navigator.share) {
+        await navigator.share(shareData)
+        return
+      }
+
+      // Fallback to clipboard for desktop
+      await navigator.clipboard.writeText(window.location.href)
+      toast({
+        title: 'Lien copié',
+        description: 'Le lien de la recette a été copié dans le presse-papier',
+      })
+    } catch (error) {
+      // Only show error if user didn't cancel the share dialog
+      if ((error as Error).name !== 'AbortError') {
+        toast({
+          title: 'Erreur',
+          description: 'Impossible de partager la recette',
+          variant: 'destructive',
+        })
+      }
+    }
   }
 
   // Helper function to render ingredients
@@ -287,6 +322,16 @@ export const RecipeDetail = ({
             <Users className="w-5 h-5" />
             <span>{recipe.servings} portions</span>
           </div>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleShare}
+            className="ml-auto"
+          >
+            <Share2 className="w-4 h-4 mr-2" />
+            Partager
+          </Button>
         </div>
       </div>
 
