@@ -1,5 +1,7 @@
 # Nos Recettes - Recipe Website
 
+![E2E Tests](https://github.com/algritz/nosrecettes/workflows/E2E%20Tests/badge.svg)
+
 A modern, responsive recipe website built with React, TypeScript, and Tailwind CSS. Features a beautiful interface for browsing recipes and a comprehensive admin panel for managing recipes and categories via GitHub pull requests with automatic Cloudinary image management.
 
 ## 🌟 Features
@@ -262,6 +264,16 @@ src/
 
 ## 🤖 GitHub Actions
 
+### E2E Testing Action
+
+Automatically runs comprehensive end-to-end tests on all PRs and main branch pushes:
+
+- **Test Coverage**: 76 tests covering recipe browsing, search, filtering, infinite scroll, recipe viewing, offline functionality, and admin features
+- **Test Execution**: ~2.3 minutes for full suite
+- **Artifact Upload**: Automatically uploads test reports and screenshots/videos on failure
+- **PR Comments**: Posts test results directly on pull requests
+- **Browser**: Chromium (single-worker execution to prevent race conditions)
+
 ### Deployment Action
 
 Automatically builds and deploys the site when changes are pushed to main.
@@ -329,6 +341,56 @@ Automatically cleans up old Cloudinary images when PRs are merged:
 - Include accompaniment suggestions and wine pairings when appropriate
 - Add source attribution and personal notes
 - Ensure you have rights to share the recipe
+
+## 🧪 Testing
+
+### End-to-End Tests
+
+The project includes a comprehensive Playwright E2E test suite with 100% pass rate.
+
+**Test Coverage (76 tests)**:
+- ✅ Recipe Browsing (6 tests) - Initial load, recipe cards, stats
+- ✅ Search & Filter (7 tests) - Text search, category filter, combined filters
+- ✅ Infinite Scroll (7 tests) - Load more, loading indicators, scroll position
+- ✅ Recipe Detail View (13 tests) - Full recipe display, navigation, direct URL access
+- ✅ Offline Functionality (17 tests) - IndexedDB-powered browsing, admin fallback
+- ✅ Admin Setup (7 tests) - GitHub/Cloudinary configuration, persistence
+- ✅ Recipe Creation (9 tests) - Form validation, image upload, PR creation
+- ✅ Recipe Editing (10 tests) - Load recipe, edit fields, delete recipe
+
+**Running Tests Locally**:
+
+```bash
+# Run all E2E tests
+pnpm test:e2e
+
+# Run specific test file
+pnpm test:e2e tests/recipe-browsing/01-initial-load.spec.ts
+
+# Interactive UI mode
+pnpm test:e2e:ui
+
+# Debug mode (step through tests)
+pnpm test:e2e:debug tests/recipe-browsing/
+
+# Headed mode (see browser)
+pnpm test:e2e:headed
+
+# View HTML report
+pnpm test:e2e:report
+```
+
+**Test Infrastructure**:
+- **Test Framework**: Playwright with TypeScript
+- **Fixtures**: Custom fixtures for database state management (`cleanDb`, `populatedDb`, `adminConfig`)
+- **API Mocking**: GitHub and Cloudinary API mocked for fast, reliable tests
+- **Test Data**: Sample recipes and configurations for consistent testing
+- **Execution**: Single-worker configuration prevents IndexedDB race conditions
+
+**CI Integration**:
+- Tests run automatically on all PRs and main branch pushes
+- Test reports and artifacts uploaded on failure
+- Results posted as PR comments for quick feedback
 
 ## 🔧 Environment Variables
 
