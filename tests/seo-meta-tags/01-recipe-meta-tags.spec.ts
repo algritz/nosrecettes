@@ -111,7 +111,7 @@ test.describe('Recipe SEO Meta Tags', () => {
     expect(structuredDataElements.length).toBeGreaterThan(0)
 
     // Find the one with Recipe schema
-    let recipeSchema: any = null
+    let recipeSchema: { '@context'?: string; '@type'?: string; name?: string; description?: string; recipeIngredient?: string[]; recipeInstructions?: unknown[] } | null = null
 
     for (const element of structuredDataElements) {
       const content = await element.textContent()
@@ -131,14 +131,14 @@ test.describe('Recipe SEO Meta Tags', () => {
           recipeSchema = data
           break
         }
-      } catch (e) {
+      } catch {
         // Skip malformed JSON
         continue
       }
     }
 
     expect(recipeSchema).toBeTruthy()
-    expect(recipeSchema!['@context']).toBe('https://schema.org/' || 'https://schema.org')
+    expect(recipeSchema!['@context']).toMatch(/^https:\/\/schema\.org\/?$/)
     expect(recipeSchema!['@type']).toBe('Recipe')
     expect(recipeSchema!.name).toBeTruthy()
     expect(recipeSchema!.description).toBeTruthy()
@@ -158,9 +158,6 @@ test.describe('Recipe SEO Meta Tags', () => {
     // Navigate to first recipe
     await page.locator('[data-testid="recipe-card"]').first().click()
     await page.waitForLoadState('networkidle')
-
-    // Get recipe title from page
-    const recipeTitle = await page.locator('h1').textContent()
 
     // Check meta description
     const metaDescription = await page

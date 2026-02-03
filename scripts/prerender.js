@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import puppeteer from 'puppeteer'
+import { chromium } from '@playwright/test'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -37,9 +37,9 @@ async function prerender() {
   const baseUrl = `http://localhost:3001`
   console.log(`✅ Server running at ${baseUrl}`)
 
-  // Launch Puppeteer
+  // Launch Playwright browser
   console.log('\n🎭 Launching browser...')
-  const browser = await puppeteer.launch({
+  const browser = await chromium.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   })
@@ -70,15 +70,19 @@ async function prerender() {
           const page = await browser.newPage()
 
           // Set viewport
-          await page.setViewport({ width: 1280, height: 720 })
+          await page.setViewportSize({ width: 1280, height: 720 })
 
-          // Navigate to the page
+          // Navigate to the page and wait for network to be idle
           await page.goto(`${baseUrl}${route}`, {
-            waitUntil: 'networkidle0',
+            waitUntil: 'networkidle',
             timeout: 30000
           })
 
-          // Get the rendered HTML (no need to wait for selector, networkidle0 is enough)
+          // Additional wait to ensure React Helmet has updated the DOM
+          // Give a small delay for React Helmet to process
+          await page.waitForTimeout(500)
+
+          // Get the rendered HTML
           const html = await page.content()
 
           // Determine output file path

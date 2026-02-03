@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { test, expect } from '@playwright/test'
 import fs from 'fs'
 import path from 'path'
@@ -99,9 +100,15 @@ test.describe('Pre-rendered Static HTML', () => {
       'utf-8'
     )
 
-    // Extract og:title from both
-    const ogTitleMatch1 = html1.match(/property="og:title".*?content="([^"]+)"/)
-    const ogTitleMatch2 = html2.match(/property="og:title".*?content="([^"]+)"/)
+    // Extract og:title from React Helmet tags (with data-rh="true")
+    // React Helmet tags are added dynamically and should have recipe-specific content
+    // The data-rh attribute comes after the content attribute
+    const ogTitleMatch1 = html1.match(
+      /property="og:title"\s+content="([^"]+)"\s+data-rh="true"/
+    )
+    const ogTitleMatch2 = html2.match(
+      /property="og:title"\s+content="([^"]+)"\s+data-rh="true"/
+    )
 
     expect(ogTitleMatch1).toBeTruthy()
     expect(ogTitleMatch2).toBeTruthy()
@@ -134,15 +141,16 @@ test.describe('Pre-rendered Static HTML', () => {
       'utf-8'
     )
 
-    // Extract structured data
+    // Extract structured data from React Helmet (with data-rh="true")
+    // React Helmet adds structured data scripts with data-rh attribute
     const jsonLdMatch = html.match(
-      /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/
+      /<script type="application\/ld\+json"[^>]*data-rh="true"[^>]*>([\s\S]*?)<\/script>/
     )
     expect(jsonLdMatch).toBeTruthy()
 
     const structuredData = JSON.parse(jsonLdMatch![1])
 
-    // Should have Recipe schema
+    // Should have Recipe schema (React Helmet combines multiple schemas in an array)
     const recipeSchema = Array.isArray(structuredData)
       ? structuredData.find((item) => item['@type'] === 'Recipe')
       : structuredData['@type'] === 'Recipe'
@@ -198,17 +206,20 @@ test.describe('Pre-rendered Static HTML', () => {
       'utf-8'
     )
 
-    // Extract content between <div id="root"> and </div>
-    const rootMatch = html.match(/<div id="root">([\s\S]*?)<\/div>/)
+    // Check that #root div exists and has content
+    // The root div contains the entire React app with nested divs, so we just check
+    // that it exists and has substantial content after it
+    const rootIndex = html.indexOf('<div id="root">')
+    expect(rootIndex).toBeGreaterThan(-1)
 
-    expect(rootMatch).toBeTruthy()
+    // Get everything after the root div opening tag
+    const afterRoot = html.substring(rootIndex + '<div id="root">'.length)
 
-    const rootContent = rootMatch![1]
-
-    // Should have content (not empty)
-    expect(rootContent.length).toBeGreaterThan(100)
+    // Should have substantial content (more than just closing tag)
+    expect(afterRoot.length).toBeGreaterThan(1000)
 
     // Should have typical recipe page elements
-    expect(rootContent).toContain('<h1') // Recipe title
+    expect(afterRoot).toContain('<h1') // Recipe title
+    expect(afterRoot).toContain('class="container') // Container wrapper
   })
 })
