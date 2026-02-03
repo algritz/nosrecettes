@@ -11,7 +11,6 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
-  testMatch: '**/recipe-browsing/01-initial-load.spec.ts',
 
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -34,7 +33,7 @@ export default defineConfig({
   /* Shared settings for all the projects below */
   use: {
     /* Base URL to use in actions like `await page.goto('/')` */
-    baseURL: 'http://127.0.0.1:8080',
+    baseURL: process.env.CI ? 'http://127.0.0.1:4173' : 'http://127.0.0.1:8080',
 
     /* Collect trace when retrying the failed test */
     trace: 'on-first-retry',
@@ -81,9 +80,9 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm dev',
-    port: 8080,
+    command: process.env.CI ? 'pnpm preview' : 'pnpm dev',
+    port: process.env.CI ? 4173 : 8080,
     reuseExistingServer: !process.env.CI,
-    timeout: 120000, // 2 minutes to start dev server
+    timeout: 120000,
   },
 });
