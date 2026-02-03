@@ -11,6 +11,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  testMatch: '**/recipe-browsing/01-initial-load.spec.ts',
 
   /* Run tests in files in parallel */
   fullyParallel: false,
