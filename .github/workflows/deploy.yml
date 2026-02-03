@@ -37,8 +37,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install Chrome for Puppeteer
-        run: pnpm exec puppeteer browsers install chrome
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install chromium --with-deps
 
       - name: Build (includes SEO generation and smart pre-rendering)
         run: pnpm build
