@@ -200,7 +200,45 @@ export function generateIndexHTML() {
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Initial loading skeleton shown before React hydrates -->
+      <!-- This prevents 404 flash when sharing recipe links -->
+      <style>
+        .initial-skeleton {
+          max-width: 64rem;
+          margin: 0 auto;
+          padding: 1rem;
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .skeleton-box {
+          background-color: #e5e7eb;
+          border-radius: 0.5rem;
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+        @media (prefers-color-scheme: dark) {
+          .skeleton-box { background-color: #374151; }
+        }
+      </style>
+      <div class="initial-skeleton">
+        <!-- Header skeleton -->
+        <div style="margin-bottom: 1.5rem;">
+          <div class="skeleton-box" style="height: 2.5rem; width: 75%; margin-bottom: 1rem;"></div>
+          <div class="skeleton-box" style="height: 1.25rem; width: 100%; margin-bottom: 0.5rem;"></div>
+          <div class="skeleton-box" style="height: 1.25rem; width: 85%;"></div>
+        </div>
+        <!-- Image skeleton -->
+        <div class="skeleton-box" style="height: 16rem; width: 100%; margin-bottom: 1.5rem;"></div>
+        <!-- Meta info skeleton -->
+        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+          <div class="skeleton-box" style="height: 2rem; width: 6rem;"></div>
+          <div class="skeleton-box" style="height: 2rem; width: 6rem;"></div>
+          <div class="skeleton-box" style="height: 2rem; width: 8rem;"></div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>`
