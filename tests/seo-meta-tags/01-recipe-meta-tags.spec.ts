@@ -253,6 +253,14 @@ test.describe('Recipe SEO Meta Tags', () => {
     await page.locator('[data-testid="recipe-card"]').first().click()
     await page.waitForLoadState('networkidle')
 
+    // Wait for React Helmet to update the document title
+    // The title should change from the homepage title to the recipe-specific title
+    await page.waitForFunction(
+      (expectedHomeTitle) => document.title !== expectedHomeTitle,
+      homeTitle,
+      { timeout: 10000 }
+    )
+
     const recipePageTitle = await page.title()
 
     // Titles should be different
