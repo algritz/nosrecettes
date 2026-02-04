@@ -103,6 +103,13 @@ test.describe('Recipe SEO Meta Tags', () => {
     await page.locator('[data-testid="recipe-card"]').first().click()
     await page.waitForLoadState('networkidle')
 
+    // Wait for React Helmet to add structured data with data-rh attribute
+    // Script tags are hidden elements, so we need to use state: 'attached'
+    await page.waitForSelector('script[type="application/ld+json"][data-rh="true"]', {
+      state: 'attached',
+      timeout: 10000,
+    })
+
     // Get all structured data scripts
     const structuredDataElements = await page
       .locator('script[type="application/ld+json"]')
@@ -253,11 +260,21 @@ test.describe('Recipe SEO Meta Tags', () => {
     await page.locator('[data-testid="recipe-card"]').first().click()
     await page.waitForLoadState('networkidle')
 
+    // Wait for the recipe title (h1) to be visible first
+    await page.waitForSelector('h1', { timeout: 10000 })
+    const recipeName = await page.locator('h1').textContent()
+
     // Wait for React Helmet to update the document title
     // The title should change from the homepage title to the recipe-specific title
+    // and should contain the recipe name
     await page.waitForFunction(
-      (expectedHomeTitle) => document.title !== expectedHomeTitle,
-      homeTitle,
+      ({ expectedHomeTitle, expectedRecipeName }) => {
+        return (
+          document.title !== expectedHomeTitle &&
+          document.title.includes(expectedRecipeName || '')
+        )
+      },
+      { expectedHomeTitle: homeTitle, expectedRecipeName: recipeName?.trim() || '' },
       { timeout: 10000 }
     )
 
@@ -267,7 +284,6 @@ test.describe('Recipe SEO Meta Tags', () => {
     expect(homeTitle).not.toBe(recipePageTitle)
 
     // Recipe page title should contain recipe name
-    const recipeName = await page.locator('h1').textContent()
     expect(recipePageTitle).toContain(recipeName?.trim() ?? '')
   })
 })
