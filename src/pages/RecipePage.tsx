@@ -21,11 +21,15 @@ const RecipePage = (): React.JSX.Element => {
   const { slug } = useParams<{ slug: string }>()
   const [recipe, setRecipe] = useState<Recipe | null>(null)
   const [loading, setLoading] = useState(true)
+  const [timeoutElapsed, setTimeoutElapsed] = useState(false)
   const { isReady: dbReady, isChecking: dbChecking } = useIndexedDBReady()
 
   useEffect(() => {
     // Always scroll to top when recipe page loads
     window.scrollTo(0, 0)
+
+    // Reset timeout state when slug changes
+    setTimeoutElapsed(false)
 
     // Only load recipe once IndexedDB is ready
     if (dbReady) {
@@ -33,6 +37,18 @@ const RecipePage = (): React.JSX.Element => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug, dbReady])
+
+  // Timeout mechanism: wait 5 seconds before showing 404
+  useEffect(() => {
+    // Start timeout once DB is ready and we're loading
+    if (dbReady && !recipe) {
+      const timer = setTimeout(() => {
+        setTimeoutElapsed(true)
+      }, 5000) // 5 seconds
+
+      return () => clearTimeout(timer)
+    }
+  }, [dbReady, recipe])
 
   useEffect(() => {
     if (recipe) {
@@ -111,7 +127,14 @@ const RecipePage = (): React.JSX.Element => {
     return <RecipeDetailSkeleton />
   }
 
-  if (!recipe) {
+  // Show skeleton if recipe not found but timeout hasn't elapsed yet
+  // This prevents the 404 flash when sharing links
+  if (!recipe && !timeoutElapsed) {
+    return <RecipeDetailSkeleton />
+  }
+
+  // Show 404 only after timeout has elapsed and recipe is still not found
+  if (!recipe && timeoutElapsed) {
     return (
       <>
         <SEOHead

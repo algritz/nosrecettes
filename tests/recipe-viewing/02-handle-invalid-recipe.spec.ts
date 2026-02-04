@@ -1,0 +1,139 @@
+import { test, expect } from '../fixtures/baseFixtures'
+
+/**
+ * Test Suite: Invalid Recipe Handling
+ *
+ * Tests how the application handles non-existent recipes:
+ * - Shows loading skeleton initially
+ * - Attempts network fallback
+ * - Shows 404 after timeout (5 seconds)
+ * - Proper SEO meta tags for 404
+ */
+
+test.describe('Invalid Recipe Handling', () => {
+  test('should show loading skeleton then 404 for non-existent recipe after timeout', async ({
+    page,
+    populatedDb,
+  }) => {
+    // Navigate to a non-existent recipe
+    await page.goto('/recipe/this-recipe-does-not-exist-12345')
+
+    // Should initially show loading skeleton
+    const skeleton = page.locator('[data-testid="recipe-skeleton"]')
+    await expect(skeleton).toBeVisible({ timeout: 2000 })
+
+    // Should NOT show 404 immediately (should show skeleton during timeout)
+    const notFoundText = page.getByText(/page introuvable|404/i)
+    await expect(notFoundText).not.toBeVisible()
+
+    // After 5+ seconds, should show 404
+    // We wait slightly longer to account for processing time
+    await expect(notFoundText).toBeVisible({ timeout: 7000 })
+
+    // Skeleton should no longer be visible
+    await expect(skeleton).not.toBeVisible()
+  })
+
+  test('should have proper SEO meta tags for 404 page', async ({
+    page,
+    populatedDb,
+  }) => {
+    // Navigate to a non-existent recipe and wait for 404
+    await page.goto('/recipe/non-existent-recipe-slug')
+
+    // Wait for 404 to appear (after timeout)
+    await expect(page.getByText(/page introuvable|404/i)).toBeVisible({
+      timeout: 7000,
+    })
+
+    // Check meta tags
+    const title = await page.title()
+    expect(title).toContain('Recette non trouvée')
+    expect(title).toContain('Nos Recettes')
+  })
+
+  test('should show back to home button on 404 page', async ({
+    page,
+    populatedDb,
+  }) => {
+    // Navigate to a non-existent recipe and wait for 404
+    await page.goto('/recipe/invalid-slug-abc123')
+
+    // Wait for 404 to appear
+    await expect(page.getByText(/page introuvable|404/i)).toBeVisible({
+      timeout: 7000,
+    })
+
+    // Should have a link back to home
+    const homeLink = page.getByRole('link', { name: /retour.*accueil|home/i })
+    await expect(homeLink).toBeVisible()
+
+    // Clicking should navigate home
+    await homeLink.click()
+    await expect(page).toHaveURL('/')
+  })
+
+  test('should handle direct URL access to non-existent recipe', async ({
+    page,
+    populatedDb,
+  }) => {
+    // Directly navigate to invalid URL (simulates sharing a broken link)
+    await page.goto('/recipe/broken-share-link-xyz')
+
+    // Should show skeleton first
+    await expect(page.locator('[data-testid="recipe-skeleton"]')).toBeVisible({
+      timeout: 2000,
+    })
+
+    // Then 404 after timeout
+    await expect(page.getByText(/page introuvable|404/i)).toBeVisible({
+      timeout: 7000,
+    })
+  })
+
+  test('should not flash 404 during normal recipe load', async ({
+    page,
+    populatedDb,
+  }) => {
+    // Navigate to a VALID recipe
+    await page.goto('/')
+    const firstCard = page.locator('[data-testid="recipe-card"]').first()
+    const href = await firstCard.getAttribute('href')
+
+    // Navigate to valid recipe
+    await page.goto(href ?? '')
+
+    // Should never show 404 text during normal load
+    const notFoundText = page.getByText(/page introuvable|404/i)
+
+    // Wait for recipe to load (title should appear)
+    await expect(page.locator('h1')).toBeVisible({ timeout: 10000 })
+
+    // 404 should never have appeared
+    await expect(notFoundText).not.toBeVisible()
+  })
+
+  test('should reset timeout when navigating between recipes', async ({
+    page,
+    populatedDb,
+  }) => {
+    // First navigate to invalid recipe
+    await page.goto('/recipe/invalid-recipe-1')
+
+    // Wait a bit but not full timeout
+    await page.waitForTimeout(2000)
+
+    // Navigate to another invalid recipe
+    await page.goto('/recipe/invalid-recipe-2')
+
+    // Skeleton should be visible again (timeout reset)
+    await expect(page.locator('[data-testid="recipe-skeleton"]')).toBeVisible()
+
+    // 404 should not appear immediately (timeout restarted)
+    const notFoundText = page.getByText(/page introuvable|404/i)
+    await expect(notFoundText).not.toBeVisible()
+
+    // Wait for new timeout to complete
+    await expect(notFoundText).toBeVisible({ timeout: 7000 })
+  })
+})
