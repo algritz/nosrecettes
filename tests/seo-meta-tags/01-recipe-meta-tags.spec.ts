@@ -104,7 +104,9 @@ test.describe('Recipe SEO Meta Tags', () => {
     await page.waitForLoadState('networkidle')
 
     // Wait for React Helmet to add structured data with data-rh attribute
+    // Script tags are hidden elements, so we need to use state: 'attached'
     await page.waitForSelector('script[type="application/ld+json"][data-rh="true"]', {
+      state: 'attached',
       timeout: 10000,
     })
 
