@@ -14,7 +14,10 @@ jobs:
       - name: Check for cleanup instructions
         id: check-cleanup
         run: |
-          PR_BODY="${{ github.event.pull_request.body }}"
+          PR_BODY=$(cat <<'EOF'
+          ${{ github.event.pull_request.body }}
+          EOF
+          )
 
           # Check if PR body contains cleanup section
           if echo "$PR_BODY" | grep -q "🧹 Cloudinary Cleanup"; then
@@ -46,7 +49,10 @@ jobs:
         id: extract-cleanup
         run: |
           # Extract public IDs from PR body
-          PR_BODY="${{ github.event.pull_request.body }}"
+          PR_BODY=$(cat <<'EOF'
+          ${{ github.event.pull_request.body }}
+          EOF
+          )
 
           # Look for cleanup section and extract public IDs
           if echo "$PR_BODY" | grep -q "🧹 Cloudinary Cleanup"; then
