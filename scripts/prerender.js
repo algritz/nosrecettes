@@ -12,6 +12,87 @@ const __dirname = path.dirname(__filename)
 const DIST_DIR = path.join(__dirname, '..', 'dist')
 const ROUTES_FILE = path.join(__dirname, '..', 'snap-routes.json')
 
+/**
+ * Remove duplicate meta tags when React Helmet versions exist.
+ * React Helmet adds data-rh="true" to its tags. When both static (from index.html)
+ * and dynamic (from React Helmet) meta tags exist, Facebook's scraper takes the first one,
+ * which causes it to show the default image instead of recipe-specific images.
+ *
+ * This function removes static meta tags that have React Helmet equivalents.
+ */
+function cleanupDuplicateMetaTags(html) {
+  // Properties to deduplicate (remove static version when React Helmet version exists)
+  const metaProperties = [
+    'og:title',
+    'og:description',
+    'og:image',
+    'og:type',
+    'og:url',
+    'og:site_name',
+    'og:locale',
+    'twitter:card',
+    'twitter:title',
+    'twitter:description',
+    'twitter:image',
+    'twitter:url'
+  ]
+
+  const metaNames = [
+    'description',
+    'keywords',
+    'author',
+    'robots',
+    'language',
+    'revisit-after'
+  ]
+
+  let cleanedHtml = html
+
+  // Remove static property meta tags if React Helmet version exists
+  for (const property of metaProperties) {
+    const escapedProperty = property.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    // Check if React Helmet version exists (has data-rh="true")
+    const hasReactHelmetVersion = cleanedHtml.includes(`property="${property}" `) &&
+                                   cleanedHtml.includes(`data-rh="true"`)
+
+    if (hasReactHelmetVersion) {
+      // Remove static version (without data-rh attribute)
+      // Match meta tags without data-rh that have this property
+      const staticMetaRegex = new RegExp(
+        `<meta\\s+property="${escapedProperty}"(?![^>]*data-rh)[^>]*>\\s*`,
+        'g'
+      )
+      cleanedHtml = cleanedHtml.replace(staticMetaRegex, '')
+    }
+  }
+
+  // Remove static name meta tags if React Helmet version exists
+  for (const name of metaNames) {
+    const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const hasReactHelmetVersion = cleanedHtml.includes(`name="${name}" `) &&
+                                   cleanedHtml.includes(`data-rh="true"`)
+
+    if (hasReactHelmetVersion) {
+      const staticMetaRegex = new RegExp(
+        `<meta\\s+name="${escapedName}"(?![^>]*data-rh)[^>]*>\\s*`,
+        'g'
+      )
+      cleanedHtml = cleanedHtml.replace(staticMetaRegex, '')
+    }
+  }
+
+  // Also remove og:image:width and og:image:height static tags as they're not set by React Helmet
+  // and can confuse scrapers if the recipe image has different dimensions
+  if (cleanedHtml.includes('og:image') && cleanedHtml.includes('data-rh="true"')) {
+    cleanedHtml = cleanedHtml.replace(
+      /<meta\s+property="og:image:(width|height)"(?![^>]*data-rh)[^>]*>\s*/g,
+      ''
+    )
+  }
+
+  return cleanedHtml
+}
+
 async function prerender() {
   console.log('🎬 Starting pre-rendering...\n')
 
@@ -136,7 +217,14 @@ async function prerender() {
           }
 
           // Get the rendered HTML
-          const html = await page.content()
+          let html = await page.content()
+
+          // Clean up duplicate meta tags for recipe pages
+          // React Helmet adds tags with data-rh="true", but the static tags from index.html remain
+          // Facebook scraper takes the first og:image it finds, so we need to remove duplicates
+          if (route.startsWith('/recipe/')) {
+            html = cleanupDuplicateMetaTags(html)
+          }
 
           // Determine output file path
           let outputPath
