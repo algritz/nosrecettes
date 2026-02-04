@@ -1,0 +1,195 @@
+#!/usr/bin/env node
+
+import { chromium } from '@playwright/test'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { preview } from 'vite'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+const DIST_DIR = path.join(__dirname, '..', 'dist')
+const ROUTES_FILE = path.join(__dirname, '..', 'snap-routes.json')
+
+async function prerender() {
+  console.log('🎬 Starting pre-rendering...\n')
+
+  // Read routes from snap-routes.json
+  let routes = []
+  try {
+    const routesContent = fs.readFileSync(ROUTES_FILE, 'utf-8')
+    routes = JSON.parse(routesContent)
+    console.log(`📋 Found ${routes.length} routes to pre-render`)
+  } catch (error) {
+    console.error('❌ Error reading snap-routes.json:', error.message)
+    process.exit(1)
+  }
+
+  // Start Vite preview server
+  console.log('\n🚀 Starting preview server...')
+  const server = await preview({
+    preview: {
+      port: 3001
+    }
+  })
+
+  const baseUrl = `http://localhost:3001`
+  console.log(`✅ Server running at ${baseUrl}`)
+
+  // Launch Playwright browser with persistent context to share IndexedDB
+  console.log('\n🎭 Launching browser with persistent context...')
+  const browserContext = await chromium.launchPersistentContext(path.join(__dirname, '..', '.browser-data'), {
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  })
+
+  // Pre-populate IndexedDB by visiting homepage first
+  console.log('\n📦 Pre-populating IndexedDB with recipe data...')
+  const initPage = await browserContext.newPage()
+  await initPage.goto(`${baseUrl}/`, { waitUntil: 'networkidle', timeout: 30000 })
+
+  // Wait for IndexedDB to be populated
+  await initPage.waitForFunction(async () => {
+    const dbs = await window.indexedDB.databases()
+    return dbs.some(db => db.name === 'RecipeDB')
+  }, { timeout: 30000 })
+
+  console.log('✅ IndexedDB populated')
+  await initPage.close()
+
+  let successCount = 0
+  let errorCount = 0
+
+  try {
+    // Pre-render routes in parallel batches
+    const CONCURRENCY = parseInt(process.env.PRERENDER_CONCURRENCY || '10', 10)
+    const batches = []
+
+    for (let i = 0; i < routes.length; i += CONCURRENCY) {
+      batches.push(routes.slice(i, i + CONCURRENCY))
+    }
+
+    console.log(`\n🚀 Processing ${routes.length} routes in ${batches.length} batches (${CONCURRENCY} concurrent)...\n`)
+
+    for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
+      const batch = batches[batchIndex]
+
+      console.log(`\n📦 Batch ${batchIndex + 1}/${batches.length} (${batch.length} routes)`)
+
+      const batchPromises = batch.map(async (route, index) => {
+        const routeNumber = batchIndex * CONCURRENCY + index + 1
+
+        try {
+          const page = await browserContext.newPage()
+
+          // Set viewport
+          await page.setViewportSize({ width: 1280, height: 720 })
+
+          // Navigate to the page and wait for network to be idle
+          await page.goto(`${baseUrl}${route}`, {
+            waitUntil: 'networkidle',
+            timeout: 30000
+          })
+
+          // For recipe pages, wait for recipe-specific content to load
+          if (route.startsWith('/recipe/')) {
+            try {
+              // Wait for recipe content to actually render (not just skeleton)
+              // This indicates IndexedDB has loaded and recipe is displayed
+              await page.waitForFunction(() => {
+                // Check if we have actual recipe content, not just skeleton
+                const h1 = document.querySelector('h1')
+                if (!h1 || !h1.textContent || h1.textContent.trim() === '') {
+                  return false
+                }
+
+                // Also verify we're not showing loading state
+                const skeleton = document.querySelector('[data-testid="recipe-skeleton"]')
+                if (skeleton) {
+                  return false
+                }
+
+                return true
+              }, { timeout: 15000 })
+
+              // Now wait for React Helmet to update meta tags with recipe-specific data
+              // This should happen quickly once recipe is rendered
+              await page.waitForFunction(() => {
+                const ogTitle = document.querySelector('meta[property="og:title"]')
+                if (!ogTitle) return false
+                const titleContent = ogTitle.getAttribute('content')
+                // Ensure it's not the homepage title
+                return titleContent && !titleContent.includes('720 Recettes')
+              }, { timeout: 5000 })
+
+              // Small buffer for any final DOM updates
+              await page.waitForTimeout(200)
+            } catch (error) {
+              console.warn(`  ⚠️  Recipe content wait failed for ${route}: ${error.message}`)
+              // Fall back to basic timeout
+              await page.waitForTimeout(1000)
+            }
+          } else {
+            // For non-recipe pages, use basic timeout
+            await page.waitForTimeout(500)
+          }
+
+          // Get the rendered HTML
+          const html = await page.content()
+
+          // Determine output file path
+          let outputPath
+          if (route === '/') {
+            outputPath = path.join(DIST_DIR, 'index.html')
+          } else if (route.endsWith('/')) {
+            outputPath = path.join(DIST_DIR, route.slice(1), 'index.html')
+          } else {
+            outputPath = path.join(DIST_DIR, `${route.slice(1)}.html`)
+          }
+
+          // Create directories if needed
+          const outputDir = path.dirname(outputPath)
+          if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true })
+          }
+
+          // Write the HTML file
+          fs.writeFileSync(outputPath, html, 'utf-8')
+
+          console.log(`  ✅ [${routeNumber}/${routes.length}] ${route}`)
+          await page.close()
+          return { success: true, route }
+        } catch (error) {
+          console.error(`  ❌ [${routeNumber}/${routes.length}] ${route}: ${error.message}`)
+          return { success: false, route, error: error.message }
+        }
+      })
+
+      const results = await Promise.all(batchPromises)
+      successCount += results.filter(r => r.success).length
+      errorCount += results.filter(r => !r.success).length
+    }
+  } finally {
+    await browserContext.close()
+    server.httpServer.close()
+  }
+
+  console.log(`\n\n📊 Pre-rendering complete!`)
+  console.log(`✅ Success: ${successCount}`)
+  console.log(`❌ Errors: ${errorCount}`)
+
+  if (errorCount > 0) {
+    process.exit(1)
+  }
+}
+
+// Run if called directly
+if (import.meta.url === `file://${process.argv[1]}`) {
+  prerender().catch((error) => {
+    console.error('\n❌ Fatal error:', error)
+    process.exit(1)
+  })
+}
+
+export { prerender }

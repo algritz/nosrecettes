@@ -29,3 +29,16 @@ scripts/backups
 
 playwright-report
 test-results
+
+# Build artifacts
+index.html
+public/recipes.json
+public/robots.txt
+public/.well-known/security.txt
+snap-routes.json
+
+# CodeGraph cache
+.codegraph/
+
+# Pre-rendering browser data cache
+.browser-data/

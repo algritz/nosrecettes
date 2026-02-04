@@ -1,5 +1,12 @@
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './globals.css'
 
-createRoot(document.getElementById('root')).render(<App />)
+const rootElement = document.getElementById('root')
+
+// Use hydrate for pre-rendered content from react-snap
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, <App />)
+} else {
+  createRoot(rootElement).render(<App />)
+}

@@ -1,9 +1,0 @@
-Contact: https://github.com/algritz/nosrecettes/security/advisories/new
-Expires: 2027-02-03T00:47:26.494Z
-Acknowledgments: https://github.com/algritz/nosrecettes/security/advisories
-Preferred-Languages: fr, en
-Canonical: https://nosrecettes.ca/.well-known/security.txt
-Policy: https://github.com/algritz/nosrecettes/blob/main/SECURITY.md
-
-# This is a recipe sharing website built with React and TypeScript
-# Please report security vulnerabilities responsibly through GitHub Security Advisories

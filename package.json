@@ -6,9 +6,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "NODE_ENV=production npm run build:seo && vite build",
+    "build": "NODE_ENV=production npm run build:seo && vite build && npm run postbuild",
     "build:dev": "npm run build:seo && vite build --mode development",
     "build:seo": "NODE_ENV=production node scripts/build-seo.js",
+    "postbuild": "node scripts/smart-prerender.js",
+    "postbuild:full": "node scripts/generate-snap-routes.js && node scripts/prerender.js",
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "generate:robots": "node scripts/generate-robots.js",
     "generate:manifest": "node scripts/generate-manifest.js",
