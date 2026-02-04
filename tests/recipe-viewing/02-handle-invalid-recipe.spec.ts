@@ -4,13 +4,49 @@ import { test, expect } from '../fixtures/baseFixtures'
  * Test Suite: Invalid Recipe Handling
  *
  * Tests how the application handles non-existent recipes:
- * - Shows loading skeleton initially
+ * - Shows loading skeleton initially (both static HTML and React)
  * - Attempts network fallback
  * - Shows 404 after timeout (5 seconds)
  * - Proper SEO meta tags for 404
  */
 
 test.describe('Invalid Recipe Handling', () => {
+  test('should have static HTML skeleton in built index.html', async () => {
+    // This test checks that the production build includes the static skeleton
+    // The skeleton is only in the generated index.html (production), not in dev mode
+    const fs = await import('fs')
+    const path = await import('path')
+
+    // Check if dist folder exists (built)
+    const distPath = path.join(process.cwd(), 'dist', 'index.html')
+    if (!fs.existsSync(distPath)) {
+      test.skip(
+        true,
+        'Dist folder not found - run `pnpm build` first to test production HTML',
+      )
+      return
+    }
+
+    // Read the built index.html
+    const indexHtml = fs.readFileSync(distPath, 'utf-8')
+
+    // Verify the static skeleton HTML exists in the built file
+    expect(indexHtml).toContain('initial-skeleton')
+    expect(indexHtml).toContain('skeleton-box')
+    expect(indexHtml).toContain('animation: pulse')
+
+    // Verify skeleton structure is present
+    expect(indexHtml).toContain('<!-- Initial loading skeleton')
+    expect(indexHtml).toContain(
+      'This prevents 404 flash when sharing recipe links',
+    )
+
+    // Verify skeleton has content (header, image, meta placeholders)
+    expect(indexHtml).toContain('<!-- Header skeleton -->')
+    expect(indexHtml).toContain('<!-- Image skeleton -->')
+    expect(indexHtml).toContain('<!-- Meta info skeleton -->')
+  })
+
   test('should show loading skeleton then 404 for non-existent recipe after timeout', async ({
     page,
     populatedDb,
