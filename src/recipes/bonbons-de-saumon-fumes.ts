@@ -1,10 +1,9 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const bonbonsDeSaumonFumes: Recipe = {
   id: 'bonbons-de-saumon-fumes',
   title: 'Bonbons de saumon fumés',
-  description:
-    "Recette de bonbons de saumon fumés avec marinade, séchage et fumage, badigeonnés de sirop d'érable pour une saveur sucrée-salée.",
+  description: 'Recette de bonbons de saumon fumés avec marinade, séchage et fumage, badigeonnés de sirop d\'érable pour une saveur sucrée-salée.',
   categories: ['Fumoir', 'Poisson'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 240, max: 240 },
@@ -14,9 +13,9 @@ export const bonbonsDeSaumonFumes: Recipe = {
   ingredients: [
     '1 filet de saumon',
     '1/2 tasse de cassonade',
-    "4 tasses d'eau",
+    '4 tasses d\'eau',
     '60 grammes de sel',
-    "1 tasse de sirop d'érable",
+    '1 tasse de sirop d\'érable'
   ],
   instructions: [
     'Découper le filet de saumon en petit cube mais garder la peau.',
@@ -26,11 +25,17 @@ export const bonbonsDeSaumonFumes: Recipe = {
     'Bien éponger le saumon et laisser sécher au réfrigérateur pendant 1 heure.',
     'Après une heure, mettre votre saumon dans le fumoir à une température d’environ 150°F, côté peau sur la grille.',
     'Avec un pinceau de cuisine, badigeonner une couche de sirop d’érable sur le saumon toutes les 30 minutes.',
-    "Cuire de 2 à 4 heures au goût, en augmentant la température de 10°F chaque heure jusqu'à un maximum de 180°F.",
+    'Cuire de 2 à 4 heures au goût, en augmentant la température de 10°F chaque heure jusqu\'à un maximum de 180°F.'
   ],
-  tags: ['fumage', "sirop d'érable", 'saumon'],
+  tags: ['fumage', 'sirop d\'érable', 'saumon'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/bonbon_saumon_fumes',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/bonbon_saumon_fumes',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/bonbon_saumon_fumes'
+    }
+  ],
   source: 'David Cloutier',
-  notes:
-    'Temps de marinade de 8 à 12 heures, cuisson de 2 à 4 heures, portions pour 6 à 8 personnes.',
-  slug: 'bonbons-de-saumon-fumes',
-}
+  notes: 'Temps de marinade de 8 à 12 heures, cuisson de 2 à 4 heures, portions pour 6 à 8 personnes.',
+  slug: 'bonbons-de-saumon-fumes'
+};
