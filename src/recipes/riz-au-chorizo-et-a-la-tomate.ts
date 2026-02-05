@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const rizAuChorizoEtALaTomate: Recipe = {
   id: 'riz-au-chorizo-et-a-la-tomate',
@@ -10,17 +10,30 @@ export const rizAuChorizoEtALaTomate: Recipe = {
   servings: 4,
   difficulty: 'Facile',
   ingredients: [
-    '200 g de riz basmati',
-    '150 g de chorizo, coupé en rondelles',
-    '400 g de tomates en dés en boîte (une petite boîte)',
-    '1 oignon, émincé',
-    '2 gousses d’ail, hachées',
-    '1 cuillère à soupe de paprika',
-    '1 cuillère à café de sel',
-    '1/2 cuillère à café de poivre noir',
-    '1 cuillère à soupe d’huile d’olive',
-    'Quelques feuilles de basilic frais',
-    '50 g de fromage râpé',
+    {
+      title: 'Base',
+      items: [
+        '200g de riz Basmati',
+        '150g de chorizo, coupé en rondelles',
+        '400g de tomates en dés en boîte',
+        '1 oignon émincé',
+        '2 gousses d\'ail hachées',
+        '1 Cuillère à soupe de paprika',
+        '1 Cuillère à café de sel',
+        '1/2 Cuillère à café de poivre noir',
+        '1 Cuillère à soupe d\'huile d\'olive',
+        'Quelques feuilles de basilic frais',
+        '50g de fromage râpé'
+      ]
+    },
+    {
+      title: 'Version risotto',
+      items: [
+        '1 litre de bouillon de poulet ',
+        'Remplacer le riz basmati par 250g de riz arabio (riz à risotto)',
+        'remplacer le fromage râpé par 1 tasse de mozzarella râpé'
+      ]
+    }
   ],
   instructions: [
     'Dans une grande casserole, fais chauffer l’huile d’olive à feu moyen.',
@@ -33,8 +46,16 @@ export const rizAuChorizoEtALaTomate: Recipe = {
     'Verse 400 ml d’eau dans la casserole, porte à ébullition, puis réduis le feu et couvre.',
     'Laisse cuire à feu doux pendant 15 à 20 minutes, ou jusqu’à ce que le riz soit tendre et que le liquide soit absorbé.',
     'Ajoute quelques feuilles de basilic frais pour une touche de fraîcheur.',
-    'Saupoudre de fromage râpé avant de servir.',
+    'Saupoudre de fromage râpé avant de servir.'
   ],
   tags: ['tomate', 'chorizo', 'riz'],
-  slug: 'riz-au-chorizo-et-a-la-tomate',
-}
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/riz_chorizo_tomates',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/riz_chorizo_tomates',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/riz_chorizo_tomates'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'riz-au-chorizo-et-a-la-tomate'
+};
