@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const boulettesDePouletSaucePommeEtCari: Recipe = {
   id: 'boulettes-de-poulet-sauce-pomme-et-cari',
@@ -17,7 +17,7 @@ export const boulettesDePouletSaucePommeEtCari: Recipe = {
     '5 ml de sel',
     '1 tasse de lait de coco',
     '15 ml de pâte de cari thaï',
-    '2 pommes coupées en julienne',
+    '2 pommes coupées en julienne'
   ],
   instructions: [
     'Mélanger tous les ingrédients des boulettes de poulet.',
@@ -27,8 +27,16 @@ export const boulettesDePouletSaucePommeEtCari: Recipe = {
     'Ajouter les pommes et le reste du lait de coco.',
     'Porter à ébullition et laisser mijoter à couvert environ 10 minutes ou jusqu’à ce qu’un thermomètre inséré au centre des boulettes indique 80 °C (175 °F).',
     'Rectifier l’assaisonnement.',
-    'Servir les boulettes garnies de feuilles de basilic thaï.',
+    'Servir les boulettes garnies de feuilles de basilic thaï.'
   ],
   tags: ['cari', 'poulet', 'basilic'],
-  slug: 'boulettes-de-poulet-sauce-pomme-et-cari',
-}
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes_poulet_pomme_cari',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes_poulet_pomme_cari',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_poulet_pomme_cari'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'boulettes-de-poulet-sauce-pomme-et-cari'
+};
