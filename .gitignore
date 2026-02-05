@@ -34,6 +34,9 @@ test-results
 index.html
 public/recipes.json
 public/robots.txt
+public/sitemap.xml
+public/manifest.json
+public/browserconfig.xml
 public/.well-known/security.txt
 snap-routes.json
 

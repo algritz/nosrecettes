@@ -41,14 +41,20 @@ jobs:
           echo "Changed files:"
           echo "$CHANGED_FILES"
 
-          # Check if all changes are only in recipes
+          # Check if all changes are only in recipes or generated recipe files
           SKIP_TESTS="true"
           while IFS= read -r file; do
             # Skip empty lines
             [ -z "$file" ] && continue
 
-            # Allow changes only in src/recipes/ or public/recipes.json
-            if [[ ! "$file" =~ ^src/recipes/ ]] && [[ "$file" != "public/recipes.json" ]]; then
+            # Allow changes in:
+            # - src/recipes/ (recipe source files)
+            # - Generated files from recipe data: recipes.json, sitemap.xml, manifest.json, browserconfig.xml
+            if [[ ! "$file" =~ ^src/recipes/ ]] && \
+               [[ "$file" != "public/recipes.json" ]] && \
+               [[ "$file" != "public/sitemap.xml" ]] && \
+               [[ "$file" != "public/manifest.json" ]] && \
+               [[ "$file" != "public/browserconfig.xml" ]]; then
               echo "Non-recipe file changed: $file"
               SKIP_TESTS="false"
               break
