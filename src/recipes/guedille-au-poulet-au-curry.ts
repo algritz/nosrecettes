@@ -1,10 +1,9 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const guedilleAuPouletAuCurry: Recipe = {
   id: 'guedille-au-poulet-au-curry',
   title: 'Guédille au poulet au Curry',
-  description:
-    'Une recette de sandwich au poulet parfumé au curry, servi dans des pains à hot-dogs avec laitue.',
+  description: 'Une recette de sandwich au poulet parfumé au curry, servi dans des pains à hot-dogs avec laitue.',
   categories: ['Vollaille', 'Sandwichs'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 5, max: 5 },
@@ -23,14 +22,22 @@ export const guedilleAuPouletAuCurry: Recipe = {
     '2 c. à table de coriandre ou de persil plat',
     'Pains à hot-dogs',
     'Beurre',
-    'Laitue Boston',
+    'Laitue Boston'
   ],
   instructions: [
     'Mélanger tous les ingrédients de la salade ensemble et réserver au frigo.',
     'Beurrer les pains à hot-dogs.',
     'Les cuire quelques minutes de chaque côté.',
-    'Garnir les pains de laitue et de salade de poulet.',
+    'Garnir les pains de laitue et de salade de poulet.'
   ],
   tags: ['curry', 'sandwich', 'rapide'],
-  slug: 'guedille-au-poulet-au-curry',
-}
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/guedille_poulet_et_curry',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/guedille_poulet_et_curry',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/guedille_poulet_et_curry'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'guedille-au-poulet-au-curry'
+};
