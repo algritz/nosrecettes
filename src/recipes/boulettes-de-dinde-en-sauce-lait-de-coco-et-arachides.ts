@@ -42,6 +42,13 @@ export const boulettesDeDindeEnSauceLaitDeCocoEtArachides: Recipe = {
     'Ajouter les boulettes et déposer les fèves germées, le basilic, le piment chili et les micro pousses au centre du plat.'
   ],
   tags: ['coco', 'arachides', 'four'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes_dinde_lait_coco',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes_dinde_lait_coco',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_dinde_lait_coco'
+    }
+  ],
   source: 'David Cloutier',
   slug: 'boulettes-de-dinde-en-sauce-lait-de-coco-et-arachides'
 };
