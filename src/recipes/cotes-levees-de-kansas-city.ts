@@ -35,6 +35,13 @@ export const cotesLeveesDeKansasCity: Recipe = {
     'Transférer les morceaux de côtes levées sur une planche à découper et trancher en moitiés.'
   ],
   tags: ['barbecue', 'fumoir', 'marinade sèche'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/cote_levee_kansas_city',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/cote_levee_kansas_city',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/cote_levee_kansas_city'
+    }
+  ],
   accompaniment: 'Servir avec une sauce barbecue à la cassonade et au bourbon ou la Sauce BBQ au Whisky Laphroaig',
   wine: '7 Deadly Zins',
   source: 'David Cloutier',
