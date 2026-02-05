@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const etageAuChocolat: Recipe = {
   id: 'etage-au-chocolat',
@@ -7,6 +7,7 @@ export const etageAuChocolat: Recipe = {
   categories: ['Desserts'],
   prepTime: { min: 35, max: 35 },
   cookTime: { min: 15, max: 15 },
+  marinatingTime: { min: 480, max: 480 },
   servings: 0,
   difficulty: 'Facile',
   ingredients: [
@@ -17,25 +18,31 @@ export const etageAuChocolat: Recipe = {
     '3 tasses de lait froid à 2%',
     '1 paquet de pouding au chocolat',
     '1 paquet de pouding à la vanille',
-    'mini chipit de chocolat pour la déco',
+    'mini chipit de chocolat pour la déco'
   ],
   instructions: [
     'Laisser ramollir la pâte à biscuits à la température ambiante pendant 5 à 10 minutes.',
     'Étendre la pâte à biscuit dans un pirex 13 x 9 non graissé.',
-    "Cuire au four à 350 °F jusqu'à ce que le biscuit soit bien doré, 14-16 minutes.",
+    'Cuire au four à 350 °F jusqu\'à ce que le biscuit soit bien doré, 14-16 minutes.',
     'Refroidir sur une grille.',
-    "Dans un grand bol, battre le fromage à la crème et le sucre à glacer jusqu'à ce qu'ils soient onctueux.",
+    'Dans un grand bol, battre le fromage à la crème et le sucre à glacer jusqu\'à ce qu\'ils soient onctueux.',
     'Incorporer 1 3/4 tasses de cool whip au mélange de fromage et de sucre.',
     'Étaler sur le biscuit.',
     'Dans un grand bol, mélanger le lait et les pouding pendant 2 minutes.',
     'Étendre sur la couche de fromage à la crème.',
     'Garnir du reste du cool whip.',
     'Saupoudrer de chipit de chocolat.',
-    "Couvrir et réfrigérer jusqu'à consistance ferme soit 8 heures ou toute la nuit.",
+    'Couvrir et réfrigérer jusqu\'à consistance ferme soit 8 heures ou toute la nuit.'
   ],
   tags: ['chocolat', 'crème', 'réfrigération'],
-  marinatingTime: { min: 480, max: 480 },
-  notes:
-    'Temps de marinade de 8 heures minimum, préparation totale 50 minutes, y compris refroidissement.',
-  slug: 'etage-au-chocolat',
-}
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/etage_chocolat',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/etage_chocolat',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/etage_chocolat'
+    }
+  ],
+  source: 'David Cloutier',
+  notes: 'Temps de marinade de 8 heures minimum, préparation totale 50 minutes, y compris refroidissement.',
+  slug: 'etage-au-chocolat'
+};
