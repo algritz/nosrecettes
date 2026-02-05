@@ -38,6 +38,13 @@ export const cariDeDindeEtPatateDouce: Recipe = {
     'Accompagner de pains naans.'
   ],
   tags: ['curry', 'mijoteuse', 'épices'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/cari_dinde_patates_douces',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/cari_dinde_patates_douces',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/cari_dinde_patates_douces'
+    }
+  ],
   source: 'David Cloutier',
   notes: 'Vous pouvez remplacer la dinde par du poulet.',
   slug: 'cari-de-dinde-et-patate-douce'
