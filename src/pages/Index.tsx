@@ -35,6 +35,7 @@ const Index = (): React.ReactElement => {
     loadMore,
     clearFilters,
     displayedCount,
+    totalCount,
   } = useInfiniteRecipes({ recipes, batchSize: 10 })
 
   // Set up infinite scroll
@@ -162,7 +163,7 @@ const Index = (): React.ReactElement => {
 
           <RecipeStats
             displayedCount={displayedCount}
-            totalCount={recipes.length}
+            totalCount={totalCount}
             isLoading={isLoading}
             hasMore={hasMore}
           />

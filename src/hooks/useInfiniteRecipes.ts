@@ -20,6 +20,7 @@ export const useInfiniteRecipes = ({
   selectedCategories: string[]
   setSelectedCategories: (categories: string[]) => void
   displayedCount: number
+  totalCount: number
   isLoading: boolean
   categories: string[]
   filteredRecipes: Recipe[]
