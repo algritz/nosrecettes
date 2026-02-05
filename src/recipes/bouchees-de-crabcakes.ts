@@ -35,6 +35,13 @@ export const boucheesDeCrabcakes: Recipe = {
     'Servir immédiatement.'
   ],
   tags: ['crabe', 'friture', 'garniture'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/crabcake',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/crabcake',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/crabcake'
+    }
+  ],
   source: 'David Cloutier',
   notes: 'Pour congeler et réchauffer : Congelez les bouchées cuites sur une plaque tapissée de papier parchemin puis transférez-les dans un sac de plastique hermétique pour congélateur. Au moment de servir, réchauffez-les de 15 à 20 minutes sur une plaque au centre d’un four préchauffé à 180 °C (350 °F).',
   slug: 'bouchees-de-crabcakes'
