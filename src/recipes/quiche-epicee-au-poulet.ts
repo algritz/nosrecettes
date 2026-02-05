@@ -41,6 +41,13 @@ export const quicheEpiceeAuPoulet: Recipe = {
     'Garnir de mozzarella rappée et cuire au four 35 minutes.'
   ],
   tags: ['épicé', 'poulet', 'tarte'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/quiche_epice_au_poulet',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/quiche_epice_au_poulet',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/quiche_epice_au_poulet'
+    }
+  ],
   source: 'David Cloutier',
   slug: 'quiche-epicee-au-poulet'
 };
