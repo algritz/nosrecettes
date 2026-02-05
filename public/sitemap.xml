@@ -62,6 +62,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/barfi_noix_coco</image:loc>
+      <image:title>Barfi à la noix de coco</image:title>
+      <image:caption>Barfi à la noix de coco - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/barre-biscuit-au-bonbon-dhalloween</loc>
@@ -161,12 +166,22 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuit_nutella_3_ingredients</image:loc>
+      <image:title>Biscuit au Nutella 3 ingrédients</image:title>
+      <image:caption>Biscuit au Nutella 3 ingrédients - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/biscuit-aux-pepites-de-chocolat-fumes</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuits_pepite_chocolat_fumes</image:loc>
+      <image:title>Biscuit aux pépites de chocolat fumés</image:title>
+      <image:caption>Biscuit aux pépites de chocolat fumés - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/biscuits-a-la-cuillere</loc>
@@ -214,12 +229,22 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuits_nutella_yorrick</image:loc>
+      <image:title>Biscuits au Nutella de Yorrick</image:title>
+      <image:caption>Biscuits au Nutella de Yorrick - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/biscuits-aux-brisures-de-chocolat-de-ricardo</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuits_brisures_chocolat_ricardo</image:loc>
+      <image:title>Biscuits aux brisures de chocolat de Ricardo</image:title>
+      <image:caption>Biscuits aux brisures de chocolat de Ricardo - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/biscuits-aux-pepites-de-chocolat-moelleux</loc>
@@ -249,12 +274,22 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuits_irresistibles</image:loc>
+      <image:title>Biscuits irrésistibles aux morceaux de chocolat et de framboise</image:title>
+      <image:caption>Biscuits irrésistibles aux morceaux de chocolat et de framboise - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/biscuits-moelleux-aux-bananes-et-pepites-de-chocolat-de-genevieve</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuits_moelleux</image:loc>
+      <image:title>Biscuits moelleux aux bananes et pépites de chocolat de Geneviève</image:title>
+      <image:caption>Biscuits moelleux aux bananes et pépites de chocolat de Geneviève - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/biscuits-mous-au-chocolat</loc>
@@ -297,12 +332,22 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/bonbon_saumon_fumes</image:loc>
+      <image:title>Bonbons de saumon fumés</image:title>
+      <image:caption>Bonbons de saumon fumés - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/bouchee-de-creme-glacee</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/bouchee_creme_glacee</image:loc>
+      <image:title>Bouchée de crème glacée</image:title>
+      <image:caption>Bouchée de crème glacée - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/bouchee-de-pomme-de-terre</loc>
@@ -350,6 +395,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/crabcake</image:loc>
+      <image:title>Bouchées de crabcakes</image:title>
+      <image:caption>Bouchées de crabcakes - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/bouchees-de-gateau-au-fromage-et-creme-glacee-a-la-fraise</loc>
@@ -408,6 +458,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_poulet_en_sauce</image:loc>
+      <image:title>Boulette de poulet en sauce</image:title>
+      <image:caption>Boulette de poulet en sauce - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/boulette-thai</loc>
@@ -426,6 +481,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_asiatiques</image:loc>
+      <image:title>Boulettes à l\</image:title>
+      <image:caption>Boulettes à l\ - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/boulettes-americaines</loc>
@@ -449,12 +509,22 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_dinde_lait_coco</image:loc>
+      <image:title>Boulettes de dinde en sauce lait de coco et arachides</image:title>
+      <image:caption>Boulettes de dinde en sauce lait de coco et arachides - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/boulettes-de-porc-et-sauce-rosee-au-fromage</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_de_porc_sauce_rosee</image:loc>
+      <image:title>Boulettes de porc et sauce rosée au fromage</image:title>
+      <image:caption>Boulettes de porc et sauce rosée au fromage - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/boulettes-de-poulet-a-l-oignon</loc>
@@ -484,12 +554,22 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_poulet_et_legumes</image:loc>
+      <image:title>Boulettes de poulet et légumes avec sauce à l’arachide</image:title>
+      <image:caption>Boulettes de poulet et légumes avec sauce à l’arachide - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/boulettes-de-poulet-sauce-pomme-et-cari</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_poulet_pomme_cari</image:loc>
+      <image:title>Boulettes de poulet sauce pomme et cari</image:title>
+      <image:caption>Boulettes de poulet sauce pomme et cari - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/boulettes-de-viande-a-l-ananas</loc>
@@ -502,6 +582,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_viande_riz_epice</image:loc>
+      <image:title>Boulettes de viande au riz épicés</image:title>
+      <image:caption>Boulettes de viande au riz épicés - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/boulettes-style-general-tao</loc>
@@ -558,6 +643,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brigadeiro</image:loc>
+      <image:title>Brigadeiro</image:title>
+      <image:caption>Brigadeiro - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/brochette-de-poulet-sucree</loc>
@@ -681,6 +771,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brownie_dans_un_tasse</image:loc>
+      <image:title>Brownies dans une tasse</image:title>
+      <image:caption>Brownies dans une tasse - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/brownies-facile-a-faire-et-vraiment-bon</loc>
@@ -715,12 +810,22 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/burrata_dejeuner</image:loc>
+      <image:title>Burrata à déjeuner</image:title>
+      <image:caption>Burrata à déjeuner - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/burrata-aux-tomates</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/burrata_aux_tomates</image:loc>
+      <image:title>Burrata aux tomates</image:title>
+      <image:caption>Burrata aux tomates - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/burrata-style-ratatouille</loc>
@@ -739,6 +844,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/burrito_a_dejeuner</image:loc>
+      <image:title>Burritos à déjeuner</image:title>
+      <image:caption>Burritos à déjeuner - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/canard-a-la-cantonaise</loc>
@@ -773,6 +883,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/cari_dinde_patates_douces</image:loc>
+      <image:title>Cari de dinde et patate douce</image:title>
+      <image:caption>Cari de dinde et patate douce - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/cari-de-poulet-frais</loc>
@@ -793,10 +908,15 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nosrecettes.ca/recipe/carottes-glacees-au-sirop-d-erable-et-a-la-moutarde</loc>
+    <loc>https://nosrecettes.ca/recipe/carottes-glacees-au-sirop-derable-et-a-la-moutarde</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/carottes_glacee</image:loc>
+      <image:title>Carottes glacées au sirop d’érable et à la moutarde</image:title>
+      <image:caption>Carottes glacées au sirop d’érable et à la moutarde - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/carre-a-la-guimauve</loc>
@@ -826,6 +946,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/carre_caramel_voisine</image:loc>
+      <image:title>Carrés au caramel de la voisine de chalet</image:title>
+      <image:caption>Carrés au caramel de la voisine de chalet - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/carres-au-chocolat-surprise</loc>
@@ -872,6 +997,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/casserole_mexicaine</image:loc>
+      <image:title>Casserole mexicaine</image:title>
+      <image:caption>Casserole mexicaine - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/champvallon</loc>
@@ -889,6 +1019,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/chaudree_mais_coco</image:loc>
+      <image:title>Chaudrée de maïs au lait de coco</image:title>
+      <image:caption>Chaudrée de maïs au lait de coco - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/chaudree-de-mais-et-kale</loc>
@@ -913,18 +1048,33 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/chili_con_carne_succulent</image:loc>
+      <image:title>Chili con carne succulent</image:title>
+      <image:caption>Chili con carne succulent - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/chili-con-carne</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/chili_con_carne</image:loc>
+      <image:title>Chili con carne</image:title>
+      <image:caption>Chili con carne - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/chop-suey-de-poulet</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/chop_suey_poulet</image:loc>
+      <image:title>Chop suey de poulet</image:title>
+      <image:caption>Chop suey de poulet - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/chou-de-bruxelle-au-rice-krispies</loc>
@@ -937,6 +1087,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/choux_bruxelle_sauce_alfredo</image:loc>
+      <image:title>choux de bruxelles en sauce Alfredo</image:title>
+      <image:caption>choux de bruxelles en sauce Alfredo - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/chutney-au-framboise</loc>
@@ -978,6 +1133,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/coquilles_au_tacos_de_semaine</image:loc>
+      <image:title>Coquille au tacos recette de semaine</image:title>
+      <image:caption>Coquille au tacos recette de semaine - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/coquilles-farcies-au-style-tacos</loc>
@@ -1014,6 +1174,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/cotelettes_babeurre</image:loc>
+      <image:title>Côtelettes de porc au babeurre</image:title>
+      <image:caption>Côtelettes de porc au babeurre - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/cotelettes-de-porc-au-miel-et-au-gingembre</loc>
@@ -1073,6 +1238,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/cote_levee_kansas_city</image:loc>
+      <image:title>Côtes levées de Kansas City</image:title>
+      <image:caption>Côtes levées de Kansas City - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/cotes-levees-de-porc-sauce-bbq-a-la-louisianaise</loc>
@@ -1103,6 +1273,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/creme_de_bettrave</image:loc>
+      <image:title>Crème de bettraves</image:title>
+      <image:caption>Crème de bettraves - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/creme-de-brocoli-chou-fleur-et-fromage-cheddar-orange</loc>
@@ -1172,10 +1347,15 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nosrecettes.ca/recipe/creme-de-navet-et-poireau-a-l-erable</loc>
+    <loc>https://nosrecettes.ca/recipe/creme-de-navet-et-poireau-a-lerable</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/creme_navet_et_poireau</image:loc>
+      <image:title>Crème de navet et poireau à l\</image:title>
+      <image:caption>Crème de navet et poireau à l\ - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/creme-de-panais-au-curry-et-sirop-derable</loc>
@@ -1292,6 +1472,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/emery_gone_in_60_sec_chicken</image:loc>
+      <image:title>Cuisses de poulet grillées à la noix de coco épicées</image:title>
+      <image:caption>Cuisses de poulet grillées à la noix de coco épicées - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/cupcakes-gateaux-pina-colada</loc>
@@ -1316,6 +1501,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/curry_de_poulet_thai</image:loc>
+      <image:title>Curry de poulet thaïlandais</image:title>
+      <image:caption>Curry de poulet thaïlandais - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/doigts-de-poulet-moutarde-et-miel</loc>
@@ -1334,6 +1524,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/ecoreces_bleuet</image:loc>
+      <image:title>Écorces de bleuets au chocolat noir</image:title>
+      <image:caption>Écorces de bleuets au chocolat noir - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/enchiladas-etagees</loc>
@@ -1358,6 +1553,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/etage_chocolat</image:loc>
+      <image:title>Étagé au chocolat</image:title>
+      <image:caption>Étagé au chocolat - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/feve-au-lard</loc>
@@ -1663,6 +1863,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/fudge_divin</image:loc>
+      <image:title>Fudge divin</image:title>
+      <image:caption>Fudge divin - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/fudge-facile-a-faire</loc>
@@ -1698,6 +1903,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/gateau_fromage_bleuets</image:loc>
+      <image:title>Gateau au fromage et bleuets</image:title>
+      <image:caption>Gateau au fromage et bleuets - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/gateau-au-fromage-framboise-sans-cuisson</loc>
@@ -1856,6 +2066,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/guedille_poulet_et_curry</image:loc>
+      <image:title>Guédille au poulet au Curry</image:title>
+      <image:caption>Guédille au poulet au Curry - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/hamburger-helper-maison-au-poulet-parfait-et-piquant</loc>
@@ -1937,6 +2152,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/kefta_sauce_tahini</image:loc>
+      <image:title>Kefta à la sauce Tahini</image:title>
+      <image:caption>Kefta à la sauce Tahini - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/lasagne-au-chocolat</loc>
@@ -1983,6 +2203,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pain_du_roi</image:loc>
+      <image:title>Le fameux pain du roi</image:title>
+      <image:caption>Le fameux pain du roi - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/legumes-cuits-dans-la-biere</loc>
@@ -2495,6 +2720,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pain_ulta_moelleux</image:loc>
+      <image:title>Pain ultra-moelleux</image:title>
+      <image:caption>Pain ultra-moelleux - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/pains-fourres-poulet-et-sauce-bbq</loc>
@@ -2665,10 +2895,15 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nosrecettes.ca/recipe/petits-cornets-a-l-erable</loc>
+    <loc>https://nosrecettes.ca/recipe/petits-cornets-a-lerable</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/petits_cornets_a_l_erable</image:loc>
+      <image:title>Petits cornets à l\</image:title>
+      <image:caption>Petits cornets à l\ - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/petits-pains-maison</loc>
@@ -2904,6 +3139,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/pouding_chomeur_aux_pommes</image:loc>
+      <image:title>Pouding chômeur aux pommes</image:title>
+      <image:caption>Pouding chômeur aux pommes - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/pouding-chomeur</loc>
@@ -2928,6 +3168,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poulet_a_la_jamaicaine</image:loc>
+      <image:title>Poulet à la jamaïcaine farci au fromage Monterey Jack Habanero</image:title>
+      <image:caption>Poulet à la jamaïcaine farci au fromage Monterey Jack Habanero - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/poulet-a-la-libanaise</loc>
@@ -3250,6 +3495,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/quiche_epice_au_poulet</image:loc>
+      <image:title>Quiche épicée au poulet</image:title>
+      <image:caption>Quiche épicée au poulet - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/ragout-de-b-uf-a-la-creme-et-petits-pois</loc>
@@ -3343,6 +3593,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/riz_chorizo_tomates</image:loc>
+      <image:title>Riz au chorizo et à la tomate</image:title>
+      <image:caption>Riz au chorizo et à la tomate - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/riz-epice-aux-legumes</loc>
@@ -3515,12 +3770,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nosrecettes.ca/recipe/salade-d-ufs-bacon-et-avocat-a-tartiner</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://nosrecettes.ca/recipe/salade-de-betteraves-et-carottes-roties-a-la-burrata</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
@@ -3570,6 +3819,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade_kale_divine</image:loc>
+      <image:title>Salade de chou kale divine</image:title>
+      <image:caption>Salade de chou kale divine - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/salade-de-choux-cremeuse-aux-pacanes</loc>
@@ -3605,6 +3859,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade_de_kale_clementine</image:loc>
+      <image:title>Salade de kale, clémentine, quinoa et noix de Grenoble</image:title>
+      <image:caption>Salade de kale, clémentine, quinoa et noix de Grenoble - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/salade-de-macaroni</loc>
@@ -3714,6 +3973,17 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nosrecettes.ca/recipe/salade-dufs-bacon-et-avocat-a-tartiner</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/salade_oeuf_bacon_avocat</image:loc>
+      <image:title>Salade d\</image:title>
+      <image:caption>Salade d\ - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/salade-ensoleillee-aux-fruits-et-aux-legumes</loc>
@@ -4251,6 +4521,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/soupe_de_tortilla_de_poulet</image:loc>
+      <image:title>Soupe de tortilla au poulet</image:title>
+      <image:caption>Soupe de tortilla au poulet - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/soupe-epicee-au-fromage</loc>
@@ -4298,6 +4573,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/spaghetti_poireaux_et_bacon</image:loc>
+      <image:title>Spaghetti aux poireaux et bacon</image:title>
+      <image:caption>Spaghetti aux poireaux et bacon - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/spaghetti-bolognaise-au-crabe</loc>
@@ -4340,6 +4620,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sucre_a_la_creme_caramilk</image:loc>
+      <image:title>Sucre à la crème au Caramilk</image:title>
+      <image:caption>Sucre à la crème au Caramilk - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/supreme-de-poulet-laque-a-la-melasse-de-grenade</loc>
@@ -4687,6 +4972,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tartare_saumon_pacane_caramelise</image:loc>
+      <image:title>Tartare de saumon et pacanes caramélisées à l\</image:title>
+      <image:caption>Tartare de saumon et pacanes caramélisées à l\ - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/tartare-de-saumon-fraises-et-boursin-de-basilic-ciboulette</loc>
@@ -4793,10 +5083,15 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nosrecettes.ca/recipe/tarte-au-beurre-d-arachide-et-au-chocolat</loc>
+    <loc>https://nosrecettes.ca/recipe/tarte-au-beurre-darachide-et-au-chocolat</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tarte_beurre_arachide_chocolat</image:loc>
+      <image:title>Tarte au beurre d\</image:title>
+      <image:caption>Tarte au beurre d\ - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/tarte-au-caramilk-et-aero</loc>
@@ -4900,6 +5195,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/tortues_de_memere</image:loc>
+      <image:title>Tortue de mémère</image:title>
+      <image:caption>Tortue de mémère - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/tourte-bretonne-aux-bleuets-famboises</loc>
@@ -4912,6 +5212,11 @@
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/20260115_175459</image:loc>
+      <image:title>Tourtière du lac (style familial)</image:title>
+      <image:caption>Tourtière du lac (style familial) - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/trempette-a-l-avocat</loc>
@@ -5001,22 +5306,37 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nosrecettes.ca/recipe/truffes-chocolat-et-beurre-d-arachide-au-fromage-a-la-creme</loc>
+    <loc>https://nosrecettes.ca/recipe/truffes-chocolat-et-beurre-darachide-au-fromage-a-la-creme</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/truffes_chocolat_beurre_arachide</image:loc>
+      <image:title>Truffes chocolat et beurre d\</image:title>
+      <image:caption>Truffes chocolat et beurre d\ - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/truffes-chocolat-et-noisettes-au-fromage-a-la-creme</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/truffes_chocolat_et_noisettes</image:loc>
+      <image:title>Truffes chocolat et noisettes au fromage à la crème</image:title>
+      <image:caption>Truffes chocolat et noisettes au fromage à la crème - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/truffes-salees-au-smores</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/truffe_au_smores</image:loc>
+      <image:title>Truffes salées au s\</image:title>
+      <image:caption>Truffes salées au s\ - Recette québécoise avec instructions détaillées</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://nosrecettes.ca/recipe/truite-au-bbq</loc>
