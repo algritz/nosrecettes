@@ -46,7 +46,7 @@ const RecipePage = (): React.JSX.Element => {
         setTimeoutElapsed(true)
       }, 5000) // 5 seconds
 
-      return () => clearTimeout(timer)
+      return (): void => clearTimeout(timer)
     }
   }, [dbReady, recipe])
 
@@ -77,7 +77,9 @@ const RecipePage = (): React.JSX.Element => {
       )
 
       if (foundRecipe) {
-        console.log(`Found recipe "${recipeSlug}" in network response, caching to IndexedDB...`)
+        console.log(
+          `Found recipe "${recipeSlug}" in network response, caching to IndexedDB...`,
+        )
         const db = await openRecipeDB()
         await db.put('recipes', foundRecipe)
         console.log(`Recipe "${recipeSlug}" cached successfully`)
@@ -109,7 +111,9 @@ const RecipePage = (): React.JSX.Element => {
 
       // If not found in IndexedDB, try network fallback
       if (!fetchedRecipe) {
-        console.log(`Recipe "${slug}" not found in IndexedDB, attempting network fallback...`)
+        console.log(
+          `Recipe "${slug}" not found in IndexedDB, attempting network fallback...`,
+        )
         fetchedRecipe = await fetchRecipeFromNetwork(slug)
       }
 
@@ -139,7 +143,7 @@ const RecipePage = (): React.JSX.Element => {
       <>
         <SEOHead
           title="Recette non trouvée - Nos Recettes"
-          description="La recette que vous recherchez n'existe pas ou a été déplacée. Découvrez notre collection de recettes québécoises."
+          description="La recette que vous recherchez n'existe pas ou a été déplacée. Découvrez notre collection de recettes."
           url={`/recipe/${slug}`}
         />
         <NotFound />
@@ -151,7 +155,7 @@ const RecipePage = (): React.JSX.Element => {
   const categories = getRecipeCategories(recipe)
   const primaryCategory = categories[0] || 'Recette'
 
-  const seoTitle = `${recipe.title} - Recette ${primaryCategory} Québécoise | Nos Recettes`
+  const seoTitle = `${recipe.title} - Recette ${primaryCategory} | Nos Recettes`
   const seoDescription = generateRecipeDescription(recipe)
   const seoKeywords = generateRecipeKeywords(recipe)
 
