@@ -39,6 +39,13 @@ export const boulettesDePouletEtLegumesAvecSauceALarachide: Recipe = {
     'Au moment de servir, parsemer d’oignons verts.'
   ],
   tags: ['arachide', 'mijoteuse', 'lait de coco'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes_poulet_et_legumes',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes_poulet_et_legumes',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_poulet_et_legumes'
+    }
+  ],
   source: 'David Cloutier',
   slug: 'boulettes-de-poulet-et-legumes-avec-sauce-a-larachide'
 };
