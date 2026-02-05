@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const browniesDansUneTasse: Recipe = {
   id: 'brownies-dans-une-tasse',
@@ -16,14 +16,22 @@ export const browniesDansUneTasse: Recipe = {
     '45 ml ou 3 cuillères à soupe d’eau',
     '30 ml ou 2 cuillères à soupe de cacao en poudre',
     '15 ml ou 1 cuillère à soupe de sucre',
-    '2 goûtes de vanille',
+    '2 goûtes de vanille'
   ],
   instructions: [
     'Mélangez tous vos ingrédients dans une tasse, jusqu’à obtenir une pâte lisse et sans grumeaux.',
     'Placez au micro-ondes pendant environ 1 minute 30 secondes ou jusqu’à ce que le dessus du brownie soit à peine ferme.',
     'À noter : le temps de cuisson varie selon la puissance du micro-ondes. N’hésitez pas à faire chauffer votre brownie pendant 50 secondes dans un premier temps, puis à le remettre au micro-ondes et à vérifier toutes les dix secondes s’il est prêt.',
-    'Servez avec une boule de crème glacée ou de la crème chantilly.',
+    'Servez avec une boule de crème glacée ou de la crème chantilly.'
   ],
   tags: ['micro-ondes', 'gourmandise', 'facile'],
-  slug: 'brownies-dans-une-tasse',
-}
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/brownie_dans_un_tasse',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/brownie_dans_un_tasse',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/brownie_dans_un_tasse'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'brownies-dans-une-tasse'
+};
