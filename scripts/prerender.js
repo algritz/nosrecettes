@@ -198,13 +198,20 @@ async function prerender() {
         try {
           const page = await browserContext.newPage()
 
+          // Set shorter default timeout for recipe pages since IndexedDB is pre-populated
+          if (route.startsWith('/recipe/')) {
+            page.setDefaultTimeout(10000) // 10s instead of 30s default
+          }
+
           // Set viewport
           await page.setViewportSize({ width: 1280, height: 720 })
 
-          // Navigate to the page and wait for network to be idle
+          // Navigate to the page
+          // For recipe pages, use 'load' instead of 'networkidle' since IndexedDB is pre-populated
+          const waitUntil = route.startsWith('/recipe/') ? 'load' : 'networkidle'
           await page.goto(`${baseUrl}${route}`, {
-            waitUntil: 'networkidle',
-            timeout: 30000
+            waitUntil,
+            timeout: route.startsWith('/recipe/') ? 10000 : 30000
           })
 
           // For recipe pages, wait for recipe-specific content to load
