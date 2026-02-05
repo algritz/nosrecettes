@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useRecipes } from '@/hooks/useRecipes'
 import { RecipeCard } from '@/components/RecipeCard'
 import { SearchBar } from '@/components/SearchBar'
+import { SortButton } from '@/components/SortButton'
 import { RecipeStats } from '@/components/RecipeStats'
 import { LoadingSpinner } from '@/components/LoadingSpinner'
 import { SEOHead } from '@/components/SEOHead'
@@ -28,6 +29,8 @@ const Index = (): React.ReactElement => {
     setSearchTerm,
     selectedCategories,
     setSelectedCategories,
+    sortOption,
+    setSortOption,
     categories,
     displayedRecipes,
     hasMore,
@@ -150,7 +153,7 @@ const Index = (): React.ReactElement => {
             </div>
           </header>
 
-          <div className="mb-8">
+          <div className="mb-8 space-y-4">
             <SearchBar
               searchTerm={searchTerm}
               onSearchChange={setSearchTerm}
@@ -159,6 +162,12 @@ const Index = (): React.ReactElement => {
               categories={categories}
               onClearFilters={clearFilters}
             />
+            <div className="flex justify-end">
+              <SortButton
+                currentSort={sortOption}
+                onSortChange={setSortOption}
+              />
+            </div>
           </div>
 
           <RecipeStats
