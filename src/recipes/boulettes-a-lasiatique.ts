@@ -39,6 +39,13 @@ export const boulettesALasiatique: Recipe = {
     'Servir chaud.'
   ],
   tags: ['asiatique', 'sauce épicée', 'grillage'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes_asiatiques',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes_asiatiques',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_asiatiques'
+    }
+  ],
   wine: 'Baron de Ley',
   source: 'David Cloutier',
   notes: 'Peut aussi être servi en amuse-gueule.',
