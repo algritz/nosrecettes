@@ -43,6 +43,13 @@ export const boulettesDePorcEtSauceRoseeAuFromage: Recipe = {
     'Garnir de basilic frais et servir.'
   ],
   tags: ['porc', 'sauce rosée', 'fromage'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes_de_porc_sauce_rosee',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes_de_porc_sauce_rosee',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_de_porc_sauce_rosee'
+    }
+  ],
   source: 'David Cloutier',
   slug: 'boulettes-de-porc-et-sauce-rosee-au-fromage'
 };
