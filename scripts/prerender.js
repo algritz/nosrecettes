@@ -130,13 +130,47 @@ async function prerender() {
   const initPage = await browserContext.newPage()
   await initPage.goto(`${baseUrl}/`, { waitUntil: 'networkidle', timeout: 30000 })
 
-  // Wait for IndexedDB to be populated
+  // Wait for IndexedDB to be fully populated with all recipes
+  // The homepage loads all recipes into IndexedDB, so we wait for that to complete
   await initPage.waitForFunction(async () => {
-    const dbs = await window.indexedDB.databases()
-    return dbs.some(db => db.name === 'RecipeDB')
-  }, { timeout: 30000 })
+    try {
+      // Open the database
+      const dbName = 'nosrecettes'
+      const request = indexedDB.open(dbName)
 
-  console.log('✅ IndexedDB populated')
+      return new Promise((resolve) => {
+        request.onsuccess = async () => {
+          const db = request.result
+
+          // Check if recipes store exists
+          if (!db.objectStoreNames.contains('recipes')) {
+            resolve(false)
+            return
+          }
+
+          // Count recipes in the store
+          const transaction = db.transaction(['recipes'], 'readonly')
+          const store = transaction.objectStore('recipes')
+          const countRequest = store.count()
+
+          countRequest.onsuccess = () => {
+            const count = countRequest.result
+            // We expect 720+ recipes. If we have at least 700, consider it fully loaded
+            // (accounting for potential minor variations)
+            resolve(count >= 700)
+          }
+
+          countRequest.onerror = () => resolve(false)
+        }
+
+        request.onerror = () => resolve(false)
+      })
+    } catch (error) {
+      return false
+    }
+  }, { timeout: 60000 }) // Increase timeout to 60s for full data load
+
+  console.log('✅ IndexedDB fully populated with all recipes')
   await initPage.close()
 
   let successCount = 0
@@ -174,10 +208,11 @@ async function prerender() {
           })
 
           // For recipe pages, wait for recipe-specific content to load
+          // Since IndexedDB is pre-populated, recipes should load almost instantly
           if (route.startsWith('/recipe/')) {
             try {
               // Wait for recipe content to actually render (not just skeleton)
-              // This indicates IndexedDB has loaded and recipe is displayed
+              // Reduced timeout since IndexedDB is already populated
               await page.waitForFunction(() => {
                 // Check if we have actual recipe content, not just skeleton
                 const h1 = document.querySelector('h1')
@@ -192,7 +227,7 @@ async function prerender() {
                 }
 
                 return true
-              }, { timeout: 15000 })
+              }, { timeout: 5000 }) // Reduced from 15s to 5s
 
               // Now wait for React Helmet to update meta tags with recipe-specific data
               // This should happen quickly once recipe is rendered
@@ -202,10 +237,10 @@ async function prerender() {
                 const titleContent = ogTitle.getAttribute('content')
                 // Ensure it's not the homepage title
                 return titleContent && !titleContent.includes('720 Recettes')
-              }, { timeout: 5000 })
+              }, { timeout: 2000 }) // Reduced from 5s to 2s
 
               // Small buffer for any final DOM updates
-              await page.waitForTimeout(200)
+              await page.waitForTimeout(100) // Reduced from 200ms to 100ms
             } catch (error) {
               console.warn(`  ⚠️  Recipe content wait failed for ${route}: ${error.message}`)
               // Fall back to basic timeout
