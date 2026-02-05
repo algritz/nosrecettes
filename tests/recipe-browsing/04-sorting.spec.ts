@@ -38,7 +38,12 @@ test.describe('Recipe Sorting', () => {
     const getFirstThreeTitles = async () => {
       const titles: string[] = []
       for (let i = 0; i < 3; i++) {
-        const title = await recipeCards.nth(i).locator('h2').textContent()
+        // Look for h3 (CardTitle uses h3 by default) within the card
+        const title = await recipeCards
+          .nth(i)
+          .locator('h3, h2, [class*="CardTitle"]')
+          .first()
+          .textContent()
         if (title) titles.push(title.trim())
       }
       return titles
@@ -82,19 +87,25 @@ test.describe('Recipe Sorting', () => {
     // Select "Avec images"
     await page.getByRole('menuitem', { name: /Avec images/i }).click()
 
-    // Wait for re-sort
-    await page.waitForTimeout(500)
+    // Wait for re-sort and close dropdown
+    await page.waitForTimeout(800)
 
     // Verify button label changed
     await expect(sortButton).toContainText('Avec images')
 
-    // Check that first few recipes have images
+    // Check that first few recipes have images (not placeholder text)
     const recipeCards = page.locator('[data-testid="recipe-card"]')
     const firstCard = recipeCards.first()
 
-    // Should have an image element
-    const image = firstCard.locator('img, picture')
-    await expect(image).toBeVisible()
+    // Should have an image element (img tag, not just placeholder)
+    const hasRealImage = await firstCard.locator('img').count()
+    expect(hasRealImage).toBeGreaterThan(0)
+
+    // Should NOT have the placeholder text
+    const hasPlaceholder = await firstCard
+      .locator('text="Pas d\'image"')
+      .count()
+    expect(hasPlaceholder).toBe(0)
   })
 
   test('should sort by "No Images" and show recipes without images first', async ({
@@ -143,7 +154,7 @@ test.describe('Recipe Sorting', () => {
     await page.getByRole('menuitem', { name: /Par catégorie/i }).click()
 
     // Wait for re-sort
-    await page.waitForTimeout(500)
+    await page.waitForTimeout(800)
 
     // Verify button label changed
     await expect(sortButton).toContainText('Par catégorie')
@@ -154,9 +165,14 @@ test.describe('Recipe Sorting', () => {
     const getCategories = async () => {
       const categories: string[] = []
       for (let i = 0; i < 3; i++) {
-        const badges = recipeCards.nth(i).locator('[class*="badge"]')
-        const firstBadge = badges.first()
-        const text = await firstBadge.textContent()
+        // Find badge elements (they have data-slot="label" or class contains badge)
+        const card = recipeCards.nth(i)
+        await card.waitFor({ state: 'visible' })
+
+        const badge = card
+          .locator('[class*="inline-flex"][class*="badge"], [data-slot="label"]')
+          .first()
+        const text = await badge.textContent({ timeout: 5000 })
         if (text) categories.push(text.trim())
       }
       return categories
