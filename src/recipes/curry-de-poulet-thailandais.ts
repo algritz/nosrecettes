@@ -33,6 +33,13 @@ export const curryDePouletThailandais: Recipe = {
     'En fin de cuisson, tout en remuant, ajouter le jus de citron vert, la menthe, le basilic et le piment et servir.'
   ],
   tags: ['curry', 'thaï', 'herbes fraîches'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/curry_de_poulet_thai',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/curry_de_poulet_thai',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/curry_de_poulet_thai'
+    }
+  ],
   source: 'David Cloutier',
   slug: 'curry-de-poulet-thailandais'
 };
