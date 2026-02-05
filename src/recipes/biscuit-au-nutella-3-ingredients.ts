@@ -1,10 +1,9 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const biscuitAuNutella3Ingredients: Recipe = {
   id: 'biscuit-au-nutella-3-ingredients',
   title: 'Biscuit au Nutella 3 ingrédients',
-  description:
-    'Recette simple de biscuits au Nutella avec une garniture de noisettes, facile à préparer et idéale pour une collation rapide.',
+  description: 'Recette simple de biscuits au Nutella avec une garniture de noisettes, facile à préparer et idéale pour une collation rapide.',
   categories: ['Pâtisseries et desserts'],
   prepTime: { min: 15, max: 15 },
   cookTime: { min: 10, max: 10 },
@@ -16,7 +15,7 @@ export const biscuitAuNutella3Ingredients: Recipe = {
     '1 tasse de farine tout usage',
     'Garniture:',
     '1/2 tasse de Nutella à la température de la pièce',
-    '1/4 de tasse de noisettes hachées (facultatif)',
+    '1/4 de tasse de noisettes hachées (facultatif)'
   ],
   instructions: [
     'Tapissez une plaque à cuisson d’une feuille de papier parchemin.',
@@ -30,8 +29,16 @@ export const biscuitAuNutella3Ingredients: Recipe = {
     'Saupoudrer de noisettes si désiré.',
     'Faire cuire pendant environ 10 minutes.',
     'Laisser refroidir.',
-    'Conserver dans un contenant hermétique pour au moins une semaine.',
+    'Conserver dans un contenant hermétique pour au moins une semaine.'
   ],
   tags: ['Nutella', 'biscuits', 'facile'],
-  slug: 'biscuit-au-nutella-3-ingredients',
-}
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/biscuit_nutella_3_ingredients',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/biscuit_nutella_3_ingredients',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/biscuit_nutella_3_ingredients'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'biscuit-au-nutella-3-ingredients'
+};
