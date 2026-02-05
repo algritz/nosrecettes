@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { chromium } from '@playwright/test'
+import { chromium, expect } from '@playwright/test'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -34,7 +34,7 @@ function cleanupDuplicateMetaTags(html) {
     'twitter:title',
     'twitter:description',
     'twitter:image',
-    'twitter:url'
+    'twitter:url',
   ]
 
   const metaNames = [
@@ -43,7 +43,7 @@ function cleanupDuplicateMetaTags(html) {
     'author',
     'robots',
     'language',
-    'revisit-after'
+    'revisit-after',
   ]
 
   let cleanedHtml = html
@@ -52,15 +52,16 @@ function cleanupDuplicateMetaTags(html) {
   for (const property of metaProperties) {
     const escapedProperty = property.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     // Check if React Helmet version exists (has data-rh="true")
-    const hasReactHelmetVersion = cleanedHtml.includes(`property="${property}" `) &&
-                                   cleanedHtml.includes(`data-rh="true"`)
+    const hasReactHelmetVersion =
+      cleanedHtml.includes(`property="${property}" `) &&
+      cleanedHtml.includes(`data-rh="true"`)
 
     if (hasReactHelmetVersion) {
       // Remove static version (without data-rh attribute)
       // Match meta tags without data-rh that have this property
       const staticMetaRegex = new RegExp(
         `<meta\\s+property="${escapedProperty}"(?![^>]*data-rh)[^>]*>\\s*`,
-        'g'
+        'g',
       )
       cleanedHtml = cleanedHtml.replace(staticMetaRegex, '')
     }
@@ -69,13 +70,14 @@ function cleanupDuplicateMetaTags(html) {
   // Remove static name meta tags if React Helmet version exists
   for (const name of metaNames) {
     const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    const hasReactHelmetVersion = cleanedHtml.includes(`name="${name}" `) &&
-                                   cleanedHtml.includes(`data-rh="true"`)
+    const hasReactHelmetVersion =
+      cleanedHtml.includes(`name="${name}" `) &&
+      cleanedHtml.includes(`data-rh="true"`)
 
     if (hasReactHelmetVersion) {
       const staticMetaRegex = new RegExp(
         `<meta\\s+name="${escapedName}"(?![^>]*data-rh)[^>]*>\\s*`,
-        'g'
+        'g',
       )
       cleanedHtml = cleanedHtml.replace(staticMetaRegex, '')
     }
@@ -83,10 +85,13 @@ function cleanupDuplicateMetaTags(html) {
 
   // Also remove og:image:width and og:image:height static tags as they're not set by React Helmet
   // and can confuse scrapers if the recipe image has different dimensions
-  if (cleanedHtml.includes('og:image') && cleanedHtml.includes('data-rh="true"')) {
+  if (
+    cleanedHtml.includes('og:image') &&
+    cleanedHtml.includes('data-rh="true"')
+  ) {
     cleanedHtml = cleanedHtml.replace(
       /<meta\s+property="og:image:(width|height)"(?![^>]*data-rh)[^>]*>\s*/g,
-      ''
+      '',
     )
   }
 
@@ -111,8 +116,8 @@ async function prerender() {
   console.log('\n🚀 Starting preview server...')
   const server = await preview({
     preview: {
-      port: 3001
-    }
+      port: 3001,
+    },
   })
 
   const baseUrl = `http://localhost:3001`
@@ -120,55 +125,64 @@ async function prerender() {
 
   // Launch Playwright browser with persistent context to share IndexedDB
   console.log('\n🎭 Launching browser with persistent context...')
-  const browserContext = await chromium.launchPersistentContext(path.join(__dirname, '..', '.browser-data'), {
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  })
+  const browserContext = await chromium.launchPersistentContext(
+    path.join(__dirname, '..', '.browser-data'),
+    {
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    },
+  )
 
   // Pre-populate IndexedDB by visiting homepage first
   console.log('\n📦 Pre-populating IndexedDB with recipe data...')
   const initPage = await browserContext.newPage()
-  await initPage.goto(`${baseUrl}/`, { waitUntil: 'networkidle', timeout: 30000 })
+  await initPage.goto(`${baseUrl}/`, {
+    waitUntil: 'networkidle',
+    timeout: 30000,
+  })
 
   // Wait for IndexedDB to be fully populated with all recipes
   // The homepage loads all recipes into IndexedDB, so we wait for that to complete
-  await initPage.waitForFunction(async () => {
-    try {
-      // Open the database
-      const dbName = 'nosrecettes'
-      const request = indexedDB.open(dbName)
+  await initPage.waitForFunction(
+    async () => {
+      try {
+        // Open the database
+        const dbName = 'nosrecettes'
+        const request = indexedDB.open(dbName)
 
-      return new Promise((resolve) => {
-        request.onsuccess = async () => {
-          const db = request.result
+        return new Promise((resolve) => {
+          request.onsuccess = async () => {
+            const db = request.result
 
-          // Check if recipes store exists
-          if (!db.objectStoreNames.contains('recipes')) {
-            resolve(false)
-            return
+            // Check if recipes store exists
+            if (!db.objectStoreNames.contains('recipes')) {
+              resolve(false)
+              return
+            }
+
+            // Count recipes in the store
+            const transaction = db.transaction(['recipes'], 'readonly')
+            const store = transaction.objectStore('recipes')
+            const countRequest = store.count()
+
+            countRequest.onsuccess = () => {
+              const count = countRequest.result
+              // We expect 720+ recipes. If we have at least 700, consider it fully loaded
+              // (accounting for potential minor variations)
+              resolve(count >= 700)
+            }
+
+            countRequest.onerror = () => resolve(false)
           }
 
-          // Count recipes in the store
-          const transaction = db.transaction(['recipes'], 'readonly')
-          const store = transaction.objectStore('recipes')
-          const countRequest = store.count()
-
-          countRequest.onsuccess = () => {
-            const count = countRequest.result
-            // We expect 720+ recipes. If we have at least 700, consider it fully loaded
-            // (accounting for potential minor variations)
-            resolve(count >= 700)
-          }
-
-          countRequest.onerror = () => resolve(false)
-        }
-
-        request.onerror = () => resolve(false)
-      })
-    } catch (error) {
-      return false
-    }
-  }, { timeout: 60000 }) // Increase timeout to 60s for full data load
+          request.onerror = () => resolve(false)
+        })
+      } catch (error) {
+        return false
+      }
+    },
+    { timeout: 60000 },
+  ) // Increase timeout to 60s for full data load
 
   console.log('✅ IndexedDB fully populated with all recipes')
   await initPage.close()
@@ -185,12 +199,16 @@ async function prerender() {
       batches.push(routes.slice(i, i + CONCURRENCY))
     }
 
-    console.log(`\n🚀 Processing ${routes.length} routes in ${batches.length} batches (${CONCURRENCY} concurrent)...\n`)
+    console.log(
+      `\n🚀 Processing ${routes.length} routes in ${batches.length} batches (${CONCURRENCY} concurrent)...\n`,
+    )
 
     for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
       const batch = batches[batchIndex]
 
-      console.log(`\n📦 Batch ${batchIndex + 1}/${batches.length} (${batch.length} routes)`)
+      console.log(
+        `\n📦 Batch ${batchIndex + 1}/${batches.length} (${batch.length} routes)`,
+      )
 
       const batchPromises = batch.map(async (route, index) => {
         const routeNumber = batchIndex * CONCURRENCY + index + 1
@@ -199,57 +217,41 @@ async function prerender() {
           const page = await browserContext.newPage()
 
           // Set shorter default timeout for recipe pages since IndexedDB is pre-populated
-          if (route.startsWith('/recipe/')) {
+          if (route.includes('/recipe/')) {
             page.setDefaultTimeout(10000) // 10s instead of 30s default
           }
 
           // Set viewport
           await page.setViewportSize({ width: 1280, height: 720 })
-
-          // Navigate to the page
-          // For recipe pages, use 'load' instead of 'networkidle' since IndexedDB is pre-populated
-          const waitUntil = route.startsWith('/recipe/') ? 'load' : 'networkidle'
-          await page.goto(`${baseUrl}${route}`, {
-            waitUntil,
-            timeout: route.startsWith('/recipe/') ? 10000 : 30000
-          })
-
+          await page.goto(`${baseUrl}${route}`)
+          console.log(`Navigated to ${baseUrl}${route}`)
+          await page.waitForTimeout(1_000)
           // For recipe pages, wait for recipe-specific content to load
           // Since IndexedDB is pre-populated, recipes should load almost instantly
-          if (route.startsWith('/recipe/')) {
+          if (route.includes('/recipe/')) {
+            console.log(
+              '  ⏳ Waiting for recipe content to render... for ' + route,
+            )
+
             try {
-              // Wait for recipe content to actually render (not just skeleton)
-              // Reduced timeout since IndexedDB is already populated
-              await page.waitForFunction(() => {
-                // Check if we have actual recipe content, not just skeleton
-                const h1 = document.querySelector('h1')
-                if (!h1 || !h1.textContent || h1.textContent.trim() === '') {
-                  return false
-                }
-
-                // Also verify we're not showing loading state
-                const skeleton = document.querySelector('[data-testid="recipe-skeleton"]')
-                if (skeleton) {
-                  return false
-                }
-
-                return true
-              }, { timeout: 5000 }) // Reduced from 15s to 5s
+              await expect(
+                page.locator('[data-testid="recipe-skeleton"]'),
+              ).toBeHidden()
 
               // Now wait for React Helmet to update meta tags with recipe-specific data
               // This should happen quickly once recipe is rendered
-              await page.waitForFunction(() => {
-                const ogTitle = document.querySelector('meta[property="og:title"]')
-                if (!ogTitle) return false
-                const titleContent = ogTitle.getAttribute('content')
-                // Ensure it's not the homepage title
-                return titleContent && !titleContent.includes('720 Recettes')
-              }, { timeout: 2000 }) // Reduced from 5s to 2s
-
+              await expect(async () => {
+                expect(
+                  page.getByRole('heading', { name: 'Instructions' }),
+                ).toBeVisible()
+              }).toPass({ timeout: 10_000 }) // Reduced from 5s to 2s
+              console.log('  ✅ Meta tags updated for ' + route)
               // Small buffer for any final DOM updates
               await page.waitForTimeout(100) // Reduced from 200ms to 100ms
             } catch (error) {
-              console.warn(`  ⚠️  Recipe content wait failed for ${route}: ${error.message}`)
+              console.warn(
+                `  ⚠️  Recipe content wait failed for ${route}: ${error.message}`,
+              )
               // Fall back to basic timeout
               await page.waitForTimeout(1000)
             }
@@ -264,7 +266,7 @@ async function prerender() {
           // Clean up duplicate meta tags for recipe pages
           // React Helmet adds tags with data-rh="true", but the static tags from index.html remain
           // Facebook scraper takes the first og:image it finds, so we need to remove duplicates
-          if (route.startsWith('/recipe/')) {
+          if (route.includes('/recipe/')) {
             html = cleanupDuplicateMetaTags(html)
           }
 
@@ -291,14 +293,16 @@ async function prerender() {
           await page.close()
           return { success: true, route }
         } catch (error) {
-          console.error(`  ❌ [${routeNumber}/${routes.length}] ${route}: ${error.message}`)
+          console.error(
+            `  ❌ [${routeNumber}/${routes.length}] ${route}: ${error.message}`,
+          )
           return { success: false, route, error: error.message }
         }
       })
 
       const results = await Promise.all(batchPromises)
-      successCount += results.filter(r => r.success).length
-      errorCount += results.filter(r => !r.success).length
+      successCount += results.filter((r) => r.success).length
+      errorCount += results.filter((r) => !r.success).length
     }
   } finally {
     await browserContext.close()

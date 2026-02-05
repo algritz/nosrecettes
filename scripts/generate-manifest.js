@@ -14,9 +14,9 @@ export function generateManifest() {
   const currentYear = new Date().getFullYear()
 
   const manifest = {
-    name: `Nos Recettes - ${recipeCount} Recettes Québécoises`,
+    name: `Nos Recettes - ${recipeCount} Recettes`,
     short_name: 'Nos Recettes',
-    description: `Collection de ${recipeCount} recettes québécoises traditionnelles et modernes avec instructions détaillées et images appétissantes.`,
+    description: `Collection de ${recipeCount} recettes traditionnelles et modernes avec instructions détaillées et images appétissantes.`,
     start_url: getFullUrl('/'),
     display: 'standalone',
     background_color: '#ffffff',

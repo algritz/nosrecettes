@@ -21,11 +21,7 @@ const Index = (): React.ReactElement => {
   const [showScrollTop, setShowScrollTop] = useState(false)
 
   // Load recipes from IndexedDB
-  const {
-    recipes,
-    loading: recipesLoading,
-    error: recipesError,
-  } = useRecipes()
+  const { recipes, loading: recipesLoading, error: recipesError } = useRecipes()
 
   const {
     searchTerm,
@@ -38,7 +34,6 @@ const Index = (): React.ReactElement => {
     isLoading,
     loadMore,
     clearFilters,
-    totalCount,
     displayedCount,
   } = useInfiniteRecipes({ recipes, batchSize: 10 })
 
@@ -77,12 +72,12 @@ const Index = (): React.ReactElement => {
   const seoTitle =
     searchTerm || selectedCategories.length > 0
       ? `Recettes ${selectedCategories.join(', ')} ${searchTerm} - Nos Recettes`
-      : 'Nos Recettes - Collection de recettes québécoises authentiques'
+      : 'Nos Recettes - Collection de recettes'
 
   const seoDescription =
     searchTerm || selectedCategories.length > 0
-      ? `Découvrez ${totalCount} recette${totalCount !== 1 ? 's' : ''} ${selectedCategories.join(', ')} ${searchTerm}. Recettes québécoises avec instructions détaillées et images.`
-      : `Découvrez notre collection de ${recipes.length} recettes québécoises traditionnelles et modernes. Instructions détaillées, temps de préparation, et images pour chaque recette.`
+      ? `Découvrez ${recipes.length} recette${recipes.length !== 1 ? 's' : ''} ${selectedCategories.join(', ')} ${searchTerm}. Recettes avec instructions détaillées et images.`
+      : `Découvrez notre collection de ${recipes.length} recettes traditionnelles et modernes. Instructions détaillées, temps de préparation, et images pour chaque recette.`
 
   const seoKeywords = [
     'recettes québécoises',
@@ -93,6 +88,7 @@ const Index = (): React.ReactElement => {
     ...allCategories.slice(0, 10), // Add top categories
     'recettes faciles',
     'recettes familiales',
+    'recettes rapides',
   ]
 
   const websiteStructuredData = generateWebsiteStructuredData()
@@ -146,9 +142,9 @@ const Index = (): React.ReactElement => {
             <div className="text-center">
               <h1 className="text-4xl font-bold mb-4">Nos Recettes</h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Découvrez notre collection de recettes québécoises
-                traditionnelles et modernes. Recherchez par nom, ingrédient ou
-                catégorie pour trouver votre prochaine création culinaire.
+                Découvrez notre collection de recettes traditionnelles et
+                modernes. Recherchez par nom, ingrédient ou catégorie pour
+                trouver votre prochaine création culinaire.
               </p>
             </div>
           </header>
@@ -166,12 +162,12 @@ const Index = (): React.ReactElement => {
 
           <RecipeStats
             displayedCount={displayedCount}
-            totalCount={totalCount}
+            totalCount={recipes.length}
             isLoading={isLoading}
             hasMore={hasMore}
           />
 
-          {totalCount === 0 ? (
+          {recipes.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-lg text-muted-foreground mb-4">
                 Aucune recette ne correspond à vos critères de recherche.
@@ -182,7 +178,10 @@ const Index = (): React.ReactElement => {
             </div>
           ) : (
             <>
-              <div data-testid="recipe-list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div
+                data-testid="recipe-list"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
+              >
                 {displayedRecipes.map((recipe) => (
                   <RecipeCard key={recipe.id} recipe={recipe} />
                 ))}
@@ -211,7 +210,8 @@ const Index = (): React.ReactElement => {
                     🎉 Vous avez vu toutes les recettes !
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {totalCount} recette{totalCount !== 1 ? 's' : ''} au total
+                    {recipes.length} recette{recipes.length !== 1 ? 's' : ''} au
+                    total
                   </p>
                 </div>
               )}

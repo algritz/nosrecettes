@@ -45,9 +45,9 @@ export function generateIndexHTML() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>Nos Recettes - Collection de ${recipeCount} recettes québécoises authentiques</title>
-    <meta name="title" content="Nos Recettes - Collection de ${recipeCount} recettes québécoises authentiques" />
-    <meta name="description" content="Découvrez notre collection de ${recipeCount} recettes québécoises traditionnelles et modernes. Instructions détaillées, temps de préparation, et images pour chaque recette. ${sampleTitles.substring(0, 100)}..." />
+    <title>Nos Recettes - Collection de ${recipeCount} recettes</title>
+    <meta name="title" content="Nos Recettes - Collection de ${recipeCount} recettes" />
+    <meta name="description" content="Découvrez notre collection de ${recipeCount} recettes traditionnelles et modernes. Instructions détaillées, temps de préparation, et images pour chaque recette. ${sampleTitles.substring(0, 100)}..." />
     <meta name="keywords" content="${dynamicKeywords.join(', ')}" />
     <meta name="author" content="Nos Recettes" />
     <meta name="language" content="French" />
@@ -59,8 +59,8 @@ export function generateIndexHTML() {
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${siteConfig.baseUrl}/" />
-    <meta property="og:title" content="Nos Recettes - ${recipeCount} Recettes Québécoises Authentiques" />
-    <meta property="og:description" content="Découvrez notre collection de ${recipeCount} recettes québécoises traditionnelles et modernes. Instructions détaillées, temps de préparation, et images pour chaque recette." />
+    <meta property="og:title" content="Nos Recettes - ${recipeCount} Recettes" />
+    <meta property="og:description" content="Découvrez notre collection de ${recipeCount} recettes traditionnelles et modernes. Instructions détaillées, temps de préparation, et images pour chaque recette." />
     <meta property="og:image" content="${getFullUrl('/images/og-default.jpg')}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -71,10 +71,10 @@ export function generateIndexHTML() {
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="${siteConfig.baseUrl}/" />
-    <meta name="twitter:title" content="Nos Recettes - ${recipeCount} Recettes Québécoises" />
-    <meta name="twitter:description" content="Collection de ${recipeCount} recettes québécoises avec instructions détaillées et images." />
+    <meta name="twitter:title" content="Nos Recettes - ${recipeCount} Recettes" />
+    <meta name="twitter:description" content="Collection de ${recipeCount} recettes avec instructions détaillées et images." />
     <meta name="twitter:image" content="${getFullUrl('/images/og-default.jpg')}" />
-    <meta name="twitter:image:alt" content="Nos Recettes - Collection de recettes québécoises" />
+    <meta name="twitter:image:alt" content="Nos Recettes - Collection de recettes" />
     
     <!-- Additional SEO Meta Tags -->
     <meta name="geo.region" content="CA-QC" />
@@ -116,8 +116,8 @@ export function generateIndexHTML() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Nos Recettes",
-      "alternateName": "Collection de Recettes Québécoises",
-      "description": "Collection de ${recipeCount} recettes québécoises traditionnelles et modernes. Découvrez des plats authentiques avec des instructions détaillées et des images appétissantes.",
+      "alternateName": "Collection de Recettes",
+      "description": "Collection de ${recipeCount} recettes traditionnelles et modernes. Découvrez des plats authentiques avec des instructions détaillées et des images appétissantes.",
       "url": "${siteConfig.baseUrl}/",
       "dateModified": "${currentDate}",
       "inLanguage": "fr-CA",
@@ -141,7 +141,7 @@ export function generateIndexHTML() {
       },
       "mainEntity": {
         "@type": "ItemList",
-        "name": "Recettes Québécoises",
+        "name": "Recettes",
         "description": "Collection de recettes traditionnelles du Québec",
         "numberOfItems": ${recipeCount}
       }
@@ -153,8 +153,8 @@ export function generateIndexHTML() {
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Collection de Recettes Québécoises",
-      "description": "Découvrez ${recipeCount} recettes authentiques du Québec avec instructions détaillées",
+      "name": "Collection de Recettes",
+      "description": "Découvrez ${recipeCount} recettes avec instructions détaillées",
       "url": "${siteConfig.baseUrl}/",
       "mainEntity": {
         "@type": "ItemList",

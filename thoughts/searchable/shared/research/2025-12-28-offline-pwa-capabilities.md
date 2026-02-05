@@ -68,8 +68,8 @@ The manifest is generated at build time using the `npm run build:seo` command, w
 ```javascript
 const recipeCount = getRecipeFiles().length // Currently 721
 const manifest = {
-  name: `Nos Recettes - ${recipeCount} Recettes Québécoises`,
-  description: `Collection de ${recipeCount} recettes québécoises...`,
+  name: `Nos Recettes - ${recipeCount} Recettes`,
+  description: `Collection de ${recipeCount} recettes...`,
 }
 ```
 

@@ -16,7 +16,7 @@ const NotFound = (): React.JSX.Element => {
     <>
       <SEOHead
         title="Page non trouvée (404) - Nos Recettes"
-        description="La page que vous recherchez n'existe pas. Découvrez notre collection de recettes québécoises authentiques sur la page d'accueil."
+        description="La page que vous recherchez n'existe pas. Découvrez notre collection de recettes sur la page d'accueil."
         url={location.pathname}
       />
 

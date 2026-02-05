@@ -121,7 +121,7 @@ export const generateWebsiteStructuredData = (): object => {
     '@type': 'WebSite',
     name: 'Nos Recettes',
     description:
-      'Collection de recettes québécoises traditionnelles et modernes. Découvrez des plats authentiques avec des instructions détaillées et des images appétissantes.',
+      'Collection de recettes traditionnelles et modernes. Découvrez des plats authentiques avec des instructions détaillées et des images appétissantes.',
     url: baseUrl,
     potentialAction: {
       '@type': 'SearchAction',
