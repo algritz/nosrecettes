@@ -48,6 +48,13 @@ export const casseroleMexicaine: Recipe = {
     'Retirer du feu et servir immédiatement.'
   ],
   tags: ['mexicain', 'riz', 'fromage'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/casserole_mexicaine',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/casserole_mexicaine',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/casserole_mexicaine'
+    }
+  ],
   source: 'David Cloutier',
   slug: 'casserole-mexicaine'
 };
