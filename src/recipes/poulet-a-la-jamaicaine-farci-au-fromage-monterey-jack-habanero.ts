@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const pouletALaJamaicaineFarciAuFromageMontereyJackHabanero: Recipe = {
   id: 'poulet-a-la-jamaicaine-farci-au-fromage-monterey-jack-habanero',
@@ -37,7 +37,7 @@ export const pouletALaJamaicaineFarciAuFromageMontereyJackHabanero: Recipe = {
     '1 tasse de bouillon de poulet réduit en sodium',
     '1 boîte de haricots noirs, égouttés et rincés',
     '2 feuilles de laurier',
-    '2 c. à soupe de coriandre fraîche, finement hachée',
+    '2 c. à soupe de coriandre fraîche, finement hachée'
   ],
   instructions: [
     'Dans un grand bol ou un sac en plastique refermable, mélanger 3 c. à soupe d’huile, la sauce soya, le thym, l’ail, le gingembre, le piment de la Jamaïque, la poudre de chili, le poivre, la cassonade, le sel, la cannelle et le piment de cayenne.',
@@ -55,9 +55,16 @@ export const pouletALaJamaicaineFarciAuFromageMontereyJackHabanero: Recipe = {
     'Retirer du feu, couvrir et laisser reposer 5 minutes.',
     'Retirer et jeter les feuilles de laurier.',
     'Ajouter la coriandre en remuant.',
-    'Servir le poulet sur un lit de riz et de haricots, puis garnir de quartiers de lime.',
+    'Servir le poulet sur un lit de riz et de haricots, puis garnir de quartiers de lime.'
   ],
   tags: ['jamaïque', 'marinade', 'grill'],
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/poulet_a_la_jamaicaine',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/poulet_a_la_jamaicaine',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/poulet_a_la_jamaicaine'
+    }
+  ],
   source: 'David Cloutier',
-  slug: 'poulet-a-la-jamaicaine-farci-au-fromage-monterey-jack-habanero',
-}
+  slug: 'poulet-a-la-jamaicaine-farci-au-fromage-monterey-jack-habanero'
+};
