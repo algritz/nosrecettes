@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import { Recipe } from '@/types/recipe';
 
 export const coquilleAuTacosRecetteDeSemaine: Recipe = {
   id: 'coquille-au-tacos-recette-de-semaine',
@@ -10,23 +10,31 @@ export const coquilleAuTacosRecetteDeSemaine: Recipe = {
   servings: 6,
   difficulty: 'Facile',
   ingredients: [
-    "Huile d'olive",
+    'Huile d\'olive',
     '2 tasses de coquille (pâte alimentaire)',
     '1 lb de boeuf haché',
     '1 oignon',
-    "1 gousse d'ail",
-    "1 sachet d'assaisonnement pour tacos piquant",
-    "3/4 de tasse d'eau",
+    '1 gousse d\'ail',
+    '1 sachet d\'assaisonnement pour tacos piquant',
+    '3/4 de tasse d\'eau',
     '1 tasse de salsa piquante',
-    '1 tasse de fromage cheddar orange râpé',
+    '1 tasse de fromage cheddar orange râpé'
   ],
   instructions: [
-    "Cuire les pâtes tel qu'indiqué sur la boîte.",
-    "Faire chauffer de l'huile d'olive et faire sauter l'oignon et l'ail quelques minutes.",
+    'Cuire les pâtes tel qu\'indiqué sur la boîte.',
+    'Faire chauffer de l\'huile d\'olive et faire sauter l\'oignon et l\'ail quelques minutes.',
     'Ajouter le bœuf et saler, poivrer. Bien faire dorer le bœuf et égoutter le gras.',
-    "Ajouter l'eau et l'assaisonnement à tacos et laisser cuire jusqu'à ce que l'eau soit évaporée en remuant de temps en temps.",
-    'Ajouter la salsa, les pâtes et le fromage. Bien remuer et servir.',
+    'Ajouter l\'eau et l\'assaisonnement à tacos et laisser cuire jusqu\'à ce que l\'eau soit évaporée en remuant de temps en temps.',
+    'Ajouter la salsa, les pâtes et le fromage. Bien remuer et servir.'
   ],
   tags: ['tacos', 'bœuf', 'pâtes'],
-  slug: 'coquille-au-tacos-recette-de-semaine',
-}
+  images: [
+    {
+      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/coquilles_au_tacos_de_semaine',
+      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/coquilles_au_tacos_de_semaine',
+      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/coquilles_au_tacos_de_semaine'
+    }
+  ],
+  source: 'David Cloutier',
+  slug: 'coquille-au-tacos-recette-de-semaine'
+};
