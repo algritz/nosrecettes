@@ -1,4 +1,8 @@
 import { test, expect } from '../fixtures/baseFixtures'
+ 
+import fs from 'fs'
+ 
+import path from 'path'
 
 /**
  * Test Suite: Invalid Recipe Handling
@@ -11,26 +15,16 @@ import { test, expect } from '../fixtures/baseFixtures'
  */
 
 test.describe('Invalid Recipe Handling', () => {
-  test('should have static HTML skeleton in built index.html', async () => {
-    // This test checks that the production build includes the static skeleton
-    // The skeleton is only in the generated index.html (production), not in dev mode
-    const fs = await import('fs')
-    const path = await import('path')
+  test('should have static HTML skeleton in source index.html', async () => {
+    // This test checks that the source index.html includes the static skeleton
+    // Note: The dist/index.html is pre-rendered and won't have the skeleton,
+    // but the source index.html needs it for initial page loads before React hydrates
 
-    // Check if dist folder exists (built)
-    const distPath = path.join(process.cwd(), 'dist', 'index.html')
-    if (!fs.existsSync(distPath)) {
-      test.skip(
-        true,
-        'Dist folder not found - run `pnpm build` first to test production HTML',
-      )
-      return
-    }
+    // Read the source index.html (not the built one, which is pre-rendered)
+    const sourcePath = path.join(process.cwd(), 'index.html')
+    const indexHtml = fs.readFileSync(sourcePath, 'utf-8')
 
-    // Read the built index.html
-    const indexHtml = fs.readFileSync(distPath, 'utf-8')
-
-    // Verify the static skeleton HTML exists in the built file
+    // Verify the static skeleton HTML exists in the source file
     expect(indexHtml).toContain('initial-skeleton')
     expect(indexHtml).toContain('skeleton-box')
     expect(indexHtml).toContain('animation: pulse')
