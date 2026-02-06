@@ -45,3 +45,5 @@ snap-routes.json
 
 # Pre-rendering browser data cache
 .browser-data/
+
+.playwright-mcp/
