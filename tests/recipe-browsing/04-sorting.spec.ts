@@ -165,12 +165,14 @@ test.describe('Recipe Sorting', () => {
     const getCategories = async () => {
       const categories: string[] = []
       for (let i = 0; i < 3; i++) {
-        // Find badge elements (they have data-slot="label" or class contains badge)
+        // Find badge elements using a more reliable selector
+        // Badges are divs with inline-flex class in the card header
         const card = recipeCards.nth(i)
         await card.waitFor({ state: 'visible' })
 
+        // Get the first badge (primary category) which has variant="default" or "secondary"
         const badge = card
-          .locator('[class*="inline-flex"][class*="badge"], [data-slot="label"]')
+          .locator('div.inline-flex.items-center')
           .first()
         const text = await badge.textContent({ timeout: 5000 })
         if (text) categories.push(text.trim())
