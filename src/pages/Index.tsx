@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useFontSize } from '@/hooks/useFontSize'
 import { useRecipes } from '@/hooks/useRecipes'
 import { RecipeCard } from '@/components/RecipeCard'
 import { SearchBar } from '@/components/SearchBar'
@@ -23,6 +24,7 @@ import { cn } from '@/lib/utils'
 import { normalizeForSearch } from '@/utils/textUtils'
 
 const Index = (): React.ReactElement => {
+  const { level: fontSizeLevel, increase: increaseFontSize, decrease: decreaseFontSize } = useFontSize()
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
 
@@ -131,22 +133,43 @@ const Index = (): React.ReactElement => {
       <div className="min-h-screen bg-background overflow-x-hidden">
         <div className="container mx-auto px-4 py-8">
           <header className="mb-12">
-            {hasGitHubConfig && (
-              <div className="flex flex-col sm:flex-row justify-end mb-6 gap-2">
-                <Link to="/manage-categories">
-                  <Button variant="outline" className="w-full sm:w-auto">
-                    <Settings className="w-4 h-4 mr-2" />
-                    Gérer les catégories
-                  </Button>
-                </Link>
-                <Link to="/new-recipe">
-                  <Button variant="outline" className="w-full sm:w-auto">
-                    <Plus className="w-4 h-4 mr-2" />
-                    Ajouter une recette
-                  </Button>
-                </Link>
+            <div className="flex justify-between items-start mb-6">
+              <div className="flex items-center gap-1" role="group" aria-label="Taille du texte">
+                <button
+                  onClick={decreaseFontSize}
+                  disabled={fontSizeLevel === 0}
+                  aria-label="Réduire la taille du texte"
+                  className="flex items-center justify-center w-8 h-8 rounded border border-input bg-background hover:bg-accent disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                >
+                  <span className="text-xs font-bold leading-none select-none">A</span>
+                </button>
+                <button
+                  onClick={increaseFontSize}
+                  disabled={fontSizeLevel === 3}
+                  aria-label="Augmenter la taille du texte"
+                  className="flex items-center justify-center w-8 h-8 rounded border border-input bg-background hover:bg-accent disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                >
+                  <span className="text-base font-bold leading-none select-none">A</span>
+                </button>
               </div>
-            )}
+
+              {hasGitHubConfig && (
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Link to="/manage-categories">
+                    <Button variant="outline" className="w-full sm:w-auto">
+                      <Settings className="w-4 h-4 mr-2" />
+                      Gérer les catégories
+                    </Button>
+                  </Link>
+                  <Link to="/new-recipe">
+                    <Button variant="outline" className="w-full sm:w-auto">
+                      <Plus className="w-4 h-4 mr-2" />
+                      Ajouter une recette
+                    </Button>
+                  </Link>
+                </div>
+              )}
+            </div>
 
             <div className="text-center">
               <h1 className="text-4xl font-bold mb-4">Nos Recettes</h1>
