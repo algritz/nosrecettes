@@ -32,8 +32,9 @@ export default defineConfig(({ mode }) => ({
         ],
       },
       devOptions: {
-        enabled: true, // Enable in dev mode for testing
+        enabled: true,
         type: 'module',
+        suppressWarnings: true,
       },
     }),
   ],
