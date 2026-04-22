@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Recipe, IngredientSection, InstructionSection } from '@/types/recipe'
 import {
   getAllCategoriesFromRecipes,
@@ -13,6 +14,15 @@ export type SortOption =
   | 'has-images'
   | 'no-images'
   | 'category'
+
+const VALID_SORT_OPTIONS: SortOption[] = [
+  'alphabetical',
+  'date-newest',
+  'date-oldest',
+  'has-images',
+  'no-images',
+  'category',
+]
 
 interface UseInfiniteRecipesProps {
   recipes: Recipe[]
@@ -39,11 +49,55 @@ export const useInfiniteRecipes = ({
   loadMore: () => void
   clearFilters: () => void
 } => {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [sortOption, setSortOption] = useState<SortOption>('alphabetical')
+  const [searchParams, setSearchParams] = useSearchParams()
   const [displayedCount, setDisplayedCount] = useState(batchSize)
   const [isLoading, setIsLoading] = useState(false)
+
+  const searchTerm = searchParams.get('q') ?? ''
+  const selectedCategories = useMemo(() => {
+    const raw = searchParams.get('cats')
+    return raw ? raw.split(',').filter(Boolean) : []
+  }, [searchParams])
+  const sortParam = searchParams.get('sort') ?? 'alphabetical'
+  const sortOption: SortOption = VALID_SORT_OPTIONS.includes(sortParam as SortOption)
+    ? (sortParam as SortOption)
+    : 'alphabetical'
+
+  const setSearchTerm = useCallback((term: string) => {
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev)
+      if (term) {
+        next.set('q', term)
+      } else {
+        next.delete('q')
+      }
+      return next
+    }, { replace: true })
+  }, [setSearchParams])
+
+  const setSelectedCategories = useCallback((categories: string[]) => {
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev)
+      if (categories.length > 0) {
+        next.set('cats', categories.join(','))
+      } else {
+        next.delete('cats')
+      }
+      return next
+    }, { replace: true })
+  }, [setSearchParams])
+
+  const setSortOption = useCallback((sort: SortOption) => {
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev)
+      if (sort !== 'alphabetical') {
+        next.set('sort', sort)
+      } else {
+        next.delete('sort')
+      }
+      return next
+    }, { replace: true })
+  }, [setSearchParams])
 
   const categories = useMemo(
     () => getAllCategoriesFromRecipes(recipes),
@@ -198,15 +252,21 @@ export const useInfiniteRecipes = ({
     }
   }, [hasMore, isLoading, batchSize, filteredRecipes.length])
 
+  const selectedCategoriesKey = selectedCategories.join(',')
+
   // Reset displayed count when filters or sort changes
   useEffect(() => {
     setDisplayedCount(batchSize)
-  }, [searchTerm, selectedCategories, sortOption, batchSize])
+  }, [searchTerm, selectedCategoriesKey, sortOption, batchSize])
 
   const clearFilters = useCallback(() => {
-    setSearchTerm('')
-    setSelectedCategories([])
-  }, [])
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev)
+      next.delete('q')
+      next.delete('cats')
+      return next
+    }, { replace: true })
+  }, [setSearchParams])
 
   return {
     searchTerm,

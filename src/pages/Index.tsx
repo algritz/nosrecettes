@@ -10,12 +10,17 @@ import { useInfiniteRecipes } from '@/hooks/useInfiniteRecipes'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 import { MadeWithDyad } from '@/components/made-with-dyad'
 import { Button } from '@/components/ui/button'
-import { Plus, Settings, ArrowUp } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { Plus, Settings, ArrowUp, Check, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { generateWebsiteStructuredData } from '@/utils/seoUtils'
 import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils'
 import { RecipeLoadError } from '@/components/RecipeLoadError'
 import { RecipeListSkeleton } from '@/components/RecipeListSkeleton'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { cn } from '@/lib/utils'
+import { normalizeForSearch } from '@/utils/textUtils'
 
 const Index = (): React.ReactElement => {
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false)
@@ -154,20 +159,79 @@ const Index = (): React.ReactElement => {
           </header>
 
           <div className="mb-8 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className="justify-start">
+                    Catégories
+                    {selectedCategories.length > 0 && (
+                      <Badge variant="secondary" className="ml-2">
+                        {selectedCategories.length}
+                      </Badge>
+                    )}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-64 p-0" align="start">
+                  <Command filter={(value, search) => {
+                    const normalizedValue = normalizeForSearch(value)
+                    const normalizedSearch = normalizeForSearch(search)
+                    return normalizedValue.includes(normalizedSearch) ? 1 : 0
+                  }}>
+                    <CommandInput placeholder="Rechercher une catégorie..." />
+                    <CommandList>
+                      <CommandEmpty>Aucune catégorie trouvée.</CommandEmpty>
+                      <CommandGroup>
+                        {categories.map((category) => (
+                          <CommandItem
+                            key={category}
+                            value={category}
+                            onSelect={() => {
+                              if (selectedCategories.includes(category)) {
+                                setSelectedCategories(selectedCategories.filter((c) => c !== category))
+                              } else {
+                                setSelectedCategories([...selectedCategories, category])
+                              }
+                            }}
+                          >
+                            <Check
+                              className={cn(
+                                'mr-2 h-4 w-4',
+                                selectedCategories.includes(category) ? 'opacity-100' : 'opacity-0',
+                              )}
+                            />
+                            {category}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
+
+              <div className="flex items-center gap-3">
+                {(selectedCategories.length > 0 || searchTerm !== '') && (
+                  <Button
+                    variant="outline"
+                    onClick={clearFilters}
+                    className="flex items-center gap-2"
+                  >
+                    <X className="w-4 h-4" />
+                    Effacer les filtres
+                  </Button>
+                )}
+                <SortButton
+                  currentSort={sortOption}
+                  onSortChange={setSortOption}
+                />
+              </div>
+            </div>
+
             <SearchBar
               searchTerm={searchTerm}
               onSearchChange={setSearchTerm}
               selectedCategories={selectedCategories}
               onCategoriesChange={setSelectedCategories}
-              categories={categories}
-              onClearFilters={clearFilters}
             />
-            <div className="flex justify-end">
-              <SortButton
-                currentSort={sortOption}
-                onSortChange={setSortOption}
-              />
-            </div>
           </div>
 
           <RecipeStats
