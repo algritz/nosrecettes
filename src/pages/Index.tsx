@@ -214,9 +214,10 @@ const Index = (): React.ReactElement => {
                     variant="outline"
                     onClick={clearFilters}
                     className="flex items-center gap-2"
+                    title="Effacer les filtres"
                   >
                     <X className="w-4 h-4" />
-                    Effacer les filtres
+                    <span className="hidden sm:inline">Effacer les filtres</span>
                   </Button>
                 )}
                 <SortButton

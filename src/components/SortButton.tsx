@@ -40,9 +40,9 @@ export const SortButton = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="w-full sm:w-auto">
-          <ArrowUpDown className="w-4 h-4 mr-2" />
-          Tri: {currentLabel}
+        <Button variant="outline" className="w-full sm:w-auto" title={`Tri: ${currentLabel}`}>
+          <ArrowUpDown className="w-4 h-4 sm:mr-2" />
+          <span className="hidden sm:inline">Tri: {currentLabel}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
