@@ -11,7 +11,7 @@ export const sucreALaCremeAuCaramilk: Recipe = {
   servings: 40,
   difficulty: 'Facile',
   ingredients: [
-    '1 tasse cassonade',
+    '2 tasse cassonade',
     '1 boîte lait Eagle Brand',
     '1/2 lb beurre',
     'vanille au goût',
