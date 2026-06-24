@@ -1,40 +1,42 @@
-import { RecipeDetail } from "../components/RecipeDetail";
-import { SEOHead } from "../components/SEOHead";
+import { RecipeDetail } from '../components/RecipeDetail';
+import { SEOHead } from '../components/SEOHead';
 import type {
 	IngredientSection,
 	InstructionSection,
 	Recipe,
-} from "../types/recipe";
+} from '../types/recipe';
 
 export interface RecipePageSSRProps {
 	recipe: Recipe;
 }
 
-function flattenIngredients(ingredients: Recipe["ingredients"]): string[] {
+function flattenIngredients(ingredients: Recipe['ingredients']): string[] {
 	if (ingredients.length === 0) return [];
-	if (typeof ingredients[0] === "string") return ingredients as string[];
+	if (typeof ingredients[0] === 'string') return ingredients as string[];
 	return (ingredients as IngredientSection[]).flatMap((s) => s.items);
 }
 
-function flattenInstructions(instructions: Recipe["instructions"]): string[] {
+function flattenInstructions(instructions: Recipe['instructions']): string[] {
 	if (instructions.length === 0) return [];
-	if (typeof instructions[0] === "string") return instructions as string[];
+	if (typeof instructions[0] === 'string') return instructions as string[];
 	return (instructions as InstructionSection[]).flatMap((s) => s.steps);
 }
 
-export function RecipePageSSR({ recipe }: RecipePageSSRProps): JSX.Element {
+export function RecipePageSSR({
+	recipe,
+}: RecipePageSSRProps): React.JSX.Element {
 	const recipeImage = recipe.images?.[0]?.large ?? recipe.image;
 
 	const structuredData = {
-		"@context": "https://schema.org",
-		"@type": "Recipe",
+		'@context': 'https://schema.org',
+		'@type': 'Recipe',
 		name: recipe.title,
 		description: recipe.description,
-		image: recipeImage ?? "",
+		image: recipeImage ?? '',
 		recipeIngredient: flattenIngredients(recipe.ingredients),
 		recipeInstructions: flattenInstructions(recipe.instructions).map(
 			(step) => ({
-				"@type": "HowToStep",
+				'@type': 'HowToStep',
 				text: step,
 			}),
 		),
