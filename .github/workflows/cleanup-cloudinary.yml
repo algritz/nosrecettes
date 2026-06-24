@@ -62,7 +62,7 @@ jobs:
         if: steps.detect-images.outputs.cleanup_needed == 'true'
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
 
       - name: Install Cloudinary CLI
         if: steps.detect-images.outputs.cleanup_needed == 'true'
