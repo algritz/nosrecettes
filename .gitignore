@@ -47,3 +47,5 @@ snap-routes.json
 .browser-data/
 
 .playwright-mcp/
+
+docs/
