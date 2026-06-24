@@ -112,36 +112,13 @@ async function smartPrerender() {
 	}
 
 	if (exitCode === 1) {
-		// Incremental pre-rendering
-		console.log("\n⚡ Running incremental pre-rendering...");
-
-		// Read changed recipes
-		const changedRecipesPath = path.join(
-			__dirname,
-			"..",
-			"changed-recipes.json",
-		);
-		const changedRecipes = JSON.parse(
-			fs.readFileSync(changedRecipesPath, "utf-8"),
-		);
-
-		// Generate routes for changed recipes only
-		const routes = [
-			"/", // Always include homepage
-			...changedRecipes.map((slug) => `/recipe/${slug}`),
-		];
-
-		const routesPath = path.join(__dirname, "..", "snap-routes.json");
-		fs.writeFileSync(routesPath, JSON.stringify(routes, null, 2), "utf-8");
-
-		console.log(
-			`📝 Generated ${routes.length} routes for incremental pre-rendering`,
-		);
+		// Incremental pre-rendering (build-ssg.ts always renders all recipes)
+		console.log('\n⚡ Running full SSG build for changed recipes...')
 
 		// Run pre-rendering
-		execSync("npx tsx scripts/build-ssg.ts", { stdio: "inherit" });
+		execSync('npx tsx scripts/build-ssg.ts', { stdio: 'inherit' })
 
-		console.log("\n✅ Incremental pre-rendering complete");
+		console.log('\n✅ Incremental pre-rendering complete')
 	}
 }
 
