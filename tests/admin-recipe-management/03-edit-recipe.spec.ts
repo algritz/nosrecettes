@@ -191,6 +191,9 @@ test.describe('Recipe Editing', () => {
     // Click delete button
     await page.getByRole('button', { name: /supprimer la recette/i }).click()
 
+    // Wait for alert dialog to finish opening before interacting
+    await page.getByRole('alertdialog').waitFor({ state: 'visible' })
+
     // Cancel deletion
     await page.getByRole('button', { name: /annuler/i }).click()
 
