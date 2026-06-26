@@ -17,6 +17,13 @@ export function useOnlineStatus(): boolean {
           cache: 'no-store',
           method: 'HEAD',
         })
+        // Re-check navigator.onLine after the fetch: if it went offline while
+        // the request was in-flight, discard the stale result to prevent a
+        // resolved pre-offline fetch from flipping the state back to online.
+        if (!navigator.onLine) {
+          setIsOnline(false)
+          return
+        }
         setIsOnline(response.ok)
       } catch {
         // Fetch failed - we're offline

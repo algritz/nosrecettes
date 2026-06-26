@@ -214,10 +214,10 @@ test.describe('Offline Admin Fallback', () => {
       page.getByRole('heading', { name: /administration/i }),
     ).toBeVisible()
 
-    // Simulate offline
-    await page.route('**/*', (route) => route.abort())
+    // Simulate going offline (fires browser 'offline' event, sets navigator.onLine=false)
+    await page.context().setOffline(true)
 
-    // Wait for offline detection
+    // Wait for the hook to detect offline state
     await page.waitForTimeout(6000)
 
     // Wait for offline fallback
@@ -225,17 +225,17 @@ test.describe('Offline Admin Fallback', () => {
       page.getByRole('heading', { name: /connexion requise/i }),
     ).toBeVisible()
 
-    // Simulate coming back online
-    await page.unroute('**/*')
-
-    // Click retry button (which reloads the page)
+    // Verify retry button is present while offline
     const retryButton = page.getByRole('button', { name: /réessayer/i })
-    await retryButton.click()
+    await expect(retryButton).toBeVisible()
 
-    // Wait for page to reload
-    await page.waitForTimeout(2000)
+    // Simulate coming back online
+    // setOffline(false) fires the browser 'online' event, which the useOnlineStatus
+    // hook catches via its handleOnline listener — it re-runs checkConnectivity()
+    // and transitions back to the admin view automatically (no reload needed)
+    await page.context().setOffline(false)
 
-    // Should show admin page
+    // Should show admin page (auto-recovery via online event listener)
     await expect(
       page.getByRole('heading', { name: /administration/i }),
     ).toBeVisible({ timeout: 10000 })

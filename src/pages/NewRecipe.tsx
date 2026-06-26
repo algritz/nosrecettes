@@ -1,6 +1,7 @@
 import { ArrowLeft, FileText, Layers, Minus, Plus, Save, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'sonner'
 import { CategorySelector } from '@/components/CategorySelector'
 import { ImageUpload } from '@/components/ImageUpload'
 import { JSONImporter } from '@/components/JSONImporter'
@@ -272,15 +273,13 @@ const NewRecipe = (): React.ReactElement => {
       const githubService = new GitHubService(githubConfig)
       const prUrl = await githubService.createRecipePR(recipeData, recipeImages)
 
-      showSuccess('Recette soumise! Pull request créée avec succès.')
-
-      // Show success message with PR link
-      const openPR = confirm(
-        'Recette soumise avec succès!\n\nVoulez-vous voir la pull request sur GitHub?',
-      )
-      if (openPR) {
-        window.open(prUrl, '_blank')
-      }
+      toast.success('Recette soumise! Pull request créée avec succès.', {
+        action: {
+          label: 'Voir la PR',
+          onClick: () => window.open(prUrl, '_blank'),
+        },
+        duration: 8000,
+      })
 
       // Reset form
       setRecipe({
