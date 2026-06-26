@@ -16,7 +16,7 @@ export default defineConfig({
   fullyParallel: true,
 
   /* Single worker to prevent IndexedDB conflicts */
-  workers: process.env.CI ? 2 : 8,
+  workers: process.env.CI ? 1 : 8,
 
   /* Fail the build on CI if you accidentally left test.only in the source code */
   forbidOnly: !!process.env.CI,
