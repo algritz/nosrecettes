@@ -92,6 +92,9 @@ export const test = base.extend<BaseFixtures>({
     // Navigate to localhost first so we have a secure context for page.evaluate
     await page.goto('/')
     await clearBrowserState(page)
+    // Navigate again after SW unregistration so the next page.goto starts
+    // from a clean, service-worker-free state (prevents ERR_ABORTED flakiness)
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
     await use()
     // Cleanup after test (only if page is still open)
     try {

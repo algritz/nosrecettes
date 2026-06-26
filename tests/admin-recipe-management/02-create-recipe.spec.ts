@@ -295,19 +295,15 @@ test.describe('Recipe Creation', () => {
       page.getByRole('heading', { name: /ajouter une nouvelle recette/i }),
     ).toBeVisible()
 
-    // Simulate offline by dispatching offline event
-    // The app should detect offline state via useOnlineStatus hook
-    await page.evaluate(() => {
-      window.dispatchEvent(new Event('offline'))
-    })
-
-    // Wait a moment for React to update state
-    await page.waitForTimeout(500)
+    // Use Playwright's native offline mode: blocks all network, sets navigator.onLine=false,
+    // and dispatches the offline event — prevents the 5s checkConnectivity interval from
+    // resetting online state by succeeding against the dev server
+    await page.context().setOffline(true)
 
     // Should show offline fallback component
     await expect(
       page.getByRole('heading', { name: /connexion requise/i }),
-    ).toBeVisible()
+    ).toBeVisible({ timeout: 10000 })
 
     // Should show retry and home buttons
     await expect(page.getByRole('button', { name: /réessayer/i })).toBeVisible()
@@ -318,6 +314,9 @@ test.describe('Recipe Creation', () => {
     // Submit button should NOT be visible (form is replaced with offline fallback)
     await expect(
       page.getByRole('button', { name: /soumettre la recette/i }),
-    ).not.toBeVisible()
+    ).not.toBeVisible({ timeout: 10000 })
+
+    // Restore online state so cleanup fixtures don't fail
+    await page.context().setOffline(false)
   })
 })
