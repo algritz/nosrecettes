@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import type { Recipe } from '@/types/recipe'
 
 // ============================================================================
 // MIGRATION NOTE: Recipes are now loaded from IndexedDB at runtime
@@ -36,7 +36,9 @@ export const getCategories = (): string[] => {
 
   recipes.forEach((recipe) => {
     if (recipe.categories && recipe.categories.length > 0) {
-      recipe.categories.forEach((cat) => allCategories.add(cat))
+      recipe.categories.forEach((cat) => {
+        allCategories.add(cat)
+      })
     } else if (recipe.category) {
       allCategories.add(recipe.category)
     }

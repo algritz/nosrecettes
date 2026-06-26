@@ -7,7 +7,7 @@ import { isExactTime } from './timeUtils'
  */
 export const formatTime = (time: number | TimeRange): string => {
   // Handle TimeRange objects
-  if (typeof time === 'object' && time !== null) {
+  if (typeof time === 'object') {
     const range = time
 
     // If min === max, format as single value
@@ -89,7 +89,7 @@ function formatTimeRange(range: TimeRange): string {
  */
 export const formatTimeShort = (time: number | TimeRange): string => {
   // Handle TimeRange objects
-  if (typeof time === 'object' && time !== null) {
+  if (typeof time === 'object') {
     const range = time
 
     // If min === max, format as single value

@@ -1,12 +1,12 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import {
-  isTimeRange,
-  validateTimeRange,
+  createExactTime,
+  createTimeRange,
   getMaxTime,
   getMinTime,
   isExactTime,
-  createExactTime,
-  createTimeRange,
+  isTimeRange,
+  validateTimeRange,
 } from './timeUtils'
 
 describe('TimeRange Utilities', () => {

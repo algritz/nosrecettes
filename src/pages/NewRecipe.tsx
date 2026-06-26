@@ -1,30 +1,30 @@
-import { useState, useEffect } from 'react'
+import { ArrowLeft, FileText, Layers, Minus, Plus, Save, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Plus, Minus, Save, ArrowLeft, Layers, FileText, X } from 'lucide-react'
-import { showSuccess, showError } from '@/utils/toast'
-import { GitHubService } from '@/services/github'
-import { validateTimeRange } from '@/utils/timeUtils'
 import { CategorySelector } from '@/components/CategorySelector'
-import { TimeRangeInput } from '@/components/TimeRangeInput'
 import { ImageUpload } from '@/components/ImageUpload'
+import { JSONImporter } from '@/components/JSONImporter'
+import { NotFound } from '@/components/NotFound'
+import { OfflineFallback } from '@/components/OfflineFallback'
 import { SectionedIngredients } from '@/components/SectionedIngredients'
 import { SectionedInstructions } from '@/components/SectionedInstructions'
-import { JSONImporter } from '@/components/JSONImporter'
-import { ProcessedImage } from '@/utils/imageUtils'
-import {
-  Recipe,
+import { TimeRangeInput } from '@/components/TimeRangeInput'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { recipeCategories } from '@/data/categories'
+import { useOnlineStatus } from '@/hooks/useOnlineStatus'
+import { GitHubService } from '@/services/github'
+import type {
   IngredientSection,
   InstructionSection,
+  Recipe,
   TimeRange,
 } from '@/types/recipe'
-import { recipeCategories } from '@/data/categories'
-import { NotFound } from '@/components/NotFound'
-import { useOnlineStatus } from '@/hooks/useOnlineStatus'
-import { OfflineFallback } from '@/components/OfflineFallback'
+import type { ProcessedImage } from '@/utils/imageUtils'
+import { validateTimeRange } from '@/utils/timeUtils'
+import { showError, showSuccess } from '@/utils/toast'
 
 const NewRecipe = (): React.ReactElement => {
   const isOnline = useOnlineStatus()
@@ -305,9 +305,8 @@ const NewRecipe = (): React.ReactElement => {
       setUseSectionedInstructions(false)
       setSectionedIngredients([{ title: '', items: [''] }])
       setSectionedInstructions([{ title: '', steps: [''] }])
-    } catch (error) {
+    } catch (_error) {
       showError('Erreur lors de la création de la recette')
-      console.error(error)
     } finally {
       setIsSubmitting(false)
     }
@@ -383,10 +382,14 @@ const NewRecipe = (): React.ReactElement => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label
+                htmlFor="new-recipe-title"
+                className="block text-sm font-medium mb-2"
+              >
                 Titre de la recette *
               </label>
               <Input
+                id="new-recipe-title"
                 value={recipe.title}
                 onChange={(e) =>
                   setRecipe((prev) => ({ ...prev, title: e.target.value }))
@@ -397,10 +400,14 @@ const NewRecipe = (): React.ReactElement => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label
+                htmlFor="new-recipe-description"
+                className="block text-sm font-medium mb-2"
+              >
                 Description
               </label>
               <Textarea
+                id="new-recipe-description"
                 value={recipe.description}
                 onChange={(e) =>
                   setRecipe((prev) => ({
@@ -414,9 +421,7 @@ const NewRecipe = (): React.ReactElement => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
-                Catégories *
-              </label>
+              <p className="block text-sm font-medium mb-2">Catégories *</p>
               <CategorySelector
                 selectedCategories={recipe.categories}
                 onCategoriesChange={(categories) =>
@@ -473,10 +478,14 @@ const NewRecipe = (): React.ReactElement => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label
+                  htmlFor="new-recipe-servings"
+                  className="block text-sm font-medium mb-2"
+                >
                   Portions
                 </label>
                 <Input
+                  id="new-recipe-servings"
                   type="number"
                   value={recipe.servings}
                   onChange={(e) =>
@@ -514,10 +523,14 @@ const NewRecipe = (): React.ReactElement => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label
+                htmlFor="new-recipe-accompaniment"
+                className="block text-sm font-medium mb-2"
+              >
                 Accompagnement
               </label>
               <Input
+                id="new-recipe-accompaniment"
                 value={recipe.accompaniment}
                 onChange={(e) =>
                   setRecipe((prev) => ({
@@ -533,10 +546,14 @@ const NewRecipe = (): React.ReactElement => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label
+                htmlFor="new-recipe-wine"
+                className="block text-sm font-medium mb-2"
+              >
                 Accord vin
               </label>
               <Input
+                id="new-recipe-wine"
                 value={recipe.wine}
                 onChange={(e) =>
                   setRecipe((prev) => ({ ...prev, wine: e.target.value }))
@@ -549,8 +566,14 @@ const NewRecipe = (): React.ReactElement => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Source</label>
+              <label
+                htmlFor="new-recipe-source"
+                className="block text-sm font-medium mb-2"
+              >
+                Source
+              </label>
               <Input
+                id="new-recipe-source"
                 value={recipe.source}
                 onChange={(e) =>
                   setRecipe((prev) => ({ ...prev, source: e.target.value }))
@@ -564,8 +587,14 @@ const NewRecipe = (): React.ReactElement => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Notes</label>
+              <label
+                htmlFor="new-recipe-notes"
+                className="block text-sm font-medium mb-2"
+              >
+                Notes
+              </label>
               <Textarea
+                id="new-recipe-notes"
                 value={recipe.notes}
                 onChange={(e) =>
                   setRecipe((prev) => ({ ...prev, notes: e.target.value }))
@@ -622,6 +651,7 @@ const NewRecipe = (): React.ReactElement => {
             ) : (
               <div className="space-y-2">
                 {recipe.ingredients.map((ingredient, index) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: mutable list items have no stable ID
                   <div key={index} className="flex gap-2">
                     <Input
                       value={ingredient}
@@ -687,6 +717,7 @@ const NewRecipe = (): React.ReactElement => {
             ) : (
               <div className="space-y-2">
                 {recipe.instructions.map((instruction, index) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: mutable list items have no stable ID
                   <div key={index} className="flex gap-2">
                     <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium mt-2">
                       {index + 1}
@@ -730,6 +761,7 @@ const NewRecipe = (): React.ReactElement => {
           <CardContent>
             <div className="space-y-2">
               {recipe.tags.map((tag, index) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: mutable list items have no stable ID
                 <div key={index} className="flex gap-2">
                   <Input
                     value={tag}

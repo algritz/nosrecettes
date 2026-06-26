@@ -1,8 +1,8 @@
+import { FolderPlus, GripVertical, Minus, Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { Plus, Minus, GripVertical, FolderPlus } from 'lucide-react'
-import { IngredientSection } from '@/types/recipe'
+import { Input } from '@/components/ui/input'
+import type { IngredientSection } from '@/types/recipe'
 
 interface SectionedIngredientsProps {
   sections: IngredientSection[]
@@ -33,10 +33,7 @@ export const SectionedIngredients = ({
     onChange(newSections)
   }
 
-  const removeIngredient = (
-    sectionIndex: number,
-    itemIndex: number,
-  ): void => {
+  const removeIngredient = (sectionIndex: number, itemIndex: number): void => {
     const newSections = [...sections]
     newSections[sectionIndex].items = newSections[sectionIndex].items.filter(
       (_, i) => i !== itemIndex,
@@ -57,6 +54,7 @@ export const SectionedIngredients = ({
   return (
     <div className="space-y-4">
       {sections.map((section, sectionIndex) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: sections have no stable ID
         <Card key={sectionIndex} className="border-l-4 border-l-primary">
           <CardHeader className="pb-3">
             <div className="flex items-center gap-2">
@@ -84,6 +82,7 @@ export const SectionedIngredients = ({
           <CardContent>
             <div className="space-y-2">
               {section.items.map((item, itemIndex) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: items have no stable ID
                 <div key={itemIndex} className="flex gap-2">
                   <Input
                     value={item}

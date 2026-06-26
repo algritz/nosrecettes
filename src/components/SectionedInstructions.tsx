@@ -1,9 +1,9 @@
+import { FolderPlus, GripVertical, Minus, Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { Plus, Minus, GripVertical, FolderPlus } from 'lucide-react'
-import { InstructionSection } from '@/types/recipe'
+import type { InstructionSection } from '@/types/recipe'
 
 interface SectionedInstructionsProps {
   sections: InstructionSection[]
@@ -34,10 +34,7 @@ export const SectionedInstructions = ({
     onChange(newSections)
   }
 
-  const removeInstruction = (
-    sectionIndex: number,
-    stepIndex: number,
-  ): void => {
+  const removeInstruction = (sectionIndex: number, stepIndex: number): void => {
     const newSections = [...sections]
     newSections[sectionIndex].steps = newSections[sectionIndex].steps.filter(
       (_, i) => i !== stepIndex,
@@ -67,6 +64,7 @@ export const SectionedInstructions = ({
   return (
     <div className="space-y-4">
       {sections.map((section, sectionIndex) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: sections have no stable ID
         <Card key={sectionIndex} className="border-l-4 border-l-primary">
           <CardHeader className="pb-3">
             <div className="flex items-center gap-2">
@@ -94,6 +92,7 @@ export const SectionedInstructions = ({
           <CardContent>
             <div className="space-y-2">
               {section.steps.map((step, stepIndex) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: steps have no stable ID
                 <div key={stepIndex} className="flex gap-2">
                   <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium mt-2">
                     {getStepNumber(sectionIndex, stepIndex)}

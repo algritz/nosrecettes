@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <title>Nos Recettes - Page non trouvée</title>
@@ -71,30 +71,28 @@
       var hasGitHubConfig = false
       try {
         hasGitHubConfig = !!localStorage.getItem('github-config')
-      } catch (e) {
+      } catch (_e) {
         // localStorage might not be available
         hasGitHubConfig = false
       }
 
-      var isProtectedAdminRoute = protectedAdminRoutes.some(function (route) {
-        return currentPath.startsWith(route)
-      })
+      var isProtectedAdminRoute = protectedAdminRoutes.some((route) => currentPath.startsWith(route))
+
+      var pathSegmentsToKeep = 0
+      var l = window.location
 
       if (isProtectedAdminRoute && !hasGitHubConfig) {
         // For protected admin routes without authentication, show static 404 page
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', () => {
           // Page will show the static 404 content below
         })
       } else {
         // For all other routes (including /admin), redirect to SPA for proper handling
-        var pathSegmentsToKeep = 0
-        var l = window.location
-
         l.replace(
           l.protocol +
             '//' +
             l.hostname +
-            (l.port ? ':' + l.port : '') +
+            (l.port ? `:${l.port}` : '') +
             l.pathname
               .split('/')
               .slice(0, 1 + pathSegmentsToKeep)
@@ -106,7 +104,7 @@
               .slice(pathSegmentsToKeep)
               .join('/')
               .replace(/&/g, '~and~') +
-            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+            (l.search ? `&${l.search.slice(1).replace(/&/g, '~and~')}` : '') +
             l.hash,
         )
       }
@@ -121,6 +119,7 @@
       </p>
       <a href="/" class="home-button">
         <svg
+          aria-hidden="true"
           class="home-icon"
           fill="none"
           stroke="currentColor"

@@ -45,7 +45,7 @@ export const siteConfig = getSiteConfig()
  * @param path - Relative path (e.g., '/recipe/chocolate-cake')
  * @returns Full URL (e.g., 'https://nosrecettes.ca/recipe/chocolate-cake')
  */
-export function getFullUrl(path: string): string {
+function _getFullUrl(path: string): string {
   // Normalize path to start with /
   const normalizedPath = path.startsWith('/') ? path : `/${path}`
 
@@ -62,7 +62,7 @@ export function getFullUrl(path: string): string {
  * @param path - Asset path (e.g., '/images/logo.png')
  * @returns Full asset URL with base path
  */
-export function getAssetUrl(path: string): string {
+function _getAssetUrl(path: string): string {
   // Normalize path to start with /
   const normalizedPath = path.startsWith('/') ? path : `/${path}`
 

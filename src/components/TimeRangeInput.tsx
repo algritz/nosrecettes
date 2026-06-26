@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import type { TimeRange } from '../types/recipe'
 import { isExactTime } from '../utils/timeUtils'
@@ -102,7 +102,7 @@ function displayToTimeRange(
  */
 function parseValue(value: TimeRange | string): TimeRange {
   // If already a TimeRange, return as-is
-  if (typeof value === 'object' && value !== null) {
+  if (typeof value === 'object') {
     return value
   }
 
@@ -212,20 +212,30 @@ export function TimeRangeInput({
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [minDays, minHours, minMins, maxDays, maxHours, maxMins])
+  }, [
+    minDays,
+    minHours,
+    minMins,
+    maxDays,
+    maxHours,
+    maxMins,
+    validation.isValid,
+    onChange,
+    currentRange,
+  ])
 
   return (
     <div className={`space-y-3 ${className}`}>
       {label && (
-        <label className="text-sm font-medium">
+        <span className="text-sm font-medium">
           {label}
           {required && <span className="text-destructive ml-1">*</span>}
-        </label>
+        </span>
       )}
 
       {/* Minimum row */}
       <div className="space-y-1">
-        <label className="text-xs text-muted-foreground">Minimum</label>
+        <span className="text-xs text-muted-foreground">Minimum</span>
         <div className="flex gap-2 items-center">
           {allowDays && (
             <div className="flex items-center gap-1">
@@ -273,7 +283,7 @@ export function TimeRangeInput({
 
       {/* Maximum row */}
       <div className="space-y-1">
-        <label className="text-xs text-muted-foreground">Maximum</label>
+        <span className="text-xs text-muted-foreground">Maximum</span>
         <div className="flex gap-2 items-center">
           {allowDays && (
             <div className="flex items-center gap-1">

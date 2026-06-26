@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import type { Recipe } from '@/types/recipe'
 
 export const araigneesAuChocolat: Recipe = {
   id: 'araignees-au-chocolat',
@@ -14,14 +14,14 @@ export const araigneesAuChocolat: Recipe = {
     '1 paquet (300gr) de chipits butterscoth (caramel écossais)',
     '1 paquet (300gr) de chipits de chocolat mi-amer',
     '1 paquet de nouilles frites de 225g',
-    'A votre goût ajoutez canneberges, arachides salées pour un ti côtés salé-sucré'
+    'A votre goût ajoutez canneberges, arachides salées pour un ti côtés salé-sucré',
   ],
   instructions: [
     'Faire fondre à feu doux les deux paquets de chipits ensemble.',
     'Une fois les chipits fondus ajouter les nouilles frites.',
-    'Déposez à la cuillère sur une plaque à biscuit, garnissez à votre goût si désirez et réfrigérer 30 minutes.'
+    'Déposez à la cuillère sur une plaque à biscuit, garnissez à votre goût si désirez et réfrigérer 30 minutes.',
   ],
   tags: ['chocolat', 'fondre', 'salé-sucré'],
   source: 'David Cloutier',
-  slug: 'araignees-au-chocolat'
-};
+  slug: 'araignees-au-chocolat',
+}

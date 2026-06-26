@@ -38,4 +38,4 @@ export const recipeCategories = [
 ]
 
 // Helper function to get all categories (from recipes + defaults)
-export const getAllCategories = (): string[] => recipeCategories
+const _getAllCategories = (): string[] => recipeCategories

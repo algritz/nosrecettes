@@ -3,7 +3,7 @@ export interface CloudinaryConfig {
   uploadPreset: string
 }
 
-export interface CloudinaryUploadResponse {
+interface CloudinaryUploadResponse {
   public_id: string
   secure_url: string
   width: number
@@ -11,14 +11,14 @@ export interface CloudinaryUploadResponse {
   format: string
 }
 
-export interface ImageCleanupRecord {
+interface ImageCleanupRecord {
   publicId: string
   reason: 'replaced' | 'removed'
   recipeSlug: string
   timestamp: number
 }
 
-export const getCloudinaryUrl = (
+const getCloudinaryUrl = (
   publicId: string,
   cloudName: string,
   options: {
@@ -97,32 +97,24 @@ export const scheduleImageCleanup = (
     // Store updated records
     const allRecords = [...existingRecords, ...newRecords]
     localStorage.setItem('cloudinary-cleanup-queue', JSON.stringify(allRecords))
-
-    console.log(
-      `Scheduled ${publicIds.length} image(s) for cleanup via GitHub Action:`,
-      publicIds,
-    )
-  } catch (error) {
-    console.error('Error scheduling image cleanup:', error)
-  }
+  } catch (_error) {}
 }
 
 export const getScheduledCleanups = (): ImageCleanupRecord[] => {
   try {
     const stored = localStorage.getItem('cloudinary-cleanup-queue')
     return stored ? JSON.parse(stored) : []
-  } catch (error) {
-    console.error('Error reading cleanup queue:', error)
+  } catch (_error) {
     return []
   }
 }
 
-export const clearScheduledCleanups = (publicIds?: string[]): void => {
+const _clearScheduledCleanups = (publicIds?: string[]): void => {
   try {
     if (!publicIds) {
       // Clear all
       localStorage.removeItem('cloudinary-cleanup-queue')
-      console.log('Cleared all scheduled cleanups')
+
       return
     }
 
@@ -140,11 +132,7 @@ export const clearScheduledCleanups = (publicIds?: string[]): void => {
         JSON.stringify(filteredRecords),
       )
     }
-
-    console.log(`Cleared ${publicIds.length} cleanup record(s)`)
-  } catch (error) {
-    console.error('Error clearing cleanup queue:', error)
-  }
+  } catch (_error) {}
 }
 
 export const generateCleanupInstructions = (): string => {
@@ -239,8 +227,7 @@ export const extractPublicIdFromUrl = (url: string): string | null => {
     }
 
     return null
-  } catch (error) {
-    console.error('Error extracting public ID from URL:', error)
+  } catch (_error) {
     return null
   }
 }

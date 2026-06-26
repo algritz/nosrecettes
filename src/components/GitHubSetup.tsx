@@ -1,9 +1,9 @@
+import { ExternalLink, Eye, EyeOff, Save } from 'lucide-react'
 import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { Eye, EyeOff, Save, ExternalLink } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 
 interface GitHubSetupProps {
   onConfigSaved: (config: {
@@ -75,10 +75,14 @@ export const GitHubSetup = ({
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label
+              htmlFor="github-owner"
+              className="block text-sm font-medium mb-2"
+            >
               Propriétaire du repository
             </label>
             <Input
+              id="github-owner"
               value={config.owner}
               onChange={(e) =>
                 setConfig((prev) => ({ ...prev, owner: e.target.value }))
@@ -88,10 +92,14 @@ export const GitHubSetup = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label
+              htmlFor="github-repo"
+              className="block text-sm font-medium mb-2"
+            >
               Nom du repository
             </label>
             <Input
+              id="github-repo"
               value={config.repo}
               onChange={(e) =>
                 setConfig((prev) => ({ ...prev, repo: e.target.value }))
@@ -101,7 +109,10 @@ export const GitHubSetup = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label
+              htmlFor="github-token"
+              className="block text-sm font-medium mb-2"
+            >
               Token d'accès GitHub
               <a
                 href="https://github.com/settings/tokens/new?scopes=repo&description=Recipe%20Manager"
@@ -115,6 +126,7 @@ export const GitHubSetup = ({
             </label>
             <div className="relative">
               <Input
+                id="github-token"
                 type={showToken ? 'text' : 'password'}
                 value={config.token}
                 onChange={(e) =>

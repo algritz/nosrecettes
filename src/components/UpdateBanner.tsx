@@ -1,4 +1,4 @@
-import { X, RefreshCw } from 'lucide-react'
+import { RefreshCw, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 interface UpdateBannerProps {

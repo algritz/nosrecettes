@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/baseFixtures'
+import { expect, test } from '../fixtures/baseFixtures'
 
 /**
  * Test Suite: SEO Meta Tags for Recipe Pages
@@ -23,23 +23,31 @@ test.describe('Recipe SEO Meta Tags', () => {
     const recipeTitle = await page.locator('h1').textContent()
 
     // Check Open Graph type (use data-rh to target React Helmet meta tags)
-    const ogType = await page.locator('meta[property="og:type"][data-rh="true"][data-rh="true"]').getAttribute('content')
+    const ogType = await page
+      .locator('meta[property="og:type"][data-rh="true"][data-rh="true"]')
+      .getAttribute('content')
     expect(ogType).toBe('article')
 
     // Check Open Graph title - should include recipe name (use data-rh to target React Helmet meta tags)
-    const ogTitle = await page.locator('meta[property="og:title"][data-rh="true"][data-rh="true"]').getAttribute('content')
+    const ogTitle = await page
+      .locator('meta[property="og:title"][data-rh="true"][data-rh="true"]')
+      .getAttribute('content')
     expect(ogTitle).toBeTruthy()
     expect(ogTitle).toContain(recipeTitle?.trim() ?? '')
 
     // Check Open Graph description
     const ogDescription = await page
-      .locator('meta[property="og:description"][data-rh="true"][data-rh="true"]')
+      .locator(
+        'meta[property="og:description"][data-rh="true"][data-rh="true"]',
+      )
       .getAttribute('content')
     expect(ogDescription).toBeTruthy()
-    expect(ogDescription!.length).toBeGreaterThan(10)
+    expect(ogDescription?.length).toBeGreaterThan(10)
 
     // Check Open Graph URL
-    const ogUrl = await page.locator('meta[property="og:url"][data-rh="true"]').getAttribute('content')
+    const ogUrl = await page
+      .locator('meta[property="og:url"][data-rh="true"]')
+      .getAttribute('content')
     expect(ogUrl).toBeTruthy()
     expect(ogUrl).toContain('/recipe/')
 
@@ -85,7 +93,7 @@ test.describe('Recipe SEO Meta Tags', () => {
       .locator('meta[name="twitter:description"][data-rh="true"]')
       .getAttribute('content')
     expect(twitterDescription).toBeTruthy()
-    expect(twitterDescription!.length).toBeGreaterThan(10)
+    expect(twitterDescription?.length).toBeGreaterThan(10)
 
     // Check Twitter URL
     const twitterUrl = await page
@@ -105,10 +113,13 @@ test.describe('Recipe SEO Meta Tags', () => {
 
     // Wait for React Helmet to add structured data with data-rh attribute
     // Script tags are hidden elements, so we need to use state: 'attached'
-    await page.waitForSelector('script[type="application/ld+json"][data-rh="true"]', {
-      state: 'attached',
-      timeout: 10000,
-    })
+    await page.waitForSelector(
+      'script[type="application/ld+json"][data-rh="true"]',
+      {
+        state: 'attached',
+        timeout: 10000,
+      },
+    )
 
     // Get all structured data scripts
     const structuredDataElements = await page
@@ -118,7 +129,14 @@ test.describe('Recipe SEO Meta Tags', () => {
     expect(structuredDataElements.length).toBeGreaterThan(0)
 
     // Find the one with Recipe schema
-    let recipeSchema: { '@context'?: string; '@type'?: string; name?: string; description?: string; recipeIngredient?: string[]; recipeInstructions?: unknown[] } | null = null
+    let recipeSchema: {
+      '@context'?: string
+      '@type'?: string
+      name?: string
+      description?: string
+      recipeIngredient?: string[]
+      recipeInstructions?: unknown[]
+    } | null = null
 
     for (const element of structuredDataElements) {
       const content = await element.textContent()
@@ -138,27 +156,24 @@ test.describe('Recipe SEO Meta Tags', () => {
           recipeSchema = data
           break
         }
-      } catch {
-        // Skip malformed JSON
-        continue
-      }
+      } catch {}
     }
 
     expect(recipeSchema).toBeTruthy()
-    expect(recipeSchema!['@context']).toMatch(/^https:\/\/schema\.org\/?$/)
-    expect(recipeSchema!['@type']).toBe('Recipe')
-    expect(recipeSchema!.name).toBeTruthy()
-    expect(recipeSchema!.description).toBeTruthy()
+    expect(recipeSchema?.['@context']).toMatch(/^https:\/\/schema\.org\/?$/)
+    expect(recipeSchema?.['@type']).toBe('Recipe')
+    expect(recipeSchema?.name).toBeTruthy()
+    expect(recipeSchema?.description).toBeTruthy()
 
     // Check for ingredients
-    expect(recipeSchema!.recipeIngredient).toBeTruthy()
-    expect(Array.isArray(recipeSchema!.recipeIngredient)).toBeTruthy()
-    expect(recipeSchema!.recipeIngredient.length).toBeGreaterThan(0)
+    expect(recipeSchema?.recipeIngredient).toBeTruthy()
+    expect(Array.isArray(recipeSchema?.recipeIngredient)).toBeTruthy()
+    expect(recipeSchema?.recipeIngredient.length).toBeGreaterThan(0)
 
     // Check for instructions
-    expect(recipeSchema!.recipeInstructions).toBeTruthy()
-    expect(Array.isArray(recipeSchema!.recipeInstructions)).toBeTruthy()
-    expect(recipeSchema!.recipeInstructions.length).toBeGreaterThan(0)
+    expect(recipeSchema?.recipeInstructions).toBeTruthy()
+    expect(Array.isArray(recipeSchema?.recipeInstructions)).toBeTruthy()
+    expect(recipeSchema?.recipeInstructions.length).toBeGreaterThan(0)
   })
 
   test('should have basic SEO meta tags', async ({ page, populatedDb }) => {
@@ -171,7 +186,7 @@ test.describe('Recipe SEO Meta Tags', () => {
       .locator('meta[name="description"][data-rh="true"]')
       .getAttribute('content')
     expect(metaDescription).toBeTruthy()
-    expect(metaDescription!.length).toBeGreaterThan(10)
+    expect(metaDescription?.length).toBeGreaterThan(10)
 
     // Check meta keywords
     const metaKeywords = await page
@@ -180,17 +195,23 @@ test.describe('Recipe SEO Meta Tags', () => {
     expect(metaKeywords).toBeTruthy()
 
     // Check canonical URL
-    const canonical = await page.locator('link[rel="canonical"][data-rh="true"]').getAttribute('href')
+    const canonical = await page
+      .locator('link[rel="canonical"][data-rh="true"]')
+      .getAttribute('href')
     expect(canonical).toBeTruthy()
     expect(canonical).toContain('/recipe/')
 
     // Check robots meta tag
-    const robots = await page.locator('meta[name="robots"][data-rh="true"]').getAttribute('content')
+    const robots = await page
+      .locator('meta[name="robots"][data-rh="true"]')
+      .getAttribute('content')
     expect(robots).toContain('index')
     expect(robots).toContain('follow')
 
     // Check language meta tag
-    const language = await page.locator('meta[name="language"][data-rh="true"]').getAttribute('content')
+    const language = await page
+      .locator('meta[name="language"][data-rh="true"]')
+      .getAttribute('content')
     expect(language).toBe('French')
   })
 
@@ -274,8 +295,11 @@ test.describe('Recipe SEO Meta Tags', () => {
           document.title.includes(expectedRecipeName || '')
         )
       },
-      { expectedHomeTitle: homeTitle, expectedRecipeName: recipeName?.trim() || '' },
-      { timeout: 10000 }
+      {
+        expectedHomeTitle: homeTitle,
+        expectedRecipeName: recipeName?.trim() || '',
+      },
+      { timeout: 10000 },
     )
 
     const recipePageTitle = await page.title()

@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import type { Recipe } from '@/types/recipe'
 
 export const poitrineDePouletAuTomates: Recipe = {
   id: 'poitrine-de-poulet-au-tomates',

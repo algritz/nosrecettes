@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
-import { Button } from '@/components/ui/button'
+import { Check, ChevronDown, X } from 'lucide-react'
+import type React from 'react'
+import { useState } from 'react'
 import { Badge } from '@/components/ui/badge'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
+import { Button } from '@/components/ui/button'
 import {
   Command,
   CommandEmpty,
@@ -14,7 +11,11 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
-import { Check, X, ChevronDown } from 'lucide-react'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 
 interface CategorySelectorProps {

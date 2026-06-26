@@ -1,18 +1,9 @@
-import { useState, useEffect } from 'react'
+import { AlertTriangle, ArrowLeft, Plus, Save, Trash2 } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Badge } from '@/components/ui/badge'
-import { Alert, AlertDescription } from '@/components/ui/alert'
-import { Plus, Trash2, ArrowLeft, Save, AlertTriangle } from 'lucide-react'
-import { showSuccess, showError } from '@/utils/toast'
-import { GitHubService } from '@/services/github'
-import { useCategoryManager } from '@/hooks/useCategoryManager'
-import { useRecipes } from '@/hooks/useRecipes'
-import { recipeCategories } from '@/data/categories'
-import { getRecipeCategories } from '@/utils/recipeUtils'
 import { NotFound } from '@/components/NotFound'
+import { OfflineFallback } from '@/components/OfflineFallback'
+import { Alert, AlertDescription } from '@/components/ui/alert'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,8 +15,17 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { recipeCategories } from '@/data/categories'
+import { useCategoryManager } from '@/hooks/useCategoryManager'
 import { useOnlineStatus } from '@/hooks/useOnlineStatus'
-import { OfflineFallback } from '@/components/OfflineFallback'
+import { useRecipes } from '@/hooks/useRecipes'
+import { GitHubService } from '@/services/github'
+import { getRecipeCategories } from '@/utils/recipeUtils'
+import { showError, showSuccess } from '@/utils/toast'
 
 const ManageCategories = (): React.ReactElement => {
   const isOnline = useOnlineStatus()
@@ -152,9 +152,8 @@ const ManageCategories = (): React.ReactElement => {
 
       // Clear changes after successful submission
       clearChanges()
-    } catch (error) {
+    } catch (_error) {
       showError('Erreur lors de la soumission des modifications')
-      console.error(error)
     } finally {
       setIsSubmitting(false)
     }

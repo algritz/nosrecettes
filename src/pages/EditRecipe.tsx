@@ -1,29 +1,13 @@
-import { useState, useEffect } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Plus, Minus, Save, ArrowLeft, Layers, Trash2 } from 'lucide-react'
-import { showSuccess, showError } from '@/utils/toast'
-import { GitHubService } from '@/services/github'
-import { validateTimeRange } from '@/utils/timeUtils'
+import { ArrowLeft, Layers, Minus, Plus, Save, Trash2 } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { CategorySelector } from '@/components/CategorySelector'
-import { TimeRangeInput } from '@/components/TimeRangeInput'
 import { ImageUpload } from '@/components/ImageUpload'
+import { NotFound } from '@/components/NotFound'
+import { OfflineFallback } from '@/components/OfflineFallback'
 import { SectionedIngredients } from '@/components/SectionedIngredients'
 import { SectionedInstructions } from '@/components/SectionedInstructions'
-import { ProcessedImage, scheduleOldImageCleanup } from '@/utils/imageUtils'
-import {
-  IngredientSection,
-  InstructionSection,
-  ImageSizes,
-  TimeRange,
-} from '@/types/recipe'
-import { getRecipeBySlug } from '@/utils/recipeDb'
-import { recipeCategories } from '@/data/categories'
-import { getRecipeCategories } from '@/utils/recipeUtils'
-import { NotFound } from '@/components/NotFound'
+import { TimeRangeInput } from '@/components/TimeRangeInput'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -35,8 +19,27 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { recipeCategories } from '@/data/categories'
 import { useOnlineStatus } from '@/hooks/useOnlineStatus'
-import { OfflineFallback } from '@/components/OfflineFallback'
+import { GitHubService } from '@/services/github'
+import type {
+  ImageSizes,
+  IngredientSection,
+  InstructionSection,
+  TimeRange,
+} from '@/types/recipe'
+import {
+  type ProcessedImage,
+  scheduleOldImageCleanup,
+} from '@/utils/imageUtils'
+import { getRecipeBySlug } from '@/utils/recipeDb'
+import { getRecipeCategories } from '@/utils/recipeUtils'
+import { validateTimeRange } from '@/utils/timeUtils'
+import { showError, showSuccess } from '@/utils/toast'
 
 const EditRecipe = (): React.ReactElement => {
   const isOnline = useOnlineStatus()
@@ -105,13 +108,13 @@ const EditRecipe = (): React.ReactElement => {
       try {
         const loadedRecipe = await getRecipeBySlug(slug)
         setExistingRecipe(loadedRecipe)
-      } catch (error) {
-        console.error('Failed to load recipe:', error)
+      } catch (_error) {
       } finally {
         setLoadingRecipe(false)
       }
     }
 
+    // biome-ignore lint/suspicious/noConsole: intentional error logging
     loadRecipeFromDB().catch(console.error)
   }, [slug])
 
@@ -197,7 +200,7 @@ const EditRecipe = (): React.ReactElement => {
         notes: existingRecipe.notes || '',
       })
     }
-  }, [existingRecipe, slug, navigate])
+  }, [existingRecipe])
 
   if (!isOnline) {
     return <OfflineFallback />
@@ -267,9 +270,8 @@ const EditRecipe = (): React.ReactElement => {
 
       // Navigate back to home after successful deletion request
       navigate('/')
-    } catch (error) {
+    } catch (_error) {
       showError('Erreur lors de la suppression de la recette')
-      console.error(error)
     } finally {
       setIsDeleting(false)
     }
@@ -432,9 +434,8 @@ const EditRecipe = (): React.ReactElement => {
       if (openPR) {
         window.open(prUrl, '_blank')
       }
-    } catch (error) {
+    } catch (_error) {
       showError('Erreur lors de la modification de la recette')
-      console.error(error)
     } finally {
       setIsSubmitting(false)
     }
@@ -518,10 +519,14 @@ const EditRecipe = (): React.ReactElement => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label
+                htmlFor="edit-recipe-title"
+                className="block text-sm font-medium mb-2"
+              >
                 Titre de la recette *
               </label>
               <Input
+                id="edit-recipe-title"
                 value={recipe.title}
                 onChange={(e) =>
                   setRecipe((prev) => ({ ...prev, title: e.target.value }))
@@ -532,10 +537,14 @@ const EditRecipe = (): React.ReactElement => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label
+                htmlFor="edit-recipe-description"
+                className="block text-sm font-medium mb-2"
+              >
                 Description
               </label>
               <Textarea
+                id="edit-recipe-description"
                 value={recipe.description}
                 onChange={(e) =>
                   setRecipe((prev) => ({
@@ -549,9 +558,7 @@ const EditRecipe = (): React.ReactElement => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
-                Catégories *
-              </label>
+              <p className="block text-sm font-medium mb-2">Catégories *</p>
               <CategorySelector
                 selectedCategories={recipe.categories}
                 onCategoriesChange={(categories) =>
@@ -608,10 +615,14 @@ const EditRecipe = (): React.ReactElement => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label
+                  htmlFor="edit-recipe-servings"
+                  className="block text-sm font-medium mb-2"
+                >
                   Portions
                 </label>
                 <Input
+                  id="edit-recipe-servings"
                   type="number"
                   value={recipe.servings}
                   onChange={(e) =>
@@ -684,10 +695,14 @@ const EditRecipe = (): React.ReactElement => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label
+                htmlFor="edit-recipe-accompaniment"
+                className="block text-sm font-medium mb-2"
+              >
                 Accompagnement
               </label>
               <Input
+                id="edit-recipe-accompaniment"
                 value={recipe.accompaniment}
                 onChange={(e) =>
                   setRecipe((prev) => ({
@@ -703,10 +718,14 @@ const EditRecipe = (): React.ReactElement => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label
+                htmlFor="edit-recipe-wine"
+                className="block text-sm font-medium mb-2"
+              >
                 Accord vin
               </label>
               <Input
+                id="edit-recipe-wine"
                 value={recipe.wine}
                 onChange={(e) =>
                   setRecipe((prev) => ({ ...prev, wine: e.target.value }))
@@ -719,8 +738,14 @@ const EditRecipe = (): React.ReactElement => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Source</label>
+              <label
+                htmlFor="edit-recipe-source"
+                className="block text-sm font-medium mb-2"
+              >
+                Source
+              </label>
               <Input
+                id="edit-recipe-source"
                 value={recipe.source}
                 onChange={(e) =>
                   setRecipe((prev) => ({ ...prev, source: e.target.value }))
@@ -734,8 +759,14 @@ const EditRecipe = (): React.ReactElement => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Notes</label>
+              <label
+                htmlFor="edit-recipe-notes"
+                className="block text-sm font-medium mb-2"
+              >
+                Notes
+              </label>
               <Textarea
+                id="edit-recipe-notes"
                 value={recipe.notes}
                 onChange={(e) =>
                   setRecipe((prev) => ({ ...prev, notes: e.target.value }))
@@ -792,6 +823,7 @@ const EditRecipe = (): React.ReactElement => {
             ) : (
               <div className="space-y-2">
                 {recipe.ingredients.map((ingredient, index) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: mutable list items have no stable ID
                   <div key={index} className="flex gap-2">
                     <Input
                       value={ingredient}
@@ -857,6 +889,7 @@ const EditRecipe = (): React.ReactElement => {
             ) : (
               <div className="space-y-2">
                 {recipe.instructions.map((instruction, index) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: mutable list items have no stable ID
                   <div key={index} className="flex gap-2">
                     <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium mt-2">
                       {index + 1}
@@ -900,6 +933,7 @@ const EditRecipe = (): React.ReactElement => {
           <CardContent>
             <div className="space-y-2">
               {recipe.tags.map((tag, index) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: mutable list items have no stable ID
                 <div key={index} className="flex gap-2">
                   <Input
                     value={tag}

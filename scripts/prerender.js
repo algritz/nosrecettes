@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { chromium, expect } from '@playwright/test'
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
 import { preview } from 'vite'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -177,7 +177,7 @@ async function prerender() {
 
           request.onerror = () => resolve(false)
         })
-      } catch (error) {
+      } catch (_error) {
         return false
       }
     },
@@ -230,7 +230,7 @@ async function prerender() {
           // Since IndexedDB is pre-populated, recipes should load almost instantly
           if (route.includes('/recipe/')) {
             console.log(
-              '  ⏳ Waiting for recipe content to render... for ' + route,
+              `  ⏳ Waiting for recipe content to render... for ${route}`,
             )
 
             try {
@@ -245,7 +245,7 @@ async function prerender() {
                   page.getByRole('heading', { name: 'Instructions' }),
                 ).toBeVisible()
               }).toPass({ timeout: 10_000 }) // Reduced from 5s to 2s
-              console.log('  ✅ Meta tags updated for ' + route)
+              console.log(`  ✅ Meta tags updated for ${route}`)
               // Small buffer for any final DOM updates
               await page.waitForTimeout(100) // Reduced from 200ms to 100ms
             } catch (error) {

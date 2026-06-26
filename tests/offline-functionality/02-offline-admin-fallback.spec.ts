@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/baseFixtures'
+import { expect, test } from '../fixtures/baseFixtures'
 
 /**
  * Offline Admin Fallback Tests
@@ -158,12 +158,18 @@ test.describe('Offline Admin Fallback', () => {
         await page.waitForTimeout(1000)
 
         // Just verify we can see the page loaded (title or form)
-        const editHeading = page.getByRole('heading', { name: /modifier la recette/i })
-        const isEditPageVisible = await editHeading.isVisible().catch(() => false)
+        const editHeading = page.getByRole('heading', {
+          name: /modifier la recette/i,
+        })
+        const isEditPageVisible = await editHeading
+          .isVisible()
+          .catch(() => false)
 
         // Test passes if we can access the edit page or stay on recipe page
         // (app behavior may vary based on offline detection)
-        expect(isEditPageVisible || page.url().includes('/recipe/')).toBeTruthy()
+        expect(
+          isEditPageVisible || page.url().includes('/recipe/'),
+        ).toBeTruthy()
       }
     }
     // If no edit button, test passes (admin not configured for this recipe)

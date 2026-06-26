@@ -3,7 +3,7 @@ import type { TimeRange } from '../types/recipe'
 /**
  * Type guard to check if a value is a valid TimeRange object
  */
-export function isTimeRange(value: unknown): value is TimeRange {
+function isTimeRange(value: unknown): value is TimeRange {
   if (typeof value !== 'object' || value === null) {
     return false
   }
@@ -65,7 +65,7 @@ export function isExactTime(range: TimeRange): boolean {
 /**
  * Create a TimeRange from a single value (for exact times)
  */
-export function createExactTime(minutes: number): TimeRange {
+function _createExactTime(minutes: number): TimeRange {
   if (minutes < 0 || !Number.isFinite(minutes)) {
     throw new Error(`Invalid time value: ${minutes}`)
   }
@@ -76,7 +76,7 @@ export function createExactTime(minutes: number): TimeRange {
 /**
  * Create a TimeRange from min and max values
  */
-export function createTimeRange(min: number, max: number): TimeRange {
+function _createTimeRange(min: number, max: number): TimeRange {
   const range: TimeRange = { min, max }
   validateTimeRange(range)
   return range

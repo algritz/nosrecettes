@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button'
-import { Link } from 'react-router-dom'
 import { Home } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
 
 export const NotFound = (): React.ReactElement => (
   <div className="min-h-screen flex items-center justify-center bg-background">

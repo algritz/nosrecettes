@@ -20,6 +20,7 @@ export function RecipeListSkeleton(): React.ReactElement {
       {/* Recipe cards skeleton */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {Array.from({ length: 9 }).map((_, i) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders
           <Card key={i} className="overflow-hidden">
             <Skeleton className="h-48 w-full" />
             <div className="p-4 space-y-3">

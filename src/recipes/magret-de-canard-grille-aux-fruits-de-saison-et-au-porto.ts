@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import type { Recipe } from '@/types/recipe'
 
 export const magretDeCanardGrilleAuxFruitsDeSaisonEtAuPorto: Recipe = {
   id: 'magret-de-canard-grille-aux-fruits-de-saison-et-au-porto',

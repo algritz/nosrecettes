@@ -1,11 +1,13 @@
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
-export interface CategoryChange {
+interface CategoryChange {
   type: 'add' | 'remove'
   category: string
 }
 
-export const useCategoryManager = (initialCategories: string[]): {
+export const useCategoryManager = (
+  initialCategories: string[],
+): {
   categories: string[]
   addCategory: (categoryName: string) => boolean
   removeCategory: (categoryName: string) => void

@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test'
 
 /**
  * Playwright E2E Test Configuration for Nos Recettes PWA
@@ -25,10 +25,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
 
   /* Reporter to use */
-  reporter: [
-    ['html'],
-    ['list']
-  ],
+  reporter: [['html'], ['list']],
 
   /* Shared settings for all the projects below */
   use: {
@@ -85,4 +82,4 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
   },
-});
+})

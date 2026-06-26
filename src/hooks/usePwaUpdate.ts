@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
+import { useEffect, useState } from 'react'
 
 export function usePwaUpdate(): {
   showUpdateBanner: boolean
@@ -11,12 +11,8 @@ export function usePwaUpdate(): {
     needRefresh: [needRefresh],
     updateServiceWorker,
   } = useRegisterSW({
-    onRegistered(r) {
-      console.log('Service Worker registered:', r)
-    },
-    onRegisterError(error) {
-      console.error('Service Worker registration error:', error)
-    },
+    onRegistered(_r) {},
+    onRegisterError(_error) {},
   })
 
   const [showUpdateBanner, setShowUpdateBanner] = useState(false)

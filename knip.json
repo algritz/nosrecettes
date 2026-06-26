@@ -1,17 +1,9 @@
 {
-  "entry": [
-    "src/main.tsx",
-    "scripts/**/*.js",
-    "src/recipes/**/*.ts"
-  ],
-  "project": [
-    "src/**/*.{ts,tsx}",
-    "scripts/**/*.{js,ts}",
-    "*.config.{ts,js}"
-  ],
-  "ignore": [
-    "src/vite-env.d.ts",
-    "scripts/backups/**",
-    "src/utils/timeUtils.test.ts"
-  ]
+	"entry": [
+		"scripts/**/*.{js,ts}",
+		"src/recipes/**/*.ts",
+		"src/entry-server.tsx"
+	],
+	"project": ["src/**/*.{ts,tsx}", "scripts/**/*.{js,ts}", "*.config.{ts,js}"],
+	"ignore": ["src/utils/timeUtils.test.ts", "src/components/ui/**"]
 }

@@ -1,15 +1,19 @@
-import { Recipe, IngredientSection, InstructionSection } from '@/types/recipe'
+import { siteConfig } from '@/config/site.config'
+import type {
+  IngredientSection,
+  InstructionSection,
+  Recipe,
+} from '@/types/recipe'
 import { getResponsiveImageSrc } from './imageUtils'
 import { formatTime } from './timeFormat'
 import { getMaxTime, getMinTime } from './timeUtils'
-import { siteConfig } from '@/config/site.config'
 
 export const generateRecipeStructuredData = (recipe: Recipe): object => {
   const baseUrl = siteConfig.baseUrl
 
   // Get ingredients as flat array
   const getIngredientsArray = (): readonly string[] => {
-    if (!recipe.ingredients || recipe.ingredients.length === 0) return []
+    if (recipe.ingredients.length === 0) return []
 
     if (
       typeof recipe.ingredients[0] === 'object' &&
@@ -23,7 +27,7 @@ export const generateRecipeStructuredData = (recipe: Recipe): object => {
 
   // Get instructions as flat array with proper formatting
   const getInstructionsArray = (): readonly object[] => {
-    if (!recipe.instructions || recipe.instructions.length === 0) return []
+    if (recipe.instructions.length === 0) return []
 
     let stepNumber = 1
     const instructions: object[] = []
@@ -90,8 +94,7 @@ export const generateRecipeStructuredData = (recipe: Recipe): object => {
     prepTime: `PT${maxPrepTime}M`,
     cookTime: `PT${maxCookTime}M`,
     totalTime: `PT${maxTotalTime}M`,
-    recipeCategory:
-      recipe.categories?.[0] || recipe.category || 'Plat principal',
+    recipeCategory: recipe.categories[0] || recipe.category || 'Plat principal',
     recipeCuisine: 'Québécoise',
     recipeYield: recipe.servings.toString(),
     keywords: recipe.tags.join(', '),
@@ -160,9 +163,8 @@ export const generateRecipeKeywords = (recipe: Recipe): string[] => {
   const keywords = [...recipe.tags]
 
   // Add category-based keywords
-  if (recipe.categories) {
-    keywords.push(...recipe.categories)
-  } else if (recipe.category) {
+  keywords.push(...recipe.categories)
+  if (recipe.category) {
     keywords.push(recipe.category)
   }
 
@@ -200,14 +202,14 @@ export const generateRecipeKeywords = (recipe: Recipe): string[] => {
 }
 
 export const generateRecipeDescription = (recipe: Recipe): string => {
-  if (recipe.description && recipe.description.trim()) {
+  if (recipe.description.trim()) {
     return recipe.description
   }
 
   // Generate description from recipe data
   // Use max values for total time calculation (conservative estimate)
   const maxTotalTime = getMaxTime(recipe.prepTime) + getMaxTime(recipe.cookTime)
-  const category = recipe.categories?.[0] || recipe.category || 'plat'
+  const category = recipe.categories[0] || recipe.category || 'plat'
 
   let description = `Découvrez la recette de ${recipe.title}, un délicieux ${category.toLowerCase()} québécois. `
 

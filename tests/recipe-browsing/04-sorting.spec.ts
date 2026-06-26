@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/baseFixtures'
+import { expect, test } from '../fixtures/baseFixtures'
 
 /**
  * Test Suite: Recipe Sorting Functionality
@@ -68,12 +68,24 @@ test.describe('Recipe Sorting', () => {
     await expect(menu).toBeVisible()
 
     // Verify all sort options are present
-    await expect(page.getByRole('menuitem', { name: /Alphabétique/i })).toBeVisible()
-    await expect(page.getByRole('menuitem', { name: /Plus récentes/i })).toBeVisible()
-    await expect(page.getByRole('menuitem', { name: /Plus anciennes/i })).toBeVisible()
-    await expect(page.getByRole('menuitem', { name: /Avec images/i })).toBeVisible()
-    await expect(page.getByRole('menuitem', { name: /Sans images/i })).toBeVisible()
-    await expect(page.getByRole('menuitem', { name: /Par catégorie/i })).toBeVisible()
+    await expect(
+      page.getByRole('menuitem', { name: /Alphabétique/i }),
+    ).toBeVisible()
+    await expect(
+      page.getByRole('menuitem', { name: /Plus récentes/i }),
+    ).toBeVisible()
+    await expect(
+      page.getByRole('menuitem', { name: /Plus anciennes/i }),
+    ).toBeVisible()
+    await expect(
+      page.getByRole('menuitem', { name: /Avec images/i }),
+    ).toBeVisible()
+    await expect(
+      page.getByRole('menuitem', { name: /Sans images/i }),
+    ).toBeVisible()
+    await expect(
+      page.getByRole('menuitem', { name: /Par catégorie/i }),
+    ).toBeVisible()
   })
 
   test('should sort by "Has Images" and show images first', async ({
@@ -171,9 +183,7 @@ test.describe('Recipe Sorting', () => {
         await card.waitFor({ state: 'visible' })
 
         // Get the first badge (primary category) which has variant="default" or "secondary"
-        const badge = card
-          .locator('div.inline-flex.items-center')
-          .first()
+        const badge = card.locator('div.inline-flex.items-center').first()
         const text = await badge.textContent({ timeout: 5000 })
         if (text) categories.push(text.trim())
       }
@@ -208,7 +218,7 @@ test.describe('Recipe Sorting', () => {
     const image = firstCard.locator('img, picture')
 
     // First result should ideally have an image (if any poulet recipes have images)
-    const hasAnyImages = await image.count() > 0
+    const hasAnyImages = (await image.count()) > 0
     if (hasAnyImages) {
       await expect(image.first()).toBeVisible()
     }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { isRecipeDBPopulated } from '@/utils/recipeDb'
 
 interface IndexedDBReadyState {
@@ -38,8 +38,7 @@ export function useIndexedDBReady(): IndexedDBReadyState {
           // DB not ready yet - keep checking
           setState({ isReady: false, isChecking: true })
         }
-      } catch (error) {
-        console.error('Error checking IndexedDB status:', error)
+      } catch (_error) {
         if (mounted) {
           setState({ isReady: false, isChecking: false })
         }
@@ -47,11 +46,13 @@ export function useIndexedDBReady(): IndexedDBReadyState {
     }
 
     // Initial check
+    // biome-ignore lint/suspicious/noConsole: intentional error logging
     checkDBStatus().catch(console.error)
 
     // Poll every 100ms until DB is ready
     // This is fast enough to feel instant but not too aggressive
     checkInterval = setInterval(() => {
+      // biome-ignore lint/suspicious/noConsole: intentional error logging
       checkDBStatus().catch(console.error)
     }, 100)
 

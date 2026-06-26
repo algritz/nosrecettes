@@ -1,30 +1,45 @@
+import { ArrowUp, Check, Plus, Settings, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { useFontSize } from '@/hooks/useFontSize'
-import { useRecipes } from '@/hooks/useRecipes'
+import { Link } from 'react-router-dom'
+import { LoadingSpinner } from '@/components/LoadingSpinner'
+import { MadeWithDyad } from '@/components/made-with-dyad'
 import { RecipeCard } from '@/components/RecipeCard'
+import { RecipeListSkeleton } from '@/components/RecipeListSkeleton'
+import { RecipeLoadError } from '@/components/RecipeLoadError'
+import { RecipeStats } from '@/components/RecipeStats'
+import { SEOHead } from '@/components/SEOHead'
 import { SearchBar } from '@/components/SearchBar'
 import { SortButton } from '@/components/SortButton'
-import { RecipeStats } from '@/components/RecipeStats'
-import { LoadingSpinner } from '@/components/LoadingSpinner'
-import { SEOHead } from '@/components/SEOHead'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+import { useFontSize } from '@/hooks/useFontSize'
 import { useInfiniteRecipes } from '@/hooks/useInfiniteRecipes'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
-import { MadeWithDyad } from '@/components/made-with-dyad'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Plus, Settings, ArrowUp, Check, X } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { generateWebsiteStructuredData } from '@/utils/seoUtils'
-import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils'
-import { RecipeLoadError } from '@/components/RecipeLoadError'
-import { RecipeListSkeleton } from '@/components/RecipeListSkeleton'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { useRecipes } from '@/hooks/useRecipes'
 import { cn } from '@/lib/utils'
+import { getAllCategoriesFromRecipes } from '@/utils/recipeUtils'
+import { generateWebsiteStructuredData } from '@/utils/seoUtils'
 import { normalizeForSearch } from '@/utils/textUtils'
 
 const Index = (): React.ReactElement => {
-  const { level: fontSizeLevel, increase: increaseFontSize, decrease: decreaseFontSize } = useFontSize()
+  const {
+    level: fontSizeLevel,
+    increase: increaseFontSize,
+    decrease: decreaseFontSize,
+  } = useFontSize()
   const [hasGitHubConfig, setHasGitHubConfig] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
 
@@ -134,24 +149,33 @@ const Index = (): React.ReactElement => {
         <div className="container mx-auto px-4 py-8">
           <header className="mb-12">
             <div className="flex justify-between items-start mb-6">
-              <div className="flex items-center gap-1" role="group" aria-label="Taille du texte">
+              <fieldset
+                className="flex items-center gap-1 border-0 p-0 m-0"
+                aria-label="Taille du texte"
+              >
                 <button
+                  type="button"
                   onClick={decreaseFontSize}
                   disabled={fontSizeLevel === 0}
                   aria-label="Réduire la taille du texte"
                   className="flex items-center justify-center w-8 h-8 rounded border border-input bg-background hover:bg-accent disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                 >
-                  <span className="text-xs font-bold leading-none select-none">A</span>
+                  <span className="text-xs font-bold leading-none select-none">
+                    A
+                  </span>
                 </button>
                 <button
+                  type="button"
                   onClick={increaseFontSize}
                   disabled={fontSizeLevel === 3}
                   aria-label="Augmenter la taille du texte"
                   className="flex items-center justify-center w-8 h-8 rounded border border-input bg-background hover:bg-accent disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                 >
-                  <span className="text-base font-bold leading-none select-none">A</span>
+                  <span className="text-base font-bold leading-none select-none">
+                    A
+                  </span>
                 </button>
-              </div>
+              </fieldset>
 
               {hasGitHubConfig && (
                 <div className="flex flex-col sm:flex-row gap-2">
@@ -195,11 +219,13 @@ const Index = (): React.ReactElement => {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-64 p-0" align="start">
-                  <Command filter={(value, search) => {
-                    const normalizedValue = normalizeForSearch(value)
-                    const normalizedSearch = normalizeForSearch(search)
-                    return normalizedValue.includes(normalizedSearch) ? 1 : 0
-                  }}>
+                  <Command
+                    filter={(value, search) => {
+                      const normalizedValue = normalizeForSearch(value)
+                      const normalizedSearch = normalizeForSearch(search)
+                      return normalizedValue.includes(normalizedSearch) ? 1 : 0
+                    }}
+                  >
                     <CommandInput placeholder="Rechercher une catégorie..." />
                     <CommandList>
                       <CommandEmpty>Aucune catégorie trouvée.</CommandEmpty>
@@ -210,16 +236,25 @@ const Index = (): React.ReactElement => {
                             value={category}
                             onSelect={() => {
                               if (selectedCategories.includes(category)) {
-                                setSelectedCategories(selectedCategories.filter((c) => c !== category))
+                                setSelectedCategories(
+                                  selectedCategories.filter(
+                                    (c) => c !== category,
+                                  ),
+                                )
                               } else {
-                                setSelectedCategories([...selectedCategories, category])
+                                setSelectedCategories([
+                                  ...selectedCategories,
+                                  category,
+                                ])
                               }
                             }}
                           >
                             <Check
                               className={cn(
                                 'mr-2 h-4 w-4',
-                                selectedCategories.includes(category) ? 'opacity-100' : 'opacity-0',
+                                selectedCategories.includes(category)
+                                  ? 'opacity-100'
+                                  : 'opacity-0',
                               )}
                             />
                             {category}
@@ -240,7 +275,9 @@ const Index = (): React.ReactElement => {
                     title="Effacer les filtres"
                   >
                     <X className="w-4 h-4" />
-                    <span className="hidden sm:inline">Effacer les filtres</span>
+                    <span className="hidden sm:inline">
+                      Effacer les filtres
+                    </span>
                   </Button>
                 )}
                 <SortButton

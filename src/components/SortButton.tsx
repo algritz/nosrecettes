@@ -1,3 +1,4 @@
+import { ArrowUpDown, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -5,9 +6,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { ArrowUpDown, Check } from 'lucide-react'
 
-export type SortOption =
+type SortOption =
   | 'alphabetical'
   | 'date-newest'
   | 'date-oldest'
@@ -40,7 +40,11 @@ export const SortButton = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="w-full sm:w-auto" title={`Tri: ${currentLabel}`}>
+        <Button
+          variant="outline"
+          className="w-full sm:w-auto"
+          title={`Tri: ${currentLabel}`}
+        >
           <ArrowUpDown className="w-4 h-4 sm:mr-2" />
           <span className="hidden sm:inline">Tri: {currentLabel}</span>
         </Button>
@@ -53,9 +57,7 @@ export const SortButton = ({
             className="cursor-pointer"
           >
             <span className="flex-1">{option.label}</span>
-            {currentSort === option.value && (
-              <Check className="w-4 h-4 ml-2" />
-            )}
+            {currentSort === option.value && <Check className="w-4 h-4 ml-2" />}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

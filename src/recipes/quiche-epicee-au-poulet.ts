@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import type { Recipe } from '@/types/recipe'
 
 export const quicheEpiceeAuPoulet: Recipe = {
   id: 'quiche-epicee-au-poulet',
@@ -26,28 +26,31 @@ export const quicheEpiceeAuPoulet: Recipe = {
     '3 œufs',
     '1/2 tasse de crème 35%',
     '1 c. à thé de thym',
-    '1 c. à thé de coriandre'
+    '1 c. à thé de coriandre',
   ],
   instructions: [
-    'Faire bouillir les pommes de terre sans la pelure et étendre sur un moule à charnière tapissé de papier parchemin afin d\'en faire une croûte comme une tarte. Saler et poivrer les pommes de terre qui forment la croûte.',
+    "Faire bouillir les pommes de terre sans la pelure et étendre sur un moule à charnière tapissé de papier parchemin afin d'en faire une croûte comme une tarte. Saler et poivrer les pommes de terre qui forment la croûte.",
     'Préchauffer le four à 350°F.',
-    'Dans un poêlon, faire dorer l\'oignon 2-3 minutes.',
+    "Dans un poêlon, faire dorer l'oignon 2-3 minutes.",
     'Ajouter le poulet et bien faire dorer.',
     'Ajouter les deux piments et continuer la cuisson.',
     'Une fois les légumes et le poulet bien saisis, ajouter le sel, le poivre, le paprika, le curcuma et le persil, puis bien brasser.',
     'Ajouter la pâte de tomate, bien brasser, et verser sur la croûte de pommes de terre.',
-    'Dans un bol, mélanger les œufs, la crème, le thym et la coriandre, puis battre jusqu\'à homogénéité.',
-    'Verser le mélange d\'œufs sur le poulet.',
-    'Garnir de mozzarella rappée et cuire au four 35 minutes.'
+    "Dans un bol, mélanger les œufs, la crème, le thym et la coriandre, puis battre jusqu'à homogénéité.",
+    "Verser le mélange d'œufs sur le poulet.",
+    'Garnir de mozzarella rappée et cuire au four 35 minutes.',
   ],
   tags: ['épicé', 'poulet', 'tarte'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/quiche_epice_au_poulet',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/quiche_epice_au_poulet',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/quiche_epice_au_poulet'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/quiche_epice_au_poulet',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/quiche_epice_au_poulet',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/quiche_epice_au_poulet',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'quiche-epicee-au-poulet'
-};
+  slug: 'quiche-epicee-au-poulet',
+}

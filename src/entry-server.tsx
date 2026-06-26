@@ -1,8 +1,8 @@
 import { renderToString } from 'react-dom/server'
-import { StaticRouter } from 'react-router-dom/server'
 import { HelmetProvider, type HelmetServerState } from 'react-helmet-async'
-import type { Recipe } from './types/recipe'
+import { StaticRouter } from 'react-router-dom/server'
 import { RecipePageSSR } from './pages/RecipePageSSR'
+import type { Recipe } from './types/recipe'
 
 export type { HelmetServerState }
 
@@ -18,7 +18,7 @@ export function render(url: string, recipe: Recipe): RenderResult {
       <StaticRouter location={url}>
         <RecipePageSSR recipe={recipe} />
       </StaticRouter>
-    </HelmetProvider>
+    </HelmetProvider>,
   )
   return { html, helmet: helmetContext.helmet }
 }

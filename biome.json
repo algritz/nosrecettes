@@ -1,0 +1,116 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.1/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"includes": ["**", "!!**/dist"],
+		"maxSize": 4194304
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"correctness": {
+				"noUnusedVariables": "error",
+				"noEmptyPattern": "error",
+				"noUnusedImports": "error"
+			},
+			"suspicious": {
+				"noConsole": "error",
+				"noExplicitAny": "error",
+				"useAwait": "error",
+				"noUnnecessaryConditions": "error"
+			},
+			"nursery": {
+				"noPlaywrightUselessAwait": "error",
+				"noConditionalExpect": "error",
+				"noFloatingPromises": "error",
+				"useImportsFirst": "error"
+			},
+			"complexity": {
+				"noEmptyTypeParameters": "error"
+			}
+		}
+	},
+	"css": {
+		"parser": {
+			"cssModules": false,
+			"allowWrongLineComments": false,
+			"tailwindDirectives": true
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["tests/**/*.ts", "tests/**/*.spec.ts"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noUnusedFunctionParameters": "off"
+					},
+					"suspicious": {
+						"useAwait": "off"
+					},
+					"nursery": {
+						"noConditionalExpect": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["scripts/**/*.js", "scripts/**/*.ts"],
+			"linter": {
+				"rules": {
+					"suspicious": {
+						"noConsole": "off",
+						"useAwait": "off",
+						"noUnnecessaryConditions": "off"
+					},
+					"nursery": {
+						"noConditionalExpect": "off",
+						"noFloatingPromises": "off"
+					},
+					"security": {
+						"noGlobalEval": "off"
+					},
+					"style": {
+						"noNonNullAssertion": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["src/globals.css"],
+			"linter": {
+				"rules": {
+					"suspicious": {
+						"noUnknownAtRules": "off"
+					}
+				}
+			}
+		}
+	],
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"semicolons": "asNeeded",
+			"lineWidth": 80,
+			"indentStyle": "space",
+			"indentWidth": 2
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	}
+}

@@ -1,29 +1,33 @@
-import { Recipe, IngredientSection, InstructionSection } from '@/types/recipe'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import {
-  Clock,
-  Users,
-  ChefHat,
   ArrowLeft,
-  Timer,
-  Utensils,
-  Wine,
   BookOpen,
-  Edit,
+  ChefHat,
   ChevronLeft,
   ChevronRight,
-  StickyNote,
+  Clock,
+  Edit,
   Share2,
+  StickyNote,
+  Timer,
+  Users,
+  Utensils,
+  Wine,
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useToast } from '@/hooks/use-toast'
+import type {
+  IngredientSection,
+  InstructionSection,
+  Recipe,
+} from '@/types/recipe'
+import { getRecipeCategories } from '@/utils/recipeUtils'
 import { formatTime } from '@/utils/timeFormat'
 import { getMaxTime } from '@/utils/timeUtils'
-import { useState, useEffect } from 'react'
 import { ResponsiveImage } from './ResponsiveImage'
-import { getRecipeCategories } from '@/utils/recipeUtils'
-import { useToast } from '@/hooks/use-toast'
 
 interface RecipeDetailProps {
   recipe: Recipe
@@ -93,7 +97,7 @@ export const RecipeDetail = ({
 
   // Helper function to render ingredients
   const renderIngredients = (): React.ReactElement => {
-    if (!recipe.ingredients || recipe.ingredients.length === 0) {
+    if (recipe.ingredients.length === 0) {
       return <p className="text-muted-foreground">Aucun ingrédient spécifié</p>
     }
 
@@ -105,6 +109,7 @@ export const RecipeDetail = ({
       return (
         <div className="space-y-6">
           {sections.map((section, sectionIndex) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: sections have no stable ID
             <div key={sectionIndex}>
               {section.title && (
                 <h4 className="font-semibold text-primary mb-3 border-b border-border pb-1">
@@ -113,6 +118,7 @@ export const RecipeDetail = ({
               )}
               <ul className="space-y-2">
                 {section.items.map((ingredient, index) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: string items have no stable ID
                   <li key={index} className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
                     {ingredient}
@@ -129,6 +135,7 @@ export const RecipeDetail = ({
     return (
       <ul className="space-y-2">
         {ingredients.map((ingredient, index) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: string items have no stable ID
           <li key={index} className="flex items-start gap-2">
             <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
             {ingredient}
@@ -140,7 +147,7 @@ export const RecipeDetail = ({
 
   // Helper function to render instructions
   const renderInstructions = (): React.ReactElement => {
-    if (!recipe.instructions || recipe.instructions.length === 0) {
+    if (recipe.instructions.length === 0) {
       return (
         <p className="text-muted-foreground">Aucune instruction spécifiée</p>
       )
@@ -155,6 +162,7 @@ export const RecipeDetail = ({
       return (
         <div className="space-y-6">
           {sections.map((section, sectionIndex) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: sections have no stable ID
             <div key={sectionIndex}>
               {section.title && (
                 <h4 className="font-semibold text-primary mb-3 border-b border-border pb-1">
@@ -163,6 +171,7 @@ export const RecipeDetail = ({
               )}
               <ol className="space-y-4">
                 {section.steps.map((instruction, stepIndex) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: string items have no stable ID
                   <li key={stepIndex} className="flex gap-3">
                     <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
                       {stepIndex + 1}
@@ -181,6 +190,7 @@ export const RecipeDetail = ({
     return (
       <ol className="space-y-4">
         {instructions.map((instruction, index) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: string items have no stable ID
           <li key={index} className="flex gap-3">
             <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
               {index + 1}
@@ -194,9 +204,7 @@ export const RecipeDetail = ({
 
   // Check if recipe has any tags to display
   const hasValidTags =
-    recipe.tags &&
-    recipe.tags.length > 0 &&
-    recipe.tags.some((tag) => tag.trim() !== '')
+    recipe.tags.length > 0 && recipe.tags.some((tag) => tag.trim() !== '')
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -267,7 +275,9 @@ export const RecipeDetail = ({
               <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
                 {allImages.map((image, index) => (
                   <button
+                    // biome-ignore lint/suspicious/noArrayIndexKey: image URLs used as fallback key
                     key={index}
+                    type="button"
                     onClick={() => setCurrentImageIndex(index)}
                     className={`flex-shrink-0 w-20 h-16 rounded-md overflow-hidden border-2 transition-colors ${
                       index === currentImageIndex

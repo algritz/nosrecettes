@@ -1,13 +1,17 @@
-import { useState, useEffect, useMemo, useCallback } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Recipe, IngredientSection, InstructionSection } from '@/types/recipe'
+import type {
+  IngredientSection,
+  InstructionSection,
+  Recipe,
+} from '@/types/recipe'
 import {
   getAllCategoriesFromRecipes,
   recipeMatchesCategories,
 } from '@/utils/recipeUtils'
 import { normalizeForSearch } from '@/utils/textUtils'
 
-export type SortOption =
+type SortOption =
   | 'alphabetical'
   | 'date-newest'
   | 'date-oldest'
@@ -59,45 +63,65 @@ export const useInfiniteRecipes = ({
     return raw ? raw.split(',').filter(Boolean) : []
   }, [searchParams])
   const sortParam = searchParams.get('sort') ?? 'alphabetical'
-  const sortOption: SortOption = VALID_SORT_OPTIONS.includes(sortParam as SortOption)
+  const sortOption: SortOption = VALID_SORT_OPTIONS.includes(
+    sortParam as SortOption,
+  )
     ? (sortParam as SortOption)
     : 'alphabetical'
 
-  const setSearchTerm = useCallback((term: string) => {
-    setSearchParams((prev) => {
-      const next = new URLSearchParams(prev)
-      if (term) {
-        next.set('q', term)
-      } else {
-        next.delete('q')
-      }
-      return next
-    }, { replace: true })
-  }, [setSearchParams])
+  const setSearchTerm = useCallback(
+    (term: string) => {
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev)
+          if (term) {
+            next.set('q', term)
+          } else {
+            next.delete('q')
+          }
+          return next
+        },
+        { replace: true },
+      )
+    },
+    [setSearchParams],
+  )
 
-  const setSelectedCategories = useCallback((categories: string[]) => {
-    setSearchParams((prev) => {
-      const next = new URLSearchParams(prev)
-      if (categories.length > 0) {
-        next.set('cats', categories.join(','))
-      } else {
-        next.delete('cats')
-      }
-      return next
-    }, { replace: true })
-  }, [setSearchParams])
+  const setSelectedCategories = useCallback(
+    (categories: string[]) => {
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev)
+          if (categories.length > 0) {
+            next.set('cats', categories.join(','))
+          } else {
+            next.delete('cats')
+          }
+          return next
+        },
+        { replace: true },
+      )
+    },
+    [setSearchParams],
+  )
 
-  const setSortOption = useCallback((sort: SortOption) => {
-    setSearchParams((prev) => {
-      const next = new URLSearchParams(prev)
-      if (sort !== 'alphabetical') {
-        next.set('sort', sort)
-      } else {
-        next.delete('sort')
-      }
-      return next
-    }, { replace: true })
-  }, [setSearchParams])
+  const setSortOption = useCallback(
+    (sort: SortOption) => {
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev)
+          if (sort !== 'alphabetical') {
+            next.set('sort', sort)
+          } else {
+            next.delete('sort')
+          }
+          return next
+        },
+        { replace: true },
+      )
+    },
+    [setSearchParams],
+  )
 
   const categories = useMemo(
     () => getAllCategoriesFromRecipes(recipes),
@@ -105,32 +129,30 @@ export const useInfiniteRecipes = ({
   )
 
   // Helper function to extract text from ingredients (handles both formats)
-  const getIngredientsText = (
-    ingredients: string[] | IngredientSection[],
-  ): string => {
-    if (!ingredients || ingredients.length === 0) return ''
-
-    // Check if sectioned
-    if (typeof ingredients[0] === 'object' && 'items' in ingredients[0]) {
-      const sections = ingredients as IngredientSection[]
-      return sections.flatMap((section) => section.items).join(' ')
-    }
-    return (ingredients as string[]).join(' ')
-  }
+  const getIngredientsText = useCallback(
+    (ingredients: string[] | IngredientSection[]): string => {
+      if (ingredients.length === 0) return ''
+      if (typeof ingredients[0] === 'object' && 'items' in ingredients[0]) {
+        const sections = ingredients as IngredientSection[]
+        return sections.flatMap((section) => section.items).join(' ')
+      }
+      return (ingredients as string[]).join(' ')
+    },
+    [],
+  )
 
   // Helper function to extract text from instructions (handles both formats)
-  const getInstructionsText = (
-    instructions: string[] | InstructionSection[],
-  ): string => {
-    if (!instructions || instructions.length === 0) return ''
-
-    // Check if sectioned
-    if (typeof instructions[0] === 'object' && 'steps' in instructions[0]) {
-      const sections = instructions as InstructionSection[]
-      return sections.flatMap((section) => section.steps).join(' ')
-    }
-    return (instructions as string[]).join(' ')
-  }
+  const getInstructionsText = useCallback(
+    (instructions: string[] | InstructionSection[]): string => {
+      if (instructions.length === 0) return ''
+      if (typeof instructions[0] === 'object' && 'steps' in instructions[0]) {
+        const sections = instructions as InstructionSection[]
+        return sections.flatMap((section) => section.steps).join(' ')
+      }
+      return (instructions as string[]).join(' ')
+    },
+    [],
+  )
 
   // Helper function to sort recipes
   const sortRecipes = useCallback(
@@ -146,9 +168,9 @@ export const useInfiniteRecipes = ({
           // Sort by numeric ID (timestamp) if available, otherwise by title
           const direction = sortOption === 'date-newest' ? -1 : 1
           return sorted.sort((a, b) => {
-            const aId = parseInt(a.id)
-            const bId = parseInt(b.id)
-            if (!isNaN(aId) && !isNaN(bId)) {
+            const aId = parseInt(a.id, 10)
+            const bId = parseInt(b.id, 10)
+            if (!Number.isNaN(aId) && !Number.isNaN(bId)) {
               return (aId - bId) * direction
             }
             // Fallback to alphabetical if IDs aren't numeric
@@ -194,40 +216,42 @@ export const useInfiniteRecipes = ({
   )
 
   // Filter recipes based on search and categories
-  const filteredRecipes = useMemo(
-    () => {
-      const filtered = recipes.filter((recipe) => {
-        // Normalize search term once
-        const normalizedSearchTerm = normalizeForSearch(searchTerm)
+  const filteredRecipes = useMemo(() => {
+    const filtered = recipes.filter((recipe) => {
+      // Normalize search term once
+      const normalizedSearchTerm = normalizeForSearch(searchTerm)
 
-        const matchesSearch =
-          searchTerm === '' ||
-          normalizeForSearch(recipe.title).includes(normalizedSearchTerm) ||
-          normalizeForSearch(recipe.description).includes(
-            normalizedSearchTerm,
-          ) ||
-          normalizeForSearch(getIngredientsText(recipe.ingredients)).includes(
-            normalizedSearchTerm,
-          ) ||
-          normalizeForSearch(
-            getInstructionsText(recipe.instructions),
-          ).includes(normalizedSearchTerm) ||
-          recipe.tags.some((tag) =>
-            normalizeForSearch(tag).includes(normalizedSearchTerm),
-          )
-
-        const matchesCategory = recipeMatchesCategories(
-          recipe,
-          selectedCategories,
+      const matchesSearch =
+        searchTerm === '' ||
+        normalizeForSearch(recipe.title).includes(normalizedSearchTerm) ||
+        normalizeForSearch(recipe.description).includes(normalizedSearchTerm) ||
+        normalizeForSearch(getIngredientsText(recipe.ingredients)).includes(
+          normalizedSearchTerm,
+        ) ||
+        normalizeForSearch(getInstructionsText(recipe.instructions)).includes(
+          normalizedSearchTerm,
+        ) ||
+        recipe.tags.some((tag) =>
+          normalizeForSearch(tag).includes(normalizedSearchTerm),
         )
 
-        return matchesSearch && matchesCategory
-      })
+      const matchesCategory = recipeMatchesCategories(
+        recipe,
+        selectedCategories,
+      )
 
-      return sortRecipes(filtered)
-    },
-    [recipes, searchTerm, selectedCategories, sortRecipes],
-  )
+      return matchesSearch && matchesCategory
+    })
+
+    return sortRecipes(filtered)
+  }, [
+    recipes,
+    searchTerm,
+    selectedCategories,
+    sortRecipes,
+    getInstructionsText,
+    getIngredientsText,
+  ])
 
   // Get the recipes to display (limited by displayedCount)
   const displayedRecipes = useMemo(
@@ -252,20 +276,23 @@ export const useInfiniteRecipes = ({
     }
   }, [hasMore, isLoading, batchSize, filteredRecipes.length])
 
-  const selectedCategoriesKey = selectedCategories.join(',')
+  const _selectedCategoriesKey = selectedCategories.join(',')
 
   // Reset displayed count when filters or sort changes
   useEffect(() => {
     setDisplayedCount(batchSize)
-  }, [searchTerm, selectedCategoriesKey, sortOption, batchSize])
+  }, [batchSize, sortOption, searchTerm, _selectedCategoriesKey])
 
   const clearFilters = useCallback(() => {
-    setSearchParams((prev) => {
-      const next = new URLSearchParams(prev)
-      next.delete('q')
-      next.delete('cats')
-      return next
-    }, { replace: true })
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev)
+        next.delete('q')
+        next.delete('cats')
+        return next
+      },
+      { replace: true },
+    )
   }, [setSearchParams])
 
   return {

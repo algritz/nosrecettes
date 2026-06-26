@@ -1,20 +1,20 @@
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { Check, RotateCcw, X, ZoomIn } from 'lucide-react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import ReactCrop, {
+  type Crop,
+  centerCrop,
+  makeAspectCrop,
+  type PixelCrop,
+} from 'react-image-crop'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Slider } from '@/components/ui/slider'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { RotateCcw, ZoomIn, Check, X } from 'lucide-react'
-import ReactCrop, {
-  Crop,
-  PixelCrop,
-  centerCrop,
-  makeAspectCrop,
-} from 'react-image-crop'
+import { Slider } from '@/components/ui/slider'
 import 'react-image-crop/dist/ReactCrop.css'
 
 interface ImageEditorProps {
@@ -127,7 +127,7 @@ export const ImageEditor = ({
     }
   }
 
-  const generateEditedImage = useCallback(async (): Promise<File> => {
+  const generateEditedImage = useCallback((): Promise<File> => {
     const image = imgRef.current
     const canvas = canvasRef.current
 
@@ -216,8 +216,7 @@ export const ImageEditor = ({
       const editedFile = await generateEditedImage()
       onSave(editedFile)
       onClose()
-    } catch (error) {
-      console.error('Error processing image:', error)
+    } catch (_error) {
       alert("Erreur lors du traitement de l'image")
     } finally {
       setIsProcessing(false)

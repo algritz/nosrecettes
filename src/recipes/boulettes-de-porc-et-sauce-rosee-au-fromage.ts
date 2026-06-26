@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import type { Recipe } from '@/types/recipe'
 
 export const boulettesDePorcEtSauceRoseeAuFromage: Recipe = {
   id: 'boulettes-de-porc-et-sauce-rosee-au-fromage',
   title: 'Boulettes de porc et sauce rosée au fromage',
-  description: 'Une recette de boulettes de porc savoureuses accompagnées d\'une sauce rosée crémeuse et fromagée, cuites au four pour une texture parfaite.',
+  description:
+    "Une recette de boulettes de porc savoureuses accompagnées d'une sauce rosée crémeuse et fromagée, cuites au four pour une texture parfaite.",
   categories: ['Plats principaux', 'Porc'],
   prepTime: { min: 20, max: 20 },
   cookTime: { min: 40, max: 40 },
@@ -28,7 +29,7 @@ export const boulettesDePorcEtSauceRoseeAuFromage: Recipe = {
     '1 c. à soupe de basilic frais haché',
     '¼ tasse de crème à cuisson 35 %',
     'Mozzarella râpé',
-    'Basilic frais'
+    'Basilic frais',
   ],
   instructions: [
     'Dans un grand bol, mélanger ensemble tous les ingrédients pour les boulettes, à l’exception de l’huile d’olive. Former des boulettes.',
@@ -40,16 +41,19 @@ export const boulettesDePorcEtSauceRoseeAuFromage: Recipe = {
     'Dans un plat ou une poêle allant au four, transférer la sauce rosée. Répartir les boulettes dans la sauce et mélanger.',
     'Recouvrir de fromage mozzarella râpé.',
     'Cuire au four pendant 20 minutes.',
-    'Garnir de basilic frais et servir.'
+    'Garnir de basilic frais et servir.',
   ],
   tags: ['porc', 'sauce rosée', 'fromage'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes_de_porc_sauce_rosee',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes_de_porc_sauce_rosee',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_de_porc_sauce_rosee'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/boulettes_de_porc_sauce_rosee',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/boulettes_de_porc_sauce_rosee',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/boulettes_de_porc_sauce_rosee',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'boulettes-de-porc-et-sauce-rosee-au-fromage'
-};
+  slug: 'boulettes-de-porc-et-sauce-rosee-au-fromage',
+}

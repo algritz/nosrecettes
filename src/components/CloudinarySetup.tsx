@@ -1,9 +1,9 @@
+import { ExternalLink, Save, TestTube } from 'lucide-react'
 import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { Save, ExternalLink, TestTube } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import { uploadToCloudinary } from '@/utils/cloudinaryUtils'
 
 interface CloudinarySetupProps {
@@ -55,20 +55,19 @@ export const CloudinarySetup = ({
           alert(
             '✅ Configuration Cloudinary valide! Vous pouvez maintenant sauvegarder.',
           )
-        } catch (error) {
+        } catch (_error) {
           setIsValid(false)
           alert(
             '❌ Erreur de configuration. Vérifiez votre Cloud Name et Upload Preset.',
           )
-          console.error('Cloudinary test error:', error)
         } finally {
           setIsTesting(false)
         }
       }, 'image/png')
-    } catch (error) {
+    } catch (_error) {
       setIsValid(false)
       alert('❌ Erreur lors du test de connexion.')
-      console.error('Test error:', error)
+
       setIsTesting(false)
     }
   }
@@ -88,7 +87,10 @@ export const CloudinarySetup = ({
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label
+              htmlFor="cloudinary-cloud-name"
+              className="block text-sm font-medium mb-2"
+            >
               Cloud Name
               <a
                 href="https://cloudinary.com/console"
@@ -101,6 +103,7 @@ export const CloudinarySetup = ({
               </a>
             </label>
             <Input
+              id="cloudinary-cloud-name"
               value={config.cloudName}
               onChange={(e) =>
                 setConfig((prev) => ({ ...prev, cloudName: e.target.value }))
@@ -110,7 +113,10 @@ export const CloudinarySetup = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label
+              htmlFor="cloudinary-upload-preset"
+              className="block text-sm font-medium mb-2"
+            >
               Upload Preset (unsigned)
               <a
                 href="https://cloudinary.com/console/settings/upload"
@@ -123,6 +129,7 @@ export const CloudinarySetup = ({
               </a>
             </label>
             <Input
+              id="cloudinary-upload-preset"
               value={config.uploadPreset}
               onChange={(e) =>
                 setConfig((prev) => ({ ...prev, uploadPreset: e.target.value }))
@@ -145,6 +152,7 @@ export const CloudinarySetup = ({
                 href="https://cloudinary.com"
                 target="_blank"
                 className="text-blue-500"
+                rel="noopener"
               >
                 cloudinary.com
               </a>

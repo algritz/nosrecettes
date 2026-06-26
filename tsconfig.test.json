@@ -1,9 +1,9 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "module": "ESNext",
-    "target": "ESNext",
-    "types": ["@playwright/test"]
-  },
-  "include": ["tests/**/*"]
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"module": "ESNext",
+		"target": "ESNext",
+		"types": ["@playwright/test"]
+	},
+	"include": ["tests/**/*"]
 }

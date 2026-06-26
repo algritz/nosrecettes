@@ -1,6 +1,6 @@
-import { getRecipeVersion, updateRecipes, openRecipeDB } from '@/utils/recipeDb'
 import { toast } from 'sonner'
 import { fetchRecipes } from '@/utils/recipeCoordinator'
+import { getRecipeVersion, openRecipeDB, updateRecipes } from '@/utils/recipeDb'
 
 export async function checkForRecipeUpdates(): Promise<boolean> {
   try {
@@ -12,10 +12,6 @@ export async function checkForRecipeUpdates(): Promise<boolean> {
     const localVersion = await getRecipeVersion()
 
     if (serverData.version !== localVersion) {
-      console.log(
-        `Update available: ${localVersion} → ${serverData.version}`,
-      )
-
       // Update in background
       await updateRecipes(serverData.recipes, serverData.version)
 
@@ -33,8 +29,7 @@ export async function checkForRecipeUpdates(): Promise<boolean> {
     }
 
     return false
-  } catch (error) {
-    console.error('Update check failed:', error)
+  } catch (_error) {
     return false
   }
 }
