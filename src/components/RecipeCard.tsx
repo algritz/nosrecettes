@@ -1,12 +1,12 @@
-import { Recipe } from '@/types/recipe'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { Clock, Users } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import type { Recipe } from '@/types/recipe'
+import { getPrimaryCategory, getRecipeCategories } from '@/utils/recipeUtils'
 import { formatTimeShort } from '@/utils/timeFormat'
 import { getMaxTime } from '@/utils/timeUtils'
 import { ResponsiveImage } from './ResponsiveImage'
-import { getRecipeCategories, getPrimaryCategory } from '@/utils/recipeUtils'
 
 interface RecipeCardProps {
   recipe: Recipe

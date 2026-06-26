@@ -1,22 +1,23 @@
-import React, { useEffect } from 'react'
-import { Toaster } from '@/components/ui/toaster'
-import { Toaster as Sonner } from '@/components/ui/sonner'
-import { TooltipProvider } from '@/components/ui/tooltip'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import type React from 'react'
+import { useEffect } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
-import { siteConfig } from '@/config/site.config'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { UpdateBanner } from '@/components/UpdateBanner'
-import { usePwaUpdate } from '@/hooks/usePwaUpdate'
+import { Toaster as Sonner } from '@/components/ui/sonner'
+import { Toaster } from '@/components/ui/toaster'
+import { TooltipProvider } from '@/components/ui/tooltip'
+import { siteConfig } from '@/config/site.config'
 import { usePersistentStorage } from '@/hooks/usePersistentStorage'
+import { usePwaUpdate } from '@/hooks/usePwaUpdate'
 import { checkForRecipeUpdates } from '@/utils/recipeUpdates'
-import Index from './pages/Index'
-import RecipePage from './pages/RecipePage'
 import Admin from './pages/Admin'
-import NewRecipe from './pages/NewRecipe'
 import EditRecipe from './pages/EditRecipe'
+import Index from './pages/Index'
 import ManageCategories from './pages/ManageCategories'
+import NewRecipe from './pages/NewRecipe'
 import NotFound from './pages/NotFound'
+import RecipePage from './pages/RecipePage'
 
 const queryClient = new QueryClient()
 
@@ -28,12 +29,11 @@ const App = (): React.ReactElement => {
 
   useEffect(() => {
     // Request persistent storage on first load
-    requestPersistence().catch((err) =>
-      console.error('Persistence request failed:', err),
-    )
+    requestPersistence().catch((_err) => {})
 
     // Check for recipe updates on app load (if online)
     if (navigator.onLine) {
+      // biome-ignore lint/suspicious/noConsole: intentional error logging
       checkForRecipeUpdates().catch(console.error)
     }
 
@@ -42,6 +42,7 @@ const App = (): React.ReactElement => {
     const interval = setInterval(
       () => {
         if (navigator.onLine) {
+          // biome-ignore lint/suspicious/noConsole: intentional error logging
           checkForRecipeUpdates().catch(console.error)
         }
       },

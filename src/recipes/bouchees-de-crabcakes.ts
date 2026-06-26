@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import type { Recipe } from '@/types/recipe'
 
 export const boucheesDeCrabcakes: Recipe = {
   id: 'bouchees-de-crabcakes',
   title: 'Bouchées de crabcakes',
-  description: 'Recette de bouchées de crabcakes avec garniture de tomate, basilic et mayonnaise, accompagnée de conseils pour congeler et réchauffer.',
+  description:
+    'Recette de bouchées de crabcakes avec garniture de tomate, basilic et mayonnaise, accompagnée de conseils pour congeler et réchauffer.',
   categories: ['Poisson', 'Accompagnements'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 15, max: 15 },
@@ -22,7 +23,7 @@ export const boucheesDeCrabcakes: Recipe = {
     '30 ml (2 c. à soupe) de mayonnaise',
     '10 tomates cerises, tranchées en 3',
     '30 mini-feuilles de basilic frais',
-    'Poivre'
+    'Poivre',
   ],
   instructions: [
     'Dans un bol, mélanger la mayonnaise, l’œuf, les biscuits soda et le sambal œlek. Laisser reposer environ 10 minutes.',
@@ -32,17 +33,21 @@ export const boucheesDeCrabcakes: Recipe = {
     'Dans une grande poêle antiadhésive, dorer la moitié des galettes à la fois dans l’huile de 3 à 4 minutes de chaque côté.',
     'Égoutter sur du papier absorbant.',
     'Servir immédiatement en déposant les crabcakes sur un plat de service ou une planche. Garnir d’un peu de mayonnaise, d’une tranche de tomate et d’une feuille de basilic. Poivrer.',
-    'Servir immédiatement.'
+    'Servir immédiatement.',
   ],
   tags: ['crabe', 'friture', 'garniture'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/crabcake',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/crabcake',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/crabcake'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/crabcake',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/crabcake',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/crabcake',
+    },
   ],
   source: 'David Cloutier',
-  notes: 'Pour congeler et réchauffer : Congelez les bouchées cuites sur une plaque tapissée de papier parchemin puis transférez-les dans un sac de plastique hermétique pour congélateur. Au moment de servir, réchauffez-les de 15 à 20 minutes sur une plaque au centre d’un four préchauffé à 180 °C (350 °F).',
-  slug: 'bouchees-de-crabcakes'
-};
+  notes:
+    'Pour congeler et réchauffer : Congelez les bouchées cuites sur une plaque tapissée de papier parchemin puis transférez-les dans un sac de plastique hermétique pour congélateur. Au moment de servir, réchauffez-les de 15 à 20 minutes sur une plaque au centre d’un four préchauffé à 180 °C (350 °F).',
+  slug: 'bouchees-de-crabcakes',
+}

@@ -1,8 +1,8 @@
 #!/usr/bin/env tsx
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { Recipe } from '../src/types/recipe.js'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import type { Recipe } from '../src/types/recipe.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -20,13 +20,21 @@ function getRecipeFiles(): string[] {
 // Helper function to parse a recipe file and extract full recipe data
 function parseRecipeFile(filename: string): Recipe | null {
   try {
-    const filePath = path.join(__dirname, '..', 'src', 'recipes', `${filename}.ts`)
+    const filePath = path.join(
+      __dirname,
+      '..',
+      'src',
+      'recipes',
+      `${filename}.ts`,
+    )
     const content = fs.readFileSync(filePath, 'utf-8')
 
     // Extract the recipe object using a comprehensive regex
     // This matches: export const recipeName: Recipe = { ... }
     // We need to match balanced braces, so we look for the opening brace and find its matching closing brace
-    const exportMatch = content.match(/export\s+const\s+\w+\s*:\s*Recipe\s*=\s*\{/)
+    const exportMatch = content.match(
+      /export\s+const\s+\w+\s*:\s*Recipe\s*=\s*\{/,
+    )
 
     if (!exportMatch) {
       console.warn(`Warning: Could not find recipe export in ${filename}.ts`)
@@ -96,8 +104,12 @@ export function generateRecipesJson() {
   const outputPath = path.join(__dirname, '..', 'public', 'recipes.json')
   fs.writeFileSync(outputPath, JSON.stringify(recipeData))
 
-  console.log(`✓ Generated recipes.json with ${recipes.length} recipes (version: ${gitCommit})`)
-  console.log(`  Size: ${(JSON.stringify(recipeData).length / 1024 / 1024).toFixed(2)} MB`)
+  console.log(
+    `✓ Generated recipes.json with ${recipes.length} recipes (version: ${gitCommit})`,
+  )
+  console.log(
+    `  Size: ${(JSON.stringify(recipeData).length / 1024 / 1024).toFixed(2)} MB`,
+  )
 }
 
 // Run if called directly

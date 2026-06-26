@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/baseFixtures'
+import { expect, test } from '../fixtures/baseFixtures'
 
 /**
  * Offline Browsing Tests

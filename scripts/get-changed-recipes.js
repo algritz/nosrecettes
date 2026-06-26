@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { execSync } from 'child_process'
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import { execSync } from 'node:child_process'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -16,7 +16,7 @@ function getChangedRecipes() {
   try {
     // Get changed files in the last commit
     const changedFiles = execSync('git diff --name-only HEAD~1 HEAD', {
-      encoding: 'utf-8'
+      encoding: 'utf-8',
     })
       .trim()
       .split('\n')
@@ -37,12 +37,14 @@ function getChangedRecipes() {
     const recipesJsonChanged = changedFiles.includes('public/recipes.json')
 
     if (recipesJsonChanged) {
-      console.log('🔄 public/recipes.json changed - will pre-render all recipes')
+      console.log(
+        '🔄 public/recipes.json changed - will pre-render all recipes',
+      )
       return null // Return null to indicate "render all"
     }
 
     return changedRecipes
-  } catch (error) {
+  } catch (_error) {
     // If git command fails or we're in a shallow clone, fall back to rendering all
     console.log('⚠️  Could not detect changed files, will pre-render all routes')
     return null
@@ -63,15 +65,13 @@ function main() {
   }
 
   console.log(`📋 Found ${changedRecipes.length} changed recipes:`)
-  changedRecipes.forEach((slug) => console.log(`   - ${slug}`))
+  changedRecipes.forEach((slug) => {
+    console.log(`   - ${slug}`)
+  })
 
   // Output changed recipes to a file
   const outputPath = path.join(__dirname, '..', 'changed-recipes.json')
-  fs.writeFileSync(
-    outputPath,
-    JSON.stringify(changedRecipes, null, 2),
-    'utf-8'
-  )
+  fs.writeFileSync(outputPath, JSON.stringify(changedRecipes, null, 2), 'utf-8')
 
   console.log(`✅ Saved changed recipes to ${outputPath}`)
   process.exit(1) // Exit code 1 means "render changed only"

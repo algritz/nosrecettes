@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
-import { GitHubSetup } from '@/components/GitHubSetup'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { CloudinarySetup } from '@/components/CloudinarySetup'
+import { GitHubSetup } from '@/components/GitHubSetup'
+import { OfflineFallback } from '@/components/OfflineFallback'
+import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useOnlineStatus } from '@/hooks/useOnlineStatus'
-import { OfflineFallback } from '@/components/OfflineFallback'
 
 const Admin = (): React.ReactElement => {
   const isOnline = useOnlineStatus()

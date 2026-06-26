@@ -1,7 +1,5 @@
 {
-  "permissions": {
-    "allow": [
-      "Read(//Users/dacloutier/.claude/plans/**)"
-    ]
-  }
+	"permissions": {
+		"allow": ["Read(//Users/dacloutier/.claude/plans/**)"]
+	}
 }

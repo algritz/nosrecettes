@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe';
+import type { Recipe } from '@/types/recipe'
 
 export const sucreALaCremeAuCaramilk: Recipe = {
   id: 'sucre-a-la-creme-au-caramilk',
@@ -16,7 +16,7 @@ export const sucreALaCremeAuCaramilk: Recipe = {
     '1/2 lb beurre',
     'vanille au goût',
     '2 tasses sucre à glacer',
-    '8 tablettes de chocolat Caramilk'
+    '8 tablettes de chocolat Caramilk',
   ],
   instructions: [
     'Mettre la cassonade, le lait Eagle Brand et le beurre dans un grand bol allant au micro-ondes.',
@@ -25,16 +25,19 @@ export const sucreALaCremeAuCaramilk: Recipe = {
     'Étendre la moitié du mélange dans un plat en pyrex.',
     'Étendre les Caramilk par-dessus.',
     'Mettre le reste du mélange.',
-    'Laisser refroidir 30 minutes à température ambiante puis réfrigérer.'
+    'Laisser refroidir 30 minutes à température ambiante puis réfrigérer.',
   ],
   tags: ['caramilk', 'micro-ondes', 'dessert'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sucre_a_la_creme_caramilk',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sucre_a_la_creme_caramilk',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sucre_a_la_creme_caramilk'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/sucre_a_la_creme_caramilk',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/sucre_a_la_creme_caramilk',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/sucre_a_la_creme_caramilk',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'sucre-a-la-creme-au-caramilk'
-};
+  slug: 'sucre-a-la-creme-au-caramilk',
+}

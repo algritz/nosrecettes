@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import type { Recipe } from '@/types/recipe'
 
 export const mijoteDeBoeufALaSaugeALAnisEtALOignon: Recipe = {
   id: 'mijote-de-boeuf-a-la-sauge-a-l-anis-et-a-l-oignon',

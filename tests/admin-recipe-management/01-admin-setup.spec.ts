@@ -1,6 +1,6 @@
-import { test } from '../fixtures/baseFixtures'
 import { expect } from '@playwright/test'
-import { mockGitHubAPI, mockCloudinaryAPI } from '../fixtures/apiMocks'
+import { mockCloudinaryAPI, mockGitHubAPI } from '../fixtures/apiMocks'
+import { test } from '../fixtures/baseFixtures'
 
 /**
  * Admin Setup Tests
@@ -13,11 +13,16 @@ import { mockGitHubAPI, mockCloudinaryAPI } from '../fixtures/apiMocks'
  */
 
 test.describe('Admin Setup', () => {
-  test('should load admin page without configuration', async ({ page, cleanDb: _ }) => {
+  test('should load admin page without configuration', async ({
+    page,
+    cleanDb: _,
+  }) => {
     await page.goto('/admin')
 
     // Should show admin page
-    await expect(page.getByRole('heading', { name: 'Administration' })).toBeVisible()
+    await expect(
+      page.getByRole('heading', { name: 'Administration' }),
+    ).toBeVisible()
 
     // Should show GitHub and Cloudinary tabs
     await expect(page.getByRole('tab', { name: /GitHub/ })).toBeVisible()
@@ -34,9 +39,11 @@ test.describe('Admin Setup', () => {
     await page.goto('/admin')
 
     // Fill GitHub config
-    await page.getByRole('textbox', { name: /votre-nom-utilisateur/ }).fill('test-owner')
-    await page.getByRole('textbox', { name: /nos-recettes/ }).fill('test-repo')
-    await page.getByRole('textbox', { name: /ghp_/ }).fill('ghp_testtoken12345678901234567890')
+    await page.getByPlaceholder('votre-nom-utilisateur').fill('test-owner')
+    await page.getByPlaceholder('nos-recettes').fill('test-repo')
+    await page
+      .getByPlaceholder('ghp_xxxxxxxxxxxxxxxxxxxx')
+      .fill('ghp_testtoken12345678901234567890')
 
     // Test connection button should be enabled
     const testButton = page.getByRole('button', { name: /Tester la connexion/ })
@@ -46,15 +53,22 @@ test.describe('Admin Setup', () => {
     await testButton.click()
 
     // Should show success message
-    await expect(page.getByText(/Configuration GitHub sauvegardée/)).toBeVisible({
+    await expect(
+      page.getByText(/Configuration GitHub sauvegardée/),
+    ).toBeVisible({
       timeout: 10000,
     })
 
     // Should show green indicator on tab
-    await expect(page.getByRole('tab', { name: /GitHub/ })).toContainText('GitHub')
+    await expect(page.getByRole('tab', { name: /GitHub/ })).toContainText(
+      'GitHub',
+    )
   })
 
-  test('should configure Cloudinary credentials', async ({ page, cleanDb: _ }) => {
+  test('should configure Cloudinary credentials', async ({
+    page,
+    cleanDb: _,
+  }) => {
     // Set up Cloudinary API mocking
     await mockCloudinaryAPI(page)
 
@@ -79,7 +93,9 @@ test.describe('Admin Setup', () => {
     await saveButton.click()
 
     // Should show success message
-    await expect(page.getByText(/Configuration Cloudinary sauvegardée/)).toBeVisible({
+    await expect(
+      page.getByText(/Configuration Cloudinary sauvegardée/),
+    ).toBeVisible({
       timeout: 5000,
     })
   })
@@ -95,11 +111,15 @@ test.describe('Admin Setup', () => {
     await page.goto('/admin')
 
     // Configure GitHub
-    await page.getByRole('textbox', { name: /votre-nom-utilisateur/ }).fill('test-owner')
-    await page.getByRole('textbox', { name: /nos-recettes/ }).fill('test-repo')
-    await page.getByRole('textbox', { name: /ghp_/ }).fill('ghp_testtoken12345678901234567890')
+    await page.getByPlaceholder('votre-nom-utilisateur').fill('test-owner')
+    await page.getByPlaceholder('nos-recettes').fill('test-repo')
+    await page
+      .getByPlaceholder('ghp_xxxxxxxxxxxxxxxxxxxx')
+      .fill('ghp_testtoken12345678901234567890')
     await page.getByRole('button', { name: /Tester la connexion/ }).click()
-    await expect(page.getByText(/Configuration GitHub sauvegardée/)).toBeVisible({
+    await expect(
+      page.getByText(/Configuration GitHub sauvegardée/),
+    ).toBeVisible({
       timeout: 10000,
     })
 
@@ -116,7 +136,9 @@ test.describe('Admin Setup', () => {
     const saveButton = page.getByRole('button', { name: /Sauvegarder/ })
     await expect(saveButton).toBeVisible({ timeout: 5000 })
     await saveButton.click()
-    await expect(page.getByText(/Configuration Cloudinary sauvegardée/)).toBeVisible({
+    await expect(
+      page.getByText(/Configuration Cloudinary sauvegardée/),
+    ).toBeVisible({
       timeout: 5000,
     })
 
@@ -128,7 +150,9 @@ test.describe('Admin Setup', () => {
     await expect(page.getByText(/test-cloud/)).toBeVisible()
 
     // Should show "Add new recipe" button
-    await expect(page.getByRole('link', { name: /Ajouter une nouvelle recette/ })).toBeVisible()
+    await expect(
+      page.getByRole('link', { name: /Ajouter une nouvelle recette/ }),
+    ).toBeVisible()
   })
 
   test('should persist configuration across page reloads', async ({
@@ -142,11 +166,15 @@ test.describe('Admin Setup', () => {
     await page.goto('/admin')
 
     // Configure GitHub
-    await page.getByRole('textbox', { name: /votre-nom-utilisateur/ }).fill('test-owner')
-    await page.getByRole('textbox', { name: /nos-recettes/ }).fill('test-repo')
-    await page.getByRole('textbox', { name: /ghp_/ }).fill('ghp_testtoken12345678901234567890')
+    await page.getByPlaceholder('votre-nom-utilisateur').fill('test-owner')
+    await page.getByPlaceholder('nos-recettes').fill('test-repo')
+    await page
+      .getByPlaceholder('ghp_xxxxxxxxxxxxxxxxxxxx')
+      .fill('ghp_testtoken12345678901234567890')
     await page.getByRole('button', { name: /Tester la connexion/ }).click()
-    await expect(page.getByText(/Configuration GitHub sauvegardée/)).toBeVisible({
+    await expect(
+      page.getByText(/Configuration GitHub sauvegardée/),
+    ).toBeVisible({
       timeout: 10000,
     })
 
@@ -163,7 +191,9 @@ test.describe('Admin Setup', () => {
     const saveButton2 = page.getByRole('button', { name: /Sauvegarder/ })
     await expect(saveButton2).toBeVisible({ timeout: 5000 })
     await saveButton2.click()
-    await expect(page.getByText(/Configuration Cloudinary sauvegardée/)).toBeVisible({
+    await expect(
+      page.getByText(/Configuration Cloudinary sauvegardée/),
+    ).toBeVisible({
       timeout: 5000,
     })
 
@@ -189,7 +219,9 @@ test.describe('Admin Setup', () => {
     await expect(page.getByText(/Configuration complète/)).toBeVisible()
 
     // Click "Add new recipe"
-    await page.getByRole('link', { name: /Ajouter une nouvelle recette/ }).click()
+    await page
+      .getByRole('link', { name: /Ajouter une nouvelle recette/ })
+      .click()
 
     // Should navigate to new recipe page
     await expect(page).toHaveURL('/new-recipe')
@@ -202,7 +234,10 @@ test.describe('Admin Setup', () => {
     await page.goto('/admin')
 
     // Click back button
-    await page.getByRole('button', { name: /Retour aux recettes/ }).first().click()
+    await page
+      .getByRole('button', { name: /Retour aux recettes/ })
+      .first()
+      .click()
 
     // Should navigate back to home
     await expect(page).toHaveURL('/')

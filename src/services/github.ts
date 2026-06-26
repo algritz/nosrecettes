@@ -1,14 +1,14 @@
-import { ProcessedImage } from '@/utils/imageUtils'
-import {
-  Recipe,
+import type {
   ImageSizes,
   IngredientSection,
   InstructionSection,
+  Recipe,
   TimeRange,
 } from '@/types/recipe'
 import { generateCleanupInstructions } from '@/utils/cloudinaryUtils'
-import { getMaxTime } from '@/utils/timeUtils'
+import type { ProcessedImage } from '@/utils/imageUtils'
 import { formatTime } from '@/utils/timeFormat'
+import { getMaxTime } from '@/utils/timeUtils'
 
 interface GitHubConfig {
   owner: string
@@ -124,7 +124,7 @@ export class GitHubService {
   private formatIngredientsForFile(
     ingredients: string[] | IngredientSection[],
   ): string {
-    if (!ingredients || ingredients.length === 0) {
+    if (ingredients.length === 0) {
       return "    ''"
     }
 
@@ -153,7 +153,7 @@ ${items.map((item) => `        '${this.escapeString(item)}'`).join(',\n')}
   private formatInstructionsForFile(
     instructions: string[] | InstructionSection[],
   ): string {
-    if (!instructions || instructions.length === 0) {
+    if (instructions.length === 0) {
       return "    ''"
     }
 
@@ -430,7 +430,7 @@ ${imagesField}${accompanimentField}${wineField}${sourceField}${notesField}  slug
             body: `## Suppression de recette
 
 **Titre:** ${existingRecipe.title}
-**Catégories:** ${existingRecipe.categories?.join(', ') || existingRecipe.category || 'Non spécifiée'}
+**Catégories:** ${existingRecipe.categories.join(', ') || existingRecipe.category || 'Non spécifiée'}
 **Slug:** ${existingRecipe.slug}${imageInfo}
 
 **Description:**
@@ -454,7 +454,7 @@ ${cleanupInstructions}
       const pr = await prResponse.json()
       return pr.html_url
     } catch (error) {
-      console.error('Error deleting recipe PR:', error)
+      // biome-ignore lint/complexity/noUselessCatch: explicit rethrow for stack trace clarity
       throw error
     }
   }
@@ -558,14 +558,12 @@ ${cleanupInstructions}
 
       if (addedCategories.length > 0) {
         prBody += '### ✅ Catégories ajoutées\n'
-        prBody +=
-          addedCategories.map((cat) => `- **${cat}**`).join('\n') + '\n\n'
+        prBody += `${addedCategories.map((cat) => `- **${cat}**`).join('\n')}\n\n`
       }
 
       if (removedCategories.length > 0) {
         prBody += '### ❌ Catégories supprimées\n'
-        prBody +=
-          removedCategories.map((cat) => `- **${cat}**`).join('\n') + '\n\n'
+        prBody += `${removedCategories.map((cat) => `- **${cat}**`).join('\n')}\n\n`
       }
 
       prBody += '### Détails\n'
@@ -601,7 +599,7 @@ ${cleanupInstructions}
       const pr = await prResponse.json()
       return pr.html_url
     } catch (error) {
-      console.error('Error creating category PR:', error)
+      // biome-ignore lint/complexity/noUselessCatch: explicit rethrow for stack trace clarity
       throw error
     }
   }
@@ -752,7 +750,7 @@ ${recipeData.description}
       const pr = await prResponse.json()
       return pr.html_url
     } catch (error) {
-      console.error('Error creating recipe PR:', error)
+      // biome-ignore lint/complexity/noUselessCatch: explicit rethrow for stack trace clarity
       throw error
     }
   }
@@ -978,7 +976,7 @@ ${recipeData.description}
       const pr = await prResponse.json()
       return pr.html_url
     } catch (error) {
-      console.error('Error updating recipe PR:', error)
+      // biome-ignore lint/complexity/noUselessCatch: explicit rethrow for stack trace clarity
       throw error
     }
   }

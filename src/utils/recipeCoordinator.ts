@@ -1,9 +1,9 @@
-import { Recipe } from '@/types/recipe'
+import type { Recipe } from '@/types/recipe'
 
 /**
  * Structure of /recipes.json
  */
-export interface RecipesJsonData {
+interface RecipesJsonData {
   version: string
   timestamp: number
   count: number
@@ -13,7 +13,7 @@ export interface RecipesJsonData {
 /**
  * Options for fetching recipes
  */
-export interface FetchRecipesOptions {
+interface FetchRecipesOptions {
   /**
    * Force fresh fetch, bypassing cache
    * Use for update checks that need latest server data
@@ -54,7 +54,6 @@ export async function fetchRecipes(
 
   // If there's already a pending fetch, return it (deduplication)
   if (pendingFetch) {
-    console.log(`[recipeCoordinator] Deduplicating fetch request (reason: ${reason})`)
     return pendingFetch
   }
 
@@ -62,15 +61,9 @@ export async function fetchRecipes(
   if (!bustCache && cachedData) {
     const age = Date.now() - cachedData.timestamp
     if (age < CACHE_DURATION_MS) {
-      console.log(
-        `[recipeCoordinator] Returning cached data (age: ${age}ms, reason: ${reason})`,
-      )
       return cachedData.data
     }
   }
-
-  // Start new fetch
-  console.log(`[recipeCoordinator] Starting new fetch (reason: ${reason})`)
 
   pendingFetch = performFetch(onProgress, reason)
 
@@ -82,10 +75,6 @@ export async function fetchRecipes(
       data,
       timestamp: Date.now(),
     }
-
-    console.log(
-      `[recipeCoordinator] Fetch completed (version: ${data.version}, count: ${data.count})`,
-    )
 
     return data
   } finally {
@@ -126,6 +115,7 @@ async function performFetch(
     const chunks: Uint8Array[] = []
     let loaded = 0
 
+    // biome-ignore lint/suspicious/noUnnecessaryConditions: intentional infinite loop with break
     while (true) {
       const { done, value } = await reader.read()
 
@@ -156,8 +146,7 @@ async function performFetch(
 /**
  * Clear cached data (useful for testing)
  */
-export function clearCache(): void {
-  console.log('[recipeCoordinator] Cache cleared')
+function _clearCache(): void {
   cachedData = null
   pendingFetch = null
 }
@@ -165,7 +154,7 @@ export function clearCache(): void {
 /**
  * Get cache status (useful for debugging)
  */
-export function getCacheStatus(): {
+function _getCacheStatus(): {
   hasPendingFetch: boolean
   hasCachedData: boolean
   cacheAge: number | null

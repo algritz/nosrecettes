@@ -6,7 +6,8 @@
 
 export const sampleRecipeData = {
   title: 'Poulet Général Tao Test',
-  description: 'Une délicieuse recette de poulet Général Tao pour les tests E2E',
+  description:
+    'Une délicieuse recette de poulet Général Tao pour les tests E2E',
   categories: ['Plats principaux', 'Vollaille'],
   prepTime: { min: 20, max: 25 },
   cookTime: { min: 15, max: 20 },
@@ -16,19 +17,19 @@ export const sampleRecipeData = {
     '500g de poitrine de poulet, coupée en cubes',
     '2 tasses de sauce Général Tao',
     '1 oignon, haché',
-    '2 gousses d\'ail, émincées',
-    '1 cuillère à soupe d\'huile végétale',
+    "2 gousses d'ail, émincées",
+    "1 cuillère à soupe d'huile végétale",
   ],
   instructions: [
     'Couper le poulet en cubes uniformes',
     'Faire mariner pendant 30 minutes au réfrigérateur',
-    'Chauffer l\'huile dans un wok à feu vif',
-    'Cuire le poulet jusqu\'à ce qu\'il soit doré',
+    "Chauffer l'huile dans un wok à feu vif",
+    "Cuire le poulet jusqu'à ce qu'il soit doré",
     'Ajouter la sauce et laisser mijoter 5 minutes',
     'Servir chaud avec du riz',
   ],
   tags: ['asiatique', 'rapide', 'famille', 'populaire'],
-};
+}
 
 export const sampleRecipeDataSectioned = {
   title: 'Lasagne Test',
@@ -49,7 +50,11 @@ export const sampleRecipeDataSectioned = {
     },
     {
       title: 'Béchamel',
-      items: ['3 tasses de lait', '4 c. à soupe de beurre', '4 c. à soupe de farine'],
+      items: [
+        '3 tasses de lait',
+        '4 c. à soupe de beurre',
+        '4 c. à soupe de farine',
+      ],
     },
     {
       title: 'Montage',
@@ -60,14 +65,18 @@ export const sampleRecipeDataSectioned = {
     {
       title: 'Préparer la sauce',
       items: [
-        'Faire revenir l\'oignon',
+        "Faire revenir l'oignon",
         'Ajouter le boeuf et cuire',
         'Ajouter les tomates',
       ],
     },
     {
       title: 'Préparer la béchamel',
-      items: ['Faire fondre le beurre', 'Ajouter la farine', 'Incorporer le lait'],
+      items: [
+        'Faire fondre le beurre',
+        'Ajouter la farine',
+        'Incorporer le lait',
+      ],
     },
     {
       title: 'Assembler',
@@ -79,14 +88,14 @@ export const sampleRecipeDataSectioned = {
     },
   ],
   tags: ['italien', 'confort', 'famille'],
-};
+}
 
 export const sampleRecipeUpdate = {
   title: 'Poulet Général Tao Test (Modifié)',
   description: 'Version améliorée de la recette test',
   servings: '6',
   difficulty: 'Facile',
-};
+}
 
 /**
  * Mock image file for upload tests
@@ -96,10 +105,10 @@ export function createMockImageFile(filename = 'test-recipe.jpg'): File {
   // Create a small red square 10x10 JPEG
   const jpegHeader = new Uint8Array([
     0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46,
-  ]);
+  ])
 
-  const blob = new Blob([jpegHeader], { type: 'image/jpeg' });
-  return new File([blob], filename, { type: 'image/jpeg' });
+  const blob = new Blob([jpegHeader], { type: 'image/jpeg' })
+  return new File([blob], filename, { type: 'image/jpeg' })
 }
 
 /**
@@ -114,7 +123,7 @@ export const sampleCategories = [
   'Accompagnements',
   'Boissons',
   'Pâtisseries',
-];
+]
 
 /**
  * Sample search terms for testing search functionality
@@ -125,4 +134,4 @@ export const sampleSearchTerms = {
   ingredient: 'tomate',
   withAccents: 'épices',
   noResults: 'xyzabc123notfound',
-};
+}

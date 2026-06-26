@@ -35,12 +35,6 @@ export interface ImageSizes {
   large: string
 }
 
-export interface RecipeCategory {
-  id: string
-  name: string
-  count: number
-}
-
 export interface IngredientSection {
   title: string
   items: string[]

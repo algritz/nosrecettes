@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/baseFixtures'
+import { expect, test } from '../fixtures/baseFixtures'
 
 /**
  * Test Suite: Search and Filter Functionality
@@ -20,7 +20,7 @@ test.describe('Search and Filter Functionality', () => {
 
     const initialStatsText = await recipeStats.textContent()
     const initialMatch = initialStatsText?.match(/(\d+) sur (\d+) recette/)
-    const initialTotal = parseInt(initialMatch![2])
+    const initialTotal = parseInt(initialMatch?.[2], 10)
 
     // Should start with 720+ recipes
     expect(initialTotal).toBeGreaterThan(700)
@@ -36,7 +36,7 @@ test.describe('Search and Filter Functionality', () => {
     await expect(async () => {
       const statsText = await recipeStats.textContent()
       const match = statsText?.match(/(\d+) sur (\d+) recette/)
-      const filteredTotal = parseInt(match![2])
+      const filteredTotal = parseInt(match?.[2], 10)
 
       // The filtered count should be much less than the initial count
       expect(filteredTotal).toBeLessThan(initialTotal)
@@ -47,9 +47,8 @@ test.describe('Search and Filter Functionality', () => {
     // Verify the filtered total is reasonable (should be around 40 like production)
     const finalStatsText = await recipeStats.textContent()
     const finalMatch = finalStatsText?.match(/(\d+) sur (\d+) recette/)
-    const finalTotal = parseInt(finalMatch![2])
+    const finalTotal = parseInt(finalMatch?.[2], 10)
 
-    console.log(`Bacon search results: ${finalTotal} recipes (was ${initialTotal})`)
     expect(finalTotal).toBeLessThan(100) // Should be much less than total
     expect(finalTotal).toBeGreaterThan(5) // Should have some results
   })
@@ -76,7 +75,7 @@ test.describe('Search and Filter Functionality', () => {
     const recipeStats = page.locator('[data-testid="recipe-stats"]')
     const statsText = await recipeStats.textContent()
     const match = statsText?.match(/(\d+) sur (\d+) recette/)
-    const totalFiltered = parseInt(match![2])
+    const totalFiltered = parseInt(match?.[2], 10)
 
     // The total should be much less than 720
     expect(totalFiltered).toBeLessThan(720)
@@ -91,7 +90,7 @@ test.describe('Search and Filter Functionality', () => {
     const recipeStats = page.locator('[data-testid="recipe-stats"]')
     const initialStatsText = await recipeStats.textContent()
     const initialMatch = initialStatsText?.match(/(\d+) sur (\d+) recette/)
-    const initialTotal = parseInt(initialMatch![2])
+    const initialTotal = parseInt(initialMatch?.[2], 10)
 
     // Search for something
     const searchInput = page.locator('[data-testid="search-input"]')
@@ -106,7 +105,7 @@ test.describe('Search and Filter Functionality', () => {
     await expect(async () => {
       const statsText = await recipeStats.textContent()
       const match = statsText?.match(/(\d+) sur (\d+) recette/)
-      const totalCount = parseInt(match![2])
+      const totalCount = parseInt(match?.[2], 10)
       expect(totalCount).toBe(initialTotal)
     }).toPass()
   })

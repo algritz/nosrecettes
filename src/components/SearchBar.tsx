@@ -1,6 +1,6 @@
-import { Input } from '@/components/ui/input'
-import { Badge } from '@/components/ui/badge'
 import { Search, X } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { Input } from '@/components/ui/input'
 
 interface SearchBarProps {
   searchTerm: string

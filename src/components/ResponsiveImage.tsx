@@ -1,7 +1,7 @@
-import { useState } from 'react'
 import { Utensils } from 'lucide-react'
-import { getResponsiveImageSrc, ImageSizes } from '@/utils/imageUtils'
+import { useState } from 'react'
 import { cn } from '@/lib/utils'
+import { getResponsiveImageSrc, type ImageSizes } from '@/utils/imageUtils'
 
 interface ResponsiveImageProps {
   src: ImageSizes | string | undefined
@@ -30,10 +30,6 @@ export const ResponsiveImage = ({
     video: 'aspect-video',
     auto: '',
   }
-
-  // Debug logging
-  console.log('ResponsiveImage - Original src:', src)
-  console.log('ResponsiveImage - Processed imageSrc:', imageSrc)
 
   if (imageError || !imageSrc) {
     if (!showPlaceholder) return null

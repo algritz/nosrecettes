@@ -1,9 +1,9 @@
-import { Recipe } from '@/types/recipe'
+import type { Recipe } from '@/types/recipe'
 
 // Get categories from a recipe with backward compatibility
 export const getRecipeCategories = (recipe: Recipe): string[] => {
   // If the recipe has the new categories field, use it
-  if (recipe.categories && recipe.categories.length > 0) {
+  if (recipe.categories.length > 0) {
     return recipe.categories.filter((cat) => cat && cat.trim() !== '')
   }
 

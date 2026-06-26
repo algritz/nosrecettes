@@ -65,4 +65,4 @@ function getAssetUrl(path) {
     : normalizedPath
 }
 
-export { siteConfig, getFullUrl, getAssetUrl }
+export { getAssetUrl, getFullUrl, siteConfig }

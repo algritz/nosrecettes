@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { siteConfig } from './site.config.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -39,7 +39,7 @@ export function getRecipeData(filename) {
     const imageMatch = content.match(/image:\s*['"`]([^'"`]+)['"`]/)
 
     let imageUrl = null
-    let imageTitle = null
+    const _imageTitle = null
 
     if (imagesMatch) {
       // New format - extract first image URL from the images array

@@ -1,6 +1,6 @@
-import { test } from '../fixtures/baseFixtures'
 import { expect } from '@playwright/test'
-import { mockGitHubAPI, mockCloudinaryAPI } from '../fixtures/apiMocks'
+import { mockCloudinaryAPI, mockGitHubAPI } from '../fixtures/apiMocks'
+import { test } from '../fixtures/baseFixtures'
 import { sampleRecipeData } from '../fixtures/testData'
 
 /**
@@ -22,9 +22,9 @@ test.describe('Recipe Creation', () => {
     await page.goto('/new-recipe')
 
     // Should show 404 or redirect
-    await expect(
-      page.getByText(/page introuvable|404/i),
-    ).toBeVisible({ timeout: 10000 })
+    await expect(page.getByText(/page introuvable|404/i)).toBeVisible({
+      timeout: 10000,
+    })
   })
 
   test('should load new recipe page with admin config', async ({
@@ -43,7 +43,9 @@ test.describe('Recipe Creation', () => {
     ).toBeVisible()
 
     // Should show connection status
-    await expect(page.getByText(/connecté à test-owner\/test-repo/i)).toBeVisible()
+    await expect(
+      page.getByText(/connecté à test-owner\/test-repo/i),
+    ).toBeVisible()
 
     // Should show form sections
     await expect(
@@ -68,7 +70,9 @@ test.describe('Recipe Creation', () => {
     await page.goto('/new-recipe')
 
     // Fill basic information
-    await page.getByPlaceholder(/ex: poutine classique/i).fill(sampleRecipeData.title)
+    await page
+      .getByPlaceholder(/ex: poutine classique/i)
+      .fill(sampleRecipeData.title)
     await page
       .getByPlaceholder(/décrivez brièvement la recette/i)
       .fill(sampleRecipeData.description)
@@ -129,7 +133,10 @@ test.describe('Recipe Creation', () => {
     await expect(ingredientFields).toHaveCount(1)
 
     // Add ingredient - find button near Ingrédients heading
-    const addIngredientButton = page.getByRole('button', { name: /ajouter/i }).filter({ has: page.locator('svg[class*="lucide-plus"]') }).first()
+    const addIngredientButton = page
+      .getByRole('button', { name: /ajouter/i })
+      .filter({ has: page.locator('svg[class*="lucide-plus"]') })
+      .first()
     await addIngredientButton.click()
 
     // Should now have 2 fields
@@ -140,7 +147,9 @@ test.describe('Recipe Creation', () => {
     await ingredientFields.nth(1).fill('Ingredient 2')
 
     // Remove second ingredient - find minus button
-    const minusButtons = page.getByRole('button').filter({ has: page.locator('svg[class*="lucide-minus"]') })
+    const minusButtons = page
+      .getByRole('button')
+      .filter({ has: page.locator('svg[class*="lucide-minus"]') })
     await minusButtons.nth(1).click()
 
     // Should be back to 1 field
@@ -168,7 +177,10 @@ test.describe('Recipe Creation', () => {
     await expect(instructionFields).toHaveCount(1)
 
     // Add instruction
-    const addInstructionButton = page.getByRole('button', { name: /ajouter/i }).filter({ has: page.locator('svg[class*="lucide-plus"]') }).nth(1)
+    const addInstructionButton = page
+      .getByRole('button', { name: /ajouter/i })
+      .filter({ has: page.locator('svg[class*="lucide-plus"]') })
+      .nth(1)
     await addInstructionButton.click()
 
     // Should now have 2 fields
@@ -179,7 +191,9 @@ test.describe('Recipe Creation', () => {
     await instructionFields.nth(1).fill('Step 2')
 
     // Remove second instruction
-    const minusButtonsInst = page.getByRole('button').filter({ has: page.locator('svg[class*="lucide-minus"]') })
+    const minusButtonsInst = page
+      .getByRole('button')
+      .filter({ has: page.locator('svg[class*="lucide-minus"]') })
     await minusButtonsInst.nth(1).click()
 
     // Should be back to 1 field
@@ -228,7 +242,9 @@ test.describe('Recipe Creation', () => {
     await expect(page.getByPlaceholder(/ex: 2 tasses de farine/i)).toBeVisible()
 
     // Toggle to sectioned mode
-    const sectionButton = page.getByRole('button', { name: /sections/i }).first()
+    const sectionButton = page
+      .getByRole('button', { name: /sections/i })
+      .first()
     await sectionButton.click()
 
     // Should show sectioned mode message
@@ -294,9 +310,7 @@ test.describe('Recipe Creation', () => {
     ).toBeVisible()
 
     // Should show retry and home buttons
-    await expect(
-      page.getByRole('button', { name: /réessayer/i }),
-    ).toBeVisible()
+    await expect(page.getByRole('button', { name: /réessayer/i })).toBeVisible()
     await expect(
       page.getByRole('button', { name: /retour aux recettes/i }),
     ).toBeVisible()

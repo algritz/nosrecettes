@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-import { generateSitemap } from './generate-sitemap.js'
-import { generateRobots } from './generate-robots.js'
-import { generateManifest } from './generate-manifest.js'
-import { generateIndexHTML } from './generate-index-html.js'
+import { spawn } from 'node:child_process'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { generateBrowserConfig } from './generate-browserconfig.js'
+import { generateIndexHTML } from './generate-index-html.js'
+import { generateManifest } from './generate-manifest.js'
+import { generateRobots } from './generate-robots.js'
 import { generateSecurityTxt } from './generate-security.js'
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { spawn } from 'child_process'
+import { generateSitemap } from './generate-sitemap.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -71,9 +71,13 @@ async function buildSEO() {
 
     // Generate recipes.json using tsx
     console.log('\n7. Generating recipes.json...')
-    const tsxProcess = spawn('npx', ['tsx', 'scripts/generate-recipes-json.ts'], {
-      stdio: 'inherit',
-    })
+    const tsxProcess = spawn(
+      'npx',
+      ['tsx', 'scripts/generate-recipes-json.ts'],
+      {
+        stdio: 'inherit',
+      },
+    )
     await new Promise((resolve, reject) => {
       tsxProcess.on('close', (code) => {
         if (code === 0) {

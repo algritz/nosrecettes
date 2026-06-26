@@ -1,18 +1,18 @@
+import { AlertTriangle, Check, CheckCircle, Copy, FileText } from 'lucide-react'
 import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
-import { FileText, AlertTriangle, CheckCircle, Copy, Check } from 'lucide-react'
-import { showSuccess, showError } from '@/utils/toast'
-import {
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Textarea } from '@/components/ui/textarea'
+import type {
   IngredientSection,
   InstructionSection,
   TimeRange,
 } from '@/types/recipe'
 import { formatTime } from '@/utils/timeFormat'
 import { validateTimeRange } from '@/utils/timeUtils'
+import { showError, showSuccess } from '@/utils/toast'
 
 interface JSONRecipe {
   title: string
@@ -240,7 +240,7 @@ export const JSONImporter = ({
   const getFormatInfo = (
     items: string[] | IngredientSection[] | InstructionSection[],
   ): string => {
-    if (!items || items.length === 0) return 'Vide'
+    if (items.length === 0) return 'Vide'
 
     if (
       typeof items[0] === 'object' &&
@@ -274,10 +274,14 @@ export const JSONImporter = ({
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label
+              htmlFor="json-import-textarea"
+              className="block text-sm font-medium mb-2"
+            >
               Coller le JSON de la recette:
             </label>
             <Textarea
+              id="json-import-textarea"
               value={jsonContent}
               onChange={(e) => setJsonContent(e.target.value)}
               placeholder='Collez votre JSON ici... Cliquez sur "Exemple JSON" pour voir le format attendu.'
@@ -404,6 +408,7 @@ export const JSONImporter = ({
                       <div className="flex flex-wrap gap-1">
                         {parsedRecipe.categories.map((category, index) => (
                           <Badge
+                            // biome-ignore lint/suspicious/noArrayIndexKey: string items have no stable ID
                             key={index}
                             variant="default"
                             className="text-xs"
@@ -417,6 +422,7 @@ export const JSONImporter = ({
                       <div className="flex flex-wrap gap-1">
                         {parsedRecipe.tags.map((tag, index) => (
                           <Badge
+                            // biome-ignore lint/suspicious/noArrayIndexKey: string items have no stable ID
                             key={index}
                             variant="outline"
                             className="text-xs"
@@ -441,6 +447,7 @@ export const JSONImporter = ({
                       // Sectioned ingredients
                       (parsedRecipe.ingredients as IngredientSection[]).map(
                         (section, sectionIndex) => (
+                          // biome-ignore lint/suspicious/noArrayIndexKey: sections have no stable ID
                           <div key={sectionIndex} className="mb-2">
                             {section.title && (
                               <div className="font-medium text-primary">
@@ -451,6 +458,7 @@ export const JSONImporter = ({
                               {section.items
                                 .slice(0, 3)
                                 .map((item, itemIndex) => (
+                                  // biome-ignore lint/suspicious/noArrayIndexKey: items have no stable ID
                                   <li key={itemIndex}>• {item}</li>
                                 ))}
                               {section.items.length > 3 && (
@@ -468,6 +476,7 @@ export const JSONImporter = ({
                         {(parsedRecipe.ingredients as string[])
                           .slice(0, 5)
                           .map((ingredient, index) => (
+                            // biome-ignore lint/suspicious/noArrayIndexKey: string items have no stable ID
                             <li key={index}>• {ingredient}</li>
                           ))}
                         {parsedRecipe.ingredients.length > 5 && (
@@ -490,6 +499,7 @@ export const JSONImporter = ({
                       // Sectioned instructions
                       (parsedRecipe.instructions as InstructionSection[]).map(
                         (section, sectionIndex) => (
+                          // biome-ignore lint/suspicious/noArrayIndexKey: sections have no stable ID
                           <div key={sectionIndex} className="mb-2">
                             {section.title && (
                               <div className="font-medium text-primary">
@@ -500,6 +510,7 @@ export const JSONImporter = ({
                               {section.steps
                                 .slice(0, 2)
                                 .map((step, stepIndex) => (
+                                  // biome-ignore lint/suspicious/noArrayIndexKey: steps have no stable ID
                                   <li key={stepIndex}>
                                     {stepIndex + 1}. {step.substring(0, 50)}...
                                   </li>
@@ -520,6 +531,7 @@ export const JSONImporter = ({
                         {(parsedRecipe.instructions as string[])
                           .slice(0, 3)
                           .map((instruction, index) => (
+                            // biome-ignore lint/suspicious/noArrayIndexKey: string items have no stable ID
                             <li key={index}>
                               {index + 1}. {instruction.substring(0, 50)}...
                             </li>

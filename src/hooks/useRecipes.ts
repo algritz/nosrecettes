@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react'
-import { Recipe } from '@/types/recipe'
+import { useEffect, useState } from 'react'
+import type { Recipe } from '@/types/recipe'
+import { fetchRecipes } from '@/utils/recipeCoordinator'
 import {
   getAllRecipes,
   getRecipeVersion,
+  isRecipeDBPopulated,
   populateRecipes,
   updateRecipes,
-  isRecipeDBPopulated,
 } from '@/utils/recipeDb'
-import { fetchRecipes } from '@/utils/recipeCoordinator'
 
 interface RecipeState {
   recipes: Recipe[]
@@ -24,9 +24,10 @@ export function useRecipes(): RecipeState {
     version: null,
   })
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: loadRecipes is defined in hook scope
   useEffect(() => {
+    // biome-ignore lint/suspicious/noConsole: intentional error logging
     loadRecipes().catch(console.error)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function loadRecipes(): Promise<void> {
@@ -49,6 +50,7 @@ export function useRecipes(): RecipeState {
         // Background check for updates (if online and app is active)
         // This is non-blocking - recipes are already loaded from IndexedDB
         if (navigator.onLine) {
+          // biome-ignore lint/suspicious/noConsole: intentional error logging
           checkForUpdates().catch(console.error)
         }
       } else {
@@ -56,7 +58,6 @@ export function useRecipes(): RecipeState {
         await fetchAndPopulate()
       }
     } catch (error) {
-      console.error('Failed to load recipes:', error)
       setState({
         recipes: [],
         loading: false,
@@ -73,8 +74,7 @@ export function useRecipes(): RecipeState {
         // Optional: Could update state with progress percentage
         // For now, just log it
         if (total > 0) {
-          const percent = Math.round((loaded / total) * 100)
-          console.log(`[useRecipes] Download progress: ${percent}%`)
+          const _percent = Math.round((loaded / total) * 100)
         }
       },
     })
@@ -99,9 +99,6 @@ export function useRecipes(): RecipeState {
       const localVersion = await getRecipeVersion()
 
       if (serverData.version !== localVersion) {
-        console.log(
-          `Update available: ${localVersion} → ${serverData.version}`,
-        )
         await updateRecipes(serverData.recipes, serverData.version)
 
         // Update state with new recipes
@@ -114,9 +111,7 @@ export function useRecipes(): RecipeState {
         // Notify user
         // TODO: Show toast notification
       }
-    } catch (error) {
-      console.error('Update check failed:', error)
-    }
+    } catch (_error) {}
   }
 
   return state

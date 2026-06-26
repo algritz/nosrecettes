@@ -1,16 +1,11 @@
-import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { SEOHead } from '@/components/SEOHead'
 
 const NotFound = (): React.JSX.Element => {
   const location = useLocation()
 
-  useEffect(() => {
-    console.error(
-      '404 Error: User attempted to access non-existent route:',
-      location.pathname,
-    )
-  }, [location.pathname])
+  useEffect(() => {}, [])
 
   return (
     <>

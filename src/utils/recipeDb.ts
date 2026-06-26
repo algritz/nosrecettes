@@ -1,5 +1,5 @@
-import { openDB, DBSchema, IDBPDatabase } from 'idb'
-import { Recipe } from '@/types/recipe'
+import { type DBSchema, type IDBPDatabase, openDB } from 'idb'
+import type { Recipe } from '@/types/recipe'
 
 // Database schema
 interface RecipeDB extends DBSchema {
@@ -25,7 +25,7 @@ const DB_NAME = 'nosrecettes'
 const DB_VERSION = 1
 
 // Open database with schema
-export async function openRecipeDB(): Promise<IDBPDatabase<RecipeDB>> {
+export function openRecipeDB(): Promise<IDBPDatabase<RecipeDB>> {
   return openDB<RecipeDB>(DB_NAME, DB_VERSION, {
     upgrade(db) {
       // Recipes object store
@@ -60,9 +60,7 @@ export async function getRecipeBySlug(
 }
 
 // Get recipes by category
-export async function getRecipesByCategory(
-  category: string,
-): Promise<Recipe[]> {
+async function _getRecipesByCategory(category: string): Promise<Recipe[]> {
   const db = await openRecipeDB()
   return db.getAllFromIndex('recipes', 'by-category', category)
 }
@@ -75,7 +73,7 @@ export async function getRecipeVersion(): Promise<string | null> {
 }
 
 // Save version
-export async function saveRecipeVersion(version: string): Promise<void> {
+async function _saveRecipeVersion(version: string): Promise<void> {
   const db = await openRecipeDB()
   await db.put('metadata', {
     key: 'recipeVersion',
@@ -156,7 +154,7 @@ export async function isRecipeDBPopulated(): Promise<boolean> {
 }
 
 // Clear all data (for debugging)
-export async function clearRecipeDB(): Promise<void> {
+async function _clearRecipeDB(): Promise<void> {
   const db = await openRecipeDB()
   const tx = db.transaction(['recipes', 'metadata'], 'readwrite')
   await tx.objectStore('recipes').clear()

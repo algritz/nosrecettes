@@ -1,17 +1,20 @@
-import { useState, useRef, useEffect } from 'react'
+import { Clock, Edit, Loader2, Trash2, Upload, X, Zap } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Upload, X, Loader2, Edit, Clock, Zap, Trash2 } from 'lucide-react'
+import type { ImageSizes } from '@/types/recipe'
 import {
+  type CloudinaryConfig,
+  getScheduledCleanups,
+} from '@/utils/cloudinaryUtils'
+import {
+  type ProcessedImage,
   processImageFile,
-  ProcessedImage,
   scheduleOldImageCleanup,
 } from '@/utils/imageUtils'
-import { CloudinaryConfig, getScheduledCleanups } from '@/utils/cloudinaryUtils'
 import { showError } from '@/utils/toast'
 import { ImageEditor } from './ImageEditor'
 import { ResponsiveImage } from './ResponsiveImage'
-import { ImageSizes } from '@/types/recipe'
 
 interface ImageUploadProps {
   images: ProcessedImage[]
@@ -255,6 +258,7 @@ export const ImageUpload = ({
             <h4 className="text-sm font-medium mb-3">Images actuelles</h4>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {existingImages.map((imageSize, index) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: image sizes have no stable ID
                 <Card key={index} className="relative group">
                   <CardContent className="p-2">
                     <div className="aspect-square relative overflow-hidden rounded-md">
@@ -370,12 +374,13 @@ export const ImageUpload = ({
       {images.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
           {images.map((processedImage, index) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: processed images have no stable ID
             <Card key={index} className="relative group">
               <CardContent className="p-2">
                 <div className="aspect-square relative overflow-hidden rounded-md">
                   <img
                     src={processedImage.sizes.small}
-                    alt={`Nouvelle image ${index + 1}`}
+                    alt={`Aperçu ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
 

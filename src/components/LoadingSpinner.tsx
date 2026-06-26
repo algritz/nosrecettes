@@ -19,7 +19,10 @@ export const LoadingSpinner = ({
   }
 
   return (
-    <div data-testid="loading-spinner" className={cn('flex items-center justify-center gap-2', className)}>
+    <div
+      data-testid="loading-spinner"
+      className={cn('flex items-center justify-center gap-2', className)}
+    >
       <Loader2
         className={cn('animate-spin text-muted-foreground', sizeClasses[size])}
       />

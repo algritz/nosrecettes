@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { getRecipeFiles } from './generate-sitemap.js'
-import { getFullUrl, getAssetUrl } from './site.config.js'
+import { getAssetUrl, getFullUrl } from './site.config.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 export function generateManifest() {
   const recipeCount = getRecipeFiles().length
-  const currentYear = new Date().getFullYear()
+  const _currentYear = new Date().getFullYear()
 
   const manifest = {
     name: `Nos Recettes - ${recipeCount} Recettes`,

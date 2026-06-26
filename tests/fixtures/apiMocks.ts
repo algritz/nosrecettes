@@ -57,7 +57,10 @@ export async function mockGitHubAPI(page: Page): Promise<void> {
     }
 
     // Mock file operations (get/create/update/delete)
-    if (url.includes('/contents/') && (method === 'GET' || method === 'PUT' || method === 'DELETE')) {
+    if (
+      url.includes('/contents/') &&
+      (method === 'GET' || method === 'PUT' || method === 'DELETE')
+    ) {
       if (method === 'GET') {
         // Check if querying for existing file (has ref=main param) or new file
         if (url.includes('ref=main')) {
@@ -71,9 +74,12 @@ export async function mockGitHubAPI(page: Page): Promise<void> {
               sha: 'existingfile456',
               size: 2345,
               url: 'https://api.github.com/repos/test-owner/test-repo/contents/src/recipes/test-recipe.ts',
-              html_url: 'https://github.com/test-owner/test-repo/blob/main/src/recipes/test-recipe.ts',
-              git_url: 'https://api.github.com/repos/test-owner/test-repo/git/blobs/existingfile456',
-              download_url: 'https://raw.githubusercontent.com/test-owner/test-repo/main/src/recipes/test-recipe.ts',
+              html_url:
+                'https://github.com/test-owner/test-repo/blob/main/src/recipes/test-recipe.ts',
+              git_url:
+                'https://api.github.com/repos/test-owner/test-repo/git/blobs/existingfile456',
+              download_url:
+                'https://raw.githubusercontent.com/test-owner/test-repo/main/src/recipes/test-recipe.ts',
               type: 'file',
               content: 'ZXhwb3J0IGNvbnN0IHJlY2lwZSA9IHt9Ow==', // base64 encoded: export const recipe = {};
               encoding: 'base64',
@@ -86,7 +92,8 @@ export async function mockGitHubAPI(page: Page): Promise<void> {
             contentType: 'application/json',
             body: JSON.stringify({
               message: 'Not Found',
-              documentation_url: 'https://docs.github.com/rest/repos/contents#get-repository-content',
+              documentation_url:
+                'https://docs.github.com/rest/repos/contents#get-repository-content',
             }),
           })
         }
@@ -102,9 +109,12 @@ export async function mockGitHubAPI(page: Page): Promise<void> {
               sha: 'newfile123',
               size: 1234,
               url: 'https://api.github.com/repos/test-owner/test-repo/contents/src/recipes/test-file.ts',
-              html_url: 'https://github.com/test-owner/test-repo/blob/main/src/recipes/test-file.ts',
-              git_url: 'https://api.github.com/repos/test-owner/test-repo/git/blobs/newfile123',
-              download_url: 'https://raw.githubusercontent.com/test-owner/test-repo/main/src/recipes/test-file.ts',
+              html_url:
+                'https://github.com/test-owner/test-repo/blob/main/src/recipes/test-file.ts',
+              git_url:
+                'https://api.github.com/repos/test-owner/test-repo/git/blobs/newfile123',
+              download_url:
+                'https://raw.githubusercontent.com/test-owner/test-repo/main/src/recipes/test-file.ts',
               type: 'file',
             },
             commit: {
@@ -149,7 +159,11 @@ export async function mockGitHubAPI(page: Page): Promise<void> {
     }
 
     // Mock repository info
-    if (url.includes('/repos/') && method === 'GET' && !url.includes('/contents/')) {
+    if (
+      url.includes('/repos/') &&
+      method === 'GET' &&
+      !url.includes('/contents/')
+    ) {
       await route.fulfill({
         status: 200,
         contentType: 'application/json',

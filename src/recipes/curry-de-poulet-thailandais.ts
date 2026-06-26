@@ -1,9 +1,10 @@
-import { Recipe } from '@/types/recipe';
+import type { Recipe } from '@/types/recipe'
 
 export const curryDePouletThailandais: Recipe = {
   id: 'curry-de-poulet-thailandais',
   title: 'Curry de poulet thaïlandais',
-  description: 'Un curry de poulet thaïlandais parfumé, riche en saveurs de lait de coco, pâte de curry rouge, et herbes fraîches.',
+  description:
+    'Un curry de poulet thaïlandais parfumé, riche en saveurs de lait de coco, pâte de curry rouge, et herbes fraîches.',
   categories: ['Plats principaux', 'Vollaille'],
   prepTime: { min: 25, max: 25 },
   cookTime: { min: 40, max: 40 },
@@ -11,7 +12,7 @@ export const curryDePouletThailandais: Recipe = {
   difficulty: 'Facile',
   ingredients: [
     '1 oignon en tranche',
-    '1 c. à soupe d\'huile d\'arachide',
+    "1 c. à soupe d'huile d'arachide",
     '1 2/3 de tasse (14 oz) de lait de coco',
     '2 c. à soupe de pâte de curry rouge',
     '2 c. à soupe de sauce à poisson Nuoc-mâm',
@@ -22,24 +23,27 @@ export const curryDePouletThailandais: Recipe = {
     '2 c. à soupe de menthe fraîche hachée grossièrement',
     '1 c. à soupe de basilic frais haché',
     '2 c. à soupe de piments rouges en petit cube',
-    'Sel et poivre au goût'
+    'Sel et poivre au goût',
   ],
   instructions: [
-    'Faire chauffer l\'oignon dans l\'huile d\'arachide.',
+    "Faire chauffer l'oignon dans l'huile d'arachide.",
     'Verser le lait de coco et porter à ébullition.',
     'Lorsque le tout est boueux, ajouter la pâte de curry rouge, la sauce à poisson Nuoc-mâm et la cassonade et bien mélanger.',
     'Ajouter les pommes de terre, couvrir et faire cuire pendant 20 minutes à feu doux.',
-    'Ajouter les morceaux de poulet et faire cuire à couvert encore 15 minutes ou jusqu\'à ce que le poulet et les pommes de terre soient tendres.',
-    'En fin de cuisson, tout en remuant, ajouter le jus de citron vert, la menthe, le basilic et le piment et servir.'
+    "Ajouter les morceaux de poulet et faire cuire à couvert encore 15 minutes ou jusqu'à ce que le poulet et les pommes de terre soient tendres.",
+    'En fin de cuisson, tout en remuant, ajouter le jus de citron vert, la menthe, le basilic et le piment et servir.',
   ],
   tags: ['curry', 'thaï', 'herbes fraîches'],
   images: [
     {
-      small: 'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/curry_de_poulet_thai',
-      medium: 'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/curry_de_poulet_thai',
-      large: 'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/curry_de_poulet_thai'
-    }
+      small:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_400,h_300,c_fill,q_auto,f_auto/recipes/curry_de_poulet_thai',
+      medium:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_800,h_600,c_fill,q_auto,f_auto/recipes/curry_de_poulet_thai',
+      large:
+        'https://res.cloudinary.com/nosrecettes/image/upload/w_1200,h_900,c_fill,q_auto,f_auto/recipes/curry_de_poulet_thai',
+    },
   ],
   source: 'David Cloutier',
-  slug: 'curry-de-poulet-thailandais'
-};
+  slug: 'curry-de-poulet-thailandais',
+}

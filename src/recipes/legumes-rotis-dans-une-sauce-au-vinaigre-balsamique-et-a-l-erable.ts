@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import type { Recipe } from '@/types/recipe'
 
 export const legumesRotisDansUneSauceAuVinaigreBalsamiqueEtALErable: Recipe = {
   id: 'legumes-rotis-dans-une-sauce-au-vinaigre-balsamique-et-a-l-erable',

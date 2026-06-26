@@ -11,9 +11,9 @@ import { test as base, type Page } from '@playwright/test'
  */
 
 type BaseFixtures = {
-  cleanDb: void
-  populatedDb: void
-  adminConfig: void
+  cleanDb: undefined
+  populatedDb: undefined
+  adminConfig: undefined
 }
 
 /**
@@ -82,7 +82,6 @@ async function waitForIndexedDBPopulation(page: Page): Promise<void> {
     { timeout: 60000 }, // 60 seconds for 720+ recipes to load
   )
 }
-
 
 export const test = base.extend<BaseFixtures>({
   /**

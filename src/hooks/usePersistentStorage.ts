@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 interface PersistentStorageState {
   isPersisted: boolean | null
@@ -13,11 +13,12 @@ export function usePersistentStorage(): PersistentStorageState {
     'storage' in navigator &&
     'persist' in navigator.storage
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: checkPersistence is defined in hook scope
   useEffect(() => {
     if (canPersist) {
+      // biome-ignore lint/suspicious/noConsole: intentional error logging
       checkPersistence().catch(console.error)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canPersist])
 
   async function checkPersistence(): Promise<void> {
@@ -26,15 +27,13 @@ export function usePersistentStorage(): PersistentStorageState {
     try {
       const persisted = await navigator.storage.persisted()
       setIsPersisted(persisted)
-    } catch (error) {
-      console.error('Failed to check persistence:', error)
+    } catch (_error) {
       setIsPersisted(false)
     }
   }
 
   async function requestPersistence(): Promise<boolean> {
     if (!canPersist) {
-      console.warn('Persistent storage not supported')
       return false
     }
 
@@ -43,33 +42,18 @@ export function usePersistentStorage(): PersistentStorageState {
       setIsPersisted(granted)
 
       if (granted) {
-        console.log('✓ Persistent storage granted')
       } else {
-        console.warn(
-          '✗ Persistent storage denied (this is normal in development)',
-        )
-        console.info(
-          'ℹ️  Persistent storage is typically granted when:\n' +
-            '  - Site is installed as PWA\n' +
-            '  - User visits frequently\n' +
-            '  - Notifications permission granted\n' +
-            '  Storage will still work, but may be evicted under pressure.',
-        )
       }
 
       // Log storage quota info
       if ('estimate' in navigator.storage) {
         const estimate = await navigator.storage.estimate()
-        const usedMB = ((estimate.usage || 0) / 1024 / 1024).toFixed(2)
-        const quotaMB = ((estimate.quota || 0) / 1024 / 1024).toFixed(2)
-        console.log(
-          `📊 Storage: ${usedMB} MB used of ${quotaMB} MB available`,
-        )
+        const _usedMB = ((estimate.usage || 0) / 1024 / 1024).toFixed(2)
+        const _quotaMB = ((estimate.quota || 0) / 1024 / 1024).toFixed(2)
       }
 
       return granted
-    } catch (error) {
-      console.error('Failed to request persistence:', error)
+    } catch (_error) {
       return false
     }
   }

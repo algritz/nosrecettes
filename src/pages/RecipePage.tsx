@@ -1,21 +1,21 @@
-import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Recipe } from '@/types/recipe'
-import { getRecipeBySlug, openRecipeDB } from '@/utils/recipeDb'
-import { RecipeDetail } from '@/components/RecipeDetail'
+import { useParams } from 'react-router-dom'
 import { NotFound } from '@/components/NotFound'
-import { SEOHead } from '@/components/SEOHead'
-import {
-  generateRecipeStructuredData,
-  generateBreadcrumbStructuredData,
-  generateRecipeKeywords,
-  generateRecipeDescription,
-} from '@/utils/seoUtils'
-import { getResponsiveImageSrc } from '@/utils/imageUtils'
-import { getRecipeCategories } from '@/utils/recipeUtils'
+import { RecipeDetail } from '@/components/RecipeDetail'
 import { RecipeDetailSkeleton } from '@/components/RecipeDetailSkeleton'
-import { fetchRecipes } from '@/utils/recipeCoordinator'
+import { SEOHead } from '@/components/SEOHead'
 import { useIndexedDBReady } from '@/hooks/useIndexedDBReady'
+import type { Recipe } from '@/types/recipe'
+import { getResponsiveImageSrc } from '@/utils/imageUtils'
+import { fetchRecipes } from '@/utils/recipeCoordinator'
+import { getRecipeBySlug, openRecipeDB } from '@/utils/recipeDb'
+import { getRecipeCategories } from '@/utils/recipeUtils'
+import {
+  generateBreadcrumbStructuredData,
+  generateRecipeDescription,
+  generateRecipeKeywords,
+  generateRecipeStructuredData,
+} from '@/utils/seoUtils'
 
 const RecipePage = (): React.JSX.Element => {
   const { slug } = useParams<{ slug: string }>()
@@ -24,6 +24,7 @@ const RecipePage = (): React.JSX.Element => {
   const [timeoutElapsed, setTimeoutElapsed] = useState(false)
   const { isReady: dbReady, isChecking: dbChecking } = useIndexedDBReady()
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: loadRecipe is defined in component scope
   useEffect(() => {
     // Always scroll to top when recipe page loads
     window.scrollTo(0, 0)
@@ -33,10 +34,10 @@ const RecipePage = (): React.JSX.Element => {
 
     // Only load recipe once IndexedDB is ready
     if (dbReady) {
+      // biome-ignore lint/suspicious/noConsole: intentional error logging
       loadRecipe().catch(console.error)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug, dbReady])
+  }, [dbReady])
 
   // Timeout mechanism: wait 5 seconds before showing 404
   useEffect(() => {
@@ -77,23 +78,16 @@ const RecipePage = (): React.JSX.Element => {
       )
 
       if (foundRecipe) {
-        console.log(
-          `Found recipe "${recipeSlug}" in network response, caching to IndexedDB...`,
-        )
         const db = await openRecipeDB()
         await db.put('recipes', foundRecipe)
-        console.log(`Recipe "${recipeSlug}" cached successfully`)
       } else {
-        console.log(`Recipe "${recipeSlug}" not found in recipes.json`)
       }
 
       return foundRecipe || null
     } catch (error) {
       // Preserve existing error handling: log and return null
       if (error instanceof Error && error.message === 'OFFLINE') {
-        console.log('Offline - cannot fetch recipe from network')
       } else {
-        console.error('Network fallback failed:', error)
       }
       return null
     }
@@ -111,15 +105,11 @@ const RecipePage = (): React.JSX.Element => {
 
       // If not found in IndexedDB, try network fallback
       if (!fetchedRecipe) {
-        console.log(
-          `Recipe "${slug}" not found in IndexedDB, attempting network fallback...`,
-        )
         fetchedRecipe = await fetchRecipeFromNetwork(slug)
       }
 
       setRecipe(fetchedRecipe || null)
-    } catch (error) {
-      console.error('Failed to load recipe:', error)
+    } catch (_error) {
       setRecipe(null)
     } finally {
       setLoading(false)

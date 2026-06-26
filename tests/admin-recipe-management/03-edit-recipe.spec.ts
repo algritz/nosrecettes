@@ -1,6 +1,6 @@
-import { test } from '../fixtures/baseFixtures'
 import { expect, type Page } from '@playwright/test'
-import { mockGitHubAPI, mockCloudinaryAPI } from '../fixtures/apiMocks'
+import { mockCloudinaryAPI, mockGitHubAPI } from '../fixtures/apiMocks'
+import { test } from '../fixtures/baseFixtures'
 import { sampleRecipeUpdate } from '../fixtures/testData'
 
 /**
@@ -21,7 +21,8 @@ import { sampleRecipeUpdate } from '../fixtures/testData'
 async function getFirstRecipeSlug(page: Page): Promise<string> {
   // Only navigate if NOT already on home page
   const currentUrl = page.url()
-  const isHomePage = currentUrl.endsWith('/') || currentUrl.endsWith('localhost:8080')
+  const isHomePage =
+    currentUrl.endsWith('/') || currentUrl.endsWith('localhost:8080')
 
   if (!isHomePage) {
     await page.goto('/', { waitUntil: 'networkidle', timeout: 30000 })
@@ -33,7 +34,9 @@ async function getFirstRecipeSlug(page: Page): Promise<string> {
   await firstCard.waitFor({ state: 'visible', timeout: 60000 })
 
   // Wait for href attribute to be populated (React hydration)
-  await expect(firstCard).toHaveAttribute('href', /\/recipe\//, { timeout: 15000 })
+  await expect(firstCard).toHaveAttribute('href', /\/recipe\//, {
+    timeout: 15000,
+  })
 
   const href = await firstCard.getAttribute('href')
   if (!href) {
@@ -53,7 +56,9 @@ test.describe('Recipe Editing', () => {
 
     // Without admin config, should not show edit button
     await page.goto(`/recipe/${slug}`)
-    await expect(page.getByRole('button', { name: /modifier/i })).not.toBeVisible()
+    await expect(
+      page.getByRole('button', { name: /modifier/i }),
+    ).not.toBeVisible()
   })
 
   test('should load edit page with existing recipe data', async ({
@@ -83,7 +88,9 @@ test.describe('Recipe Editing', () => {
     ).toBeVisible()
 
     // Should show connection status
-    await expect(page.getByText(/connecté à test-owner\/test-repo/i)).toBeVisible()
+    await expect(
+      page.getByText(/connecté à test-owner\/test-repo/i),
+    ).toBeVisible()
 
     // Title field should be pre-filled with existing recipe title
     const titleInput = page.getByPlaceholder(/ex: poutine classique/i)
@@ -223,9 +230,11 @@ test.describe('Recipe Editing', () => {
       .click()
 
     // Should show success toast message
-    await expect(page.getByText(/demande de suppression soumise/i)).toBeVisible({
-      timeout: 10000,
-    })
+    await expect(page.getByText(/demande de suppression soumise/i)).toBeVisible(
+      {
+        timeout: 10000,
+      },
+    )
 
     // Should redirect to home page
     await expect(page).toHaveURL('/')
@@ -255,7 +264,10 @@ test.describe('Recipe Editing', () => {
     const initialCount = await ingredientFields.count()
 
     // Add a new ingredient
-    const addButton = page.getByRole('button', { name: /ajouter/i }).filter({ has: page.locator('svg[class*="lucide-plus"]') }).first()
+    const addButton = page
+      .getByRole('button', { name: /ajouter/i })
+      .filter({ has: page.locator('svg[class*="lucide-plus"]') })
+      .first()
     await addButton.click()
 
     // Should have one more field
@@ -334,8 +346,8 @@ test.describe('Recipe Editing', () => {
     await page.goto('/edit-recipe/non-existent-recipe-slug-12345')
 
     // Should show 404
-    await expect(
-      page.getByText(/page introuvable|404/i),
-    ).toBeVisible({ timeout: 10000 })
+    await expect(page.getByText(/page introuvable|404/i)).toBeVisible({
+      timeout: 10000,
+    })
   })
 })

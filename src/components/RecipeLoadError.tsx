@@ -1,4 +1,4 @@
-import { WifiOff, RefreshCw, Database } from 'lucide-react'
+import { Database, RefreshCw, WifiOff } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 interface RecipeLoadErrorProps {

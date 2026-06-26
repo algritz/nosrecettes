@@ -1,4 +1,4 @@
-import { Recipe } from '@/types/recipe'
+import type { Recipe } from '@/types/recipe'
 
 export const hautsDeCuisseDePouletSauceAuxPechesEtAuCari: Recipe = {
   id: 'hauts-de-cuisse-de-poulet-sauce-aux-peches-et-au-cari',

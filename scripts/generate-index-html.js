@@ -1,44 +1,44 @@
 #!/usr/bin/env node
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { getRecipeData, getRecipeFiles } from "./generate-sitemap.js";
-import { getAssetUrl, getFullUrl, siteConfig } from "./site.config.js";
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { getRecipeData, getRecipeFiles } from './generate-sitemap.js'
+import { getAssetUrl, getFullUrl, siteConfig } from './site.config.js'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export function generateIndexHTML() {
-	const recipeFiles = getRecipeFiles();
-	const recipeCount = recipeFiles.length;
-	const currentDate = new Date().toISOString();
+  const recipeFiles = getRecipeFiles()
+  const recipeCount = recipeFiles.length
+  const currentDate = new Date().toISOString()
 
-	// Get some sample recipes for keywords
-	const sampleRecipes = recipeFiles
-		.slice(0, 5)
-		.map((filename) => getRecipeData(filename));
-	const sampleTitles = sampleRecipes.map((recipe) => recipe.title).join(", ");
+  // Get some sample recipes for keywords
+  const sampleRecipes = recipeFiles
+    .slice(0, 5)
+    .map((filename) => getRecipeData(filename))
+  const sampleTitles = sampleRecipes.map((recipe) => recipe.title).join(', ')
 
-	// Generate dynamic keywords based on actual recipes
-	const baseKeywords = [
-		"recettes québécoises",
-		"cuisine québécoise",
-		"recettes canadiennes",
-		"recettes traditionnelles",
-		"cuisine du Québec",
-		"recettes faciles",
-		"recettes familiales",
-		"recettes avec photos",
-		"instructions détaillées",
-	];
+  // Generate dynamic keywords based on actual recipes
+  const baseKeywords = [
+    'recettes québécoises',
+    'cuisine québécoise',
+    'recettes canadiennes',
+    'recettes traditionnelles',
+    'cuisine du Québec',
+    'recettes faciles',
+    'recettes familiales',
+    'recettes avec photos',
+    'instructions détaillées',
+  ]
 
-	const dynamicKeywords = [
-		...baseKeywords,
-		...sampleTitles.toLowerCase().split(", "),
-	];
+  const dynamicKeywords = [
+    ...baseKeywords,
+    ...sampleTitles.toLowerCase().split(', '),
+  ]
 
-	const htmlContent = `<!doctype html>
+  const htmlContent = `<!doctype html>
 <html lang="fr-CA">
   <head>
     <meta charset="UTF-8" />
@@ -48,7 +48,7 @@ export function generateIndexHTML() {
     <title>Nos Recettes - Collection de ${recipeCount} recettes</title>
     <meta name="title" content="Nos Recettes - Collection de ${recipeCount} recettes" />
     <meta name="description" content="Découvrez notre collection de ${recipeCount} recettes traditionnelles et modernes. Instructions détaillées, temps de préparation, et images pour chaque recette. ${sampleTitles.substring(0, 100)}..." />
-    <meta name="keywords" content="${dynamicKeywords.join(", ")}" />
+    <meta name="keywords" content="${dynamicKeywords.join(', ')}" />
     <meta name="author" content="Nos Recettes" />
     <meta name="language" content="French" />
     <meta name="robots" content="index, follow" />
@@ -65,16 +65,16 @@ export function generateIndexHTML() {
     <meta name="referrer" content="origin-when-cross-origin" />
     
     <!-- Favicon and Icons -->
-    <link rel="icon" type="image/x-icon" href="${getAssetUrl("favicon.ico")}" />
-    <link rel="apple-touch-icon" sizes="180x180" href="${getAssetUrl("apple-touch-icon.png")}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="${getAssetUrl("favicon-32x32.png")}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="${getAssetUrl("favicon-16x16.png")}" />
-    <link rel="mask-icon" href="${getAssetUrl("safari-pinned-tab.svg")}" color="#0f172a" />
+    <link rel="icon" type="image/x-icon" href="${getAssetUrl('favicon.ico')}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="${getAssetUrl('apple-touch-icon.png')}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="${getAssetUrl('favicon-32x32.png')}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="${getAssetUrl('favicon-16x16.png')}" />
+    <link rel="mask-icon" href="${getAssetUrl('safari-pinned-tab.svg')}" color="#0f172a" />
     <meta name="msapplication-TileColor" content="#0f172a" />
-    <meta name="msapplication-config" content="${getAssetUrl("browserconfig.xml")}" />
+    <meta name="msapplication-config" content="${getAssetUrl('browserconfig.xml')}" />
 
     <!-- Web App Manifest -->
-    <link rel="manifest" href="${getAssetUrl("manifest.json")}" />
+    <link rel="manifest" href="${getAssetUrl('manifest.json')}" />
     <meta name="theme-color" content="#0f172a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -113,7 +113,7 @@ export function generateIndexHTML() {
         "url": "${siteConfig.baseUrl}/",
         "logo": {
           "@type": "ImageObject",
-          "url": "${getFullUrl("/icon-512.png")}"
+          "url": "${getFullUrl('/icon-512.png')}"
         }
       },
       "mainEntity": {
@@ -218,31 +218,31 @@ export function generateIndexHTML() {
     </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
-</html>`;
+</html>`
 
-	return htmlContent;
+  return htmlContent
 }
 
 function main() {
-	try {
-		console.log("Generating index.html...");
+  try {
+    console.log('Generating index.html...')
 
-		const htmlContent = generateIndexHTML();
-		const outputPath = path.join(__dirname, "..", "index.html");
+    const htmlContent = generateIndexHTML()
+    const outputPath = path.join(__dirname, '..', 'index.html')
 
-		fs.writeFileSync(outputPath, htmlContent, "utf-8");
+    fs.writeFileSync(outputPath, htmlContent, 'utf-8')
 
-		const recipeCount = getRecipeFiles().length;
-		console.log(
-			`✅ Index.html generated successfully with ${recipeCount} recipes`,
-		);
-	} catch (error) {
-		console.error("❌ Error generating index.html:", error);
-		process.exit(1);
-	}
+    const recipeCount = getRecipeFiles().length
+    console.log(
+      `✅ Index.html generated successfully with ${recipeCount} recipes`,
+    )
+  } catch (error) {
+    console.error('❌ Error generating index.html:', error)
+    process.exit(1)
+  }
 }
 
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-	main();
+  main()
 }
