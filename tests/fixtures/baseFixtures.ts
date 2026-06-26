@@ -129,6 +129,15 @@ export const test = base.extend<BaseFixtures>({
     // Depend on populatedDb to ensure page is navigated and IndexedDB is ready
     // The underscore parameter forces populatedDb to run first
 
+    // Unregister service workers to prevent the PWA auto-update hook from
+    // calling window.location.reload() mid-test (usePwaUpdate fires
+    // updateServiceWorker(true) when a new SW version is detected, which
+    // reloads the page and breaks form interaction tests).
+    await page.evaluate(async () => {
+      const registrations = await navigator.serviceWorker.getRegistrations()
+      await Promise.all(registrations.map((r) => r.unregister()))
+    })
+
     // Inject admin config into localStorage
     await page.evaluate(() => {
       localStorage.setItem(
