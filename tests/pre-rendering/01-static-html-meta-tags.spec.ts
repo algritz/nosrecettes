@@ -37,6 +37,9 @@ test.describe('Pre-rendered Static HTML', () => {
     // Verify the template has the essential structural elements and structured data.
     expect(html).toContain('<title')
     expect(html).toContain('application/ld+json')
+    // The homepage ships the CSR loading skeleton (no data-prerendered marker),
+    // so main.tsx takes the createRoot path. Only recipe pages are SSR-rendered
+    // with the marker and hydrated.
     expect(html).toContain('<div id="root">')
   })
 
@@ -235,11 +238,12 @@ test.describe('Pre-rendered Static HTML', () => {
     )
 
     // Check that #root div exists and has content
-    const rootIndex = html.indexOf('<div id="root">')
+    const rootTag = '<div id="root" data-prerendered="true">'
+    const rootIndex = html.indexOf(rootTag)
     expect(rootIndex).toBeGreaterThan(-1)
 
     // Get everything after the root div opening tag
-    const afterRoot = html.substring(rootIndex + '<div id="root">'.length)
+    const afterRoot = html.substring(rootIndex + rootTag.length)
 
     // Should have substantial content (more than just closing tag)
     expect(afterRoot.length).toBeGreaterThan(1000)

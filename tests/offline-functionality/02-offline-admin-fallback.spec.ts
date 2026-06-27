@@ -13,6 +13,7 @@ import { expect, test } from '../fixtures/baseFixtures'
 test.describe('Offline Admin Fallback', () => {
   test('should detect offline state on admin page', async ({
     page,
+    context,
     populatedDb,
     adminConfig,
   }) => {
@@ -24,9 +25,11 @@ test.describe('Offline Admin Fallback', () => {
       page.getByRole('heading', { name: /administration/i }),
     ).toBeVisible()
 
-    // Admin page uses useOnlineStatus hook
-    // Simulate going offline by blocking network requests
-    await page.route('**/*', (route) => route.abort())
+    // Admin page uses useOnlineStatus hook.
+    // Simulate going offline at the network layer. context.setOffline blocks
+    // below the service worker (so SW-proxied requests fail too) and flips
+    // navigator.onLine, unlike page.route which the controlling SW bypasses.
+    await context.setOffline(true)
 
     // Wait for offline detection (hook checks every 5 seconds + buffer)
     await page.waitForTimeout(6000)
@@ -54,6 +57,7 @@ test.describe('Offline Admin Fallback', () => {
 
   test('should navigate back to recipes from offline admin page', async ({
     page,
+    context,
     populatedDb,
     adminConfig,
   }) => {
@@ -65,8 +69,8 @@ test.describe('Offline Admin Fallback', () => {
       page.getByRole('heading', { name: /administration/i }),
     ).toBeVisible()
 
-    // Simulate offline by blocking requests
-    await page.route('**/*', (route) => route.abort())
+    // Simulate offline at the network layer (see note in the test above)
+    await context.setOffline(true)
 
     // Wait for offline detection
     await page.waitForTimeout(6000)
@@ -81,9 +85,10 @@ test.describe('Offline Admin Fallback', () => {
       name: /retour aux recettes/i,
     })
 
-    // Unblock routes before navigation
-    await page.unroute('**/*')
-
+    // Click while still offline: navigation is client-side (react-router) and
+    // the home page renders from IndexedDB, so it works offline. Restoring
+    // connectivity first would flip the hook back online and unmount the
+    // fallback (and this button) before the click lands.
     await backButton.click()
 
     // Should be back on home page with recipes
