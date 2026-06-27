@@ -90,7 +90,7 @@ function assembleHtml(
 ${cssLinks}
   </head>
   <body>
-    <div id="root">${html}</div>
+    <div id="root" data-prerendered="true">${html}</div>
     <script type="module" src="${assets.js}"></script>
   </body>
 </html>`
