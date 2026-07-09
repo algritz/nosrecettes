@@ -243,7 +243,9 @@ test.describe('Pre-rendered Static HTML', () => {
     )
 
     expect(html).toContain('<link rel="manifest" href="/manifest.json" />')
-    expect(html).toContain('<link rel="icon" type="image/x-icon" href="/favicon.ico" />')
+    expect(html).toContain(
+      '<link rel="icon" type="image/x-icon" href="/favicon.ico" />',
+    )
     expect(html).toContain('name="theme-color" content="#0f172a"')
     expect(html).toContain('name="apple-mobile-web-app-capable" content="yes"')
   })
