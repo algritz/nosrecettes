@@ -1,5 +1,4 @@
-import fs from 'node:fs'
-import path from 'node:path'
+import type { Page } from '@playwright/test'
 import type { Recipe } from '../../src/types/recipe'
 import {
   formatIngredientsForClipboard,
@@ -13,12 +12,12 @@ import { expect, test } from '../fixtures/baseFixtures'
  * Tests the ability to copy a recipe's ingredients or instructions to the
  * clipboard, including recipes whose ingredients/instructions are split
  * into titled sections (section titles must be preserved in the copy).
+ *
+ * Recipe data is fetched from the running app server (rather than read from
+ * `public/recipes.json` directly) because that file is generated/gitignored
+ * and isn't present in a fresh CI checkout - fetching it mirrors what the
+ * app itself does and works in both dev and preview (CI) modes.
  */
-
-const recipesData: { recipes: Recipe[] } = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), 'public', 'recipes.json'), 'utf-8'),
-)
-const recipes = recipesData.recipes
 
 function isSectioned(value: unknown[]): boolean {
   return (
@@ -29,20 +28,29 @@ function isSectioned(value: unknown[]): boolean {
   )
 }
 
-const flatRecipe = recipes.find(
-  (recipe) =>
-    !isSectioned(recipe.ingredients) && !isSectioned(recipe.instructions),
-)
+async function getTestRecipes(
+  page: Page,
+): Promise<{ flatRecipe: Recipe; sectionedRecipe: Recipe }> {
+  const response = await page.request.get('/recipes.json')
+  const data = (await response.json()) as { recipes: Recipe[] }
+  const recipes = data.recipes
 
-const sectionedRecipe = recipes.find(
-  (recipe) =>
-    isSectioned(recipe.ingredients) && isSectioned(recipe.instructions),
-)
-
-if (!flatRecipe || !sectionedRecipe) {
-  throw new Error(
-    'Test setup error: could not find both a flat and a sectioned recipe in public/recipes.json',
+  const flatRecipe = recipes.find(
+    (recipe) =>
+      !isSectioned(recipe.ingredients) && !isSectioned(recipe.instructions),
   )
+  const sectionedRecipe = recipes.find(
+    (recipe) =>
+      isSectioned(recipe.ingredients) && isSectioned(recipe.instructions),
+  )
+
+  if (!flatRecipe || !sectionedRecipe) {
+    throw new Error(
+      'Test setup error: could not find both a flat and a sectioned recipe in /recipes.json',
+    )
+  }
+
+  return { flatRecipe, sectionedRecipe }
 }
 
 test.describe('Copy to Clipboard', () => {
@@ -54,6 +62,7 @@ test.describe('Copy to Clipboard', () => {
     page,
     populatedDb,
   }) => {
+    const { flatRecipe } = await getTestRecipes(page)
     await page.goto(`/recipe/${flatRecipe.slug}`)
     await page.locator('h1').waitFor({ state: 'visible', timeout: 10000 })
 
@@ -71,6 +80,7 @@ test.describe('Copy to Clipboard', () => {
     page,
     populatedDb,
   }) => {
+    const { flatRecipe } = await getTestRecipes(page)
     await page.goto(`/recipe/${flatRecipe.slug}`)
     await page.locator('h1').waitFor({ state: 'visible', timeout: 10000 })
 
@@ -88,6 +98,7 @@ test.describe('Copy to Clipboard', () => {
     page,
     populatedDb,
   }) => {
+    const { sectionedRecipe } = await getTestRecipes(page)
     await page.goto(`/recipe/${sectionedRecipe.slug}`)
     await page.locator('h1').waitFor({ state: 'visible', timeout: 10000 })
 
@@ -115,6 +126,7 @@ test.describe('Copy to Clipboard', () => {
     page,
     populatedDb,
   }) => {
+    const { sectionedRecipe } = await getTestRecipes(page)
     await page.goto(`/recipe/${sectionedRecipe.slug}`)
     await page.locator('h1').waitFor({ state: 'visible', timeout: 10000 })
 
@@ -141,6 +153,7 @@ test.describe('Copy to Clipboard', () => {
     page,
     populatedDb,
   }) => {
+    const { flatRecipe } = await getTestRecipes(page)
     await page.goto(`/recipe/${flatRecipe.slug}`)
     await page.locator('h1').waitFor({ state: 'visible', timeout: 10000 })
 
