@@ -5,6 +5,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock,
+  Copy,
   Edit,
   Share2,
   StickyNote,
@@ -24,6 +25,10 @@ import type {
   InstructionSection,
   Recipe,
 } from '@/types/recipe'
+import {
+  formatIngredientsForClipboard,
+  formatInstructionsForClipboard,
+} from '@/utils/clipboardFormat'
 import { getRecipeCategories } from '@/utils/recipeUtils'
 import { formatTime } from '@/utils/timeFormat'
 import { getMaxTime } from '@/utils/timeUtils'
@@ -93,6 +98,39 @@ export const RecipeDetail = ({
         })
       }
     }
+  }
+
+  const copyToClipboard = async (
+    text: string,
+    successTitle: string,
+    successDescription: string,
+  ): Promise<void> => {
+    try {
+      await navigator.clipboard.writeText(text)
+      toast({ title: successTitle, description: successDescription })
+    } catch {
+      toast({
+        title: 'Erreur',
+        description: 'Impossible de copier dans le presse-papier',
+        variant: 'destructive',
+      })
+    }
+  }
+
+  const handleCopyIngredients = (): void => {
+    void copyToClipboard(
+      formatIngredientsForClipboard(recipe.ingredients),
+      'Ingrédients copiés',
+      'Les ingrédients ont été copiés dans le presse-papier',
+    )
+  }
+
+  const handleCopyInstructions = (): void => {
+    void copyToClipboard(
+      formatInstructionsForClipboard(recipe.instructions),
+      'Instructions copiées',
+      'Les instructions ont été copiées dans le presse-papier',
+    )
   }
 
   // Helper function to render ingredients
@@ -347,15 +385,37 @@ export const RecipeDetail = ({
 
       <div className="grid md:grid-cols-2 gap-8">
         <Card>
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0">
             <CardTitle>Ingrédients</CardTitle>
+            {recipe.ingredients.length > 0 && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleCopyIngredients}
+                data-testid="copy-ingredients-button"
+              >
+                <Copy className="w-4 h-4 mr-2" />
+                Copier
+              </Button>
+            )}
           </CardHeader>
           <CardContent>{renderIngredients()}</CardContent>
         </Card>
 
         <Card>
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0">
             <CardTitle>Instructions</CardTitle>
+            {recipe.instructions.length > 0 && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleCopyInstructions}
+                data-testid="copy-instructions-button"
+              >
+                <Copy className="w-4 h-4 mr-2" />
+                Copier
+              </Button>
+            )}
           </CardHeader>
           <CardContent>{renderInstructions()}</CardContent>
         </Card>
