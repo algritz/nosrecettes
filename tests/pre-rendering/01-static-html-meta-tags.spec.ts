@@ -41,6 +41,9 @@ test.describe('Pre-rendered Static HTML', () => {
     // so main.tsx takes the createRoot path. Only recipe pages are SSR-rendered
     // with the marker and hydrated.
     expect(html).toContain('<div id="root">')
+    // PWA manifest must be present so Android's "Install app" prompt works
+    // for visitors landing directly on the homepage.
+    expect(html).toContain('<link rel="manifest" href="/manifest.json" />')
   })
 
   test('should have pre-rendered recipe pages with recipe-specific meta tags', async () => {
@@ -213,6 +216,36 @@ test.describe('Pre-rendered Static HTML', () => {
 
     // Should not be empty
     expect(html.length).toBeGreaterThan(1000)
+  })
+
+  test('should have PWA manifest and icon tags in pre-rendered recipe pages', async () => {
+    // Regression test: build-ssg.ts previously built the recipe page <head>
+    // solely from React Helmet tags, omitting the static PWA tags baked into
+    // index.html. Since recipe pages are the most common entry point
+    // (search/shared links), this silently broke the Android "Install app"
+    // prompt even though the homepage was unaffected.
+
+    const recipePath = path.join(process.cwd(), 'dist', 'recipe')
+
+    if (!fs.existsSync(recipePath)) {
+      test.skip(true, 'No pre-rendered recipe pages found')
+    }
+
+    const recipeDirs = fs
+      .readdirSync(recipePath)
+      .filter((entry) =>
+        fs.statSync(path.join(recipePath, entry)).isDirectory(),
+      )
+
+    const html = fs.readFileSync(
+      path.join(recipePath, recipeDirs[0], 'index.html'),
+      'utf-8',
+    )
+
+    expect(html).toContain('<link rel="manifest" href="/manifest.json" />')
+    expect(html).toContain('<link rel="icon" type="image/x-icon" href="/favicon.ico" />')
+    expect(html).toContain('name="theme-color" content="#0f172a"')
+    expect(html).toContain('name="apple-mobile-web-app-capable" content="yes"')
   })
 
   test('pre-rendered HTML should have content in #root', async () => {
